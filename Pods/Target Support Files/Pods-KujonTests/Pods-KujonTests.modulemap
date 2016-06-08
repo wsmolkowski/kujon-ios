@@ -1,0 +1,6 @@
+framework module Pods_KujonTests {
+  umbrella header "Pods-KujonTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
