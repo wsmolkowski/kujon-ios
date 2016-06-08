@@ -23,9 +23,9 @@ class UsosesProvider {
 
             let txtFilePath = NSBundle.mainBundle().pathForResource("Usoses", ofType: "json")
 
-            var jsonData = try NSData(contentsOfFile: txtFilePath!, options: .DataReadingMappedIfSafe)
+            let jsonData = try NSData(contentsOfFile: txtFilePath!, options: .DataReadingMappedIfSafe)
             let json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
-            var usoses = try! KujonResponseSchools.decode(json)
+            let usoses = try! KujonResponseSchools.decode(json)
             delegate?.onUsosesLoaded(usoses.data)
         } catch {
             delegate?.onErrorOccurs()
