@@ -1,0 +1,191 @@
+{
+  "status": "success",
+  "data": [
+    {
+      "name": "Uniwersytet Warszawski",
+      "validate_ssl_certificate": true,
+      "usos_id": "UW",
+      "logo": "https://kujon.mobi/static/img/logo/logo-uw-64x64.jpg"
+    },
+    {
+      "name": "Uniwersytet im Adama Mickiewicza w Poznaniu",
+      "validate_ssl_certificate": true,
+      "usos_id": "UAM",
+      "logo": "https://kujon.mobi/static/img/logo/logo-uam-64x64.jpg"
+    },
+    {
+      "name": "Politechnika Warszawska",
+      "validate_ssl_certificate": true,
+      "usos_id": "PW",
+      "logo": "https://kujon.mobi/static/img/logo/logo-pw-64x64.jpg"
+    },
+    {
+      "name": "Uniwersytet Łódzki",
+      "validate_ssl_certificate": true,
+      "usos_id": "UL",
+      "logo": "https://kujon.mobi/static/img/logo/logo-ul-64x64.jpg"
+    },
+    {
+      "name": "Uniwersytet Mikołaja Kopernika w Toruniu",
+      "validate_ssl_certificate": true,
+      "usos_id": "UMK",
+      "logo": "https://kujon.mobi/static/img/logo/logo-umk-64x64.jpg"
+    },
+    {
+      "name": "Uniwersytet Wrocławski",
+      "validate_ssl_certificate": true,
+      "usos_id": "UWR",
+      "logo": "https://kujon.mobi/static/img/logo/logo-uwr-64x64.jpg"
+    },
+    {
+      "name": "Uniwersytet Śląski w Katowicach",
+      "validate_ssl_certificate": true,
+      "usos_id": "US",
+      "logo": "https://kujon.mobi/static/img/logo/logo-us-64x64.jpg"
+    },
+    {
+      "name": "Uniwersytet Marii Curie-Skłodowskiej w Lublinie",
+      "validate_ssl_certificate": false,
+      "usos_id": "UMCS",
+      "logo": "https://kujon.mobi/static/img/logo/logo-umcs-64x64.jpg"
+    },
+    {
+      "name": "Uniwersytet Wamińsko-Mazurski w Olsztynie",
+      "validate_ssl_certificate": true,
+      "usos_id": "UWM",
+      "logo": "https://kujon.mobi/static/img/logo/logo-uwm-64x64.jpg"
+    },
+    {
+      "name": "Uniwersytet Kardynała Stefana Wyszyńskiego",
+      "validate_ssl_certificate": true,
+      "usos_id": "UKSW",
+      "logo": "https://kujon.mobi/static/img/logo/logo-uksw-64x64.jpg"
+    },
+    {
+      "name": "Politechnika Rzeszowska",
+      "validate_ssl_certificate": true,
+      "usos_id": "PRZ",
+      "logo": "https://kujon.mobi/static/img/logo/logo-prz-64x64.jpg"
+    },
+    {
+      "name": "Politechnika Białostocka",
+      "validate_ssl_certificate": true,
+      "usos_id": "PB",
+      "logo": "https://kujon.mobi/static/img/logo/logo-pb-64x64.jpg"
+    },
+    {
+      "name": "Politechnika Świętokrzystka w Kielcach",
+      "validate_ssl_certificate": true,
+      "usos_id": "PS",
+      "logo": "https://kujon.mobi/static/img/logo/logo-ps-64x64.jpg"
+    },
+    {
+      "name": "Uniwersytet Kazimierza Wielkiego w Bydgoszczy",
+      "validate_ssl_certificate": true,
+      "usos_id": "UKW",
+      "logo": "https://kujon.mobi/static/img/logo/logo-ukw-64x64.jpg"
+    },
+    {
+      "name": "Wojskowa Akademia Techniczna w Warszawie",
+      "validate_ssl_certificate": false,
+      "usos_id": "WAT",
+      "logo": "https://kujon.mobi/static/img/logo/logo-wat-64x64.jpg"
+    },
+    {
+      "name": "Uniwersytet Białostocki",
+      "validate_ssl_certificate": true,
+      "usos_id": "UWB",
+      "logo": "https://kujon.mobi/static/img/logo/logo-ub-64x64.jpg"
+    },
+    {
+      "name": "Uniwersytet Opolski",
+      "validate_ssl_certificate": true,
+      "usos_id": "UO",
+      "logo": "https://kujon.mobi/static/img/logo/logo-uo-64x64.jpg"
+    },
+    {
+      "name": "Uniwersytet Technologiczno-Przyrodniczy w Bydgoszczy",
+      "validate_ssl_certificate": true,
+      "usos_id": "UTP",
+      "logo": "https://kujon.mobi/static/img/logo/logo-utp-64x64.jpg"
+    },
+    {
+      "name": "Uniwersytet Ekonomiczny we Wrocławiu",
+      "validate_ssl_certificate": true,
+      "usos_id": "UEW",
+      "logo": "https://kujon.mobi/static/img/logo/logo-uew-64x64.jpg"
+    },
+    {
+      "name": "Akademia Wychowania Fizycznego w Katowicach",
+      "validate_ssl_certificate": false,
+      "usos_id": "AWFKAT",
+      "logo": "https://kujon.mobi/static/img/logo/logo-awfkat-64x64.jpg"
+    },
+    {
+      "name": "Chrześcijańska Akademia Teologiczna w Warszawie",
+      "validate_ssl_certificate": false,
+      "usos_id": "CHAT",
+      "logo": "https://kujon.mobi/static/img/logo/logo-chat-64x64.jpg"
+    },
+    {
+      "name": "Państwowa Wyższa Szkoła Zawodowa w Kaliszu",
+      "validate_ssl_certificate": true,
+      "usos_id": "PWSZ-Kalisz",
+      "logo": "https://kujon.mobi/static/img/logo/logo-pwsz-kalisz-64x64.jpg"
+    },
+    {
+      "name": "Państwowa Wyższa Szkoła Zawodowa w Krośnie",
+      "validate_ssl_certificate": false,
+      "usos_id": "PWSZ-Krosno",
+      "logo": "https://kujon.mobi/static/img/logo/logo-pwsz-krosno-64x64.jpg"
+    },
+    {
+      "name": "Uczelnia Techniczno-Handlowa w Warszawie",
+      "validate_ssl_certificate": true,
+      "usos_id": "UTH",
+      "logo": "https://kujon.mobi/static/img/logo/logo-uth-64x64.jpg"
+    },
+    {
+      "name": "Wyższa Szkoła Ekonomiczna w Białymstoku",
+      "validate_ssl_certificate": true,
+      "usos_id": "WSE",
+      "logo": "https://kujon.mobi/static/img/logo/logo-wse-64x64.jpg"
+    },
+    {
+      "name": "Państwowa Wyższa Szkoła Informatyki i Przedsiębiorczości w Łomży",
+      "validate_ssl_certificate": true,
+      "usos_id": "PWSIP",
+      "logo": "https://kujon.mobi/static/img/logo/logo-pwsip-64x64.jpg"
+    },
+    {
+      "name": "Państwowa Wyższa Szkoła Zawodowa w Elblągu",
+      "validate_ssl_certificate": false,
+      "usos_id": "PWSZ-Elblag",
+      "logo": "https://kujon.mobi/static/img/logo/logo-pwsz-elblag-64x64.jpg"
+    },
+    {
+      "name": "Elbląska Uczelnia Humanistyczno-Ekonomiczna",
+      "validate_ssl_certificate": true,
+      "usos_id": "EUHE",
+      "logo": "https://kujon.mobi/static/img/logo/logo-euhe-64x64.jpg"
+    },
+    {
+      "name": "Uniwersytet Muzyczny Fryderyka Chopina w Warszawie",
+      "validate_ssl_certificate": false,
+      "usos_id": "UMFC",
+      "logo": "https://kujon.mobi/static/img/logo/logo-umfc-64x64.jpg"
+    },
+    {
+      "name": "Uniwersytet Przyrodniczo-Humanistyczny w Siedlcach",
+      "validate_ssl_certificate": true,
+      "usos_id": "UPH",
+      "logo": "https://kujon.mobi/static/img/logo/logo-uph-64x64.jpg"
+    },
+    {
+      "name": "Uniwersytet DEMO w Nibylandi",
+      "validate_ssl_certificate": true,
+      "usos_id": "DEMO",
+      "logo": "https://kujon.mobi/static/img/logo/logo-demo-64x64.jpg"
+    }
+  ]
+}
