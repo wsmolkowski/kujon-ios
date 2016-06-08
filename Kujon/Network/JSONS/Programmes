@@ -1,0 +1,38 @@
+{
+  "status": "success",
+  "data": [
+    {
+      "id": "342896",
+      "programme": {
+        "name": "Jednoczesne Studia Informatyczno-Matematyczne, stacjonarne, pierwszego stopnia",
+        "mode_of_studies": "Stacjonarne",
+        "duration": "4-letnie",
+        "level_of_studies": "Pierwszego stopnia",
+        "id": "DZ-JSIM",
+        "description": "Jednoczesne Studia Informatyczno-Matematyczne, stacjonarne, pierwszego stopnia"
+      }
+    },
+    {
+      "id": "377160",
+      "programme": {
+        "name": "Informatyka, stacjonarne, pierwszego stopnia",
+        "mode_of_studies": "Stacjonarne",
+        "duration": "3-letnie",
+        "level_of_studies": "Pierwszego stopnia",
+        "id": "DZ-INF",
+        "description": "Informatyka, stacjonarne, pierwszego stopnia"
+      }
+    },
+    {
+      "id": "523666",
+      "programme": {
+        "name": "Informatyka, stacjonarne, drugiego stopnia",
+        "mode_of_studies": "Stacjonarne",
+        "duration": "2-letnie",
+        "level_of_studies": "Drugiego stopnia",
+        "id": "S2-INF",
+        "description": "Informatyka, stacjonarne, drugiego stopnia"
+      }
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "status": "success",
+  "data": [
+    {
+      "name": "Semestr letni 2011/12",
+      "end_date": "2012-06-10",
+      "finish_date": "2012-09-30",
+      "term_id": "2011L",
+      "active": false,
+      "start_date": "2012-02-13"
+    },
+    {
+      "name": "Semestr letni 2013/2014",
+      "end_date": "2014-06-09",
+      "finish_date": "2014-09-30",
+      "term_id": "2013L",
+      "active": false,
+      "start_date": "2014-02-18"
+    },
+    {
+      "name": "Semestr zimowy 2014/15",
+      "end_date": "2015-01-27",
+      "finish_date": "2015-03-31",
+      "term_id": "2014Z",
+      "active": false,
+      "start_date": "2014-10-01"
+    },
+    {
+      "name": "Rok akademicki 2015/16",
+      "end_date": "2016-06-08",
+      "finish_date": "2016-09-30",
+      "term_id": "2015",
+      "active": true,
+      "start_date": "2015-10-01"
+    },
+    {
+      "name": "Semestr zimowy 2012/13",
+      "end_date": "2013-01-27",
+      "finish_date": "2013-03-31",
+      "term_id": "2012Z",
+      "active": false,
+      "start_date": "2012-10-01"
+    },
+    {
+      "name": "Semestr zimowy 2013/2014",
+      "end_date": "2014-01-27",
+      "finish_date": "2014-03-31",
+      "term_id": "2013Z",
+      "active": false,
+      "start_date": "2013-10-01"
+    },
+    {
+      "name": "Semestr letni 2014/15",
+      "end_date": "2015-06-09",
+      "finish_date": "2015-09-30",
+      "term_id": "2014L",
+      "active": false,
+      "start_date": "2015-02-18"
+    },
+    {
+      "name": "Semestr zimowy 2011/12",
+      "end_date": "2012-02-12",
+      "finish_date": "2012-03-31",
+      "term_id": "2011Z",
+      "active": false,
+      "start_date": "2011-10-01"
+    },
+    {
+      "name": "Semestr letni 2012/13",
+      "end_date": "2013-06-09",
+      "finish_date": "2013-09-30",
+      "term_id": "2012L",
+      "active": false,
+      "start_date": "2013-02-18"
+    },
+    {
+      "name": "Rok akademicki 2014/15",
+      "end_date": "2015-06-09",
+      "finish_date": "2015-09-30",
+      "term_id": "2014",
+      "active": false,
+      "start_date": "2014-10-01"
+    },
+    {
+      "name": "Rok akademicki 2013/14",
+      "end_date": "2014-06-09",
+      "finish_date": "2014-09-30",
+      "term_id": "2013",
+      "active": false,
+      "start_date": "2013-10-01"
+    }
+  ]
+}

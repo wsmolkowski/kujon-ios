@@ -1,0 +1,83 @@
+{
+  "status": "success",
+  "data": {
+    "lecturers": [
+      {
+        "first_name": "Marek",
+        "last_name": "Góralowski",
+        "user_id": "1",
+        "id": "1"
+      }
+    ],
+    "is_currently_conducted": "TAK",
+    "bibliography": "Współczesna literatura z tej dziedziny, w tym czasopisma naukowe i dane z Internetu. Szczegóły przedstawia prowadzący na pierwszych zajęciach.",
+    "description": "Seminarium jest przeznaczone dla osób zainteresowanych następującymi dziedzinami informatyki: systemy operacyjne, rozproszone systemy operacyjne, programowanie współbieżne i rozproszone, algorytmy równoległe i rozproszone, sieci komputerowe, technologie WWW, programowalne karty procesorowe, sieci P2P, sieci radiowe itp. W ciągu ostatnich lat tematyka seminarium koncentrowała się wokół następujących zagadnień: \n\n1. Wykorzystanie programowalnych kart procesorowych \n2. Technologie i standardy WWW, zastosowania XML \n3. Protokoły sieciowe \n4. Architektury klastrowe \n5. Systemy operacyjne dla urządzeń przenośnych \n6. Rozproszone systemy plików \n7. Rozproszony dostęp do baz danych \n8. Uniksowe systemy operacyjne z dostępnym kodem źródłowym \n9. Projekty związane z rozwojem systemu operacyjnego Linux\n10. Obliczenia w chmurze\n\nInformacje na temat już obronionych prac magisterskich można znaleźć w sieci (ze strony seminarium). Są tam również zamieszczone same prace. \n\nW ramach seminarium powstaje wiele prac praktycznych, które są wdrażane i służą społeczności akademickiej, przysparzając autorowi pracy dodatkowej satysfakcji. Osoby zainteresowane sieciami komputerowymi mogą realizować projekt magisterski we współpracy z działem sieciowym ICM, który dba o uniwersytecką sieć szkieletową. Praktycznie co roku jakiś magistrant pisze pracę w Amsterdamie na Vrije University, dzięki czemu na bieżąco śledzimy prace badawcze w zespole prof. Tanenbauma.\n\nInformacje o seminarium (m.in. streszczenia referatów tegorocznych i z zeszłych lat - począwszy od roku akademickiego 1996/97) są dostępne w sieci na stronie domowej przedmiotu.\n\nW przypadku obecności cudzoziemców zajęcia będą prowadzone po angielsku.",
+    "term_id": "2015",
+    "fac_id": {
+      "fac_id": "10000000",
+      "name": "Wydział Matematyki, Informatyki i Mechaniki"
+    },
+    "participants": [
+      {
+        "first_name": "Anna",
+        "last_name": "Charazińska",
+        "user_id": "1036430",
+        "id": "1036430"
+      },
+      {
+        "first_name": "Renata",
+        "last_name": "Krawczyk",
+        "user_id": "1086806",
+        "id": "1086806"
+      },
+      {
+        "first_name": "Linda",
+        "last_name": "Olech",
+        "user_id": "1626194",
+        "id": "1626194"
+      },
+      {
+        "first_name": "Katarzyna",
+        "last_name": "Stosio",
+        "user_id": "1414953",
+        "id": "1414953"
+      },
+      {
+        "first_name": "Katarina",
+        "last_name": "Tomazin",
+        "user_id": "1178198",
+        "id": "1178198"
+      }
+    ],
+    "coordinators": [
+      {
+        "first_name": "Marek",
+        "last_name": "Góralowski",
+        "user_id": "1",
+        "id": "1"
+      }
+    ],
+    "homepage_url": "http://students.mimuw.edu.pl/SR",
+    "lang_id": "ANG",
+    "course_units_ids": [
+      "289579"
+    ],
+    "term": {
+      "name": "Rok akademicki 2015/16",
+      "end_date": "2016-06-08",
+      "finish_date": "2016-09-30",
+      "term_id": "2015",
+      "active": true,
+      "start_date": "2015-10-01"
+    },
+    "groups": [],
+    "learning_outcomes": "Wiedza\n\n1. Ma wiedzę ogólną z zakresu szeroko rozumianych zagadnień systemów rozproszonych, systemów operacyjnych i programowania współbieżnego.\n2. Ma wiedzę na temat głównych problemów badawczych z zakresu systemów rozproszonych, systemów operacyjnych i programowania współbieżnego.\n\nUmiejętności\n\n1. Posiada pogłębioną umiejętność przygotowania wystąpień ustnych, w języku polskim i języku obcym, w zakresie informatyki lub w obszarze leżącym na pograniczu różnych dyscyplin naukowych.\n2. Potrafi opisywać wybrane problemy informatyczne i ich rozwiązania w sposób zrozumiały dla nieinformatyka; potrafi przygotować prezentację (artykuł) z użyciem narzędzi informatycznych\npotrafi przygotować (także w języku angielskim) opracowanie naukowe z wybranej dziedziny informatyki.\n3. Ma umiejętności językowe w zakresie informatyki zgodne z wymaganiami określonymi dla poziomu B2+ Europejskiego Systemu Opisu Kształcenia Językowego\n4. Potrafi określić kierunki dalszego uczenia się i zrealizować proces samokształcenia.\n\nKompetencje\n\n1. Zna ograniczenia własnej wiedzy i rozumie potrzebę dalszego kształcenia, w tym zdobywania wiedzy pozadziedzinowej.\n2. Potrafi precyzyjnie formułować pytania, służące pogłębieniu własnego zrozumienia danego tematu (w szczególności w kontaktach z nieinformatykiem) lub odnalezieniu brakujących elementów rozumowania.\n3. Potrafi pracować zespołowo, w tym w zespołach interdyscyplinarnych; rozumie konieczność systematycznej pracy nad wszelkimi projektami, które mają długofalowy charakter\npotrafi formułować opinie na temat podstawowych zagadnień informatycznych.\n4. Rozumie potrzebę systematycznego zapoznawania się z czasopismami naukowymi i popularnonaukowymi w celu poszerzania i pogłębiania wiedzy.\n",
+    "course_id": "1000-2D97SR",
+    "course_name": "Systemy rozproszone",
+    "assessment_criteria": "Żeby zaliczyć seminarium trzeba spełnić podane niżej warunki:\n* Wygłosić dwa referaty (po jednym w każdym semestrze). \n* Mieć nie więcej niż dwie nieobecności w ciągu semestru.\n* Uczestniczyć aktywnie w seminarium, brać udział w dyskusji, zadawać pytania itp.\n* Studenci IV roku: zatwierdzić temat pracy magisterskiej.\n* Studenci V roku: złożyć gotową pracę magisterską.",
+    "grades": {
+      "course_units_grades": {},
+      "course_grades": {}
+    }
+  }
+}

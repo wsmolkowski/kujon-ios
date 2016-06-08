@@ -1,0 +1,29 @@
+{
+  "status": "success",
+  "data": {
+    "logo_urls": {
+      "100x100": "https://usosapps.demo.usos.edu.pl/res/fl/100x100/d1ca3aaf52b41acd68ebb3bf69079bd1-015c75d8f8baf334151c0886b869a580e593dc02.jpg"
+    },
+    "stats": {
+      "course_count": 440,
+      "programme_count": 39,
+      "staff_count": 445
+    },
+    "name": "Wydział Matematyki, Informatyki i Mechaniki",
+    "postal_address": "Banacha 2, 02-097 Warszawa",
+    "fac_id": "10000000",
+    "homepage_url": "http://www.mimuw.edu.pl/",
+    "path": [
+      {
+        "id": "00000000",
+        "name": {
+          "en": "University of Warsaw",
+          "pl": "Uniwersytet Warszawski"
+        }
+      }
+    ],
+    "phone_numbers": [
+      "1231409"
+    ]
+  }
+}
