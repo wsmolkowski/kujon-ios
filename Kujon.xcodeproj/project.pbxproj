@@ -10,17 +10,23 @@
 		2BAFB7B3F960A01C5BFE57C7 /* Pods_Kujon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96504F7BCCB0EE28D6F0F6C4 /* Pods_Kujon.framework */; };
 		395726529DA26FEF655FEFAC /* Pods_KujonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C865AA5DFAADA9B9D2A08520 /* Pods_KujonUITests.framework */; };
 		4C0D810FF3D931149777D70D /* EntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D87685BCBC669C324D0AB /* EntryViewController.xib */; };
+		4C0D81BAD7C6A67CA6D40FDC /* UserMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D83F626B88078C4B1D075 /* UserMenuItem.swift */; };
+		4C0D81C6128C12946244195F /* NavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D88EBA88B6597D4B06CF6 /* NavigationDelegate.swift */; };
+		4C0D8263D1F24C422DEE3275 /* ScheduleMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8FC04D783F0EE7DC9E74 /* ScheduleMenuItem.swift */; };
 		4C0D82C495092FE0EAFD7878 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D886A6248299E494E11FD /* Assets.xcassets */; };
 		4C0D82E7EA29DEE7D00F8ACF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D846A26BCB219C21E2DBA /* Info.plist */; };
 		4C0D8308E6A3DCA02ADFE311 /* KujonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8DEE8305AB820902C1F8 /* KujonTests.swift */; };
 		4C0D8393C1440593CBD091ED /* UsosesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8E76951D0DCEDCA216A9 /* UsosesProvider.swift */; };
+		4C0D849262CBC0E3CAA11A36 /* MenuItemWithController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D80FC2419D914C8EA5BAC /* MenuItemWithController.swift */; };
 		4C0D85BA322F0D6699947ECE /* CourseEditions.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8EB8BABCEEB707B6E298 /* CourseEditions.json */; };
 		4C0D85F69F40F41D39640CFD /* Grades.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8D5DA0EA9F9C5E7C4447 /* Grades.json */; };
 		4C0D8665D94A08D7002946B8 /* Courses.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D84747D175C76418230EA /* Courses.json */; };
+		4C0D869D18F5884265AD7390 /* MenuItemsHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D80CFD63C02C2FFE99366 /* MenuItemsHolder.swift */; };
 		4C0D86EDDF1F15B819DBF358 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D85C01CA62A3C89F09CDA /* AppDelegate.swift */; };
 		4C0D87058EAE5B71945F1AD8 /* Lecturers.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D82CBCF84CAB5E56A1F3C /* Lecturers.json */; };
 		4C0D8792155EDB3BF227067C /* FacultiesDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8528C393CB23A978EB8A /* FacultiesDetail.json */; };
 		4C0D87E5E92D0831CC92AD20 /* Usos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D80863FDCB2C26F328AC3 /* Usos.swift */; };
+		4C0D87E638ACCDF0858CD694 /* NavigationMenuProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8DF1F70FE276B8432FF2 /* NavigationMenuProtocol.swift */; };
 		4C0D87FF3ADA197F8655E408 /* Programmes.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8ACCBE0A1A11117A7D68 /* Programmes.json */; };
 		4C0D89623E9B561730C53F9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D839EDCC8F1A06ECE450B /* Main.storyboard */; };
 		4C0D8BA46C6D35D8501A8AD2 /* KujonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D86C2D62E7D8979799853 /* KujonUITests.swift */; };
@@ -36,6 +42,16 @@
 		5282840A1D08499000A602B4 /* UsosesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528284091D08499000A602B4 /* UsosesTableViewController.swift */; };
 		5282840D1D084D7200A602B4 /* UsosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5282840B1D084D7200A602B4 /* UsosTableViewCell.swift */; };
 		5282840E1D084D7200A602B4 /* UsosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5282840C1D084D7200A602B4 /* UsosTableViewCell.xib */; };
+		52AF77A11D09590B0058979A /* SecondLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF779F1D09590B0058979A /* SecondLoginViewController.swift */; };
+		52AF77A21D09590B0058979A /* SecondLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77A01D09590B0058979A /* SecondLoginViewController.xib */; };
+		52AF77A41D095C390058979A /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77A31D095C390058979A /* ContainerViewController.swift */; };
+		52AF77A81D095CBF0058979A /* LeftMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77A71D095CBF0058979A /* LeftMenuTableViewController.swift */; };
+		52AF77AD1D0960000058979A /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77AB1D0960000058979A /* UserViewController.swift */; };
+		52AF77AE1D0960000058979A /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77AC1D0960000058979A /* UserViewController.xib */; };
+		52AF77B11D096D6B0058979A /* SchedulerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77AF1D096D6B0058979A /* SchedulerViewController.swift */; };
+		52AF77B21D096D6B0058979A /* SchedulerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77B01D096D6B0058979A /* SchedulerViewController.xib */; };
+		52AF77BF1D0984FC0058979A /* MenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77BD1D0984FC0058979A /* MenuItemTableViewCell.swift */; };
+		52AF77C01D0984FC0058979A /* MenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77BE1D0984FC0058979A /* MenuItemTableViewCell.xib */; };
 		756D007AF88EC699124E5CBF /* Pods_KujonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 576A3371E79EA9353F622036 /* Pods_KujonTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,11 +76,14 @@
 		101369142C0F1D1AAD2DC121 /* Pods-KujonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KujonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KujonTests/Pods-KujonTests.release.xcconfig"; sourceTree = "<group>"; };
 		278B50858D941900E966A239 /* Pods-Kujon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kujon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kujon/Pods-Kujon.release.xcconfig"; sourceTree = "<group>"; };
 		4C0D80863FDCB2C26F328AC3 /* Usos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usos.swift; sourceTree = "<group>"; };
+		4C0D80CFD63C02C2FFE99366 /* MenuItemsHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemsHolder.swift; sourceTree = "<group>"; };
 		4C0D80F0998C97D02A77B18D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4C0D80FC2419D914C8EA5BAC /* MenuItemWithController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemWithController.swift; sourceTree = "<group>"; };
 		4C0D8187AF0AC9814758C9EB /* Usoses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Usoses.json; sourceTree = "<group>"; };
 		4C0D82CBCF84CAB5E56A1F3C /* Lecturers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Lecturers.json; sourceTree = "<group>"; };
 		4C0D836B4FBBDA6D4733502C /* Kujon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kujon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C0D83A869F2202BBD42EC4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Kujon/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
+		4C0D83F626B88078C4B1D075 /* UserMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMenuItem.swift; sourceTree = "<group>"; };
 		4C0D846A26BCB219C21E2DBA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		4C0D84747D175C76418230EA /* Courses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Courses.json; sourceTree = "<group>"; };
 		4C0D8483795CD8277CB4C113 /* EntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
@@ -76,19 +95,32 @@
 		4C0D8852D3DEEDBC2220D44E /* KujonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KujonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C0D886A6248299E494E11FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C0D88B8BA19DA0A40BE23C6 /* KujonResponseSchools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KujonResponseSchools.swift; sourceTree = "<group>"; };
+		4C0D88EBA88B6597D4B06CF6 /* NavigationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationDelegate.swift; sourceTree = "<group>"; };
 		4C0D8A0FEDB8EB76142CE7BB /* KujonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KujonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C0D8ACCBE0A1A11117A7D68 /* Programmes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Programmes.json; sourceTree = "<group>"; };
 		4C0D8C68222EDFAECCF2DF11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C0D8D5DA0EA9F9C5E7C4447 /* Grades.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Grades.json; sourceTree = "<group>"; };
 		4C0D8DEE8305AB820902C1F8 /* KujonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KujonTests.swift; sourceTree = "<group>"; };
+		4C0D8DF1F70FE276B8432FF2 /* NavigationMenuProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationMenuProtocol.swift; sourceTree = "<group>"; };
 		4C0D8E34E82B5768B61A3134 /* User.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = User.json; sourceTree = "<group>"; };
 		4C0D8E76951D0DCEDCA216A9 /* UsosesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsosesProvider.swift; sourceTree = "<group>"; };
 		4C0D8EB8BABCEEB707B6E298 /* CourseEditions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CourseEditions.json; sourceTree = "<group>"; };
 		4C0D8EF68BB88E10C3A4AE1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		4C0D8F0FD29DE7CF921001CE /* Schedule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Schedule.json; sourceTree = "<group>"; };
+		4C0D8FC04D783F0EE7DC9E74 /* ScheduleMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleMenuItem.swift; sourceTree = "<group>"; };
 		528284091D08499000A602B4 /* UsosesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsosesTableViewController.swift; sourceTree = "<group>"; };
 		5282840B1D084D7200A602B4 /* UsosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsosTableViewCell.swift; sourceTree = "<group>"; };
 		5282840C1D084D7200A602B4 /* UsosTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UsosTableViewCell.xib; sourceTree = "<group>"; };
+		52AF779F1D09590B0058979A /* SecondLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondLoginViewController.swift; sourceTree = "<group>"; };
+		52AF77A01D09590B0058979A /* SecondLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondLoginViewController.xib; sourceTree = "<group>"; };
+		52AF77A31D095C390058979A /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		52AF77A71D095CBF0058979A /* LeftMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuTableViewController.swift; sourceTree = "<group>"; };
+		52AF77AB1D0960000058979A /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		52AF77AC1D0960000058979A /* UserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserViewController.xib; sourceTree = "<group>"; };
+		52AF77AF1D096D6B0058979A /* SchedulerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulerViewController.swift; sourceTree = "<group>"; };
+		52AF77B01D096D6B0058979A /* SchedulerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchedulerViewController.xib; sourceTree = "<group>"; };
+		52AF77BD1D0984FC0058979A /* MenuItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemTableViewCell.swift; sourceTree = "<group>"; };
+		52AF77BE1D0984FC0058979A /* MenuItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuItemTableViewCell.xib; sourceTree = "<group>"; };
 		576A3371E79EA9353F622036 /* Pods_KujonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KujonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66BCCCAE95D0BBA8FFC5B406 /* Pods-KujonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KujonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KujonTests/Pods-KujonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		71EE9BFC3F34701DCA4852FA /* Pods-Kujon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kujon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kujon/Pods-Kujon.debug.xcconfig"; sourceTree = "<group>"; };
@@ -157,6 +189,8 @@
 				4C0D846A26BCB219C21E2DBA /* Info.plist */,
 				4C0D8873DDE812269064F351 /* Usoses */,
 				4C0D83D8B40603DC0363E06E /* EntryScreen */,
+				4C0D8C683DC578BF5AA751F9 /* Second Login */,
+				4C0D8AC64D4ECAED91008202 /* Main Group */,
 			);
 			path = Kujon;
 			sourceTree = "<group>";
@@ -209,6 +243,15 @@
 			);
 			sourceTree = "<group>";
 		};
+		4C0D85A734050E1AF280B388 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				52AF77AB1D0960000058979A /* UserViewController.swift */,
+				52AF77AC1D0960000058979A /* UserViewController.xib */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		4C0D873FECAF1AD845C04B3E /* KujonUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +259,15 @@
 				4C0D86C2D62E7D8979799853 /* KujonUITests.swift */,
 			);
 			path = KujonUITests;
+			sourceTree = "<group>";
+		};
+		4C0D87F53BF87425FE5BF375 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				52AF77AF1D096D6B0058979A /* SchedulerViewController.swift */,
+				52AF77B01D096D6B0058979A /* SchedulerViewController.xib */,
+			);
+			path = Schedule;
 			sourceTree = "<group>";
 		};
 		4C0D87FBB08D0EE524630F2E /* Provider */ = {
@@ -235,6 +287,19 @@
 			path = Usoses;
 			sourceTree = "<group>";
 		};
+		4C0D8AC64D4ECAED91008202 /* Main Group */ = {
+			isa = PBXGroup;
+			children = (
+				52AF77A31D095C390058979A /* ContainerViewController.swift */,
+				52AF77A71D095CBF0058979A /* LeftMenuTableViewController.swift */,
+				4C0D85A734050E1AF280B388 /* User */,
+				4C0D87F53BF87425FE5BF375 /* Schedule */,
+				4C0D8D975AF27A419B8CC0B1 /* Helpers */,
+				4C0D8CFE9097F39B6001CF67 /* View */,
+			);
+			path = "Main Group";
+			sourceTree = "<group>";
+		};
 		4C0D8C4ED323EC3A2A735C90 /* JSONS */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +314,37 @@
 				4C0D8187AF0AC9814758C9EB /* Usoses.json */,
 			);
 			path = JSONS;
+			sourceTree = "<group>";
+		};
+		4C0D8C683DC578BF5AA751F9 /* Second Login */ = {
+			isa = PBXGroup;
+			children = (
+				52AF779F1D09590B0058979A /* SecondLoginViewController.swift */,
+				52AF77A01D09590B0058979A /* SecondLoginViewController.xib */,
+			);
+			path = "Second Login";
+			sourceTree = "<group>";
+		};
+		4C0D8CFE9097F39B6001CF67 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				52AF77BD1D0984FC0058979A /* MenuItemTableViewCell.swift */,
+				52AF77BE1D0984FC0058979A /* MenuItemTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4C0D8D975AF27A419B8CC0B1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4C0D80FC2419D914C8EA5BAC /* MenuItemWithController.swift */,
+				4C0D83F626B88078C4B1D075 /* UserMenuItem.swift */,
+				4C0D8FC04D783F0EE7DC9E74 /* ScheduleMenuItem.swift */,
+				4C0D80CFD63C02C2FFE99366 /* MenuItemsHolder.swift */,
+				4C0D88EBA88B6597D4B06CF6 /* NavigationDelegate.swift */,
+				4C0D8DF1F70FE276B8432FF2 /* NavigationMenuProtocol.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		4C0D8E93AF3D07DC32FE7F30 /* Views */ = {
@@ -399,6 +495,7 @@
 			files = (
 				4C0D89623E9B561730C53F9A /* Main.storyboard in Resources */,
 				4C0D82C495092FE0EAFD7878 /* Assets.xcassets in Resources */,
+				52AF77A21D09590B0058979A /* SecondLoginViewController.xib in Resources */,
 				4C0D8EDC5E5F870381B4C21D /* LaunchScreen.storyboard in Resources */,
 				5282840E1D084D7200A602B4 /* UsosTableViewCell.xib in Resources */,
 				4C0D8D641FD73F7E585E72B6 /* User.json in Resources */,
@@ -409,6 +506,9 @@
 				4C0D8792155EDB3BF227067C /* FacultiesDetail.json in Resources */,
 				4C0D87FF3ADA197F8655E408 /* Programmes.json in Resources */,
 				4C0D85BA322F0D6699947ECE /* CourseEditions.json in Resources */,
+				52AF77C01D0984FC0058979A /* MenuItemTableViewCell.xib in Resources */,
+				52AF77AE1D0960000058979A /* UserViewController.xib in Resources */,
+				52AF77B21D096D6B0058979A /* SchedulerViewController.xib in Resources */,
 				4C0D8D445517BAD9C52B3DF0 /* Usoses.json in Resources */,
 				4C0D82E7EA29DEE7D00F8ACF /* Info.plist in Resources */,
 				4C0D810FF3D931149777D70D /* EntryViewController.xib in Resources */,
@@ -553,14 +653,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52AF77A11D09590B0058979A /* SecondLoginViewController.swift in Sources */,
 				4C0D86EDDF1F15B819DBF358 /* AppDelegate.swift in Sources */,
+				52AF77AD1D0960000058979A /* UserViewController.swift in Sources */,
+				52AF77A41D095C390058979A /* ContainerViewController.swift in Sources */,
 				5282840A1D08499000A602B4 /* UsosesTableViewController.swift in Sources */,
 				4C0D8E0F66E6090EA22C6E5F /* ViewController.swift in Sources */,
+				52AF77B11D096D6B0058979A /* SchedulerViewController.swift in Sources */,
+				52AF77A81D095CBF0058979A /* LeftMenuTableViewController.swift in Sources */,
 				4C0D8FBA8E8065844EC43680 /* KujonResponseSchools.swift in Sources */,
+				52AF77BF1D0984FC0058979A /* MenuItemTableViewCell.swift in Sources */,
 				4C0D87E5E92D0831CC92AD20 /* Usos.swift in Sources */,
 				4C0D8393C1440593CBD091ED /* UsosesProvider.swift in Sources */,
 				5282840D1D084D7200A602B4 /* UsosTableViewCell.swift in Sources */,
 				4C0D8C544A21E6571C7428DE /* EntryViewController.swift in Sources */,
+				4C0D849262CBC0E3CAA11A36 /* MenuItemWithController.swift in Sources */,
+				4C0D81BAD7C6A67CA6D40FDC /* UserMenuItem.swift in Sources */,
+				4C0D8263D1F24C422DEE3275 /* ScheduleMenuItem.swift in Sources */,
+				4C0D869D18F5884265AD7390 /* MenuItemsHolder.swift in Sources */,
+				4C0D81C6128C12946244195F /* NavigationDelegate.swift in Sources */,
+				4C0D87E638ACCDF0858CD694 /* NavigationMenuProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

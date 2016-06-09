@@ -54,6 +54,12 @@ class UsosesTableViewController: UITableViewController,UsosesProviderDelegate {
     }
 
 
+    @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let controller  = SecondLoginViewController()
+
+        self.presentViewController(controller,animated:true,completion:nil)
+    }
+
 
     func onUsosesLoaded(arrayOfUsoses: Array<Usos>) {
         self.usosList = arrayOfUsoses;
