@@ -22,9 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
 
-        let usosController = UsosesTableViewController()
+        let entryController = EntryViewController()
 
-        window!.rootViewController = usosController
+        window!.rootViewController = entryController
         window!.makeKeyAndVisible()
     return true
     }

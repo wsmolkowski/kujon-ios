@@ -34,6 +34,8 @@
 		5282840A1D08499000A602B4 /* UsosesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528284091D08499000A602B4 /* UsosesTableViewController.swift */; };
 		5282840D1D084D7200A602B4 /* UsosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5282840B1D084D7200A602B4 /* UsosTableViewCell.swift */; };
 		5282840E1D084D7200A602B4 /* UsosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5282840C1D084D7200A602B4 /* UsosTableViewCell.xib */; };
+		528284121D09534800A602B4 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528284101D09534800A602B4 /* EntryViewController.swift */; };
+		528284131D09534800A602B4 /* EntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528284111D09534800A602B4 /* EntryViewController.xib */; };
 		756D007AF88EC699124E5CBF /* Pods_KujonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 576A3371E79EA9353F622036 /* Pods_KujonTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +87,8 @@
 		528284091D08499000A602B4 /* UsosesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsosesTableViewController.swift; sourceTree = "<group>"; };
 		5282840B1D084D7200A602B4 /* UsosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsosTableViewCell.swift; sourceTree = "<group>"; };
 		5282840C1D084D7200A602B4 /* UsosTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UsosTableViewCell.xib; sourceTree = "<group>"; };
+		528284101D09534800A602B4 /* EntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
+		528284111D09534800A602B4 /* EntryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntryViewController.xib; sourceTree = "<group>"; };
 		576A3371E79EA9353F622036 /* Pods_KujonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KujonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66BCCCAE95D0BBA8FFC5B406 /* Pods-KujonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KujonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KujonTests/Pods-KujonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		71EE9BFC3F34701DCA4852FA /* Pods-Kujon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kujon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kujon/Pods-Kujon.debug.xcconfig"; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 		4C0D821C1CE25F0226742C8A /* Kujon */ = {
 			isa = PBXGroup;
 			children = (
+				5282840F1D09531700A602B4 /* Entry */,
 				4C0D85C01CA62A3C89F09CDA /* AppDelegate.swift */,
 				4C0D839EDCC8F1A06ECE450B /* Main.storyboard */,
 				4C0D80F0998C97D02A77B18D /* ViewController.swift */,
@@ -244,6 +249,15 @@
 				5282840C1D084D7200A602B4 /* UsosTableViewCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		5282840F1D09531700A602B4 /* Entry */ = {
+			isa = PBXGroup;
+			children = (
+				528284101D09534800A602B4 /* EntryViewController.swift */,
+				528284111D09534800A602B4 /* EntryViewController.xib */,
+			);
+			name = Entry;
 			sourceTree = "<group>";
 		};
 		76619CA6A37CBF3A704E2BD4 /* Frameworks */ = {
@@ -385,6 +399,7 @@
 			files = (
 				4C0D89623E9B561730C53F9A /* Main.storyboard in Resources */,
 				4C0D82C495092FE0EAFD7878 /* Assets.xcassets in Resources */,
+				528284131D09534800A602B4 /* EntryViewController.xib in Resources */,
 				4C0D8EDC5E5F870381B4C21D /* LaunchScreen.storyboard in Resources */,
 				5282840E1D084D7200A602B4 /* UsosTableViewCell.xib in Resources */,
 				4C0D8D641FD73F7E585E72B6 /* User.json in Resources */,
@@ -543,6 +558,7 @@
 				4C0D8E0F66E6090EA22C6E5F /* ViewController.swift in Sources */,
 				4C0D8FBA8E8065844EC43680 /* KujonResponseSchools.swift in Sources */,
 				4C0D87E5E92D0831CC92AD20 /* Usos.swift in Sources */,
+				528284121D09534800A602B4 /* EntryViewController.swift in Sources */,
 				4C0D8393C1440593CBD091ED /* UsosesProvider.swift in Sources */,
 				5282840D1D084D7200A602B4 /* UsosTableViewCell.swift in Sources */,
 			);
