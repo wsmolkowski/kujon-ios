@@ -23,23 +23,27 @@ enum SlideOutState {
     case LeftPanelExpanded
 }
 
-class ContainerViewController: UIViewController,LeftMenuTableViewControllerDelegate {
+class ContainerViewController: UIViewController, LeftMenuTableViewControllerDelegate {
 
     var centerNavigationController: UINavigationController!
-    let containerDictionary: [String:()->UIViewController]=["user":{return UserViewController()},"schedule":{return SchedulerViewController()}]
+    let containerDictionary: [String:() -> UIViewController] = ["user": {
+        return UserViewController()
+    }, "schedule": {
+        return SchedulerViewController()
+    }]
     var centerViewController: UserViewController = UserViewController()
-    
+
     var currentState: SlideOutState = .Collapsed {
         didSet {
             let shouldShowShadow = currentState != .Collapsed
             showShadowForCenterViewController(shouldShowShadow)
         }
     }
-    
+
     var leftViewController: LeftMenuTableViewController?
-    
+
     let centerPanelExpandedOffset: CGFloat = 60
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,31 +52,26 @@ class ContainerViewController: UIViewController,LeftMenuTableViewControllerDeleg
         centerNavigationController = UINavigationController(rootViewController: centerViewController)
         view.addSubview(centerNavigationController.view)
         addChildViewController(centerNavigationController)
-        
+
         centerNavigationController.didMoveToParentViewController(self)
-       
+
     }
 
-
-    func selectedUpperMenuItem(menuController: LeftMenuTableViewController, menuItem: MenuItemWithController) {
-       if let controller = menuItem.returnViewControllerFunction()(){
-           self.toggleLeftPanel()
-           (controller as! NavigationDelegate).setNavigationProtocol(self)
-           self.centerNavigationController.pushViewController(controller,animated: true)
-       }
-    }
-
-    func selectedLowerMenuItem(menuController: LeftMenuTableViewController, menuItem: MenuItemWithController) {
+    func selectedMenuItem(menuController: LeftMenuTableViewController, menuItem: MenuItemWithController) {
+        if let controller = menuItem.returnViewControllerFunction()() {
+            self.toggleLeftPanel()
+            (controller as? NavigationDelegate)?.setNavigationProtocol(self)
+            self.centerNavigationController.pushViewController(controller, animated: true)
+        }
     }
 
 
 }
 
 
-
 extension ContainerViewController: NavigationMenuProtocol {
-    
-    
+
+
     func collapseSidePanel() {
         switch (currentState) {
         case .LeftPanelExpanded:
@@ -81,36 +80,36 @@ extension ContainerViewController: NavigationMenuProtocol {
             break
         }
     }
-    
+
     func toggleLeftPanel() {
         let notAlreadyExpanded = (currentState != .LeftPanelExpanded)
-        
+
         if notAlreadyExpanded {
             addLeftPanelViewController()
         }
-        
+
         animateLeftPanel(notAlreadyExpanded)
     }
-    
-    
+
+
     func addLeftPanelViewController() {
         if (leftViewController == nil) {
             leftViewController = LeftMenuTableViewController()
-            
+
             addChildSidePanelController(leftViewController!)
         }
     }
-    
+
     func addChildSidePanelController(leftMenuController: LeftMenuTableViewController) {
         leftMenuController.delegate = self
-        
+
         view.insertSubview(leftMenuController.view, atIndex: 0)
-        
+
         addChildViewController(leftMenuController)
         leftMenuController.didMoveToParentViewController(self)
     }
-    
-    
+
+
     func animateLeftPanel(shouldExpand: Bool) {
         if (shouldExpand) {
             currentState = .LeftPanelExpanded
@@ -121,20 +120,20 @@ extension ContainerViewController: NavigationMenuProtocol {
             animateCenterPanelXPosition(0) {
                 finished in
                 self.currentState = .Collapsed
-                
+
                 self.leftViewController!.view.removeFromSuperview()
                 self.leftViewController = nil;
             }
         }
     }
-    
+
     func animateCenterPanelXPosition(targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil) {
         UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .CurveEaseInOut, animations: {
             self.centerNavigationController.view.frame.origin.x = targetPosition
-            }, completion: completion)
+        }, completion: completion)
     }
-    
-    
+
+
     func showShadowForCenterViewController(shouldShowShadow: Bool) {
         if (shouldShowShadow) {
             centerNavigationController.view.layer.shadowOpacity = 0.8
@@ -142,7 +141,7 @@ extension ContainerViewController: NavigationMenuProtocol {
             centerNavigationController.view.layer.shadowOpacity = 0.0
         }
     }
-    
+
 }
 
 //extension ContainerViewController: UIGestureRecognizerDelegate {

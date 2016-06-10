@@ -9,8 +9,8 @@
 import UIKit
 
 protocol LeftMenuTableViewControllerDelegate {
-    func selectedUpperMenuItem(menuController: LeftMenuTableViewController, menuItem: MenuItemWithController)
-    func selectedLowerMenuItem(menuController: LeftMenuTableViewController, menuItem: MenuItemWithController)
+    func selectedMenuItem(menuController: LeftMenuTableViewController, menuItem: MenuItemWithController)
+
 }
 
 class LeftMenuTableViewController: UITableViewController {
@@ -20,13 +20,15 @@ class LeftMenuTableViewController: UITableViewController {
     var delegate: LeftMenuTableViewControllerDelegate?
 
     private var listOfUpperItems: Array<MenuItemWithController>!
+    private var listOfLowerItems: Array<MenuItemWithController>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         listOfUpperItems = MenuItemsHolder.sharedInstance.upperMenuItems;
-        self.tableView.registerClass(MenuItemTableViewCell.self, forCellReuseIdentifier:MenuItemCellIdentiefier)
-        self.tableView.registerNib(UINib(nibName: "MenuItemTableViewCell",bundle: nil),forCellReuseIdentifier: MenuItemCellIdentiefier)
+        listOfLowerItems = MenuItemsHolder.sharedInstance.lowerMnuItems;
+        self.tableView.registerClass(MenuItemTableViewCell.self, forCellReuseIdentifier: MenuItemCellIdentiefier)
+        self.tableView.registerNib(UINib(nibName: "MenuItemTableViewCell", bundle: nil), forCellReuseIdentifier: MenuItemCellIdentiefier)
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,19 +39,21 @@ class LeftMenuTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        return listOfUpperItems.count;
+        switch (section) {
+        case 0: return listOfUpperItems.count
+        case 1: return listOfLowerItems.count
+        default: return 0
+        }
     }
 
 
-
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell :MenuItemTableViewCell = tableView.dequeueReusableCellWithIdentifier(MenuItemCellIdentiefier,forIndexPath: indexPath) as! MenuItemTableViewCell
-        var menuItem = self.listOfUpperItems[indexPath.row] as MenuItemWithController
+        let cell: MenuItemTableViewCell = tableView.dequeueReusableCellWithIdentifier(MenuItemCellIdentiefier, forIndexPath: indexPath) as! MenuItemTableViewCell
+        var menuItem = self.getCurrentMenuItem(indexPath)
         dispatch_async(dispatch_get_main_queue()) {
 
             cell.imagePlace?.image = menuItem.returnImage()
@@ -61,8 +65,13 @@ class LeftMenuTableViewController: UITableViewController {
 
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var menuItem = self.listOfUpperItems[indexPath.row] as MenuItemWithController
-        self.delegate?.selectedUpperMenuItem(self,menuItem: menuItem)
+        var menuItem = self.getCurrentMenuItem(indexPath)
+        self.delegate?.selectedMenuItem(self, menuItem: menuItem)
+    }
+
+    private func getCurrentMenuItem(indexPath: NSIndexPath)->MenuItemWithController{
+        var list = indexPath.section==0 ? listOfUpperItems:listOfLowerItems
+        return list[indexPath.row] as MenuItemWithController
     }
     /*
     // Override to support conditional editing of the table view.

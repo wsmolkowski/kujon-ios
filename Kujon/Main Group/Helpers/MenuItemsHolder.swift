@@ -14,5 +14,8 @@ class MenuItemsHolder {
     let upperMenuItems: Array<MenuItemWithController> = [UserMenuItem(),
                                                          ScheduleMenuItem(),
                                                          LectureMenuItem(),
-                                                         GradesMenuItem()]
+                                                         GradesMenuItem(),
+                                                         TeachersMenuItem()]
+
+    let lowerMnuItems: Array<MenuItemWithController> = [SettingsMenuItem(),SendOpinionMenuItem(),ShareMenuItem()]
 }

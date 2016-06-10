@@ -15,4 +15,11 @@ class NavigationMenuCreator {
         openDrawerButton.action = selector
         controller.navigationItem.leftBarButtonItem = openDrawerButton
     }
+
+    static func createNavMenuWithBackButton(controller:UIViewController,selector:Selector){
+        let closeButton =  UIBarButtonItem(image:UIImage(named: "arrow-left"),style: UIBarButtonItemStyle.Plain,target: controller,
+                action: selector)
+        closeButton.action = selector
+        controller.navigationItem.leftBarButtonItem = closeButton
+    }
 }
