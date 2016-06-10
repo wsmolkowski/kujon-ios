@@ -54,7 +54,7 @@ class ContainerViewController: UIViewController,LeftMenuTableViewControllerDeleg
     }
 
 
-    func selectedItem(menuController: LeftMenuTableViewController, menuItem: MenuItemWithController) {
+    func selectedUpperMenuItem(menuController: LeftMenuTableViewController, menuItem: MenuItemWithController) {
        if let controller = menuItem.returnViewControllerFunction()(){
            self.toggleLeftPanel()
            (controller as! NavigationDelegate).setNavigationProtocol(self)
@@ -62,6 +62,8 @@ class ContainerViewController: UIViewController,LeftMenuTableViewControllerDeleg
        }
     }
 
+    func selectedLowerMenuItem(menuController: LeftMenuTableViewController, menuItem: MenuItemWithController) {
+    }
 
 
 }

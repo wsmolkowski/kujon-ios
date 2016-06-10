@@ -11,5 +11,5 @@ class MenuItemsHolder {
 
 
 
-    let upperMenuItems:Array<MenuItemWithController> = [UserMenuItem(), ScheduleMenuItem()]
+    let upperMenuItems:Array<MenuItemWithController> = [UserMenuItem(), ScheduleMenuItem(), LectureMenuItem()]
 }

@@ -5,7 +5,7 @@
 
 import Foundation
 
-protocol NavigationMenuProtocol {
+protocol  NavigationMenuProtocol:class {
     func toggleLeftPanel()
     func collapseSidePanel()
 }

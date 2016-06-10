@@ -1,25 +1,23 @@
 //
-//  SchedulerViewController.swift
+//  LecturesViewController.swift
 //  Kujon
 //
-//  Created by Wojciech Maciejewski on 09/06/16.
+//  Created by Wojciech Maciejewski on 10/06/16.
 //  Copyright © 2016 Mobi. All rights reserved.
 //
 
 import UIKit
 
-class SchedulerViewController: UIViewController, NavigationDelegate {
-
-
-    weak var delegate: NavigationMenuProtocol! = nil
-
+class LecturesViewController: UIViewController,NavigationDelegate {
+    weak var delegate: NavigationMenuProtocol!=nil
+    
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {
-        self.delegate = delegate
+        self.delegate=delegate
     }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self,selector: Selector("openDrawer"))
+
 
         // Do any additional setup after loading the view.
     }
@@ -28,11 +26,9 @@ class SchedulerViewController: UIViewController, NavigationDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
     func openDrawer() {
         delegate?.toggleLeftPanel()
     }
-
 
     /*
     // MARK: - Navigation

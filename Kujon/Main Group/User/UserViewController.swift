@@ -19,10 +19,8 @@ class UserViewController: UIViewController,NavigationDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let openDrawerButton =  UIBarButtonItem(title:"open drawer",style: UIBarButtonItemStyle.Plain,target: self,
-                                                action: Selector("openDrawer"))
+        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: Selector("openDrawer"))
 
-        self.navigationItem.leftBarButtonItem = openDrawerButton
         // Do any additional setup after loading the view.
     }
 

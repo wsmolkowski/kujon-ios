@@ -9,7 +9,8 @@
 import UIKit
 
 protocol LeftMenuTableViewControllerDelegate {
-    func selectedItem(menuController: LeftMenuTableViewController, menuItem: MenuItemWithController)
+    func selectedUpperMenuItem(menuController: LeftMenuTableViewController, menuItem: MenuItemWithController)
+    func selectedLowerMenuItem(menuController: LeftMenuTableViewController, menuItem: MenuItemWithController)
 }
 
 class LeftMenuTableViewController: UITableViewController {
@@ -61,7 +62,7 @@ class LeftMenuTableViewController: UITableViewController {
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var menuItem = self.listOfUpperItems[indexPath.row] as MenuItemWithController
-        self.delegate?.selectedItem(self,menuItem: menuItem)
+        self.delegate?.selectedUpperMenuItem(self,menuItem: menuItem)
     }
     /*
     // Override to support conditional editing of the table view.
