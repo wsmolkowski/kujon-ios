@@ -18,12 +18,12 @@ class LeftMenuTableViewController: UITableViewController {
 
     var delegate: LeftMenuTableViewControllerDelegate?
 
-    private var listOfItems: Array<MenuItemWithController>!
+    private var listOfUpperItems: Array<MenuItemWithController>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        listOfItems = MenuItemsHolder.sharedInstance.listOfMenuItems;
+        listOfUpperItems = MenuItemsHolder.sharedInstance.upperMenuItems;
         self.tableView.registerClass(MenuItemTableViewCell.self, forCellReuseIdentifier:MenuItemCellIdentiefier)
         self.tableView.registerNib(UINib(nibName: "MenuItemTableViewCell",bundle: nil),forCellReuseIdentifier: MenuItemCellIdentiefier)
     }
@@ -36,20 +36,19 @@ class LeftMenuTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return listOfItems.count;
+
+        return listOfUpperItems.count;
     }
 
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell :MenuItemTableViewCell = tableView.dequeueReusableCellWithIdentifier(MenuItemCellIdentiefier,forIndexPath: indexPath) as! MenuItemTableViewCell
-        var menuItem = self.listOfItems[indexPath.row] as MenuItemWithController
+        var menuItem = self.listOfUpperItems[indexPath.row] as MenuItemWithController
         dispatch_async(dispatch_get_main_queue()) {
 
             cell.imagePlace?.image = menuItem.returnImage()
@@ -61,7 +60,7 @@ class LeftMenuTableViewController: UITableViewController {
 
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var menuItem = self.listOfItems[indexPath.row] as MenuItemWithController
+        var menuItem = self.listOfUpperItems[indexPath.row] as MenuItemWithController
         self.delegate?.selectedItem(self,menuItem: menuItem)
     }
     /*

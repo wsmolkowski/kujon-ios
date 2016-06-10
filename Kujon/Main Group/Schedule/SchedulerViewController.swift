@@ -8,16 +8,18 @@
 
 import UIKit
 
-class SchedulerViewController: UIViewController,NavigationDelegate {
-    
-    
-    var delegate: NavigationMenuProtocol!=nil
+class SchedulerViewController: UIViewController, NavigationDelegate {
+
+
+    weak var delegate: NavigationMenuProtocol! = nil
+
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {
-        self.delegate=delegate
+        self.delegate = delegate
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        let openDrawerButton =  UIBarButtonItem(title:"open drawer",style: UIBarButtonItemStyle.Plain,target: self,
+        let openDrawerButton = UIBarButtonItem(title: "open drawer", style: UIBarButtonItemStyle.Plain, target: self,
                 action: Selector("openDrawer"))
 
         self.navigationItem.leftBarButtonItem = openDrawerButton
@@ -28,6 +30,7 @@ class SchedulerViewController: UIViewController,NavigationDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     func openDrawer() {
         delegate?.toggleLeftPanel()
     }

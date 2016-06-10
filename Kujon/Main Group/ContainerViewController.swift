@@ -44,9 +44,7 @@ class ContainerViewController: UIViewController,LeftMenuTableViewControllerDeleg
         super.viewDidLoad()
 
         centerViewController.setNavigationProtocol(self)
-        
-        // wrap the centerViewController in a navigation controller, so we can push views to it
-        // and display bar button items in the navigation bar
+
         centerNavigationController = UINavigationController(rootViewController: centerViewController)
         view.addSubview(centerNavigationController.view)
         addChildViewController(centerNavigationController)
@@ -62,14 +60,13 @@ class ContainerViewController: UIViewController,LeftMenuTableViewControllerDeleg
            (controller as! NavigationDelegate).setNavigationProtocol(self)
            self.centerNavigationController.pushViewController(controller,animated: true)
        }
-
     }
 
 
 
 }
 
-// MARK: CenterViewController delegate
+
 
 extension ContainerViewController: NavigationMenuProtocol {
     

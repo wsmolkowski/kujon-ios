@@ -10,7 +10,7 @@ import UIKit
 
 class UserViewController: UIViewController,NavigationDelegate {
 
-     var delegate: NavigationMenuProtocol!=nil
+    weak var delegate: NavigationMenuProtocol!=nil
 
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {
         self.delegate=delegate
