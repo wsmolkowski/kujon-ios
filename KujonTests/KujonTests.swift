@@ -9,7 +9,7 @@
 import XCTest
 @testable import Kujon
 
-class KujonTests: XCTestCase, UsosesProviderDelegate ,UserDetailsProviderDelegate{
+class KujonTests: XCTestCase, UsosesProviderDelegate ,UserDetailsProviderDelegate,LectureProviderDelegate{
 
     override func setUp() {
         super.setUp()
@@ -53,11 +53,17 @@ class KujonTests: XCTestCase, UsosesProviderDelegate ,UserDetailsProviderDelegat
 
 
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
+    func testLectureProvider() throws {
+        let provider = LectureProvider()
+        provider.delegate = self
+        provider.loadLectures("dwa tysiace sto dziewiecet")
+        assert(loaded)
+
+    }
+
+    func onLectureLoaded(lectures: Array<Lecture>) {
+        assert(lectures.count==1)
+        loaded=true
     }
 
 }
