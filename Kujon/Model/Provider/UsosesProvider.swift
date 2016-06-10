@@ -6,18 +6,16 @@
 import Foundation
 
 
-protocol UsosesProviderDelegate{
-    func onUsosesLoaded(arrayOfUsoses:Array<Usos>)
-    func onErrorOccurs()
+protocol UsosesProviderDelegate: ErrorResponseProtocol {
+    func onUsosesLoaded(arrayOfUsoses: Array<Usos>)
+
 }
 
 class UsosesProvider {
-    var delegate:UsosesProviderDelegate!
+    var delegate: UsosesProviderDelegate!
 
 
-
-    func loadUsoses(){
-        let txtFilePath = NSBundle.mainBundle().pathForResource("Usoses", ofType: "json")
+    func loadUsoses() {
 
         do {
 

@@ -1,93 +1,60 @@
 {
   "status": "success",
-  "data": [
-    {
-      "name": "Semestr letni 2011/12",
-      "end_date": "2012-06-10",
-      "finish_date": "2012-09-30",
-      "term_id": "2011L",
-      "active": false,
-      "start_date": "2012-02-13"
+  "data": {
+    "update_time": "2016-06-10 13:41:50",
+    "google": {
+      "picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
+      "name": "kujon test",
+      "email": "kujontest@gmail.com"
     },
-    {
-      "name": "Semestr letni 2013/2014",
-      "end_date": "2014-06-09",
-      "finish_date": "2014-09-30",
-      "term_id": "2013L",
-      "active": false,
-      "start_date": "2014-02-18"
+    "titles": {
+      "after": null,
+      "before": null
     },
-    {
-      "name": "Semestr zimowy 2014/15",
-      "end_date": "2015-01-27",
-      "finish_date": "2015-03-31",
-      "term_id": "2014Z",
-      "active": false,
-      "start_date": "2014-10-01"
-    },
-    {
-      "name": "Rok akademicki 2015/16",
-      "end_date": "2016-06-08",
-      "finish_date": "2016-09-30",
-      "term_id": "2015",
-      "active": true,
-      "start_date": "2015-10-01"
-    },
-    {
-      "name": "Semestr zimowy 2012/13",
-      "end_date": "2013-01-27",
-      "finish_date": "2013-03-31",
-      "term_id": "2012Z",
-      "active": false,
-      "start_date": "2012-10-01"
-    },
-    {
-      "name": "Semestr zimowy 2013/2014",
-      "end_date": "2014-01-27",
-      "finish_date": "2014-03-31",
-      "term_id": "2013Z",
-      "active": false,
-      "start_date": "2013-10-01"
-    },
-    {
-      "name": "Semestr letni 2014/15",
-      "end_date": "2015-06-09",
-      "finish_date": "2015-09-30",
-      "term_id": "2014L",
-      "active": false,
-      "start_date": "2015-02-18"
-    },
-    {
-      "name": "Semestr zimowy 2011/12",
-      "end_date": "2012-02-12",
-      "finish_date": "2012-03-31",
-      "term_id": "2011Z",
-      "active": false,
-      "start_date": "2011-10-01"
-    },
-    {
-      "name": "Semestr letni 2012/13",
-      "end_date": "2013-06-09",
-      "finish_date": "2013-09-30",
-      "term_id": "2012L",
-      "active": false,
-      "start_date": "2013-02-18"
-    },
-    {
-      "name": "Rok akademicki 2014/15",
-      "end_date": "2015-06-09",
-      "finish_date": "2015-09-30",
-      "term_id": "2014",
-      "active": false,
-      "start_date": "2014-10-01"
-    },
-    {
-      "name": "Rok akademicki 2013/14",
-      "end_date": "2014-06-09",
-      "finish_date": "2014-09-30",
-      "term_id": "2013",
-      "active": false,
-      "start_date": "2013-10-01"
-    }
-  ]
+    "staff_status": "Nieaktywny pracownik",
+    "user_type": "google",
+    "sex": "M",
+    "last_name": "Jamrozik",
+    "photo_url": "https://api.kujon.mobi/users_info_photos/5756c9d4855ef94993a374c9",
+    "student_programmes": [
+      {
+        "id": "342896",
+        "programme": {
+          "description": "Jednoczesne Studia Informatyczno-Matematyczne, stacjonarne, pierwszego stopnia",
+          "id": "DZ-JSIM"
+        }
+      },
+      {
+        "id": "377160",
+        "programme": {
+          "description": "Informatyka, stacjonarne, pierwszego stopnia",
+          "id": "DZ-INF"
+        }
+      },
+      {
+        "id": "523666",
+        "programme": {
+          "description": "Informatyka, stacjonarne, drugiego stopnia",
+          "id": "S2-INF"
+        }
+      }
+    ],
+    "user_created": "2016-06-07 15:17:48",
+    "id": "1167405",
+    "student_number": "1234187610",
+    "room": null,
+    "course_editions_conducted": [],
+    "first_name": "Jakub",
+    "email_url": "https://usosweb.demo.usos.edu.pl/kontroler.php?_action=actionx:katalog2/osoby/pokazOsobe(os_id:1167405;focus:email)",
+    "student_status": "aktywny student",
+    "name": "kujon test",
+    "office_hours": null,
+    "usos_name": "Uniwersytet DEMO w Nibylandi",
+    "homepage_url": null,
+    "employment_positions": [],
+    "has_email": true,
+    "usos_id": "DEMO",
+    "has_photo": true,
+    "email": "kujontest@gmail.com"
+  }
 }

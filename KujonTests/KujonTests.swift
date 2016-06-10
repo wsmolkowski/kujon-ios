@@ -9,7 +9,7 @@
 import XCTest
 @testable import Kujon
 
-class KujonTests: XCTestCase, UsosesProviderDelegate {
+class KujonTests: XCTestCase, UsosesProviderDelegate ,UserDetailsProviderDelegate{
 
     override func setUp() {
         super.setUp()
@@ -37,6 +37,21 @@ class KujonTests: XCTestCase, UsosesProviderDelegate {
 
     func onErrorOccurs() {
     }
+
+
+
+    func testUserDetailsProvider() throws {
+        let provider = UserDetailsProvider()
+        provider.delegate = self
+        provider.loadUserDetail()
+        assert(loaded)
+
+    }
+    func onUserDetailLoaded(userDetails: UserDetail) {
+        loaded=true
+    }
+
+
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
