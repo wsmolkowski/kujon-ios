@@ -31,6 +31,7 @@
 		4C0D87FF3ADA197F8655E408 /* Programmes.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8ACCBE0A1A11117A7D68 /* Programmes.json */; };
 		4C0D881C4D3885EDE2AFBD61 /* NavigationMenuCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8C0DCCFE46D265D7BF5E /* NavigationMenuCreator.swift */; };
 		4C0D89623E9B561730C53F9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D839EDCC8F1A06ECE450B /* Main.storyboard */; };
+		4C0D8B852BE5B63017986E90 /* GradesMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8FA8F2F6514FD4D33BA6 /* GradesMenuItem.swift */; };
 		4C0D8BA46C6D35D8501A8AD2 /* KujonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D86C2D62E7D8979799853 /* KujonUITests.swift */; };
 		4C0D8BF324869437BE6F0C43 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8EF68BB88E10C3A4AE1D /* Info.plist */; };
 		4C0D8C544A21E6571C7428DE /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8483795CD8277CB4C113 /* EntryViewController.swift */; };
@@ -56,6 +57,8 @@
 		52AF77C01D0984FC0058979A /* MenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77BE1D0984FC0058979A /* MenuItemTableViewCell.xib */; };
 		52AF77C31D0ACC5A0058979A /* LecturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77C11D0ACC5A0058979A /* LecturesViewController.swift */; };
 		52AF77C41D0ACC5A0058979A /* LecturesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77C21D0ACC5A0058979A /* LecturesViewController.xib */; };
+		52AF77C71D0AD15A0058979A /* GradesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77C51D0AD15A0058979A /* GradesViewController.swift */; };
+		52AF77C81D0AD15A0058979A /* GradesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77C61D0AD15A0058979A /* GradesViewController.xib */; };
 		756D007AF88EC699124E5CBF /* Pods_KujonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 576A3371E79EA9353F622036 /* Pods_KujonTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +117,7 @@
 		4C0D8EB8BABCEEB707B6E298 /* CourseEditions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CourseEditions.json; sourceTree = "<group>"; };
 		4C0D8EF68BB88E10C3A4AE1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		4C0D8F0FD29DE7CF921001CE /* Schedule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Schedule.json; sourceTree = "<group>"; };
+		4C0D8FA8F2F6514FD4D33BA6 /* GradesMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradesMenuItem.swift; sourceTree = "<group>"; };
 		528284091D08499000A602B4 /* UsosesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsosesTableViewController.swift; sourceTree = "<group>"; };
 		5282840B1D084D7200A602B4 /* UsosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsosTableViewCell.swift; sourceTree = "<group>"; };
 		5282840C1D084D7200A602B4 /* UsosTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UsosTableViewCell.xib; sourceTree = "<group>"; };
@@ -129,6 +133,8 @@
 		52AF77BE1D0984FC0058979A /* MenuItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuItemTableViewCell.xib; sourceTree = "<group>"; };
 		52AF77C11D0ACC5A0058979A /* LecturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturesViewController.swift; sourceTree = "<group>"; };
 		52AF77C21D0ACC5A0058979A /* LecturesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LecturesViewController.xib; sourceTree = "<group>"; };
+		52AF77C51D0AD15A0058979A /* GradesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradesViewController.swift; sourceTree = "<group>"; };
+		52AF77C61D0AD15A0058979A /* GradesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GradesViewController.xib; sourceTree = "<group>"; };
 		576A3371E79EA9353F622036 /* Pods_KujonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KujonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66BCCCAE95D0BBA8FFC5B406 /* Pods-KujonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KujonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KujonTests/Pods-KujonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		71EE9BFC3F34701DCA4852FA /* Pods-Kujon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kujon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kujon/Pods-Kujon.debug.xcconfig"; sourceTree = "<group>"; };
@@ -314,8 +320,18 @@
 				4C0D8D975AF27A419B8CC0B1 /* Helpers */,
 				4C0D8CFE9097F39B6001CF67 /* View */,
 				4C0D839BF212A83AA9960179 /* Lectures */,
+				4C0D8C2CCF13E560C8D36D1C /* Grades */,
 			);
 			path = "Main Group";
+			sourceTree = "<group>";
+		};
+		4C0D8C2CCF13E560C8D36D1C /* Grades */ = {
+			isa = PBXGroup;
+			children = (
+				52AF77C51D0AD15A0058979A /* GradesViewController.swift */,
+				52AF77C61D0AD15A0058979A /* GradesViewController.xib */,
+			);
+			path = Grades;
 			sourceTree = "<group>";
 		};
 		4C0D8C4ED323EC3A2A735C90 /* JSONS */ = {
@@ -371,6 +387,7 @@
 				4C0D83563DFB6E74ACCE441B /* UserMenuItem.swift */,
 				4C0D8738D3867C1931666FF9 /* ScheduleMenuItem.swift */,
 				4C0D887AB4B1D38E360F5C55 /* LectureMenuItems.swift */,
+				4C0D8FA8F2F6514FD4D33BA6 /* GradesMenuItem.swift */,
 			);
 			path = "Menu Items";
 			sourceTree = "<group>";
@@ -528,6 +545,7 @@
 				5282840E1D084D7200A602B4 /* UsosTableViewCell.xib in Resources */,
 				52AF77C41D0ACC5A0058979A /* LecturesViewController.xib in Resources */,
 				4C0D8D641FD73F7E585E72B6 /* User.json in Resources */,
+				52AF77C81D0AD15A0058979A /* GradesViewController.xib in Resources */,
 				4C0D8EE504A6F04F1B414751 /* Schedule.json in Resources */,
 				4C0D8665D94A08D7002946B8 /* Courses.json in Resources */,
 				4C0D85F69F40F41D39640CFD /* Grades.json in Resources */,
@@ -700,11 +718,13 @@
 				4C0D849262CBC0E3CAA11A36 /* MenuItemWithController.swift in Sources */,
 				4C0D869D18F5884265AD7390 /* MenuItemsHolder.swift in Sources */,
 				4C0D81C6128C12946244195F /* NavigationDelegate.swift in Sources */,
+				52AF77C71D0AD15A0058979A /* GradesViewController.swift in Sources */,
 				4C0D87E638ACCDF0858CD694 /* NavigationMenuProtocol.swift in Sources */,
 				4C0D881C4D3885EDE2AFBD61 /* NavigationMenuCreator.swift in Sources */,
 				4C0D87179E64FB71B0A00BE5 /* UserMenuItem.swift in Sources */,
 				4C0D83DD9146C96D43851C5D /* ScheduleMenuItem.swift in Sources */,
 				4C0D8272DA00131511B32AF8 /* LectureMenuItems.swift in Sources */,
+				4C0D8B852BE5B63017986E90 /* GradesMenuItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

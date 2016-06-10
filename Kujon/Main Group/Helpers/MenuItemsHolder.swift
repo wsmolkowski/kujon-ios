@@ -5,11 +5,14 @@
 
 import Foundation
 import UIKit
+
 class MenuItemsHolder {
 
     static let sharedInstance = MenuItemsHolder()
 
 
-
-    let upperMenuItems:Array<MenuItemWithController> = [UserMenuItem(), ScheduleMenuItem(), LectureMenuItem()]
+    let upperMenuItems: Array<MenuItemWithController> = [UserMenuItem(),
+                                                         ScheduleMenuItem(),
+                                                         LectureMenuItem(),
+                                                         GradesMenuItem()]
 }
