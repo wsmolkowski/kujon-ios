@@ -28,7 +28,7 @@ import Decodable
 //"building_name": "Wydzia\u0142 Matematyki, Informatyki i Mechaniki - Budynek Dydaktyczny"
 
 struct Lecture {
-    let lecturers: Array<Lecturer>
+    let lecturers: Array<SimpleUser>
     let courseName: String
     let name: String
     let startTime: String

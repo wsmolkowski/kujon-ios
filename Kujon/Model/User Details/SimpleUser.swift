@@ -6,7 +6,7 @@
 import Foundation
 import Decodable
 
-struct Lecturer {
+struct SimpleUser {
     let firstName: String
     let lastName: String
     let userId: String!
@@ -23,9 +23,9 @@ struct Lecturer {
 //},
 //"id": "1"
 
-extension Lecturer: Decodable {
-    static func decode(j: AnyObject) throws -> Lecturer {
-        return try Lecturer(
+extension SimpleUser: Decodable {
+    static func decode(j: AnyObject) throws -> SimpleUser {
+        return try SimpleUser(
         firstName: j => "first_name",
                 lastName: j => "last_name",
                 userId: try? j => "userId",
