@@ -22,7 +22,7 @@ class GradesProvider: GradesProviderProtocol {
         do {
             let txtFilePath = NSBundle.mainBundle().pathForResource("Grades", ofType: "json")
             let jsonData = try NSData(contentsOfFile: txtFilePath!, options: .DataReadingMappedIfSafe)
-            let grades = try self.changeJsonToGradeResposne(jsonData)
+            let grades = try self.changeJsonToResposne(jsonData)
             delegate?.onGradesLoaded(grades.data)
         } catch {
             delegate?.onErrorOccurs()

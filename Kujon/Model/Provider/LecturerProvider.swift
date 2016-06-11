@@ -13,14 +13,14 @@ protocol LecturerProviderDelegate: ErrorResponseProtocol {
 }
 
 class LecturerProvider {
-
+    var delegate :LecturerProviderDelegate!
     func loadLecturers(){
         do {
             let txtFilePath = NSBundle.mainBundle().pathForResource("Lecturers", ofType: "json")
             let jsonData = try NSData(contentsOfFile: txtFilePath!, options: .DataReadingMappedIfSafe)
             let json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
             let userDetailR = try! UserDetailsResponse.decode(json)
-            delegate?.onUserDetailLoaded(userDetailR.data)
+//            delegate?.onLecturersLoaded(userDetailR.data)
         } catch {
             delegate?.onErrorOccurs()
         }
@@ -33,7 +33,7 @@ class LecturerProvider {
             let jsonData = try NSData(contentsOfFile: txtFilePath!, options: .DataReadingMappedIfSafe)
             let json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
             let userDetailR = try! UserDetailsResponse.decode(json)
-            delegate?.onUserDetailLoaded(userDetailR.data)
+//            delegate?.onLecturerDetailsLoaded(userDetailR.data)
         } catch {
             delegate?.onErrorOccurs()
         }
