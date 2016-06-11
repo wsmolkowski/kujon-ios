@@ -17,7 +17,7 @@ class UsosesTableViewController: UITableViewController,UsosesProviderDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Wybierz Uczelnię"
-        self.tableView.registerClass(UsosTableViewCell.self, forCellReuseIdentifier:UsosCellIdentifier)
+//        self.tableView.registerClass(UsosTableViewCell.self, forCellReuseIdentifier:UsosCellIdentifier)
         self.tableView.registerNib(UINib(nibName: "UsosTableViewCell",bundle: nil),forCellReuseIdentifier: UsosCellIdentifier)
         self.usosProvider.delegate = self
         self.usosProvider.loadUsoses()
@@ -47,6 +47,7 @@ class UsosesTableViewController: UITableViewController,UsosesProviderDelegate {
         dispatch_async(dispatch_get_main_queue()) {
 
             (cell as! UsosTableViewCell).imagePlace?.image = UIImage(data: NSData(contentsOfURL: NSURL(string:usos.image)!)!)
+            cell.setNeedsLayout()
         }
         (cell as! UsosTableViewCell).label.text = usos.name
 

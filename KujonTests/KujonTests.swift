@@ -9,7 +9,10 @@
 import XCTest
 @testable import Kujon
 
-class KujonTests: XCTestCase, UsosesProviderDelegate ,UserDetailsProviderDelegate,LectureProviderDelegate{
+class KujonTests: XCTestCase, UsosesProviderDelegate
+        , UserDetailsProviderDelegate
+        , LectureProviderDelegate
+        , GradesProviderDelegate {
 
     override func setUp() {
         super.setUp()
@@ -39,7 +42,6 @@ class KujonTests: XCTestCase, UsosesProviderDelegate ,UserDetailsProviderDelegat
     }
 
 
-
     func testUserDetailsProvider() throws {
         let provider = UserDetailsProvider()
         provider.delegate = self
@@ -47,10 +49,10 @@ class KujonTests: XCTestCase, UsosesProviderDelegate ,UserDetailsProviderDelegat
         assert(loaded)
 
     }
-    func onUserDetailLoaded(userDetails: UserDetail) {
-        loaded=true
-    }
 
+    func onUserDetailLoaded(userDetails: UserDetail) {
+        loaded = true
+    }
 
 
     func testLectureProvider() throws {
@@ -62,8 +64,22 @@ class KujonTests: XCTestCase, UsosesProviderDelegate ,UserDetailsProviderDelegat
     }
 
     func onLectureLoaded(lectures: Array<Lecture>) {
-        assert(lectures.count==1)
-        loaded=true
+        assert(lectures.count == 1)
+        loaded = true
+    }
+
+    func testGradesProvider() {
+        let provider = GradesProvider()
+        provider.delegate = self
+        provider.loadGrades()
+        assert(loaded)
+
+    }
+
+
+    func onGradesLoaded(termGrades: Array<TermGrades>) {
+//        assert(lectures.count == 1)
+        loaded = true
     }
 
 }

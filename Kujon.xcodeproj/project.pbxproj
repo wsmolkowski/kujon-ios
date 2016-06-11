@@ -15,12 +15,14 @@
 		4C0D8192306233E614847234 /* Programme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8A64FF1DBA82355146B3 /* Programme.swift */; };
 		4C0D81C6128C12946244195F /* NavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D88EBA88B6597D4B06CF6 /* NavigationDelegate.swift */; };
 		4C0D8272DA00131511B32AF8 /* LectureMenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D887AB4B1D38E360F5C55 /* LectureMenuItems.swift */; };
+		4C0D827CF48397DB7AD364B3 /* TermGrades.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8F95B3ED6EA776E231E0 /* TermGrades.swift */; };
 		4C0D82C495092FE0EAFD7878 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D886A6248299E494E11FD /* Assets.xcassets */; };
 		4C0D82E7EA29DEE7D00F8ACF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D846A26BCB219C21E2DBA /* Info.plist */; };
 		4C0D8308E6A3DCA02ADFE311 /* KujonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8DEE8305AB820902C1F8 /* KujonTests.swift */; };
 		4C0D832C3F2F8CAC86CCA86B /* UserDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D80BE1D8E3820DDDB8539 /* UserDetailsResponse.swift */; };
 		4C0D8393C1440593CBD091ED /* UsosesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8E76951D0DCEDCA216A9 /* UsosesProvider.swift */; };
 		4C0D83DD9146C96D43851C5D /* ScheduleMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8738D3867C1931666FF9 /* ScheduleMenuItem.swift */; };
+		4C0D84713F8CA8059672D225 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8B5FF1A8F45453C5D4FB /* Grade.swift */; };
 		4C0D849262CBC0E3CAA11A36 /* MenuItemWithController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D80FC2419D914C8EA5BAC /* MenuItemWithController.swift */; };
 		4C0D850BF68640550F269D74 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8B99EC9186F46E6CE219 /* Account.swift */; };
 		4C0D85BA322F0D6699947ECE /* CourseEditions.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8EB8BABCEEB707B6E298 /* CourseEditions.json */; };
@@ -35,9 +37,11 @@
 		4C0D8792155EDB3BF227067C /* FacultiesDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8528C393CB23A978EB8A /* FacultiesDetail.json */; };
 		4C0D87E638ACCDF0858CD694 /* NavigationMenuProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8DF1F70FE276B8432FF2 /* NavigationMenuProtocol.swift */; };
 		4C0D87FF3ADA197F8655E408 /* Programmes.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8ACCBE0A1A11117A7D68 /* Programmes.json */; };
+		4C0D88190EFAA340F1D2D178 /* GradeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8202EC00EB52392FC17B /* GradeResponse.swift */; };
 		4C0D881C4D3885EDE2AFBD61 /* NavigationMenuCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8C0DCCFE46D265D7BF5E /* NavigationMenuCreator.swift */; };
 		4C0D88F06593FBB4943652B8 /* LectureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8D8E712204A4BC76B7A9 /* LectureProvider.swift */; };
 		4C0D89623E9B561730C53F9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D839EDCC8F1A06ECE450B /* Main.storyboard */; };
+		4C0D8996D0987D3F6C88F611 /* GradesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8FBDE18C4279900F73A1 /* GradesProvider.swift */; };
 		4C0D8B0ECFC83EB343FC15A1 /* LectureResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8EC533BB73C186B4A0D1 /* LectureResponse.swift */; };
 		4C0D8B1CC0F1F04A0031EFD4 /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8199588435043DF62A80 /* UserDetail.swift */; };
 		4C0D8B852BE5B63017986E90 /* GradesMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8FA8F2F6514FD4D33BA6 /* GradesMenuItem.swift */; };
@@ -114,6 +118,7 @@
 		4C0D80FC2419D914C8EA5BAC /* MenuItemWithController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemWithController.swift; sourceTree = "<group>"; };
 		4C0D8187AF0AC9814758C9EB /* Usoses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Usoses.json; sourceTree = "<group>"; };
 		4C0D8199588435043DF62A80 /* UserDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetail.swift; sourceTree = "<group>"; };
+		4C0D8202EC00EB52392FC17B /* GradeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeResponse.swift; sourceTree = "<group>"; };
 		4C0D82CBCF84CAB5E56A1F3C /* Lecturers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Lecturers.json; sourceTree = "<group>"; };
 		4C0D8322F7C59F7DA152C337 /* KujonResponseSchools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KujonResponseSchools.swift; sourceTree = "<group>"; };
 		4C0D83563DFB6E74ACCE441B /* UserMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMenuItem.swift; sourceTree = "<group>"; };
@@ -141,6 +146,7 @@
 		4C0D8A598E59F244E56634B5 /* SendOpinionMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendOpinionMenuItem.swift; sourceTree = "<group>"; };
 		4C0D8A64FF1DBA82355146B3 /* Programme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Programme.swift; sourceTree = "<group>"; };
 		4C0D8ACCBE0A1A11117A7D68 /* Programmes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Programmes.json; sourceTree = "<group>"; };
+		4C0D8B5FF1A8F45453C5D4FB /* Grade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		4C0D8B99EC9186F46E6CE219 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		4C0D8BDD61A989037FA8DB35 /* Lecture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lecture.swift; sourceTree = "<group>"; };
 		4C0D8C0DCCFE46D265D7BF5E /* NavigationMenuCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationMenuCreator.swift; sourceTree = "<group>"; };
@@ -157,7 +163,9 @@
 		4C0D8EC533BB73C186B4A0D1 /* LectureResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureResponse.swift; sourceTree = "<group>"; };
 		4C0D8EF68BB88E10C3A4AE1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		4C0D8F0FD29DE7CF921001CE /* Schedule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Schedule.json; sourceTree = "<group>"; };
+		4C0D8F95B3ED6EA776E231E0 /* TermGrades.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermGrades.swift; sourceTree = "<group>"; };
 		4C0D8FA8F2F6514FD4D33BA6 /* GradesMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradesMenuItem.swift; sourceTree = "<group>"; };
+		4C0D8FBDE18C4279900F73A1 /* GradesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradesProvider.swift; sourceTree = "<group>"; };
 		528284091D08499000A602B4 /* UsosesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsosesTableViewController.swift; sourceTree = "<group>"; };
 		5282840B1D084D7200A602B4 /* UsosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsosTableViewCell.swift; sourceTree = "<group>"; };
 		5282840C1D084D7200A602B4 /* UsosTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UsosTableViewCell.xib; sourceTree = "<group>"; };
@@ -237,6 +245,7 @@
 				4C0D8B41A54D038836A90A38 /* Programme */,
 				4C0D8760A7B7425F8A86A2DD /* Usos */,
 				4C0D8E2D02F0232EB58DF076 /* Schedule */,
+				4C0D8BB36BF78DE5A4F62127 /* Grade */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -377,6 +386,7 @@
 				4C0D8480E989AF43B88CB60E /* UserDetailsProvider.swift */,
 				4C0D8D8FB8953D1EC2EFF6C1 /* ErrorResponseProtocol.swift */,
 				4C0D8D8E712204A4BC76B7A9 /* LectureProvider.swift */,
+				4C0D8FBDE18C4279900F73A1 /* GradesProvider.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -425,6 +435,16 @@
 				4C0D8A53D4F9C21CACEEE68A /* StudentProgramme.swift */,
 			);
 			path = Programme;
+			sourceTree = "<group>";
+		};
+		4C0D8BB36BF78DE5A4F62127 /* Grade */ = {
+			isa = PBXGroup;
+			children = (
+				4C0D8B5FF1A8F45453C5D4FB /* Grade.swift */,
+				4C0D8F95B3ED6EA776E231E0 /* TermGrades.swift */,
+				4C0D8202EC00EB52392FC17B /* GradeResponse.swift */,
+			);
+			path = Grade;
 			sourceTree = "<group>";
 		};
 		4C0D8BF1DA729CB66D152D70 /* User Details */ = {
@@ -885,6 +905,10 @@
 				4C0D8B0ECFC83EB343FC15A1 /* LectureResponse.swift in Sources */,
 				4C0D88F06593FBB4943652B8 /* LectureProvider.swift in Sources */,
 				4C0D8D1041B61DE7CCC02962 /* SimpleUser.swift in Sources */,
+				4C0D84713F8CA8059672D225 /* Grade.swift in Sources */,
+				4C0D827CF48397DB7AD364B3 /* TermGrades.swift in Sources */,
+				4C0D88190EFAA340F1D2D178 /* GradeResponse.swift in Sources */,
+				4C0D8996D0987D3F6C88F611 /* GradesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
