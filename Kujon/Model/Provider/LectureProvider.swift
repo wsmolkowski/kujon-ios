@@ -4,20 +4,30 @@
 //
 
 import Foundation
+
+
+protocol LectureProviderProtocol: JsonProviderProtocol {
+
+    typealias T = LectureResponse
+
+    func loadLectures(date: String)
+
+}
+
 protocol LectureProviderDelegate: ErrorResponseProtocol {
     func onLectureLoaded(lectures: Array<Lecture>)
 
 }
-class LectureProvider {
+
+class LectureProvider: LectureProviderProtocol {
     var delegate: LectureProviderDelegate!
 
-    func loadLectures(date:String) {
+    func loadLectures(date: String) {
         do {
             let txtFilePath = NSBundle.mainBundle().pathForResource("Schedule", ofType: "json")
             let jsonData = try NSData(contentsOfFile: txtFilePath!, options: .DataReadingMappedIfSafe)
-            let json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
-            let schedule = try! LectureResponse.decode(json)
-            delegate?.onLectureLoaded(schedule.data)
+            let lectureResponse = try! self.changeJsonToResposne(jsonData)
+            delegate?.onLectureLoaded(lectureResponse.data)
         } catch {
             delegate?.onErrorOccurs()
         }

@@ -1,0 +1,62 @@
+{
+  "status": "success",
+  "data": {
+    "course_editions_conducted": [
+      {
+        "course_id": "4018-WYK22Z",
+        "term_id": "2015",
+        "course_name": "Wstęp do studiów regionalnych"
+      },
+      {
+        "course_id": "4018-WYK22Z",
+        "term_id": "2015",
+        "course_name": "Wybrane zagadnienia z kultury regionów"
+      },
+      {
+        "course_id": "4018-WYK22Z",
+        "term_id": "2015",
+        "course_name": "Seminarium - Współczesna Iberia"
+      },
+      {
+        "course_id": "4018-WYK22Z",
+        "term_id": "2015",
+        "course_name": "Dzieje Współczesnego Śródziemnomorza"
+      },
+      {
+        "course_id": "4018-WYK22Z",
+        "term_id": "2015",
+        "course_name": "Dzieje Współczesnego Śródziemnomorza"
+      },
+      {
+        "course_id": "4018-WYK22Z",
+        "term_id": "2015",
+        "course_name": "Siła obrazu. Śródziemnomorze w kinematografii"
+      },
+      {
+        "course_id": "4018-WYK22Z",
+        "term_id": "2015",
+        "course_name": "Siła obrazu. Śródziemnomorze w kinematografii"
+      }
+    ],
+    "first_name": "Justyna",
+    "last_name": "Brzozowska-Kruczek",
+    "student_status": "nieaktywny student",
+    "room": null,
+    "office_hours": "środa 16.00-16.45\tpokój 26\nmożliwy także inny termin po wcześniejszym umówieniu drogą mailową.\n",
+    "has_email": true,
+    "staff_status": "Pracownik",
+    "employment_positions": [],
+    "sex": "F",
+    "homepage_url": null,
+    "titles": {
+      "after": null,
+      "before": "dr"
+    },
+    "email_url": "https://usosweb.demo.usos.edu.pl/kontroler.php?_action=actionx:katalog2/osoby/pokazOsobe(os_id:1350451;focus:email)",
+    "student_programmes": [],
+    "has_photo": true,
+    "student_number": null,
+    "id": "1350451",
+    "photo_url": "https://api.kujon.mobi/users_info_photos/5757eec6855ef917f8c910f1"
+  }
+}

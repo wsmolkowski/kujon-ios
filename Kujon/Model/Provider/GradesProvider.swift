@@ -4,19 +4,25 @@
 //
 
 import Foundation
+
+protocol GradesProviderProtocol:JsonProviderProtocol {
+    typealias T=GradeResponse
+    func loadGrades()
+}
+
 protocol GradesProviderDelegate: ErrorResponseProtocol {
     func onGradesLoaded(termGrades: Array<TermGrades>)
 
 }
-class GradesProvider {
+
+class GradesProvider: GradesProviderProtocol {
     var delegate: GradesProviderDelegate!
 
     func loadGrades() {
         do {
             let txtFilePath = NSBundle.mainBundle().pathForResource("Grades", ofType: "json")
             let jsonData = try NSData(contentsOfFile: txtFilePath!, options: .DataReadingMappedIfSafe)
-            let json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
-            let grades = try! GradeResponse.decode(json)
+            let grades = try self.changeJsonToGradeResposne(jsonData)
             delegate?.onGradesLoaded(grades.data)
         } catch {
             delegate?.onErrorOccurs()
