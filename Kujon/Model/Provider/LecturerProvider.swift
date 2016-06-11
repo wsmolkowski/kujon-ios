@@ -5,37 +5,29 @@
 
 import Foundation
 
-protocol LecturerProviderDelegate: ErrorResponseProtocol {
-    func onLecturersLoaded(lecturers: Array<SimpleUser>)
 
-    func onLecturerDetailsLoaded(lecturer: LecturerDetail)
-
+protocol LecturerProviderProtocol:JsonProviderProtocol{
+    typealias T = LecturersResponse
+    func loadLecturers()
 }
 
-class LecturerProvider {
+
+protocol LecturerProviderDelegate: ErrorResponseProtocol {
+    func onLecturersLoaded(lecturers: Array<SimpleUser>)
+}
+
+class LecturerProvider: LecturerProviderProtocol {
     var delegate :LecturerProviderDelegate!
     func loadLecturers(){
         do {
             let txtFilePath = NSBundle.mainBundle().pathForResource("Lecturers", ofType: "json")
             let jsonData = try NSData(contentsOfFile: txtFilePath!, options: .DataReadingMappedIfSafe)
-            let json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
-            let userDetailR = try! UserDetailsResponse.decode(json)
-//            delegate?.onLecturersLoaded(userDetailR.data)
+            let lecturers = try! self.changeJsonToResposne(jsonData)
+            delegate?.onLecturersLoaded(lecturers.data)
         } catch {
             delegate?.onErrorOccurs()
         }
     }
 
 
-    func loadLecturerDetails(id:String){
-        do {
-            let txtFilePath = NSBundle.mainBundle().pathForResource("LecturerDetails", ofType: "json")
-            let jsonData = try NSData(contentsOfFile: txtFilePath!, options: .DataReadingMappedIfSafe)
-            let json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
-            let userDetailR = try! UserDetailsResponse.decode(json)
-//            delegate?.onLecturerDetailsLoaded(userDetailR.data)
-        } catch {
-            delegate?.onErrorOccurs()
-        }
-    }
 }

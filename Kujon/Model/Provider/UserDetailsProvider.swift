@@ -4,11 +4,19 @@
 //
 
 import Foundation
+
+protocol UserDetailsProviderProtocol: JsonProviderProtocol {
+    typealias T = UserDetailsResponse
+    func loadUserDetail()
+    func loadUserDetail(id:String)
+}
+
 protocol UserDetailsProviderDelegate: ErrorResponseProtocol {
     func onUserDetailLoaded(userDetails: UserDetail)
 
 }
-class UserDetailsProvider {
+
+class UserDetailsProvider: UserDetailsProviderProtocol {
     var delegate: UserDetailsProviderDelegate!
 
 
@@ -16,13 +24,24 @@ class UserDetailsProvider {
         do {
             let txtFilePath = NSBundle.mainBundle().pathForResource("User", ofType: "json")
             let jsonData = try NSData(contentsOfFile: txtFilePath!, options: .DataReadingMappedIfSafe)
-            let json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
-            let userDetailR = try! UserDetailsResponse.decode(json)
+            let userDetailR = try! self.changeJsonToResposne(jsonData)
             delegate?.onUserDetailLoaded(userDetailR.data)
         } catch {
             delegate?.onErrorOccurs()
         }
 
     }
+
+    func loadUserDetail(id: String) {
+        do {
+            let txtFilePath = NSBundle.mainBundle().pathForResource("LecturerDetails", ofType: "json")
+            let jsonData = try NSData(contentsOfFile: txtFilePath!, options: .DataReadingMappedIfSafe)
+            let userDetailR = try! self.changeJsonToResposne(jsonData)
+            delegate?.onUserDetailLoaded(userDetailR.data)
+        } catch {
+            delegate?.onErrorOccurs()
+        }
+    }
+
 }
 

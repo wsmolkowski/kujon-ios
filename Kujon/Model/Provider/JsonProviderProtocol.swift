@@ -11,7 +11,7 @@ protocol JsonProviderProtocol {
 
 }
 extension JsonProviderProtocol{
-    func changeJsonToResposne(jsonData:NSData) throws ->T  {
+     func changeJsonToResposne(jsonData:NSData) throws ->T  {
         let json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
         return try! T.decode(json)
     }

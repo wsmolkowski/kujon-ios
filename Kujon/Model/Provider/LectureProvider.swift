@@ -7,9 +7,7 @@ import Foundation
 
 
 protocol LectureProviderProtocol: JsonProviderProtocol {
-
     typealias T = LectureResponse
-
     func loadLectures(date: String)
 
 }

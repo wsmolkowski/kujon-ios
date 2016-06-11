@@ -7,42 +7,42 @@ import Foundation
 import Decodable
 
 struct UserDetail {
-    let updateTime: String
-    let createdTime: String
+    let updateTime: String?
+    let createdTime: String?
     let titles: Title
     let staffStatus: String
-    let userType: String
+    let userType: String?
     let sex: String
     let firstName: String
     let lastName: String
     let photoUrl: String
     let studentProgrammes: Array<StudentProgramme>
     let id: String
-    let studentNumber: String
+    let studentNumber: String!
     let room: String!
-    let courseEditionsConducted: Array<String>!
+    let courseEditionsConducted: Array<CourseEdition>!
     let emailUrl: String
     let studentStatus: String
-    let name: String
+    let name: String?
     let officeHours: String!
-    let usosName: String
+    let usosName: String?
     let homepage: String!
     let employmentPosition: Array<String>!
     let hasEmail: Bool
-    let usosId: String
+    let usosId: String?
     let hasPhoto: Bool
-    let email: String!
-    let google: Account
+    let email: String?
+    let google: Account?
 }
 
 extension UserDetail: Decodable {
     static func decode(j: AnyObject) throws -> UserDetail {
         return try UserDetail(
-        updateTime: j => "update_time",
-                createdTime: j => "user_created",
+        updateTime: try? j =>  "update_time",
+                createdTime: try? j => "user_created",
                 titles: j => "titles",
                 staffStatus: j => "staff_status",
-                userType: j => "user_type",
+                userType: try? j => "user_type",
                 sex: j => "sex",
                 firstName: j => "first_name",
                 lastName: j => "last_name",
@@ -54,16 +54,16 @@ extension UserDetail: Decodable {
                 courseEditionsConducted: j => "course_editions_conducted",
                 emailUrl: j => "email_url",
                 studentStatus: j => "student_status",
-                name: j => "name",
+                name: try? j => "name",
                 officeHours: j => "office_hours",
-                usosName: j => "usos_name",
+                usosName: try? j => "usos_name",
                 homepage: j => "homepage_url",
                 employmentPosition: j => "employment_positions",
                 hasEmail: j => "has_email",
-                usosId: j => "usos_id",
+                usosId: try? j => "usos_id",
                 hasPhoto: j => "has_photo",
-                email: j => "email",
-                google: j => "google"
+                email: try? j => "email",
+                google: try? j => "google"
         )
     }
 
