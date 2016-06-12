@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AD3F7F71D08D50C00F07AA4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD3F7F51D08D50C00F07AA4 /* FBSDKCoreKit.framework */; };
+		0AD3F7F81D08D50C00F07AA4 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD3F7F61D08D50C00F07AA4 /* FBSDKLoginKit.framework */; };
 		2BAFB7B3F960A01C5BFE57C7 /* Pods_Kujon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96504F7BCCB0EE28D6F0F6C4 /* Pods_Kujon.framework */; };
 		395726529DA26FEF655FEFAC /* Pods_KujonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C865AA5DFAADA9B9D2A08520 /* Pods_KujonUITests.framework */; };
 		4C0D807545C280601AAB48CB /* StudentProgramme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8A53D4F9C21CACEEE68A /* StudentProgramme.swift */; };
@@ -114,6 +116,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A8B795B1D0C81E100CF6783 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		0AD3F7F51D08D50C00F07AA4 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = FB/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		0AD3F7F61D08D50C00F07AA4 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = FB/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		101369142C0F1D1AAD2DC121 /* Pods-KujonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KujonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KujonTests/Pods-KujonTests.release.xcconfig"; sourceTree = "<group>"; };
 		278B50858D941900E966A239 /* Pods-Kujon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kujon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kujon/Pods-Kujon.release.xcconfig"; sourceTree = "<group>"; };
 		4C0D800DE50A86489C4C7E74 /* Usos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usos.swift; sourceTree = "<group>"; };
@@ -234,6 +239,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BAFB7B3F960A01C5BFE57C7 /* Pods_Kujon.framework in Frameworks */,
+				0AD3F7F71D08D50C00F07AA4 /* FBSDKCoreKit.framework in Frameworks */,
+				0AD3F7F81D08D50C00F07AA4 /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +283,7 @@
 				4C0D83D8B40603DC0363E06E /* EntryScreen */,
 				4C0D8C683DC578BF5AA751F9 /* Second Login */,
 				4C0D8AC64D4ECAED91008202 /* Main Group */,
+				0A8B795B1D0C81E100CF6783 /* Bridging-Header.h */,
 			);
 			path = Kujon;
 			sourceTree = "<group>";
@@ -328,6 +336,8 @@
 		4C0D84F08EDDF3A1E42644F8 = {
 			isa = PBXGroup;
 			children = (
+				0AD3F7F51D08D50C00F07AA4 /* FBSDKCoreKit.framework */,
+				0AD3F7F61D08D50C00F07AA4 /* FBSDKLoginKit.framework */,
 				4C0D84DEDAAEAFE7AA9943F6 /* Products */,
 				4C0D821C1CE25F0226742C8A /* Kujon */,
 				4C0D83317C2734E363058FBB /* KujonTests */,
@@ -605,11 +615,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C0D852217153B5DF861BC01 /* Build configuration list for PBXNativeTarget "KujonUITests" */;
 			buildPhases = (
-				22BD93CFA86DF9F42005F6BC /* 📦 Check Pods Manifest.lock */,
+				22BD93CFA86DF9F42005F6BC /* [CP] Check Pods Manifest.lock */,
 				4C0D8559004C4E72ABEF3F22 /* Sources */,
 				4C0D8665DB561BEDC1140943 /* Frameworks */,
 				4C0D8120F8A2B4B5EEA18AA7 /* Resources */,
-				9878454E929F505FC41633A4 /* 📦 Copy Pods Resources */,
+				9878454E929F505FC41633A4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -625,12 +635,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C0D83E2B32A0A3CA367D6BC /* Build configuration list for PBXNativeTarget "Kujon" */;
 			buildPhases = (
-				293CE0BA7AA50758856CB87C /* 📦 Check Pods Manifest.lock */,
+				293CE0BA7AA50758856CB87C /* [CP] Check Pods Manifest.lock */,
 				4C0D85B77FB5458B1E641984 /* Sources */,
 				4C0D8EB012C29DF3DA3303FD /* Frameworks */,
 				4C0D83B8D170C9D072208400 /* Resources */,
-				EB3E50C9C9D1A2618554B2B3 /* 📦 Embed Pods Frameworks */,
-				A1C1FFECAB7B418E028819C7 /* 📦 Copy Pods Resources */,
+				EB3E50C9C9D1A2618554B2B3 /* [CP] Embed Pods Frameworks */,
+				A1C1FFECAB7B418E028819C7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -645,12 +655,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C0D84AE0478B34C40E62613 /* Build configuration list for PBXNativeTarget "KujonTests" */;
 			buildPhases = (
-				64FF8464F4F4DAA37B8FFCFE /* 📦 Check Pods Manifest.lock */,
+				64FF8464F4F4DAA37B8FFCFE /* [CP] Check Pods Manifest.lock */,
 				4C0D8B6C58599D9C41261A9F /* Sources */,
 				4C0D8766B0E1769253DF4CC8 /* Frameworks */,
 				4C0D82D4664C01C0881287B0 /* Resources */,
-				4BF4DF6BD0C71B53DED259B5 /* 📦 Embed Pods Frameworks */,
-				9A2C774570A35D27143AF348 /* 📦 Copy Pods Resources */,
+				4BF4DF6BD0C71B53DED259B5 /* [CP] Embed Pods Frameworks */,
+				9A2C774570A35D27143AF348 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -744,14 +754,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		22BD93CFA86DF9F42005F6BC /* 📦 Check Pods Manifest.lock */ = {
+		22BD93CFA86DF9F42005F6BC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -759,14 +769,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		293CE0BA7AA50758856CB87C /* 📦 Check Pods Manifest.lock */ = {
+		293CE0BA7AA50758856CB87C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -774,14 +784,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		4BF4DF6BD0C71B53DED259B5 /* 📦 Embed Pods Frameworks */ = {
+		4BF4DF6BD0C71B53DED259B5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -789,14 +799,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KujonTests/Pods-KujonTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		64FF8464F4F4DAA37B8FFCFE /* 📦 Check Pods Manifest.lock */ = {
+		64FF8464F4F4DAA37B8FFCFE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -804,14 +814,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		9878454E929F505FC41633A4 /* 📦 Copy Pods Resources */ = {
+		9878454E929F505FC41633A4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -819,14 +829,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KujonUITests/Pods-KujonUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9A2C774570A35D27143AF348 /* 📦 Copy Pods Resources */ = {
+		9A2C774570A35D27143AF348 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -834,14 +844,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KujonTests/Pods-KujonTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A1C1FFECAB7B418E028819C7 /* 📦 Copy Pods Resources */ = {
+		A1C1FFECAB7B418E028819C7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -849,14 +859,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kujon/Pods-Kujon-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EB3E50C9C9D1A2618554B2B3 /* 📦 Embed Pods Frameworks */ = {
+		EB3E50C9C9D1A2618554B2B3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1010,10 +1020,15 @@
 			baseConfigurationReference = 71EE9BFC3F34701DCA4852FA /* Pods-Kujon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FB",
+				);
 				INFOPLIST_FILE = Kujon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mobi.kujon.Kujon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Kujon/Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -1118,10 +1133,15 @@
 			baseConfigurationReference = 278B50858D941900E966A239 /* Pods-Kujon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FB",
+				);
 				INFOPLIST_FILE = Kujon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mobi.kujon.Kujon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Kujon/Bridging-Header.h";
 			};
 			name = Release;
 		};
