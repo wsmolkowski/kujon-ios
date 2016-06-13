@@ -18,6 +18,7 @@
 		4C0D81815EB0AFFE7A3E0346 /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8518E09D66DC4A9E9298 /* Title.swift */; };
 		4C0D8192306233E614847234 /* Programme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8A64FF1DBA82355146B3 /* Programme.swift */; };
 		4C0D81C6128C12946244195F /* NavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D88EBA88B6597D4B06CF6 /* NavigationDelegate.swift */; };
+		4C0D81ED8AC7D11A84737A2C /* StudentProgrammeTableViewDelegateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D83A62858215174150D3A /* StudentProgrammeTableViewDelegateController.swift */; };
 		4C0D8272DA00131511B32AF8 /* LectureMenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D887AB4B1D38E360F5C55 /* LectureMenuItems.swift */; };
 		4C0D8276D4657EED0BD1B0C2 /* LecturersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8B67C9D01072853AF4B5 /* LecturersResponse.swift */; };
 		4C0D827CF48397DB7AD364B3 /* TermGrades.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8F95B3ED6EA776E231E0 /* TermGrades.swift */; };
@@ -139,6 +140,7 @@
 		4C0D83451742C0465B1D8D85 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		4C0D83563DFB6E74ACCE441B /* UserMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMenuItem.swift; sourceTree = "<group>"; };
 		4C0D836B4FBBDA6D4733502C /* Kujon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kujon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C0D83A62858215174150D3A /* StudentProgrammeTableViewDelegateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentProgrammeTableViewDelegateController.swift; sourceTree = "<group>"; };
 		4C0D83A869F2202BBD42EC4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Kujon/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		4C0D841A2FE4461ECB9F5859 /* CourseEdition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseEdition.swift; sourceTree = "<group>"; };
 		4C0D844C4BA870C5823E72AB /* TeachersMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeachersMenuItem.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 			children = (
 				52AF77AB1D0960000058979A /* UserViewController.swift */,
 				52AF77AC1D0960000058979A /* UserViewController.xib */,
+				4C0D83A62858215174150D3A /* StudentProgrammeTableViewDelegateController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -967,6 +970,7 @@
 				4C0D8276D4657EED0BD1B0C2 /* LecturersResponse.swift in Sources */,
 				4C0D853633AEE49F996B454C /* CourseEdition.swift in Sources */,
 				4C0D8A432E3EC531C1FE79D7 /* UIColorExtensions.swift in Sources */,
+				4C0D81ED8AC7D11A84737A2C /* StudentProgrammeTableViewDelegateController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

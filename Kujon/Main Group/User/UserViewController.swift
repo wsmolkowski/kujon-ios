@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserViewController: UIViewController, NavigationDelegate, UserDetailsProviderDelegate {
+class UserViewController: UIViewController, NavigationDelegate, UserDetailsProviderDelegate ,DoOnStudentProgrammeClick{
 
     weak var delegate: NavigationMenuProtocol! = nil
 
@@ -27,11 +27,14 @@ class UserViewController: UIViewController, NavigationDelegate, UserDetailsProvi
     @IBOutlet weak var accountNumberLabel: UILabel!
 
 
+    @IBOutlet weak var tableView: UITableView!
     let userDetailsProvider: UserDetailsProvider!=UserDetailsProvider.sharedInstance
+    let programmeController  = StudentProgrammeTableViewDelegateController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(UserViewController.openDrawer))
+        programmeController.setUp(tableView,clickListener:self)
 
         userDetailsProvider.delegate = self
         userDetailsProvider.loadUserDetail()
@@ -57,9 +60,13 @@ class UserViewController: UIViewController, NavigationDelegate, UserDetailsProvi
                 self.userImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string:userDetails.photoUrl)!)!)
             }
         }
+        programmeController.setUpData(userDetails.studentProgrammes)
     }
 
     func onErrorOccurs() {
+    }
+
+    func doOnClick(programme: StudentProgramme) {
     }
 
 
