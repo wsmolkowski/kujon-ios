@@ -7,7 +7,7 @@ import Foundation
 
 
 protocol UsosProviderProtocol: JsonProviderProtocol {
-    typealias T = KujonResponseSchools
+    associatedtype T = KujonResponseSchools
     func loadUsoses()
 }
 
@@ -16,20 +16,21 @@ protocol UsosesProviderDelegate: ErrorResponseProtocol {
 
 }
 
-class UsosesProvider : UsosProviderProtocol {
+class UsosesProvider :RestApiManager, UsosProviderProtocol {
     var delegate: UsosesProviderDelegate!
 
 
     func loadUsoses() {
-        do {
-            let txtFilePath = NSBundle.mainBundle().pathForResource("Usoses", ofType: "json")
-            let jsonData = try NSData(contentsOfFile: txtFilePath!, options: .DataReadingMappedIfSafe)
-            let usoses = try! self.changeJsonToResposne(jsonData)
-            delegate?.onUsosesLoaded(usoses.data)
-        } catch {
-            delegate?.onErrorOccurs()
-        }
+        self.makeHTTPGetRequest({
+            json in
+                let usoses = try! self.changeJsonToResposne(json)
+                self.delegate?.onUsosesLoaded(usoses.data)
+        },onError:{})
 
+    }
+
+    override func getMyUrl() -> String {
+        return baseURL + "/usoses"
     }
 
 }

@@ -16,6 +16,7 @@ class KujonTests: XCTestCase, UsosesProviderDelegate
         , LecturerProviderDelegate {
 
     override func setUp() {
+
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -28,6 +29,7 @@ class KujonTests: XCTestCase, UsosesProviderDelegate
     var loaded = false
     func testUsosesProvider() throws {
         let provider = UsosesProvider()
+        provider.test = true
         provider.delegate = self
         provider.loadUsoses()
         assert(loaded)
@@ -45,6 +47,7 @@ class KujonTests: XCTestCase, UsosesProviderDelegate
 
     func testUserDetailsProvider() throws {
         let provider = UserDetailsProvider()
+
         provider.delegate = self
         provider.loadUserDetail()
         assert(loaded)
