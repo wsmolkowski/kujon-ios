@@ -47,6 +47,7 @@
 		4C0D8910C3D7307032A67057 /* LecturerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D818C198D3E8ECD02EE91 /* LecturerProvider.swift */; };
 		4C0D89623E9B561730C53F9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D839EDCC8F1A06ECE450B /* Main.storyboard */; };
 		4C0D8996D0987D3F6C88F611 /* GradesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8FBDE18C4279900F73A1 /* GradesProvider.swift */; };
+		4C0D8A432E3EC531C1FE79D7 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D83451742C0465B1D8D85 /* UIColorExtensions.swift */; };
 		4C0D8ACB7F16326767AF48FD /* LecturerDetails.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D88F55A75A9542F15E9F0 /* LecturerDetails.json */; };
 		4C0D8B0ECFC83EB343FC15A1 /* LectureResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8EC533BB73C186B4A0D1 /* LectureResponse.swift */; };
 		4C0D8B1CC0F1F04A0031EFD4 /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8199588435043DF62A80 /* UserDetail.swift */; };
@@ -128,6 +129,7 @@
 		4C0D8202EC00EB52392FC17B /* GradeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeResponse.swift; sourceTree = "<group>"; };
 		4C0D82CBCF84CAB5E56A1F3C /* Lecturers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Lecturers.json; sourceTree = "<group>"; };
 		4C0D8322F7C59F7DA152C337 /* KujonResponseSchools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KujonResponseSchools.swift; sourceTree = "<group>"; };
+		4C0D83451742C0465B1D8D85 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		4C0D83563DFB6E74ACCE441B /* UserMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMenuItem.swift; sourceTree = "<group>"; };
 		4C0D836B4FBBDA6D4733502C /* Kujon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kujon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C0D83A869F2202BBD42EC4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Kujon/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
@@ -276,6 +278,7 @@
 				4C0D83D8B40603DC0363E06E /* EntryScreen */,
 				4C0D8C683DC578BF5AA751F9 /* Second Login */,
 				4C0D8AC64D4ECAED91008202 /* Main Group */,
+				4C0D8B22EBFA522F154A82EF /* Global Extensions */,
 			);
 			path = Kujon;
 			sourceTree = "<group>";
@@ -440,6 +443,14 @@
 				4C0D87F830454DB0D2206F16 /* Send Opinion */,
 			);
 			path = "Main Group";
+			sourceTree = "<group>";
+		};
+		4C0D8B22EBFA522F154A82EF /* Global Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4C0D83451742C0465B1D8D85 /* UIColorExtensions.swift */,
+			);
+			path = "Global Extensions";
 			sourceTree = "<group>";
 		};
 		4C0D8B41A54D038836A90A38 /* Programme */ = {
@@ -933,6 +944,7 @@
 				4C0D80DAE7D9AB0E09AF4C8A /* JsonProviderProtocol.swift in Sources */,
 				4C0D8276D4657EED0BD1B0C2 /* LecturersResponse.swift in Sources */,
 				4C0D853633AEE49F996B454C /* CourseEdition.swift in Sources */,
+				4C0D8A432E3EC531C1FE79D7 /* UIColorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

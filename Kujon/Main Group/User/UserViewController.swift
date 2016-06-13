@@ -16,10 +16,18 @@ class UserViewController: UIViewController,NavigationDelegate {
         self.delegate=delegate
     }
 
-
+    @IBOutlet weak var nameSurnameLabel: UILabel!
+    @IBOutlet weak var studentStatusLabel: UILabel!
+    @IBOutlet weak var schoolNameLabel: UILabel!
+    
+    @IBOutlet weak var schoolImageView: UIImageView!
+    @IBOutlet weak var userImageView: UIImageView!
+    
+    @IBOutlet weak var indexNumberLabel: UILabel!
+    @IBOutlet weak var accountNumberLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: Selector("openDrawer"))
+        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(UserViewController.openDrawer))
 
         // Do any additional setup after loading the view.
     }
