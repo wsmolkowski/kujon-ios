@@ -38,10 +38,10 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate  {
 
     @IBAction func openList(sender: AnyObject) {
         
-        self.loadFBParams()
+//        self.loadFBParams()
         
-//        let controller  = UsosesTableViewController()
-//        self.presentViewController(controller,animated:true,completion:nil)
+        let controller  = UsosesTableViewController()
+        self.presentViewController(controller,animated:true,completion:nil)
     }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {

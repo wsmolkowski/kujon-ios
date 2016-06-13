@@ -16,7 +16,7 @@ class TeachersMenuItem : MenuItemWithController {
     }
 
     func returnViewControllerFunction()->() -> UIViewController! {
-        return {return TeachersViewController()}
+        return {return TeacherTableViewController()}
     }
 
 }
