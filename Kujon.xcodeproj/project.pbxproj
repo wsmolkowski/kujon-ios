@@ -94,6 +94,8 @@
 		52AF77D41D0AD80A0058979A /* SendOpinionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77D21D0AD80A0058979A /* SendOpinionViewController.xib */; };
 		52AF77D71D0AD83A0058979A /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77D51D0AD83A0058979A /* ShareViewController.swift */; };
 		52AF77D81D0AD83A0058979A /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77D61D0AD83A0058979A /* ShareViewController.xib */; };
+		52AF77DB1D0EA9350058979A /* LectureViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77D91D0EA9350058979A /* LectureViewTableViewCell.swift */; };
+		52AF77DC1D0EA9350058979A /* LectureViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77DA1D0EA9350058979A /* LectureViewTableViewCell.xib */; };
 		756D007AF88EC699124E5CBF /* Pods_KujonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 576A3371E79EA9353F622036 /* Pods_KujonTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -205,6 +207,8 @@
 		52AF77D21D0AD80A0058979A /* SendOpinionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendOpinionViewController.xib; sourceTree = "<group>"; };
 		52AF77D51D0AD83A0058979A /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		52AF77D61D0AD83A0058979A /* ShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareViewController.xib; sourceTree = "<group>"; };
+		52AF77D91D0EA9350058979A /* LectureViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureViewTableViewCell.swift; sourceTree = "<group>"; };
+		52AF77DA1D0EA9350058979A /* LectureViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LectureViewTableViewCell.xib; sourceTree = "<group>"; };
 		576A3371E79EA9353F622036 /* Pods_KujonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KujonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66BCCCAE95D0BBA8FFC5B406 /* Pods-KujonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KujonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KujonTests/Pods-KujonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		71EE9BFC3F34701DCA4852FA /* Pods-Kujon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kujon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kujon/Pods-Kujon.debug.xcconfig"; sourceTree = "<group>"; };
@@ -381,6 +385,8 @@
 			children = (
 				52AF77AF1D096D6B0058979A /* SchedulerViewController.swift */,
 				52AF77B01D096D6B0058979A /* SchedulerViewController.xib */,
+				52AF77D91D0EA9350058979A /* LectureViewTableViewCell.swift */,
+				52AF77DA1D0EA9350058979A /* LectureViewTableViewCell.xib */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -740,6 +746,7 @@
 				4C0D87058EAE5B71945F1AD8 /* Lecturers.json in Resources */,
 				52AF77D01D0AD5C50058979A /* SettingsViewController.xib in Resources */,
 				4C0D8792155EDB3BF227067C /* FacultiesDetail.json in Resources */,
+				52AF77DC1D0EA9350058979A /* LectureViewTableViewCell.xib in Resources */,
 				4C0D87FF3ADA197F8655E408 /* Programmes.json in Resources */,
 				4C0D85BA322F0D6699947ECE /* CourseEditions.json in Resources */,
 				52AF77C01D0984FC0058979A /* MenuItemTableViewCell.xib in Resources */,
@@ -897,6 +904,7 @@
 				52AF77AD1D0960000058979A /* UserViewController.swift in Sources */,
 				52AF77A41D095C390058979A /* ContainerViewController.swift in Sources */,
 				5282840A1D08499000A602B4 /* UsosesTableViewController.swift in Sources */,
+				52AF77DB1D0EA9350058979A /* LectureViewTableViewCell.swift in Sources */,
 				4C0D8E0F66E6090EA22C6E5F /* ViewController.swift in Sources */,
 				52AF77B11D096D6B0058979A /* SchedulerViewController.swift in Sources */,
 				52AF77A81D095CBF0058979A /* LeftMenuTableViewController.swift in Sources */,

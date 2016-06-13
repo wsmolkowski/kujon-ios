@@ -8,28 +8,33 @@
 
 import UIKit
 
-class UserViewController: UIViewController,NavigationDelegate {
+class UserViewController: UIViewController, NavigationDelegate, UserDetailsProviderDelegate {
 
-    weak var delegate: NavigationMenuProtocol!=nil
+    weak var delegate: NavigationMenuProtocol! = nil
 
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {
-        self.delegate=delegate
+        self.delegate = delegate
     }
 
     @IBOutlet weak var nameSurnameLabel: UILabel!
     @IBOutlet weak var studentStatusLabel: UILabel!
     @IBOutlet weak var schoolNameLabel: UILabel!
-    
+
     @IBOutlet weak var schoolImageView: UIImageView!
     @IBOutlet weak var userImageView: UIImageView!
-    
+
     @IBOutlet weak var indexNumberLabel: UILabel!
     @IBOutlet weak var accountNumberLabel: UILabel!
+
+
+    let userDetailsProvider: UserDetailsProvider!=UserDetailsProvider.sharedInstance
+
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(UserViewController.openDrawer))
 
-        // Do any additional setup after loading the view.
+        userDetailsProvider.delegate = self
+        userDetailsProvider.loadUserDetail()
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,9 +42,26 @@ class UserViewController: UIViewController,NavigationDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-     func openDrawer() {
+    func openDrawer() {
         delegate?.toggleLeftPanel()
     }
+
+    func onUserDetailLoaded(userDetails: UserDetail) {
+        nameSurnameLabel.text = userDetails.firstName + " " + userDetails.lastName
+        studentStatusLabel.text = userDetails.studentStatus
+        schoolNameLabel.text = userDetails.usosName
+        indexNumberLabel.text = userDetails.studentNumber
+        accountNumberLabel.text = userDetails.id
+        if(userDetails.hasPhoto){
+            dispatch_async(dispatch_get_main_queue()) {
+                self.userImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string:userDetails.photoUrl)!)!)
+            }
+        }
+    }
+
+    func onErrorOccurs() {
+    }
+
 
     /*
     // MARK: - Navigation

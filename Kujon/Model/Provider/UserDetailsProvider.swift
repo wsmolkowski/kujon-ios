@@ -17,6 +17,9 @@ protocol UserDetailsProviderDelegate: ErrorResponseProtocol {
 }
 
 class UserDetailsProvider: UserDetailsProviderProtocol {
+
+    static let sharedInstance  = UserDetailsProvider()
+
     var delegate: UserDetailsProviderDelegate!
 
 

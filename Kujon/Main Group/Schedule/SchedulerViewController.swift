@@ -8,9 +8,10 @@
 
 import UIKit
 
-class SchedulerViewController: UIViewController, NavigationDelegate {
+class SchedulerViewController: UIViewController, NavigationDelegate, UITableViewDelegate, UITableViewDataSource {
+    private let LectureCellId = "id_for_lecture"
 
-
+    @IBOutlet weak var tableView: UITableView!
     weak var delegate: NavigationMenuProtocol! = nil
 
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {
@@ -19,9 +20,12 @@ class SchedulerViewController: UIViewController, NavigationDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithDrawerOpening(self,selector: Selector("openDrawer"))
+        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(SchedulerViewController.openDrawer))
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
 
-        // Do any additional setup after loading the view.
+        self.tableView.registerNib(UINib(nibName: "LectureViewTableViewCell", bundle: nil), forCellReuseIdentifier: LectureCellId)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,14 +38,21 @@ class SchedulerViewController: UIViewController, NavigationDelegate {
     }
 
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @available(iOS 2.0, *)  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
     }
-    */
 
+
+    @available(iOS 2.0, *)  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell: LectureViewTableViewCell = tableView.dequeueReusableCellWithIdentifier(LectureCellId, forIndexPath: indexPath) as! LectureViewTableViewCell
+//        var usos = usosList[indexPath.row] as Usos
+//        dispatch_async(dispatch_get_main_queue()) {
+//
+//            (cell as! UsosTableViewCell).imagePlace?.image = UIImage(data: NSData(contentsOfURL: NSURL(string:usos.image)!)!)
+//            cell.setNeedsLayout()
+//        }
+//        (cell as! UsosTableViewCell).label.text = usos.name
+
+        return cell
+    }
 }
