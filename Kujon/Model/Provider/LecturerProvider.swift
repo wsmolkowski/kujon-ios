@@ -28,6 +28,4 @@ class LecturerProvider: LecturerProviderProtocol {
             delegate?.onErrorOccurs()
         }
     }
-
-
 }
