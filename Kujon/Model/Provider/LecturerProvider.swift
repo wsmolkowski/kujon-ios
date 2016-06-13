@@ -17,6 +17,7 @@ protocol LecturerProviderDelegate: ErrorResponseProtocol {
 }
 
 class LecturerProvider: LecturerProviderProtocol {
+    static  let sharedInstance  = LecturerProvider()
     var delegate :LecturerProviderDelegate!
     func loadLecturers(){
         do {

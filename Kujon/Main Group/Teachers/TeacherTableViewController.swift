@@ -8,9 +8,11 @@
 
 import UIKit
 
-class TeacherTableViewController: UITableViewController, NavigationDelegate {
+class TeacherTableViewController: UITableViewController, NavigationDelegate, LecturerProviderDelegate {
     private let TeachCellId = "teacherCellId"
     weak var delegate: NavigationMenuProtocol! = nil
+    let lecturerProvider = LecturerProvider.sharedInstance
+    private var lecturers :Array<SimpleUser>! = nil
 
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {
         self.delegate = delegate
@@ -19,13 +21,15 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(TeacherTableViewController.openDrawer))
+        self.tableView.registerNib(UINib(nibName: "TeacherViewCell",bundle: nil),forCellReuseIdentifier: TeachCellId)
+        lecturerProvider.delegate = self
+        lecturerProvider.loadLecturers()
 
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        self.tableView.reloadData()
         // Dispose of any resources that can be recreated.
     }
 
@@ -33,28 +37,41 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate {
         delegate?.toggleLeftPanel()
     }
 
+    func onLecturersLoaded(lecturers: Array<SimpleUser>) {
+        self.lecturers = lecturers
+        self.tableView.reloadData()
+    }
+
+    func onErrorOccurs() {
+    }
+
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.lecturers.count
     }
 
-    /*
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell:TeacherViewCell = tableView.dequeueReusableCellWithIdentifier(TeachCellId, forIndexPath: indexPath) as! TeacherViewCell
+        let myUser:SimpleUser = self.lecturers[indexPath.row]
+        cell.teacherNameLabel.text = myUser.firstName + " " + myUser.lastName
 
-        // Configure the cell...
-
+        cell.teacherGoButton.addTarget(self, action: "connected:", forControlEvents: .TouchUpInside)
+        cell.teacherGoButton.tag = indexPath.row
         return cell
     }
-    */
 
+    func connected(sender: UIButton){
+        let buttonTag = sender.tag
+        let myUser:SimpleUser = self.lecturers[buttonTag as! Int]
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
