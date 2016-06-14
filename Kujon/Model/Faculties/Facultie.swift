@@ -41,7 +41,7 @@ struct Facultie {
     let postalAdress: String
     let facultyId: String
     let homePageUrl: String
-    let schoolPath: SchoolPath
+    let schoolPath: Array<SchoolPath>
     let phoneNumber: Array<String>
 }
 
@@ -52,7 +52,7 @@ extension Facultie: Decodable {
         logUrls: j => "logo_urls",
                 schoolStats: j => "stats",
                 name: j => "name",
-                postalAdress: j => "postal_adress",
+                postalAdress: j => "postal_address",
                 facultyId: j => "fac_id",
                 homePageUrl: j => "homepage_url",
                 schoolPath: j => "path",
