@@ -27,7 +27,6 @@ class LeftMenuTableViewController: UITableViewController {
 
         listOfUpperItems = MenuItemsHolder.sharedInstance.upperMenuItems;
         listOfLowerItems = MenuItemsHolder.sharedInstance.lowerMnuItems;
-        self.tableView.registerClass(MenuItemTableViewCell.self, forCellReuseIdentifier: MenuItemCellIdentiefier)
         self.tableView.registerNib(UINib(nibName: "MenuItemTableViewCell", bundle: nil), forCellReuseIdentifier: MenuItemCellIdentiefier)
     }
 

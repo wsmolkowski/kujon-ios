@@ -7,5 +7,6 @@ import Foundation
 import UIKit
 
 extension UIColor{
-    func kujonBlueColor ()->UIColor{ return UIColor(colorLiteralRed: 0,green: 0,blue: 255,alpha: 1)}
+    static func kujonBlueColor ()->UIColor{ return UIColor(colorLiteralRed: 0,green: 0,blue: 255,alpha: 1)}
+    static func blackWithAlpha ()->UIColor{ return UIColor(colorLiteralRed: 0,green: 0,blue: 0,alpha: 0.5)}
 }

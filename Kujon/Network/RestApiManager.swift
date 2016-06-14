@@ -20,15 +20,7 @@ class RestApiManager {
         } else {
             let request = NSMutableURLRequest(URL: NSURL(string: getMyUrl())!)
             let session = NSURLSession.sharedSession()
-            let task = session.dataTaskWithRequest(request, completionHandler: {
-                data, response, error -> Void in
-                if(error != nil){
-                    onError()
-                }else {
-
-                    onCompletion(data!)
-                }
-            })
+            let task = session.dataTaskWithRequest(request, completionHandler:creteCompletionHanlder(onCompletion,onError: onError))
             task.resume()
         }
     }
@@ -36,6 +28,19 @@ class RestApiManager {
     func getMyUrl() -> String {
         return baseURL
     }
+
+    private func creteCompletionHanlder(onCompletion: onSucces, onError: onErrorOccurs)-> (NSData?, NSURLResponse?, NSError?) -> Void{
+        return {
+            data, response, error -> Void in
+            if(error != nil){
+                onError()
+            }else {
+                onCompletion(data!)
+            }
+        }
+    }
+
+
 
     private func handelTestCase(onCompletion: onSucces) {
         var string: String
@@ -46,13 +51,11 @@ class RestApiManager {
         default: string = "Usoses"
         }
         do {
-            let txtFilePath = NSBundle.mainBundle().pathForResource(string, ofType: "json")
-            let jsonData = try NSData(contentsOfFile: txtFilePath!, options: .DataReadingMappedIfSafe)
+            let jsonData = try  JsonDataLoader.loadJson(string)
             onCompletion(jsonData)
         } catch {
 
         }
-
     }
 
 

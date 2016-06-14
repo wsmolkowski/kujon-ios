@@ -21,8 +21,8 @@ class LecturerProvider: LecturerProviderProtocol {
     var delegate :LecturerProviderDelegate!
     func loadLecturers(){
         do {
-            let txtFilePath = NSBundle.mainBundle().pathForResource("Lecturers", ofType: "json")
-            let jsonData = try NSData(contentsOfFile: txtFilePath!, options: .DataReadingMappedIfSafe)
+
+            let jsonData = try JsonDataLoader.loadJson("Lecturers")
             let lecturers = try! self.changeJsonToResposne(jsonData)
             delegate?.onLecturersLoaded(lecturers.data)
         } catch {

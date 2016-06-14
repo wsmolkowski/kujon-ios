@@ -26,12 +26,8 @@ enum SlideOutState {
 class ContainerViewController: UIViewController, LeftMenuTableViewControllerDelegate {
 
     var centerNavigationController: UINavigationController!
-    let containerDictionary: [String:() -> UIViewController] = ["user": {
-        return UserViewController()
-    }, "schedule": {
-        return SchedulerViewController()
-    }]
-    var centerViewController: UserViewController = UserViewController()
+
+    var centerViewController: UserTableViewController = UserTableViewController()
 
     var currentState: SlideOutState = .Collapsed {
         didSet {

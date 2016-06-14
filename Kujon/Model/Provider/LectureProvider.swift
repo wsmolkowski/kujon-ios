@@ -22,8 +22,7 @@ class LectureProvider: LectureProviderProtocol {
 
     func loadLectures(date: String) {
         do {
-            let txtFilePath = NSBundle.mainBundle().pathForResource("Schedule", ofType: "json")
-            let jsonData = try NSData(contentsOfFile: txtFilePath!, options: .DataReadingMappedIfSafe)
+            let jsonData = try JsonDataLoader.loadJson("Schedule")
             let lectureResponse = try! self.changeJsonToResposne(jsonData)
             delegate?.onLectureLoaded(lectureResponse.data)
         } catch {

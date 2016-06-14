@@ -16,7 +16,7 @@ class UserMenuItem : MenuItemWithController{
     }
 
     func returnViewControllerFunction()->() -> UIViewController! {
-        return { return UserViewController()}
+        return { return UserTableViewController()}
     }
 
 

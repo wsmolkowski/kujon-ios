@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -20,10 +19,6 @@
                         <constraints>
                             <constraint firstAttribute="width" constant="9" id="rzs-jj-jeE"/>
                         </constraints>
-                        <state key="normal" image="arrow-right"/>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usG-Fp-Zwt">
-                        <rect key="frame" x="285" y="10" width="9" height="22"/>
                         <state key="normal" image="arrow-right"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYE-Eh-tHK">
@@ -51,9 +46,6 @@
                     <constraint firstItem="sYE-Eh-tHK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="qJz-o2-sLM"/>
                 </constraints>
                 <variation key="default">
-                    <mask key="subviews">
-                        <exclude reference="usG-Fp-Zwt"/>
-                    </mask>
                     <mask key="constraints">
                         <exclude reference="8pt-H3-gXc"/>
                     </mask>
