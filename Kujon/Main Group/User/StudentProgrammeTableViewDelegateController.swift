@@ -49,7 +49,7 @@ class StudentProgrammeTableViewDelegateController: NSObject, UITableViewDataSour
         let myProgramme: StudentProgramme = self.programmes[indexPath.row]
         cell.teacherNameLabel.text = myProgramme.programme.description
 
-        cell.teacherGoButton.addTarget(self, action: "clicked", forControlEvents: .TouchUpInside)
+        cell.teacherGoButton.addTarget(self, action: "clicked:", forControlEvents: .TouchUpInside)
         cell.teacherGoButton.tag = indexPath.row
         return cell
     }

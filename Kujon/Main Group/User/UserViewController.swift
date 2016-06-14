@@ -28,6 +28,7 @@ class UserViewController: UIViewController, NavigationDelegate, UserDetailsProvi
     @IBOutlet weak var accountNumberLabel: UILabel!
     @IBOutlet weak var profileTableView: IntrinsicTableView!
     
+    @IBOutlet weak var tralalaTableView: IntrinsicTableView!
     let userDetailsProvider: UserDetailsProvider!=UserDetailsProvider.sharedInstance
     let programmeController  = StudentProgrammeTableViewDelegateController()
 
