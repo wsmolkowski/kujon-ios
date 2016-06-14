@@ -19,6 +19,7 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate  {
             print("Not loged in..")
         } else {
             print("Loged in...")
+            self.loadFBParams2()
         }
         
         let loginButton = FBSDKLoginButton()
@@ -38,21 +39,18 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate  {
 
     @IBAction func openList(sender: AnyObject) {
         
-//        self.loadFBParams()
-        
         let controller  = UsosesTableViewController()
         self.presentViewController(controller,animated:true,completion:nil)
     }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        
-        
+
         if error == nil
         {
-//            print("Load FB params on login success")
-//            self.loadFBParams()
-//            let controller  = UsosesTableViewController()
-//            self.presentViewController(controller,animated:true,completion:nil)
+            print("Load FB params on login success")
+            self.loadFBParams2()
+
+//            self.openList(nil)
         }
         else
         {
@@ -65,11 +63,11 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate  {
     }
     
     func loadFBParams() {
-        
+
         let login = FBSDKLoginManager()
         login.logInWithReadPermissions(["email", "public_profile"]){ result, error in
             print("RESULT: '\(result)' ")
-            
+
             if error != nil {
                 print("error")
             }else if(result.isCancelled){
@@ -77,22 +75,39 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate  {
             }else{
                 print("success logInWithReadPermissions.")
                 print("Now requesting user details")
-                
-                
-                
+
+
+
                 var fbRequest = FBSDKGraphRequest(graphPath:"me", parameters: ["fields": "email"]);
                 fbRequest.startWithCompletionHandler { (connection : FBSDKGraphRequestConnection!, result : AnyObject!, error : NSError!) -> Void in
-                    
+
                     if error == nil {
-                        
+
                         print("User Info With Email : \(result)")
                     } else {
-                        
+
                         print("Error Getting Info \(error)");
-                        
+
                     }
                 }
             }
+        }
+    }
+
+    func loadFBParams2() {
+
+        if (FBSDKAccessToken.currentAccessToken() != nil)
+        {
+            let token: String = FBSDKAccessToken.currentAccessToken().tokenString;
+            print( "Token : \(token) ")
+
+        }
+
+         FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields":"first_name, last_name, email"]).startWithCompletionHandler { (connection, result, error) -> Void in
+            let strFirstName: String = (result.objectForKey("first_name") as? String)!
+            let email: String = (result.objectForKey("email") as? String)!
+
+            print( "Welcome, \(strFirstName) \(email)")
         }
     }
 
