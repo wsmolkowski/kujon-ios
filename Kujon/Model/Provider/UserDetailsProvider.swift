@@ -25,8 +25,7 @@ class UserDetailsProvider: UserDetailsProviderProtocol {
 
     func loadUserDetail() {
         do {
-            let txtFilePath = NSBundle.mainBundle().pathForResource("User", ofType: "json")
-            let jsonData = try NSData(contentsOfFile: txtFilePath!, options: .DataReadingMappedIfSafe)
+            let jsonData = try JsonDataLoader.loadJson("User")
             let userDetailR = try! self.changeJsonToResposne(jsonData)
             delegate?.onUserDetailLoaded(userDetailR.data)
         } catch {
@@ -37,8 +36,7 @@ class UserDetailsProvider: UserDetailsProviderProtocol {
 
     func loadUserDetail(id: String) {
         do {
-            let txtFilePath = NSBundle.mainBundle().pathForResource("LecturerDetails", ofType: "json")
-            let jsonData = try NSData(contentsOfFile: txtFilePath!, options: .DataReadingMappedIfSafe)
+            let jsonData = try JsonDataLoader.loadJson("LecturerDetails")
             let userDetailR = try! self.changeJsonToResposne(jsonData)
             delegate?.onUserDetailLoaded(userDetailR.data)
         } catch {

@@ -51,8 +51,7 @@ class RestApiManager {
         default: string = "Usoses"
         }
         do {
-            let txtFilePath = NSBundle.mainBundle().pathForResource(string, ofType: "json")
-            let jsonData = try NSData(contentsOfFile: txtFilePath!, options: .DataReadingMappedIfSafe)
+            let jsonData = try  JsonDataLoader.loadJson(string)
             onCompletion(jsonData)
         } catch {
 
