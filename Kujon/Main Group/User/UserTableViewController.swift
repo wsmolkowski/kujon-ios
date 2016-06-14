@@ -8,14 +8,16 @@
 
 import UIKit
 
-class UserTableViewController: UITableViewController, NavigationDelegate, UserDetailsProviderDelegate {
+class UserTableViewController: UITableViewController, NavigationDelegate, UserDetailsProviderDelegate ,FacultiesProviderDelegate{
     weak var delegate: NavigationMenuProtocol! = nil
     private let usedDetailCellId = "userDetailViewId"
     private let StudentProgrammeCellId = "cellIdForStudentProgramme"
+    private let FacultieProgrammeCellId = "cellIdForStudentFacultie"
     let userDetailsProvider: UserDetailsProvider! = UserDetailsProvider.sharedInstance
+    let facultieProvider: FacultiesProvider! = FacultiesProvider.sharedInstance
 
     var userDetails: UserDetail! = nil
-    var userFaculties: Array<String>! = nil
+    var userFaculties: Array<Facultie>! = nil
 
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {
         self.delegate = delegate
@@ -26,10 +28,13 @@ class UserTableViewController: UITableViewController, NavigationDelegate, UserDe
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(UserTableViewController.openDrawer))
         userDetailsProvider.delegate = self
         userDetailsProvider.loadUserDetail()
+        facultieProvider.delegate = self
+        facultieProvider.loadFaculties()
 
 
         self.tableView.registerNib(UINib(nibName: "UserDetailView", bundle: nil), forCellReuseIdentifier: usedDetailCellId)
         self.tableView.registerNib(UINib(nibName: "UserDetailsScreenGoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: StudentProgrammeCellId)
+        self.tableView.registerNib(UINib(nibName: "UserDetailsScreenGoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: FacultieProgrammeCellId)
     }
 
 
@@ -42,6 +47,12 @@ class UserTableViewController: UITableViewController, NavigationDelegate, UserDe
         self.userDetails = userDetails;
         self.tableView.reloadData()
     }
+
+    func onFacultiesLoaded(list: Array<Facultie>) {
+        self.userFaculties = list
+        self.tableView.reloadData()
+    }
+
 
     func onErrorOccurs() {
     }
@@ -70,7 +81,8 @@ class UserTableViewController: UITableViewController, NavigationDelegate, UserDe
             break;
         case 1: cell = self.configureStudentProgrammeCell(indexPath)
             break;
-        case 2: break;
+        case 2: cell = self.configureFacultieCell(indexPath)
+            break;
         default: cell = self.configureUserDetails(indexPath)
         }
 
@@ -142,11 +154,25 @@ class UserTableViewController: UITableViewController, NavigationDelegate, UserDe
         return cell
     }
 
+    private func configureFacultieCell(indexPath: NSIndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCellWithIdentifier(FacultieProgrammeCellId, forIndexPath: indexPath) as! UserDetailsScreenGoFurtherViewCellTableViewCell
+        let myFac: Facultie = self.userFaculties[indexPath.row]
+        cell.plainLabel.text = myFac.name
+        cell.goButton.addTarget(self, action: "clickedFacultie:", forControlEvents: .TouchUpInside)
+        cell.goButton.tag = indexPath.row
+        return cell
+    }
+
     func clicked(sender: UIButton) {
         let buttonTag = sender.tag
         let myProgramme: StudentProgramme = self.userDetails.studentProgrammes[buttonTag as! Int]
     }
 
+
+    func clickedFacultie(sender: UIButton) {
+        let buttonTag = sender.tag
+        let myFac: Facultie = self.userFaculties[buttonTag as! Int]
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

@@ -11,12 +11,13 @@ protocol FacultiesProviderProtocol: JsonProviderProtocol {
     func loadFaculties()
 }
 
-protocol FacultiesProviderDelegate:ErrorResponseProtocol {
+protocol FacultiesProviderDelegate: ErrorResponseProtocol {
     func onFacultiesLoaded(list: Array<Facultie>)
 }
 
 class FacultiesProvider: FacultiesProviderProtocol {
-     var delegate:FacultiesProviderDelegate! = nil
+    static let sharedInstance = FacultiesProvider()
+    var delegate: FacultiesProviderDelegate! = nil
 
     func loadFaculties() {
         do {
