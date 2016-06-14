@@ -16,25 +16,25 @@ class UserViewController: UIViewController, NavigationDelegate, UserDetailsProvi
         self.delegate = delegate
     }
 
-    @IBOutlet weak var nameSurnameLabel: UILabel!
-    @IBOutlet weak var studentStatusLabel: UILabel!
-    @IBOutlet weak var schoolNameLabel: UILabel!
-
     @IBOutlet weak var schoolImageView: UIImageView!
     @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var nameSurnameLabel: UILabel!
+  
+    @IBOutlet weak var studentStatusLabel: UILabel!
 
+    @IBOutlet weak var schoolNameLabel: UILabel!
     @IBOutlet weak var indexNumberLabel: UILabel!
+
     @IBOutlet weak var accountNumberLabel: UILabel!
-
-
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var profileTableView: IntrinsicTableView!
+    
     let userDetailsProvider: UserDetailsProvider!=UserDetailsProvider.sharedInstance
     let programmeController  = StudentProgrammeTableViewDelegateController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(UserViewController.openDrawer))
-        programmeController.setUp(tableView,clickListener:self)
+        programmeController.setUp(profileTableView,clickListener:self)
 
         userDetailsProvider.delegate = self
         userDetailsProvider.loadUserDetail()

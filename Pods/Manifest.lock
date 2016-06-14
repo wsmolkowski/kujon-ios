@@ -1,12 +1,31 @@
 PODS:
+  - Bolts (1.7.0):
+    - Bolts/AppLinks (= 1.7.0)
+    - Bolts/Tasks (= 1.7.0)
+  - Bolts/AppLinks (1.7.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.7.0)
   - Decodable (0.4.2)
+  - FBSDKCoreKit (4.11.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.11.0):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.11.0):
+    - FBSDKCoreKit
 
 DEPENDENCIES:
   - Decodable (~> 0.4)
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKShareKit
 
 SPEC CHECKSUMS:
+  Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
   Decodable: b1cd96ad9f722721bc98b0310952214a47f71d6a
+  FBSDKCoreKit: 686ac982723a14ec9ddb85e2f81235d7706c891b
+  FBSDKLoginKit: bade9fc78277764149ccc5bfaadbf13c83175c6a
+  FBSDKShareKit: 2d1746144cfc8a9dbbd24997c34ee0471be51b6a
 
-PODFILE CHECKSUM: 3a9448c36e3f63855bc82fd7855ad321a0fb1227
+PODFILE CHECKSUM: 605fe12c15db179a125bddb5247d19e7744bd3ad
 
 COCOAPODS: 1.0.0

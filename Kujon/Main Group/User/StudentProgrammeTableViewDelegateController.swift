@@ -23,6 +23,9 @@ class StudentProgrammeTableViewDelegateController: NSObject, UITableViewDataSour
 //        self.tableView.scrollEnabled = false
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        let footer = UILabel(frame:CGRectZero)
+        self.tableView.tableFooterView = footer
         self.clickHandler = clickListener
         self.tableView.registerNib(UINib(nibName: "TeacherViewCell", bundle: nil), forCellReuseIdentifier: StudentProgrammeCellId)
     }
@@ -38,7 +41,7 @@ class StudentProgrammeTableViewDelegateController: NSObject, UITableViewDataSour
 
 
     @objc func tableView(_ tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        return self.programmes.count
+        return self.programmes==nil ? 0:self.programmes.count
     }
 
     func tableView(_ tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
