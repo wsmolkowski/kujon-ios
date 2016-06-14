@@ -39,7 +39,7 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
     func webView(_ webView: UIWebView!, shouldStartLoadWithRequest request: NSURLRequest!, navigationType: UIWebViewNavigationType) -> Bool {
 
         if(request.URL!.absoluteString.containsString("https://api.kujon.mobi/authentication/verify")){
-            //TUTAJ zrob api strzal
+
             var requestC = NSMutableURLRequest(URL: NSURL(string: request.URL!.absoluteString)!)
             let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookiesForURL(NSURL(string: RestApiManager.BASE_URL)!)
             var myMutableString = ""
@@ -47,6 +47,8 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
                 myMutableString=myMutableString+(cookie as NSHTTPCookie).name + "=" + (cookie as NSHTTPCookie).value + ";"
             }
             requestC.setValue(myMutableString,forHTTPHeaderField: "Cookie")
+
+            //TODO TEGO NIE JESTEM PEWIEN CZY TAK TO ZROBIC BO COS KRZYCZY ZE DEPRECATED
             let urlConnection = NSURLConnection(request: requestC,delegate:self)
         }
         return true
@@ -69,6 +71,8 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
 
     func connection(_ connection: NSURLConnection!, didReceiveData data: NSData!) {
         print("Logged Succesfully")
+        //TODO TUTAJ BY PEWNIE SIE PRZYDALO DOLOZYC JAKIES PERSIST TYCH TOKENOW FACEBOOKOWYCH
+
         let controller  = ContainerViewController()
         self.presentViewController(controller,animated:true,completion:nil)
     }
