@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0AD3F7F71D08D50C00F07AA4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD3F7F51D08D50C00F07AA4 /* FBSDKCoreKit.framework */; };
-		0AD3F7F81D08D50C00F07AA4 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD3F7F61D08D50C00F07AA4 /* FBSDKLoginKit.framework */; };
 		2BAFB7B3F960A01C5BFE57C7 /* Pods_Kujon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96504F7BCCB0EE28D6F0F6C4 /* Pods_Kujon.framework */; };
 		395726529DA26FEF655FEFAC /* Pods_KujonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C865AA5DFAADA9B9D2A08520 /* Pods_KujonUITests.framework */; };
 		4C0D807545C280601AAB48CB /* StudentProgramme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8A53D4F9C21CACEEE68A /* StudentProgramme.swift */; };
@@ -123,8 +121,6 @@
 
 /* Begin PBXFileReference section */
 		0A8B795B1D0C81E100CF6783 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
-		0AD3F7F51D08D50C00F07AA4 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = FB/FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		0AD3F7F61D08D50C00F07AA4 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = FB/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		101369142C0F1D1AAD2DC121 /* Pods-KujonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KujonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KujonTests/Pods-KujonTests.release.xcconfig"; sourceTree = "<group>"; };
 		278B50858D941900E966A239 /* Pods-Kujon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kujon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kujon/Pods-Kujon.release.xcconfig"; sourceTree = "<group>"; };
 		4C0D800DE50A86489C4C7E74 /* Usos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usos.swift; sourceTree = "<group>"; };
@@ -251,8 +247,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BAFB7B3F960A01C5BFE57C7 /* Pods_Kujon.framework in Frameworks */,
-				0AD3F7F71D08D50C00F07AA4 /* FBSDKCoreKit.framework in Frameworks */,
-				0AD3F7F81D08D50C00F07AA4 /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,8 +343,6 @@
 		4C0D84F08EDDF3A1E42644F8 = {
 			isa = PBXGroup;
 			children = (
-				0AD3F7F51D08D50C00F07AA4 /* FBSDKCoreKit.framework */,
-				0AD3F7F61D08D50C00F07AA4 /* FBSDKLoginKit.framework */,
 				4C0D84DEDAAEAFE7AA9943F6 /* Products */,
 				4C0D821C1CE25F0226742C8A /* Kujon */,
 				4C0D83317C2734E363058FBB /* KujonTests */,

@@ -5,6 +5,10 @@ target 'Kujon' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
   pod 'Decodable', '~> 0.4'
+  
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKShareKit'
+  pod 'FBSDKLoginKit'
   # Pods for Kujon
 
   target 'KujonTests' do
