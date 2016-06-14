@@ -9,9 +9,9 @@ typealias onSucces = (NSData!) -> Void
 typealias onErrorOccurs = () -> Void
 
 class RestApiManager {
-
-     var test = false
-    let baseURL = "https://api.kujon.mobi"
+    static let BASE_URL:String = "https://api.kujon.mobi"
+    var test = false
+    let baseURL = BASE_URL
     var specificUrl = ""
 
     func makeHTTPGetRequest(onCompletion: onSucces, onError: onErrorOccurs) {

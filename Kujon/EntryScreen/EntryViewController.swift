@@ -11,6 +11,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 class EntryViewController: UIViewController, FBSDKLoginButtonDelegate  {
+    let userDataHolder = UserDataHolder.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,13 +101,14 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate  {
         {
             let token: String = FBSDKAccessToken.currentAccessToken().tokenString;
             print( "Token : \(token) ")
+            self.userDataHolder.userToken = token
 
         }
 
          FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields":"first_name, last_name, email"]).startWithCompletionHandler { (connection, result, error) -> Void in
             let strFirstName: String = (result.objectForKey("first_name") as? String)!
             let email: String = (result.objectForKey("email") as? String)!
-
+            self.userDataHolder.userEmail = email
             print( "Welcome, \(strFirstName) \(email)")
         }
     }

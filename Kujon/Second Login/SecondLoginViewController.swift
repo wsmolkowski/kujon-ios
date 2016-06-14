@@ -8,11 +8,18 @@
 
 import UIKit
 
-class SecondLoginViewController: UIViewController {
+class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnectionDataDelegate {
+
+    @IBOutlet weak var webView: UIWebView!
+    let userDataHolder = UserDataHolder.sharedInstance
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        webView.delegate = self
+        let url = String(format: "https:/api.kujon.mobi/authentication/register?email=%@&token=%@&usos_id=%@&type=FB", userDataHolder.userEmail, userDataHolder.userToken, userDataHolder.usosId)
+        let request = NSURLRequest(URL: NSURL(string: url)!)
+        webView.loadRequest(request)
         // Do any additional setup after loading the view.
     }
 
@@ -27,14 +34,44 @@ class SecondLoginViewController: UIViewController {
 
         self.presentViewController(controller,animated:true,completion:nil)
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+
+    func webView(_ webView: UIWebView!, shouldStartLoadWithRequest request: NSURLRequest!, navigationType: UIWebViewNavigationType) -> Bool {
+
+        if(request.URL!.absoluteString.containsString("https://api.kujon.mobi/authentication/verify")){
+            //TUTAJ zrob api strzal
+            var requestC = NSMutableURLRequest(URL: NSURL(string: request.URL!.absoluteString)!)
+            let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookiesForURL(NSURL(string: RestApiManager.BASE_URL)!)
+            var myMutableString = ""
+            for cookie in cookies!{
+                myMutableString=myMutableString+(cookie as NSHTTPCookie).name + "=" + (cookie as NSHTTPCookie).value + ";"
+            }
+            requestC.setValue(myMutableString,forHTTPHeaderField: "Cookie")
+            let urlConnection = NSURLConnection(request: requestC,delegate:self)
+        }
+        return true
     }
-    */
+
+    func webViewDidStartLoad(_ webView: UIWebView!) {
+    }
+
+    func webViewDidFinishLoad(_ webView: UIWebView!) {
+        self.webView.stringByEvaluatingJavaScriptFromString("javascript:window.HtmlViewer.showHTML" +
+                "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');")
+    }
+
+    func webView(_ webView: UIWebView!, didFailLoadWithError error: NSError!) {
+    }
+
+    func connection(_ connection: NSURLConnection!, didReceiveResponse response: NSURLResponse!) {
+
+    }
+
+    func connection(_ connection: NSURLConnection!, didReceiveData data: NSData!) {
+        print("Logged Succesfully")
+        let controller  = ContainerViewController()
+        self.presentViewController(controller,animated:true,completion:nil)
+    }
+
 
 }
