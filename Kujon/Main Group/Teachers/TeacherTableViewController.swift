@@ -53,8 +53,11 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return self.lecturers.count
+         if(self.lecturers != nil){
+             return self.lecturers.count
+        }else {
+             return 0
+         }
     }
 
 

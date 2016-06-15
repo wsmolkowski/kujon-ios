@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="Kujon" customModuleProvider="target">
             <connections>
-                <outlet property="logoutButton" destination="MC6-th-e2q" id="eeL-T6-Abi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,7 +22,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MC6-th-e2q" customClass="FBSDKLoginButton">
-                    <rect key="frame" x="8" y="58" width="584" height="48"/>
+                    <rect key="frame" x="8" y="8" width="584" height="48"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="oV0-H3-VMM"/>
@@ -33,7 +32,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="MC6-th-e2q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="7l9-he-qHf"/>
-                <constraint firstItem="MC6-th-e2q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="topMargin" constant="50" id="CBu-Ia-93C"/>
+                <constraint firstItem="MC6-th-e2q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="topMargin" id="CBu-Ia-93C"/>
                 <constraint firstItem="avU-hR-Esz" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="CRJ-yB-xIm"/>
                 <constraint firstItem="avU-hR-Esz" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="UyO-tw-Ctm"/>
                 <constraint firstAttribute="bottom" secondItem="MC6-th-e2q" secondAttribute="bottom" constant="544" id="pqL-5Z-50O"/>

@@ -92,6 +92,7 @@ class KujonTests: XCTestCase, UsosesProviderDelegate
 
     func testLecturerProvider() {
         let provider = LecturerProvider()
+        provider.test = true
         provider.delegate = self
         provider.loadLecturers()
         assert(loaded)
