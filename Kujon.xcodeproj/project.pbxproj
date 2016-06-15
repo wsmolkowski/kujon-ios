@@ -12,6 +12,7 @@
 		4C0D807545C280601AAB48CB /* StudentProgramme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8A53D4F9C21CACEEE68A /* StudentProgramme.swift */; };
 		4C0D807A59B2A7B85B701839 /* SchoolPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D848E36F1CC2CC1086439 /* SchoolPath.swift */; };
 		4C0D8080C87DA774D0F11E71 /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D82A850712FD2215FA5B7 /* IntrinsicTableView.swift */; };
+		4C0D80C1B6E19F2B0AA40F67 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D83287522A1AF1593A071 /* UserDefaultsManager.swift */; };
 		4C0D80DAE7D9AB0E09AF4C8A /* JsonProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D871727A36DD3C1859A1D /* JsonProviderProtocol.swift */; };
 		4C0D810FF3D931149777D70D /* EntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D87685BCBC669C324D0AB /* EntryViewController.xib */; };
 		4C0D811BF9E0E00EDE9CA088 /* FacultieResposne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D80C3D710A319BFC49A74 /* FacultieResposne.swift */; };
@@ -148,6 +149,7 @@
 		4C0D82F54FFBE7F27B43632A /* RestApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestApiManager.swift; sourceTree = "<group>"; };
 		4C0D8312007436E128DE9972 /* JsonDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonDataLoader.swift; sourceTree = "<group>"; };
 		4C0D8322F7C59F7DA152C337 /* KujonResponseSchools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KujonResponseSchools.swift; sourceTree = "<group>"; };
+		4C0D83287522A1AF1593A071 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		4C0D83451742C0465B1D8D85 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		4C0D83563DFB6E74ACCE441B /* UserMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMenuItem.swift; sourceTree = "<group>"; };
 		4C0D836B4FBBDA6D4733502C /* Kujon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kujon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -294,6 +296,7 @@
 				4C0D8BB36BF78DE5A4F62127 /* Grade */,
 				4C0D82E8AD8C335169DAFCD8 /* Faculties */,
 				4C0D84F398465189005DB77E /* UserDataHolder.swift */,
+				4C0D83287522A1AF1593A071 /* UserDefaultsManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1162,6 +1165,7 @@
 				4C0D8BDDC17EAD30A73324A2 /* FacultiesProvider.swift in Sources */,
 				4C0D81849DAA7ACD6F8A1D47 /* JsonDataLoader.swift in Sources */,
 				4C0D8436123E61F0F64C9F9C /* UserDataHolder.swift in Sources */,
+				4C0D80C1B6E19F2B0AA40F67 /* UserDefaultsManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
