@@ -62,7 +62,7 @@ class UserDataHolder {
         return value
     }
 
-    private func standardSetter(inout value: String!, newValue: String, key: String) {
+    private func standardSetter(inout value: String!, newValue: String!, key: String) {
         value = newValue
         self.defaultsManager.writeStringToUserDefaults(value,key: key)
     }

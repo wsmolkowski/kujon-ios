@@ -17,6 +17,7 @@ class SettingsViewController: UIViewController,FBSDKLoginButtonDelegate {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(SettingsViewController.back))
         self.edgesForExtendedLayout = UIRectEdge.None
+        logoutButton.delegate = self
         // Do any additional setup after loading the view.
     }
 

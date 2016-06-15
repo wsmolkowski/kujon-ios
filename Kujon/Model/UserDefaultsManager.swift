@@ -18,8 +18,13 @@ class UserDefaultsManager {
         return self.userDefaults.stringForKey(key)
     }
 
-    func writeStringToUserDefaults(value:String,key:String){
-        self.userDefaults.setObject(value,forKey: key)
+    func writeStringToUserDefaults(value:String!,key:String){
+        if(value != nil){
+            self.userDefaults.setObject(value,forKey: key)
+        }else {
+            self.userDefaults.removeObjectForKey(key)
+        }
+
     }
 
     func readBooleanFromUserDefaults(key:String) ->Bool{
