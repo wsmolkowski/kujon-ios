@@ -9,7 +9,7 @@
 import UIKit
 
 protocol LeftMenuTableViewControllerDelegate {
-    func selectedMenuItem(menuController: LeftMenuTableViewController, menuItem: MenuItemWithController)
+    func selectedMenuItem(menuController: LeftMenuTableViewController, menuItem: MenuItemWithController,withDelegate:Bool)
 
 }
 
@@ -65,7 +65,7 @@ class LeftMenuTableViewController: UITableViewController {
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var menuItem = self.getCurrentMenuItem(indexPath)
-        self.delegate?.selectedMenuItem(self, menuItem: menuItem)
+        self.delegate?.selectedMenuItem(self, menuItem: menuItem,withDelegate: indexPath.section==0 )
     }
 
     private func getCurrentMenuItem(indexPath: NSIndexPath)->MenuItemWithController{

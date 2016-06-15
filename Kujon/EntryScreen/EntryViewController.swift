@@ -10,25 +10,19 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class EntryViewController: UIViewController, FBSDKLoginButtonDelegate  {
+class EntryViewController: UIViewController, FBSDKLoginButtonDelegate {
     let userDataHolder = UserDataHolder.sharedInstance
 
     @IBOutlet weak var loginButton: FBSDKLoginButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if (FBSDKAccessToken.currentAccessToken() == nil) {
-            print("Not loged in..")
-        } else {
-            print("Loged in...")
-            self.loadFBParams2()
-        }
-        
+
+
 
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         loginButton.delegate = self
-    
-        
+
 
     }
 
@@ -36,51 +30,50 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate  {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
 
     @IBAction func openList(sender: AnyObject) {
-        
-        let controller  = UsosesTableViewController()
-        self.presentViewController(controller,animated:true,completion:nil)
+
     }
-    
+
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
 
-        if error == nil
-        {
+        if error == nil {
             print("Load FB params on login success")
             self.loadFBParams2()
 
 //            self.openList(nil)
-        }
-        else
-        {
+        } else {
             print(error.localizedDescription)
         }
     }
-    
+
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         print("User Loged out...")
+        userDataHolder.userEmail = nil
+        userDataHolder.userToken = nil
     }
-    
+
     func loadFBParams() {
 
         let login = FBSDKLoginManager()
-        login.logInWithReadPermissions(["email", "public_profile"]){ result, error in
+        login.logInWithReadPermissions(["email", "public_profile"]) {
+            result, error in
             print("RESULT: '\(result)' ")
 
             if error != nil {
                 print("error")
-            }else if(result.isCancelled){
+            } else if (result.isCancelled) {
                 print("result cancelled")
-            }else{
+            } else {
                 print("success logInWithReadPermissions.")
                 print("Now requesting user details")
 
 
 
-                var fbRequest = FBSDKGraphRequest(graphPath:"me", parameters: ["fields": "email"]);
-                fbRequest.startWithCompletionHandler { (connection : FBSDKGraphRequestConnection!, result : AnyObject!, error : NSError!) -> Void in
+                var fbRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "email"]);
+                fbRequest.startWithCompletionHandler {
+                    (connection: FBSDKGraphRequestConnection!, result: AnyObject!, error: NSError!) -> Void in
 
                     if error == nil {
 
@@ -97,20 +90,30 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate  {
 
     func loadFBParams2() {
 
-        if (FBSDKAccessToken.currentAccessToken() != nil)
-        {
+        if (FBSDKAccessToken.currentAccessToken() != nil) {
             let token: String = FBSDKAccessToken.currentAccessToken().tokenString;
-            print( "Token : \(token) ")
+            print("Token : \(token) ")
             self.userDataHolder.userToken = token
 
         }
 
-         FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields":"first_name, last_name, email"]).startWithCompletionHandler { (connection, result, error) -> Void in
+        FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields": "first_name, last_name, email"]).startWithCompletionHandler {
+            (connection, result, error) -> Void in
             let strFirstName: String = (result.objectForKey("first_name") as? String)!
             let email: String = (result.objectForKey("email") as? String)!
             self.userDataHolder.userEmail = email
+            self.handleOpenCorrectController()
 
         }
     }
 
+    private func handleOpenCorrectController() {
+        var controller: UIViewController!
+        if (userDataHolder.loggedToUsosForCurrentEmail) {
+            controller = ContainerViewController()
+        } else {
+            controller = UsosesTableViewController()
+        }
+        self.presentViewController(controller, animated: true, completion: nil)
+    }
 }

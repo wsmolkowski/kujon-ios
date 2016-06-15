@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+class SettingsViewController: UIViewController,FBSDKLoginButtonDelegate {
+    let userDataHolder = UserDataHolder.sharedInstance
 
-class SettingsViewController: UIViewController {
-
+    @IBOutlet weak var logoutButton: FBSDKLoginButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithBackButton(self,selector: Selector("back"))
+        NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(SettingsViewController.back))
+        self.edgesForExtendedLayout = UIRectEdge.None
         // Do any additional setup after loading the view.
     }
 
@@ -24,16 +28,16 @@ class SettingsViewController: UIViewController {
     func back(){
         self.navigationController?.popViewControllerAnimated(true)
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
     }
-    */
+
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        userDataHolder.userEmail = nil
+        userDataHolder.userToken = nil
+        let controller  = EntryViewController()
+        self.presentViewController(controller,animated:true,completion:nil)
+    }
+
 
 }

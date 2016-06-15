@@ -15,16 +15,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     var window: UIWindow?
-
+    var userDataHolder  = UserDataHolder.sharedInstance
 
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         var value = FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        let entryController = EntryViewController()
+        var controller:UIViewController! = nil
+        if (FBSDKAccessToken.currentAccessToken() == nil) {
+            controller = EntryViewController()
+        } else {
+            if(userDataHolder.loggedToUsosForCurrentEmail){
+                controller = ContainerViewController()
+            }else{
+                controller =  UsosesTableViewController()
+            }
+        }
 
-        window!.rootViewController = entryController
+
+        window!.rootViewController = controller
         window!.makeKeyAndVisible()
     return value
     }

@@ -53,10 +53,13 @@ class ContainerViewController: UIViewController, LeftMenuTableViewControllerDele
 
     }
 
-    func selectedMenuItem(menuController: LeftMenuTableViewController, menuItem: MenuItemWithController) {
+    func selectedMenuItem(menuController: LeftMenuTableViewController, menuItem: MenuItemWithController, withDelegate: Bool) {
         if let controller = menuItem.returnViewControllerFunction()() {
             self.toggleLeftPanel()
-            (controller as? NavigationDelegate)?.setNavigationProtocol(self)
+            if (withDelegate) {
+                (controller as? NavigationDelegate)?.setNavigationProtocol(self)
+                self.centerNavigationController.viewControllers.removeLast()
+            }
             self.centerNavigationController.pushViewController(controller, animated: true)
         }
     }

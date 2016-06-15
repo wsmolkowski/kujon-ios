@@ -11,6 +11,7 @@ import UIKit
 class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnectionDataDelegate {
 
     @IBOutlet weak var webView: UIWebView!
+
     let userDataHolder = UserDataHolder.sharedInstance
 
 
@@ -72,7 +73,7 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
     func connection(_ connection: NSURLConnection!, didReceiveData data: NSData!) {
         print("Logged Succesfully")
         //TODO TUTAJ BY PEWNIE SIE PRZYDALO DOLOZYC JAKIES PERSIST TYCH TOKENOW FACEBOOKOWYCH
-
+        userDataHolder.loggedToUsosForCurrentEmail = true
         let controller  = ContainerViewController()
         self.presentViewController(controller,animated:true,completion:nil)
     }

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="Kujon" customModuleProvider="target">
             <connections>
+                <outlet property="logoutButton" destination="MC6-th-e2q" id="eeL-T6-Abi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,15 +19,31 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To Jest Ekran Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avU-hR-Esz">
                     <rect key="frame" x="215" y="289" width="171" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MC6-th-e2q" customClass="FBSDKLoginButton">
+                    <rect key="frame" x="8" y="58" width="584" height="48"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="oV0-H3-VMM"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="MC6-th-e2q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="7l9-he-qHf"/>
+                <constraint firstItem="MC6-th-e2q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="topMargin" constant="50" id="CBu-Ia-93C"/>
                 <constraint firstItem="avU-hR-Esz" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="CRJ-yB-xIm"/>
                 <constraint firstItem="avU-hR-Esz" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="UyO-tw-Ctm"/>
+                <constraint firstAttribute="bottom" secondItem="MC6-th-e2q" secondAttribute="bottom" constant="544" id="pqL-5Z-50O"/>
+                <constraint firstItem="MC6-th-e2q" firstAttribute="centerX" secondItem="avU-hR-Esz" secondAttribute="centerX" id="rwk-9R-Z8M"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="pqL-5Z-50O"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>
