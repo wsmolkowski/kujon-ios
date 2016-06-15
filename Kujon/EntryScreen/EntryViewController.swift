@@ -26,7 +26,6 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate  {
         
 
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
-        loginButton.center = self.view.center
         loginButton.delegate = self
     
         
@@ -110,7 +109,7 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate  {
             let strFirstName: String = (result.objectForKey("first_name") as? String)!
             let email: String = (result.objectForKey("email") as? String)!
             self.userDataHolder.userEmail = email
-            print( "Welcome, \(strFirstName) \(email)")
+
         }
     }
 
