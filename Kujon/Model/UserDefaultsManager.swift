@@ -19,18 +19,14 @@ class UserDefaultsManager {
     }
 
     func writeStringToUserDefaults(value:String,key:String){
-        self.userDefaults.setObject(value,key)
+        self.userDefaults.setObject(value,forKey: key)
     }
 
     func readBooleanFromUserDefaults(key:String) ->Bool{
-        if let b = self.userDefaults.boolForKey(key){
-            return b
-        }else {
-            return false
-        }
+        return self.userDefaults.boolForKey(key)
     }
 
     func writeBoolToUserDefaults(value:Bool,key:String){
-        self.userDefaults.setBool(value,key)
+        self.userDefaults.setBool(value,forKey: key)
     }
 }
