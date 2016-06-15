@@ -44,25 +44,8 @@ class UsosesTableViewController: UITableViewController,UsosesProviderDelegate {
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell :UsosTableViewCell = tableView.dequeueReusableCellWithIdentifier(UsosCellIdentifier,forIndexPath: indexPath) as! UsosTableViewCell
         var usos = usosList[indexPath.row] as Usos
-
         (cell as! UsosTableViewCell).imagePlace?.image = nil
-        let url = NSURL(string: usos.image)
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithURL(url!, completionHandler: {
-            data, response, error -> Void in
-            if(data != nil ){
-                let image = UIImage(data: data!)
-                dispatch_async(dispatch_get_main_queue()) {
-                    if var cell = self.tableView.cellForRowAtIndexPath(indexPath){
-                        (cell as! UsosTableViewCell).imagePlace?.image = image
-                        cell.setNeedsLayout()
-                    }
-
-                }
-            }
-        })
-        task.resume()
-
+        self.loadImage(usos.image,indexPath: indexPath)
         (cell as! UsosTableViewCell).label.text = usos.name
 
         return cell
@@ -84,5 +67,22 @@ class UsosesTableViewController: UITableViewController,UsosesProviderDelegate {
     func onErrorOccurs() {
     }
 
+    private func loadImage(urlString:String,indexPath:NSIndexPath){
+        let url = NSURL(string: urlString)
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url!, completionHandler: {
+            data, response, error -> Void in
+            if(data != nil ){
+                let image = UIImage(data: data!)
+                dispatch_async(dispatch_get_main_queue()) {
+                    if var cell = self.tableView.cellForRowAtIndexPath(indexPath){
+                        (cell as! UsosTableViewCell).imagePlace?.image = image
+                        cell.setNeedsLayout()
+                    }
 
+                }
+            }
+        })
+        task.resume()
+    }
 }
