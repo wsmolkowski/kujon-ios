@@ -7,7 +7,7 @@ import Foundation
 
 
 protocol LecturerProviderProtocol:JsonProviderProtocol{
-    typealias T = LecturersResponse
+    associatedtype T = LecturersResponse
     func loadLecturers()
 }
 

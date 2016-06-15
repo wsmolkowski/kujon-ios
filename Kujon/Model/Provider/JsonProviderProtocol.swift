@@ -7,7 +7,7 @@ import Foundation
 import Decodable
 
 protocol JsonProviderProtocol {
-    typealias T:Decodable
+    associatedtype T:Decodable
 
 }
 extension JsonProviderProtocol{

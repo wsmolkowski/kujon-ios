@@ -6,9 +6,11 @@
 import Foundation
 
 protocol UserDetailsProviderProtocol: JsonProviderProtocol {
-    typealias T = UserDetailsResponse
+    associatedtype T = UserDetailsResponse
+
     func loadUserDetail()
-    func loadUserDetail(id:String)
+
+    func loadUserDetail(id: String)
 }
 
 protocol UserDetailsProviderDelegate: ErrorResponseProtocol {
@@ -16,22 +18,23 @@ protocol UserDetailsProviderDelegate: ErrorResponseProtocol {
 
 }
 
-class UserDetailsProvider: UserDetailsProviderProtocol {
+class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
 
-    static let sharedInstance  = UserDetailsProvider()
+    static let sharedInstance = UserDetailsProvider()
 
     var delegate: UserDetailsProviderDelegate!
 
 
     func loadUserDetail() {
-        do {
-            let jsonData = try JsonDataLoader.loadJson("User")
-            let userDetailR = try! self.changeJsonToResposne(jsonData)
-            delegate?.onUserDetailLoaded(userDetailR.data)
-        } catch {
-            delegate?.onErrorOccurs()
-        }
+        self.makeHTTPAuthenticatedGetRequest({
+            json in
+            let user = try! self.changeJsonToResposne(json)
+            self.delegate?.onUserDetailLoaded(user.data)
+        }, onError: {self.delegate?.onErrorOccurs()})
+    }
 
+    override func getMyUrl() -> String {
+        return baseURL + "/users"
     }
 
     func loadUserDetail(id: String) {
@@ -43,6 +46,5 @@ class UserDetailsProvider: UserDetailsProviderProtocol {
             delegate?.onErrorOccurs()
         }
     }
-
 }
 

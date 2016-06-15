@@ -66,7 +66,7 @@ class UserTableViewController: UITableViewController, NavigationDelegate, UserDe
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch (section) {
-        case 0: return 1
+        case 0: return userDetails == nil ? 0 : 1
         case 1: return userDetails == nil ? 0 : userDetails.studentProgrammes.count
         case 2: return userFaculties == nil ? 0 : userFaculties.count
         default: return 0

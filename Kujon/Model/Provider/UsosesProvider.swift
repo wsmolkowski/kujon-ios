@@ -19,7 +19,6 @@ protocol UsosesProviderDelegate: ErrorResponseProtocol {
 class UsosesProvider :RestApiManager, UsosProviderProtocol {
     var delegate: UsosesProviderDelegate!
 
-
     func loadUsoses() {
         self.makeHTTPGetRequest({
             json in

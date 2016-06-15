@@ -9,10 +9,13 @@ typealias onSucces = (NSData!) -> Void
 typealias onErrorOccurs = () -> Void
 
 class RestApiManager {
-    static let BASE_URL:String = "https://api.kujon.mobi"
+    static let BASE_URL: String = "https://api.kujon.mobi"
+    private let EMAIL_HEADER = "X-Kujonmobiemail"
+    private let TOKEN_HEADER = "X-Kujonmobitoken"
+    private var userDataHolder = UserDataHolder.sharedInstance
+
     var test = false
     let baseURL = BASE_URL
-    var specificUrl = ""
 
     func makeHTTPGetRequest(onCompletion: onSucces, onError: onErrorOccurs) {
         if (test) {
@@ -20,8 +23,24 @@ class RestApiManager {
         } else {
             let request = NSMutableURLRequest(URL: NSURL(string: getMyUrl())!)
             let session = NSURLSession.sharedSession()
-            let task = session.dataTaskWithRequest(request, completionHandler:creteCompletionHanlder(onCompletion,onError: onError))
+            let task = session.dataTaskWithRequest(request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
             task.resume()
+        }
+    }
+
+    func makeHTTPAuthenticatedGetRequest(onCompletion: onSucces, onError: onErrorOccurs) {
+        if (test) {
+            self.handelTestCase(onCompletion)
+        } else {
+            if (userDataHolder.loggedToUsosForCurrentEmail) {
+                var request = NSMutableURLRequest(URL: NSURL(string: getMyUrl())!)
+                let session = NSURLSession.sharedSession()
+                self.addHeadersToRequest(&request)
+                let task = session.dataTaskWithRequest(request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
+                task.resume()
+            } else {
+                onError()
+            }
         }
     }
 
@@ -29,17 +48,21 @@ class RestApiManager {
         return baseURL
     }
 
-    private func creteCompletionHanlder(onCompletion: onSucces, onError: onErrorOccurs)-> (NSData?, NSURLResponse?, NSError?) -> Void{
+    private func addHeadersToRequest(inout request: NSMutableURLRequest) {
+        request.addValue(userDataHolder.userEmail, forHTTPHeaderField: EMAIL_HEADER)
+        request.addValue(userDataHolder.userToken, forHTTPHeaderField: TOKEN_HEADER)
+    }
+
+    private func creteCompletionHanlder(onCompletion: onSucces, onError: onErrorOccurs) -> (NSData?, NSURLResponse?, NSError?) -> Void {
         return {
             data, response, error -> Void in
-            if(error != nil){
+            if (error != nil) {
                 onError()
-            }else {
+            } else {
                 onCompletion(data!)
             }
         }
     }
-
 
 
     private func handelTestCase(onCompletion: onSucces) {
@@ -48,10 +71,13 @@ class RestApiManager {
         case baseURL + "/usoses":
             string = "Usoses"
             break;
+        case baseURL + "/users":
+            string = "User"
+            break;
         default: string = "Usoses"
         }
         do {
-            let jsonData = try  JsonDataLoader.loadJson(string)
+            let jsonData = try JsonDataLoader.loadJson(string)
             onCompletion(jsonData)
         } catch {
 

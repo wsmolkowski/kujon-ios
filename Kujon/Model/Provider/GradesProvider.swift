@@ -6,7 +6,7 @@
 import Foundation
 
 protocol GradesProviderProtocol:JsonProviderProtocol {
-    typealias T=GradeResponse
+    associatedtype T=GradeResponse
     func loadGrades()
 }
 

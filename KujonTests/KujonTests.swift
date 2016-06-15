@@ -48,7 +48,7 @@ class KujonTests: XCTestCase, UsosesProviderDelegate
 
     func testUserDetailsProvider() throws {
         let provider = UserDetailsProvider()
-
+        provider.test = true
         provider.delegate = self
         provider.loadUserDetail()
         assert(loaded)

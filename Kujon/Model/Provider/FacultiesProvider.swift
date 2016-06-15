@@ -6,7 +6,7 @@
 import Foundation
 
 protocol FacultiesProviderProtocol: JsonProviderProtocol {
-    typealias T = FacultieResposne
+    associatedtype T = FacultieResposne
 
     func loadFaculties()
 }
