@@ -12,7 +12,7 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
     private let TeachCellId = "teacherCellId"
     weak var delegate: NavigationMenuProtocol! = nil
     let lecturerProvider = LecturerProvider.sharedInstance
-    private var lecturers :Array<SimpleUser>! = nil
+    private var lecturers: Array<SimpleUser>! = nil
 
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {
         self.delegate = delegate
@@ -21,7 +21,7 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(TeacherTableViewController.openDrawer))
-        self.tableView.registerNib(UINib(nibName: "TeacherViewCell",bundle: nil),forCellReuseIdentifier: TeachCellId)
+        self.tableView.registerNib(UINib(nibName: "TeacherViewCell", bundle: nil), forCellReuseIdentifier: TeachCellId)
         lecturerProvider.delegate = self
         lecturerProvider.loadLecturers()
 
@@ -53,17 +53,17 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         if(self.lecturers != nil){
-             return self.lecturers.count
-        }else {
-             return 0
-         }
+        if (self.lecturers != nil) {
+            return self.lecturers.count
+        } else {
+            return 0
+        }
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:TeacherViewCell = tableView.dequeueReusableCellWithIdentifier(TeachCellId, forIndexPath: indexPath) as! TeacherViewCell
-        let myUser:SimpleUser = self.lecturers[indexPath.row]
+        let cell: TeacherViewCell = tableView.dequeueReusableCellWithIdentifier(TeachCellId, forIndexPath: indexPath) as! TeacherViewCell
+        let myUser: SimpleUser = self.lecturers[indexPath.row]
         cell.teacherNameLabel.text = myUser.firstName + " " + myUser.lastName
 
         cell.teacherGoButton.addTarget(self, action: "connected:", forControlEvents: .TouchUpInside)
@@ -71,17 +71,26 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
         return cell
     }
 
-    func connected(sender: UIButton){
+    func connected(sender: UIButton) {
         let buttonTag = sender.tag
-        let myUser:SimpleUser = self.lecturers[buttonTag as! Int]
+        if let myUser: SimpleUser = self.lecturers[buttonTag as Int] {
+            let currentTeacher  = CurrentTeacherHolder.sharedInstance
+            currentTeacher.currentTeacher = myUser
+            let controller = TeacherDetailTableViewController()
+
+
+            self.navigationController?.pushViewController(controller, animated: true)
+
+
+        }
     }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
+/*
+// Override to support conditional editing of the table view.
+override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    // Return false if you do not want the specified item to be editable.
+    return true
+}
+*/
 
     /*
     // Override to support editing the table view.

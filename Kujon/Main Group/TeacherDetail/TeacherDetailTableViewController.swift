@@ -8,44 +8,76 @@
 
 import UIKit
 
-class TeacherDetailTableViewController: UITableViewController {
-        
+class TeacherDetailTableViewController: UITableViewController, UserDetailsProviderDelegate {
+    private let TeacherDetailViewId = "teacherDetailViewId"
+    var teacherId: String! = nil
+    private let userDetailsProvider = UserDetailsProvider.sharedInstance
+    private var userDetails: UserDetail! = nil
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        let currentTeacher = CurrentTeacherHolder.sharedInstance
+        NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(TeacherDetailTableViewController.back))
+        self.tableView.registerNib(UINib(nibName: "TeacherDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: TeacherDetailViewId)
+        userDetailsProvider.delegate = self
+        userDetailsProvider.loadUserDetail(currentTeacher.currentTeacher.id!)
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func back(){
+        self.navigationController?.popViewControllerAnimated(true)
     }
 
-    // MARK: - Table view data source
+    func onUserDetailLoaded(userDetails: UserDetail) {
+        self.userDetails = userDetails
+        self.tableView.reloadData()
+    }
+
+    func onErrorOccurs() {
+    }
+
+
+    @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        switch (indexPath.section) {
+        case 0: return 400
+            break;
+        default: return 50
+        }
+    }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return userDetails == nil ? 0 : 1
     }
 
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
-        // Configure the cell...
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell: UITableViewCell!
+        switch (indexPath.section) {
+        case 0: cell = self.configureTeacherDetails(indexPath)
+            break;
+        default: cell = self.configureTeacherDetails(indexPath)
+        }
 
         return cell
     }
-    */
+
+    private func configureTeacherDetails(indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(TeacherDetailViewId, forIndexPath: indexPath) as! TeacherDetailsTableViewCell
+
+        cell.teacherNameLabel.text = self.userDetails.firstName + " " + self.userDetails.lastName
+        cell.teacherStatusLabel.text = self.userDetails.staffStatus
+        cell.teacherEmailLabel.text = self.userDetails.email
+        cell.teacherConsultationLabel.text = self.userDetails.officeHours
+        cell.teacherHomepageLabel.text = self.userDetails.homepage
+        return cell
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -91,5 +123,5 @@ class TeacherDetailTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
+
 }
