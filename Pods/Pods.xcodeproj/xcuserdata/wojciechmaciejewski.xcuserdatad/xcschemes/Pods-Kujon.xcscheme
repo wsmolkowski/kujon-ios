@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "50D209F4935305BCA79C6FE9335C8672"
+               BlueprintIdentifier = "27FFCF889AAD18AB6EBA78558107F792"
                BuildableName = "Pods_Kujon.framework"
                BlueprintName = "Pods-Kujon"
                ReferencedContainer = "container:Pods.xcodeproj">

@@ -77,6 +77,9 @@ class RestApiManager {
         case baseURL + "/lecturers":
             string = "Lecturers"
             break;
+        case baseURL + "/faculties":
+            string = "FacultiesDetail"
+            break;
         default: string = "Usoses"
         }
         do {
@@ -86,6 +89,5 @@ class RestApiManager {
 
         }
     }
-
 
 }

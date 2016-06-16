@@ -15,18 +15,22 @@ protocol FacultiesProviderDelegate: ErrorResponseProtocol {
     func onFacultiesLoaded(list: Array<Facultie>)
 }
 
-class FacultiesProvider: FacultiesProviderProtocol {
+class FacultiesProvider: RestApiManager, FacultiesProviderProtocol {
     static let sharedInstance = FacultiesProvider()
     var delegate: FacultiesProviderDelegate! = nil
 
+
+    override func getMyUrl() -> String {
+        return baseURL+"/faculties"
+    }
+
     func loadFaculties() {
-        do {
-            let jsonData = try JsonDataLoader.loadJson("FacultiesDetail")
-            let faculties = try self.changeJsonToResposne(jsonData)
-            delegate?.onFacultiesLoaded(faculties.list)
-        } catch {
-            delegate?.onErrorOccurs()
-        }
+        self.makeHTTPAuthenticatedGetRequest({
+            json in
+            let faculties = try! self.changeJsonToResposne(json)
+            self.delegate?.onFacultiesLoaded(faculties.list)
+        }, onError: { self.delegate?.onErrorOccurs() })
+
 
     }
 

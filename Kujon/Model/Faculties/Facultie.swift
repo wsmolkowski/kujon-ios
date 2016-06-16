@@ -40,7 +40,7 @@ struct Facultie {
     let name: String
     let postalAdress: String
     let facultyId: String
-    let homePageUrl: String
+    let homePageUrl: String!
     let schoolPath: Array<SchoolPath>
     let phoneNumber: Array<String>
 }

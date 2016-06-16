@@ -17,7 +17,6 @@ class UsosesTableViewController: UITableViewController,UsosesProviderDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Wybierz Uczelnię"
-//        self.tableView.registerClass(UsosTableViewCell.self, forCellReuseIdentifier:UsosCellIdentifier)
         self.tableView.registerNib(UINib(nibName: "UsosTableViewCell",bundle: nil),forCellReuseIdentifier: UsosCellIdentifier)
         self.usosProvider.delegate = self
         self.usosProvider.loadUsoses()
