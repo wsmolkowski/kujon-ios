@@ -24,8 +24,9 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
 
     var delegate: UserDetailsProviderDelegate!
 
-
+    private var endpoint:String = "/users"
     func loadUserDetail() {
+        endpoint = "/users"
         self.makeHTTPAuthenticatedGetRequest({
             json in
             let user = try! self.changeJsonToResposne(json)
@@ -34,11 +35,12 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
     }
 
     override func getMyUrl() -> String {
-        return baseURL + "/users"
+        return baseURL + endpoint
     }
 
     func loadUserDetail(id: String) {
         do {
+            endpoint = "/lecturers/"+id
             let jsonData = try JsonDataLoader.loadJson("LecturerDetails")
             let userDetailR = try! self.changeJsonToResposne(jsonData)
             delegate?.onUserDetailLoaded(userDetailR.data)

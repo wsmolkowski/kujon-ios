@@ -19,7 +19,7 @@ struct UserDetail {
     let studentProgrammes: Array<StudentProgramme>
     let id: String
     let studentNumber: String!
-    let room: String!
+    let room: Room!
     let courseEditionsConducted: Array<CourseEdition>!
     let emailUrl: String
     let studentStatus: String
@@ -27,7 +27,7 @@ struct UserDetail {
     let officeHours: String!
     let usosName: String?
     let homepage: String!
-    let employmentPosition: Array<String>!
+    let employmentPosition: Array<EmploymentPosition>!
     let hasEmail: Bool
     let usosId: String?
     let hasPhoto: Bool
