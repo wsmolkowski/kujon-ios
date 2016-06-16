@@ -10,10 +10,13 @@ import UIKit
 
 class TeacherDetailsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var teacherInterestLabel: UILabel!
     @IBOutlet weak var teacherImageView: UIImageView!
     @IBOutlet weak var teacherNameLabel: UILabel!
     @IBOutlet weak var teacherStatusLabel: UILabel!
+    @IBOutlet weak var teacherEmailLabel: UILabel!
     @IBOutlet weak var teacherConsultationLabel: UILabel!
+    @IBOutlet weak var teacherHomepageLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
