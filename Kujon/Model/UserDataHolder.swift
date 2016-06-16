@@ -55,7 +55,7 @@ class UserDataHolder {
     }
 
 
-    private func standardGetter(inout value: String!, key: String) -> String {
+    private func standardGetter(inout value: String!, key: String) -> String! {
         if (value == nil) {
             value = self.defaultsManager.readStringFromUserDefaults(key)
         }

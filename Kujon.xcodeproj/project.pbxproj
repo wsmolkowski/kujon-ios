@@ -11,7 +11,6 @@
 		395726529DA26FEF655FEFAC /* Pods_KujonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C865AA5DFAADA9B9D2A08520 /* Pods_KujonUITests.framework */; };
 		4C0D807545C280601AAB48CB /* StudentProgramme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8A53D4F9C21CACEEE68A /* StudentProgramme.swift */; };
 		4C0D807A59B2A7B85B701839 /* SchoolPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D848E36F1CC2CC1086439 /* SchoolPath.swift */; };
-		4C0D8080C87DA774D0F11E71 /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D82A850712FD2215FA5B7 /* IntrinsicTableView.swift */; };
 		4C0D80C1B6E19F2B0AA40F67 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D83287522A1AF1593A071 /* UserDefaultsManager.swift */; };
 		4C0D80DAE7D9AB0E09AF4C8A /* JsonProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D871727A36DD3C1859A1D /* JsonProviderProtocol.swift */; };
 		4C0D810FF3D931149777D70D /* EntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D87685BCBC669C324D0AB /* EntryViewController.xib */; };
@@ -78,6 +77,10 @@
 		4C0D8EDC5E5F870381B4C21D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D83B44B564B4E55F64BE8 /* LaunchScreen.storyboard */; };
 		4C0D8EE504A6F04F1B414751 /* Schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8F0FD29DE7CF921001CE /* Schedule.json */; };
 		527B39B81D117B800028BCF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527B39B71D117B800028BCF9 /* Assets.xcassets */; };
+		527B39BB1D12A0260028BCF9 /* TeacherDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527B39B91D12A0260028BCF9 /* TeacherDetailTableViewController.swift */; };
+		527B39BC1D12A0260028BCF9 /* TeacherDetailTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527B39BA1D12A0260028BCF9 /* TeacherDetailTableViewController.xib */; };
+		527B39BF1D12A08D0028BCF9 /* TeacherDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527B39BD1D12A08D0028BCF9 /* TeacherDetailsTableViewCell.swift */; };
+		527B39C01D12A08D0028BCF9 /* TeacherDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527B39BE1D12A08D0028BCF9 /* TeacherDetailsTableViewCell.xib */; };
 		5282840A1D08499000A602B4 /* UsosesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528284091D08499000A602B4 /* UsosesTableViewController.swift */; };
 		5282840D1D084D7200A602B4 /* UsosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5282840B1D084D7200A602B4 /* UsosTableViewCell.swift */; };
 		5282840E1D084D7200A602B4 /* UsosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5282840C1D084D7200A602B4 /* UsosTableViewCell.xib */; };
@@ -144,7 +147,6 @@
 		4C0D818C198D3E8ECD02EE91 /* LecturerProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturerProvider.swift; sourceTree = "<group>"; };
 		4C0D8199588435043DF62A80 /* UserDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetail.swift; sourceTree = "<group>"; };
 		4C0D8202EC00EB52392FC17B /* GradeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeResponse.swift; sourceTree = "<group>"; };
-		4C0D82A850712FD2215FA5B7 /* IntrinsicTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
 		4C0D82CBCF84CAB5E56A1F3C /* Lecturers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Lecturers.json; sourceTree = "<group>"; };
 		4C0D82F54FFBE7F27B43632A /* RestApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestApiManager.swift; sourceTree = "<group>"; };
 		4C0D8312007436E128DE9972 /* JsonDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonDataLoader.swift; sourceTree = "<group>"; };
@@ -208,6 +210,10 @@
 		4C0D8FBDE18C4279900F73A1 /* GradesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradesProvider.swift; sourceTree = "<group>"; };
 		4C0D8FDD772870E1BD0EF952 /* Facultie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facultie.swift; sourceTree = "<group>"; };
 		527B39B71D117B800028BCF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		527B39B91D12A0260028BCF9 /* TeacherDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherDetailTableViewController.swift; sourceTree = "<group>"; };
+		527B39BA1D12A0260028BCF9 /* TeacherDetailTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeacherDetailTableViewController.xib; sourceTree = "<group>"; };
+		527B39BD1D12A08D0028BCF9 /* TeacherDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		527B39BE1D12A08D0028BCF9 /* TeacherDetailsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeacherDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		528284091D08499000A602B4 /* UsosesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsosesTableViewController.swift; sourceTree = "<group>"; };
 		5282840B1D084D7200A602B4 /* UsosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsosTableViewCell.swift; sourceTree = "<group>"; };
 		5282840C1D084D7200A602B4 /* UsosTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UsosTableViewCell.xib; sourceTree = "<group>"; };
@@ -316,9 +322,18 @@
 				4C0D8AC64D4ECAED91008202 /* Main Group */,
 				0A8B795B1D0C81E100CF6783 /* Bridging-Header.h */,
 				4C0D8B22EBFA522F154A82EF /* Global Extensions */,
-				4C0D89FA9CECBA8553B66AA2 /* Views */,
 			);
 			path = Kujon;
+			sourceTree = "<group>";
+		};
+		4C0D82C7795D7EB1A1FA4279 /* TeacherDetail */ = {
+			isa = PBXGroup;
+			children = (
+				527B39B91D12A0260028BCF9 /* TeacherDetailTableViewController.swift */,
+				527B39BA1D12A0260028BCF9 /* TeacherDetailTableViewController.xib */,
+				4C0D84A4A7CDF5E3AEAE716C /* Views */,
+			);
+			path = TeacherDetail;
 			sourceTree = "<group>";
 		};
 		4C0D82E8AD8C335169DAFCD8 /* Faculties */ = {
@@ -369,6 +384,15 @@
 				4C0D87685BCBC669C324D0AB /* EntryViewController.xib */,
 			);
 			path = EntryScreen;
+			sourceTree = "<group>";
+		};
+		4C0D84A4A7CDF5E3AEAE716C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				527B39BD1D12A08D0028BCF9 /* TeacherDetailsTableViewCell.swift */,
+				527B39BE1D12A08D0028BCF9 /* TeacherDetailsTableViewCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		4C0D84DEDAAEAFE7AA9943F6 /* Products */ = {
@@ -482,14 +506,6 @@
 			path = Share;
 			sourceTree = "<group>";
 		};
-		4C0D89FA9CECBA8553B66AA2 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				4C0D82A850712FD2215FA5B7 /* IntrinsicTableView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		4C0D8AC64D4ECAED91008202 /* Main Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -505,6 +521,7 @@
 				4C0D854E52E691438A34E0B1 /* Settings */,
 				4C0D894ECCF8686ED62F6BAD /* Share */,
 				4C0D87F830454DB0D2206F16 /* Send Opinion */,
+				4C0D82C7795D7EB1A1FA4279 /* TeacherDetail */,
 			);
 			path = "Main Group";
 			sourceTree = "<group>";
@@ -807,6 +824,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				527B39BC1D12A0260028BCF9 /* TeacherDetailTableViewController.xib in Resources */,
 				4C0D89623E9B561730C53F9A /* Main.storyboard in Resources */,
 				52AF77A21D09590B0058979A /* SecondLoginViewController.xib in Resources */,
 				52AF77E01D0EB4420058979A /* TeacherTableViewController.xib in Resources */,
@@ -817,6 +835,7 @@
 				4C0D8D641FD73F7E585E72B6 /* User.json in Resources */,
 				52AF77C81D0AD15A0058979A /* GradesViewController.xib in Resources */,
 				4C0D8EE504A6F04F1B414751 /* Schedule.json in Resources */,
+				527B39C01D12A08D0028BCF9 /* TeacherDetailsTableViewCell.xib in Resources */,
 				52AF77D81D0AD83A0058979A /* ShareViewController.xib in Resources */,
 				4C0D8665D94A08D7002946B8 /* Courses.json in Resources */,
 				52AF77D41D0AD80A0058979A /* SendOpinionViewController.xib in Resources */,
@@ -1154,7 +1173,6 @@
 				4C0D853633AEE49F996B454C /* CourseEdition.swift in Sources */,
 				4C0D8A432E3EC531C1FE79D7 /* UIColorExtensions.swift in Sources */,
 				4C0D82084D092C855DB2FB09 /* RestApiManager.swift in Sources */,
-				4C0D8080C87DA774D0F11E71 /* IntrinsicTableView.swift in Sources */,
 				4C0D8BBDB59E0DEB6B91BD0E /* UserDetailView.swift in Sources */,
 				4C0D886897D95F586FB998CF /* Facultie.swift in Sources */,
 				4C0D863F610BFD74A4C029CC /* SchoolName.swift in Sources */,
@@ -1162,9 +1180,11 @@
 				4C0D8809E711694A3F913024 /* SchoolStats.swift in Sources */,
 				4C0D818BA0EBA18711EA841E /* LogoUrls.swift in Sources */,
 				4C0D811BF9E0E00EDE9CA088 /* FacultieResposne.swift in Sources */,
+				527B39BB1D12A0260028BCF9 /* TeacherDetailTableViewController.swift in Sources */,
 				4C0D8BDDC17EAD30A73324A2 /* FacultiesProvider.swift in Sources */,
 				4C0D81849DAA7ACD6F8A1D47 /* JsonDataLoader.swift in Sources */,
 				4C0D8436123E61F0F64C9F9C /* UserDataHolder.swift in Sources */,
+				527B39BF1D12A08D0028BCF9 /* TeacherDetailsTableViewCell.swift in Sources */,
 				4C0D80C1B6E19F2B0AA40F67 /* UserDefaultsManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
