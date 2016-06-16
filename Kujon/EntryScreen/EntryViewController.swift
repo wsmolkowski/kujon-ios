@@ -10,9 +10,9 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class EntryViewController: UIViewController, FBSDKLoginButtonDelegate {
-    let userDataHolder = UserDataHolder.sharedInstance
+class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,OnFacebookCredentailSaved {
 
+    let facebookManager = FacebookManager.sharedInstance
     @IBOutlet weak var loginButton: FBSDKLoginButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate {
 
         if error == nil {
             print("Load FB params on login success")
-            self.loadFBParams2()
+            facebookManager.loadFBParams(self)
 
 //            self.openList(nil)
         } else {
@@ -50,70 +50,19 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         print("User Loged out...")
-        userDataHolder.userEmail = nil
-        userDataHolder.userToken = nil
+        facebookManager.logout()
     }
 
-    func loadFBParams() {
-
-        let login = FBSDKLoginManager()
-        login.logInWithReadPermissions(["email", "public_profile"]) {
-            result, error in
-            print("RESULT: '\(result)' ")
-
-            if error != nil {
-                print("error")
-            } else if (result.isCancelled) {
-                print("result cancelled")
-            } else {
-                print("success logInWithReadPermissions.")
-                print("Now requesting user details")
 
 
-
-                var fbRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "email"]);
-                fbRequest.startWithCompletionHandler {
-                    (connection: FBSDKGraphRequestConnection!, result: AnyObject!, error: NSError!) -> Void in
-
-                    if error == nil {
-
-                        print("User Info With Email : \(result)")
-                    } else {
-
-                        print("Error Getting Info \(error)");
-
-                    }
-                }
-            }
-        }
-    }
-
-    func loadFBParams2() {
-
-        if (FBSDKAccessToken.currentAccessToken() != nil) {
-            let token: String = FBSDKAccessToken.currentAccessToken().tokenString;
-            print("Token : \(token) ")
-            self.userDataHolder.userToken = token
-
-        }
-
-        FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields": "first_name, last_name, email"]).startWithCompletionHandler {
-            (connection, result, error) -> Void in
-            let strFirstName: String = (result.objectForKey("first_name") as? String)!
-            let email: String = (result.objectForKey("email") as? String)!
-            self.userDataHolder.userEmail = email
-            self.handleOpenCorrectController()
-
-        }
-    }
-
-    private func handleOpenCorrectController() {
+    func onFacebookCredentailSaved(isLogged: Bool) {
         var controller: UIViewController!
-        if (userDataHolder.loggedToUsosForCurrentEmail) {
+        if (isLogged) {
             controller = ContainerViewController()
         } else {
             controller = UsosesTableViewController()
         }
         self.presentViewController(controller, animated: true, completion: nil)
     }
+
 }

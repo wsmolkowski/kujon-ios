@@ -9,21 +9,22 @@
 import UIKit
 import FBSDKLoginKit
 class SettingsViewController: UIViewController,FBSDKLoginButtonDelegate {
-    let userDataHolder = UserDataHolder.sharedInstance
+    let faceBookManager = FacebookManager.sharedInstance
 
-    @IBOutlet weak var logoutButton: FBSDKLoginButton!
     
+    
+    @IBOutlet weak var logOutButton: FBSDKLoginButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(SettingsViewController.back))
         self.edgesForExtendedLayout = UIRectEdge.None
-        logoutButton.delegate = self
-        // Do any additional setup after loading the view.
+        logOutButton.delegate = self
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
 
     func back(){
@@ -34,8 +35,7 @@ class SettingsViewController: UIViewController,FBSDKLoginButtonDelegate {
     }
 
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        userDataHolder.userEmail = nil
-        userDataHolder.userToken = nil
+        faceBookManager.logout()
         let controller  = EntryViewController()
         self.presentViewController(controller,animated:true,completion:nil)
     }
