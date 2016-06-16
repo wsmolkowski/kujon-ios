@@ -30,11 +30,6 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
     }
     
 
-    @IBAction func goDeeper(sender: AnyObject) {
-        let controller  = ContainerViewController()
-
-        self.presentViewController(controller,animated:true,completion:nil)
-    }
 
 
     func webView(_ webView: UIWebView!, shouldStartLoadWithRequest request: NSURLRequest!, navigationType: UIWebViewNavigationType) -> Bool {
