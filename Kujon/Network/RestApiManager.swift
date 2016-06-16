@@ -10,9 +10,8 @@ typealias onErrorOccurs = () -> Void
 
 class RestApiManager {
     static let BASE_URL: String = "https://api.kujon.mobi"
-    private let EMAIL_HEADER = "X-Kujonmobiemail"
-    private let TOKEN_HEADER = "X-Kujonmobitoken"
-    private var userDataHolder = UserDataHolder.sharedInstance
+
+    private var headerManager = HeaderManager()
 
     var test = false
     let baseURL = BASE_URL
@@ -32,10 +31,10 @@ class RestApiManager {
         if (test) {
             self.handelTestCase(onCompletion)
         } else {
-            if (userDataHolder.loggedToUsosForCurrentEmail) {
+            if (headerManager.isAuthenticated()) {
                 var request = NSMutableURLRequest(URL: NSURL(string: getMyUrl())!)
                 let session = NSURLSession.sharedSession()
-                self.addHeadersToRequest(&request)
+                self.headerManager.addHeadersToRequest(&request)
                 let task = session.dataTaskWithRequest(request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
                 task.resume()
             } else {
@@ -48,10 +47,7 @@ class RestApiManager {
         return baseURL
     }
 
-    private func addHeadersToRequest(inout request: NSMutableURLRequest) {
-        request.addValue(userDataHolder.userEmail, forHTTPHeaderField: EMAIL_HEADER)
-        request.addValue(userDataHolder.userToken, forHTTPHeaderField: TOKEN_HEADER)
-    }
+
 
     private func creteCompletionHanlder(onCompletion: onSucces, onError: onErrorOccurs) -> (NSData?, NSURLResponse?, NSError?) -> Void {
         return {

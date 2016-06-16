@@ -8,13 +8,18 @@
 
 import UIKit
 
-class UserTableViewController: UITableViewController, NavigationDelegate, UserDetailsProviderDelegate ,FacultiesProviderDelegate{
+class UserTableViewController: UITableViewController
+        , NavigationDelegate
+        , UserDetailsProviderDelegate
+        , FacultiesProviderDelegate
+        , OnImageLoadedFromRest{
     weak var delegate: NavigationMenuProtocol! = nil
     private let usedDetailCellId = "userDetailViewId"
     private let StudentProgrammeCellId = "cellIdForStudentProgramme"
     private let FacultieProgrammeCellId = "cellIdForStudentFacultie"
     let userDetailsProvider: UserDetailsProvider! = UserDetailsProvider.sharedInstance
     let facultieProvider: FacultiesProvider! = FacultiesProvider.sharedInstance
+    let restImageProvider = RestImageProvider.sharedInstance
 
     var userDetails: UserDetail! = nil
     var userFaculties: Array<Facultie>! = nil
@@ -36,7 +41,6 @@ class UserTableViewController: UITableViewController, NavigationDelegate, UserDe
         self.tableView.registerNib(UINib(nibName: "UserDetailsScreenGoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: StudentProgrammeCellId)
         self.tableView.registerNib(UINib(nibName: "UserDetailsScreenGoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: FacultieProgrammeCellId)
     }
-
 
 
     func openDrawer() {
@@ -122,14 +126,16 @@ class UserTableViewController: UITableViewController, NavigationDelegate, UserDe
         default: return nil
         }
     }
-    private func createLabel(text:String)->UIView{
-        let view  = UIView(frame: CGRectMake(0,0,self.tableView.frame.size.width ,56))
-        let label = UILabel(frame: CGRectMake(0,0,self.tableView.frame.size.width ,48))
+
+    private func createLabel(text: String) -> UIView {
+        let view = UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, 56))
+        let label = UILabel(frame: CGRectMake(0, 0, self.tableView.frame.size.width, 48))
         label.text = text
         label.textColor = UIColor.blackWithAlpha()
         view.addSubview(label)
         return view
     }
+
     private func configureUserDetails(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(usedDetailCellId, forIndexPath: indexPath) as! UserDetailView
         cell.nameSurnameLabel.text = userDetails.firstName + " " + userDetails.lastName
@@ -138,14 +144,19 @@ class UserTableViewController: UITableViewController, NavigationDelegate, UserDe
         cell.indexNumberLabel.text = userDetails.studentNumber
         cell.accountNumberLabel.text = userDetails.id
         if (userDetails.hasPhoto) {
-            dispatch_async(dispatch_get_main_queue()) {
-                cell.userImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: self.userDetails.photoUrl)!)!)
-            }
+            self.restImageProvider.loadImage("",urlString: self.userDetails.photoUrl,onImageLoaded: self)
+
         }
         return cell
     }
 
-    private func configureStudentProgrammeCell(indexPath: NSIndexPath) -> UITableViewCell{
+    func imageLoaded(tag: String, image: UIImage) {
+        let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0,inSection: 0)) as! UserDetailView
+        cell.userImageView.image = image
+    }
+
+
+    private func configureStudentProgrammeCell(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(StudentProgrammeCellId, forIndexPath: indexPath) as! UserDetailsScreenGoFurtherViewCellTableViewCell
         let myProgramme: StudentProgramme = self.userDetails.studentProgrammes[indexPath.row]
         cell.plainLabel.text = myProgramme.programme.description
@@ -154,7 +165,7 @@ class UserTableViewController: UITableViewController, NavigationDelegate, UserDe
         return cell
     }
 
-    private func configureFacultieCell(indexPath: NSIndexPath) -> UITableViewCell{
+    private func configureFacultieCell(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(FacultieProgrammeCellId, forIndexPath: indexPath) as! UserDetailsScreenGoFurtherViewCellTableViewCell
         let myFac: Facultie = self.userFaculties[indexPath.row]
         cell.plainLabel.text = myFac.name

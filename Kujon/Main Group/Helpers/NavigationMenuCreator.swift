@@ -10,7 +10,7 @@ class NavigationMenuCreator {
 
 
     static func createNavMenuWithDrawerOpening(controller:UIViewController,selector:Selector){
-        let openDrawerButton =  UIBarButtonItem(title:"open drawer",style: UIBarButtonItemStyle.Plain,target: controller,
+        let openDrawerButton =  UIBarButtonItem(title:"menu",style: UIBarButtonItemStyle.Plain,target: controller,
                 action: selector)
         openDrawerButton.action = selector
         controller.navigationItem.leftBarButtonItem = openDrawerButton
