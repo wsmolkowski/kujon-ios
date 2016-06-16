@@ -39,14 +39,12 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
     }
 
     func loadUserDetail(id: String) {
-        do {
             endpoint = "/lecturers/"+id
-            let jsonData = try JsonDataLoader.loadJson("LecturerDetails")
-            let userDetailR = try! self.changeJsonToResposne(jsonData)
-            delegate?.onUserDetailLoaded(userDetailR.data)
-        } catch {
-            delegate?.onErrorOccurs()
-        }
+            self.makeHTTPAuthenticatedGetRequest({
+                json in
+                let user = try! self.changeJsonToResposne(json)
+                self.delegate?.onUserDetailLoaded(user.data)
+            }, onError: {self.delegate?.onErrorOccurs()})
     }
 }
 

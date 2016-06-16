@@ -15,7 +15,7 @@ struct UserDetail {
     let sex: String
     let firstName: String
     let lastName: String
-    let photoUrl: String
+    let photoUrl: String?
     let studentProgrammes: Array<StudentProgramme>
     let id: String
     let studentNumber: String!
@@ -46,7 +46,7 @@ extension UserDetail: Decodable {
                 sex: j => "sex",
                 firstName: j => "first_name",
                 lastName: j => "last_name",
-                photoUrl: j => "photo_url",
+                photoUrl: try? j => "photo_url",
                 studentProgrammes: j => "student_programmes",
                 id: j => "id",
                 studentNumber: j => "student_number",

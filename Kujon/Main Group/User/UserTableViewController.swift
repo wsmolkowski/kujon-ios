@@ -144,7 +144,7 @@ class UserTableViewController: UITableViewController
         cell.indexNumberLabel.text = userDetails.studentNumber
         cell.accountNumberLabel.text = userDetails.id
         if (userDetails.hasPhoto) {
-            self.restImageProvider.loadImage("",urlString: self.userDetails.photoUrl,onImageLoaded: self)
+            self.restImageProvider.loadImage("",urlString: self.userDetails.photoUrl!,onImageLoaded: self)
 
         }
         return cell
