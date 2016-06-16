@@ -22,7 +22,7 @@ class RestImageProvider {
         let task = session.dataTaskWithRequest(request, completionHandler: {
             data, response, error -> Void in
             if (data != nil) {
-                UIImageJPEGRepresentation()
+
                 if let image = UIImage(data: data!) {
                     dispatch_async(dispatch_get_main_queue()) {
                         onImageLoaded.imageLoaded(tag,image: image)
