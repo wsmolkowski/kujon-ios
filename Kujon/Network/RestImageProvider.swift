@@ -18,7 +18,7 @@ class RestImageProvider {
      func loadImage(tag: String, urlString: String, onImageLoaded: OnImageLoadedFromRest) {
         var request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
         self.headerManager.addHeadersToRequest(&request)
-        let session = NSURLSession.sharedSession()
+        let session = SessionManager.provideSession()
         let task = session.dataTaskWithRequest(request, completionHandler: {
             data, response, error -> Void in
             if (data != nil) {

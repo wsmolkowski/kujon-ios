@@ -76,9 +76,11 @@
 		4C0D8D641FD73F7E585E72B6 /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8E34E82B5768B61A3134 /* User.json */; };
 		4C0D8D7DB787EB322FCACE96 /* SendOpinionMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8A598E59F244E56634B5 /* SendOpinionMenuItem.swift */; };
 		4C0D8DCC00FFDDF5F59B16A7 /* SettingsMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8D34BDAE784E708282D9 /* SettingsMenuItem.swift */; };
+		4C0D8DD1DC491DC007F98692 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8AE26100BB9C339355AC /* SessionManager.swift */; };
 		4C0D8DF43CBEECAE734FFDF2 /* ErrorResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8D8FB8953D1EC2EFF6C1 /* ErrorResponseProtocol.swift */; };
 		4C0D8E35546E06FE6E50627E /* Usos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D800DE50A86489C4C7E74 /* Usos.swift */; };
 		4C0D8E84B66279CE377A8D78 /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8BDD61A989037FA8DB35 /* Lecture.swift */; };
+		4C0D8E8FDA4A6ABE3B6829A8 /* NSlogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8D8D2ED0C70726C86E66 /* NSlogManager.swift */; };
 		4C0D8ED3CCCAA0AC19016A2D /* UserDetailsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8480E989AF43B88CB60E /* UserDetailsProvider.swift */; };
 		4C0D8EDC5E5F870381B4C21D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D83B44B564B4E55F64BE8 /* LaunchScreen.storyboard */; };
 		4C0D8EE504A6F04F1B414751 /* Schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8F0FD29DE7CF921001CE /* Schedule.json */; };
@@ -198,6 +200,7 @@
 		4C0D8A598E59F244E56634B5 /* SendOpinionMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendOpinionMenuItem.swift; sourceTree = "<group>"; };
 		4C0D8A64FF1DBA82355146B3 /* Programme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Programme.swift; sourceTree = "<group>"; };
 		4C0D8ACCBE0A1A11117A7D68 /* Programmes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Programmes.json; sourceTree = "<group>"; };
+		4C0D8AE26100BB9C339355AC /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		4C0D8B4F1A4C021698123994 /* EmploymentPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmploymentPosition.swift; sourceTree = "<group>"; };
 		4C0D8B5FF1A8F45453C5D4FB /* Grade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		4C0D8B67C9D01072853AF4B5 /* LecturersResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturersResponse.swift; sourceTree = "<group>"; };
@@ -208,6 +211,7 @@
 		4C0D8C68222EDFAECCF2DF11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C0D8D34BDAE784E708282D9 /* SettingsMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsMenuItem.swift; sourceTree = "<group>"; };
 		4C0D8D5DA0EA9F9C5E7C4447 /* Grades.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Grades.json; sourceTree = "<group>"; };
+		4C0D8D8D2ED0C70726C86E66 /* NSlogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSlogManager.swift; sourceTree = "<group>"; };
 		4C0D8D8E712204A4BC76B7A9 /* LectureProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureProvider.swift; sourceTree = "<group>"; };
 		4C0D8D8FB8953D1EC2EFF6C1 /* ErrorResponseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorResponseProtocol.swift; sourceTree = "<group>"; };
 		4C0D8DEE8305AB820902C1F8 /* KujonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KujonTests.swift; sourceTree = "<group>"; };
@@ -337,8 +341,17 @@
 				0A8B795B1D0C81E100CF6783 /* Bridging-Header.h */,
 				4C0D8B22EBFA522F154A82EF /* Global Extensions */,
 				4C0D85D49CF5C8365506B7EE /* FacebookManager */,
+				4C0D82489E8A720F1EED7B19 /* Utils */,
 			);
 			path = Kujon;
+			sourceTree = "<group>";
+		};
+		4C0D82489E8A720F1EED7B19 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4C0D8D8D2ED0C70726C86E66 /* NSlogManager.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		4C0D82C7795D7EB1A1FA4279 /* TeacherDetail */ = {
@@ -381,6 +394,7 @@
 				4C0D8312007436E128DE9972 /* JsonDataLoader.swift */,
 				4C0D89A4EEC331ECBC5C8208 /* RestImageProvider.swift */,
 				4C0D88BDA0F4FBC928833B83 /* HeaderManager.swift */,
+				4C0D8AE26100BB9C339355AC /* SessionManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -739,6 +753,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C0D852217153B5DF861BC01 /* Build configuration list for PBXNativeTarget "KujonUITests" */;
 			buildPhases = (
+				AB6E61C222619DE2A7E1844F /* 📦 Check Pods Manifest.lock */,
 				FAAA2CC97B4C1C6DD5FFCD0E /* [CP] Check Pods Manifest.lock */,
 				22BD93CFA86DF9F42005F6BC /* [CP] Check Pods Manifest.lock */,
 				4C0D8559004C4E72ABEF3F22 /* Sources */,
@@ -761,6 +776,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C0D83E2B32A0A3CA367D6BC /* Build configuration list for PBXNativeTarget "Kujon" */;
 			buildPhases = (
+				0DB9E7ABC5EE0B2375404B75 /* 📦 Check Pods Manifest.lock */,
 				E6163861099B1656EFEE125F /* [CP] Check Pods Manifest.lock */,
 				293CE0BA7AA50758856CB87C /* [CP] Check Pods Manifest.lock */,
 				4C0D85B77FB5458B1E641984 /* Sources */,
@@ -785,6 +801,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C0D84AE0478B34C40E62613 /* Build configuration list for PBXNativeTarget "KujonTests" */;
 			buildPhases = (
+				6ABFEEADFC0E43C0F79A368E /* 📦 Check Pods Manifest.lock */,
 				5D6222BAA59061EF311B6597 /* [CP] Check Pods Manifest.lock */,
 				64FF8464F4F4DAA37B8FFCFE /* [CP] Check Pods Manifest.lock */,
 				4C0D8B6C58599D9C41261A9F /* Sources */,
@@ -933,6 +950,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KujonTests/Pods-KujonTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		0DB9E7ABC5EE0B2375404B75 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		22BD93CFA86DF9F42005F6BC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1023,6 +1055,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		6ABFEEADFC0E43C0F79A368E /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		9878454E929F505FC41633A4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1066,6 +1113,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kujon/Pods-Kujon-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AB6E61C222619DE2A7E1844F /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CBC1F25FD9C010C1A42A4412 /* 📦 Embed Pods Frameworks */ = {
@@ -1236,6 +1298,8 @@
 				4C0D8D638B4D5A845F1F0A32 /* RestImageProvider.swift in Sources */,
 				4C0D8A5C9CCCA95A2FD4629A /* HeaderManager.swift in Sources */,
 				4C0D84DCF5F4EDC332B23A08 /* CurrentTeacherHolder.swift in Sources */,
+				4C0D8DD1DC491DC007F98692 /* SessionManager.swift in Sources */,
+				4C0D8E8FDA4A6ABE3B6829A8 /* NSlogManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1367,8 +1431,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-DDEBUG";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				"SWIFT_OPTIMIZATION_LEVEL[arch=*]" = "-Onone";
 			};
 			name = Debug;
 		};
@@ -1418,6 +1484,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-DRELEASE";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
