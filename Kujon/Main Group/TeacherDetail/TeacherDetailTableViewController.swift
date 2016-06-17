@@ -8,11 +8,13 @@
 
 import UIKit
 
-class TeacherDetailTableViewController: UITableViewController, UserDetailsProviderDelegate {
+class TeacherDetailTableViewController: UITableViewController, UserDetailsProviderDelegate , OnImageLoadedFromRest {
     private let TeacherDetailViewId = "teacherDetailViewId"
     var teacherId: String! = nil
     private let userDetailsProvider = UserDetailsProvider.sharedInstance
+    private let restImageProvider  = RestImageProvider.sharedInstance
     private var userDetails: UserDetail! = nil
+
 
 
     override func viewDidLoad() {
@@ -70,13 +72,20 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
 
     private func configureTeacherDetails(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(TeacherDetailViewId, forIndexPath: indexPath) as! TeacherDetailsTableViewCell
-
         cell.teacherNameLabel.text = self.userDetails.firstName + " " + self.userDetails.lastName
         cell.teacherStatusLabel.text = self.userDetails.staffStatus
         cell.teacherEmailLabel.text = self.userDetails.email
         cell.teacherConsultationLabel.text = self.userDetails.officeHours
         cell.teacherHomepageLabel.text = self.userDetails.homepage
+        if(userDetails.hasPhoto){
+            restImageProvider.loadImage("",urlString: userDetails.photoUrl!,onImageLoaded: self)
+        }
         return cell
+    }
+
+    func imageLoaded(tag: String, image: UIImage) {
+        let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0,inSection: 0)) as! TeacherDetailsTableViewCell
+        cell.teacherImageView.image = image
     }
 
     /*

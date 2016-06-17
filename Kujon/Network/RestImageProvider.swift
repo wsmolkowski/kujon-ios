@@ -23,7 +23,7 @@ class RestImageProvider {
             data, response, error -> Void in
             if (data != nil) {
 
-                if let image = UIImage(data: data!) {
+                if let image = UIImage(data: data!,scale: 1.0) {
                     dispatch_async(dispatch_get_main_queue()) {
                         onImageLoaded.imageLoaded(tag,image: image)
                     }

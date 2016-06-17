@@ -17,8 +17,8 @@ struct Room {
 extension Room: Decodable {
     static func decode(j: AnyObject) throws -> Room {
         return try Room(
-        buldingId: try? j => "building_id",
-                buldingName: try? j => "building_name",
+        buildingId: try? j => "building_id",
+                buildingName: try? j => "building_name",
                 number: try? j => "number",
                 id: try? j => "id"
         )

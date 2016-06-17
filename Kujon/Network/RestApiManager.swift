@@ -48,14 +48,17 @@ class RestApiManager {
     }
 
 
-
     private func creteCompletionHanlder(onCompletion: onSucces, onError: onErrorOccurs) -> (NSData?, NSURLResponse?, NSError?) -> Void {
         return {
             data, response, error -> Void in
             if (error != nil) {
-                onError()
+                dispatch_async(dispatch_get_main_queue()) {
+                    onError()
+                }
             } else {
-                onCompletion(data!)
+                dispatch_async(dispatch_get_main_queue()) {
+                    onCompletion(data!)
+                }
             }
         }
     }
