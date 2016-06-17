@@ -7,8 +7,8 @@ import Foundation
 import Decodable
 
 struct Room {
-    let buldingId: String!
-    let buldingName: String!
+    let buildingId: String!
+    let buildingName: String!
     let number: String!
     let id: String!
 }
@@ -17,8 +17,8 @@ struct Room {
 extension Room: Decodable {
     static func decode(j: AnyObject) throws -> Room {
         return try Room(
-        buldingId: try? j => "bulding_id",
-                buldingName: try? j => "bulding_name",
+        buldingId: try? j => "building_id",
+                buldingName: try? j => "building_name",
                 number: try? j => "number",
                 id: try? j => "id"
         )
