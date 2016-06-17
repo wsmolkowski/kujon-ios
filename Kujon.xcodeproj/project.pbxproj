@@ -739,7 +739,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C0D852217153B5DF861BC01 /* Build configuration list for PBXNativeTarget "KujonUITests" */;
 			buildPhases = (
-				FAAA2CC97B4C1C6DD5FFCD0E /* 📦 Check Pods Manifest.lock */,
+				FAAA2CC97B4C1C6DD5FFCD0E /* [CP] Check Pods Manifest.lock */,
 				22BD93CFA86DF9F42005F6BC /* [CP] Check Pods Manifest.lock */,
 				4C0D8559004C4E72ABEF3F22 /* Sources */,
 				4C0D8665DB561BEDC1140943 /* Frameworks */,
@@ -761,7 +761,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C0D83E2B32A0A3CA367D6BC /* Build configuration list for PBXNativeTarget "Kujon" */;
 			buildPhases = (
-				E6163861099B1656EFEE125F /* 📦 Check Pods Manifest.lock */,
+				E6163861099B1656EFEE125F /* [CP] Check Pods Manifest.lock */,
 				293CE0BA7AA50758856CB87C /* [CP] Check Pods Manifest.lock */,
 				4C0D85B77FB5458B1E641984 /* Sources */,
 				4C0D8EB012C29DF3DA3303FD /* Frameworks */,
@@ -770,6 +770,7 @@
 				A1C1FFECAB7B418E028819C7 /* [CP] Copy Pods Resources */,
 				CBC1F25FD9C010C1A42A4412 /* 📦 Embed Pods Frameworks */,
 				D8F2BA4B2E24BE6BC9ABCEFA /* 📦 Copy Pods Resources */,
+				0A99C62C1D13258800FBD24E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -784,7 +785,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C0D84AE0478B34C40E62613 /* Build configuration list for PBXNativeTarget "KujonTests" */;
 			buildPhases = (
-				5D6222BAA59061EF311B6597 /* 📦 Check Pods Manifest.lock */,
+				5D6222BAA59061EF311B6597 /* [CP] Check Pods Manifest.lock */,
 				64FF8464F4F4DAA37B8FFCFE /* [CP] Check Pods Manifest.lock */,
 				4C0D8B6C58599D9C41261A9F /* Sources */,
 				4C0D8766B0E1769253DF4CC8 /* Frameworks */,
@@ -904,6 +905,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KujonTests/Pods-KujonTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		0A99C62C1D13258800FBD24E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" af5a763ba36db01b0ceb74337690d00d7ee605da b9e6455549196f7d50c28f9003a475ae3b9aa44c5785b80a29e62ec814821efb";
+		};
 		0D79E84E11674F7728EAA816 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -979,14 +993,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KujonUITests/Pods-KujonUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5D6222BAA59061EF311B6597 /* 📦 Check Pods Manifest.lock */ = {
+		5D6222BAA59061EF311B6597 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1084,14 +1098,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kujon/Pods-Kujon-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E6163861099B1656EFEE125F /* 📦 Check Pods Manifest.lock */ = {
+		E6163861099B1656EFEE125F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1114,14 +1128,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kujon/Pods-Kujon-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FAAA2CC97B4C1C6DD5FFCD0E /* 📦 Check Pods Manifest.lock */ = {
+		FAAA2CC97B4C1C6DD5FFCD0E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1299,6 +1313,7 @@
 			baseConfigurationReference = 71EE9BFC3F34701DCA4852FA /* Pods-Kujon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FB",

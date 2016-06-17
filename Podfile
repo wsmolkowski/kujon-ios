@@ -9,6 +9,8 @@ target 'Kujon' do
   pod 'FBSDKCoreKit'
   pod 'FBSDKShareKit'
   pod 'FBSDKLoginKit'
+  pod 'Fabric'
+  pod 'Crashlytics'
   # Pods for Kujon
 
   target 'KujonTests' do
