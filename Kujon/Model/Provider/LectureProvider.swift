@@ -8,6 +8,7 @@ import Foundation
 
 protocol LectureProviderProtocol: JsonProviderProtocol {
     associatedtype T = LectureResponse
+
     func loadLectures(date: String)
 
 }
@@ -17,17 +18,22 @@ protocol LectureProviderDelegate: ErrorResponseProtocol {
 
 }
 
-class LectureProvider: LectureProviderProtocol {
+class LectureProvider: RestApiManager, LectureProviderProtocol {
     var delegate: LectureProviderDelegate!
-
+    var endpoint: String! = nil
     func loadLectures(date: String) {
-        do {
-            let jsonData = try JsonDataLoader.loadJson("Schedule")
-            let lectureResponse = try! self.changeJsonToResposne(jsonData)
-            delegate?.onLectureLoaded(lectureResponse.data)
-        } catch {
-            delegate?.onErrorOccurs()
-        }
-
+        endpoint = "/tt/" + date
+        self.makeHTTPAuthenticatedGetRequest({
+            json in
+            let lectureResponse = try! self.changeJsonToResposne(json)
+            self.delegate?.onLectureLoaded(lectureResponse.data)
+        },onError: {
+            self.delegate?.onErrorOccurs()
+        })
     }
+
+    override func getMyUrl() -> String {
+        return baseURL + endpoint
+    }
+
 }

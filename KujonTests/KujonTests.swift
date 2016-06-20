@@ -52,9 +52,7 @@ class KujonTests: XCTestCase, UsosesProviderDelegate
         provider.delegate = self
         provider.loadUserDetail()
         assert(loaded)
-        loaded = false
-        provider.loadUserDetail("GrzegorzBrzeczyszczykiewicz")
-        assert(loaded)
+
 
     }
 
@@ -65,8 +63,9 @@ class KujonTests: XCTestCase, UsosesProviderDelegate
 
     func testLectureProvider() throws {
         let provider = LectureProvider()
+        provider.test = true
         provider.delegate = self
-        provider.loadLectures("dwa tysiace sto dziewiecet")
+        provider.loadLectures("data")
         assert(loaded)
 
     }

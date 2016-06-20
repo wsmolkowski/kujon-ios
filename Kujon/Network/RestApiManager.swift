@@ -80,6 +80,8 @@ class RestApiManager {
             break;
         case baseURL + "/faculties":
             string = "FacultiesDetail"
+            case baseURL + "/tt/data":
+                string = "Schedule"
             break;
         default: string = "Usoses"
         }
