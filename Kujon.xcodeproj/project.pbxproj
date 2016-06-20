@@ -94,6 +94,8 @@
 		5282840A1D08499000A602B4 /* UsosesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528284091D08499000A602B4 /* UsosesTableViewController.swift */; };
 		5282840D1D084D7200A602B4 /* UsosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5282840B1D084D7200A602B4 /* UsosTableViewCell.swift */; };
 		5282840E1D084D7200A602B4 /* UsosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5282840C1D084D7200A602B4 /* UsosTableViewCell.xib */; };
+		5295135A1D17C76E009D6FF2 /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529513581D17C76E009D6FF2 /* ScheduleTableViewController.swift */; };
+		5295135B1D17C76E009D6FF2 /* ScheduleTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 529513591D17C76E009D6FF2 /* ScheduleTableViewController.xib */; };
 		52AF77A11D09590B0058979A /* SecondLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF779F1D09590B0058979A /* SecondLoginViewController.swift */; };
 		52AF77A21D09590B0058979A /* SecondLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77A01D09590B0058979A /* SecondLoginViewController.xib */; };
 		52AF77A41D095C390058979A /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77A31D095C390058979A /* ContainerViewController.swift */; };
@@ -112,8 +114,6 @@
 		52AF77D41D0AD80A0058979A /* SendOpinionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77D21D0AD80A0058979A /* SendOpinionViewController.xib */; };
 		52AF77D71D0AD83A0058979A /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77D51D0AD83A0058979A /* ShareViewController.swift */; };
 		52AF77D81D0AD83A0058979A /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77D61D0AD83A0058979A /* ShareViewController.xib */; };
-		52AF77DB1D0EA9350058979A /* LectureViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77D91D0EA9350058979A /* LectureViewTableViewCell.swift */; };
-		52AF77DC1D0EA9350058979A /* LectureViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77DA1D0EA9350058979A /* LectureViewTableViewCell.xib */; };
 		52AF77DF1D0EB4420058979A /* TeacherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77DD1D0EB4420058979A /* TeacherTableViewController.swift */; };
 		52AF77E01D0EB4420058979A /* TeacherTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77DE1D0EB4420058979A /* TeacherTableViewController.xib */; };
 		52AF77E61D0EB5220058979A /* TeacherViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77E41D0EB5220058979A /* TeacherViewCell.swift */; };
@@ -237,6 +237,8 @@
 		528284091D08499000A602B4 /* UsosesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsosesTableViewController.swift; sourceTree = "<group>"; };
 		5282840B1D084D7200A602B4 /* UsosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsosTableViewCell.swift; sourceTree = "<group>"; };
 		5282840C1D084D7200A602B4 /* UsosTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UsosTableViewCell.xib; sourceTree = "<group>"; };
+		529513581D17C76E009D6FF2 /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
+		529513591D17C76E009D6FF2 /* ScheduleTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleTableViewController.xib; sourceTree = "<group>"; };
 		52AF779F1D09590B0058979A /* SecondLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondLoginViewController.swift; sourceTree = "<group>"; };
 		52AF77A01D09590B0058979A /* SecondLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondLoginViewController.xib; sourceTree = "<group>"; };
 		52AF77A31D095C390058979A /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -255,8 +257,6 @@
 		52AF77D21D0AD80A0058979A /* SendOpinionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendOpinionViewController.xib; sourceTree = "<group>"; };
 		52AF77D51D0AD83A0058979A /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		52AF77D61D0AD83A0058979A /* ShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareViewController.xib; sourceTree = "<group>"; };
-		52AF77D91D0EA9350058979A /* LectureViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureViewTableViewCell.swift; sourceTree = "<group>"; };
-		52AF77DA1D0EA9350058979A /* LectureViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LectureViewTableViewCell.xib; sourceTree = "<group>"; };
 		52AF77DD1D0EB4420058979A /* TeacherTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherTableViewController.swift; sourceTree = "<group>"; };
 		52AF77DE1D0EB4420058979A /* TeacherTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeacherTableViewController.xib; sourceTree = "<group>"; };
 		52AF77E41D0EB5220058979A /* TeacherViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherViewCell.swift; sourceTree = "<group>"; };
@@ -499,8 +499,8 @@
 			children = (
 				52AF77AF1D096D6B0058979A /* SchedulerViewController.swift */,
 				52AF77B01D096D6B0058979A /* SchedulerViewController.xib */,
-				52AF77D91D0EA9350058979A /* LectureViewTableViewCell.swift */,
-				52AF77DA1D0EA9350058979A /* LectureViewTableViewCell.xib */,
+				529513581D17C76E009D6FF2 /* ScheduleTableViewController.swift */,
+				529513591D17C76E009D6FF2 /* ScheduleTableViewController.xib */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -892,10 +892,10 @@
 				4C0D85F69F40F41D39640CFD /* Grades.json in Resources */,
 				4C0D87058EAE5B71945F1AD8 /* Lecturers.json in Resources */,
 				52AF77E71D0EB5220058979A /* TeacherViewCell.xib in Resources */,
+				5295135B1D17C76E009D6FF2 /* ScheduleTableViewController.xib in Resources */,
 				52AF77D01D0AD5C50058979A /* SettingsViewController.xib in Resources */,
 				4C0D8792155EDB3BF227067C /* FacultiesDetail.json in Resources */,
 				527B39B81D117B800028BCF9 /* Assets.xcassets in Resources */,
-				52AF77DC1D0EA9350058979A /* LectureViewTableViewCell.xib in Resources */,
 				4C0D87FF3ADA197F8655E408 /* Programmes.json in Resources */,
 				4C0D85BA322F0D6699947ECE /* CourseEditions.json in Resources */,
 				52AF77C01D0984FC0058979A /* MenuItemTableViewCell.xib in Resources */,
@@ -1231,8 +1231,8 @@
 				52AF77A41D095C390058979A /* ContainerViewController.swift in Sources */,
 				5282840A1D08499000A602B4 /* UsosesTableViewController.swift in Sources */,
 				52AF77E61D0EB5220058979A /* TeacherViewCell.swift in Sources */,
-				52AF77DB1D0EA9350058979A /* LectureViewTableViewCell.swift in Sources */,
 				52AF77B11D096D6B0058979A /* SchedulerViewController.swift in Sources */,
+				5295135A1D17C76E009D6FF2 /* ScheduleTableViewController.swift in Sources */,
 				52AF77A81D095CBF0058979A /* LeftMenuTableViewController.swift in Sources */,
 				52AF77BF1D0984FC0058979A /* MenuItemTableViewCell.swift in Sources */,
 				52AF77D71D0AD83A0058979A /* ShareViewController.swift in Sources */,

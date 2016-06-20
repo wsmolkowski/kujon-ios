@@ -9,11 +9,11 @@ extension NSDate {
     private static let dateFormatter = NSDateFormatter()
     private static let dateFormat = "yyyy-MM-dd"
 
-    static func stringToDate(dateString: String) -> NSDate {
+    static func stringToDate(dateString: String) -> NSDate! {
         return getDateFormatter().dateFromString(dateString)
     }
 
-    static func dateToString(date: NSDate) -> String{
+    static func dateToString(date: NSDate) -> String {
         return getDateFormatter().stringFromDate(date)
     }
 

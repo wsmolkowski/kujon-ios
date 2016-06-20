@@ -15,7 +15,7 @@ class ScheduleMenuItem:MenuItemWithController {
     }
 
     func returnViewControllerFunction()->() -> UIViewController! {
-        return {return SchedulerViewController()}
+        return {return ScheduleTableViewController()}
     }
 
 }
