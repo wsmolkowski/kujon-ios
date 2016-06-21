@@ -8,11 +8,16 @@
 
 import UIKit
 
-class ScheduleTableViewController: UITableViewController,
-        NavigationDelegate {
-
+class ScheduleTableViewController:
+        UITableViewController,
+        NavigationDelegate,
+        LectureProviderDelegate{
 
     weak var delegate: NavigationMenuProtocol! = nil
+    let lectureProvider = LectureProvider.sharedInstance
+    var isQuering = false
+    var lastQueryDate : NSDate! = nil
+    var sectionsList: Array<ScheduleSection> = Array<ScheduleSection>()
 
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {
         self.delegate = delegate
@@ -21,11 +26,24 @@ class ScheduleTableViewController: UITableViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(ScheduleTableViewController.openDrawer))
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        lastQueryDate  = NSDate.getCurrentStartOfWeek()
+        askForData()
+        lectureProvider.delegate = self
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+
+    private func askForData(){
+        isQuering = true
+        lectureProvider.loadLectures(lastQueryDate.dateToString())
+    }
+
+    func onLectureLoaded(lectures: Array<Lecture>) {
+        isQuering = false
+    }
+
+    func onErrorOccurs() {
+
+        isQuering = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,12 +59,12 @@ class ScheduleTableViewController: UITableViewController,
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return sectionsList.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return sectionsList[section].getSectionSize()
     }
 
 
@@ -57,6 +75,9 @@ class ScheduleTableViewController: UITableViewController,
         let distanceFromBottom = scrollView.contentSize.height - contetyYOffset
         if(distanceFromBottom <= height){
             NSlogManager.showLog("End of list, load more")
+            if(!isQuering){
+
+            }
         }
     }
 
