@@ -11,7 +11,7 @@ class ScheduleMenuItem:MenuItemWithController {
     }
 
     func returnImage() -> UIImage! {
-        return UIImage(named:"")
+        return UIImage(named:"plan-icon")
     }
 
     func returnViewControllerFunction()->() -> UIViewController! {

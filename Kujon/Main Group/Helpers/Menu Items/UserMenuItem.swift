@@ -12,7 +12,7 @@ class UserMenuItem : MenuItemWithController{
     }
 
     func returnImage() -> UIImage! {
-        return UIImage(named:"")
+        return UIImage(named:"user-icon")
     }
 
     func returnViewControllerFunction()->() -> UIViewController! {

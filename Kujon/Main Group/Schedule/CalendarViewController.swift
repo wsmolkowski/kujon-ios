@@ -25,7 +25,7 @@ class CalendarViewController: MGCDayPlannerViewController {
 //        self.dayPlannerView.dayHeaderHeight = 60;
         self.dayPlannerView.numberOfVisibleDays = 3
         self.dayPlannerView.dateFormat = calendarDateFormant
-        self.dayPlannerView.dataSource
+
         dateFormatter.dateFormat = calendarDateFormant
         let ekEventStore = EKEventStore()
     }

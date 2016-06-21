@@ -14,7 +14,7 @@ class GradesMenuItem:MenuItemWithController {
     }
 
     func returnImage() -> UIImage! {
-        return UIImage(named: "")
+        return UIImage(named: "grades-icon")
     }
 
     func returnViewControllerFunction()->() -> UIViewController! {

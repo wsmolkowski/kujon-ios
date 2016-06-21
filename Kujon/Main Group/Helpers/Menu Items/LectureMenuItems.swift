@@ -12,7 +12,7 @@ class LectureMenuItem: MenuItemWithController {
     }
 
     func returnImage() -> UIImage! {
-        return UIImage(named: "")
+        return UIImage(named: "courses-icon")
     }
 
     func returnViewControllerFunction()->() -> UIViewController! {
