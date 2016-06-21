@@ -47,10 +47,13 @@ class ScheduleTableViewController:
         let dic = wrappers.groupBy {
             $0.startDate
         }
-        dic.forEach{
-            key, list in
-            self.sectionsList.append(ScheduleSectionImpl(withDate: key,listOfLecture: list))
+        let sortedKeys = Array(dic.keys).sort(<)
+
+        sortedKeys.forEach{
+            key in
+            self.sectionsList.append(ScheduleSectionImpl(withDate: key ,listOfLecture: dic[key]!))
         }
+
 
 
         self.tableView.reloadData()
