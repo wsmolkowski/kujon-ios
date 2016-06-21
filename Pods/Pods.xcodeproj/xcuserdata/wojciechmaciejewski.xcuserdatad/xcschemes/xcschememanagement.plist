@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>CalendarLib-CalendarLib.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>CalendarLib.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Decodable.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -25,6 +35,16 @@
 			<false/>
 		</dict>
 		<key>FBSDKShareKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>OSCache.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>OrderedDictionary.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,12 +72,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>30D7FCF8072F5D59AE1C98D94F9A6EC9</key>
+		<key>14730700B2D60DF9994CA196CE7ADE3C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>50D209F4935305BCA79C6FE9335C8672</key>
+		<key>2673FB444CAD63D7872199869D12B242</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>30D7FCF8072F5D59AE1C98D94F9A6EC9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -78,6 +103,21 @@
 			<true/>
 		</dict>
 		<key>70639BEB980B9ED83A790967976086C4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>954B3024145E89BE4F9E6E9D69C08294</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C4C32B98A88C3F59ADE6A79B82E1867F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D42CD85A5B28EB117618348BCF978979</key>
 		<dict>
 			<key>primary</key>
 			<true/>

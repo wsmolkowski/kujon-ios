@@ -11,6 +11,7 @@ target 'Kujon' do
   pod 'FBSDKLoginKit'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod "CalendarLib"
   # Pods for Kujon
 
   target 'KujonTests' do

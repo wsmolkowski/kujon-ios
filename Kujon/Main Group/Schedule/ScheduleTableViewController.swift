@@ -27,6 +27,11 @@ class ScheduleTableViewController:
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(ScheduleTableViewController.openDrawer))
+
+        let openCalendarButton =  UIBarButtonItem(title:"calendar",style: UIBarButtonItemStyle.Plain,target: self,
+                action: #selector(ScheduleTableViewController.openCalendar))
+        self.navigationItem.rightBarButtonItem = openCalendarButton
+
         lastQueryDate = NSDate.getCurrentStartOfWeek()
         self.tableView.registerNib(UINib(nibName: "LectureTableViewCell", bundle: nil), forCellReuseIdentifier: LectureCellId)
         lectureProvider.delegate = self
@@ -72,6 +77,9 @@ class ScheduleTableViewController:
 
     func openDrawer() {
         delegate?.toggleLeftPanel()
+    }
+    func openCalendar(){
+        self.navigationController?.pushViewController(CalendarViewController(),animated: true)
     }
 
     // MARK: - Table view data source
