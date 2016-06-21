@@ -102,7 +102,7 @@ class ScheduleTableViewController:
     }
 
 
-    @available(iOS 2.0, *) override func scrollViewDidScroll(scrollView: UIScrollView) {
+    @available(iOS 2.0, *) override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
 
         let height = scrollView.frame.size.height
         let contetyYOffset = scrollView.contentOffset.y
@@ -115,6 +115,8 @@ class ScheduleTableViewController:
             }
         }
     }
+
+
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
