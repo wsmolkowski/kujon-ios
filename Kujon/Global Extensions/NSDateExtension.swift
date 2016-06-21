@@ -4,17 +4,34 @@
 //
 
 import Foundation
+import Decodable
 
 extension NSDate {
     private static let dateFormatter = NSDateFormatter()
     private static let dateFormat = "yyyy-MM-dd"
+    private static let dateFormatDay = "EEEE"
+    private static let dateFormatWithClock = "yyyy-MM-dd HH:mm:ss"
+    private static let dateFormatOnlyTime = "HH:mm"
+
 
     static func stringToDate(dateString: String) -> NSDate! {
         return getDateFormatter().dateFromString(dateString)
     }
 
-     func dateToString() -> String {
+    static func stringToDateWithClock(dateString: String) -> NSDate! {
+        return getDateFormatter(NSDate.dateFormatWithClock).dateFromString(dateString)
+    }
+
+    func dateToString() -> String {
         return NSDate.getDateFormatter().stringFromDate(self)
+    }
+
+    func dateHoursToString() -> String {
+        return NSDate.getDateFormatter(NSDate.dateFormatOnlyTime).stringFromDate(self)
+    }
+
+    func dateWithDayToString() -> String {
+        return NSDate.getDateFormatter(NSDate.dateFormatDay).stringFromDate(self) + " " + NSDate.getDateFormatter().stringFromDate(self)
     }
 
     static func getCurrentStartOfWeek() -> NSDate {
@@ -24,13 +41,16 @@ extension NSDate {
         let weekdayComponents = gregorian.component(.Weekday, fromDate: today)
         var componentsToSubtact = NSDateComponents()
         componentsToSubtact.day = -weekdayComponents + gregorian.firstWeekday
-        return gregorian.dateByAddingComponents(componentsToSubtact,toDate: today, options: .MatchStrictly)!
+        return gregorian.dateByAddingComponents(componentsToSubtact, toDate: today, options: .MatchStrictly)!
     }
 
 
-    private static func getDateFormatter() -> NSDateFormatter {
-        dateFormatter.dateFormat = dateFormat
+    private static func getDateFormatter(format:String = dateFormat) -> NSDateFormatter {
+        dateFormatter.dateFormat = format
         return dateFormatter
     }
 
+
+
 }
+

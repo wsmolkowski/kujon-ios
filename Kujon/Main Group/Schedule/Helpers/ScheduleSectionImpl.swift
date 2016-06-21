@@ -5,25 +5,25 @@
 
 import Foundation
 
-class ScheduleSectionImpl:ScheduleSection {
+class ScheduleSectionImpl: ScheduleSection {
 
-    let currentDate :NSDate
-    let listOfLectures :Array<Lecture>
-    init(withDate:NSDate, listOfLecture:Array<Lecture>){
+    let currentDate: String
+    let listOfLectures: Array<LectureWrapper>
+    init(withDate: String, listOfLecture: Array<LectureWrapper>) {
         currentDate = withDate
         self.listOfLectures = listOfLecture
     }
 
 
     func getSectionTitle() -> String {
-        return currentDate.dateToString()
+        return currentDate
     }
 
     func getSectionSize() -> Int {
         return listOfLectures.count
     }
 
-    func getElementAtPosition(position: Int) -> Lecture {
+    func getElementAtPosition(position: Int) -> LectureWrapper {
         return listOfLectures[position]
     }
 

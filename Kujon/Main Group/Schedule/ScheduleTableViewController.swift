@@ -11,12 +11,13 @@ import UIKit
 class ScheduleTableViewController:
         UITableViewController,
         NavigationDelegate,
-        LectureProviderDelegate{
+        LectureProviderDelegate {
 
     weak var delegate: NavigationMenuProtocol! = nil
     let lectureProvider = LectureProvider.sharedInstance
+    let LectureCellId = "lectureCellId"
     var isQuering = false
-    var lastQueryDate : NSDate! = nil
+    var lastQueryDate: NSDate! = nil
     var sectionsList: Array<ScheduleSection> = Array<ScheduleSection>()
 
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {
@@ -26,18 +27,33 @@ class ScheduleTableViewController:
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(ScheduleTableViewController.openDrawer))
-        lastQueryDate  = NSDate.getCurrentStartOfWeek()
-        askForData()
+        lastQueryDate = NSDate.getCurrentStartOfWeek()
+        self.tableView.registerNib(UINib(nibName: "LectureTableViewCell", bundle: nil), forCellReuseIdentifier: LectureCellId)
         lectureProvider.delegate = self
+        lectureProvider.test = true
+        askForData()
 
     }
 
-    private func askForData(){
+    private func askForData() {
         isQuering = true
         lectureProvider.loadLectures(lastQueryDate.dateToString())
     }
 
     func onLectureLoaded(lectures: Array<Lecture>) {
+        let wrappers = lectures.map {
+            lecture in LectureWrapper(lecture: lecture)
+        }
+        let dic = wrappers.groupBy {
+            $0.startDate
+        }
+        dic.forEach{
+            key, list in
+            self.sectionsList.append(ScheduleSectionImpl(withDate: key,listOfLecture: list))
+        }
+
+
+        self.tableView.reloadData()
         isQuering = false
     }
 
@@ -67,29 +83,49 @@ class ScheduleTableViewController:
         return sectionsList[section].getSectionSize()
     }
 
+    @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 48
+    }
+
+    @available(iOS 2.0, *) override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return createLabel(sectionsList[section].getSectionTitle())
+
+    }
+
+    private func createLabel(text: String) -> UIView {
+        let view = HeaderViewTableViewCell.instanceFromNib()
+        view.titleLabel.text = text
+        return view
+    }
+
 
     @available(iOS 2.0, *) override func scrollViewDidScroll(scrollView: UIScrollView) {
 
         let height = scrollView.frame.size.height
         let contetyYOffset = scrollView.contentOffset.y
         let distanceFromBottom = scrollView.contentSize.height - contetyYOffset
-        if(distanceFromBottom <= height){
+        if (distanceFromBottom <= height) {
             NSlogManager.showLog("End of list, load more")
-            if(!isQuering){
-
+            if (!isQuering) {
+                lastQueryDate = lastQueryDate.dateByAddingTimeInterval(60*60*24*7)
+                askForData()
             }
         }
     }
 
-    /*
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCellWithIdentifier(LectureCellId, forIndexPath: indexPath) as! LectureTableViewCell
+        let wrapper = self.sectionsList[indexPath.section].getElementAtPosition(indexPath.row) as LectureWrapper
+        cell.timeLabel.text = wrapper.startTime + " \n" + wrapper.endTime + " \n" + "s. " + wrapper.lecture.roomNumber
+        let lecturer = wrapper.lecture.lecturers[0] as SimpleUser
+        cell.topic.text = wrapper.lecture.name + " \n" + lecturer.firstName + " " + lecturer.lastName
         return cell
     }
-    */
+
+    @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+       return 90
+    }
 
     /*
     // Override to support conditional editing of the table view.

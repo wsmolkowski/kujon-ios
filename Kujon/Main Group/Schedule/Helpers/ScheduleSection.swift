@@ -10,5 +10,5 @@ protocol ScheduleSection {
 
     func getSectionSize() -> Int
 
-    func getElementAtPosition(position: Int) -> Lecture
+    func getElementAtPosition(position: Int) -> LectureWrapper
 }

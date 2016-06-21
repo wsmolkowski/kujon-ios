@@ -80,10 +80,12 @@ class RestApiManager {
             break;
         case baseURL + "/faculties":
             string = "FacultiesDetail"
-            case baseURL + "/tt/data":
-                string = "Schedule"
-            break;
+
         default: string = "Usoses"
+        }
+
+        if(getMyUrl().containsString("/tt/")){
+            string = "Schedule"
         }
         do {
             let jsonData = try JsonDataLoader.loadJson(string)

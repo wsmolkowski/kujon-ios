@@ -39,6 +39,7 @@ struct Lecture {
     let type: String
     let buldingName: String
 
+
 }
 
 extension Lecture: Decodable {
