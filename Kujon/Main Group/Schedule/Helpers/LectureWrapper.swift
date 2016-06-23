@@ -11,14 +11,17 @@ class LectureWrapper {
     let startDate: String
     let startTime: String
     let endTime: String
+    let startNSDate: NSDate
+    let endNSDate: NSDate
+    let mothYearDate : String
 
     init(lecture: Lecture) {
         self.lecture = lecture
-        let start = NSDate.stringToDateWithClock(lecture.startTime)
-        let end = NSDate.stringToDateWithClock(lecture.endTime)
+        self.startNSDate = NSDate.stringToDateWithClock(lecture.startTime)
+        self.endNSDate = NSDate.stringToDateWithClock(lecture.endTime)
         self.startDate = start.dateToString()
         self.startTime = start.dateHoursToString()
         self.endTime = end.dateHoursToString()
-
+        self.mothYearDate = NSDate.getMonthYearString()
     }
 }

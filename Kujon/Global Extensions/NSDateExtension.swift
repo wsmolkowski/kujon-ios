@@ -9,6 +9,8 @@ import Decodable
 extension NSDate {
     private static let dateFormatter = NSDateFormatter()
     private static let dateFormat = "yyyy-MM-dd"
+    private static let dateFormatMonth = "MMMM"
+    private static let dateFormatYear = "yyyy"
     private static let dateFormatDay = "EEEE"
     private static let dateFormatWithClock = "yyyy-MM-dd HH:mm:ss"
     private static let dateFormatOnlyTime = "HH:mm"
@@ -34,6 +36,10 @@ extension NSDate {
         return NSDate.getDateFormatter(NSDate.dateFormatDay).stringFromDate(self) + " " + NSDate.getDateFormatter().stringFromDate(self)
     }
 
+    func getMonthYearString() -> String {
+        return NSDate.getDateFormatter(NSDate.dateFormatMonth).stringFromDate(self) + " " + NSDate.getDateFormatter(NSDate.dateFormatYear).stringFromDate(self)
+    }
+
     static func getCurrentStartOfWeek() -> NSDate {
         let today = NSDate()
         let gregorian = NSCalendar.currentCalendar()
@@ -45,11 +51,10 @@ extension NSDate {
     }
 
 
-    private static func getDateFormatter(format:String = dateFormat) -> NSDateFormatter {
+    private static func getDateFormatter(format: String = dateFormat) -> NSDateFormatter {
         dateFormatter.dateFormat = format
         return dateFormatter
     }
-
 
 
 }
