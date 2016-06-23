@@ -5,7 +5,7 @@
 
 import Foundation
 
-class LectureWrapper:CellHandlingStrategy {
+class LectureWrapper: CellHandlingStrategy {
 
     let lecture: Lecture
     let startDate: String
@@ -13,7 +13,8 @@ class LectureWrapper:CellHandlingStrategy {
     let endTime: String
     let startNSDate: NSDate
     let endNSDate: NSDate
-    let mothYearDate : String
+    let mothYearDate: String
+    var myCellHandler: LectureCellHandler!  = nil
 
     init(lecture: Lecture) {
         self.lecture = lecture
@@ -25,8 +26,24 @@ class LectureWrapper:CellHandlingStrategy {
         self.mothYearDate = startNSDate.getMonthYearString()
     }
 
-    func giveMeCellHandler() -> CellHandlerProtocol {
-        return LectureCellHandler(self)
+    func giveMyStrategy() -> CellHandlerProtocol {
+        if(self.myCellHandler == nil){
+            self.myCellHandler = LectureCellHandler(lectureWrapper: self)
+        }
+        return myCellHandler
+
+
     }
+
+    func giveMeMyCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        return tableView.dequeueReusableCellWithIdentifier(ScheduleTableViewController.LectureCellId, forIndexPath: indexPath)
+    }
+
+
+    func amILectureWrapper() -> Bool {
+        return true
+    }
+
+
 
 }

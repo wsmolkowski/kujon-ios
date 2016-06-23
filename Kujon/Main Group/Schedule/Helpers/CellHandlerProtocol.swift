@@ -6,8 +6,6 @@
 import Foundation
 
 protocol CellHandlerProtocol {
-    associatedtype T:UITableViewCell
 
-
-    func handleCell(cell:T);
+    func handleCell(inout cell:UITableViewCell);
 }

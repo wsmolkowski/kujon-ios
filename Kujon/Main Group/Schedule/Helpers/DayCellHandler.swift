@@ -5,11 +5,7 @@
 
 import Foundation
 
-protocol DayCellHandlerProtocol:CellHandlerProtocol{
-    associatedtype T = DayTableViewCell
-}
-
-class DayCellHandler:DayCellHandlerProtocol {
+class DayCellHandler:CellHandlerProtocol {
 
     let dayWrapper:DayWrapper
 
@@ -17,8 +13,9 @@ class DayCellHandler:DayCellHandlerProtocol {
     init(dayWrapper:DayWrapper){
         self.dayWrapper = dayWrapper
     }
-    func handleCell(cell: DayTableViewCell) {
-        cell.dayLabel.text  = dayWrapper.dayTime
+
+    func handleCell(inout cell: UITableViewCell) {
+        (cell as! DayTableViewCell).dayLabel.text = dayWrapper.dayTime
     }
 
 

@@ -15,11 +15,11 @@ class ScheduleTableViewController:
 
     weak var delegate: NavigationMenuProtocol! = nil
     let lectureProvider = LectureProvider.sharedInstance
-    let LectureCellId = "lectureCellId"
-    let DayCellId = "lectureCellId"
+    static let LectureCellId = "lectureCellId"
+    static let DayCellId = "dayCellId"
     var isQuering = false
     var lastQueryDate: NSDate! = nil
-    var sectionsList: Array<ScheduleSection> = Array<ScheduleSection>()
+    var sectionsDictionary: Dictionary<String, ScheduleSection> = Dictionary()
 
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {
         self.delegate = delegate
@@ -29,13 +29,13 @@ class ScheduleTableViewController:
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(ScheduleTableViewController.openDrawer))
 
-        let openCalendarButton =  UIBarButtonItem(title:"calendar",style: UIBarButtonItemStyle.Plain,target: self,
+        let openCalendarButton = UIBarButtonItem(title: "calendar", style: UIBarButtonItemStyle.Plain, target: self,
                 action: #selector(ScheduleTableViewController.openCalendar))
         self.navigationItem.rightBarButtonItem = openCalendarButton
 
         lastQueryDate = NSDate.getCurrentStartOfWeek()
-        self.tableView.registerNib(UINib(nibName: "LectureTableViewCell", bundle: nil), forCellReuseIdentifier: LectureCellId)
-        self.tableView.registerNib(UINib(nibName: "DayTableViewCell", bundle: nil), forCellReuseIdentifier: DayCellId)
+        self.tableView.registerNib(UINib(nibName: "LectureTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.LectureCellId)
+        self.tableView.registerNib(UINib(nibName: "DayTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.DayCellId)
         lectureProvider.delegate = self
         lectureProvider.test = true
         askForData()
@@ -51,20 +51,48 @@ class ScheduleTableViewController:
         let wrappers = lectures.map {
             lecture in LectureWrapper(lecture: lecture)
         }
-        let dic = wrappers.groupBy {
-            $0.startDate
+        let dicMonthYear = wrappers.groupBy {
+            $0.mothYearDate
         }
-        let sortedKeys = Array(dic.keys).sort(<)
+        let sortedKeys = Array(dicMonthYear.keys).sort(<)
 
-        sortedKeys.forEach{
+        sortedKeys.forEach {
             key in
-            self.sectionsList.append(ScheduleSectionImpl(withDate: key ,listOfLecture: dic[key]!))
+
+            var list = Array<CellHandlingStrategy>()
+            if (sectionsDictionary[key] != nil) {
+                let scheduleSection = sectionsDictionary[key]!
+                list = scheduleSection.getList()
+            }
+            var dict = dicMonthYear[key]!.groupBy {
+                $0.startDate
+            }
+            handleAddingToDictionary(key, oldList: list, dicdays: dict)
         }
-
-
 
         self.tableView.reloadData()
         isQuering = false
+    }
+
+
+    private func handleAddingToDictionary(key: String, oldList: Array<CellHandlingStrategy> = Array(), dicdays: Dictionary<String, [LectureWrapper]>) {
+
+        let sortedKeysDays = Array(dicdays.keys).sort(<)
+        var listOfCellStrategys: Array<CellHandlingStrategy> = Array()
+        sortedKeysDays.forEach {
+            dayKey in
+            listOfCellStrategys.append(DayWrapper(withDayTime: dayKey))
+            dicdays[dayKey]!.forEach {
+                wrap in
+                listOfCellStrategys.append(wrap as! CellHandlingStrategy)
+            }
+        }
+        sectionsDictionary[key] = ScheduleSectionImpl(withDate: key, listOfLecture: oldList + listOfCellStrategys)
+    }
+
+    private func getScheduleSectionAtPosition(pos: Int) -> ScheduleSection {
+        var componentArray = Array(sectionsDictionary.keys).sort(<)
+        return sectionsDictionary[componentArray[pos]]!
     }
 
     func onErrorOccurs() {
@@ -80,20 +108,22 @@ class ScheduleTableViewController:
     func openDrawer() {
         delegate?.toggleLeftPanel()
     }
-    func openCalendar(){
-        self.navigationController?.pushViewController(CalendarViewController(),animated: true)
+
+    func openCalendar() {
+        self.navigationController?.pushViewController(CalendarViewController(), animated: true)
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return sectionsList.count
+        return sectionsDictionary.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return sectionsList[section].getSectionSize()
+        let sectionSch = getScheduleSectionAtPosition(section)
+        return sectionSch.getSectionSize()
+
     }
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -101,7 +131,8 @@ class ScheduleTableViewController:
     }
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return createLabel(sectionsList[section].getSectionTitle())
+        var sectionSch = getScheduleSectionAtPosition(section)
+        return createLabel(sectionSch.getSectionTitle())
 
     }
 
@@ -120,26 +151,25 @@ class ScheduleTableViewController:
         if (distanceFromBottom <= height) {
             NSlogManager.showLog("End of list, load more")
             if (!isQuering) {
-                lastQueryDate = lastQueryDate.dateByAddingTimeInterval(60*60*24*7)
+                lastQueryDate = lastQueryDate.dateByAddingTimeInterval(60 * 60 * 24 * 7)
                 askForData()
             }
         }
     }
 
 
-
-
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(LectureCellId, forIndexPath: indexPath) as! LectureTableViewCell
-        let wrapper = self.sectionsList[indexPath.section].getElementAtPosition(indexPath.row) as LectureWrapper
-        cell.timeLabel.text = wrapper.startTime + " \n" + wrapper.endTime + " \n" + "s. " + wrapper.lecture.roomNumber
-        let lecturer = wrapper.lecture.lecturers[0] as SimpleUser
-        cell.topic.text = wrapper.lecture.name + " \n" + lecturer.firstName + " " + lecturer.lastName
+        var sectionSch = getScheduleSectionAtPosition(indexPath.section)
+        let cellStrategy = sectionSch.getElementAtPosition(indexPath.row)
+        var cell = cellStrategy.giveMeMyCell(tableView, cellForRowAtIndexPath: indexPath)
+        let strategy = cellStrategy.giveMyStrategy()
+        strategy.handleCell(&cell)
+
         return cell
     }
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-       return 90
+        return 90
     }
 
     /*

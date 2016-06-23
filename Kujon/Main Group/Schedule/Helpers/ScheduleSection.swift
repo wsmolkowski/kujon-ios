@@ -10,5 +10,6 @@ protocol ScheduleSection {
 
     func getSectionSize() -> Int
 
-    func getElementAtPosition(position: Int) -> LectureWrapper
+    func getElementAtPosition(position: Int) -> CellHandlingStrategy
+    func getList() -> Array<CellHandlingStrategy>
 }

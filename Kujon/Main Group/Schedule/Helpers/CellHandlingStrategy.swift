@@ -6,6 +6,9 @@
 import Foundation
 
 protocol CellHandlingStrategy {
+    func giveMyStrategy() -> CellHandlerProtocol
 
-    func giveMeCellHandler()->CellHandlerProtocol
+    func amILectureWrapper() -> Bool
+
+    func giveMeMyCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
 }

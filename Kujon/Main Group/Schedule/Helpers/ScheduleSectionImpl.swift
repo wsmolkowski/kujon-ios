@@ -8,10 +8,10 @@ import Foundation
 class ScheduleSectionImpl: ScheduleSection {
 
     let currentDate: String
-    let listOfLectures: Array<LectureWrapper>
-    init(withDate: String, listOfLecture: Array<LectureWrapper>) {
+    let listOfStrategys: Array<CellHandlingStrategy>
+    init(withDate: String, listOfLecture: Array<CellHandlingStrategy>) {
         currentDate = withDate
-        self.listOfLectures = listOfLecture
+        self.listOfStrategys = listOfLecture
     }
 
 
@@ -20,11 +20,17 @@ class ScheduleSectionImpl: ScheduleSection {
     }
 
     func getSectionSize() -> Int {
-        return listOfLectures.count
+        return listOfStrategys.count
     }
 
-    func getElementAtPosition(position: Int) -> LectureWrapper {
-        return listOfLectures[position]
+    func getElementAtPosition(position: Int) -> CellHandlingStrategy {
+        return listOfStrategys[position]
     }
+
+
+    func getList() -> Array<CellHandlingStrategy> {
+        return listOfStrategys
+    }
+
 
 }
