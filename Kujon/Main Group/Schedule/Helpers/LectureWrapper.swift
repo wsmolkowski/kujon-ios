@@ -5,7 +5,7 @@
 
 import Foundation
 
-class LectureWrapper {
+class LectureWrapper:CellHandlingStrategy {
 
     let lecture: Lecture
     let startDate: String
@@ -19,9 +19,14 @@ class LectureWrapper {
         self.lecture = lecture
         self.startNSDate = NSDate.stringToDateWithClock(lecture.startTime)
         self.endNSDate = NSDate.stringToDateWithClock(lecture.endTime)
-        self.startDate = start.dateToString()
-        self.startTime = start.dateHoursToString()
-        self.endTime = end.dateHoursToString()
-        self.mothYearDate = NSDate.getMonthYearString()
+        self.startDate = startNSDate.dateToString()
+        self.startTime = startNSDate.dateHoursToString()
+        self.endTime = endNSDate.dateHoursToString()
+        self.mothYearDate = startNSDate.getMonthYearString()
     }
+
+    func giveMeCellHandler() -> CellHandlerProtocol {
+        return LectureCellHandler(self)
+    }
+
 }

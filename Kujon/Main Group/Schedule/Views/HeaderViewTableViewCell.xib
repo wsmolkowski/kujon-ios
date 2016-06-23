@@ -17,10 +17,11 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOB-Rb-2E3">
                         <rect key="frame" x="8" y="0.0" width="304" height="44"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="uOB-Rb-2E3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Fw2-Je-sxh"/>
                     <constraint firstItem="uOB-Rb-2E3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="GtM-TP-a2n"/>

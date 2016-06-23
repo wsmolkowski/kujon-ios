@@ -16,6 +16,7 @@ class ScheduleTableViewController:
     weak var delegate: NavigationMenuProtocol! = nil
     let lectureProvider = LectureProvider.sharedInstance
     let LectureCellId = "lectureCellId"
+    let DayCellId = "lectureCellId"
     var isQuering = false
     var lastQueryDate: NSDate! = nil
     var sectionsList: Array<ScheduleSection> = Array<ScheduleSection>()
@@ -34,6 +35,7 @@ class ScheduleTableViewController:
 
         lastQueryDate = NSDate.getCurrentStartOfWeek()
         self.tableView.registerNib(UINib(nibName: "LectureTableViewCell", bundle: nil), forCellReuseIdentifier: LectureCellId)
+        self.tableView.registerNib(UINib(nibName: "DayTableViewCell", bundle: nil), forCellReuseIdentifier: DayCellId)
         lectureProvider.delegate = self
         lectureProvider.test = true
         askForData()
