@@ -12,7 +12,7 @@ class GradesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var textGradeLabel: UILabel!
     
-    @IBOutlet weak var smallDescLabel: UILabel!
+    @IBOutlet weak var secDescLabel: UILabel!
     @IBOutlet weak var gradeNumberLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     override func awakeFromNib() {

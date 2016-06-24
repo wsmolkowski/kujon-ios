@@ -69,13 +69,13 @@ class GradesTableViewController: UITableViewController
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(GradeCellIdentiefer, forIndexPath: indexPath) as! GradesTableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(GradeCellIdentiefer, forIndexPath: indexPath) as! GradesTableViewCell
         let grade = self.myTermGrades[indexPath.section].grades[indexPath.row] as! Grade
 
         cell.textGradeLabel.text = grade.valueDescription
         cell.gradeNumberLabel.text = grade.valueSymbol
         cell.descriptionLabel.text = grade.courseName
-        cell.smallDescLabel.text = grade.classType + " termin: " + String(grade.examSessionNumber)
+        cell.secDescLabel.text = grade.classType + " termin: " + String(grade.examSessionNumber)
 
         return cell
     }

@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -12,11 +11,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qb3-Zo-Khy">
-                        <rect key="frame" x="8" y="68" width="236" height="0.0"/>
+                        <rect key="frame" x="8" y="8" width="236" height="60"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -45,57 +44,42 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="qb3-Zo-Khy" firstAttribute="firstBaseline" secondItem="OKB-cM-MTc" secondAttribute="firstBaseline" id="3mo-Aj-NZE"/>
+                    <constraint firstItem="qb3-Zo-Khy" firstAttribute="bottom" secondItem="OKB-cM-MTc" secondAttribute="bottom" id="4if-eD-SAs"/>
+                    <constraint firstItem="NOt-Sh-LIb" firstAttribute="bottom" secondItem="2Zz-vM-G2z" secondAttribute="bottom" id="79c-CK-Uuz"/>
                     <constraint firstItem="2Zz-vM-G2z" firstAttribute="leading" secondItem="OKB-cM-MTc" secondAttribute="leading" id="Ajs-TR-Xj2"/>
                     <constraint firstItem="qb3-Zo-Khy" firstAttribute="bottom" secondItem="OKB-cM-MTc" secondAttribute="bottom" id="AxP-j5-BXq"/>
+                    <constraint firstItem="NOt-Sh-LIb" firstAttribute="bottom" secondItem="OKB-cM-MTc" secondAttribute="bottom" id="CkR-bQ-TkG"/>
                     <constraint firstItem="qb3-Zo-Khy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="DI9-HL-Pla"/>
-                    <constraint firstItem="qb3-Zo-Khy" firstAttribute="trailing" secondItem="NOt-Sh-LIb" secondAttribute="trailing" id="Dc5-rb-qWu"/>
                     <constraint firstItem="NOt-Sh-LIb" firstAttribute="bottom" secondItem="2Zz-vM-G2z" secondAttribute="bottom" id="FBl-MF-Ekn"/>
-                    <constraint firstItem="qb3-Zo-Khy" firstAttribute="leading" secondItem="NOt-Sh-LIb" secondAttribute="leading" id="Gx7-9S-kdV"/>
                     <constraint firstItem="OKB-cM-MTc" firstAttribute="leading" secondItem="qb3-Zo-Khy" secondAttribute="trailing" constant="8" id="Hu6-QG-cQj"/>
+                    <constraint firstAttribute="topMargin" secondItem="qb3-Zo-Khy" secondAttribute="top" id="LeQ-NX-xsz"/>
                     <constraint firstItem="2Zz-vM-G2z" firstAttribute="trailing" secondItem="OKB-cM-MTc" secondAttribute="trailing" id="Q9j-O4-IMk"/>
-                    <constraint firstItem="2Zz-vM-G2z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="59" id="Qc5-oP-XN3"/>
-                    <constraint firstItem="qb3-Zo-Khy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="60" id="Svz-7S-MNa"/>
-                    <constraint firstItem="NOt-Sh-LIb" firstAttribute="top" secondItem="OKB-cM-MTc" secondAttribute="bottom" constant="8" symbolic="YES" id="URB-Ry-pqh"/>
-                    <constraint firstItem="OKB-cM-MTc" firstAttribute="bottom" secondItem="qb3-Zo-Khy" secondAttribute="bottom" id="Uoz-mr-F5B"/>
+                    <constraint firstItem="qb3-Zo-Khy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Svz-7S-MNa"/>
                     <constraint firstItem="2Zz-vM-G2z" firstAttribute="leading" secondItem="NOt-Sh-LIb" secondAttribute="trailing" constant="8" symbolic="YES" id="Wde-9B-vJP"/>
                     <constraint firstItem="NOt-Sh-LIb" firstAttribute="top" secondItem="qb3-Zo-Khy" secondAttribute="top" id="ZiF-a4-XFS"/>
-                    <constraint firstItem="qb3-Zo-Khy" firstAttribute="bottom" secondItem="2Zz-vM-G2z" secondAttribute="bottom" id="eb2-DR-g7V"/>
-                    <constraint firstItem="OKB-cM-MTc" firstAttribute="firstBaseline" secondItem="qb3-Zo-Khy" secondAttribute="firstBaseline" id="h0o-VB-lhP"/>
-                    <constraint firstItem="OKB-cM-MTc" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="hSm-w7-mVG"/>
+                    <constraint firstItem="NOt-Sh-LIb" firstAttribute="top" secondItem="qb3-Zo-Khy" secondAttribute="bottom" id="bUe-DT-dzX"/>
                     <constraint firstItem="NOt-Sh-LIb" firstAttribute="leading" secondItem="qb3-Zo-Khy" secondAttribute="leading" id="hiG-j0-9Tv"/>
-                    <constraint firstItem="2Zz-vM-G2z" firstAttribute="leading" secondItem="OKB-cM-MTc" secondAttribute="leading" id="khC-Eb-bvU"/>
                     <constraint firstItem="OKB-cM-MTc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="oDs-yK-llD"/>
-                    <constraint firstItem="2Zz-vM-G2z" firstAttribute="leading" secondItem="NOt-Sh-LIb" secondAttribute="trailing" constant="42" id="pXf-U1-kzb"/>
+                    <constraint firstItem="NOt-Sh-LIb" firstAttribute="bottom" secondItem="OKB-cM-MTc" secondAttribute="bottom" id="r6D-Aw-VY9"/>
                     <constraint firstAttribute="bottomMargin" secondItem="2Zz-vM-G2z" secondAttribute="bottom" id="uRK-Ac-zzq"/>
                     <constraint firstItem="OKB-cM-MTc" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="vDO-dX-daQ"/>
-                    <constraint firstItem="OKB-cM-MTc" firstAttribute="trailing" secondItem="2Zz-vM-G2z" secondAttribute="trailing" id="vNo-sr-OAZ"/>
                     <constraint firstItem="2Zz-vM-G2z" firstAttribute="top" secondItem="OKB-cM-MTc" secondAttribute="bottom" id="wxI-qg-bGN"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="qb3-Zo-Khy" secondAttribute="trailing" constant="50" id="y9k-0N-s2a"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
-                        <exclude reference="URB-Ry-pqh"/>
-                        <exclude reference="3mo-Aj-NZE"/>
-                        <exclude reference="Dc5-rb-qWu"/>
-                        <exclude reference="Gx7-9S-kdV"/>
-                        <exclude reference="eb2-DR-g7V"/>
-                        <exclude reference="y9k-0N-s2a"/>
-                        <exclude reference="Uoz-mr-F5B"/>
-                        <exclude reference="h0o-VB-lhP"/>
-                        <exclude reference="hSm-w7-mVG"/>
-                        <exclude reference="vNo-sr-OAZ"/>
-                        <exclude reference="Qc5-oP-XN3"/>
-                        <exclude reference="khC-Eb-bvU"/>
-                        <exclude reference="pXf-U1-kzb"/>
+                        <exclude reference="AxP-j5-BXq"/>
+                        <exclude reference="LeQ-NX-xsz"/>
+                        <exclude reference="CkR-bQ-TkG"/>
+                        <exclude reference="FBl-MF-Ekn"/>
+                        <exclude reference="ZiF-a4-XFS"/>
+                        <exclude reference="r6D-Aw-VY9"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="descriptionLabel" destination="qb3-Zo-Khy" id="ggV-2R-CjI"/>
                 <outlet property="gradeNumberLabel" destination="OKB-cM-MTc" id="b7s-Sn-MHO"/>
-                <outlet property="smallDesc" destination="NOt-Sh-LIb" id="CIs-yF-E9W"/>
-                <outlet property="smallDescLabel" destination="NOt-Sh-LIb" id="KG3-dm-YQr"/>
+                <outlet property="secDescLabel" destination="NOt-Sh-LIb" id="Khf-wD-1zd"/>
                 <outlet property="textGradeLabel" destination="2Zz-vM-G2z" id="dQe-X9-7i8"/>
             </connections>
             <point key="canvasLocation" x="259" y="288"/>
