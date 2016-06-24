@@ -5,8 +5,9 @@
 
 import Foundation
 
-protocol GradesProviderProtocol:JsonProviderProtocol {
-    associatedtype T=GradeResponse
+protocol GradesProviderProtocol: JsonProviderProtocol {
+    associatedtype T = GradeResponse
+
     func loadGrades()
 }
 
@@ -15,17 +16,26 @@ protocol GradesProviderDelegate: ErrorResponseProtocol {
 
 }
 
-class GradesProvider: GradesProviderProtocol {
+class GradesProvider: RestApiManager, GradesProviderProtocol {
     var delegate: GradesProviderDelegate!
+    static let sharedInstance = GradesProvider()
 
     func loadGrades() {
-        do {
-            let jsonData = try JsonDataLoader.loadJson("Grades")
-            let grades = try self.changeJsonToResposne(jsonData)
-            delegate?.onGradesLoaded(grades.data)
-        } catch {
-            delegate?.onErrorOccurs()
-        }
+
+        self.makeHTTPAuthenticatedGetRequest({
+            json in
+            do {
+                let grades = try self.changeJsonToResposne(jsonData)
+                delegate?.onGradesLoaded(grades.data)
+            } catch {
+                delegate?.onErrorOccurs()
+            }
+        }, onError: { self.delegate?.onErrorOccurs() })
 
     }
+
+    override func getMyUrl() -> String {
+        return baseURL + "/gradesbyterm"
+    }
+
 }

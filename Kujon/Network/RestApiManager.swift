@@ -33,7 +33,7 @@ class RestApiManager {
         } else {
             if (headerManager.isAuthenticated()) {
                 var request = NSMutableURLRequest(URL: NSURL(string: getMyUrl())!)
-                let session  = SessionManager.provideSession()
+                let session = SessionManager.provideSession()
                 self.headerManager.addHeadersToRequest(&request)
                 let task = session.dataTaskWithRequest(request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
                 task.resume()
@@ -51,8 +51,8 @@ class RestApiManager {
     private func creteCompletionHanlder(onCompletion: onSucces, onError: onErrorOccurs) -> (NSData?, NSURLResponse?, NSError?) -> Void {
         return {
             data, response, error -> Void in
-            NSlogManager.showLog(String(format: "Disk cache %i of %i",NSURLCache.sharedURLCache().currentDiskUsage,NSURLCache.sharedURLCache().diskCapacity))
-            NSlogManager.showLog(String(format: "Memory Cache %i of %i",NSURLCache.sharedURLCache().currentMemoryUsage,NSURLCache.sharedURLCache().memoryCapacity))
+            NSlogManager.showLog(String(format: "Disk cache %i of %i", NSURLCache.sharedURLCache().currentDiskUsage, NSURLCache.sharedURLCache().diskCapacity))
+            NSlogManager.showLog(String(format: "Memory Cache %i of %i", NSURLCache.sharedURLCache().currentMemoryUsage, NSURLCache.sharedURLCache().memoryCapacity))
             if (error != nil) {
                 dispatch_async(dispatch_get_main_queue()) {
                     onError()
@@ -80,11 +80,14 @@ class RestApiManager {
             break;
         case baseURL + "/faculties":
             string = "FacultiesDetail"
+        case baseURL + "/gradesbyterm":
+            string = "Grades"
+            break;
 
         default: string = "Usoses"
         }
 
-        if(getMyUrl().containsString("/tt/")){
+        if (getMyUrl().containsString("/tt/")) {
             string = "Schedule"
         }
         do {
