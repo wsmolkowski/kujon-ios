@@ -97,6 +97,8 @@
 		4C0D8F84739469EB809E6E14 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D806D09BD6C9327949956 /* Room.swift */; };
 		52590A7E1D1D1F0C00C285A0 /* GradesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52590A7C1D1D1F0C00C285A0 /* GradesTableViewController.swift */; };
 		52590A7F1D1D1F0C00C285A0 /* GradesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52590A7D1D1D1F0C00C285A0 /* GradesTableViewController.xib */; };
+		52590A821D1D215200C285A0 /* GradesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52590A801D1D215200C285A0 /* GradesTableViewCell.swift */; };
+		52590A831D1D215200C285A0 /* GradesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52590A811D1D215200C285A0 /* GradesTableViewCell.xib */; };
 		527B39B81D117B800028BCF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527B39B71D117B800028BCF9 /* Assets.xcassets */; };
 		527B39BB1D12A0260028BCF9 /* TeacherDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527B39B91D12A0260028BCF9 /* TeacherDetailTableViewController.swift */; };
 		527B39BC1D12A0260028BCF9 /* TeacherDetailTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527B39BA1D12A0260028BCF9 /* TeacherDetailTableViewController.xib */; };
@@ -120,8 +122,6 @@
 		52AF77C01D0984FC0058979A /* MenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77BE1D0984FC0058979A /* MenuItemTableViewCell.xib */; };
 		52AF77C31D0ACC5A0058979A /* LecturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77C11D0ACC5A0058979A /* LecturesViewController.swift */; };
 		52AF77C41D0ACC5A0058979A /* LecturesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77C21D0ACC5A0058979A /* LecturesViewController.xib */; };
-		52AF77C71D0AD15A0058979A /* GradesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77C51D0AD15A0058979A /* GradesViewController.swift */; };
-		52AF77C81D0AD15A0058979A /* GradesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77C61D0AD15A0058979A /* GradesViewController.xib */; };
 		52AF77CF1D0AD5C50058979A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77CD1D0AD5C50058979A /* SettingsViewController.swift */; };
 		52AF77D01D0AD5C50058979A /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77CE1D0AD5C50058979A /* SettingsViewController.xib */; };
 		52AF77D31D0AD80A0058979A /* SendOpinionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77D11D0AD80A0058979A /* SendOpinionViewController.swift */; };
@@ -256,6 +256,8 @@
 		4C0D8FE0C6C05C3CCF8C15E0 /* CellHandlerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellHandlerProtocol.swift; sourceTree = "<group>"; };
 		52590A7C1D1D1F0C00C285A0 /* GradesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradesTableViewController.swift; sourceTree = "<group>"; };
 		52590A7D1D1D1F0C00C285A0 /* GradesTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GradesTableViewController.xib; sourceTree = "<group>"; };
+		52590A801D1D215200C285A0 /* GradesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradesTableViewCell.swift; sourceTree = "<group>"; };
+		52590A811D1D215200C285A0 /* GradesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GradesTableViewCell.xib; sourceTree = "<group>"; };
 		527B39B71D117B800028BCF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		527B39B91D12A0260028BCF9 /* TeacherDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherDetailTableViewController.swift; sourceTree = "<group>"; };
 		527B39BA1D12A0260028BCF9 /* TeacherDetailTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeacherDetailTableViewController.xib; sourceTree = "<group>"; };
@@ -279,8 +281,6 @@
 		52AF77BE1D0984FC0058979A /* MenuItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuItemTableViewCell.xib; sourceTree = "<group>"; };
 		52AF77C11D0ACC5A0058979A /* LecturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturesViewController.swift; sourceTree = "<group>"; };
 		52AF77C21D0ACC5A0058979A /* LecturesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LecturesViewController.xib; sourceTree = "<group>"; };
-		52AF77C51D0AD15A0058979A /* GradesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradesViewController.swift; sourceTree = "<group>"; };
-		52AF77C61D0AD15A0058979A /* GradesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GradesViewController.xib; sourceTree = "<group>"; };
 		52AF77CD1D0AD5C50058979A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		52AF77CE1D0AD5C50058979A /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		52AF77D11D0AD80A0058979A /* SendOpinionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendOpinionViewController.swift; sourceTree = "<group>"; };
@@ -688,10 +688,10 @@
 		4C0D8C2CCF13E560C8D36D1C /* Grades */ = {
 			isa = PBXGroup;
 			children = (
-				52AF77C51D0AD15A0058979A /* GradesViewController.swift */,
-				52AF77C61D0AD15A0058979A /* GradesViewController.xib */,
 				52590A7C1D1D1F0C00C285A0 /* GradesTableViewController.swift */,
 				52590A7D1D1D1F0C00C285A0 /* GradesTableViewController.xib */,
+				52590A801D1D215200C285A0 /* GradesTableViewCell.swift */,
+				52590A811D1D215200C285A0 /* GradesTableViewCell.xib */,
 			);
 			path = Grades;
 			sourceTree = "<group>";
@@ -949,11 +949,11 @@
 				52F69F891D10253200025C55 /* UserDetailsScreenGoFurtherViewCellTableViewCell.xib in Resources */,
 				52AF77C41D0ACC5A0058979A /* LecturesViewController.xib in Resources */,
 				4C0D8D641FD73F7E585E72B6 /* User.json in Resources */,
-				52AF77C81D0AD15A0058979A /* GradesViewController.xib in Resources */,
 				529513631D1931C6009D6FF2 /* HeaderViewTableViewCell.xib in Resources */,
 				4C0D8EE504A6F04F1B414751 /* Schedule.json in Resources */,
 				527B39C01D12A08D0028BCF9 /* TeacherDetailsTableViewCell.xib in Resources */,
 				52AF77D81D0AD83A0058979A /* ShareViewController.xib in Resources */,
+				52590A831D1D215200C285A0 /* GradesTableViewCell.xib in Resources */,
 				52590A7F1D1D1F0C00C285A0 /* GradesTableViewController.xib in Resources */,
 				4C0D8665D94A08D7002946B8 /* Courses.json in Resources */,
 				52AF77D41D0AD80A0058979A /* SendOpinionViewController.xib in Resources */,
@@ -1310,8 +1310,8 @@
 				4C0D849262CBC0E3CAA11A36 /* MenuItemWithController.swift in Sources */,
 				4C0D869D18F5884265AD7390 /* MenuItemsHolder.swift in Sources */,
 				4C0D81C6128C12946244195F /* NavigationDelegate.swift in Sources */,
-				52AF77C71D0AD15A0058979A /* GradesViewController.swift in Sources */,
 				4C0D87E638ACCDF0858CD694 /* NavigationMenuProtocol.swift in Sources */,
+				52590A821D1D215200C285A0 /* GradesTableViewCell.swift in Sources */,
 				4C0D881C4D3885EDE2AFBD61 /* NavigationMenuCreator.swift in Sources */,
 				4C0D87179E64FB71B0A00BE5 /* UserMenuItem.swift in Sources */,
 				52AF77CF1D0AD5C50058979A /* SettingsViewController.swift in Sources */,

@@ -25,10 +25,10 @@ class GradesProvider: RestApiManager, GradesProviderProtocol {
         self.makeHTTPAuthenticatedGetRequest({
             json in
             do {
-                let grades = try self.changeJsonToResposne(jsonData)
-                delegate?.onGradesLoaded(grades.data)
+                let grades = try self.changeJsonToResposne(json)
+                self.delegate?.onGradesLoaded(grades.data)
             } catch {
-                delegate?.onErrorOccurs()
+                self.delegate?.onErrorOccurs()
             }
         }, onError: { self.delegate?.onErrorOccurs() })
 

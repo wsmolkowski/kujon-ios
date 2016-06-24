@@ -18,7 +18,7 @@ class GradesMenuItem:MenuItemWithController {
     }
 
     func returnViewControllerFunction()->() -> UIViewController! {
-        return { return GradesViewController() }
+        return { return GradesTableViewController() }
     }
 
 }
