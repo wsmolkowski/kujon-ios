@@ -95,6 +95,8 @@
 		4C0D8EE0854E8A315B37467E /* LectureWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8269192F611DE27E5FF6 /* LectureWrapper.swift */; };
 		4C0D8EE504A6F04F1B414751 /* Schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8F0FD29DE7CF921001CE /* Schedule.json */; };
 		4C0D8F84739469EB809E6E14 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D806D09BD6C9327949956 /* Room.swift */; };
+		52590A7E1D1D1F0C00C285A0 /* GradesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52590A7C1D1D1F0C00C285A0 /* GradesTableViewController.swift */; };
+		52590A7F1D1D1F0C00C285A0 /* GradesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52590A7D1D1D1F0C00C285A0 /* GradesTableViewController.xib */; };
 		527B39B81D117B800028BCF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527B39B71D117B800028BCF9 /* Assets.xcassets */; };
 		527B39BB1D12A0260028BCF9 /* TeacherDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527B39B91D12A0260028BCF9 /* TeacherDetailTableViewController.swift */; };
 		527B39BC1D12A0260028BCF9 /* TeacherDetailTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527B39BA1D12A0260028BCF9 /* TeacherDetailTableViewController.xib */; };
@@ -252,6 +254,8 @@
 		4C0D8FBDE18C4279900F73A1 /* GradesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradesProvider.swift; sourceTree = "<group>"; };
 		4C0D8FDD772870E1BD0EF952 /* Facultie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facultie.swift; sourceTree = "<group>"; };
 		4C0D8FE0C6C05C3CCF8C15E0 /* CellHandlerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellHandlerProtocol.swift; sourceTree = "<group>"; };
+		52590A7C1D1D1F0C00C285A0 /* GradesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradesTableViewController.swift; sourceTree = "<group>"; };
+		52590A7D1D1D1F0C00C285A0 /* GradesTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GradesTableViewController.xib; sourceTree = "<group>"; };
 		527B39B71D117B800028BCF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		527B39B91D12A0260028BCF9 /* TeacherDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherDetailTableViewController.swift; sourceTree = "<group>"; };
 		527B39BA1D12A0260028BCF9 /* TeacherDetailTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeacherDetailTableViewController.xib; sourceTree = "<group>"; };
@@ -686,6 +690,8 @@
 			children = (
 				52AF77C51D0AD15A0058979A /* GradesViewController.swift */,
 				52AF77C61D0AD15A0058979A /* GradesViewController.xib */,
+				52590A7C1D1D1F0C00C285A0 /* GradesTableViewController.swift */,
+				52590A7D1D1D1F0C00C285A0 /* GradesTableViewController.xib */,
 			);
 			path = Grades;
 			sourceTree = "<group>";
@@ -948,6 +954,7 @@
 				4C0D8EE504A6F04F1B414751 /* Schedule.json in Resources */,
 				527B39C01D12A08D0028BCF9 /* TeacherDetailsTableViewCell.xib in Resources */,
 				52AF77D81D0AD83A0058979A /* ShareViewController.xib in Resources */,
+				52590A7F1D1D1F0C00C285A0 /* GradesTableViewController.xib in Resources */,
 				4C0D8665D94A08D7002946B8 /* Courses.json in Resources */,
 				52AF77D41D0AD80A0058979A /* SendOpinionViewController.xib in Resources */,
 				4C0D85F69F40F41D39640CFD /* Grades.json in Resources */,
@@ -1348,6 +1355,7 @@
 				4C0D807A59B2A7B85B701839 /* SchoolPath.swift in Sources */,
 				4C0D8809E711694A3F913024 /* SchoolStats.swift in Sources */,
 				4C0D818BA0EBA18711EA841E /* LogoUrls.swift in Sources */,
+				52590A7E1D1D1F0C00C285A0 /* GradesTableViewController.swift in Sources */,
 				529513651D196136009D6FF2 /* CalendarViewController.swift in Sources */,
 				4C0D811BF9E0E00EDE9CA088 /* FacultieResposne.swift in Sources */,
 				527B39BB1D12A0260028BCF9 /* TeacherDetailTableViewController.swift in Sources */,
