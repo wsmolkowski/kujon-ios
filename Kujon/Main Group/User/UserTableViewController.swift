@@ -177,6 +177,9 @@ class UserTableViewController: UITableViewController
     func clicked(sender: UIButton) {
         let buttonTag = sender.tag
         let myProgramme: StudentProgramme = self.userDetails.studentProgrammes[buttonTag as! Int]
+        let popController = KierunkiViewController();
+        popController.showInView( self.navigationController?.view , withProgramme: myProgramme.programme, animated: true)
+
     }
 
 

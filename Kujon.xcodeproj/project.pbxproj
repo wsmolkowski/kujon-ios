@@ -99,6 +99,8 @@
 		52590A7F1D1D1F0C00C285A0 /* GradesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52590A7D1D1D1F0C00C285A0 /* GradesTableViewController.xib */; };
 		52590A821D1D215200C285A0 /* GradesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52590A801D1D215200C285A0 /* GradesTableViewCell.swift */; };
 		52590A831D1D215200C285A0 /* GradesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52590A811D1D215200C285A0 /* GradesTableViewCell.xib */; };
+		52590A861D1D3E5A00C285A0 /* KierunkiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52590A841D1D3E5A00C285A0 /* KierunkiViewController.swift */; };
+		52590A871D1D3E5A00C285A0 /* KierunkiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52590A851D1D3E5A00C285A0 /* KierunkiViewController.xib */; };
 		527B39B81D117B800028BCF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527B39B71D117B800028BCF9 /* Assets.xcassets */; };
 		527B39BB1D12A0260028BCF9 /* TeacherDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527B39B91D12A0260028BCF9 /* TeacherDetailTableViewController.swift */; };
 		527B39BC1D12A0260028BCF9 /* TeacherDetailTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527B39BA1D12A0260028BCF9 /* TeacherDetailTableViewController.xib */; };
@@ -258,6 +260,8 @@
 		52590A7D1D1D1F0C00C285A0 /* GradesTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GradesTableViewController.xib; sourceTree = "<group>"; };
 		52590A801D1D215200C285A0 /* GradesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradesTableViewCell.swift; sourceTree = "<group>"; };
 		52590A811D1D215200C285A0 /* GradesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GradesTableViewCell.xib; sourceTree = "<group>"; };
+		52590A841D1D3E5A00C285A0 /* KierunkiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KierunkiViewController.swift; sourceTree = "<group>"; };
+		52590A851D1D3E5A00C285A0 /* KierunkiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KierunkiViewController.xib; sourceTree = "<group>"; };
 		527B39B71D117B800028BCF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		527B39B91D12A0260028BCF9 /* TeacherDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherDetailTableViewController.swift; sourceTree = "<group>"; };
 		527B39BA1D12A0260028BCF9 /* TeacherDetailTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeacherDetailTableViewController.xib; sourceTree = "<group>"; };
@@ -511,6 +515,8 @@
 			children = (
 				4C0D8B705FC4F21E3893A940 /* Views */,
 				52F69F841D101F0C00025C55 /* UserTableViewController.swift */,
+				52590A841D1D3E5A00C285A0 /* KierunkiViewController.swift */,
+				52590A851D1D3E5A00C285A0 /* KierunkiViewController.xib */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -962,6 +968,7 @@
 				52AF77E71D0EB5220058979A /* TeacherViewCell.xib in Resources */,
 				5295135B1D17C76E009D6FF2 /* ScheduleTableViewController.xib in Resources */,
 				52AF77D01D0AD5C50058979A /* SettingsViewController.xib in Resources */,
+				52590A871D1D3E5A00C285A0 /* KierunkiViewController.xib in Resources */,
 				4C0D8792155EDB3BF227067C /* FacultiesDetail.json in Resources */,
 				527B39B81D117B800028BCF9 /* Assets.xcassets in Resources */,
 				4C0D87FF3ADA197F8655E408 /* Programmes.json in Resources */,
@@ -1303,6 +1310,7 @@
 				5295135A1D17C76E009D6FF2 /* ScheduleTableViewController.swift in Sources */,
 				52AF77A81D095CBF0058979A /* LeftMenuTableViewController.swift in Sources */,
 				52AF77BF1D0984FC0058979A /* MenuItemTableViewCell.swift in Sources */,
+				52590A861D1D3E5A00C285A0 /* KierunkiViewController.swift in Sources */,
 				52AF77D71D0AD83A0058979A /* ShareViewController.swift in Sources */,
 				4C0D8393C1440593CBD091ED /* UsosesProvider.swift in Sources */,
 				5282840D1D084D7200A602B4 /* UsosTableViewCell.swift in Sources */,
