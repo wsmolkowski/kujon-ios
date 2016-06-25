@@ -8,7 +8,6 @@ import Decodable
 
 struct Usos {
     let name: String
-    let certificate: Bool
     let usosId: String
     let image: String
 }
@@ -17,7 +16,6 @@ extension Usos: Decodable {
     static func decode(j: AnyObject) throws -> Usos {
         return try Usos(
         name: j => "name",
-                certificate: j => "validate_ssl_certificate",
                 usosId: j => "usos_id",
                 image: j => "logo"
         )
