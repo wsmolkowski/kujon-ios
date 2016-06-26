@@ -14,7 +14,7 @@ class ScheduleTableViewController:
         LectureProviderDelegate {
 
     weak var delegate: NavigationMenuProtocol! = nil
-    let lectureProvider = LectureProvider.sharedInstance
+    let lectureProvider = ProvidersProviderImpl.sharedInstance.provideLectureProvider()
     static let LectureCellId = "lectureCellId"
     static let DayCellId = "dayCellId"
     var isQuering = false

@@ -17,8 +17,8 @@ class UserTableViewController: UITableViewController
     private let usedDetailCellId = "userDetailViewId"
     private let StudentProgrammeCellId = "cellIdForStudentProgramme"
     private let FacultieProgrammeCellId = "cellIdForStudentFacultie"
-    let userDetailsProvider: UserDetailsProvider! = UserDetailsProvider.sharedInstance
-    let facultieProvider: FacultiesProvider! = FacultiesProvider.sharedInstance
+    let userDetailsProvider: UserDetailsProvider! = ProvidersProviderImpl.sharedInstance.provideUserDetailsProvider()
+    let facultieProvider: FacultiesProvider! = ProvidersProviderImpl.sharedInstance.providerFacultiesProvider()
     let restImageProvider = RestImageProvider.sharedInstance
 
     var userDetails: UserDetail! = nil

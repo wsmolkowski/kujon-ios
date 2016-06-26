@@ -13,7 +13,7 @@ class GradesTableViewController: UITableViewController
         ,GradesProviderDelegate{
 
     weak var delegate: NavigationMenuProtocol! = nil
-    let gradesProvider = GradesProvider.sharedInstance
+    let gradesProvider = ProvidersProviderImpl.sharedInstance.provideGradesProvider()
     private let GradeCellIdentiefer = "GradeCellId"
 
     private var myTermGrades  = Array<TermGrades>()

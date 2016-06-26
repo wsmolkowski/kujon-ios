@@ -11,7 +11,7 @@ import UIKit
 class TeacherTableViewController: UITableViewController, NavigationDelegate, LecturerProviderDelegate {
     private let TeachCellId = "teacherCellId"
     weak var delegate: NavigationMenuProtocol! = nil
-    let lecturerProvider = LecturerProvider.sharedInstance
+    let lecturerProvider = ProvidersProviderImpl.sharedInstance.provideLecturerProvider()
     private var lecturers: Array<SimpleUser>! = nil
 
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {

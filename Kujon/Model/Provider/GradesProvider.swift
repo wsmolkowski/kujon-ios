@@ -18,7 +18,7 @@ protocol GradesProviderDelegate: ErrorResponseProtocol {
 
 class GradesProvider: RestApiManager, GradesProviderProtocol {
     var delegate: GradesProviderDelegate!
-    static let sharedInstance = GradesProvider()
+
 
     func loadGrades() {
 

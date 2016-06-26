@@ -20,7 +20,7 @@ protocol UserDetailsProviderDelegate: ErrorResponseProtocol {
 
 class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
 
-    static let sharedInstance = UserDetailsProvider()
+
 
     var delegate: UserDetailsProviderDelegate!
 

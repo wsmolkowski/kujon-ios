@@ -11,7 +11,7 @@ import UIKit
 class UsosesTableViewController: UITableViewController,UsosesProviderDelegate {
 
     private let UsosCellIdentifier = "reusableUsosCell"
-    private let usosProvider = UsosesProvider()
+    private let usosProvider = ProvidersProviderImpl.sharedInstance.provideUsosesProvider()
     private var usosList :Array<Usos> = Array()
 
     override func viewDidLoad() {

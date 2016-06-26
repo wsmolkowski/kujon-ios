@@ -16,7 +16,7 @@ protocol FacultiesProviderDelegate: ErrorResponseProtocol {
 }
 
 class FacultiesProvider: RestApiManager, FacultiesProviderProtocol {
-    static let sharedInstance = FacultiesProvider()
+
     var delegate: FacultiesProviderDelegate! = nil
 
 

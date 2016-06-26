@@ -11,7 +11,7 @@ import UIKit
 class TeacherDetailTableViewController: UITableViewController, UserDetailsProviderDelegate , OnImageLoadedFromRest {
     private let TeacherDetailViewId = "teacherDetailViewId"
     var teacherId: String! = nil
-    private let userDetailsProvider = UserDetailsProvider.sharedInstance
+    private let userDetailsProvider = ProvidersProviderImpl.sharedInstance.provideUserDetailsProvider()
     private let restImageProvider  = RestImageProvider.sharedInstance
     private var userDetails: UserDetail! = nil
 

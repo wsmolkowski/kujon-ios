@@ -19,7 +19,7 @@ protocol LectureProviderDelegate: ErrorResponseProtocol {
 }
 
 class LectureProvider: RestApiManager, LectureProviderProtocol {
-    static let sharedInstance = LectureProvider()
+
     var delegate: LectureProviderDelegate!
     var endpoint: String! = nil
     func loadLectures(date: String) {

@@ -18,7 +18,7 @@ protocol LecturerProviderDelegate: ErrorResponseProtocol {
 }
 
 class LecturerProvider: RestApiManager, LecturerProviderProtocol {
-    static let sharedInstance = LecturerProvider()
+
     var delegate: LecturerProviderDelegate!
 
 
