@@ -44,9 +44,16 @@ class KierunkiViewController: UIViewController{
         // Dispose of any resources that can be recreated.
     }
 
-     func showInView(view:UIView! ,withProgramme programme : Programme, animated: Bool)
+     func showInView(parentView:UIView! ,withProgramme programme : Programme, animated: Bool)
     {
-        view.addSubview(self.view)
+        parentView.addSubview(self.view)
+        
+        self.view.translatesAutoresizingMaskIntoConstraints = false
+        self.view.topAnchor.constraintEqualToAnchor(parentView.topAnchor, constant: 0).active = true
+        self.view.bottomAnchor.constraintEqualToAnchor(parentView.bottomAnchor, constant: 0).active = true
+        self.view.leadingAnchor.constraintEqualToAnchor(parentView.leadingAnchor, constant: 0).active = true
+        self.view.trailingAnchor.constraintEqualToAnchor(parentView.trailingAnchor, constant: 0).active = true
+        
         self.myProgramme = programme
         levelLabel.text =  myProgramme.levelOfStudies
         descriptionLabel.text = "opis: " + myProgramme.description
