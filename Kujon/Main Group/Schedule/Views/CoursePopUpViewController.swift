@@ -29,8 +29,15 @@ class CoursePopUpViewController: PopUpViewController {
 
 
 
-    func showInView(view:UIView! ,withLecture lectureWrap : LectureWrapper, animated: Bool){
-        view.addSubview(self.view)
+    func showInView(parentView: UIView! ,withLecture lectureWrap : LectureWrapper, animated: Bool){
+        parentView.addSubview(self.view)
+        
+        self.view.translatesAutoresizingMaskIntoConstraints = false
+        self.view.topAnchor.constraintEqualToAnchor(parentView.topAnchor, constant: 0).active = true
+        self.view.bottomAnchor.constraintEqualToAnchor(parentView.bottomAnchor, constant: 0).active = true
+        self.view.leadingAnchor.constraintEqualToAnchor(parentView.leadingAnchor, constant: 0).active = true
+        self.view.trailingAnchor.constraintEqualToAnchor(parentView.trailingAnchor, constant: 0).active = true
+        
         let lecture = lectureWrap.lecture
         lectureTypeLabel.text  = "Typ: " + lecture.type
         lectureGroupLabel.text  = "Grupa: " + String(lecture.groupNumber)
