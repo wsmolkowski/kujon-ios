@@ -172,6 +172,13 @@ class ScheduleTableViewController:
         return 90
     }
 
+    @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var sectionSch = getScheduleSectionAtPosition(indexPath.section)
+        let cellStrategy = sectionSch.getElementAtPosition(indexPath.row)
+        cellStrategy.handleClick(self.navigationController)
+    }
+
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

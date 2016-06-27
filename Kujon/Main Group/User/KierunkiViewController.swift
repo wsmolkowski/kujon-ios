@@ -33,9 +33,7 @@ class KierunkiViewController: PopUpViewController{
         return popUpView
     }
 
-    override func handleTap() {
-        removeAnimate()
-    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

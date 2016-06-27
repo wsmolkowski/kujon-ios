@@ -31,5 +31,8 @@ class DayWrapper:CellHandlingStrategy {
         return false
     }
 
+    func handleClick(controller: UIViewController?) {
+    }
+
 
 }

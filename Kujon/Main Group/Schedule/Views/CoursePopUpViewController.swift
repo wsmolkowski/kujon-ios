@@ -23,15 +23,33 @@ class CoursePopUpViewController: PopUpViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func setMyPopUpView() -> UIView! {
+        return popUpView
     }
+
+
+
+    func showInView(view:UIView! ,withLecture lectureWrap : LectureWrapper, animated: Bool){
+        view.addSubview(self.view)
+        let lecture = lectureWrap.lecture
+        lectureTypeLabel.text  = "Typ: " + lecture.type
+        lectureGroupLabel.text  = "Grupa: " + String(lecture.groupNumber)
+        lectureBuldingNameLabel.text  = "Budynek: " + lecture.buldingName
+        lectureRoomNumberLabel.text  = "Sala: " + lecture.roomNumber
+        lectureTimeLabel.text  = lectureWrap.startTime + ":" + lecture.endTime
+
+        if animated
+        {
+            self.showAnimate()
+        }
+    }
+
     
     @IBAction func seeLectureButtonAction(sender: AnyObject) {
     }
 
     @IBAction func okButtonAction(sender: AnyObject) {
+        removeAnimate()
     }
     /*
     // MARK: - Navigation
