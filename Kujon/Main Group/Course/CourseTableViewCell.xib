@@ -33,7 +33,7 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
-                <outlet property="courseNameLabel" destination="H2p-sc-9uM" id="0hA-aR-L0p"/>
+                <outlet property="courseNameLabel" destination="7ak-KO-UTZ" id="5GI-Bu-Hln"/>
             </connections>
         </tableViewCell>
     </objects>

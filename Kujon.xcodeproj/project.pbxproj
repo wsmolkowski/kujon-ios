@@ -107,7 +107,7 @@
 		52590A831D1D215200C285A0 /* GradesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52590A811D1D215200C285A0 /* GradesTableViewCell.xib */; };
 		52590A861D1D3E5A00C285A0 /* KierunkiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52590A841D1D3E5A00C285A0 /* KierunkiViewController.swift */; };
 		52590A871D1D3E5A00C285A0 /* KierunkiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52590A851D1D3E5A00C285A0 /* KierunkiViewController.xib */; };
-		526750391D213902004AD243 /* CoursesTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526750371D213902004AD243 /* CoursesTableTableViewController.swift */; };
+		526750391D213902004AD243 /* CoursesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526750371D213902004AD243 /* CoursesTableViewController.swift */; };
 		5267503A1D213902004AD243 /* CoursesTableTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526750381D213902004AD243 /* CoursesTableTableViewController.xib */; };
 		5267503D1D21391F004AD243 /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267503B1D21391F004AD243 /* CourseTableViewCell.swift */; };
 		5267503E1D21391F004AD243 /* CourseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5267503C1D21391F004AD243 /* CourseTableViewCell.xib */; };
@@ -132,8 +132,6 @@
 		52AF77A81D095CBF0058979A /* LeftMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77A71D095CBF0058979A /* LeftMenuTableViewController.swift */; };
 		52AF77BF1D0984FC0058979A /* MenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77BD1D0984FC0058979A /* MenuItemTableViewCell.swift */; };
 		52AF77C01D0984FC0058979A /* MenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77BE1D0984FC0058979A /* MenuItemTableViewCell.xib */; };
-		52AF77C31D0ACC5A0058979A /* LecturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77C11D0ACC5A0058979A /* LecturesViewController.swift */; };
-		52AF77C41D0ACC5A0058979A /* LecturesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77C21D0ACC5A0058979A /* LecturesViewController.xib */; };
 		52AF77CF1D0AD5C50058979A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77CD1D0AD5C50058979A /* SettingsViewController.swift */; };
 		52AF77D01D0AD5C50058979A /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77CE1D0AD5C50058979A /* SettingsViewController.xib */; };
 		52AF77D31D0AD80A0058979A /* SendOpinionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77D11D0AD80A0058979A /* SendOpinionViewController.swift */; };
@@ -278,7 +276,7 @@
 		52590A811D1D215200C285A0 /* GradesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GradesTableViewCell.xib; sourceTree = "<group>"; };
 		52590A841D1D3E5A00C285A0 /* KierunkiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KierunkiViewController.swift; sourceTree = "<group>"; };
 		52590A851D1D3E5A00C285A0 /* KierunkiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KierunkiViewController.xib; sourceTree = "<group>"; };
-		526750371D213902004AD243 /* CoursesTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesTableTableViewController.swift; sourceTree = "<group>"; };
+		526750371D213902004AD243 /* CoursesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesTableViewController.swift; sourceTree = "<group>"; };
 		526750381D213902004AD243 /* CoursesTableTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoursesTableTableViewController.xib; sourceTree = "<group>"; };
 		5267503B1D21391F004AD243 /* CourseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 		5267503C1D21391F004AD243 /* CourseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseTableViewCell.xib; sourceTree = "<group>"; };
@@ -303,8 +301,6 @@
 		52AF77A71D095CBF0058979A /* LeftMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuTableViewController.swift; sourceTree = "<group>"; };
 		52AF77BD1D0984FC0058979A /* MenuItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemTableViewCell.swift; sourceTree = "<group>"; };
 		52AF77BE1D0984FC0058979A /* MenuItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuItemTableViewCell.xib; sourceTree = "<group>"; };
-		52AF77C11D0ACC5A0058979A /* LecturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturesViewController.swift; sourceTree = "<group>"; };
-		52AF77C21D0ACC5A0058979A /* LecturesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LecturesViewController.xib; sourceTree = "<group>"; };
 		52AF77CD1D0AD5C50058979A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		52AF77CE1D0AD5C50058979A /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		52AF77D11D0AD80A0058979A /* SendOpinionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendOpinionViewController.swift; sourceTree = "<group>"; };
@@ -461,9 +457,7 @@
 		4C0D839BF212A83AA9960179 /* Course */ = {
 			isa = PBXGroup;
 			children = (
-				52AF77C11D0ACC5A0058979A /* LecturesViewController.swift */,
-				52AF77C21D0ACC5A0058979A /* LecturesViewController.xib */,
-				526750371D213902004AD243 /* CoursesTableTableViewController.swift */,
+				526750371D213902004AD243 /* CoursesTableViewController.swift */,
 				526750381D213902004AD243 /* CoursesTableTableViewController.xib */,
 				5267503B1D21391F004AD243 /* CourseTableViewCell.swift */,
 				5267503C1D21391F004AD243 /* CourseTableViewCell.xib */,
@@ -991,7 +985,6 @@
 				52C6275A1D1BFA0100A9BBA0 /* DayTableViewCell.xib in Resources */,
 				5295135F1D192F29009D6FF2 /* LectureTableViewCell.xib in Resources */,
 				52F69F891D10253200025C55 /* UserDetailsScreenGoFurtherViewCellTableViewCell.xib in Resources */,
-				52AF77C41D0ACC5A0058979A /* LecturesViewController.xib in Resources */,
 				4C0D8D641FD73F7E585E72B6 /* User.json in Resources */,
 				529513631D1931C6009D6FF2 /* HeaderViewTableViewCell.xib in Resources */,
 				4C0D8EE504A6F04F1B414751 /* Schedule.json in Resources */,
@@ -1339,7 +1332,6 @@
 			files = (
 				52AF77DF1D0EB4420058979A /* TeacherTableViewController.swift in Sources */,
 				52AF77A11D09590B0058979A /* SecondLoginViewController.swift in Sources */,
-				52AF77C31D0ACC5A0058979A /* LecturesViewController.swift in Sources */,
 				4C0D86EDDF1F15B819DBF358 /* AppDelegate.swift in Sources */,
 				52F69F881D10253200025C55 /* UserDetailsScreenGoFurtherViewCellTableViewCell.swift in Sources */,
 				52AF77A41D095C390058979A /* ContainerViewController.swift in Sources */,
@@ -1439,7 +1431,7 @@
 				4C0D89A149A07C2183D5E1B4 /* Course.swift in Sources */,
 				4C0D81D02A26767DB7C49C52 /* CourseGroup.swift in Sources */,
 				4C0D85E772027B77B2D540BD /* CoursesWrapper.swift in Sources */,
-				526750391D213902004AD243 /* CoursesTableTableViewController.swift in Sources */,
+				526750391D213902004AD243 /* CoursesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

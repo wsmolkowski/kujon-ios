@@ -54,7 +54,7 @@ class CourseProvider: RestApiManager {
     }
 
     override func getMyUrl() -> String {
-        return super.getMyUrl() + "/programmes"
+        return super.getMyUrl() + "/courseseditionsbyterm"
     }
 
 }
