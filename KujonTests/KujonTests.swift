@@ -124,7 +124,7 @@ class KujonTests: XCTestCase, UsosesProviderDelegate
         assert(loaded)
     }
 
-    func coursesProvided(courses: Array<Course>) {
+    func coursesProvided(courses: Array<CoursesWrapper>) {
         loaded = true
     }
 
