@@ -8,8 +8,15 @@
 
 import UIKit
 
-class CoursePopUpViewController: UIViewController {
+class CoursePopUpViewController: PopUpViewController {
 
+    @IBOutlet weak var lectureTypeLabel: UILabel!
+    @IBOutlet weak var lectureGroupLabel: UILabel!
+    @IBOutlet weak var lectureBuldingNameLabel: UILabel!
+    @IBOutlet weak var lectureRoomNumberLabel: UILabel!
+    @IBOutlet weak var lectureTimeLabel: UILabel!
+    @IBOutlet weak var courseTitle: UILabel!
+    @IBOutlet weak var popUpView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +28,11 @@ class CoursePopUpViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func seeLectureButtonAction(sender: AnyObject) {
+    }
 
+    @IBAction func okButtonAction(sender: AnyObject) {
+    }
     /*
     // MARK: - Navigation
 
