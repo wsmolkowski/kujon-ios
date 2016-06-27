@@ -44,8 +44,8 @@ class CourseProvider: RestApiManager {
                     self.delegate?.coursesProvided(arrayOfCourses)
 
                 } catch {
-                    print("JSON serialization failed:  \(error)")
-                    self.delegate?.onErrorOccurs()
+                    NSlogManager.showLog("JSON serialization failed:  \(error)")
+                    self.delegate.onErrorOccurs()
                 }
 
             }

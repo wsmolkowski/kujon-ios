@@ -8,6 +8,7 @@ import Foundation
 
 protocol UsosProviderProtocol: JsonProviderProtocol {
     associatedtype T = KujonResponseSchools
+
     func loadUsoses()
 }
 
@@ -16,15 +17,20 @@ protocol UsosesProviderDelegate: ErrorResponseProtocol {
 
 }
 
-class UsosesProvider :RestApiManager, UsosProviderProtocol {
+class UsosesProvider: RestApiManager, UsosProviderProtocol {
     var delegate: UsosesProviderDelegate!
 
     func loadUsoses() {
         self.makeHTTPGetRequest({
             json in
+            do {
                 let usoses = try! self.changeJsonToResposne(json)
                 self.delegate?.onUsosesLoaded(usoses.data)
-        },onError:{})
+            } catch {
+                NSlogManager.showLog("JSON serialization failed:  \(error)")
+                self.delegate.onErrorOccurs()
+            }
+        }, onError: {})
 
     }
 

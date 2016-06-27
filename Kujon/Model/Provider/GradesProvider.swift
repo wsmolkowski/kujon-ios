@@ -28,7 +28,8 @@ class GradesProvider: RestApiManager, GradesProviderProtocol {
                 let grades = try self.changeJsonToResposne(json)
                 self.delegate?.onGradesLoaded(grades.data)
             } catch {
-                self.delegate?.onErrorOccurs()
+                NSlogManager.showLog("JSON serialization failed:  \(error)")
+                self.delegate.onErrorOccurs()
             }
         }, onError: { self.delegate?.onErrorOccurs() })
 
