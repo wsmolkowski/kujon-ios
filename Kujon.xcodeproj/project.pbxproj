@@ -77,6 +77,7 @@
 		4C0D8B852BE5B63017986E90 /* GradesMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8FA8F2F6514FD4D33BA6 /* GradesMenuItem.swift */; };
 		4C0D8BA46C6D35D8501A8AD2 /* KujonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D86C2D62E7D8979799853 /* KujonUITests.swift */; };
 		4C0D8BBDB59E0DEB6B91BD0E /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8BC09862FE5F622FE11B /* UserDetailView.swift */; };
+		4C0D8BCEA9F6DF85809A280A /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D87B65211FF5F8990C420 /* PopUpViewController.swift */; };
 		4C0D8BD54E52DB2C8D674422 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8E619AE4BB2F7B24C207 /* NSDateExtension.swift */; };
 		4C0D8BDDC17EAD30A73324A2 /* FacultiesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D850ABF2610D2E70286E2 /* FacultiesProvider.swift */; };
 		4C0D8C544A21E6571C7428DE /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8483795CD8277CB4C113 /* EntryViewController.swift */; };
@@ -111,6 +112,8 @@
 		5267503A1D213902004AD243 /* CoursesTableTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526750381D213902004AD243 /* CoursesTableTableViewController.xib */; };
 		5267503D1D21391F004AD243 /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267503B1D21391F004AD243 /* CourseTableViewCell.swift */; };
 		5267503E1D21391F004AD243 /* CourseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5267503C1D21391F004AD243 /* CourseTableViewCell.xib */; };
+		526750411D214A7B004AD243 /* CoursePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267503F1D214A7B004AD243 /* CoursePopUpViewController.swift */; };
+		526750421D214A7B004AD243 /* CoursePopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526750401D214A7B004AD243 /* CoursePopUpViewController.xib */; };
 		527B39B81D117B800028BCF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527B39B71D117B800028BCF9 /* Assets.xcassets */; };
 		527B39BB1D12A0260028BCF9 /* TeacherDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527B39B91D12A0260028BCF9 /* TeacherDetailTableViewController.swift */; };
 		527B39BC1D12A0260028BCF9 /* TeacherDetailTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527B39BA1D12A0260028BCF9 /* TeacherDetailTableViewController.xib */; };
@@ -220,6 +223,7 @@
 		4C0D874C6EEF998B53B77D46 /* LecturerDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturerDetail.swift; sourceTree = "<group>"; };
 		4C0D87685BCBC669C324D0AB /* EntryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntryViewController.xib; sourceTree = "<group>"; };
 		4C0D876E791D4C52160171D4 /* CellHandlingStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellHandlingStrategy.swift; sourceTree = "<group>"; };
+		4C0D87B65211FF5F8990C420 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		4C0D8816B753368A695ED2AF /* CourseProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseProvider.swift; sourceTree = "<group>"; };
 		4C0D88397BF36FD00C1110E6 /* ScheduleSectionImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleSectionImpl.swift; sourceTree = "<group>"; };
 		4C0D8852D3DEEDBC2220D44E /* KujonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KujonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -280,6 +284,8 @@
 		526750381D213902004AD243 /* CoursesTableTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoursesTableTableViewController.xib; sourceTree = "<group>"; };
 		5267503B1D21391F004AD243 /* CourseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 		5267503C1D21391F004AD243 /* CourseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseTableViewCell.xib; sourceTree = "<group>"; };
+		5267503F1D214A7B004AD243 /* CoursePopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoursePopUpViewController.swift; path = Views/CoursePopUpViewController.swift; sourceTree = "<group>"; };
+		526750401D214A7B004AD243 /* CoursePopUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CoursePopUpViewController.xib; path = Views/CoursePopUpViewController.xib; sourceTree = "<group>"; };
 		527B39B71D117B800028BCF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		527B39B91D12A0260028BCF9 /* TeacherDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherDetailTableViewController.swift; sourceTree = "<group>"; };
 		527B39BA1D12A0260028BCF9 /* TeacherDetailTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeacherDetailTableViewController.xib; sourceTree = "<group>"; };
@@ -405,6 +411,7 @@
 			isa = PBXGroup;
 			children = (
 				4C0D8D8D2ED0C70726C86E66 /* NSlogManager.swift */,
+				4C0D87B65211FF5F8990C420 /* PopUpViewController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -587,6 +594,8 @@
 				4C0D84B48BC2E69F5E67C30F /* Helpers */,
 				4C0D8738EE657EC260341D96 /* Views */,
 				529513641D196136009D6FF2 /* CalendarViewController.swift */,
+				5267503F1D214A7B004AD243 /* CoursePopUpViewController.swift */,
+				526750401D214A7B004AD243 /* CoursePopUpViewController.xib */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -978,6 +987,7 @@
 			files = (
 				527B39BC1D12A0260028BCF9 /* TeacherDetailTableViewController.xib in Resources */,
 				4C0D89623E9B561730C53F9A /* Main.storyboard in Resources */,
+				526750421D214A7B004AD243 /* CoursePopUpViewController.xib in Resources */,
 				52AF77A21D09590B0058979A /* SecondLoginViewController.xib in Resources */,
 				52AF77E01D0EB4420058979A /* TeacherTableViewController.xib in Resources */,
 				4C0D8EDC5E5F870381B4C21D /* LaunchScreen.storyboard in Resources */,
@@ -1351,6 +1361,7 @@
 				4C0D869D18F5884265AD7390 /* MenuItemsHolder.swift in Sources */,
 				4C0D81C6128C12946244195F /* NavigationDelegate.swift in Sources */,
 				4C0D87E638ACCDF0858CD694 /* NavigationMenuProtocol.swift in Sources */,
+				526750411D214A7B004AD243 /* CoursePopUpViewController.swift in Sources */,
 				52590A821D1D215200C285A0 /* GradesTableViewCell.swift in Sources */,
 				4C0D881C4D3885EDE2AFBD61 /* NavigationMenuCreator.swift in Sources */,
 				4C0D87179E64FB71B0A00BE5 /* UserMenuItem.swift in Sources */,
@@ -1432,6 +1443,7 @@
 				4C0D81D02A26767DB7C49C52 /* CourseGroup.swift in Sources */,
 				4C0D85E772027B77B2D540BD /* CoursesWrapper.swift in Sources */,
 				526750391D213902004AD243 /* CoursesTableViewController.swift in Sources */,
+				4C0D8BCEA9F6DF85809A280A /* PopUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
