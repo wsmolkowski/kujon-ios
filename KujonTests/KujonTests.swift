@@ -120,7 +120,7 @@ class KujonTests: XCTestCase, UsosesProviderDelegate
         let provider = CourseProvider()
         provider.test = true
         provider.delegate = self
-        provider.provideProgrammes()
+        provider.provideCourses()
         assert(loaded)
     }
 

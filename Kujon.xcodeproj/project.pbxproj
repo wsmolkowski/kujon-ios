@@ -26,7 +26,7 @@
 		4C0D81D02A26767DB7C49C52 /* CourseGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8DEBF05D51B5DDB08766 /* CourseGroup.swift */; };
 		4C0D82084D092C855DB2FB09 /* RestApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D82F54FFBE7F27B43632A /* RestApiManager.swift */; };
 		4C0D822A221FC02A3C2BD33E /* FacebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D86B6033E7743D91C115B /* FacebookManager.swift */; };
-		4C0D8272DA00131511B32AF8 /* LectureMenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D887AB4B1D38E360F5C55 /* LectureMenuItems.swift */; };
+		4C0D8272DA00131511B32AF8 /* CourseMenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D887AB4B1D38E360F5C55 /* CourseMenuItems.swift */; };
 		4C0D8276D4657EED0BD1B0C2 /* LecturersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8B67C9D01072853AF4B5 /* LecturersResponse.swift */; };
 		4C0D827CF48397DB7AD364B3 /* TermGrades.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8F95B3ED6EA776E231E0 /* TermGrades.swift */; };
 		4C0D82CB5DB526778BD1E777 /* ScheduleSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8B8BF27E286376A7E841 /* ScheduleSection.swift */; };
@@ -107,6 +107,10 @@
 		52590A831D1D215200C285A0 /* GradesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52590A811D1D215200C285A0 /* GradesTableViewCell.xib */; };
 		52590A861D1D3E5A00C285A0 /* KierunkiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52590A841D1D3E5A00C285A0 /* KierunkiViewController.swift */; };
 		52590A871D1D3E5A00C285A0 /* KierunkiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52590A851D1D3E5A00C285A0 /* KierunkiViewController.xib */; };
+		526750391D213902004AD243 /* CoursesTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526750371D213902004AD243 /* CoursesTableTableViewController.swift */; };
+		5267503A1D213902004AD243 /* CoursesTableTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526750381D213902004AD243 /* CoursesTableTableViewController.xib */; };
+		5267503D1D21391F004AD243 /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267503B1D21391F004AD243 /* CourseTableViewCell.swift */; };
+		5267503E1D21391F004AD243 /* CourseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5267503C1D21391F004AD243 /* CourseTableViewCell.xib */; };
 		527B39B81D117B800028BCF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527B39B71D117B800028BCF9 /* Assets.xcassets */; };
 		527B39BB1D12A0260028BCF9 /* TeacherDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527B39B91D12A0260028BCF9 /* TeacherDetailTableViewController.swift */; };
 		527B39BC1D12A0260028BCF9 /* TeacherDetailTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527B39BA1D12A0260028BCF9 /* TeacherDetailTableViewController.xib */; };
@@ -221,7 +225,7 @@
 		4C0D8816B753368A695ED2AF /* CourseProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseProvider.swift; sourceTree = "<group>"; };
 		4C0D88397BF36FD00C1110E6 /* ScheduleSectionImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleSectionImpl.swift; sourceTree = "<group>"; };
 		4C0D8852D3DEEDBC2220D44E /* KujonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KujonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C0D887AB4B1D38E360F5C55 /* LectureMenuItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureMenuItems.swift; sourceTree = "<group>"; };
+		4C0D887AB4B1D38E360F5C55 /* CourseMenuItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseMenuItems.swift; sourceTree = "<group>"; };
 		4C0D88BDA0F4FBC928833B83 /* HeaderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderManager.swift; sourceTree = "<group>"; };
 		4C0D88EBA88B6597D4B06CF6 /* NavigationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationDelegate.swift; sourceTree = "<group>"; };
 		4C0D88F55A75A9542F15E9F0 /* LecturerDetails.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LecturerDetails.json; sourceTree = "<group>"; };
@@ -274,6 +278,10 @@
 		52590A811D1D215200C285A0 /* GradesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GradesTableViewCell.xib; sourceTree = "<group>"; };
 		52590A841D1D3E5A00C285A0 /* KierunkiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KierunkiViewController.swift; sourceTree = "<group>"; };
 		52590A851D1D3E5A00C285A0 /* KierunkiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KierunkiViewController.xib; sourceTree = "<group>"; };
+		526750371D213902004AD243 /* CoursesTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesTableTableViewController.swift; sourceTree = "<group>"; };
+		526750381D213902004AD243 /* CoursesTableTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoursesTableTableViewController.xib; sourceTree = "<group>"; };
+		5267503B1D21391F004AD243 /* CourseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
+		5267503C1D21391F004AD243 /* CourseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseTableViewCell.xib; sourceTree = "<group>"; };
 		527B39B71D117B800028BCF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		527B39B91D12A0260028BCF9 /* TeacherDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherDetailTableViewController.swift; sourceTree = "<group>"; };
 		527B39BA1D12A0260028BCF9 /* TeacherDetailTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeacherDetailTableViewController.xib; sourceTree = "<group>"; };
@@ -450,13 +458,17 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		4C0D839BF212A83AA9960179 /* Lectures */ = {
+		4C0D839BF212A83AA9960179 /* Course */ = {
 			isa = PBXGroup;
 			children = (
 				52AF77C11D0ACC5A0058979A /* LecturesViewController.swift */,
 				52AF77C21D0ACC5A0058979A /* LecturesViewController.xib */,
+				526750371D213902004AD243 /* CoursesTableTableViewController.swift */,
+				526750381D213902004AD243 /* CoursesTableTableViewController.xib */,
+				5267503B1D21391F004AD243 /* CourseTableViewCell.swift */,
+				5267503C1D21391F004AD243 /* CourseTableViewCell.xib */,
 			);
-			path = Lectures;
+			path = Course;
 			sourceTree = "<group>";
 		};
 		4C0D83D8B40603DC0363E06E /* EntryScreen */ = {
@@ -649,7 +661,7 @@
 				4C0D87F53BF87425FE5BF375 /* Schedule */,
 				4C0D8D975AF27A419B8CC0B1 /* Helpers */,
 				4C0D8CFE9097F39B6001CF67 /* View */,
-				4C0D839BF212A83AA9960179 /* Lectures */,
+				4C0D839BF212A83AA9960179 /* Course */,
 				4C0D8C2CCF13E560C8D36D1C /* Grades */,
 				4C0D8E9FE0544625CD42B9F0 /* Teachers */,
 				4C0D854E52E691438A34E0B1 /* Settings */,
@@ -791,7 +803,7 @@
 			children = (
 				4C0D83563DFB6E74ACCE441B /* UserMenuItem.swift */,
 				4C0D8738D3867C1931666FF9 /* ScheduleMenuItem.swift */,
-				4C0D887AB4B1D38E360F5C55 /* LectureMenuItems.swift */,
+				4C0D887AB4B1D38E360F5C55 /* CourseMenuItems.swift */,
 				4C0D8FA8F2F6514FD4D33BA6 /* GradesMenuItem.swift */,
 				4C0D844C4BA870C5823E72AB /* TeachersMenuItem.swift */,
 				4C0D8D34BDAE784E708282D9 /* SettingsMenuItem.swift */,
@@ -994,11 +1006,13 @@
 				52AF77E71D0EB5220058979A /* TeacherViewCell.xib in Resources */,
 				5295135B1D17C76E009D6FF2 /* ScheduleTableViewController.xib in Resources */,
 				52AF77D01D0AD5C50058979A /* SettingsViewController.xib in Resources */,
+				5267503E1D21391F004AD243 /* CourseTableViewCell.xib in Resources */,
 				52590A871D1D3E5A00C285A0 /* KierunkiViewController.xib in Resources */,
 				4C0D8792155EDB3BF227067C /* FacultiesDetail.json in Resources */,
 				527B39B81D117B800028BCF9 /* Assets.xcassets in Resources */,
 				4C0D87FF3ADA197F8655E408 /* Programmes.json in Resources */,
 				4C0D85BA322F0D6699947ECE /* CourseEditions.json in Resources */,
+				5267503A1D213902004AD243 /* CoursesTableTableViewController.xib in Resources */,
 				52AF77C01D0984FC0058979A /* MenuItemTableViewCell.xib in Resources */,
 				52F69F831D101A9000025C55 /* UserDetailView.xib in Resources */,
 				4C0D8D445517BAD9C52B3DF0 /* Usoses.json in Resources */,
@@ -1351,7 +1365,7 @@
 				52AF77CF1D0AD5C50058979A /* SettingsViewController.swift in Sources */,
 				52AF77D31D0AD80A0058979A /* SendOpinionViewController.swift in Sources */,
 				4C0D83DD9146C96D43851C5D /* ScheduleMenuItem.swift in Sources */,
-				4C0D8272DA00131511B32AF8 /* LectureMenuItems.swift in Sources */,
+				4C0D8272DA00131511B32AF8 /* CourseMenuItems.swift in Sources */,
 				4C0D8B852BE5B63017986E90 /* GradesMenuItem.swift in Sources */,
 				4C0D86B48ECAE549129243B8 /* TeachersMenuItem.swift in Sources */,
 				4C0D8DCC00FFDDF5F59B16A7 /* SettingsMenuItem.swift in Sources */,
@@ -1407,6 +1421,7 @@
 				4C0D8A5C9CCCA95A2FD4629A /* HeaderManager.swift in Sources */,
 				4C0D84DCF5F4EDC332B23A08 /* CurrentTeacherHolder.swift in Sources */,
 				4C0D8DD1DC491DC007F98692 /* SessionManager.swift in Sources */,
+				5267503D1D21391F004AD243 /* CourseTableViewCell.swift in Sources */,
 				4C0D8E8FDA4A6ABE3B6829A8 /* NSlogManager.swift in Sources */,
 				4C0D8BD54E52DB2C8D674422 /* NSDateExtension.swift in Sources */,
 				4C0D82CB5DB526778BD1E777 /* ScheduleSection.swift in Sources */,
@@ -1424,6 +1439,7 @@
 				4C0D89A149A07C2183D5E1B4 /* Course.swift in Sources */,
 				4C0D81D02A26767DB7C49C52 /* CourseGroup.swift in Sources */,
 				4C0D85E772027B77B2D540BD /* CoursesWrapper.swift in Sources */,
+				526750391D213902004AD243 /* CoursesTableTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,7 +14,7 @@ protocol CourseProviderDelegate: ErrorResponseProtocol {
 class CourseProvider: RestApiManager {
     var delegate: CourseProviderDelegate! = nil
 
-    func provideProgrammes() {
+    func provideCourses() {
         self.makeHTTPAuthenticatedGetRequest({
             data in
             if (data != nil) {
