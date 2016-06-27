@@ -14,7 +14,7 @@ class LectureWrapper: CellHandlingStrategy {
     let startNSDate: NSDate
     let endNSDate: NSDate
     let mothYearDate: String
-    var myCellHandler: LectureCellHandler!  = nil
+    var myCellHandler: LectureCellHandler! = nil
 
     init(lecture: Lecture) {
         self.lecture = lecture
@@ -27,7 +27,7 @@ class LectureWrapper: CellHandlingStrategy {
     }
 
     func giveMyStrategy() -> CellHandlerProtocol {
-        if(self.myCellHandler == nil){
+        if (self.myCellHandler == nil) {
             self.myCellHandler = LectureCellHandler(lectureWrapper: self)
         }
         return myCellHandler
@@ -44,6 +44,12 @@ class LectureWrapper: CellHandlingStrategy {
         return true
     }
 
+    func handleClick(controller: UIViewController?) {
+        if (controller != nil) {
+            let popController = CoursePopUpViewController();
+            popController.showInView(controller!.view, withLecture: self, animated: true)
+        }
+    }
 
 
 }

@@ -13,5 +13,6 @@ protocol ProvidersProvider {
     func provideUsosesProvider() -> UsosesProvider
     func provideLectureProvider() -> LectureProvider
     func provideLecturerProvider() ->LecturerProvider
+    func provideCourseProvider() -> CourseProvider
 
 }

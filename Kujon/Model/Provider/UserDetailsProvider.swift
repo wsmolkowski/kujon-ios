@@ -21,17 +21,21 @@ protocol UserDetailsProviderDelegate: ErrorResponseProtocol {
 class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
 
 
-
     var delegate: UserDetailsProviderDelegate!
 
-    private var endpoint:String = "/users"
+    private var endpoint: String = "/users"
     func loadUserDetail() {
         endpoint = "/users"
         self.makeHTTPAuthenticatedGetRequest({
             json in
-            let user = try! self.changeJsonToResposne(json)
-            self.delegate?.onUserDetailLoaded(user.data)
-        }, onError: {self.delegate?.onErrorOccurs()})
+            do {
+                let user = try! self.changeJsonToResposne(json)
+                self.delegate?.onUserDetailLoaded(user.data)
+            } catch {
+                NSlogManager.showLog("JSON serialization failed:  \(error)")
+                self.delegate.onErrorOccurs()
+            }
+        }, onError: { self.delegate?.onErrorOccurs() })
     }
 
     override func getMyUrl() -> String {
@@ -39,12 +43,12 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
     }
 
     func loadUserDetail(id: String) {
-            endpoint = "/lecturers/"+id
-            self.makeHTTPAuthenticatedGetRequest({
-                json in
-                let user = try! self.changeJsonToResposne(json)
-                self.delegate?.onUserDetailLoaded(user.data)
-            }, onError: {self.delegate?.onErrorOccurs()})
+        endpoint = "/lecturers/" + id
+        self.makeHTTPAuthenticatedGetRequest({
+            json in
+            let user = try! self.changeJsonToResposne(json)
+            self.delegate?.onUserDetailLoaded(user.data)
+        }, onError: { self.delegate?.onErrorOccurs() })
     }
 }
 

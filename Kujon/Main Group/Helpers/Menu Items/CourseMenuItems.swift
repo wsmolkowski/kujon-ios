@@ -5,7 +5,7 @@
 
 import Foundation
 import UIKit
-class LectureMenuItem: MenuItemWithController {
+class CourseMenuItem: MenuItemWithController {
 
     func returnTitle() -> String {
         return "Przedmioty"
@@ -17,7 +17,7 @@ class LectureMenuItem: MenuItemWithController {
 
     func returnViewControllerFunction()->() -> UIViewController! {
         return {
-            return LecturesViewController()
+            return CoursesTableViewController()
         }
     }
 

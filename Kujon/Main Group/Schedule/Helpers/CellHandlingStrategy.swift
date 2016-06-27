@@ -11,4 +11,6 @@ protocol CellHandlingStrategy {
     func amILectureWrapper() -> Bool
 
     func giveMeMyCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+
+    func handleClick(controller:UIViewController?)
 }

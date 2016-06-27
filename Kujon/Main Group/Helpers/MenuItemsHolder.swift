@@ -13,7 +13,7 @@ class MenuItemsHolder {
 
     let upperMenuItems: Array<MenuItemWithController> = [UserMenuItem(),
                                                          ScheduleMenuItem(),
-                                                         LectureMenuItem(),
+                                                         CourseMenuItem(),
                                                          GradesMenuItem(),
                                                          TeachersMenuItem()]
 
