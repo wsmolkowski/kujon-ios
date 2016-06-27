@@ -10,7 +10,7 @@ import UIKit
 
 class KierunkiViewController: PopUpViewController{
 
-    
+
     
   
     @IBOutlet weak var popUpView: UIView!
@@ -23,9 +23,11 @@ class KierunkiViewController: PopUpViewController{
     @IBOutlet weak var timeOfStudyLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
 
+    @IBOutlet weak var okButton: UIButton!
     var myProgramme:Programme! = nil;
     override func viewDidLoad() {
         super.viewDidLoad()
+        okButton.addTarget(self,action: Selector("close"), forControlEvents: .TouchUpInside)
 
     }
 
@@ -33,6 +35,10 @@ class KierunkiViewController: PopUpViewController{
         return popUpView
     }
 
+
+    func close(){
+        self.removeAnimate()
+    }
 
 
     override func didReceiveMemoryWarning() {
@@ -57,7 +63,7 @@ class KierunkiViewController: PopUpViewController{
         idLabel.text = myProgramme.id
         trybeLabel.text = myProgramme.modeOfStudies
         kierunekLabel.text = myProgramme.name
-
+        self.view.userInteractionEnabled = true
         if animated
         {
             self.showAnimate()
@@ -67,7 +73,10 @@ class KierunkiViewController: PopUpViewController{
     
 
    
-    
+    @IBAction func dismissClick(sender: AnyObject) {
+        self.removeAnimate()
+    }
+
     
     /*
      

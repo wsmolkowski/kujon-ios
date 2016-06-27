@@ -14,10 +14,12 @@ class PopUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         myPopUpView = setMyPopUpView();
+        self.view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
         self.myPopUpView.layer.cornerRadius = 5
         self.myPopUpView.layer.shadowOpacity = 0.8
         self.myPopUpView.layer.shadowOffset = CGSizeMake(0.0, 0.0)
         let tap = UITapGestureRecognizer(target: self, action: #selector(PopUpViewController.handleTap))
+        self.view.addGestureRecognizer(tap)
     }
 
     func setMyPopUpView() -> UIView! {
@@ -32,14 +34,16 @@ class PopUpViewController: UIViewController {
     func showAnimate() {
         self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
         self.view.alpha = 0.0;
-        UIView.animateWithDuration(0.25, animations: {
+        UIView.animateWithDuration(0.300, animations: {
             self.view.alpha = 1.0
             self.view.transform = CGAffineTransformMakeScale(1.0, 1.0)
+        },completion: {
+            (finished: Bool) in
         });
     }
 
     func removeAnimate() {
-        UIView.animateWithDuration(0.25, animations: {
+        UIView.animateWithDuration(0.300, animations: {
             self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
             self.view.alpha = 0.0;
         }, completion: {

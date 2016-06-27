@@ -11,6 +11,7 @@
                 <outlet property="idLabel" destination="GN1-O0-VWU" id="9yE-Hr-aFA"/>
                 <outlet property="kierunekLabel" destination="5pW-SZ-m3U" id="8Zx-Ra-NlO"/>
                 <outlet property="levelLabel" destination="GN1-O0-VWU" id="iQl-H5-f9w"/>
+                <outlet property="okButton" destination="ORl-2E-mOn" id="1u9-sG-21x"/>
                 <outlet property="popUpView" destination="AoC-8C-g0m" id="qXo-Hj-6ML"/>
                 <outlet property="timeOfStudyLabel" destination="eWU-9A-e2a" id="qio-pG-cFd"/>
                 <outlet property="trybeLabel" destination="JU4-B3-Vby" id="eOg-Th-cvd"/>
@@ -77,7 +78,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pD4-bd-jZ0">
-                            <rect key="frame" x="8" y="191" width="564" height="221"/>
+                            <rect key="frame" x="8" y="191" width="564" height="0.0"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="192" id="9r8-QV-ofp"/>
                             </constraints>
@@ -90,6 +91,13 @@
                                 </mask>
                             </variation>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ORl-2E-mOn">
+                            <rect key="frame" x="275" y="382" width="30" height="30"/>
+                            <state key="normal" title="ok"/>
+                            <connections>
+                                <action selector="dismissClick:" destination="-1" eventType="touchUpInside" id="APY-yP-9oy"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -100,6 +108,7 @@
                         <constraint firstItem="GN1-O0-VWU" firstAttribute="top" secondItem="5pW-SZ-m3U" secondAttribute="bottom" constant="56" id="LjB-R3-hwV"/>
                         <constraint firstItem="JU4-B3-Vby" firstAttribute="trailing" secondItem="GN1-O0-VWU" secondAttribute="trailing" id="NNA-zt-Yht"/>
                         <constraint firstItem="pD4-bd-jZ0" firstAttribute="trailing" secondItem="KeO-Aj-shF" secondAttribute="trailing" id="PnB-we-ONB"/>
+                        <constraint firstItem="ORl-2E-mOn" firstAttribute="top" secondItem="pD4-bd-jZ0" secondAttribute="bottom" constant="-30" id="T8v-0h-eVL"/>
                         <constraint firstItem="JU4-B3-Vby" firstAttribute="top" secondItem="GN1-O0-VWU" secondAttribute="bottom" constant="8" symbolic="YES" id="TFg-8j-8Kg"/>
                         <constraint firstItem="pD4-bd-jZ0" firstAttribute="leading" secondItem="KeO-Aj-shF" secondAttribute="leading" id="Tjw-Hl-OjA"/>
                         <constraint firstItem="GN1-O0-VWU" firstAttribute="leading" secondItem="5pW-SZ-m3U" secondAttribute="leading" id="TwR-Dy-aQu"/>
@@ -110,11 +119,14 @@
                         <constraint firstItem="JU4-B3-Vby" firstAttribute="top" secondItem="GN1-O0-VWU" secondAttribute="bottom" constant="37" id="b8q-yj-dOS"/>
                         <constraint firstItem="KeO-Aj-shF" firstAttribute="trailing" secondItem="eWU-9A-e2a" secondAttribute="trailing" id="bck-gT-lJ9"/>
                         <constraint firstItem="5pW-SZ-m3U" firstAttribute="leading" secondItem="AoC-8C-g0m" secondAttribute="leading" constant="580" id="dme-9W-B3u"/>
+                        <constraint firstItem="ORl-2E-mOn" firstAttribute="bottom" secondItem="pD4-bd-jZ0" secondAttribute="bottom" id="g2g-0H-zkb"/>
                         <constraint firstItem="5pW-SZ-m3U" firstAttribute="top" secondItem="AoC-8C-g0m" secondAttribute="top" constant="-90" id="hBh-8a-7bI"/>
                         <constraint firstItem="pD4-bd-jZ0" firstAttribute="top" secondItem="KeO-Aj-shF" secondAttribute="bottom" constant="8" symbolic="YES" id="i4c-RT-XHa"/>
+                        <constraint firstItem="ORl-2E-mOn" firstAttribute="centerX" secondItem="pD4-bd-jZ0" secondAttribute="centerX" id="jKJ-Ka-c5M"/>
                         <constraint firstItem="pD4-bd-jZ0" firstAttribute="bottom" secondItem="AoC-8C-g0m" secondAttribute="bottomMargin" id="m4u-as-YyN"/>
                         <constraint firstAttribute="trailing" secondItem="5pW-SZ-m3U" secondAttribute="trailing" id="nnl-67-Bof"/>
                         <constraint firstItem="JU4-B3-Vby" firstAttribute="leading" secondItem="GN1-O0-VWU" secondAttribute="leading" id="rYr-DJ-R1o"/>
+                        <constraint firstAttribute="bottom" secondItem="ORl-2E-mOn" secondAttribute="bottom" constant="8" id="skG-zM-jUx"/>
                         <constraint firstItem="eWU-9A-e2a" firstAttribute="top" secondItem="JU4-B3-Vby" secondAttribute="bottom" constant="8" symbolic="YES" id="vUI-WG-tqF"/>
                         <constraint firstItem="eWU-9A-e2a" firstAttribute="trailing" secondItem="JU4-B3-Vby" secondAttribute="trailing" id="wCt-fI-5oJ"/>
                         <constraint firstItem="eWU-9A-e2a" firstAttribute="leading" secondItem="JU4-B3-Vby" secondAttribute="leading" id="wxK-Tp-nuT"/>
@@ -129,6 +141,9 @@
                             <exclude reference="LjB-R3-hwV"/>
                             <exclude reference="TwR-Dy-aQu"/>
                             <exclude reference="b8q-yj-dOS"/>
+                            <exclude reference="m4u-as-YyN"/>
+                            <exclude reference="T8v-0h-eVL"/>
+                            <exclude reference="g2g-0H-zkb"/>
                         </mask>
                     </variation>
                 </view>

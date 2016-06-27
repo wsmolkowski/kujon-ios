@@ -178,7 +178,7 @@ class UserTableViewController: UITableViewController
         let buttonTag = sender.tag
         let myProgramme: StudentProgramme = self.userDetails.studentProgrammes[buttonTag as! Int]
         let popController = KierunkiViewController();
-        popController.showInView( self.navigationController?.view , withProgramme: myProgramme.programme, animated: true)
+        popController.showInView( self.parentViewController?.view, withProgramme: myProgramme.programme, animated: true)
 
     }
 

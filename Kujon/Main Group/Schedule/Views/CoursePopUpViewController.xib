@@ -116,6 +116,7 @@
                         <constraint firstItem="dhO-rc-Q4f" firstAttribute="baseline" secondItem="a0L-vQ-K00" secondAttribute="baseline" id="HEF-Vb-Bbt"/>
                         <constraint firstItem="6tC-gA-bhx" firstAttribute="leading" secondItem="G4o-Iy-m1H" secondAttribute="leading" id="I7q-W8-YLD"/>
                         <constraint firstItem="ovY-V6-9aH" firstAttribute="top" secondItem="vCA-8Z-avX" secondAttribute="bottom" constant="96" id="PRC-Up-ePM"/>
+                        <constraint firstAttribute="trailing" secondItem="dhO-rc-Q4f" secondAttribute="trailing" constant="8" id="Q7O-pm-BZU"/>
                         <constraint firstItem="a0L-vQ-K00" firstAttribute="leading" secondItem="SRc-i7-BJV" secondAttribute="leading" constant="2" id="RTi-VH-p69"/>
                         <constraint firstItem="6tC-gA-bhx" firstAttribute="top" secondItem="G4o-Iy-m1H" secondAttribute="bottom" constant="8" symbolic="YES" id="a5y-VK-BiO"/>
                         <constraint firstItem="ovY-V6-9aH" firstAttribute="leading" secondItem="vCA-8Z-avX" secondAttribute="leading" id="chJ-bM-0Vb"/>
@@ -126,6 +127,11 @@
                         <constraint firstItem="3rB-Pi-Fdv" firstAttribute="top" secondItem="ovY-V6-9aH" secondAttribute="bottom" constant="8" symbolic="YES" id="wAe-BL-ZBR"/>
                         <constraint firstItem="a0L-vQ-K00" firstAttribute="bottom" secondItem="SRc-i7-BJV" secondAttribute="bottomMargin" id="wRk-cp-J51"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="0rK-9M-xBY"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
