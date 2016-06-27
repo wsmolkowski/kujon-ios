@@ -83,6 +83,8 @@ class RestApiManager {
         case baseURL + "/gradesbyterm":
             string = "Grades"
             break;
+        case baseURL + "/programmes":
+            string = "Courses"
 
         default: string = "Usoses"
         }

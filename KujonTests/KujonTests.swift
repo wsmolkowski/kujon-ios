@@ -14,7 +14,8 @@ class KujonTests: XCTestCase, UsosesProviderDelegate
         , LectureProviderDelegate
         , GradesProviderDelegate
         , LecturerProviderDelegate
-        , FacultiesProviderDelegate {
+        , FacultiesProviderDelegate
+        , CourseProviderDelegate {
 
     override func setUp() {
 
@@ -71,13 +72,14 @@ class KujonTests: XCTestCase, UsosesProviderDelegate
     }
 
     func onLectureLoaded(lectures: Array<Lecture>) {
-        assert(lectures.count == 1)
+        assert(lectures.count == 3)
         loaded = true
     }
 
     func testGradesProvider() {
         let provider = GradesProvider()
         provider.delegate = self
+        provider.test = true
         provider.loadGrades()
         assert(loaded)
 
@@ -114,5 +116,16 @@ class KujonTests: XCTestCase, UsosesProviderDelegate
         loaded = true
     }
 
+    func testCourseProvider() {
+        let provider = CourseProvider()
+        provider.test = true
+        provider.delegate = self
+        provider.provideProgrammes()
+        assert(loaded)
+    }
+
+    func coursesProvided(courses: Array<Course>) {
+        loaded = true
+    }
 
 }
