@@ -12,7 +12,7 @@ class UserTableViewController: UITableViewController
         , NavigationDelegate
         , UserDetailsProviderDelegate
         , FacultiesProviderDelegate
-        , OnImageLoadedFromRest{
+        , OnImageLoadedFromRest {
     weak var delegate: NavigationMenuProtocol! = nil
     private let usedDetailCellId = "userDetailViewId"
     private let StudentProgrammeCellId = "cellIdForStudentProgramme"
@@ -144,14 +144,14 @@ class UserTableViewController: UITableViewController
         cell.indexNumberLabel.text = userDetails.studentNumber
         cell.accountNumberLabel.text = userDetails.id
         if (userDetails.hasPhoto) {
-            self.restImageProvider.loadImage("",urlString: self.userDetails.photoUrl!,onImageLoaded: self)
+            self.restImageProvider.loadImage("", urlString: self.userDetails.photoUrl!, onImageLoaded: self)
 
         }
         return cell
     }
 
     func imageLoaded(tag: String, image: UIImage) {
-        let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0,inSection: 0)) as! UserDetailView
+        let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! UserDetailView
         cell.userImageView.image = image
     }
 
@@ -177,8 +177,13 @@ class UserTableViewController: UITableViewController
     func clicked(sender: UIButton) {
         let buttonTag = sender.tag
         let myProgramme: StudentProgramme = self.userDetails.studentProgrammes[buttonTag as! Int]
-        let popController = KierunkiViewController();
-        popController.showInView( self.parentViewController?.view, withProgramme: myProgramme.programme, animated: true)
+//        popController.showInView(self.navigationController?.view, withProgramme: myProgramme.programme, animated: true)
+
+        let popController = KierunkiViewController(nibName: "KierunkiViewController", bundle: NSBundle.mainBundle())
+
+        self.navigationController?.presentViewController(popController, animated: false, completion: nil)
+
+        popController.showInView(withProgramme: myProgramme.programme, animated: true)
 
     }
 

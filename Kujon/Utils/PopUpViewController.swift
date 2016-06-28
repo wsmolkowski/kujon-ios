@@ -27,7 +27,7 @@ class PopUpViewController: UIViewController {
     }
 
     func handleTap() {
-        removeAnimate()
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
 
