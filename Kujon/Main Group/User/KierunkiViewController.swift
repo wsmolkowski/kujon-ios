@@ -25,7 +25,6 @@ class KierunkiViewController: PopUpViewController {
     var myProgramme: Programme! = nil;
     override func viewDidLoad() {
         super.viewDidLoad()
-        okButton.addTarget(self, action: Selector("close"), forControlEvents: .TouchUpInside)
 
     }
 
@@ -44,9 +43,7 @@ class KierunkiViewController: PopUpViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func showInView( withProgramme programme: Programme, animated: Bool) {
-
-
+    func showInView( withProgramme programme: Programme) {
 
 
         self.myProgramme = programme
@@ -57,22 +54,14 @@ class KierunkiViewController: PopUpViewController {
         trybeLabel.text = myProgramme.modeOfStudies
         kierunekLabel.text = myProgramme.name
         self.view.userInteractionEnabled = true
-        if animated {
-            self.showAnimate()
-        }
+
     }
 
-    func prepareView(parentView: UIView!) {
-        self.view.translatesAutoresizingMaskIntoConstraints = false
-        self.view.topAnchor.constraintEqualToAnchor(parentView.topAnchor, constant: 0).active = true
-        self.view.bottomAnchor.constraintEqualToAnchor(parentView.bottomAnchor, constant: 0).active = true
-        self.view.leadingAnchor.constraintEqualToAnchor(parentView.leadingAnchor, constant: 0).active = true
-        self.view.trailingAnchor.constraintEqualToAnchor(parentView.trailingAnchor, constant: 0).active = true
-    }
+
 
 
     @IBAction func dismissClick(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        removeAnimate()
     }
 
 

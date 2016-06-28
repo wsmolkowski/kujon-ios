@@ -27,7 +27,7 @@ class PopUpViewController: UIViewController {
     }
 
     func handleTap() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        removeAnimate()
     }
 
 
@@ -49,7 +49,7 @@ class PopUpViewController: UIViewController {
         }, completion: {
             (finished: Bool) in
             if (finished) {
-                self.view.removeFromSuperview()
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
         });
     }

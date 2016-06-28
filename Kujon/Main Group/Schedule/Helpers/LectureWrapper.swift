@@ -44,10 +44,14 @@ class LectureWrapper: CellHandlingStrategy {
         return true
     }
 
-    func handleClick(controller: UIViewController?) {
+    func handleClick(controller: UINavigationController?) {
         if (controller != nil) {
-            let popController = CoursePopUpViewController();
-            popController.showInView(controller!.view, withLecture: self, animated: true)
+            let popController = CoursePopUpViewController(nibName: "CoursePopUpViewController", bundle: NSBundle.mainBundle())
+            popController.modalPresentationStyle = .OverCurrentContext
+            controller?.presentViewController(popController, animated: false, completion: {
+                popController.showAnimate();
+            })
+            popController.showInView(withLecture: self)
         }
     }
 

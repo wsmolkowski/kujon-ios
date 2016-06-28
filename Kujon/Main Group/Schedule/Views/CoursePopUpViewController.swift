@@ -29,14 +29,8 @@ class CoursePopUpViewController: PopUpViewController {
 
 
 
-    func showInView(parentView: UIView! ,withLecture lectureWrap : LectureWrapper, animated: Bool){
-        parentView.addSubview(self.view)
-        
-        self.view.translatesAutoresizingMaskIntoConstraints = false
-        self.view.topAnchor.constraintEqualToAnchor(parentView.topAnchor, constant: 0).active = true
-        self.view.bottomAnchor.constraintEqualToAnchor(parentView.bottomAnchor, constant: 0).active = true
-        self.view.leadingAnchor.constraintEqualToAnchor(parentView.leadingAnchor, constant: 0).active = true
-        self.view.trailingAnchor.constraintEqualToAnchor(parentView.trailingAnchor, constant: 0).active = true
+    func showInView(withLecture lectureWrap : LectureWrapper){
+
         
         let lecture = lectureWrap.lecture
         lectureTypeLabel.text  = "Typ: " + lecture.type
@@ -44,11 +38,8 @@ class CoursePopUpViewController: PopUpViewController {
         lectureBuldingNameLabel.text  = "Budynek: " + lecture.buldingName
         lectureRoomNumberLabel.text  = "Sala: " + lecture.roomNumber
         lectureTimeLabel.text  = lectureWrap.startTime + ":" + lecture.endTime
+        courseTitle.text = lecture.courseName
 
-        if animated
-        {
-            self.showAnimate()
-        }
     }
 
     
@@ -56,7 +47,7 @@ class CoursePopUpViewController: PopUpViewController {
     }
 
     @IBAction func okButtonAction(sender: AnyObject) {
-        removeAnimate()
+        self.removeAnimate()
     }
     /*
     // MARK: - Navigation

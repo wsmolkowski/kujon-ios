@@ -180,10 +180,10 @@ class UserTableViewController: UITableViewController
 //        popController.showInView(self.navigationController?.view, withProgramme: myProgramme.programme, animated: true)
 
         let popController = KierunkiViewController(nibName: "KierunkiViewController", bundle: NSBundle.mainBundle())
+        popController.modalPresentationStyle = .OverCurrentContext
+        self.navigationController?.presentViewController(popController, animated: false, completion: {popController.showAnimate();})
 
-        self.navigationController?.presentViewController(popController, animated: false, completion: nil)
-
-        popController.showInView(withProgramme: myProgramme.programme, animated: true)
+        popController.showInView(withProgramme: myProgramme.programme)
 
     }
 

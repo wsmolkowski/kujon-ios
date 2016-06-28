@@ -12,5 +12,5 @@ protocol CellHandlingStrategy {
 
     func giveMeMyCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
 
-    func handleClick(controller:UIViewController?)
+    func handleClick(controller:UINavigationController?)
 }
