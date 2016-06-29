@@ -191,6 +191,9 @@ class UserTableViewController: UITableViewController
     func clickedFacultie(sender: UIButton) {
         let buttonTag = sender.tag
         let myFac: Facultie = self.userFaculties[buttonTag as! Int]
+        let faculiteController = FacultieViewController(nibName: "FacultieViewController", bundle: NSBundle.mainBundle())
+        faculiteController.facultie = myFac
+        self.navigationController?.pushViewController(faculiteController, animated: true)
     }
     /*
     // Override to support conditional editing of the table view.

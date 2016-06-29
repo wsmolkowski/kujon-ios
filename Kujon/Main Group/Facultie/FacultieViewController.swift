@@ -24,6 +24,8 @@ class FacultieViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.edgesForExtendedLayout = UIRectEdge.None
+        NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(FacultieViewController.back))
         if (facultie != nil) {
             facultieAdress.text = facultie.postalAdress
             facultiePhoneNumber.numberOfLines = facultie.phoneNumber.count
@@ -47,7 +49,9 @@ class FacultieViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    func back(){
+        self.navigationController?.popViewControllerAnimated(true)
+    }
     private func loadImage(urlString: String) {
         let url = NSURL(string: urlString)
         let session = NSURLSession.sharedSession()
