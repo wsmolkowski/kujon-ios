@@ -65,6 +65,7 @@
 		4C0D88190EFAA340F1D2D178 /* GradeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8202EC00EB52392FC17B /* GradeResponse.swift */; };
 		4C0D881C4D3885EDE2AFBD61 /* NavigationMenuCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8C0DCCFE46D265D7BF5E /* NavigationMenuCreator.swift */; };
 		4C0D886897D95F586FB998CF /* Facultie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8FDD772870E1BD0EF952 /* Facultie.swift */; };
+		4C0D88792066D89E9F575D88 /* CourseDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D86DFD2B023A1924F1128 /* CourseDetailsResponse.swift */; };
 		4C0D88F06593FBB4943652B8 /* LectureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8D8E712204A4BC76B7A9 /* LectureProvider.swift */; };
 		4C0D8910C3D7307032A67057 /* LecturerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D818C198D3E8ECD02EE91 /* LecturerProvider.swift */; };
 		4C0D89623E9B561730C53F9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D839EDCC8F1A06ECE450B /* Main.storyboard */; };
@@ -230,6 +231,7 @@
 		4C0D86B6033E7743D91C115B /* FacebookManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookManager.swift; sourceTree = "<group>"; };
 		4C0D86C2D62E7D8979799853 /* KujonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KujonUITests.swift; sourceTree = "<group>"; };
 		4C0D86CA4B33C58A688F215A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		4C0D86DFD2B023A1924F1128 /* CourseDetailsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailsResponse.swift; sourceTree = "<group>"; };
 		4C0D871727A36DD3C1859A1D /* JsonProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonProviderProtocol.swift; sourceTree = "<group>"; };
 		4C0D8738D3867C1931666FF9 /* ScheduleMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleMenuItem.swift; sourceTree = "<group>"; };
 		4C0D874C6EEF998B53B77D46 /* LecturerDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturerDetail.swift; sourceTree = "<group>"; };
@@ -665,6 +667,7 @@
 				4C0D8AA6C79613D718788CD7 /* CourseDetails.swift */,
 				4C0D80C7FFEBB9339A2E9DA5 /* FacId.swift */,
 				4C0D819D1038F2869B558512 /* Term.swift */,
+				4C0D86DFD2B023A1924F1128 /* CourseDetailsResponse.swift */,
 			);
 			path = Course;
 			sourceTree = "<group>";
@@ -1496,6 +1499,7 @@
 				4C0D81EAB6447F9ABA3B7AD5 /* CourseDetails.swift in Sources */,
 				4C0D865D9B6FEF3BD55EA8C4 /* FacId.swift in Sources */,
 				4C0D81140EF8EDB90CA288CD /* Term.swift in Sources */,
+				4C0D88792066D89E9F575D88 /* CourseDetailsResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
