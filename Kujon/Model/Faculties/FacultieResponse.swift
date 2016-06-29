@@ -4,15 +4,15 @@
 //
 
 import Foundation
-
+import Decodable
 struct FacultieResponse {
     let status: String
     let list: Facultie
 }
 
-extension FacultieResposne: Decodable {
-    static func decode(j: AnyObject) throws -> FacultieResposne {
-        return try FacultieResposne(
+extension FacultieResponse: Decodable {
+    static func decode(j: AnyObject) throws -> FacultieResponse {
+        return try FacultieResponse(
         status: j => "status",
                 list: j => "data"
         )

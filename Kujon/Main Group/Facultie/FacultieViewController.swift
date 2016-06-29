@@ -20,23 +20,23 @@ class FacultieViewController: UIViewController {
     @IBOutlet weak var facultieName: UILabel!
 
 
-    var facultie:Facultie! = nil
+    var facultie: Facultie! = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(facultie!=nil){
+        if (facultie != nil) {
             facultieAdress.text = facultie.postalAdress
             facultiePhoneNumber.numberOfLines = facultie.phoneNumber.count
             var phoneString = ""
-            for str  in facultie.phoneNumber{
+            for str in facultie.phoneNumber {
                 phoneString = phoneString + str + "\n"
             }
             facultiePhoneNumber.text = phoneString
-            programmeNumber.text = "liczba programów: " + facultie.schoolStats.programmeCount
-            cursantNumber.text = "liczba kursantów: " + facultie.schoolStats.courseCount
-            employeeNumber.text = "liczba pracowników: " + facultie.schoolStats.staffCount
+            programmeNumber.text = "liczba programów: " + String(facultie.schoolStats.programmeCount)
+            cursantNumber.text = "liczba kursantów: " + String(facultie.schoolStats.courseCount)
+            employeeNumber.text = "liczba pracowników: " + String(facultie.schoolStats.staffCount)
             facultieName.text = facultie.name
-            facultieWebPage.text  = facultie.homePageUrl
+            facultieWebPage.text = facultie.homePageUrl
             loadImage(facultie.logUrls.p100x100)
 
         }
@@ -48,24 +48,24 @@ class FacultieViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    private func loadImage(urlString:String){
+    private func loadImage(urlString: String) {
         let url = NSURL(string: urlString)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url!, completionHandler: {
             data, response, error -> Void in
-            if(data != nil ){
+            if (data != nil) {
                 let image = UIImage(data: data!)
                 dispatch_async(dispatch_get_main_queue()) {
-                    if var cell = self.tableView.cellForRowAtIndexPath(indexPath){
-                        facultieImage.image = image
-                    }
+
+                    self.facultieImage.image = image
+
 
                 }
             }
         })
         task.resume()
     }
-    
+
 
     /*
     // MARK: - Navigation

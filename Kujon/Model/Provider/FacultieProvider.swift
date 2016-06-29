@@ -6,7 +6,7 @@
 import Foundation
 
 protocol FacultieProviderProtocol: JsonProviderProtocol {
-    associatedtype T = FacultieResposne
+    associatedtype T = FacultieResponse
 
     func loadFacultie(id: String)
 }
@@ -31,7 +31,7 @@ class FacultieProvider: RestApiManager, FacultieProviderProtocol {
             do {
 
                 let facult = try! self.changeJsonToResposne(json)
-                self.delegate?.onFacultieLoaded(facult)
+                self.delegate?.onFacultieLoaded(facult.list)
             } catch {
                 NSlogManager.showLog("JSON serialization failed:  \(error)")
                 self.delegate.onErrorOccurs()
