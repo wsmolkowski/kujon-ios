@@ -47,6 +47,10 @@ class RestApiManager {
         return baseURL
     }
 
+    func getMyFakeJsonName() -> String!{
+        return nil
+    }
+
 
     private func creteCompletionHanlder(onCompletion: onSucces, onError: onErrorOccurs) -> (NSData?, NSURLResponse?, NSError?) -> Void {
         return {
@@ -91,6 +95,9 @@ class RestApiManager {
 
         if (getMyUrl().containsString("/tt/")) {
             string = "Schedule"
+        }
+        if(getMyFakeJsonName() != nil){
+            string = getMyFakeJsonName()
         }
         do {
             let jsonData = try JsonDataLoader.loadJson(string)
