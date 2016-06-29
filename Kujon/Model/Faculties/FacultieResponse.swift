@@ -1,14 +1,13 @@
 //
-// Created by Wojciech Maciejewski on 14/06/16.
+// Created by Wojciech Maciejewski on 29/06/16.
 // Copyright (c) 2016 Mobi. All rights reserved.
 //
 
 import Foundation
-import Decodable
 
-struct FacultieResposne {
+struct FacultieResponse {
     let status: String
-    let list: Array<Facultie>
+    let list: Facultie
 }
 
 extension FacultieResposne: Decodable {
