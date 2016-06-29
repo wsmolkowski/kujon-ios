@@ -10,9 +10,9 @@ struct CourseDetailsResponse {
     let details: CourseDetails
 }
 
-extension FacultieResponse: Decodable {
-    static func decode(j: AnyObject) throws -> FacultieResponse {
-        return try FacultieResponse(
+extension CourseDetailsResponse: Decodable {
+    static func decode(j: AnyObject) throws -> CourseDetailsResponse {
+        return try CourseDetailsResponse(
         status: j => "status",
                 details: j => "data"
         )
