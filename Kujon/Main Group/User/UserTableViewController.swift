@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class UserTableViewController: UITableViewController
         , NavigationDelegate
         , UserDetailsProviderDelegate
@@ -163,8 +164,30 @@ class UserTableViewController: UITableViewController
             self.restImageProvider.loadImage("", urlString: self.userDetails.photoUrl!, onImageLoaded: self)
 
         }
+
+        var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UserTableViewController.imageTapped))
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        cell.userImageView.addGestureRecognizer(tapGestureRecognizer)
+        cell.userImageView.userInteractionEnabled = true
+
         return cell
     }
+
+    
+    func imageTapped(sender:UITapGestureRecognizer) {
+        print(sender.view?.tag)
+        if(isThereImage){
+            let imageController = ImageViewController(nibName: "ImageViewController", bundle: NSBundle.mainBundle())
+            let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! UserDetailView
+            imageController.image = cell.userImageView.image
+            self.navigationController?.pushViewController(imageController,animated: true)
+        }else {
+            
+            
+            ToastView.showInParent(self.navigationController?.view,withText: "Nie ma zdjecia", forDuration: 5.0)
+        }
+    }
+    private var isThereImage = false;
 
     func imageLoaded(tag: String, image: UIImage) {
         let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! UserDetailView

@@ -5,7 +5,7 @@
 
 import Foundation
 
-
+import UIKit
 class LectureCellHandler:CellHandlerProtocol {
 
     let wrapper :LectureWrapper
@@ -18,6 +18,7 @@ class LectureCellHandler:CellHandlerProtocol {
 
         (cell as! LectureTableViewCell).timeLabel.text = wrapper.startTime + " \n" + wrapper.endTime + " \n" + "s. " + wrapper.lecture.roomNumber
         let lecturer = wrapper.lecture.lecturers[0] as SimpleUser
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         (cell as! LectureTableViewCell).topic.text = wrapper.lecture.name + " \n" + lecturer.firstName + " " + lecturer.lastName
     }
 
