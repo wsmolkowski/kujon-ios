@@ -12,7 +12,7 @@ class NameSection: SectionHelperProtocol {
     var id :String! = nil;
     var language:String! = nil
     var isOn: String! = nil
-    let NameCellId = "nameCellId"
+    let NameCellId = "nameCellIdtralalala"
 
     func fillUpWithData(courseDetails: CourseDetails) {
         titleString = courseDetails.courseName
@@ -39,7 +39,7 @@ class NameSection: SectionHelperProtocol {
 
 
     func getRowHeight() -> Int {
-        return 80
+        return 90
     }
 
     func giveMeCellAtPosition(tableView: UITableView, onPosition position: NSIndexPath) -> UITableViewCell! {

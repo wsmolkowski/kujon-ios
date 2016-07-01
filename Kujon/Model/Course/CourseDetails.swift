@@ -20,7 +20,7 @@ struct CourseDetails {
     let homepageUrl : String
     let languageId : String
     let courseUnitsId : Array<String>
-    let term: Term
+    let term: Array<Term>
     let groups : Array<CourseGroup>
     let learnignOutcomes: String
     let courseId : String

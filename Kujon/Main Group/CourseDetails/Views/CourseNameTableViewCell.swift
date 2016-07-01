@@ -11,6 +11,7 @@ import UIKit
 class CourseNameTableViewCell: UITableViewCell {
 
     @IBOutlet weak var detailLabel: UILabel!
+   
     @IBOutlet weak var nameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

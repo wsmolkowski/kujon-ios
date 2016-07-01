@@ -51,13 +51,20 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
         return courseWrappers[section].courses.count
     }
 
+    @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let course = self.courseWrappers[indexPath.section].courses[indexPath.row]  as Course
+        let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: NSBundle.mainBundle())
+        courseDetails.course = course
+        self.navigationController?.pushViewController(courseDetails, animated: true)
+    }
+
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(CourseCellId, forIndexPath: indexPath) as! CourseTableViewCell
         let course = self.courseWrappers[indexPath.section].courses[indexPath.row]  as Course
 
         cell.courseNameLabel.text = course.courseName
-
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         // Configure the cell...
 
         return cell

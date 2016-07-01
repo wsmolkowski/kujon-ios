@@ -25,12 +25,9 @@ class FacultieSection: SectionHelperProtocol {
     }
 
     func getRowHeight() -> Int {
-        return 0
-    }
-
-    func getRowSize() -> Int {
         return 48
     }
+
 
     func getSectionHeaderHeight() -> CGFloat {
         return 48
@@ -39,7 +36,7 @@ class FacultieSection: SectionHelperProtocol {
     func giveMeCellAtPosition(tableView: UITableView, onPosition position: NSIndexPath) -> UITableViewCell! {
         let cell = tableView.dequeueReusableCellWithIdentifier(facultieCellId, forIndexPath: position) as! GoFurtherViewCellTableViewCell
         cell.plainLabel.text = facId.name
-        return nil
+        return cell
     }
 
     func reactOnSectionClick(position: Int, withController controller: UINavigationController?) {

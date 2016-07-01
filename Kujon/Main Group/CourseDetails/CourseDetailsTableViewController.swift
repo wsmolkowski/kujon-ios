@@ -10,7 +10,7 @@ import UIKit
 
 class CourseDetailsTableViewController: UITableViewController,CourseDetailsProviderDelegate {
 
-    let sectionHelpers:Array<SectionHelperProtocol> = [NameSection(),FacultieSection()]
+    var sectionHelpers:Array<SectionHelperProtocol> = []
     var course:Course! = nil;
     let courseDetailsProvider  = ProvidersProviderImpl.sharedInstance.provideCourseDetailsProvider()
     override func viewDidLoad() {
@@ -19,16 +19,25 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
         if(course == nil ) {back()}
         courseDetailsProvider.delegate = self;
         courseDetailsProvider.loadCourseDetails(course)
+        for section in sectionHelpers{
+            section.registerView(self.tableView)
+        }
+    }
 
+    private func createSections()->Array<SectionHelperProtocol>{
+        return [NameSection(),FacultieSection()]
     }
     func back(){
         self.navigationController?.popViewControllerAnimated(true)
     }
 
     func onCourseDetailsLoaded(courseDetails: CourseDetails) {
+        sectionHelpers = createSections()
         for sectionHelper in sectionHelpers{
+            sectionHelper.registerView(self.tableView)
             sectionHelper.fillUpWithData(courseDetails)
         }
+        self.tableView.reloadData()
     }
 
     func onErrorOccurs() {
@@ -57,6 +66,15 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
         let helper = (sectionHelpers[indexPath.section] as! SectionHelperProtocol)
         return helper.giveMeCellAtPosition(tableView,onPosition: indexPath)
     }
+
+    @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return CGFloat((sectionHelpers[indexPath.section] as! SectionHelperProtocol).getRowHeight())
+    }
+
+    @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        (sectionHelpers[indexPath.section] as! SectionHelperProtocol).reactOnSectionClick(indexPath.row,withController: self.navigationController)
+    }
+
 
 
     /*
