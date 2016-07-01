@@ -157,6 +157,9 @@ class UserTableViewController: UITableViewController
         cell.schoolNameLabel.text = userDetails.usosName
         cell.indexNumberLabel.text = userDetails.studentNumber
         cell.accountNumberLabel.text = userDetails.id
+        cell.userImageView.layer.cornerRadius = cell.userImageView.frame.size.width / 2;
+        cell.userImageView.clipsToBounds = true;
+        cell.userImageView.image = UIImage(named: "user-placeholder")
         if (userDetails.hasPhoto) {
             self.restImageProvider.loadImage("", urlString: self.userDetails.photoUrl!, onImageLoaded: self)
 
