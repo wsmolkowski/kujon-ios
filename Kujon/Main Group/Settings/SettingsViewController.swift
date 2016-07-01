@@ -11,8 +11,7 @@ import FBSDKLoginKit
 class SettingsViewController: UIViewController,FBSDKLoginButtonDelegate {
     let faceBookManager = FacebookManager.sharedInstance
 
-    
-    
+ 
     @IBOutlet weak var logOutButton: FBSDKLoginButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +29,11 @@ class SettingsViewController: UIViewController,FBSDKLoginButtonDelegate {
     func back(){
         self.navigationController?.popViewControllerAnimated(true)
     }
-
+    @IBAction func deleteAccount(sender: AnyObject) {
+    }
+   
+    @IBAction func regulaminAction(sender: AnyObject) {
+    }
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
     }
 

@@ -16,28 +16,50 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To Jest Ekran Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avU-hR-Esz">
-                    <rect key="frame" x="215" y="289" width="171" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MC6-th-e2q" customClass="FBSDKLoginButton">
-                    <rect key="frame" x="8" y="8" width="584" height="48"/>
+                    <rect key="frame" x="8" y="24" width="584" height="48"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="oV0-H3-VMM"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYA-gv-3hZ">
+                    <rect key="frame" x="8" y="80" width="584" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="WlX-O3-frc"/>
+                    </constraints>
+                    <state key="normal" title="Skasuj konto">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="deleteAccount:" destination="-1" eventType="touchUpInside" id="LjU-ht-w8r"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3E-cG-bTn">
+                    <rect key="frame" x="8" y="136" width="584" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="8eu-4i-TJv"/>
+                    </constraints>
+                    <state key="normal" title="Regulamin">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="regulaminAction:" destination="-1" eventType="touchUpInside" id="bZH-LT-obb"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="MC6-th-e2q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="7l9-he-qHf"/>
-                <constraint firstItem="MC6-th-e2q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="topMargin" id="CBu-Ia-93C"/>
-                <constraint firstItem="avU-hR-Esz" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="CRJ-yB-xIm"/>
-                <constraint firstItem="avU-hR-Esz" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="UyO-tw-Ctm"/>
+                <constraint firstItem="MC6-th-e2q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="topMargin" constant="16" id="CBu-Ia-93C"/>
+                <constraint firstItem="F3E-cG-bTn" firstAttribute="leading" secondItem="WYA-gv-3hZ" secondAttribute="leading" id="GYB-QI-A3o"/>
+                <constraint firstItem="WYA-gv-3hZ" firstAttribute="top" secondItem="MC6-th-e2q" secondAttribute="bottom" constant="8" symbolic="YES" id="MZt-5N-mre"/>
+                <constraint firstItem="F3E-cG-bTn" firstAttribute="trailing" secondItem="WYA-gv-3hZ" secondAttribute="trailing" id="NhZ-By-pcD"/>
+                <constraint firstItem="WYA-gv-3hZ" firstAttribute="leading" secondItem="MC6-th-e2q" secondAttribute="leading" id="Quj-I6-0CO"/>
+                <constraint firstItem="WYA-gv-3hZ" firstAttribute="trailing" secondItem="MC6-th-e2q" secondAttribute="trailing" id="mrv-Sk-lk3"/>
+                <constraint firstItem="F3E-cG-bTn" firstAttribute="top" secondItem="WYA-gv-3hZ" secondAttribute="bottom" constant="8" symbolic="YES" id="oV5-Sn-aPc"/>
                 <constraint firstAttribute="bottom" secondItem="MC6-th-e2q" secondAttribute="bottom" constant="544" id="pqL-5Z-50O"/>
-                <constraint firstItem="MC6-th-e2q" firstAttribute="centerX" secondItem="avU-hR-Esz" secondAttribute="centerX" id="rwk-9R-Z8M"/>
+                <constraint firstAttribute="trailing" secondItem="MC6-th-e2q" secondAttribute="trailing" constant="8" id="s1E-3y-if6"/>
             </constraints>
             <variation key="default">
                 <mask key="constraints">
