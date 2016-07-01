@@ -8,46 +8,56 @@
 
 import UIKit
 
-class CourseDetailsTableViewController: UITableViewController {
+class CourseDetailsTableViewController: UITableViewController,CourseDetailsProviderDelegate {
 
-
-
+    let sectionHelpers:Array<SectionHelperProtocol> = [NameSection(),FacultieSection()]
+    var course:Course! = nil;
+    let courseDetailsProvider  = ProvidersProviderImpl.sharedInstance.provideCourseDetailsProvider()
     override func viewDidLoad() {
         super.viewDidLoad()
+        NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(CourseDetailsTableViewController.back))
+        if(course == nil ) {back()}
+        courseDetailsProvider.delegate = self;
+        courseDetailsProvider.loadCourseDetails(course)
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    func back(){
+        self.navigationController?.popViewControllerAnimated(true)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func onCourseDetailsLoaded(courseDetails: CourseDetails) {
+        for sectionHelper in sectionHelpers{
+            sectionHelper.fillUpWithData(courseDetails)
+        }
     }
+
+    func onErrorOccurs() {
+    }
+
+
 
     // MARK: - Table view data source
 
+    @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return (sectionHelpers[section] as! SectionHelperProtocol).getSectionHeaderHeight()
+    }
+
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 10
+        return sectionHelpers.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return (sectionHelpers[section] as! SectionHelperProtocol).getSectionSize()
     }
 
-    /*
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        let helper = (sectionHelpers[indexPath.section] as! SectionHelperProtocol)
+        return helper.giveMeCellAtPosition(tableView,onPosition: indexPath)
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.

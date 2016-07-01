@@ -33,14 +33,14 @@ class NameSection: SectionHelperProtocol {
         return 1
     }
 
-    func getSectionHeaderHeight() -> Int {
+    func getSectionHeaderHeight() -> CGFloat {
         return 0
     }
 
-    func getRowSize() -> Int {
+
+    func getRowHeight() -> Int {
         return 80
     }
-
 
     func giveMeCellAtPosition(tableView: UITableView, onPosition position: NSIndexPath) -> UITableViewCell! {
         let cell = tableView.dequeueReusableCellWithIdentifier(NameCellId, forIndexPath: position) as! CourseNameTableViewCell
@@ -49,7 +49,7 @@ class NameSection: SectionHelperProtocol {
         return cell
     }
 
-    func reactOnSectionClick(position: Int, withController controller: UINavigationController) {
+    func reactOnSectionClick(position: Int, withController controller: UINavigationController?) {
     }
 
 }

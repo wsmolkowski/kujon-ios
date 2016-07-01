@@ -32,7 +32,7 @@ class FacultieSection: SectionHelperProtocol {
         return 48
     }
 
-    func getSectionHeaderHeight() -> Int {
+    func getSectionHeaderHeight() -> CGFloat {
         return 48
     }
 
@@ -42,10 +42,10 @@ class FacultieSection: SectionHelperProtocol {
         return nil
     }
 
-    func reactOnSectionClick(position: Int, withController controller: UINavigationController) {
+    func reactOnSectionClick(position: Int, withController controller: UINavigationController?) {
         let faculiteController = FacultieViewController(nibName: "FacultieViewController", bundle: NSBundle.mainBundle())
         faculiteController.facultieId = facId.id
-        self.navigationController?.pushViewController(faculiteController, animated: true)
+        controller?.pushViewController(faculiteController, animated: true)
     }
 
 }
