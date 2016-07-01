@@ -77,6 +77,8 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         cell.teacherEmailLabel.text = self.userDetails.email
         cell.teacherConsultationLabel.text = self.userDetails.officeHours
         cell.teacherHomepageLabel.text = self.userDetails.homepage
+        cell.teacherImageView.makeMyselfCircle()
+        cell.teacherImageView.image  = UIImage(named: "user-placeholder")
         if(userDetails.hasPhoto){
             restImageProvider.loadImage("",urlString: userDetails.photoUrl!,onImageLoaded: self)
         }
