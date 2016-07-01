@@ -95,7 +95,7 @@ class UserTableViewController: UITableViewController
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch (indexPath.section) {
-        case 0: return 400
+        case 0: return 290
             break;
         case 1: return 48
             break;
