@@ -9,7 +9,7 @@ class ProvidersProviderImpl: ProvidersProvider {
     static let sharedInstance: ProvidersProvider = ProvidersProviderImpl()
 
 
-    lazy var facultieProvider = FacultiesProvider()
+    lazy var facultiesProvider = FacultiesProvider()
 
     lazy var gradesProvider = GradesProvider()
 
@@ -24,9 +24,10 @@ class ProvidersProviderImpl: ProvidersProvider {
 
     lazy var courseProvider = CourseProvider()
 
+    lazy var facultieProvider = FacultieProvider()
 
     func providerFacultiesProvider() -> FacultiesProvider {
-        return self.facultieProvider
+        return self.facultiesProvider
     }
 
     func provideGradesProvider() -> GradesProvider {
@@ -51,6 +52,10 @@ class ProvidersProviderImpl: ProvidersProvider {
 
     func provideCourseProvider() -> CourseProvider {
         return courseProvider
+    }
+
+    func proivdeFacultieProvider() -> FacultieProvider {
+        return facultieProvider
     }
 
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FacultieViewController: UIViewController {
+class FacultieViewController: UIViewController, FacultieProviderDelegate {
     @IBOutlet weak var facultieImage: UIImageView!
     @IBOutlet weak var facultieAdress: UILabel!
     @IBOutlet weak var facultiePhoneNumber: UILabel!
@@ -21,37 +21,57 @@ class FacultieViewController: UIViewController {
 
 
     var facultie: Facultie! = nil
+    var facultieId: String! = nil
+    var facultieProvider = ProvidersProviderImpl.sharedInstance.proivdeFacultieProvider()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge.None
-        NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(FacultieViewController.back))
+        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(FacultieViewController.back))
         if (facultie != nil) {
-            facultieAdress.text = facultie.postalAdress
-            facultiePhoneNumber.numberOfLines = facultie.phoneNumber.count
-            var phoneString = ""
-            for str in facultie.phoneNumber {
-                phoneString = phoneString + str + "\n"
-            }
-            facultiePhoneNumber.text = phoneString
-            programmeNumber.text = "liczba programów: " + String(facultie.schoolStats.programmeCount)
-            cursantNumber.text = "liczba kursantów: " + String(facultie.schoolStats.courseCount)
-            employeeNumber.text = "liczba pracowników: " + String(facultie.schoolStats.staffCount)
-            facultieName.text = facultie.name
-            facultieWebPage.text = facultie.homePageUrl
-            loadImage(facultie.logUrls.p100x100)
 
+            fillUpData()
+        } else if (facultieId != nil) {
+            facultieProvider.delegate = self
+            facultieProvider.loadFacultie(facultieId)
         }
         // Do any additional setup after loading the view.
     }
 
+    func onFacultieLoaded(fac: Facultie) {
+        self.facultie = fac
+        fillUpData()
+    }
+
+    func onErrorOccurs() {
+    }
+
+
+
+    private func fillUpData(){
+        facultieAdress.text = facultie.postalAdress
+        facultiePhoneNumber.numberOfLines = facultie.phoneNumber.count
+        var phoneString = ""
+        for str in facultie.phoneNumber {
+            phoneString = phoneString + str + "\n"
+        }
+        facultiePhoneNumber.text = phoneString
+        programmeNumber.text = "liczba programów: " + String(facultie.schoolStats.programmeCount)
+        cursantNumber.text = "liczba kursantów: " + String(facultie.schoolStats.courseCount)
+        employeeNumber.text = "liczba pracowników: " + String(facultie.schoolStats.staffCount)
+        facultieName.text = facultie.name
+        facultieWebPage.text = facultie.homePageUrl
+        loadImage(facultie.logUrls.p100x100)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func back(){
+
+    func back() {
         self.navigationController?.popViewControllerAnimated(true)
     }
+
     private func loadImage(urlString: String) {
         let url = NSURL(string: urlString)
         let session = NSURLSession.sharedSession()

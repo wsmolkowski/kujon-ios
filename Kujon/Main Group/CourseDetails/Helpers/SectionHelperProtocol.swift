@@ -15,7 +15,7 @@ protocol SectionHelperProtocol {
 
     func getSectionSize() -> Int
 
-    func getRowSize() -> Int
+    func getRowHeight() -> Int
 
     func getSectionHeaderHeight() -> Int
 
