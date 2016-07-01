@@ -89,9 +89,23 @@ class UserTableViewController: UITableViewController
             break;
         default: cell = self.configureUserDetails(indexPath)
         }
-
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }
+
+    @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch (indexPath.section) {
+        case 1:
+            self.clicked(indexPath)
+            break;
+        case 2:
+            self.clickedFacultie(indexPath)
+            break;
+        default:
+            break;
+        }
+    }
+
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch (indexPath.section) {
@@ -160,8 +174,6 @@ class UserTableViewController: UITableViewController
         let cell = tableView.dequeueReusableCellWithIdentifier(StudentProgrammeCellId, forIndexPath: indexPath) as! GoFurtherViewCellTableViewCell
         let myProgramme: StudentProgramme = self.userDetails.studentProgrammes[indexPath.row]
         cell.plainLabel.text = myProgramme.programme.description
-        cell.goButton.addTarget(self, action: "clicked:", forControlEvents: .TouchUpInside)
-        cell.goButton.tag = indexPath.row
         return cell
     }
 
@@ -169,28 +181,22 @@ class UserTableViewController: UITableViewController
         let cell = tableView.dequeueReusableCellWithIdentifier(FacultieProgrammeCellId, forIndexPath: indexPath) as! GoFurtherViewCellTableViewCell
         let myFac: Facultie = self.userFaculties[indexPath.row]
         cell.plainLabel.text = myFac.name
-        cell.goButton.addTarget(self, action: "clickedFacultie:", forControlEvents: .TouchUpInside)
-        cell.goButton.tag = indexPath.row
         return cell
     }
 
-    func clicked(sender: UIButton) {
-        let buttonTag = sender.tag
-        let myProgramme: StudentProgramme = self.userDetails.studentProgrammes[buttonTag as! Int]
-//        popController.showInView(self.navigationController?.view, withProgramme: myProgramme.programme, animated: true)
-
+    func clicked(forIndexPath: NSIndexPath) {
+        let myProgramme: StudentProgramme = self.userDetails.studentProgrammes[forIndexPath.row]
         let popController = KierunkiViewController(nibName: "KierunkiViewController", bundle: NSBundle.mainBundle())
         popController.modalPresentationStyle = .OverCurrentContext
-        self.navigationController?.presentViewController(popController, animated: false, completion: {popController.showAnimate();})
+        self.navigationController?.presentViewController(popController, animated: false, completion: { popController.showAnimate(); })
 
         popController.showInView(withProgramme: myProgramme.programme)
 
     }
 
 
-    func clickedFacultie(sender: UIButton) {
-        let buttonTag = sender.tag
-        let myFac: Facultie = self.userFaculties[buttonTag as! Int]
+    func clickedFacultie(forIndexPath: NSIndexPath) {
+        let myFac: Facultie = self.userFaculties[forIndexPath.row]
         let faculiteController = FacultieViewController(nibName: "FacultieViewController", bundle: NSBundle.mainBundle())
         faculiteController.facultie = myFac
         self.navigationController?.pushViewController(faculiteController, animated: true)
