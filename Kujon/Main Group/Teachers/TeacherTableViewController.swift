@@ -65,15 +65,19 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
         let cell: GoFurtherViewCellTableViewCell = tableView.dequeueReusableCellWithIdentifier(TeachCellId, forIndexPath: indexPath) as! GoFurtherViewCellTableViewCell
         let myUser: SimpleUser = self.lecturers[indexPath.row]
         cell.plainLabel.text = myUser.firstName + " " + myUser.lastName
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
 
-        cell.goButton.addTarget(self, action: "connected:", forControlEvents: .TouchUpInside)
-        cell.goButton.tag = indexPath.row
         return cell
     }
 
-    func connected(sender: UIButton) {
-        let buttonTag = sender.tag
-        if let myUser: SimpleUser = self.lecturers[buttonTag as Int] {
+    @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.connected(indexPath)
+    }
+
+
+    func connected( indexPath: NSIndexPath) {
+
+        if let myUser: SimpleUser = self.lecturers[indexPath.row] {
             let currentTeacher  = CurrentTeacherHolder.sharedInstance
             currentTeacher.currentTeacher = myUser
             let controller = TeacherDetailTableViewController()
