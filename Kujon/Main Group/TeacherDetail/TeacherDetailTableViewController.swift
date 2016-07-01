@@ -8,26 +8,25 @@
 
 import UIKit
 
-class TeacherDetailTableViewController: UITableViewController, UserDetailsProviderDelegate , OnImageLoadedFromRest {
+class TeacherDetailTableViewController: UITableViewController, UserDetailsProviderDelegate, OnImageLoadedFromRest {
     private let TeacherDetailViewId = "teacherDetailViewId"
     var teacherId: String! = nil
     private let userDetailsProvider = ProvidersProviderImpl.sharedInstance.provideUserDetailsProvider()
-    private let restImageProvider  = RestImageProvider.sharedInstance
+    private let restImageProvider = RestImageProvider.sharedInstance
     private var userDetails: UserDetail! = nil
-
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let currentTeacher = CurrentTeacherHolder.sharedInstance
-        NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(TeacherDetailTableViewController.back))
+        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(TeacherDetailTableViewController.back))
         self.tableView.registerNib(UINib(nibName: "TeacherDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: TeacherDetailViewId)
         userDetailsProvider.delegate = self
         userDetailsProvider.loadUserDetail(currentTeacher.currentTeacher.id!)
 
     }
 
-    func back(){
+    func back() {
         self.navigationController?.popViewControllerAnimated(true)
     }
 
@@ -72,22 +71,30 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
 
     private func configureTeacherDetails(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(TeacherDetailViewId, forIndexPath: indexPath) as! TeacherDetailsTableViewCell
-        cell.teacherNameLabel.text = self.userDetails.firstName + " " + self.userDetails.lastName
+        cell.teacherNameLabel.text = getPrefix(self.userDetails.titles) + " " + self.userDetails.firstName + " " + self.userDetails.lastName + " " + getSuffix(self.userDetails.titles)
         cell.teacherStatusLabel.text = self.userDetails.staffStatus
         cell.teacherEmailLabel.text = self.userDetails.email
         cell.teacherConsultationLabel.text = self.userDetails.officeHours
         cell.teacherHomepageLabel.text = self.userDetails.homepage
         cell.teacherImageView.makeMyselfCircle()
-        cell.teacherImageView.image  = UIImage(named: "user-placeholder")
-        if(userDetails.hasPhoto){
-            restImageProvider.loadImage("",urlString: userDetails.photoUrl!,onImageLoaded: self)
+        cell.teacherImageView.image = UIImage(named: "user-placeholder")
+        if (userDetails.hasPhoto) {
+            restImageProvider.loadImage("", urlString: userDetails.photoUrl!, onImageLoaded: self)
         }
         return cell
     }
 
     func imageLoaded(tag: String, image: UIImage) {
-        let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0,inSection: 0)) as! TeacherDetailsTableViewCell
+        let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! TeacherDetailsTableViewCell
         cell.teacherImageView.image = image
+    }
+
+    private func getPrefix(title: Title) -> String {
+        return title.before != nil ? title.before : ""
+    }
+
+    private func getSuffix(title: Title) -> String {
+        return title.after != nil ? title.after : ""
     }
 
     /*
