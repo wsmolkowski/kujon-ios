@@ -38,8 +38,8 @@ class UserTableViewController: UITableViewController
 
 
         self.tableView.registerNib(UINib(nibName: "UserDetailView", bundle: nil), forCellReuseIdentifier: usedDetailCellId)
-        self.tableView.registerNib(UINib(nibName: "UserDetailsScreenGoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: StudentProgrammeCellId)
-        self.tableView.registerNib(UINib(nibName: "UserDetailsScreenGoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: FacultieProgrammeCellId)
+        self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: StudentProgrammeCellId)
+        self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: FacultieProgrammeCellId)
     }
 
 
@@ -157,7 +157,7 @@ class UserTableViewController: UITableViewController
 
 
     private func configureStudentProgrammeCell(indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(StudentProgrammeCellId, forIndexPath: indexPath) as! UserDetailsScreenGoFurtherViewCellTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(StudentProgrammeCellId, forIndexPath: indexPath) as! GoFurtherViewCellTableViewCell
         let myProgramme: StudentProgramme = self.userDetails.studentProgrammes[indexPath.row]
         cell.plainLabel.text = myProgramme.programme.description
         cell.goButton.addTarget(self, action: "clicked:", forControlEvents: .TouchUpInside)
@@ -166,7 +166,7 @@ class UserTableViewController: UITableViewController
     }
 
     private func configureFacultieCell(indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(FacultieProgrammeCellId, forIndexPath: indexPath) as! UserDetailsScreenGoFurtherViewCellTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(FacultieProgrammeCellId, forIndexPath: indexPath) as! GoFurtherViewCellTableViewCell
         let myFac: Facultie = self.userFaculties[indexPath.row]
         cell.plainLabel.text = myFac.name
         cell.goButton.addTarget(self, action: "clickedFacultie:", forControlEvents: .TouchUpInside)

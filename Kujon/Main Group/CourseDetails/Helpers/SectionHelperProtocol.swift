@@ -19,7 +19,7 @@ protocol SectionHelperProtocol {
 
     func getSectionHeaderHeight() -> Int
 
-    func giveMeCellAtPosition(tableView: UITableView, onPosition position: NSIndexPath)->UITableViewCell
+    func giveMeCellAtPosition(tableView: UITableView, onPosition position: NSIndexPath)->UITableViewCell!
 
     func reactOnSectionClick(position: Int, withController controller: UINavigationController)
 }

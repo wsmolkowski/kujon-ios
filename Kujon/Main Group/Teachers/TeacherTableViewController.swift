@@ -21,7 +21,7 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(TeacherTableViewController.openDrawer))
-        self.tableView.registerNib(UINib(nibName: "TeacherViewCell", bundle: nil), forCellReuseIdentifier: TeachCellId)
+        self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: TeachCellId)
         lecturerProvider.delegate = self
         lecturerProvider.loadLecturers()
 
@@ -62,12 +62,12 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: TeacherViewCell = tableView.dequeueReusableCellWithIdentifier(TeachCellId, forIndexPath: indexPath) as! TeacherViewCell
+        let cell: GoFurtherViewCellTableViewCell = tableView.dequeueReusableCellWithIdentifier(TeachCellId, forIndexPath: indexPath) as! GoFurtherViewCellTableViewCell
         let myUser: SimpleUser = self.lecturers[indexPath.row]
-        cell.teacherNameLabel.text = myUser.firstName + " " + myUser.lastName
+        cell.plainLabel.text = myUser.firstName + " " + myUser.lastName
 
-        cell.teacherGoButton.addTarget(self, action: "connected:", forControlEvents: .TouchUpInside)
-        cell.teacherGoButton.tag = indexPath.row
+        cell.goButton.addTarget(self, action: "connected:", forControlEvents: .TouchUpInside)
+        cell.goButton.tag = indexPath.row
         return cell
     }
 

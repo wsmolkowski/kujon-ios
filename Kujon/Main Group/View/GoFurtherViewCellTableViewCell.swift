@@ -1,5 +1,5 @@
 //
-//  TeacherViewCell.swift
+//  GoFurtherViewCellTableViewCell.swift
 //  Kujon
 //
 //  Created by Wojciech Maciejewski on 13/06/16.
@@ -8,10 +8,11 @@
 
 import UIKit
 
-class TeacherViewCell: UITableViewCell {
+class GoFurtherViewCellTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var teacherGoButton: UIButton!
-    @IBOutlet weak var teacherNameLabel: UILabel!
+    @IBOutlet weak var goButton: UIButton!
+    @IBOutlet weak var plainLabel: UILabel!
+
 
     override func awakeFromNib() {
         super.awakeFromNib()

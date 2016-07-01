@@ -10,8 +10,8 @@ class NameSection: SectionHelperProtocol {
 
     var titleString:String! = nil;
     var id :String! = nil;
-    var language:String = nil
-    var isOn: String = nil
+    var language:String! = nil
+    var isOn: String! = nil
     let NameCellId = "nameCellId"
 
     func fillUpWithData(courseDetails: CourseDetails) {
@@ -22,7 +22,7 @@ class NameSection: SectionHelperProtocol {
     }
 
     func registerView(tableView: UITableView) {
-        tableView.registerNib(UINib(nibName: "CellNameTableViewCell", bundle: nil), forCellReuseIdentifier: NameCellId)
+        tableView.registerNib(UINib(nibName: "CourseNameTableViewCell", bundle: nil), forCellReuseIdentifier: NameCellId)
     }
 
     func getSectionTitle() -> String {
@@ -42,8 +42,8 @@ class NameSection: SectionHelperProtocol {
     }
 
 
-    func giveMeCellAtPosition(tableView: UITableView, onPosition position: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(usedDetailCellId, forIndexPath: position) as! CellNameTableViewCell
+    func giveMeCellAtPosition(tableView: UITableView, onPosition position: NSIndexPath) -> UITableViewCell! {
+        let cell = tableView.dequeueReusableCellWithIdentifier(NameCellId, forIndexPath: position) as! CourseNameTableViewCell
         cell.nameLabel.text = titleString
         cell.detailLabel.text = "id: " + id + ", język: " + language + ", prowadzony: " + isOn
         return cell
