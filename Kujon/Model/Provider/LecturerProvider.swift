@@ -27,7 +27,9 @@ class LecturerProvider: RestApiManager, LecturerProviderProtocol {
             json in
             do {
                 let lecturerResponse = try! self.changeJsonToResposne(json)
-                self.delegate?.onLecturersLoaded(lecturerResponse.data)
+                self.delegate?.onLecturersLoaded(lecturerResponse.data.sort {
+                    $0.lastName < $1.lastName
+                })
             } catch {
                 NSlogManager.showLog("JSON serialization failed:  \(error)")
                 self.delegate.onErrorOccurs()
