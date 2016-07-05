@@ -37,7 +37,7 @@ class ScheduleTableViewController:
         self.tableView.registerNib(UINib(nibName: "LectureTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.LectureCellId)
         self.tableView.registerNib(UINib(nibName: "DayTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.DayCellId)
         lectureProvider.delegate = self
-        lectureProvider.test = true
+//        lectureProvider.test = true
         askForData()
 
     }

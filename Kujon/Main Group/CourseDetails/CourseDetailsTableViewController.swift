@@ -49,7 +49,17 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
     }
 
     func onErrorOccurs() {
+        self.showAlertApiError({
+            if(self.course != nil ) {
+                self.courseDetailsProvider.loadCourseDetails(self.course)
+            }else if( self.courseId != nil && self.termId != nil){
+                self.courseDetailsProvider.loadCourseDetails(self.courseId,andTermId: self.termId)
+            }
+        },cancel: {
+            self.back()
+        })
     }
+
 
 
 
