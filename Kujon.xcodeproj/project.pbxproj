@@ -42,6 +42,7 @@
 		4C0D8436123E61F0F64C9F9C /* UserDataHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D84F398465189005DB77E /* UserDataHolder.swift */; };
 		4C0D84713F8CA8059672D225 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8B5FF1A8F45453C5D4FB /* Grade.swift */; };
 		4C0D849262CBC0E3CAA11A36 /* MenuItemWithController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D80FC2419D914C8EA5BAC /* MenuItemWithController.swift */; };
+		4C0D849FA2451A132AA4F744 /* UserDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8C7D184AC2BE4CD6E3EA /* UserDetailsTableViewCell.swift */; };
 		4C0D84DCF5F4EDC332B23A08 /* CurrentTeacherHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8514FD7564BC2F323E2F /* CurrentTeacherHolder.swift */; };
 		4C0D84E41A0C35CD9C3A52B5 /* ProvidersProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8D3A9598C1CD3C70CBC7 /* ProvidersProvider.swift */; };
 		4C0D850BF68640550F269D74 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8B99EC9186F46E6CE219 /* Account.swift */; };
@@ -117,6 +118,7 @@
 		4C0D8EE504A6F04F1B414751 /* Schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8F0FD29DE7CF921001CE /* Schedule.json */; };
 		4C0D8F84739469EB809E6E14 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D806D09BD6C9327949956 /* Room.swift */; };
 		4C0D8FF661F42652FDB8257B /* FacultieProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D829AA588F62CB18CBDD0 /* FacultieProvider.swift */; };
+		523B4FDA1D2BCAD6005FA79F /* UserDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 523B4FD91D2BCAD6005FA79F /* UserDetailsTableViewCell.xib */; };
 		5257C3311D267D670068FA56 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257C32F1D267D670068FA56 /* ImageViewController.swift */; };
 		5257C3321D267D670068FA56 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5257C3301D267D670068FA56 /* ImageViewController.xib */; };
 		52590A7E1D1D1F0C00C285A0 /* GradesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52590A7C1D1D1F0C00C285A0 /* GradesTableViewController.swift */; };
@@ -280,6 +282,7 @@
 		4C0D8C187B6E373F3877BF63 /* GoFurtherViewCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoFurtherViewCellTableViewCell.xib; sourceTree = "<group>"; };
 		4C0D8C220D5FABC7BDB1FE59 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		4C0D8C68222EDFAECCF2DF11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4C0D8C7D184AC2BE4CD6E3EA /* UserDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		4C0D8D34BDAE784E708282D9 /* SettingsMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsMenuItem.swift; sourceTree = "<group>"; };
 		4C0D8D3A9598C1CD3C70CBC7 /* ProvidersProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvidersProvider.swift; sourceTree = "<group>"; };
 		4C0D8D5DA0EA9F9C5E7C4447 /* Grades.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Grades.json; sourceTree = "<group>"; };
@@ -308,6 +311,7 @@
 		4C0D8FD2A35FC381A99E4C99 /* FacultieResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacultieResponse.swift; sourceTree = "<group>"; };
 		4C0D8FDD772870E1BD0EF952 /* Facultie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facultie.swift; sourceTree = "<group>"; };
 		4C0D8FE0C6C05C3CCF8C15E0 /* CellHandlerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellHandlerProtocol.swift; sourceTree = "<group>"; };
+		523B4FD91D2BCAD6005FA79F /* UserDetailsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		5257C32F1D267D670068FA56 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		5257C3301D267D670068FA56 /* ImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
 		52590A7C1D1D1F0C00C285A0 /* GradesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradesTableViewController.swift; sourceTree = "<group>"; };
@@ -777,8 +781,10 @@
 		4C0D8B705FC4F21E3893A940 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				523B4FD91D2BCAD6005FA79F /* UserDetailsTableViewCell.xib */,
 				4C0D8BC09862FE5F622FE11B /* UserDetailView.swift */,
 				52F69F821D101A9000025C55 /* UserDetailView.xib */,
+				4C0D8C7D184AC2BE4CD6E3EA /* UserDetailsTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1079,6 +1085,7 @@
 				526750421D214A7B004AD243 /* CoursePopUpViewController.xib in Resources */,
 				52AF77A21D09590B0058979A /* SecondLoginViewController.xib in Resources */,
 				52AF77E01D0EB4420058979A /* TeacherTableViewController.xib in Resources */,
+				523B4FDA1D2BCAD6005FA79F /* UserDetailsTableViewCell.xib in Resources */,
 				4C0D8EDC5E5F870381B4C21D /* LaunchScreen.storyboard in Resources */,
 				5282840E1D084D7200A602B4 /* UsosTableViewCell.xib in Resources */,
 				52C6275A1D1BFA0100A9BBA0 /* DayTableViewCell.xib in Resources */,
@@ -1552,6 +1559,7 @@
 				4C0D87F683AA5AB29468001F /* UImageViewExtension.swift in Sources */,
 				4C0D856CA1862322B3D1912C /* ToastView.swift in Sources */,
 				4C0D828E1DD05D4C0DC9B2C5 /* ViewControllerExtension.swift in Sources */,
+				4C0D849FA2451A132AA4F744 /* UserDetailsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -38,7 +38,7 @@ class UserTableViewController: UITableViewController
         facultieProvider.loadFaculties()
 
 
-        self.tableView.registerNib(UINib(nibName: "UserDetailView", bundle: nil), forCellReuseIdentifier: usedDetailCellId)
+        self.tableView.registerNib(UINib(nibName: "UserDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: usedDetailCellId)
         self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: StudentProgrammeCellId)
         self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: FacultieProgrammeCellId)
     }
@@ -152,7 +152,7 @@ class UserTableViewController: UITableViewController
     }
 
     private func configureUserDetails(indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(usedDetailCellId, forIndexPath: indexPath) as! UserDetailView
+        let cell = tableView.dequeueReusableCellWithIdentifier(usedDetailCellId, forIndexPath: indexPath) as! UserDetailsTableViewCell
         cell.nameSurnameLabel.text = userDetails.firstName + " " + userDetails.lastName
         cell.studentStatusLabel.text = userDetails.studentStatus
         cell.schoolNameLabel.text = userDetails.usosName
@@ -178,19 +178,19 @@ class UserTableViewController: UITableViewController
         print(sender.view?.tag)
         if(isThereImage){
             let imageController = ImageViewController(nibName: "ImageViewController", bundle: NSBundle.mainBundle())
-            let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! UserDetailView
+            let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! UserDetailsTableViewCell
             imageController.image = cell.userImageView.image
             self.navigationController?.pushViewController(imageController,animated: true)
         }else {
             
             
-            ToastView.showInParent(self.navigationController?.view,withText: "Nie ma zdjecia", forDuration: 5.0)
+            ToastView.showInParent(self.navigationController?.view,withText: "Nie ma zdjecia", forDuration: 2.0)
         }
     }
     private var isThereImage = false;
 
     func imageLoaded(tag: String, image: UIImage) {
-        let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! UserDetailView
+        let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! UserDetailsTableViewCell
         cell.userImageView.image = image
     }
 

@@ -70,6 +70,20 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
         return (sectionHelpers[section] as! SectionHelperProtocol).getSectionHeaderHeight()
     }
 
+    @available(iOS 2.0, *) override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return createLabel((sectionHelpers[section] as! SectionHelperProtocol).getSectionTitle())
+    }
+
+    private func createLabel(text: String) -> UIView {
+        let view = UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, 56))
+        let label = UILabel(frame: CGRectMake(8, 0, self.tableView.frame.size.width-8, 48))
+        label.font = label.font.fontWithSize(14)
+        label.text = text
+        label.textColor = UIColor.blackWithAlpha()
+        view.addSubview(label)
+        return view
+    }
+
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return sectionHelpers.count

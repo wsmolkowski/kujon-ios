@@ -5,7 +5,7 @@
 
 import Foundation
 import UIKit
-class UserDetailView:UITableViewCell {
+class UserDetailView:UIView {
     @IBOutlet weak var schoolImageView: UIImageView!
     
     @IBOutlet weak var indexNumberLabel: UILabel!
@@ -16,6 +16,7 @@ class UserDetailView:UITableViewCell {
     @IBOutlet weak var nameSurnameLabel: UILabel!
     @IBOutlet weak var studentStatusLabel: UILabel!
     
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
