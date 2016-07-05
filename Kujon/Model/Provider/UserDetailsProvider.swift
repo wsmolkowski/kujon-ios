@@ -47,11 +47,12 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
         endpoint = "/lecturers/" + id
         self.makeHTTPAuthenticatedGetRequest({
             json in
-            let user = try! self.changeJsonToResposne(json, onError: {
+           if let user = try! self.changeJsonToResposne(json, onError: {
                 text in
                 self.delegate?.onErrorOccurs()
-            })
-            self.delegate?.onUserDetailLoaded(user.data)
+            }){
+               self.delegate?.onUserDetailLoaded(user.data)
+           }
         }, onError: { self.delegate?.onErrorOccurs() })
     }
 }

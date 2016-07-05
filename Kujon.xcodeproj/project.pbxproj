@@ -1074,6 +1074,11 @@
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Mobi;
+				TargetAttributes = {
+					4C0D876E78B6409220622356 = {
+						DevelopmentTeam = WAJ9FR2DZL;
+					};
+				};
 			};
 			buildConfigurationList = 4C0D892F9A5FDAC6BF51D128 /* Build configuration list for PBXProject "Kujon" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1681,6 +1686,8 @@
 			baseConfigurationReference = 71EE9BFC3F34701DCA4852FA /* Pods-Kujon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1691,6 +1698,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mobi.kujon.Kujon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Kujon/Bridging-Header.h";
 			};
 			name = Debug;
@@ -1799,6 +1807,8 @@
 			baseConfigurationReference = 278B50858D941900E966A239 /* Pods-Kujon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FB",
@@ -1808,6 +1818,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mobi.kujon.Kujon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Kujon/Bridging-Header.h";
 			};
 			name = Release;

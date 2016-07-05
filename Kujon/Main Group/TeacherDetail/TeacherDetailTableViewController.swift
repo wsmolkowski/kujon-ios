@@ -11,6 +11,7 @@ import UIKit
 class TeacherDetailTableViewController: UITableViewController, UserDetailsProviderDelegate, OnImageLoadedFromRest {
     private let TeacherDetailViewId = "teacherDetailViewId"
     var teacherId: String! = nil
+    var simpleUser:SimpleUser! = nil
     private let userDetailsProvider = ProvidersProviderImpl.sharedInstance.provideUserDetailsProvider()
     private let restImageProvider = RestImageProvider.sharedInstance
     private var userDetails: UserDetail! = nil
@@ -18,11 +19,16 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let currentTeacher = CurrentTeacherHolder.sharedInstance
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(TeacherDetailTableViewController.back), andTitle: "Wykładowca")
         self.tableView.registerNib(UINib(nibName: "TeacherDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: TeacherDetailViewId)
         userDetailsProvider.delegate = self
-        userDetailsProvider.loadUserDetail(currentTeacher.currentTeacher.id!)
+        if(simpleUser != nil){
+            userDetailsProvider.loadUserDetail(simpleUser.id!)
+        }else{
+
+            let currentTeacher = CurrentTeacherHolder.sharedInstance
+            userDetailsProvider.loadUserDetail(currentTeacher.currentTeacher.id!)
+        }
 
     }
 

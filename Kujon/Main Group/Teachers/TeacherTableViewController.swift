@@ -81,7 +81,7 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
             let currentTeacher  = CurrentTeacherHolder.sharedInstance
             currentTeacher.currentTeacher = myUser
             let controller = TeacherDetailTableViewController()
-
+            controller.simpleUser = myUser
 
             self.navigationController?.pushViewController(controller, animated: true)
 

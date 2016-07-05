@@ -46,6 +46,7 @@ class LecturersSection: SectionHelperProtocol {
             let currentTeacher = CurrentTeacherHolder.sharedInstance
             currentTeacher.currentTeacher = myUser
             let teachController = TeacherDetailTableViewController()
+            teachController.simpleUser = myUser
             controller?.pushViewController(teachController, animated: true)
 
 
