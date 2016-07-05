@@ -13,6 +13,7 @@ class UsosesTableViewController: UITableViewController,UsosesProviderDelegate {
     private let UsosCellIdentifier = "reusableUsosCell"
     private let usosProvider = ProvidersProviderImpl.sharedInstance.provideUsosesProvider()
     private var usosList :Array<Usos> = Array()
+    let userDataHolder = UserDataHolder.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +54,8 @@ class UsosesTableViewController: UITableViewController,UsosesProviderDelegate {
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let controller  = SecondLoginViewController()
-
+        var usos = usosList[indexPath.row] as Usos
+        userDataHolder.usosId = usos.usosId
         self.presentViewController(controller,animated:true,completion:nil)
     }
 
