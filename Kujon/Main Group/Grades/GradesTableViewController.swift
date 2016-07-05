@@ -24,7 +24,7 @@ class GradesTableViewController: UITableViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(GradesTableViewController.openDrawer))
+        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(GradesTableViewController.openDrawer),andTitle: "Oceny")
         gradesProvider.delegate = self
         gradesProvider.test = true
         self.tableView.registerNib(UINib(nibName: "GradesTableViewCell", bundle: nil), forCellReuseIdentifier: GradeCellIdentiefer)

@@ -16,7 +16,7 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(CoursesTableViewController.openDrawer))
+        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(CoursesTableViewController.openDrawer),andTitle: "Przedmioty")
         self.tableView.registerNib(UINib(nibName: "CourseTableViewCell", bundle: nil), forCellReuseIdentifier: CourseCellId)
         courseProvider.delegate = self
         courseProvider.provideCourses()

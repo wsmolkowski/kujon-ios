@@ -27,7 +27,7 @@ class ScheduleTableViewController:
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(ScheduleTableViewController.openDrawer))
+        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(ScheduleTableViewController.openDrawer),andTitle: "Plan Zajęć")
 
         let openCalendarButton = UIBarButtonItem(title: "calendar", style: UIBarButtonItemStyle.Plain, target: self,
                 action: #selector(ScheduleTableViewController.openCalendar))

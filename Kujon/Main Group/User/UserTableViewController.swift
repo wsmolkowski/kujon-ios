@@ -31,7 +31,7 @@ class UserTableViewController: UITableViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(UserTableViewController.openDrawer))
+        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(UserTableViewController.openDrawer),andTitle: "Kujon")
         userDetailsProvider.delegate = self
         userDetailsProvider.loadUserDetail()
         facultieProvider.delegate = self

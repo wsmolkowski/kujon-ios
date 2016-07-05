@@ -20,7 +20,7 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(TeacherTableViewController.openDrawer))
+        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(TeacherTableViewController.openDrawer),andTitle: "Wykładowcy")
         self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: TeachCellId)
         lecturerProvider.delegate = self
         lecturerProvider.loadLecturers()

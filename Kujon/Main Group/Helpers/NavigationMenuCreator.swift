@@ -9,17 +9,19 @@ import UIKit
 class NavigationMenuCreator {
 
 
-    static func createNavMenuWithDrawerOpening(controller:UIViewController,selector:Selector){
+    static func createNavMenuWithDrawerOpening(controller:UIViewController,selector:Selector,andTitle title:String = ""){
         let openDrawerButton =  UIBarButtonItem(title:"menu",style: UIBarButtonItemStyle.Plain,target: controller,
                 action: selector)
         openDrawerButton.action = selector
         controller.navigationItem.leftBarButtonItem = openDrawerButton
+        controller.navigationItem.title = title
     }
 
-    static func createNavMenuWithBackButton(controller:UIViewController,selector:Selector){
+    static func createNavMenuWithBackButton(controller:UIViewController,selector:Selector,andTitle title:String = ""){
         let closeButton =  UIBarButtonItem(image:UIImage(named: "arrow-left"),style: UIBarButtonItemStyle.Plain,target: controller,
                 action: selector)
         closeButton.action = selector
         controller.navigationItem.leftBarButtonItem = closeButton
+        controller.navigationItem.title = title
     }
 }

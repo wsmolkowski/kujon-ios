@@ -19,7 +19,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
     override func viewDidLoad() {
         super.viewDidLoad()
         let currentTeacher = CurrentTeacherHolder.sharedInstance
-        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(TeacherDetailTableViewController.back))
+        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(TeacherDetailTableViewController.back),andTitle: "Wykładowca")
         self.tableView.registerNib(UINib(nibName: "TeacherDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: TeacherDetailViewId)
         userDetailsProvider.delegate = self
         userDetailsProvider.loadUserDetail(currentTeacher.currentTeacher.id!)
