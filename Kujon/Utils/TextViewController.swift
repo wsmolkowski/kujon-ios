@@ -10,6 +10,7 @@ import UIKit
 
 class TextViewController: UIViewController {
     var text : String! = nil
+    var myTitle: String! = nil
     
     @IBOutlet weak var textView: UITextView!
     
@@ -17,6 +18,9 @@ class TextViewController: UIViewController {
         super.viewDidLoad()
         if(text != nil){
             textView.text  =  text
+        }
+        if(title != nil){
+            self.navigationItem.title = myTitle
         }
         // Do any additional setup after loading the view.
     }
