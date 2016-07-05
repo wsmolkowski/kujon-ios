@@ -29,9 +29,10 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
         self.makeHTTPAuthenticatedGetRequest({
             json in
             do {
-                if let user = try! self.changeJsonToResposne(json,onError: {
+                if let user = try! self.changeJsonToResposne(json, onError: {
+                    text in
                     self.delegate?.onErrorOccurs()
-                }){
+                }) {
 
                     self.delegate?.onUserDetailLoaded(user.data)
                 }
@@ -50,7 +51,8 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
         endpoint = "/lecturers/" + id
         self.makeHTTPAuthenticatedGetRequest({
             json in
-            let user = try! self.changeJsonToResposne(json,onError: {
+            let user = try! self.changeJsonToResposne(json, onError: {
+                text in
                 self.delegate?.onErrorOccurs()
             })
             self.delegate?.onUserDetailLoaded(user.data)

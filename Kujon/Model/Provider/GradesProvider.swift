@@ -26,6 +26,7 @@ class GradesProvider: RestApiManager, GradesProviderProtocol {
             json in
             do {
                 if let grades = try self.changeJsonToResposne(json,onError: {
+                    text in
                     self.delegate?.onErrorOccurs()
                 }){
 

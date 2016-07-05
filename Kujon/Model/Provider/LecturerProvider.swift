@@ -27,10 +27,12 @@ class LecturerProvider: RestApiManager, LecturerProviderProtocol {
             json in
             do {
                if let lecturerResponse = try! self.changeJsonToResposne(json,onError: {
+                   text in
                     self.delegate?.onErrorOccurs()
                 }){
 
                    self.delegate?.onLecturersLoaded(lecturerResponse.data.sort {
+
                        $0.lastName < $1.lastName
                    })
                }

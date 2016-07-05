@@ -38,6 +38,7 @@ class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
             json in
             do {
                 if let courseResponse = try! self.changeJsonToResposne(json,onError: {
+                    text in
                     self.delegate?.onErrorOccurs()
                 }){
 

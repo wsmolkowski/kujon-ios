@@ -24,9 +24,10 @@ class UsosesProvider: RestApiManager, UsosProviderProtocol {
         self.makeHTTPGetRequest({
             json in
             do {
-                if let usoses = try! self.changeJsonToResposne(json,onError: {
+                if let usoses = try! self.changeJsonToResposne(json, onError: {
+                    text in
                     self.delegate?.onErrorOccurs()
-                }){
+                }) {
 
                     self.delegate?.onUsosesLoaded(usoses.data)
                 }

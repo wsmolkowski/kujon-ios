@@ -28,6 +28,7 @@ class LectureProvider: RestApiManager, LectureProviderProtocol {
             json in
             do {
                 if let lectureResponse = try! self.changeJsonToResposne(json,onError: {
+                    text in
                     self.delegate?.onErrorOccurs()
                 }){
                     self.delegate?.onLectureLoaded(lectureResponse.data)

@@ -11,13 +11,13 @@ protocol JsonProviderProtocol {
 
 }
 extension JsonProviderProtocol{
-     func changeJsonToResposne(jsonData:NSData,onError myError: ()->Void) throws ->T! {
+     func changeJsonToResposne(jsonData:NSData,onError myError: (message:String)->Void) throws ->T! {
         do{
             let json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
             return try T.decode(json)
         }catch {
             NSlogManager.showLog("JSON serialization failed:  \(error)")
-            myError()
+            myError(message: "Nie ma takich danych")
             return nil
         }
     }
