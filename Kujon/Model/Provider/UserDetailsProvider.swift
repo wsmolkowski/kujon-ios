@@ -28,17 +28,13 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
         endpoint = "/users"
         self.makeHTTPAuthenticatedGetRequest({
             json in
-            do {
-                if let user = try! self.changeJsonToResposne(json, onError: {
-                    text in
-                    self.delegate?.onErrorOccurs()
-                }) {
 
-                    self.delegate?.onUserDetailLoaded(user.data)
-                }
-            } catch {
-                NSlogManager.showLog("JSON serialization failed:  \(error)")
-                self.delegate.onErrorOccurs()
+            if let user = try! self.changeJsonToResposne(json, onError: {
+                text in
+                self.delegate?.onErrorOccurs()
+            }) {
+
+                self.delegate?.onUserDetailLoaded(user.data)
             }
         }, onError: { self.delegate?.onErrorOccurs() })
     }

@@ -23,7 +23,6 @@ class UsosesProvider: RestApiManager, UsosProviderProtocol {
     func loadUsoses() {
         self.makeHTTPGetRequest({
             json in
-            do {
                 if let usoses = try! self.changeJsonToResposne(json, onError: {
                     text in
                     self.delegate?.onErrorOccurs()
@@ -31,10 +30,6 @@ class UsosesProvider: RestApiManager, UsosProviderProtocol {
 
                     self.delegate?.onUsosesLoaded(usoses.data)
                 }
-            } catch {
-                NSlogManager.showLog("JSON serialization failed:  \(error)")
-                self.delegate.onErrorOccurs()
-            }
         }, onError: {})
 
     }

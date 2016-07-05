@@ -25,7 +25,6 @@ class LecturerProvider: RestApiManager, LecturerProviderProtocol {
     func loadLecturers() {
         self.makeHTTPAuthenticatedGetRequest({
             json in
-            do {
                if let lecturerResponse = try! self.changeJsonToResposne(json,onError: {
                    text in
                     self.delegate?.onErrorOccurs()
@@ -36,10 +35,6 @@ class LecturerProvider: RestApiManager, LecturerProviderProtocol {
                        $0.lastName < $1.lastName
                    })
                }
-            } catch {
-                NSlogManager.showLog("JSON serialization failed:  \(error)")
-                self.delegate.onErrorOccurs()
-            }
         }, onError: { self.delegate?.onErrorOccurs() })
 
     }

@@ -28,18 +28,12 @@ class FacultieProvider: RestApiManager, FacultieProviderProtocol {
         self.endpoint = id
         self.makeHTTPAuthenticatedGetRequest({
             json in
-            do {
-
                 if let facult = try! self.changeJsonToResposne(json,onError: {
                     text in
                     self.delegate?.onErrorOccurs()
                 }){
                     self.delegate?.onFacultieLoaded(facult.list)
                 }
-            } catch {
-                NSlogManager.showLog("JSON serialization failed:  \(error)")
-                self.delegate.onErrorOccurs()
-            }
         }, onError: { self.delegate?.onErrorOccurs() })
 
 

@@ -27,8 +27,6 @@ class FacultiesProvider: RestApiManager, FacultiesProviderProtocol {
     func loadFaculties() {
         self.makeHTTPAuthenticatedGetRequest({
             json in
-            do{
-
                 if let faculties = try! self.changeJsonToResposne(json,onError: {
                     text in
                     self.delegate?.onErrorOccurs()
@@ -36,10 +34,6 @@ class FacultiesProvider: RestApiManager, FacultiesProviderProtocol {
 
                     self.delegate?.onFacultiesLoaded(faculties.list)
                 }
-            }catch {
-                NSlogManager.showLog("JSON serialization failed:  \(error)")
-                self.delegate.onErrorOccurs()
-            }
         }, onError: { self.delegate?.onErrorOccurs() })
 
 

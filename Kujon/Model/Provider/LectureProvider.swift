@@ -26,17 +26,12 @@ class LectureProvider: RestApiManager, LectureProviderProtocol {
         endpoint = "/tt/" + date
         self.makeHTTPAuthenticatedGetRequest({
             json in
-            do {
                 if let lectureResponse = try! self.changeJsonToResposne(json,onError: {
                     text in
                     self.delegate?.onErrorOccurs()
                 }){
                     self.delegate?.onLectureLoaded(lectureResponse.data)
                 }
-            } catch {
-                NSlogManager.showLog("JSON serialization failed:  \(error)")
-                self.delegate.onErrorOccurs()
-            }
         }, onError: {
             self.delegate?.onErrorOccurs()
         })
