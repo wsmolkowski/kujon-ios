@@ -25,8 +25,12 @@ class GradesProvider: RestApiManager, GradesProviderProtocol {
         self.makeHTTPAuthenticatedGetRequest({
             json in
             do {
-                let grades = try self.changeJsonToResposne(json)
-                self.delegate?.onGradesLoaded(grades.data)
+                if let grades = try self.changeJsonToResposne(json,onError: {
+                    self.delegate?.onErrorOccurs()
+                }){
+
+                    self.delegate?.onGradesLoaded(grades.data)
+                }
             } catch {
                 NSlogManager.showLog("JSON serialization failed:  \(error)")
                 self.delegate.onErrorOccurs()

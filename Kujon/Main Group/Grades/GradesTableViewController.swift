@@ -80,6 +80,16 @@ class GradesTableViewController: UITableViewController
         return cell
     }
 
+    @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let grade = self.myTermGrades[indexPath.section].grades[indexPath.row] as! Grade
+
+        let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: NSBundle.mainBundle())
+        courseDetails.courseId = grade.courseId
+        courseDetails.termId = grade.termId
+        self.navigationController?.pushViewController(courseDetails, animated: true)
+    }
+
+
 
     /*
     // Override to support conditional editing of the table view.

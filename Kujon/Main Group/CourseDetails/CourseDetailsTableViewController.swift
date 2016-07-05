@@ -12,13 +12,21 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
 
     var sectionHelpers:Array<SectionHelperProtocol> = []
     var course:Course! = nil;
+    var courseId:String! = nil;
+    var termId:String! = nil;
     let courseDetailsProvider  = ProvidersProviderImpl.sharedInstance.provideCourseDetailsProvider()
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(CourseDetailsTableViewController.back))
-        if(course == nil ) {back()}
         courseDetailsProvider.delegate = self;
-        courseDetailsProvider.loadCourseDetails(course)
+        if(course != nil ) {
+            courseDetailsProvider.loadCourseDetails(course)
+        }else if( courseId != nil && termId != nil){
+            courseDetailsProvider.loadCourseDetails(courseId,andTermId: termId)
+
+        }else{
+            back()
+        }
         for section in sectionHelpers{
             section.registerView(self.tableView)
         }

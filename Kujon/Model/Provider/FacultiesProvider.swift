@@ -29,8 +29,12 @@ class FacultiesProvider: RestApiManager, FacultiesProviderProtocol {
             json in
             do{
 
-                let faculties = try! self.changeJsonToResposne(json)
-                self.delegate?.onFacultiesLoaded(faculties.list)
+                if let faculties = try! self.changeJsonToResposne(json,onError: {
+                    self.delegate?.onErrorOccurs()
+                }){
+
+                    self.delegate?.onFacultiesLoaded(faculties.list)
+                }
             }catch {
                 NSlogManager.showLog("JSON serialization failed:  \(error)")
                 self.delegate.onErrorOccurs()
