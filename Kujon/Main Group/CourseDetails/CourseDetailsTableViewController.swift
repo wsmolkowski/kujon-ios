@@ -33,7 +33,8 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
     }
 
     private func createSections()->Array<SectionHelperProtocol>{
-        return [NameSection(),FacultieSection(),DescriptionSection(),BibliographySection(),PassCriteriaSection(),CycleSection()]
+        return [NameSection(),FacultieSection(),DescriptionSection(),BibliographySection()
+                ,PassCriteriaSection(),CycleSection(),LecturersSection(),CoordinatorsSection(),ClassTypeSection(),ParticipantsSection()]
     }
     func back(){
 
