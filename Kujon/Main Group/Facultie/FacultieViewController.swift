@@ -29,7 +29,7 @@ class FacultieViewController: UIViewController, FacultieProviderDelegate {
         self.edgesForExtendedLayout = UIRectEdge.None
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(FacultieViewController.back))
         if (facultie != nil) {
-
+            facultieImage.contentMode = UIViewContentMode.ScaleAspectFit;
             fillUpData()
         } else if (facultieId != nil) {
             facultieProvider.delegate = self
@@ -80,7 +80,7 @@ class FacultieViewController: UIViewController, FacultieProviderDelegate {
             if (data != nil) {
                 let image = UIImage(data: data!)
                 dispatch_async(dispatch_get_main_queue()) {
-
+                    self.facultieImage.contentMode = UIViewContentMode.ScaleAspectFit;
                     self.facultieImage.image = image
 
 
