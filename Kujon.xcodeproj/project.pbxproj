@@ -39,6 +39,7 @@
 		4C0D8337B9F546A2FC16AF22 /* DayCellHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8D9BBCC3C778FFB78885 /* DayCellHandler.swift */; };
 		4C0D8393C1440593CBD091ED /* UsosesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8E76951D0DCEDCA216A9 /* UsosesProvider.swift */; };
 		4C0D83DD9146C96D43851C5D /* ScheduleMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8738D3867C1931666FF9 /* ScheduleMenuItem.swift */; };
+		4C0D83EC44D0DFFD5AA3C11B /* BibliographySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8737DB8723BF0ABB9426 /* BibliographySection.swift */; };
 		4C0D8436123E61F0F64C9F9C /* UserDataHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D84F398465189005DB77E /* UserDataHolder.swift */; };
 		4C0D84713F8CA8059672D225 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8B5FF1A8F45453C5D4FB /* Grade.swift */; };
 		4C0D849262CBC0E3CAA11A36 /* MenuItemWithController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D80FC2419D914C8EA5BAC /* MenuItemWithController.swift */; };
@@ -252,6 +253,7 @@
 		4C0D86CA4B33C58A688F215A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		4C0D86DFD2B023A1924F1128 /* CourseDetailsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailsResponse.swift; sourceTree = "<group>"; };
 		4C0D871727A36DD3C1859A1D /* JsonProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonProviderProtocol.swift; sourceTree = "<group>"; };
+		4C0D8737DB8723BF0ABB9426 /* BibliographySection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BibliographySection.swift; sourceTree = "<group>"; };
 		4C0D8738D3867C1931666FF9 /* ScheduleMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleMenuItem.swift; sourceTree = "<group>"; };
 		4C0D874C6EEF998B53B77D46 /* LecturerDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturerDetail.swift; sourceTree = "<group>"; };
 		4C0D87685BCBC669C324D0AB /* EntryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntryViewController.xib; sourceTree = "<group>"; };
@@ -740,6 +742,7 @@
 				4C0D8B836E74F691498CFBEC /* NameSection.swift */,
 				4C0D86280FB812D16C7BBB30 /* FacultieSection.swift */,
 				4C0D845EB7BFE3F61521F55C /* DescriptionSection.swift */,
+				4C0D8737DB8723BF0ABB9426 /* BibliographySection.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1572,6 +1575,7 @@
 				4C0D828E1DD05D4C0DC9B2C5 /* ViewControllerExtension.swift in Sources */,
 				4C0D849FA2451A132AA4F744 /* UserDetailsTableViewCell.swift in Sources */,
 				4C0D8B95982DB1E4C4CFA49F /* DescriptionSection.swift in Sources */,
+				4C0D83EC44D0DFFD5AA3C11B /* BibliographySection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
