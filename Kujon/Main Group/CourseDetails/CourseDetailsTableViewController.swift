@@ -36,6 +36,7 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
         return [NameSection(),FacultieSection()]
     }
     func back(){
+
         self.navigationController?.popViewControllerAnimated(true)
     }
 
