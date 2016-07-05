@@ -15,6 +15,7 @@ class ImageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageView.contentMode = UIViewContentMode.ScaleAspectFit;
         imageView.image = image
         // Do any additional setup after loading the view.
     }

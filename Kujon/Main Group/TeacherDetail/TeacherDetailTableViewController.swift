@@ -19,7 +19,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
     override func viewDidLoad() {
         super.viewDidLoad()
         let currentTeacher = CurrentTeacherHolder.sharedInstance
-        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(TeacherDetailTableViewController.back),andTitle: "Wykładowca")
+        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(TeacherDetailTableViewController.back), andTitle: "Wykładowca")
         self.tableView.registerNib(UINib(nibName: "TeacherDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: TeacherDetailViewId)
         userDetailsProvider.delegate = self
         userDetailsProvider.loadUserDetail(currentTeacher.currentTeacher.id!)
@@ -68,7 +68,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
 
         return cell
     }
-
+    private var isThereImage = false
     private func configureTeacherDetails(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(TeacherDetailViewId, forIndexPath: indexPath) as! TeacherDetailsTableViewCell
         cell.teacherNameLabel.text = getPrefix(self.userDetails.titles) + " " + self.userDetails.firstName + " " + self.userDetails.lastName + " " + getSuffix(self.userDetails.titles)
@@ -81,12 +81,33 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         if (userDetails.hasPhoto) {
             restImageProvider.loadImage("", urlString: userDetails.photoUrl!, onImageLoaded: self)
         }
+        var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TeacherDetailTableViewController.imageTapped))
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        cell.teacherImageView.addGestureRecognizer(tapGestureRecognizer)
+        cell.teacherImageView.userInteractionEnabled = true
+
         return cell
+    }
+
+
+    func imageTapped(sender: UITapGestureRecognizer) {
+        print(sender.view?.tag)
+        if (isThereImage) {
+            let imageController = ImageViewController(nibName: "ImageViewController", bundle: NSBundle.mainBundle())
+            let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! TeacherDetailsTableViewCell
+            imageController.image = cell.teacherImageView.image
+            self.navigationController?.pushViewController(imageController, animated: true)
+        } else {
+
+
+            ToastView.showInParent(self.navigationController?.view, withText: "Nie ma zdjecia", forDuration: 2.0)
+        }
     }
 
     func imageLoaded(tag: String, image: UIImage) {
         let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! TeacherDetailsTableViewCell
         cell.teacherImageView.image = image
+        isThereImage = true
     }
 
     private func getPrefix(title: Title) -> String {
