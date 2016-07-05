@@ -16,13 +16,14 @@ class TextViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(TextViewController.back), andTitle: myTitle)
         if(text != nil){
             textView.text  =  text
         }
-        if(title != nil){
-            self.navigationItem.title = myTitle
-        }
         // Do any additional setup after loading the view.
+    }
+    func back() {
+        self.navigationController?.popViewControllerAnimated(true)
     }
 
     override func didReceiveMemoryWarning() {
