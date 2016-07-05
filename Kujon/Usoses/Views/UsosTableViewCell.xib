@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -12,42 +11,47 @@
             <rect key="frame" x="0.0" y="0.0" width="361" height="79"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="361" height="79"/>
+                <rect key="frame" x="0.0" y="0.0" width="361" height="78.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fTN-6S-aas">
-                        <rect key="frame" x="8" y="5" width="70" height="70"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="70" id="42v-kq-GGy"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvR-0f-xRF">
-                        <rect key="frame" x="86" y="5" width="267" height="63"/>
+                        <rect key="frame" x="86" y="8" width="267" height="62.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IJI-a2-fdF">
+                        <rect key="frame" x="8" y="8" width="70" height="62.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="2sx-H8-0LM"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="IJI-a2-fdF" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="3QO-kR-r9B"/>
                     <constraint firstAttribute="bottomMargin" secondItem="nvR-0f-xRF" secondAttribute="bottom" constant="2.5" id="8Qq-la-wMI"/>
-                    <constraint firstItem="nvR-0f-xRF" firstAttribute="top" secondItem="fTN-6S-aas" secondAttribute="top" id="AHI-cN-gdJ"/>
-                    <constraint firstItem="fTN-6S-aas" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="G3E-oW-LZb"/>
+                    <constraint firstItem="nvR-0f-xRF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Q8K-Z7-2Mg"/>
                     <constraint firstItem="nvR-0f-xRF" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="SCF-cl-uPq"/>
-                    <constraint firstItem="nvR-0f-xRF" firstAttribute="leading" secondItem="fTN-6S-aas" secondAttribute="trailing" constant="8" symbolic="YES" id="UaV-RG-HBj"/>
                     <constraint firstItem="nvR-0f-xRF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="dJ3-6h-dBh"/>
-                    <constraint firstItem="fTN-6S-aas" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="iY4-W3-IKo"/>
-                    <constraint firstItem="fTN-6S-aas" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-3" id="wtY-Bc-bsS"/>
+                    <constraint firstItem="IJI-a2-fdF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="eZk-lL-UTk"/>
+                    <constraint firstItem="IJI-a2-fdF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="qan-Jz-ri5"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
+                        <exclude reference="8Qq-la-wMI"/>
+                        <exclude reference="SCF-cl-uPq"/>
                         <exclude reference="dJ3-6h-dBh"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="nvR-0f-xRF" firstAttribute="leading" secondItem="KGk-i7-Jjw" secondAttribute="leading" constant="86" id="DoK-ii-xQU"/>
+                <constraint firstAttribute="trailing" secondItem="nvR-0f-xRF" secondAttribute="trailing" constant="8" id="RzF-5g-8Pl"/>
+                <constraint firstItem="nvR-0f-xRF" firstAttribute="top" secondItem="KGk-i7-Jjw" secondAttribute="top" constant="8" id="oOf-oN-Xp0"/>
+            </constraints>
             <connections>
-                <outlet property="imagePlace" destination="fTN-6S-aas" id="bJO-A1-uJw"/>
-                <outlet property="imageView" destination="fTN-6S-aas" id="PzG-sc-on7"/>
                 <outlet property="label" destination="nvR-0f-xRF" id="yOc-uF-Ply"/>
+                <outlet property="usosImageView" destination="IJI-a2-fdF" id="naf-BP-JbM"/>
             </connections>
             <point key="canvasLocation" x="433.5" y="385.5"/>
         </tableViewCell>

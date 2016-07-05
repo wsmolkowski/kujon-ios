@@ -31,7 +31,7 @@ class UsosesTableViewController: UITableViewController,UsosesProviderDelegate {
     }
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100
+        return 70
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,7 +44,9 @@ class UsosesTableViewController: UITableViewController,UsosesProviderDelegate {
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell :UsosTableViewCell = tableView.dequeueReusableCellWithIdentifier(UsosCellIdentifier,forIndexPath: indexPath) as! UsosTableViewCell
         var usos = usosList[indexPath.row] as Usos
-        (cell as! UsosTableViewCell).imagePlace?.image = nil
+        cell.usosImageView?.contentMode = UIViewContentMode.ScaleAspectFit;
+        cell.usosImageView?.clipsToBounds = true
+        cell.usosImageView?.image = nil
         self.loadImage(usos.image,indexPath: indexPath)
         (cell as! UsosTableViewCell).label.text = usos.name
 
@@ -77,8 +79,10 @@ class UsosesTableViewController: UITableViewController,UsosesProviderDelegate {
                 let image = UIImage(data: data!)
                 dispatch_async(dispatch_get_main_queue()) {
                     if var cell = self.tableView.cellForRowAtIndexPath(indexPath){
-                        (cell as! UsosTableViewCell).imagePlace?.image = image
-                        cell.setNeedsLayout()
+                        (cell as! UsosTableViewCell).usosImageView?.contentMode = UIViewContentMode.ScaleAspectFit;
+                        (cell as! UsosTableViewCell).usosImageView?.image = image
+
+
                     }
 
                 }

@@ -12,8 +12,9 @@ class UsosTableViewCell: UITableViewCell {
 
 
 
+    @IBOutlet weak var usosImageView: UIImageView!
     @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var imagePlace: UIImageView!
+   
     override func awakeFromNib() {
         super.awakeFromNib()
 
