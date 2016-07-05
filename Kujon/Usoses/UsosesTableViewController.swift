@@ -55,12 +55,25 @@ class UsosesTableViewController: UITableViewController,UsosesProviderDelegate {
 
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let controller  = SecondLoginViewController()
-        var usos = usosList[indexPath.row] as Usos
-        userDataHolder.usosId = usos.usosId
-        self.presentViewController(controller,animated:true,completion:nil)
+        showAlert( usosList[indexPath.row] as Usos)
     }
 
+
+    func showAlert(usos:Usos) {
+        let alertController = UIAlertController(title: "Uwaga", message: "Zostaniesz przekierowany do USOS żeby się zalogować", preferredStyle: .Alert)
+
+        alertController.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+            alertController.dismissViewControllerAnimated(true,completion: nil)
+            let controller  = SecondLoginViewController()
+
+            self.userDataHolder.usosId = usos.usosId
+            self.presentViewController(controller,animated:true,completion:nil)
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction!) in
+            alertController.dismissViewControllerAnimated(true,completion: nil)
+        }))
+        presentViewController(alertController, animated: true, completion: nil)
+    }
 
     func onUsosesLoaded(arrayOfUsoses: Array<Usos>) {
         self.usosList = arrayOfUsoses;
