@@ -5,21 +5,21 @@
 
 import Foundation
 
-class DescriptionSection: SectionHelperProtocol {
-    let descriptionCellId="descCellId"
+class PassCriteriaSection: SectionHelperProtocol {
+    let criteriaCellId = "critertiaCellId"
 
 
-    private var description:String! = nil
+    private var description: String! = nil
     func fillUpWithData(courseDetails: CourseDetails) {
-        description  = courseDetails.description
+        description = courseDetails.assessmentCriteria
     }
 
     func registerView(tableView: UITableView) {
-        tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: descriptionCellId)
+        tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: criteriaCellId)
     }
 
     func getSectionTitle() -> String {
-        return "Opis"
+        return "Kryteria Oceny"
     }
 
     func getSectionSize() -> Int {
@@ -36,7 +36,7 @@ class DescriptionSection: SectionHelperProtocol {
     }
 
     func giveMeCellAtPosition(tableView: UITableView, onPosition position: NSIndexPath) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCellWithIdentifier(descriptionCellId, forIndexPath: position) as! GoFurtherViewCellTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(criteriaCellId, forIndexPath: position) as! GoFurtherViewCellTableViewCell
         cell.plainLabel.text = description
         return cell
     }

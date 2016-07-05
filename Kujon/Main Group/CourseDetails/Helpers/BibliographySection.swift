@@ -27,12 +27,12 @@ class BibliographySection: SectionHelperProtocol {
     }
 
     func getRowHeight() -> Int {
-        return 48
+        return StandartSection.rowHeight
     }
 
 
     func getSectionHeaderHeight() -> CGFloat {
-        return 48
+        return StandartSection.sectionHeight
     }
 
     func giveMeCellAtPosition(tableView: UITableView, onPosition position: NSIndexPath) -> UITableViewCell! {
