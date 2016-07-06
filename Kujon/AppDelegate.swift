@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if(userDataHolder.loggedToUsosForCurrentEmail){
                 controller = ContainerViewController()
             }else{
-                controller =  UsosesTableViewController()
+                controller =  UsosHolderController()
             }
         }
 

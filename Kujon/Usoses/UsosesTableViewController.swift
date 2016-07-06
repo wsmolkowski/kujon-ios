@@ -8,25 +8,35 @@
 
 import UIKit
 
-class UsosesTableViewController: UITableViewController,UsosesProviderDelegate {
+class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
 
     private let UsosCellIdentifier = "reusableUsosCell"
     private let usosProvider = ProvidersProviderImpl.sharedInstance.provideUsosesProvider()
-    private var usosList :Array<Usos> = Array()
+    private var usosList: Array<Usos> = Array()
     let userDataHolder = UserDataHolder.sharedInstance
+    var showDemoUniversity = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Wybierz Uczelnię"
-        self.tableView.registerNib(UINib(nibName: "UsosTableViewCell",bundle: nil),forCellReuseIdentifier: UsosCellIdentifier)
+        var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UsosesTableViewController.barTapped))
+        tapGestureRecognizer.numberOfTapsRequired = 3
+        self.navigationController?.navigationBar.addGestureRecognizer(tapGestureRecognizer)
+        self.navigationController?.navigationBar.userInteractionEnabled = true
+        self.tableView.registerNib(UINib(nibName: "UsosTableViewCell", bundle: nil), forCellReuseIdentifier: UsosCellIdentifier)
         self.usosProvider.delegate = self
         self.usosProvider.loadUsoses()
 
     }
 
+    func barTapped(){
+        self.showDemoUniversity = true
+        ToastView.showInParent(self.navigationController?.view,withText: "Dodano uniwersytet demo", forDuration: 2.0)
+        self.tableView.reloadData()
+    }
 
     @available(iOS 2.0, *)
-   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
@@ -38,16 +48,28 @@ class UsosesTableViewController: UITableViewController,UsosesProviderDelegate {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
 
-        return self.usosList.count
+            return getShowDemo().count
+
+    }
+
+    private func getShowDemo() -> Array<Usos> {
+        if (showDemoUniversity) {
+            return self.usosList
+        } else {
+            return self.usosList.filter({
+                usos in
+                usos.usosId != "DEMO"
+            })
+        }
     }
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell :UsosTableViewCell = tableView.dequeueReusableCellWithIdentifier(UsosCellIdentifier,forIndexPath: indexPath) as! UsosTableViewCell
-        var usos = usosList[indexPath.row] as Usos
+        var cell: UsosTableViewCell = tableView.dequeueReusableCellWithIdentifier(UsosCellIdentifier, forIndexPath: indexPath) as! UsosTableViewCell
+        var usos = getShowDemo()[indexPath.row] as Usos
         cell.usosImageView?.contentMode = UIViewContentMode.ScaleAspectFit;
         cell.usosImageView?.clipsToBounds = true
         cell.usosImageView?.image = nil
-        self.loadImage(usos.image,indexPath: indexPath)
+        self.loadImage(usos.image, indexPath: indexPath)
         (cell as! UsosTableViewCell).label.text = usos.name
 
         return cell
@@ -55,22 +77,24 @@ class UsosesTableViewController: UITableViewController,UsosesProviderDelegate {
 
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        showAlert( usosList[indexPath.row] as Usos)
+        showAlert(usosList[indexPath.row] as Usos)
     }
 
 
-    func showAlert(usos:Usos) {
+    func showAlert(usos: Usos) {
         let alertController = UIAlertController(title: "Uwaga", message: "Zostaniesz przekierowany do USOS żeby się zalogować", preferredStyle: .Alert)
 
-        alertController.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
-            alertController.dismissViewControllerAnimated(true,completion: nil)
-            let controller  = SecondLoginViewController()
+        alertController.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {
+            (action: UIAlertAction!) in
+            alertController.dismissViewControllerAnimated(true, completion: nil)
+            let controller = SecondLoginViewController()
 
             self.userDataHolder.usosId = usos.usosId
-            self.presentViewController(controller,animated:true,completion:nil)
+            self.presentViewController(controller, animated: true, completion: nil)
         }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction!) in
-            alertController.dismissViewControllerAnimated(true,completion: nil)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: {
+            (action: UIAlertAction!) in
+            alertController.dismissViewControllerAnimated(true, completion: nil)
         }))
         presentViewController(alertController, animated: true, completion: nil)
     }
@@ -83,15 +107,15 @@ class UsosesTableViewController: UITableViewController,UsosesProviderDelegate {
     func onErrorOccurs() {
     }
 
-    private func loadImage(urlString:String,indexPath:NSIndexPath){
+    private func loadImage(urlString: String, indexPath: NSIndexPath) {
         let url = NSURL(string: urlString)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url!, completionHandler: {
             data, response, error -> Void in
-            if(data != nil ){
+            if (data != nil) {
                 let image = UIImage(data: data!)
                 dispatch_async(dispatch_get_main_queue()) {
-                    if var cell = self.tableView.cellForRowAtIndexPath(indexPath){
+                    if var cell = self.tableView.cellForRowAtIndexPath(indexPath) {
                         (cell as! UsosTableViewCell).usosImageView?.contentMode = UIViewContentMode.ScaleAspectFit;
                         (cell as! UsosTableViewCell).usosImageView?.image = image
 

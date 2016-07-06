@@ -60,7 +60,7 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,OnFacebook
         if (isLogged) {
             controller = ContainerViewController()
         } else {
-            controller = UsosesTableViewController()
+            controller = UsosHolderController()
         }
         self.presentViewController(controller, animated: true, completion: nil)
     }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2BAFB7B3F960A01C5BFE57C7 /* Pods_Kujon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96504F7BCCB0EE28D6F0F6C4 /* Pods_Kujon.framework */; };
 		395726529DA26FEF655FEFAC /* Pods_KujonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C865AA5DFAADA9B9D2A08520 /* Pods_KujonUITests.framework */; };
+		4C0D8053B89C09BC0F888097 /* UsosHolderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D83195DBB1F80FC86451D /* UsosHolderController.swift */; };
 		4C0D807545C280601AAB48CB /* StudentProgramme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8A53D4F9C21CACEEE68A /* StudentProgramme.swift */; };
 		4C0D807A59B2A7B85B701839 /* SchoolPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D848E36F1CC2CC1086439 /* SchoolPath.swift */; };
 		4C0D8084FED3B93B5DD390BF /* SectionHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8A851CC2821CF61DAFB2 /* SectionHelperProtocol.swift */; };
@@ -233,6 +234,7 @@
 		4C0D82CBCF84CAB5E56A1F3C /* Lecturers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Lecturers.json; sourceTree = "<group>"; };
 		4C0D82F54FFBE7F27B43632A /* RestApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestApiManager.swift; sourceTree = "<group>"; };
 		4C0D8312007436E128DE9972 /* JsonDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonDataLoader.swift; sourceTree = "<group>"; };
+		4C0D83195DBB1F80FC86451D /* UsosHolderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsosHolderController.swift; sourceTree = "<group>"; };
 		4C0D8322F7C59F7DA152C337 /* KujonResponseSchools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KujonResponseSchools.swift; sourceTree = "<group>"; };
 		4C0D83287522A1AF1593A071 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		4C0D8340744B7869FEC512C0 /* StandartSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandartSection.swift; sourceTree = "<group>"; };
@@ -736,6 +738,7 @@
 			children = (
 				528284091D08499000A602B4 /* UsosesTableViewController.swift */,
 				4C0D8E93AF3D07DC32FE7F30 /* Views */,
+				4C0D83195DBB1F80FC86451D /* UsosHolderController.swift */,
 			);
 			path = Usoses;
 			sourceTree = "<group>";
@@ -1609,6 +1612,7 @@
 				4C0D89F29E7400D6E2ABD251 /* CoordinatorsSection.swift in Sources */,
 				4C0D8728CF32D05C9860E24E /* ParticipantsSection.swift in Sources */,
 				4C0D83AA5628FB3E4480BACA /* ClassTypeSection.swift in Sources */,
+				4C0D8053B89C09BC0F888097 /* UsosHolderController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
