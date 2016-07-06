@@ -72,6 +72,15 @@ class FacultieViewController: UIViewController, FacultieProviderDelegate {
         self.navigationController?.popViewControllerAnimated(true)
     }
 
+    @IBAction func onMapClick(sender: AnyObject) {
+        let baseUrl: String = "http://maps.apple.com/?q="
+        let encodedName = facultie.postalAdress.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet()) ?? ""
+        let finalUrl = baseUrl + encodedName
+        if let url = NSURL(string: finalUrl) {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+
     private func loadImage(urlString: String) {
         let url = NSURL(string: urlString)
         let session = NSURLSession.sharedSession()

@@ -59,6 +59,9 @@
                         <constraint firstAttribute="height" constant="30" id="ebq-tW-pUg"/>
                     </constraints>
                     <state key="normal" title="map button"/>
+                    <connections>
+                        <action selector="onMapClick:" destination="-1" eventType="touchUpInside" id="uST-Tb-vaL"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tutaj adres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IsY-7n-7PS">
                     <rect key="frame" x="8" y="161" width="476" height="21"/>
