@@ -216,7 +216,6 @@ class UserTableViewController: UITableViewController
         self.navigationController?.presentViewController(popController, animated: false, completion: { popController.showAnimate(); })
 
         popController.showInView(withProgramme: myProgramme.programme)
-
     }
 
 
