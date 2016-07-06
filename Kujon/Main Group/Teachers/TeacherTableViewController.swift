@@ -64,7 +64,7 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: GoFurtherViewCellTableViewCell = tableView.dequeueReusableCellWithIdentifier(TeachCellId, forIndexPath: indexPath) as! GoFurtherViewCellTableViewCell
         let myUser: SimpleUser = self.lecturers[indexPath.row]
-        cell.plainLabel.text = myUser.firstName + " " + myUser.lastName
+        cell.plainLabel.text = myUser.lastName + " " + myUser.firstName
         cell.selectionStyle = UITableViewCellSelectionStyle.None
 
         return cell

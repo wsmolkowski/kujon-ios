@@ -30,10 +30,7 @@ class LecturerProvider: RestApiManager, LecturerProviderProtocol {
                     self.delegate?.onErrorOccurs()
                 }){
 
-                   self.delegate?.onLecturersLoaded(lecturerResponse.data.sort {
-
-                       $0.lastName < $1.lastName
-                   })
+                   self.delegate?.onLecturersLoaded(lecturerResponse.data)
                }
         }, onError: { self.delegate?.onErrorOccurs() })
 
