@@ -135,21 +135,13 @@ class UserTableViewController: UITableViewController
         switch (section) {
         case 0: return nil
             break;
-        case 1: return createLabel("Kierunki")
+        case 1: return createLabelForSectionTitle("Kierunki")
             break;
-        case 2: return createLabel("Jednostki")
+        case 2: return createLabelForSectionTitle("Jednostki")
         default: return nil
         }
     }
 
-    private func createLabel(text: String) -> UIView {
-        let view = UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, 56))
-        let label = UILabel(frame: CGRectMake(0, 0, self.tableView.frame.size.width, 48))
-        label.text = text
-        label.textColor = UIColor.blackWithAlpha()
-        view.addSubview(label)
-        return view
-    }
 
     private func configureUserDetails(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(usedDetailCellId, forIndexPath: indexPath) as! UserDetailsTableViewCell

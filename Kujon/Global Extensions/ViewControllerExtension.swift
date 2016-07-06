@@ -21,4 +21,18 @@ extension UIViewController {
         }))
         presentViewController(alertController, animated: true, completion: nil)
     }
+
+
+}
+
+extension UITableViewController{
+    func createLabelForSectionTitle(text: String) -> UIView {
+        let view = UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, 56))
+        let label = UILabel(frame: CGRectMake(8, 0, self.tableView.frame.size.width-8, 48))
+        label.font = label.font.fontWithSize(14)
+        label.text = text
+        label.textColor = UIColor.blackWithAlpha()
+        view.addSubview(label)
+        return view
+    }
 }
