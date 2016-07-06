@@ -27,7 +27,7 @@ class FacultieViewController: UIViewController, FacultieProviderDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge.None
-        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(FacultieViewController.back))
+        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(FacultieViewController.back),andTitle: "Jednostka")
         if (facultie != nil) {
             facultieImage.contentMode = UIViewContentMode.ScaleAspectFit;
             fillUpData()
