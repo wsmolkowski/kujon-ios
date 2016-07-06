@@ -52,16 +52,44 @@ class FacultieViewController: UIViewController, FacultieProviderDelegate {
         facultieAdress.text = facultie.postalAdress
         facultiePhoneNumber.numberOfLines = facultie.phoneNumber.count
         var phoneString = ""
-        for str in facultie.phoneNumber {
-            phoneString = phoneString + str + "\n"
+        if(facultie.phoneNumber.count>0){
+            phoneString = facultie.phoneNumber[0]
+            if(facultie.phoneNumber.count>1){
+                for str in facultie.phoneNumber[1..<facultie.phoneNumber.count] {
+                    phoneString = String(format: "%@ ,%@",phoneString,str)
+                }
+            }
+
         }
+
         facultiePhoneNumber.text = phoneString
+        var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(FacultieViewController.phoneTapped))
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        facultiePhoneNumber.addGestureRecognizer(tapGestureRecognizer)
+        facultiePhoneNumber.userInteractionEnabled = true
         programmeNumber.text = "liczba programów: " + String(facultie.schoolStats.programmeCount)
         cursantNumber.text = "liczba kursantów: " + String(facultie.schoolStats.courseCount)
         employeeNumber.text = "liczba pracowników: " + String(facultie.schoolStats.staffCount)
         facultieName.text = facultie.name
         facultieWebPage.text = facultie.homePageUrl
         loadImage(facultie.logUrls.p100x100)
+    }
+
+    func phoneTapped(){
+        let alertController = UIAlertController(title: "Zadzwoń", message: "Wybierz numer pod który chcesz zadzwonić", preferredStyle: .ActionSheet)
+        for number in facultie.phoneNumber{
+            alertController.addAction(UIAlertAction(title: number, style: .Default, handler: { (action: UIAlertAction!) in
+                alertController.dismissViewControllerAnimated(true,completion: nil)
+                if let url = NSURL(string:"tel://" + number) {
+                    UIApplication.sharedApplication().openURL(url)
+                }
+            }))
+        }
+        alertController.addAction(UIAlertAction(title: "Anuluj", style: .Cancel, handler: { (action: UIAlertAction!) in
+            alertController.dismissViewControllerAnimated(true,completion: nil)
+        }))
+        presentViewController(alertController, animated: true, completion: nil)
+
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
