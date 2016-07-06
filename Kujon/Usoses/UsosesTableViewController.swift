@@ -77,7 +77,7 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
 
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        showAlert(usosList[indexPath.row] as Usos)
+        showAlert(getShowDemo()[indexPath.row] as Usos)
     }
 
 
