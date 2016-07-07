@@ -14,25 +14,23 @@ extension UIViewController {
     }
 
 
+    func showAlertApi(title: String, text: String, succes: () -> Void, cancel: () -> Void) {
+        let alertController = UIAlertController(title: title, message: text, preferredStyle: .Alert)
+
+        alertController.addAction(UIAlertAction(title: "Tak", style: .Default, handler: {
+            (action: UIAlertAction!) in
+            alertController.dismissViewControllerAnimated(true, completion: nil)
+            succes()
+
+        }))
+        alertController.addAction(UIAlertAction(title: "Nie", style: .Cancel, handler: {
+            (action: UIAlertAction!) in
+            alertController.dismissViewControllerAnimated(true, completion: nil)
+            cancel()
+        }))
+        presentViewController(alertController, animated: true, completion: nil)
+    }
 }
-
-func showAlertApi(title: String, text: String, succes: () -> Void, cancel: () -> Void) {
-    let alertController = UIAlertController(title: title, message: text, preferredStyle: .Alert)
-
-    alertController.addAction(UIAlertAction(title: "Tak", style: .Default, handler: {
-        (action: UIAlertAction!) in
-        alertController.dismissViewControllerAnimated(true, completion: nil)
-        succes()
-
-    }))
-    alertController.addAction(UIAlertAction(title: "Nie", style: .Cancel, handler: {
-        (action: UIAlertAction!) in
-        alertController.dismissViewControllerAnimated(true, completion: nil)
-        cancel()
-    }))
-    presentViewController(alertController, animated: true, completion: nil)
-}
-
 extension UITableViewController {
     func createLabelForSectionTitle(text: String) -> UIView {
         let view = UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, 56))

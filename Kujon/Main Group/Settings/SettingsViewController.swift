@@ -32,7 +32,7 @@ class SettingsViewController: UIViewController,FBSDKLoginButtonDelegate,DeleteAc
     }
     @IBAction func deleteAccount(sender: AnyObject) {
         showAlertApi("UWAGA",text: "Czy na pewno chcesz skasować konto?",succes: {
-            deleteAccountProvider.deleteAccount()
+            self.deleteAccountProvider.deleteAccount()
         },cancel: {})
     }
 
