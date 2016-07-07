@@ -31,7 +31,7 @@ class SettingsViewController: UIViewController,FBSDKLoginButtonDelegate,DeleteAc
         self.navigationController?.popViewControllerAnimated(true)
     }
     @IBAction func deleteAccount(sender: AnyObject) {
-        showAlertApi("UWAGA",text: "Czy na pewno chcesz skasować konto?",succes: {
+        showAlertApi(StringHolder.attention,text: StringHolder.deleteAccount,succes: {
             self.deleteAccountProvider.deleteAccount()
         },cancel: {})
     }
@@ -47,7 +47,7 @@ class SettingsViewController: UIViewController,FBSDKLoginButtonDelegate,DeleteAc
 
 
     @IBAction func regulaminAction(sender: AnyObject) {
-        if let url = NSURL(string:"https://kujon.mobi/regulamin") {
+        if let url = NSURL(string:StringHolder.kujonRegulaminUrl) {
             UIApplication.sharedApplication().openURL(url)
         }
     }

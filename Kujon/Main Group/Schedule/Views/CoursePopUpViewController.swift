@@ -33,13 +33,17 @@ class CoursePopUpViewController: PopUpViewController {
 
         
         let lecture = lectureWrap.lecture
-        lectureTypeLabel.text  = "Typ: " + lecture.type
-        lectureGroupLabel.text  = "Grupa: " + String(lecture.groupNumber)
-        lectureBuldingNameLabel.text  = "Budynek: " + lecture.buldingName
-        lectureRoomNumberLabel.text  = "Sala: " + lecture.roomNumber
+        lectureTypeLabel.text  = createNiceString(StringHolder.type,lecture.type)
+        lectureGroupLabel.text  = createNiceString(StringHolder.group,lecture.groupNumber)
+        lectureBuldingNameLabel.text  = createNiceString(StringHolder.bulding,lecture.buldingName)
+        lectureRoomNumberLabel.text  = createNiceString(StringHolder.classRoom,lecture.roomNumber)
         lectureTimeLabel.text  = lectureWrap.startTime + ":" + lecture.endTime
         courseTitle.text = lecture.courseName
 
+    }
+
+    private func createNiceString(one:String, two:String)->String{
+        return String(format: "%@: %@",one,two)
     }
 
     

@@ -18,7 +18,7 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Wybierz Uczelnię"
+        self.navigationItem.title = StringHolder.chooseUsos
         var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UsosesTableViewController.barTapped))
         tapGestureRecognizer.numberOfTapsRequired = 3
         self.navigationController?.navigationBar.addGestureRecognizer(tapGestureRecognizer)
@@ -31,7 +31,7 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
 
     func barTapped(){
         self.showDemoUniversity = true
-        ToastView.showInParent(self.navigationController?.view,withText: "Dodano uniwersytet demo", forDuration: 2.0)
+        ToastView.showInParent(self.navigationController?.view,withText: StringHolder.addedDemo, forDuration: 2.0)
         self.tableView.reloadData()
     }
 
@@ -58,7 +58,7 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
         } else {
             return self.usosList.filter({
                 usos in
-                usos.usosId != "DEMO"
+                usos.usosId != StringHolder.demoId
             })
         }
     }
@@ -82,9 +82,9 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
 
 
     func showAlert(usos: Usos) {
-        let alertController = UIAlertController(title: "Uwaga", message: "Zostaniesz przekierowany do USOS żeby się zalogować", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: StringHolder.attention, message: StringHolder.moveToUsos, preferredStyle: .Alert)
 
-        alertController.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {
+        alertController.addAction(UIAlertAction(title: StringHolder.ok, style: .Default, handler: {
             (action: UIAlertAction!) in
             alertController.dismissViewControllerAnimated(true, completion: nil)
             let controller = SecondLoginViewController()
@@ -92,7 +92,7 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
             self.userDataHolder.usosId = usos.usosId
             self.presentViewController(controller, animated: true, completion: nil)
         }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: {
+        alertController.addAction(UIAlertAction(title: StringHolder.cancel, style: .Cancel, handler: {
             (action: UIAlertAction!) in
             alertController.dismissViewControllerAnimated(true, completion: nil)
         }))

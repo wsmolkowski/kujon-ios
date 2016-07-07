@@ -135,9 +135,9 @@ class UserTableViewController: UITableViewController
         switch (section) {
         case 0: return nil
             break;
-        case 1: return createLabelForSectionTitle("Kierunki")
+        case 1: return createLabelForSectionTitle(StringHolder.kierunki)
             break;
-        case 2: return createLabelForSectionTitle("Jednostki")
+        case 2: return createLabelForSectionTitle(StringHolder.faculties)
         default: return nil
         }
     }
@@ -176,7 +176,7 @@ class UserTableViewController: UITableViewController
         }else {
             
             
-            ToastView.showInParent(self.navigationController?.view,withText: "Nie ma zdjecia", forDuration: 2.0)
+            ToastView.showInParent(self.navigationController?.view,withText: StringHolder.noPicture, forDuration: 2.0)
         }
     }
     private var isThereImage = false;

@@ -69,7 +69,7 @@ class StudentDetailsViewController: UIViewController, UITableViewDataSource, UIT
         } else {
 
 
-            ToastView.showInParent(self.navigationController?.view, withText: "Nie ma zdjecia", forDuration: 2.0)
+            ToastView.showInParent(self.navigationController?.view, withText: StringHolder.noPicture, forDuration: 2.0)
         }
     }
 

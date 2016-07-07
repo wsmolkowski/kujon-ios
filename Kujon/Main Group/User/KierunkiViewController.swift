@@ -48,7 +48,7 @@ class KierunkiViewController: PopUpViewController {
 
         self.myProgramme = programme
         levelLabel.text = myProgramme.levelOfStudies
-        descriptionLabel.text = "opis: " + myProgramme.description
+        descriptionLabel.text = StringHolder.description + ": " + myProgramme.description
         timeOfStudyLabel.text = myProgramme.duration
         idLabel.text = myProgramme.id
         trybeLabel.text = myProgramme.modeOfStudies

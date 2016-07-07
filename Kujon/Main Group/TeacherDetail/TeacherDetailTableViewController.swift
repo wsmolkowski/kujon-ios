@@ -19,7 +19,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(TeacherDetailTableViewController.back), andTitle: "Wykładowca")
+        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(TeacherDetailTableViewController.back), andTitle: StringHolder.lecturer)
         self.tableView.registerNib(UINib(nibName: "TeacherDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: TeacherDetailViewId)
         userDetailsProvider.delegate = self
         if(simpleUser != nil){
@@ -106,7 +106,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         } else {
 
 
-            ToastView.showInParent(self.navigationController?.view, withText: "Nie ma zdjecia", forDuration: 2.0)
+            ToastView.showInParent(self.navigationController?.view, withText: StringHolder.noPicture , forDuration: 2.0)
         }
     }
 
