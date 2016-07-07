@@ -9,7 +9,7 @@ class ShareMenuItem : MenuItemWithController {
 
 
     func returnTitle() -> String {
-        return "Share app"
+        return StringHolder.shareApp
     }
 
     func returnImage() -> UIImage! {

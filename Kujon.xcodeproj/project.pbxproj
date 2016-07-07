@@ -59,6 +59,7 @@
 		4C0D85E772027B77B2D540BD /* CoursesWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8190D3732BDD3AA81F52 /* CoursesWrapper.swift */; };
 		4C0D85F69F40F41D39640CFD /* Grades.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8D5DA0EA9F9C5E7C4447 /* Grades.json */; };
 		4C0D85F830B0EF11E4768533 /* GoFurtherViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D83646FE2279154916A1A /* GoFurtherViewCellTableViewCell.swift */; };
+		4C0D8613E9AAE6706DD0D2B2 /* StringHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8ACEDEE9F84A27992B79 /* StringHolder.swift */; };
 		4C0D862153C6686FBD53CC28 /* NameSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8B836E74F691498CFBEC /* NameSection.swift */; };
 		4C0D863F610BFD74A4C029CC /* SchoolName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8F9DC59F7A73E78EC669 /* SchoolName.swift */; };
 		4C0D864F9F51B36FAD9866D5 /* KujonResponseSchools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8322F7C59F7DA152C337 /* KujonResponseSchools.swift */; };
@@ -296,6 +297,7 @@
 		4C0D8A851CC2821CF61DAFB2 /* SectionHelperProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHelperProtocol.swift; sourceTree = "<group>"; };
 		4C0D8AA6C79613D718788CD7 /* CourseDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetails.swift; sourceTree = "<group>"; };
 		4C0D8ACCBE0A1A11117A7D68 /* Programmes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Programmes.json; sourceTree = "<group>"; };
+		4C0D8ACEDEE9F84A27992B79 /* StringHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringHolder.swift; sourceTree = "<group>"; };
 		4C0D8AE26100BB9C339355AC /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		4C0D8B4F1A4C021698123994 /* EmploymentPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmploymentPosition.swift; sourceTree = "<group>"; };
 		4C0D8B5FF1A8F45453C5D4FB /* Grade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
@@ -491,6 +493,7 @@
 				4C0D8625E8E36B19AFACD20C /* ToastView.swift */,
 				523B4FDB1D2BD090005FA79F /* TextViewController.swift */,
 				523B4FDC1D2BD090005FA79F /* TextViewController.xib */,
+				4C0D8ACEDEE9F84A27992B79 /* StringHolder.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1637,6 +1640,7 @@
 				4C0D8053B89C09BC0F888097 /* UsosHolderController.swift in Sources */,
 				4C0D839A5A8BDCE05EAE9808 /* DeleteAccountProvider.swift in Sources */,
 				4C0D8C8AA72AA75BAD58BB1B /* MenuItemWithURL.swift in Sources */,
+				4C0D8613E9AAE6706DD0D2B2 /* StringHolder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

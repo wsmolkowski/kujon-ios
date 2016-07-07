@@ -7,7 +7,7 @@ import Foundation
 import UIKit
 class ScheduleMenuItem:MenuItemWithController {
     func returnTitle() -> String {
-        return "Plan zajec"
+        return StringHolder.schedule
     }
 
     func returnImage() -> UIImage! {

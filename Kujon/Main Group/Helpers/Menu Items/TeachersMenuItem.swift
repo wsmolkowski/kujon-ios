@@ -8,7 +8,7 @@ import UIKit
 class TeachersMenuItem : MenuItemWithController {
 
     func returnTitle() -> String {
-        return "Wykladowcy"
+        return StringHolder.lecturers
     }
 
     func returnImage() -> UIImage! {

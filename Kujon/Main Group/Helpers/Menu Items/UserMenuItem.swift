@@ -8,7 +8,7 @@ import UIKit
 class UserMenuItem : MenuItemWithController{
 
     func returnTitle() -> String {
-        return "User"
+        return StringHolder.user
     }
 
     func returnImage() -> UIImage! {

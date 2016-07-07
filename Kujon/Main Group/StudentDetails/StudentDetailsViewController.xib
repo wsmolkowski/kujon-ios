@@ -81,7 +81,7 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZVM-Ej-s69">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZVM-Ej-s69">
                     <rect key="frame" x="8" y="234" width="584" height="344"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
@@ -102,12 +102,16 @@
                 <constraint firstItem="pfe-WI-r7S" firstAttribute="leading" secondItem="MId-1s-tQb" secondAttribute="leading" id="ThP-Zj-vkT"/>
                 <constraint firstItem="9Gx-HF-oV4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="U77-pJ-o8y"/>
                 <constraint firstItem="MId-1s-tQb" firstAttribute="top" secondItem="pfe-WI-r7S" secondAttribute="bottom" constant="8" symbolic="YES" id="cIn-Me-XaE"/>
+                <constraint firstItem="ZVM-Ej-s69" firstAttribute="leading" secondItem="rfg-bc-S5N" secondAttribute="leading" id="cgs-iA-rej"/>
+                <constraint firstItem="ZVM-Ej-s69" firstAttribute="trailing" secondItem="J2m-YD-K9G" secondAttribute="trailing" id="gfZ-9b-hxg"/>
                 <constraint firstItem="J2m-YD-K9G" firstAttribute="leading" secondItem="ASG-Q2-pSR" secondAttribute="trailing" constant="8" symbolic="YES" id="jHM-U7-Gbn"/>
                 <constraint firstItem="AAI-LZ-ePN" firstAttribute="top" secondItem="MId-1s-tQb" secondAttribute="bottom" constant="8" symbolic="YES" id="jYv-iE-2Fe"/>
                 <constraint firstItem="rfg-bc-S5N" firstAttribute="top" secondItem="AAI-LZ-ePN" secondAttribute="bottom" constant="8" symbolic="YES" id="loX-gk-0Hx"/>
                 <constraint firstItem="9Gx-HF-oV4" firstAttribute="top" secondItem="J2m-YD-K9G" secondAttribute="top" id="pSX-Kg-0eY"/>
+                <constraint firstAttribute="bottom" secondItem="ZVM-Ej-s69" secondAttribute="bottom" constant="22" id="qV9-SB-27I"/>
                 <constraint firstItem="9Gx-HF-oV4" firstAttribute="trailing" secondItem="MId-1s-tQb" secondAttribute="trailing" id="vSw-9T-fJC"/>
                 <constraint firstItem="AAI-LZ-ePN" firstAttribute="leading" secondItem="rfg-bc-S5N" secondAttribute="leading" id="vWG-cQ-4sD"/>
+                <constraint firstItem="ZVM-Ej-s69" firstAttribute="top" secondItem="rfg-bc-S5N" secondAttribute="bottom" constant="8" symbolic="YES" id="wtG-JL-y0b"/>
             </constraints>
             <point key="canvasLocation" x="582" y="502"/>
         </view>

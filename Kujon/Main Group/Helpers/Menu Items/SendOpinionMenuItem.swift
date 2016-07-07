@@ -8,7 +8,7 @@ import UIKit
 class SendOpinionMenuItem:MenuItemWithURL {
 
     func returnTitle() -> String {
-        return "Prześlij Opinię"
+        return StringHolder.sendOpinion
     }
 
     func returnImage() -> UIImage! {
@@ -24,7 +24,7 @@ class SendOpinionMenuItem:MenuItemWithURL {
     }
 
     func returnURL() -> NSURL! {
-        return NSURL(string: "mailto:kujon@kujon.mobi&subject=Uwaga do Kujona")
+        return NSURL(string: "mailto:kujon@kujon.mobi&subject=Uwaga do Kujona".stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
     }
 
 

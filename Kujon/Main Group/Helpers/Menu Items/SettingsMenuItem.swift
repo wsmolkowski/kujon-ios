@@ -7,7 +7,7 @@ import Foundation
 import UIKit
 class SettingsMenuItem: MenuItemWithController {
     func returnTitle() -> String {
-        return "Ustawienia"
+        return StringHolder.settings
     }
 
     func returnImage() -> UIImage! {

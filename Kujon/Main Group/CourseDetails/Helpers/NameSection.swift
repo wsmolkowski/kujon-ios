@@ -17,7 +17,12 @@ class NameSection: SectionHelperProtocol {
     func fillUpWithData(courseDetails: CourseDetails) {
         titleString = courseDetails.courseName
         id = courseDetails.courseId
-        language = courseDetails.languageId
+        if(courseDetails.languageId != nil){
+
+            language = courseDetails.languageId
+        }else {
+            language = ""
+        }
         isOn = courseDetails.isConducted
     }
 

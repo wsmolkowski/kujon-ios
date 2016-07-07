@@ -26,6 +26,7 @@ class StudentDetailsViewController: UIViewController, UITableViewDataSource, UIT
         super.viewDidLoad()
         kierunkiTableView.delegate = self
         kierunkiTableView.dataSource = self
+        self.edgesForExtendedLayout = UIRectEdge.None
         self.kierunkiTableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: kierunekCellId)
         if (userId == nil) {
             userId = user.userId
@@ -42,7 +43,7 @@ class StudentDetailsViewController: UIViewController, UITableViewDataSource, UIT
         accountNumberLabel.text = userDetails.id
 
         self.studentProgrammes = userDetails.studentProgrammes
-
+        studentImageView.image = UIImage(named:"user-placeholder")
         if (userDetails.hasPhoto) {
             self.restImageProvider.loadImage("", urlString: self.userDetails.photoUrl!, onImageLoaded: self)
 

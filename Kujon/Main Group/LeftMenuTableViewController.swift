@@ -68,7 +68,7 @@ class LeftMenuTableViewController: UITableViewController {
         if(menuItem.returnViewController()){
             self.delegate?.selectedMenuItem(self, menuItem: menuItem,withDelegate: indexPath.section==0 )
         }else{
-            UIApplication.sharedApplication().openURL((menuItem as! MenuItemWithURL).returnURL())
+            UIApplication.sharedApplication().openURL((menuItem as! MenuItemWithURL).returnURL()!)
         }
     }
 

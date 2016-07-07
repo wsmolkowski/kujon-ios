@@ -10,7 +10,7 @@ class GradesMenuItem:MenuItemWithController {
 
 
     func returnTitle() -> String {
-        return "Oceny"
+        return StringHolder.grades
     }
 
     func returnImage() -> UIImage! {

@@ -18,7 +18,7 @@ struct CourseDetails {
     let coordinators: Array<SimpleUser>?
     let lecturers: Array<SimpleUser>?
     let homepageUrl : String
-    let languageId : String
+    let languageId : String!
     let courseUnitsId : Array<String>
     let term: Array<Term>
     let groups : Array<CourseGroup>

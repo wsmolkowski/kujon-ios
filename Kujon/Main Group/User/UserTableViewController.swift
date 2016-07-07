@@ -184,6 +184,7 @@ class UserTableViewController: UITableViewController
     func imageLoaded(tag: String, image: UIImage) {
         let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! UserDetailsTableViewCell
         cell.userImageView.image = image
+        isThereImage = true
     }
 
 
