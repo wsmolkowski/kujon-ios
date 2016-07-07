@@ -37,7 +37,7 @@ extension CourseDetails:Decodable{
                     description: j => "description",
                     termId: j => "term_id",
                     facId: j => "fac_id",
-                    participants: j => "participants",
+                    participants: try? j => "participants",
                     coordinators: j => "coordinators",
                     lecturers: j => "lecturers",
                     homepageUrl: j => "homepage_url",

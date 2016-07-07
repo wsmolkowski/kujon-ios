@@ -39,6 +39,7 @@
 		4C0D832C3F2F8CAC86CCA86B /* UserDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D80BE1D8E3820DDDB8539 /* UserDetailsResponse.swift */; };
 		4C0D8337B9F546A2FC16AF22 /* DayCellHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8D9BBCC3C778FFB78885 /* DayCellHandler.swift */; };
 		4C0D8393C1440593CBD091ED /* UsosesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8E76951D0DCEDCA216A9 /* UsosesProvider.swift */; };
+		4C0D839A5A8BDCE05EAE9808 /* DeleteAccountProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D82A55F80BAD8DE22A74D /* DeleteAccountProvider.swift */; };
 		4C0D83AA5628FB3E4480BACA /* ClassTypeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D83FFD6EDC0C0A0B9ADEE /* ClassTypeSection.swift */; };
 		4C0D83CE72D77673367EB737 /* PassCriteriaSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D81CA0A7AD4A8E6032090 /* PassCriteriaSection.swift */; };
 		4C0D83DD9146C96D43851C5D /* ScheduleMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8738D3867C1931666FF9 /* ScheduleMenuItem.swift */; };
@@ -231,6 +232,7 @@
 		4C0D8246857CCDCA5F17A17A /* ProviderProvidersImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderProvidersImpl.swift; sourceTree = "<group>"; };
 		4C0D8269192F611DE27E5FF6 /* LectureWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureWrapper.swift; sourceTree = "<group>"; };
 		4C0D829AA588F62CB18CBDD0 /* FacultieProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacultieProvider.swift; sourceTree = "<group>"; };
+		4C0D82A55F80BAD8DE22A74D /* DeleteAccountProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAccountProvider.swift; sourceTree = "<group>"; };
 		4C0D82CBCF84CAB5E56A1F3C /* Lecturers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Lecturers.json; sourceTree = "<group>"; };
 		4C0D82F54FFBE7F27B43632A /* RestApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestApiManager.swift; sourceTree = "<group>"; };
 		4C0D8312007436E128DE9972 /* JsonDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonDataLoader.swift; sourceTree = "<group>"; };
@@ -715,6 +717,7 @@
 				4C0D8816B753368A695ED2AF /* CourseProvider.swift */,
 				4C0D829AA588F62CB18CBDD0 /* FacultieProvider.swift */,
 				4C0D8E3A753C9C0EB791CF7B /* CourseDetailsProvider.swift */,
+				4C0D82A55F80BAD8DE22A74D /* DeleteAccountProvider.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -1613,6 +1616,7 @@
 				4C0D8728CF32D05C9860E24E /* ParticipantsSection.swift in Sources */,
 				4C0D83AA5628FB3E4480BACA /* ClassTypeSection.swift in Sources */,
 				4C0D8053B89C09BC0F888097 /* UsosHolderController.swift in Sources */,
+				4C0D839A5A8BDCE05EAE9808 /* DeleteAccountProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
