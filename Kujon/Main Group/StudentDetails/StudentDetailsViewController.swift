@@ -24,6 +24,7 @@ class StudentDetailsViewController: UIViewController, UITableViewDataSource, UIT
     var isThereImage = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(StudentDetailsViewController.back))
         kierunkiTableView.delegate = self
         kierunkiTableView.dataSource = self
         self.edgesForExtendedLayout = UIRectEdge.None
@@ -34,7 +35,9 @@ class StudentDetailsViewController: UIViewController, UITableViewDataSource, UIT
         provider.delegate = self
         provider.loadUserDetail(userId)
     }
-
+    func back(){
+        self.navigationController?.popViewControllerAnimated(true)
+    }
 
     func onUserDetailLoaded(userDetails: UserDetail) {
         self.userDetails = userDetails;
