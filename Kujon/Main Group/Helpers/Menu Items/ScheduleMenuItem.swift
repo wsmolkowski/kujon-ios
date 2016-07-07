@@ -18,4 +18,8 @@ class ScheduleMenuItem:MenuItemWithController {
         return {return ScheduleTableViewController()}
     }
 
+    func returnViewController() -> Bool {
+        return true
+    }
+
 }

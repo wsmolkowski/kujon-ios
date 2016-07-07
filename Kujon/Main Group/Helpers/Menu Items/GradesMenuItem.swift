@@ -21,4 +21,8 @@ class GradesMenuItem:MenuItemWithController {
         return { return GradesTableViewController() }
     }
 
+    func returnViewController() -> Bool {
+        return true
+    }
+
 }

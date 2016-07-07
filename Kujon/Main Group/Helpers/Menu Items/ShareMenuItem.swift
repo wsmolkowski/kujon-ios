@@ -20,4 +20,9 @@ class ShareMenuItem : MenuItemWithController {
         return {return ShareViewController()}
     }
 
+    func returnViewController() -> Bool {
+        return true
+    }
+
+
 }

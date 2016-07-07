@@ -65,7 +65,11 @@ class LeftMenuTableViewController: UITableViewController {
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var menuItem = self.getCurrentMenuItem(indexPath)
-        self.delegate?.selectedMenuItem(self, menuItem: menuItem,withDelegate: indexPath.section==0 )
+        if(menuItem.returnViewController()){
+            self.delegate?.selectedMenuItem(self, menuItem: menuItem,withDelegate: indexPath.section==0 )
+        }else{
+            UIApplication.sharedApplication().openURL((menuItem as! MenuItemWithURL).returnURL())
+        }
     }
 
     private func getCurrentMenuItem(indexPath: NSIndexPath)->MenuItemWithController{

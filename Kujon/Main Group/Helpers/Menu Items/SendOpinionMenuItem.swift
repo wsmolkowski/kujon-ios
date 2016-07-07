@@ -5,7 +5,7 @@
 
 import Foundation
 import UIKit
-class SendOpinionMenuItem:MenuItemWithController {
+class SendOpinionMenuItem:MenuItemWithURL {
 
     func returnTitle() -> String {
         return "Prześlij Opinię"
@@ -16,7 +16,16 @@ class SendOpinionMenuItem:MenuItemWithController {
     }
 
     func returnViewControllerFunction()->() -> UIViewController! {
-        return {return SendOpinionViewController()}
+        return {}
     }
+
+    func returnViewController() -> Bool {
+        return false
+    }
+
+    func returnURL() -> NSURL! {
+        return NSURL(string: "mailto:kujon@kujon.mobi&subject=Uwaga do Kujona")
+    }
+
 
 }

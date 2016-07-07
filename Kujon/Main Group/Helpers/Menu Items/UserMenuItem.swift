@@ -19,5 +19,9 @@ class UserMenuItem : MenuItemWithController{
         return { return UserTableViewController()}
     }
 
+    func returnViewController() -> Bool {
+        return true
+    }
+
 
 }

@@ -18,4 +18,8 @@ class SettingsMenuItem: MenuItemWithController {
         return {return SettingsViewController()}
     }
 
+    func returnViewController() -> Bool {
+        return true
+    }
+
 }

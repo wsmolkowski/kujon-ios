@@ -12,5 +12,9 @@ protocol MenuItemWithController {
 
     func returnImage() -> UIImage!
 
+    func returnViewController() -> Bool
+
     func returnViewControllerFunction() -> () -> UIViewController!
+
+
 }

@@ -19,4 +19,9 @@ class TeachersMenuItem : MenuItemWithController {
         return {return TeacherTableViewController()}
     }
 
+    func returnViewController() -> Bool {
+        return true
+    }
+
+
 }

@@ -21,4 +21,13 @@ class CourseMenuItem: MenuItemWithController {
         }
     }
 
+    func returnViewController() -> Bool {
+        return true
+    }
+
+    func returnURL() -> NSURL {
+        return nil
+    }
+
+
 }
