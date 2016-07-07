@@ -16,7 +16,7 @@ class SendOpinionMenuItem:MenuItemWithURL {
     }
 
     func returnViewControllerFunction()->() -> UIViewController! {
-        return {}
+        return {return nil}
     }
 
     func returnViewController() -> Bool {

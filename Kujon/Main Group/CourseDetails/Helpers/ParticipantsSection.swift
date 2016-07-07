@@ -7,9 +7,7 @@ import Foundation
 
 class ParticipantsSection:LecturersSection {
 
-    override func reactOnSectionClick(position: Int, withController controller: UINavigationController?) {
 
-    }
 
     override func getMyCellId() -> String {
         return "participantsId"
