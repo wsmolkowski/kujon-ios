@@ -27,7 +27,7 @@ class FacultieViewController: UIViewController, FacultieProviderDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge.None
-        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(FacultieViewController.back),andTitle: "Jednostka")
+        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(FacultieViewController.back), andTitle: StringHolder.faculty)
         if (facultie != nil) {
             facultieImage.contentMode = UIViewContentMode.ScaleAspectFit;
             fillUpData()
@@ -47,16 +47,15 @@ class FacultieViewController: UIViewController, FacultieProviderDelegate {
     }
 
 
-
-    private func fillUpData(){
+    private func fillUpData() {
         facultieAdress.text = facultie.postalAdress
         facultiePhoneNumber.numberOfLines = facultie.phoneNumber.count
         var phoneString = ""
-        if(facultie.phoneNumber.count>0){
+        if (facultie.phoneNumber.count > 0) {
             phoneString = facultie.phoneNumber[0]
-            if(facultie.phoneNumber.count>1){
-                for str in facultie.phoneNumber[1..<facultie.phoneNumber.count] {
-                    phoneString = String(format: "%@ ,%@",phoneString,str)
+            if (facultie.phoneNumber.count > 1) {
+                for str in facultie.phoneNumber[1 ..< facultie.phoneNumber.count] {
+                    phoneString = String(format: "%@ ,%@", phoneString, str)
                 }
             }
 
@@ -67,30 +66,34 @@ class FacultieViewController: UIViewController, FacultieProviderDelegate {
         tapGestureRecognizer.numberOfTapsRequired = 1
         facultiePhoneNumber.addGestureRecognizer(tapGestureRecognizer)
         facultiePhoneNumber.userInteractionEnabled = true
-        programmeNumber.text = "liczba programów: " + String(facultie.schoolStats.programmeCount)
-        cursantNumber.text = "liczba kursantów: " + String(facultie.schoolStats.courseCount)
-        employeeNumber.text = "liczba pracowników: " + String(facultie.schoolStats.staffCount)
+        programmeNumber.text = StringHolder.programmsNumber + " " + String(facultie.schoolStats.programmeCount)
+        cursantNumber.text = StringHolder.cursantNumber + " " + String(facultie.schoolStats.courseCount)
+        employeeNumber.text = StringHolder.employyNumber + " " + String(facultie.schoolStats.staffCount)
         facultieName.text = facultie.name
         facultieWebPage.text = facultie.homePageUrl
         loadImage(facultie.logUrls.p100x100)
     }
 
-    func phoneTapped(){
-        let alertController = UIAlertController(title: "Zadzwoń", message: "Wybierz numer pod który chcesz zadzwonić", preferredStyle: .ActionSheet)
-        for number in facultie.phoneNumber{
-            alertController.addAction(UIAlertAction(title: number, style: .Default, handler: { (action: UIAlertAction!) in
-                alertController.dismissViewControllerAnimated(true,completion: nil)
-                if let url = NSURL(string:"tel://" + number) {
+    func phoneTapped() {
+
+        let alertController = UIAlertController(title: StringHolder.callMe , message: StringHolder.callMeMessage , preferredStyle: .ActionSheet)
+        for number in facultie.phoneNumber {
+            alertController.addAction(UIAlertAction(title: number, style: .Default, handler: {
+                (action: UIAlertAction!) in
+                alertController.dismissViewControllerAnimated(true, completion: nil)
+                if let url = NSURL(string: "tel://" + number) {
                     UIApplication.sharedApplication().openURL(url)
                 }
             }))
         }
-        alertController.addAction(UIAlertAction(title: "Anuluj", style: .Cancel, handler: { (action: UIAlertAction!) in
-            alertController.dismissViewControllerAnimated(true,completion: nil)
+        alertController.addAction(UIAlertAction(title: StringHolder.cancel, style: .Cancel, handler: {
+            (action: UIAlertAction!) in
+            alertController.dismissViewControllerAnimated(true, completion: nil)
         }))
         presentViewController(alertController, animated: true, completion: nil)
 
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
