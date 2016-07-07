@@ -19,7 +19,7 @@ class BibliographySection: SectionHelperProtocol {
     }
 
     func getSectionTitle() -> String {
-        return "Bibliografia"
+        return StringHolder.bibliography
     }
 
     func getSectionSize() -> Int {

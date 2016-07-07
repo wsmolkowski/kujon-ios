@@ -19,7 +19,7 @@ class PassCriteriaSection: SectionHelperProtocol {
     }
 
     func getSectionTitle() -> String {
-        return "Kryteria Oceny"
+        return StringHolder.passCriteria
     }
 
     func getSectionSize() -> Int {

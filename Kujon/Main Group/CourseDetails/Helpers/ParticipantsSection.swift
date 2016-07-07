@@ -20,7 +20,7 @@ class ParticipantsSection:LecturersSection {
     }
 
     override func getSectionTitle() -> String {
-        return "Studenci"
+        return StringHolder.students
     }
 
     override func reactOnSectionClick(position: Int, withController controller: UINavigationController?) {

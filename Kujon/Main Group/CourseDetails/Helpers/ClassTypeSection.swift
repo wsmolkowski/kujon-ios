@@ -23,7 +23,7 @@ class ClassTypeSection:SectionHelperProtocol {
     }
 
     func getSectionTitle() -> String {
-        return "Typ Zajęć"
+        return StringHolder.classType
     }
 
     func getSectionSize() -> Int {

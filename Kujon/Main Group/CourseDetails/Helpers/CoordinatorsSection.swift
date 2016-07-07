@@ -17,7 +17,7 @@ class CoordinatorsSection: LecturersSection {
 
 
     override func getSectionTitle() -> String {
-        return "Koordynatorzy"
+        return StringHolder.coordinators
     }
 
     override func getMyCellId()->String {

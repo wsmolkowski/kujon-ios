@@ -23,7 +23,7 @@ class CycleSection: SectionHelperProtocol {
     }
 
     func getSectionTitle() -> String {
-        return "Zajęcia w cyklu"
+        return StringHolder.cycleLectures
     }
 
     func getSectionSize() -> Int {

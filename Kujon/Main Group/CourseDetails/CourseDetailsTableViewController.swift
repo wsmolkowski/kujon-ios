@@ -17,7 +17,7 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
     let courseDetailsProvider  = ProvidersProviderImpl.sharedInstance.provideCourseDetailsProvider()
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(CourseDetailsTableViewController.back),andTitle: "Szczegóły Przedmiotu")
+        NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(CourseDetailsTableViewController.back),andTitle: StringHolder.courseDetails)
         courseDetailsProvider.delegate = self;
         if(course != nil ) {
             courseDetailsProvider.loadCourseDetails(course)

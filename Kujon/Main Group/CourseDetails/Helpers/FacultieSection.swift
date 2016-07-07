@@ -17,7 +17,7 @@ class FacultieSection: SectionHelperProtocol {
     }
 
     func getSectionTitle() -> String {
-        return "Jednostki"
+        return StringHolder.faculties
     }
 
     func getSectionSize() -> Int {

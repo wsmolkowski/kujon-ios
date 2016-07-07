@@ -18,7 +18,7 @@ class LecturersSection: SectionHelperProtocol {
     }
 
     func getSectionTitle() -> String {
-        return "Prowadzący"
+        return StringHolder.leadingLecturers
     }
 
     func getSectionSize() -> Int {

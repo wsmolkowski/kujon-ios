@@ -19,7 +19,7 @@ class DescriptionSection: SectionHelperProtocol {
     }
 
     func getSectionTitle() -> String {
-        return "Opis"
+        return StringHolder.description
     }
 
     func getSectionSize() -> Int {
