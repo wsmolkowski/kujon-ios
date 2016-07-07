@@ -24,7 +24,7 @@ class GradesTableViewController: UITableViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(GradesTableViewController.openDrawer),andTitle: "Oceny")
+        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(GradesTableViewController.openDrawer),andTitle: StringHolder.grades)
         gradesProvider.delegate = self
         gradesProvider.test = true
         self.tableView.registerNib(UINib(nibName: "GradesTableViewCell", bundle: nil), forCellReuseIdentifier: GradeCellIdentiefer)
@@ -75,7 +75,7 @@ class GradesTableViewController: UITableViewController
         cell.textGradeLabel.text = grade.valueDescription
         cell.gradeNumberLabel.text = grade.valueSymbol
         cell.descriptionLabel.text = grade.courseName
-        cell.secDescLabel.text = grade.classType + " termin: " + String(grade.examSessionNumber)
+        cell.secDescLabel.text = grade.classType + "  " + StringHolder.termin  + " " + String(grade.examSessionNumber)
 
         return cell
     }

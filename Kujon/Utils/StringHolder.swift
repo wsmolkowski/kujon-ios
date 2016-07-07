@@ -32,4 +32,5 @@ class StringHolder {
     static let callMe = "Zadzwoń"
     static let callMeMessage = "Wybierz numer pod który chcesz zadzwonić"
     static let cancel = "Anuluj"
+    static let termin = "termin"
 }
