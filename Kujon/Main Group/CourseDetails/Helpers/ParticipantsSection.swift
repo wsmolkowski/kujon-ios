@@ -25,5 +25,17 @@ class ParticipantsSection:LecturersSection {
         return "Studenci"
     }
 
+    override func reactOnSectionClick(position: Int, withController controller: UINavigationController?) {
+        if let myUser: SimpleUser = self.list[position] {
+
+
+            let teachController = StudentDetailsViewController(nibName: "StudentDetailsViewController", bundle: NSBundle.mainBundle())
+            teachController.userId = myUser.id
+            controller?.pushViewController(teachController, animated: true)
+
+
+        }
+    }
+
 
 }

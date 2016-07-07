@@ -12,12 +12,10 @@ class CycleSection: SectionHelperProtocol {
     private var description: String! = nil
     private var terms: Array<Term> = Array()
     func fillUpWithData(courseDetails: CourseDetails) {
-        if(courseDetails.term!=nil){
             if(courseDetails.term.count > 0){
                 terms = courseDetails.term
 
             }
-        }
     }
 
     func registerView(tableView: UITableView) {
