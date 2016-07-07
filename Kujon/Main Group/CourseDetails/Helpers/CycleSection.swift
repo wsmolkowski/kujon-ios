@@ -10,9 +10,13 @@ class CycleSection: SectionHelperProtocol {
 
 
     private var description: String! = nil
+    private var terms: Array<Term> = Array()
     func fillUpWithData(courseDetails: CourseDetails) {
-        if(courseDetails.term.count > 0){
-            description = courseDetails.term[0].name
+        if(courseDetails.term!=nil){
+            if(courseDetails.term.count > 0){
+                terms = courseDetails.term
+
+            }
         }
     }
 
@@ -25,7 +29,7 @@ class CycleSection: SectionHelperProtocol {
     }
 
     func getSectionSize() -> Int {
-        return 1
+        return terms.count
     }
     func getRowHeight() -> Int {
         return StandartSection.rowHeight
@@ -37,12 +41,13 @@ class CycleSection: SectionHelperProtocol {
     }
     func giveMeCellAtPosition(tableView: UITableView, onPosition position: NSIndexPath) -> UITableViewCell! {
         let cell = tableView.dequeueReusableCellWithIdentifier(cycleId, forIndexPath: position) as! GoFurtherViewCellTableViewCell
-        cell.plainLabel.text = description
+        cell.plainLabel.text = terms[position.row].name
         return cell
     }
 
     func reactOnSectionClick(position: Int, withController controller: UINavigationController?) {
-//TODO popUp with cycle
+        let term = terms[position]
+        //TODO popUp with cycle
     }
 
 }
