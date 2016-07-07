@@ -8,16 +8,17 @@
 
 import UIKit
 import FBSDKLoginKit
-class SettingsViewController: UIViewController,FBSDKLoginButtonDelegate {
+class SettingsViewController: UIViewController,FBSDKLoginButtonDelegate,DeleteAccountProviderDelegate {
     let faceBookManager = FacebookManager.sharedInstance
 
- 
+    var deleteAccountProvider =  ProvidersProviderImpl.sharedInstance.provideDeleteAccount()
     @IBOutlet weak var logOutButton: FBSDKLoginButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(SettingsViewController.back))
         self.edgesForExtendedLayout = UIRectEdge.None
         logOutButton.delegate = self
+        deleteAccountProvider.delegate = self
 
     }
 
@@ -30,9 +31,25 @@ class SettingsViewController: UIViewController,FBSDKLoginButtonDelegate {
         self.navigationController?.popViewControllerAnimated(true)
     }
     @IBAction func deleteAccount(sender: AnyObject) {
+        showAlertApi("UWAGA",text: "Czy na pewno chcesz skasować konto?",succes: {
+            deleteAccountProvider.deleteAccount()
+        },cancel: {})
     }
-   
+
+    func accountDeleted() {
+        UserDataHolder.sharedInstance.loggedToUsosForCurrentEmail = false
+        let controller  = EntryViewController()
+        self.presentViewController(controller,animated:true,completion:nil)
+    }
+
+    func onErrorOccurs() {
+    }
+
+
     @IBAction func regulaminAction(sender: AnyObject) {
+        if let url = NSURL(string:"https://kujon.mobi/regulamin") {
+            UIApplication.sharedApplication().openURL(url)
+        }
     }
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
     }

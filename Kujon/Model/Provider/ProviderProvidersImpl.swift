@@ -28,6 +28,8 @@ class ProvidersProviderImpl: ProvidersProvider {
 
     lazy var courseDetailsProvider = CourseDetailsProvider()
 
+    lazy var deleteAccountProvider = DeleteAccountProvider()
+
     func providerFacultiesProvider() -> FacultiesProvider {
         return self.facultiesProvider
     }
@@ -62,6 +64,10 @@ class ProvidersProviderImpl: ProvidersProvider {
 
     func provideCourseDetailsProvider() -> CourseDetailsProvider{
         return courseDetailsProvider;
+    }
+
+    func provideDeleteAccount() -> DeleteAccountProvider {
+        return deleteAccountProvider;
     }
 
 
