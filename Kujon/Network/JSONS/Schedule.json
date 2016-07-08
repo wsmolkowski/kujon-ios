@@ -3,6 +3,7 @@
   "data": [
     {
       "lecturers": [
+
         {
           "last_name": "G\u00f3ralowski",
           "first_name": "Marek",
@@ -15,10 +16,10 @@
       ],
       "course_name": "Systemy rozproszone",
       "name": "Systemy rozproszone - Seminarium magisterskie",
-      "start_time": "2016-06-02 12:15:00",
+      "start_time": "2016-07-10 12:15:00",
       "group_number": 1,
       "room_number": "4070",
-      "end_time": "2016-06-02 14:00:00",
+      "end_time": "2016-07-10 14:00:00",
       "course_id": "1000-2D97SR",
       "type": "zaj\u0119cia",
       "building_name": "Wydzia\u0142 Matematyki, Informatyki i Mechaniki - Budynek Dydaktyczny"
@@ -36,10 +37,10 @@
       ],
       "course_name": "Systemy rozproszone",
       "name": "Systemy rozproszone - Seminarium magisterskie",
-      "start_time": "2016-06-02 17:15:00",
+      "start_time": "2016-07-11 17:15:00",
       "group_number": 1,
       "room_number": "4070",
-      "end_time": "2016-06-02 18:00:00",
+      "end_time": "2016-07-11 18:00:00",
       "course_id": "1000-2D97SR",
       "type": "zaj\u0119cia",
       "building_name": "Wydzia\u0142 Matematyki, Informatyki i Mechaniki - Budynek Dydaktyczny"
@@ -57,10 +58,75 @@
       ],
       "course_name": "Systemy rozproszone",
       "name": "Systemy rozproszone - Seminarium magisterskie",
-      "start_time": "2016-06-04 17:15:00",
+      "start_time": "2016-07-11 17:15:00",
       "group_number": 1,
       "room_number": "4070",
-      "end_time": "2016-06-04 18:00:00",
+      "end_time": "2016-07-11 18:00:00",
+      "course_id": "1000-2D97SR",
+      "type": "zaj\u0119cia",
+      "building_name": "Wydzia\u0142 Matematyki, Informatyki i Mechaniki - Budynek Dydaktyczny"
+    },
+    {
+      "lecturers": [
+
+        {
+          "last_name": "G\u00f3ralowski",
+          "first_name": "Marek",
+          "titles": {
+            "after": null,
+            "before": "dr"
+          },
+          "id": "1"
+        }
+      ],
+      "course_name": "Systemy rozproszone",
+      "name": "Systemy rozproszone - Seminarium magisterskie",
+      "start_time": "2016-08-02 12:15:00",
+      "group_number": 1,
+      "room_number": "4070",
+      "end_time": "2016-08-02 14:00:00",
+      "course_id": "1000-2D97SR",
+      "type": "zaj\u0119cia",
+      "building_name": "Wydzia\u0142 Matematyki, Informatyki i Mechaniki - Budynek Dydaktyczny"
+    },{
+      "lecturers": [
+        {
+          "last_name": "G\u00f3ralowski",
+          "first_name": "Marek",
+          "titles": {
+            "after": null,
+            "before": "dr"
+          },
+          "id": "1"
+        }
+      ],
+      "course_name": "Systemy rozproszone",
+      "name": "Systemy rozproszone - Seminarium magisterskie",
+      "start_time": "2016-08-02 17:15:00",
+      "group_number": 1,
+      "room_number": "4070",
+      "end_time": "2016-08-010 18:00:00",
+      "course_id": "1000-2D97SR",
+      "type": "zaj\u0119cia",
+      "building_name": "Wydzia\u0142 Matematyki, Informatyki i Mechaniki - Budynek Dydaktyczny"
+    },{
+      "lecturers": [
+        {
+          "last_name": "G\u00f3ralowski",
+          "first_name": "Marek",
+          "titles": {
+            "after": null,
+            "before": "dr"
+          },
+          "id": "1"
+        }
+      ],
+      "course_name": "Systemy rozproszone",
+      "name": "Systemy rozproszone - Seminarium magisterskie",
+      "start_time": "2016-08-04 17:15:00",
+      "group_number": 1,
+      "room_number": "4070",
+      "end_time": "2016-08-04 18:00:00",
       "course_id": "1000-2D97SR",
       "type": "zaj\u0119cia",
       "building_name": "Wydzia\u0142 Matematyki, Informatyki i Mechaniki - Budynek Dydaktyczny"

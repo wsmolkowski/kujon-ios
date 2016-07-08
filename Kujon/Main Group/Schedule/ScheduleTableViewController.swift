@@ -19,15 +19,15 @@ class ScheduleTableViewController:
     static let DayCellId = "dayCellId"
     var isQuering = false
     var lastQueryDate: NSDate! = nil
-    var sectionsDictionary: Dictionary<String, ScheduleSection> = Dictionary()
-
+    var sectionsArray: Array<ScheduleSection> = Array()
+    var onlyLectureDictionary: Dictionary<String, [LectureWrapper]> = Dictionary()
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {
         self.delegate = delegate
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(ScheduleTableViewController.openDrawer),andTitle: "Plan Zajęć")
+        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(ScheduleTableViewController.openDrawer), andTitle: "Plan Zajęć")
 
         let openCalendarButton = UIBarButtonItem(title: "calendar", style: UIBarButtonItemStyle.Plain, target: self,
                 action: #selector(ScheduleTableViewController.openCalendar))
@@ -37,7 +37,7 @@ class ScheduleTableViewController:
         self.tableView.registerNib(UINib(nibName: "LectureTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.LectureCellId)
         self.tableView.registerNib(UINib(nibName: "DayTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.DayCellId)
         lectureProvider.delegate = self
-//        lectureProvider.test = true
+        lectureProvider.test = true
         askForData()
 
     }
@@ -52,22 +52,26 @@ class ScheduleTableViewController:
             lecture in LectureWrapper(lecture: lecture)
         }
         let dicMonthYear = wrappers.groupBy {
-            $0.mothYearDate
+            $0.monthYearNSDate
         }
-        let sortedKeys = Array(dicMonthYear.keys).sort(<)
+        let sortedKeys = dicMonthYear.keys
 
         sortedKeys.forEach {
-            key in
-
+            key2 in
+            let key = key2.getMonthYearString();
             var list = Array<CellHandlingStrategy>()
-            if (sectionsDictionary[key] != nil) {
-                let scheduleSection = sectionsDictionary[key]!
-                list = scheduleSection.getList()
+            for section in sectionsArray {
+                if (section.getSectionTitle() == key) {
+                    list = section.getList()
+                }
             }
-            var dict = dicMonthYear[key]!.groupBy {
+            var dict = dicMonthYear[key2]!.groupBy {
                 $0.startDate
             }
-            handleAddingToDictionary(key, oldList: list, dicdays: dict)
+            for day in dict.keys {
+                onlyLectureDictionary[day] = dict[day]
+            }
+            handleAddingToArray(key, oldList: list, dicdays: dict)
         }
 
         self.tableView.reloadData()
@@ -75,7 +79,7 @@ class ScheduleTableViewController:
     }
 
 
-    private func handleAddingToDictionary(key: String, oldList: Array<CellHandlingStrategy> = Array(), dicdays: Dictionary<String, [LectureWrapper]>) {
+    private func handleAddingToArray(key: String, oldList: Array<CellHandlingStrategy> = Array(), dicdays: Dictionary<String, [LectureWrapper]>) {
 
         let sortedKeysDays = Array(dicdays.keys).sort(<)
         var listOfCellStrategys: Array<CellHandlingStrategy> = Array()
@@ -87,12 +91,24 @@ class ScheduleTableViewController:
                 listOfCellStrategys.append(wrap as! CellHandlingStrategy)
             }
         }
-        sectionsDictionary[key] = ScheduleSectionImpl(withDate: key, listOfLecture: oldList + listOfCellStrategys)
+
+        var condition = true
+        if (sectionsArray.count > 0) {
+            for index in 0 ... sectionsArray.count - 1 {
+                if (key == sectionsArray[index].getSectionTitle()) {
+                    sectionsArray[index] = ScheduleSectionImpl(withDate: key, listOfLecture: oldList + listOfCellStrategys)
+                    condition = false
+                }
+            }
+        }
+        if (condition) {
+            sectionsArray.append(ScheduleSectionImpl(withDate: key, listOfLecture: oldList + listOfCellStrategys))
+        }
     }
 
     private func getScheduleSectionAtPosition(pos: Int) -> ScheduleSection {
-        var componentArray = Array(sectionsDictionary.keys).sort(<)
-        return sectionsDictionary[componentArray[pos]]!
+
+        return sectionsArray[pos]
     }
 
     func onErrorOccurs() {
@@ -110,14 +126,17 @@ class ScheduleTableViewController:
     }
 
     func openCalendar() {
-        self.navigationController?.pushViewController(CalendarViewController(), animated: true)
+        let calendarViewController = CalendarViewController()
+        calendarViewController.onlyLectureDictionary = onlyLectureDictionary
+        calendarViewController.setNavigationProtocol(delegate!)
+        self.navigationController?.pushViewController(calendarViewController, animated: true)
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return sectionsDictionary.count
+        return sectionsArray.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

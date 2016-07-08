@@ -15,6 +15,8 @@ class LectureWrapper: CellHandlingStrategy {
     let endNSDate: NSDate
     let mothYearDate: String
     var myCellHandler: LectureCellHandler! = nil
+    let monthYearNSDate: NSDate
+
 
     init(lecture: Lecture) {
         self.lecture = lecture
@@ -24,6 +26,9 @@ class LectureWrapper: CellHandlingStrategy {
         self.startTime = startNSDate.dateHoursToString()
         self.endTime = endNSDate.dateHoursToString()
         self.mothYearDate = startNSDate.getMonthYearString()
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Month, .Year], fromDate: startNSDate)
+        self.monthYearNSDate = calendar.dateFromComponents(components)!
     }
 
     func giveMyStrategy() -> CellHandlerProtocol {
@@ -54,6 +59,8 @@ class LectureWrapper: CellHandlingStrategy {
             popController.showInView(withLecture: self)
         }
     }
+
+
 
 
 }
