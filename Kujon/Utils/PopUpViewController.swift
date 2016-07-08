@@ -53,4 +53,16 @@ class PopUpViewController: UIViewController {
             }
         });
     }
+    func removeAnimate(funca: () ->Void) {
+        UIView.animateWithDuration(0.300, animations: {
+            self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
+            self.view.alpha = 0.0;
+        }, completion: {
+            (finished: Bool) in
+            if (finished) {
+                self.dismissViewControllerAnimated(true, completion: nil)
+                funca()
+            }
+        });
+    }
 }

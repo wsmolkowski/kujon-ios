@@ -13,6 +13,7 @@ class HeaderViewTableViewCell: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.backgroundColor  = UIColor.blueColor()
         // Initialization code
     }
 

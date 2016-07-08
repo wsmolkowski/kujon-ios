@@ -5,7 +5,7 @@
 
 import Foundation
 
-class LectureWrapper: CellHandlingStrategy {
+class LectureWrapper: CellHandlingStrategy,ShowCourseDetailsDelegate {
 
     let lecture: Lecture
     let startDate: String
@@ -16,7 +16,7 @@ class LectureWrapper: CellHandlingStrategy {
     let mothYearDate: String
     var myCellHandler: LectureCellHandler! = nil
     let monthYearNSDate: NSDate
-
+    weak var controller:UINavigationController! = nil
 
     init(lecture: Lecture) {
         self.lecture = lecture
@@ -56,11 +56,18 @@ class LectureWrapper: CellHandlingStrategy {
             controller?.presentViewController(popController, animated: false, completion: {
                 popController.showAnimate();
             })
+            popController.delegate = self
+            self.controller = controller
             popController.showInView(withLecture: self)
         }
     }
 
 
+    func showCourseDetails() {
+        let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: NSBundle.mainBundle())
+//        courseDetails.course = lecture.courseId
+        self.controller?.pushViewController(courseDetails, animated: true)
+    }
 
 
 }

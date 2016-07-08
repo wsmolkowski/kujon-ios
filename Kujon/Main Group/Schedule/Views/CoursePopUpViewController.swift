@@ -8,6 +8,10 @@
 
 import UIKit
 
+ protocol ShowCourseDetailsDelegate: class {
+    func showCourseDetails()
+}
+
 class CoursePopUpViewController: PopUpViewController {
 
     @IBOutlet weak var lectureTypeLabel: UILabel!
@@ -17,6 +21,9 @@ class CoursePopUpViewController: PopUpViewController {
     @IBOutlet weak var lectureTimeLabel: UILabel!
     @IBOutlet weak var courseTitle: UILabel!
     @IBOutlet weak var popUpView: UIView!
+
+    weak var delegate:ShowCourseDetailsDelegate! = nil
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,6 +55,7 @@ class CoursePopUpViewController: PopUpViewController {
 
     
     @IBAction func seeLectureButtonAction(sender: AnyObject) {
+        self.removeAnimate({self.delegate?.showCourseDetails()})
     }
 
     @IBAction func okButtonAction(sender: AnyObject) {
