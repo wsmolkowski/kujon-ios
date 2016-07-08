@@ -66,6 +66,7 @@
 		4C0D865D9B6FEF3BD55EA8C4 /* FacId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D80C7FFEBB9339A2E9DA5 /* FacId.swift */; };
 		4C0D8665D94A08D7002946B8 /* Courses.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D84747D175C76418230EA /* Courses.json */; };
 		4C0D869D18F5884265AD7390 /* MenuItemsHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D80CFD63C02C2FFE99366 /* MenuItemsHolder.swift */; };
+		4C0D86AB196D67D0C0451162 /* ClassType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D89ABC6BC21973F643DE7 /* ClassType.swift */; };
 		4C0D86B48ECAE549129243B8 /* TeachersMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D844C4BA870C5823E72AB /* TeachersMenuItem.swift */; };
 		4C0D86EDDF1F15B819DBF358 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D85C01CA62A3C89F09CDA /* AppDelegate.swift */; };
 		4C0D87058EAE5B71945F1AD8 /* Lecturers.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D82CBCF84CAB5E56A1F3C /* Lecturers.json */; };
@@ -290,6 +291,7 @@
 		4C0D88F55A75A9542F15E9F0 /* LecturerDetails.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LecturerDetails.json; sourceTree = "<group>"; };
 		4C0D89A4EEC331ECBC5C8208 /* RestImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestImageProvider.swift; sourceTree = "<group>"; };
 		4C0D89AA6BD1302128ACD970 /* LogoUrls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoUrls.swift; sourceTree = "<group>"; };
+		4C0D89ABC6BC21973F643DE7 /* ClassType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassType.swift; sourceTree = "<group>"; };
 		4C0D8A0FEDB8EB76142CE7BB /* KujonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KujonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C0D8A53D4F9C21CACEEE68A /* StudentProgramme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentProgramme.swift; sourceTree = "<group>"; };
 		4C0D8A598E59F244E56634B5 /* SendOpinionMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendOpinionMenuItem.swift; sourceTree = "<group>"; };
@@ -741,6 +743,7 @@
 				4C0D80C7FFEBB9339A2E9DA5 /* FacId.swift */,
 				4C0D819D1038F2869B558512 /* Term.swift */,
 				4C0D86DFD2B023A1924F1128 /* CourseDetailsResponse.swift */,
+				4C0D89ABC6BC21973F643DE7 /* ClassType.swift */,
 			);
 			path = Course;
 			sourceTree = "<group>";
@@ -1641,6 +1644,7 @@
 				4C0D839A5A8BDCE05EAE9808 /* DeleteAccountProvider.swift in Sources */,
 				4C0D8C8AA72AA75BAD58BB1B /* MenuItemWithURL.swift in Sources */,
 				4C0D8613E9AAE6706DD0D2B2 /* StringHolder.swift in Sources */,
+				4C0D86AB196D67D0C0451162 /* ClassType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,7 +14,7 @@ class ClassTypeSection:SectionHelperProtocol {
     func fillUpWithData(courseDetails: CourseDetails) {
         description = ""
         for courseGroup in courseDetails.groups {
-            description.appendContentsOf(courseGroup.classType + ", numer grupy:" + String(courseGroup.groupNumber) + "\n")
+            description.appendContentsOf(courseGroup.classType.pl + ", numer grupy:" + String(courseGroup.groupNumber) + "\n")
         }
     }
 

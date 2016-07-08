@@ -47,23 +47,6 @@ class CalendarViewController: MGCDayPlannerViewController, NavigationDelegate {
         self.navigationController?.popViewControllerAnimated(true)
     }
 
-//    override func dayPlannerView(_ view: MGCDayPlannerView!, attributedStringForDayHeaderAtDate date: NSDate!) -> NSAttributedString! {
-//        let dayStr = dateFormatter.stringFromDate(date)
-//        let font = UIFont(name:"Helvetica Neue",size: 15)
-//
-//        var attrStr = NSMutableAttributedString(string: dayStr)
-//        attrStr.addAttribute(NSFontAttributeName,value: font!,range: NSRangeFromString(dayStr))
-//
-//        var para = NSMutableParagraphStyle()
-//        para.alignment = NSTextAlignment.Center
-//        attrStr.addAttribute(NSParagraphStyleAttributeName,value: para,range: NSRangeFromString(dayStr))
-//        return attrStr
-//    }
-//
-
-    override func dayPlannerView(_ view: MGCDayPlannerView!, viewForEventOfType type: MGCEventType, atIndex index: UInt, date: NSDate!) -> MGCEventView! {
-        return super.dayPlannerView(view, viewForEventOfType: type, atIndex: index, date: date)
-    }
 
     override func dayPlannerView(_ view: MGCDayPlannerView!, numberOfEventsOfType type: MGCEventType, atDate date: NSDate!) -> Int {
         switch (type) {
@@ -77,20 +60,27 @@ class CalendarViewController: MGCDayPlannerViewController, NavigationDelegate {
     }
 
     override func dayPlannerView(_ view: MGCDayPlannerView!, dateRangeForEventOfType type: MGCEventType, atIndex index: UInt, date: NSDate!) -> MGCDateRange! {
-          if var list = onlyLectureDictionary[date.dateToString()] {
-            let lecture = list[index as! Int] as! LectureWrapper;
-            return MGCDateRange(start: lecture.startNSDate,end: lecture.endNSDate)
+        if var list = onlyLectureDictionary[date.dateToString()] {
+            let lecture = list[Int(index)] as! LectureWrapper;
+            return MGCDateRange(start: lecture.startNSDate, end: lecture.endNSDate)
         }
         return nil
     }
 
+    override func dayPlannerView(_ view: MGCDayPlannerView!, viewForEventOfType type: MGCEventType, atIndex index: UInt, date: NSDate!) -> MGCEventView! {
+        if var list = onlyLectureDictionary[date.dateToString()] {
+            var eventView = MGCStandardEventView()
+            let lecture = list[Int(index)] as! LectureWrapper;
+            eventView.title = lecture.lecture.name
+            eventView.detail = lecture.lecture.buldingName
+            eventView.selected = false
+            return eventView
+        }
 
-    override func dayPlannerView(_ view: MGCDayPlannerView!, viewForNewEventOfType type: MGCEventType, atDate date: NSDate!) -> MGCEventView! {
-        var eventView  = MGCEventView()
-        eventView.selected = false
 
-        return eventView
+        return nil
     }
+
 
 
 
