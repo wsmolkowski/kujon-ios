@@ -27,6 +27,7 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
     func coursesProvided(courses: Array<CoursesWrapper>) {
         self.courseWrappers = courses;
         self.tableView.reloadData()
+
     }
 
     func onErrorOccurs() {
