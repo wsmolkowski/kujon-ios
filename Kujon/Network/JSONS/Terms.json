@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "_id": "57848bfe855ef92d84595187",
+      "active": false,
+      "end_date": "2015-06-09",
+      "finish_date": "2015-09-30",
+      "name": "Rok akademicki 2014/15",
+      "order_key": 1690,
+      "start_date": "2014-10-01",
+      "term_id": "2014"
+    },
+    {
+      "_id": "57840984855ef92d85595174",
+      "active": false,
+      "end_date": "2015-01-27",
+      "finish_date": "2015-03-31",
+      "name": "Semestr zimowy 2014/15",
+      "order_key": 1670,
+      "start_date": "2014-10-01",
+      "term_id": "2014Z"
+    }
+  ],
+  "status": "success"
+}
