@@ -32,7 +32,7 @@ class LecturerProvider: RestApiManager, LecturerProviderProtocol {
 
                    self.delegate?.onLecturersLoaded(lecturerResponse.data)
                }
-        }, onError: { self.delegate?.onErrorOccurs() })
+        }, onError: {text in self.delegate?.onErrorOccurs() })
 
     }
 

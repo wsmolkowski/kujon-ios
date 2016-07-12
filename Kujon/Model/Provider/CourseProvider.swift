@@ -50,7 +50,7 @@ class CourseProvider: RestApiManager {
 
             }
 
-        }, onError: { self.delegate?.onErrorOccurs() })
+        }, onError: { text in self.delegate?.onErrorOccurs() })
     }
 
     override func getMyUrl() -> String {

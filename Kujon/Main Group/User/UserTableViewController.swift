@@ -13,34 +13,40 @@ class UserTableViewController: UITableViewController
         , NavigationDelegate
         , UserDetailsProviderDelegate
         , FacultiesProviderDelegate
-        , OnImageLoadedFromRest {
+        , OnImageLoadedFromRest
+        , TermsProviderDelegate {
+
     weak var delegate: NavigationMenuProtocol! = nil
     private let usedDetailCellId = "userDetailViewId"
     private let StudentProgrammeCellId = "cellIdForStudentProgramme"
     private let FacultieProgrammeCellId = "cellIdForStudentFacultie"
+    private let termsCellId = "termsCellId"
     let userDetailsProvider: UserDetailsProvider! = ProvidersProviderImpl.sharedInstance.provideUserDetailsProvider()
     let facultieProvider: FacultiesProvider! = ProvidersProviderImpl.sharedInstance.providerFacultiesProvider()
+    let termsProvider: TermsProvider! = ProvidersProviderImpl.sharedInstance.provideTermsProvider()
     let restImageProvider = RestImageProvider.sharedInstance
 
     var userDetails: UserDetail! = nil
     var userFaculties: Array<Facultie>! = nil
-
+    var terms: Array<Term> = Array()
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {
         self.delegate = delegate
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(UserTableViewController.openDrawer),andTitle: "Kujon")
+        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(UserTableViewController.openDrawer), andTitle: "Kujon")
         userDetailsProvider.delegate = self
         userDetailsProvider.loadUserDetail()
         facultieProvider.delegate = self
+        termsProvider.delegate = self
         facultieProvider.loadFaculties()
-
+        termsProvider.loadTerms()
 
         self.tableView.registerNib(UINib(nibName: "UserDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: usedDetailCellId)
         self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: StudentProgrammeCellId)
         self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: FacultieProgrammeCellId)
+        self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: termsCellId)
     }
 
 
@@ -58,10 +64,17 @@ class UserTableViewController: UITableViewController
         self.tableView.reloadData()
     }
 
+    func onTermsLoaded(terms: Array<Term>) {
+        self.terms = terms
+        self.tableView.reloadData()
+    }
+
 
     func onErrorOccurs(text: String) {
-        self.showAlertApi(StringHolder.attention,text: text,succes:{self.userDetailsProvider.loadUserDetail()
-        self.facultieProvider.loadFaculties()},cancel: {})
+        self.showAlertApi(StringHolder.attention, text: text, succes: {
+            self.userDetailsProvider.loadUserDetail()
+            self.facultieProvider.loadFaculties()
+        }, cancel: {})
     }
 
 
@@ -69,7 +82,7 @@ class UserTableViewController: UITableViewController
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return 5
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,6 +90,7 @@ class UserTableViewController: UITableViewController
         case 0: return userDetails == nil ? 0 : 1
         case 1: return userDetails == nil ? 0 : userDetails.studentProgrammes.count
         case 2: return userFaculties == nil ? 0 : userFaculties.count
+        case 3:  return 1
         default: return 0
         }
     }
@@ -91,6 +105,8 @@ class UserTableViewController: UITableViewController
             break;
         case 2: cell = self.configureFacultieCell(indexPath)
             break;
+        case 3: cell = self.configureTermsCell(indexPath)
+            break;
         default: cell = self.configureUserDetails(indexPath)
         }
         cell.selectionStyle = UITableViewCellSelectionStyle.None
@@ -104,6 +120,9 @@ class UserTableViewController: UITableViewController
             break;
         case 2:
             self.clickedFacultie(indexPath)
+            break;
+        case 3:
+            self.clickedTerms()
             break;
         default:
             break;
@@ -130,6 +149,7 @@ class UserTableViewController: UITableViewController
         case 1: return 56
             break;
         case 2: return 56;
+        case 3: return 56;
         default: return 0
         }
     }
@@ -141,6 +161,7 @@ class UserTableViewController: UITableViewController
         case 1: return createLabelForSectionTitle(StringHolder.kierunki)
             break;
         case 2: return createLabelForSectionTitle(StringHolder.faculties)
+        case 3: return createLabelForSectionTitle(StringHolder.statistics)
         default: return nil
         }
     }
@@ -168,18 +189,18 @@ class UserTableViewController: UITableViewController
         return cell
     }
 
-    
-    func imageTapped(sender:UITapGestureRecognizer) {
+
+    func imageTapped(sender: UITapGestureRecognizer) {
         print(sender.view?.tag)
-        if(isThereImage){
+        if (isThereImage) {
             let imageController = ImageViewController(nibName: "ImageViewController", bundle: NSBundle.mainBundle())
             let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! UserDetailsTableViewCell
             imageController.image = cell.userImageView.image
-            self.navigationController?.pushViewController(imageController,animated: true)
-        }else {
-            
-            
-            ToastView.showInParent(self.navigationController?.view,withText: StringHolder.noPicture, forDuration: 2.0)
+            self.navigationController?.pushViewController(imageController, animated: true)
+        } else {
+
+
+            ToastView.showInParent(self.navigationController?.view, withText: StringHolder.noPicture, forDuration: 2.0)
         }
     }
     private var isThereImage = false;
@@ -205,6 +226,13 @@ class UserTableViewController: UITableViewController
         return cell
     }
 
+    private func configureTermsCell(indexPath: NSIndexPath)-> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(FacultieProgrammeCellId, forIndexPath: indexPath) as! GoFurtherViewCellTableViewCell
+        let number = terms.count
+        cell.plainLabel.text = StringHolder.cycles + "(" + String(number) + ")"
+        return cell
+    }
+
     func clicked(forIndexPath: NSIndexPath) {
         let myProgramme: StudentProgramme = self.userDetails.studentProgrammes[forIndexPath.row]
         let popController = KierunkiViewController(nibName: "KierunkiViewController", bundle: NSBundle.mainBundle())
@@ -221,49 +249,9 @@ class UserTableViewController: UITableViewController
         faculiteController.facultie = myFac
         self.navigationController?.pushViewController(faculiteController, animated: true)
     }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
+   private func clickedTerms(){
+       if(terms.count != 0){
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+       }
+   }
 }

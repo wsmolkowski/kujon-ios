@@ -36,7 +36,7 @@ class GradesProvider: RestApiManager, GradesProviderProtocol {
                 NSlogManager.showLog("JSON serialization failed:  \(error)")
                 self.delegate.onErrorOccurs()
             }
-        }, onError: { self.delegate?.onErrorOccurs() })
+        }, onError: { text in self.delegate?.onErrorOccurs() })
 
     }
 

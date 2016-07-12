@@ -48,7 +48,7 @@ class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
                 NSlogManager.showLog("JSON serialization failed:  \(error)")
                 self.delegate?.onErrorOccurs()
             }
-        }, onError: { self.delegate?.onErrorOccurs() })
+        }, onError: { text in self.delegate?.onErrorOccurs() })
     }
     override func getMyUrl() -> String {
         return baseURL + "/courseseditions/" + endpoint

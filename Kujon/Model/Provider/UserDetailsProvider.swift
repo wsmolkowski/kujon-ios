@@ -36,7 +36,7 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
 
                 self.delegate?.onUserDetailLoaded(user.data)
             }
-        }, onError: { self.delegate?.onErrorOccurs() })
+        }, onError: {text in  self.delegate?.onErrorOccurs() })
     }
 
     override func getMyUrl() -> String {
@@ -53,7 +53,7 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
             }){
                self.delegate?.onUserDetailLoaded(user.data)
            }
-        }, onError: { self.delegate?.onErrorOccurs() })
+        }, onError: {text in self.delegate?.onErrorOccurs() })
     }
 }
 

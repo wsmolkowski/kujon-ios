@@ -4,6 +4,7 @@
 //
 
 import Foundation
+
 protocol TermsProviderProtocol: JsonProviderProtocol {
     associatedtype T = TermsResponse
 
@@ -14,10 +15,11 @@ protocol TermsProviderDelegate: ErrorResponseProtocol {
     func onTermsLoaded(terms: Array<Term>)
 
 }
-class TermsProvider:RestApiManager,TermsProviderProtocol {
+
+class TermsProvider: RestApiManager, TermsProviderProtocol {
     var delegate: TermsProviderDelegate! = nil
     func loadTerms() {
-        self.makeHTTPGetRequest({
+        self.makeHTTPAuthenticatedGetRequest({
             json in
             if let termsResponse = try! self.changeJsonToResposne(json, onError: {
                 text in
@@ -26,11 +28,11 @@ class TermsProvider:RestApiManager,TermsProviderProtocol {
 
                 self.delegate?.onTermsLoaded(termsResponse.terms)
             }
-        }, onError: {})
+        }, onError: { text in self.delegate?.onErrorOccurs() })
     }
 
     override func getMyUrl() -> String {
-        return "/terms"
+        return baseURL + "/terms"
     }
 
     override func getMyFakeJsonName() -> String! {

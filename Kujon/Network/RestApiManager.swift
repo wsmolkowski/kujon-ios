@@ -6,7 +6,7 @@
 import Foundation
 
 typealias onSucces = (NSData!) -> Void
-typealias onErrorOccurs = () -> Void
+typealias onErrorOccurs = (text:String) -> Void
 
 class RestApiManager {
     static let BASE_URL: String = "https://api.kujon.mobi"
@@ -38,7 +38,7 @@ class RestApiManager {
                 let task = session.dataTaskWithRequest(request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
                 task.resume()
             } else {
-                onError()
+                onError(text:StringHolder.not_auth)
             }
         }
     }
@@ -58,8 +58,9 @@ class RestApiManager {
             NSlogManager.showLog(String(format: "Disk cache %i of %i", NSURLCache.sharedURLCache().currentDiskUsage, NSURLCache.sharedURLCache().diskCapacity))
             NSlogManager.showLog(String(format: "Memory Cache %i of %i", NSURLCache.sharedURLCache().currentMemoryUsage, NSURLCache.sharedURLCache().memoryCapacity))
             if (error != nil) {
+
                 dispatch_async(dispatch_get_main_queue()) {
-                    onError()
+                    onError(text:error!.localizedDescription)
                 }
             } else {
                 dispatch_async(dispatch_get_main_queue()) {

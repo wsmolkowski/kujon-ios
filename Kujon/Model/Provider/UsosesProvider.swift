@@ -30,7 +30,7 @@ class UsosesProvider: RestApiManager, UsosProviderProtocol {
 
                     self.delegate?.onUsosesLoaded(usoses.data)
                 }
-        }, onError: {})
+        }, onError: {text in})
 
     }
 

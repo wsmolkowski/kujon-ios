@@ -18,7 +18,7 @@ class DeleteAccountProvider:RestApiManager,DeleteAccountProviderProtocol {
     func deleteAccount() {
         self.makeHTTPAuthenticatedGetRequest({data in
         self.delegate?.accountDeleted()
-        },onError: {
+        },onError: {text in
             self.delegate.onErrorOccurs()
         })
     }
