@@ -22,6 +22,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(TeacherDetailTableViewController.back), andTitle: StringHolder.lecturer)
         self.tableView.registerNib(UINib(nibName: "TeacherDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: TeacherDetailViewId)
         userDetailsProvider.delegate = self
+        self.tableView.tableFooterView = UIView()
         if(simpleUser != nil){
             userDetailsProvider.loadUserDetail(simpleUser.id!)
         }else{

@@ -20,6 +20,7 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
         self.tableView.registerNib(UINib(nibName: "CourseTableViewCell", bundle: nil), forCellReuseIdentifier: CourseCellId)
         courseProvider.delegate = self
         courseProvider.provideCourses()
+        self.tableView.tableFooterView = UIView()
 
     }
 

@@ -42,7 +42,7 @@ class UserTableViewController: UITableViewController
         termsProvider.delegate = self
         facultieProvider.loadFaculties()
         termsProvider.loadTerms()
-
+        self.tableView.tableFooterView = UIView()
         self.tableView.registerNib(UINib(nibName: "UserDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: usedDetailCellId)
         self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: StudentProgrammeCellId)
         self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: FacultieProgrammeCellId)
@@ -251,7 +251,9 @@ class UserTableViewController: UITableViewController
     }
    private func clickedTerms(){
        if(terms.count != 0){
-
+           let termsController = TermsTableViewController()
+           self.navigationController?.pushViewController(termsController, animated: true)
+           termsController.setUpTerms(self.terms)
        }
    }
 }

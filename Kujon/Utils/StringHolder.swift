@@ -51,4 +51,7 @@ class StringHolder {
     static let statistics = "Statystyki"
     static let cycles = "Cykle"
     static let not_auth = "Brak autoryzacji"
+    static let terms = "Cykle"
+    static let yes = "TAK"
+    static let no = "NIE"
 }

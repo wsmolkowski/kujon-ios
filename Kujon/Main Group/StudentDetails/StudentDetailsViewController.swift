@@ -27,6 +27,7 @@ class StudentDetailsViewController: UIViewController, UITableViewDataSource, UIT
         NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(StudentDetailsViewController.back))
         kierunkiTableView.delegate = self
         kierunkiTableView.dataSource = self
+        self.kierunkiTableView.tableFooterView = UIView()
         self.edgesForExtendedLayout = UIRectEdge.None
         self.kierunkiTableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: kierunekCellId)
         if (userId == nil) {
