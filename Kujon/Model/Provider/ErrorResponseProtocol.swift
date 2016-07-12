@@ -6,5 +6,12 @@
 import Foundation
 
 protocol ErrorResponseProtocol {
-    func onErrorOccurs()
+    func onErrorOccurs(text:String)
+}
+
+
+extension ErrorResponseProtocol{
+    func onErrorOccurs(text: String = "") {
+    }
+
 }

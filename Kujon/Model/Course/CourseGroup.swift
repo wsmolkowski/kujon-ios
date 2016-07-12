@@ -7,7 +7,7 @@ import Foundation
 import Decodable
 
 struct CourseGroup {
-    let classType : ClassType
+    let classType : String
     let courseUnitId : Int
     let groupNumber : Int
 }

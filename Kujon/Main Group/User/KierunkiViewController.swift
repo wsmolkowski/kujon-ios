@@ -43,17 +43,19 @@ class KierunkiViewController: PopUpViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func showInView( withProgramme programme: Programme) {
+    func showInView( withProgramme programme: Programme!) {
 
+        if(programme != nil){
+            self.myProgramme = programme
+            levelLabel.text = myProgramme.levelOfStudies
+            descriptionLabel.text = StringHolder.description + ": " + myProgramme.description
+            timeOfStudyLabel.text = myProgramme.duration
+            idLabel.text = myProgramme.id
+            trybeLabel.text = myProgramme.modeOfStudies
+            kierunekLabel.text = myProgramme.name
+            self.view.userInteractionEnabled = true
+        }
 
-        self.myProgramme = programme
-        levelLabel.text = myProgramme.levelOfStudies
-        descriptionLabel.text = StringHolder.description + ": " + myProgramme.description
-        timeOfStudyLabel.text = myProgramme.duration
-        idLabel.text = myProgramme.id
-        trybeLabel.text = myProgramme.modeOfStudies
-        kierunekLabel.text = myProgramme.name
-        self.view.userInteractionEnabled = true
 
     }
 

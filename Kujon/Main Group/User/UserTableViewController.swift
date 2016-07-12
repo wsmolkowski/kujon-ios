@@ -59,8 +59,11 @@ class UserTableViewController: UITableViewController
     }
 
 
-    func onErrorOccurs() {
+    func onErrorOccurs(text: String) {
+        self.showAlertApi(StringHolder.attention,text: text,succes:{self.userDetailsProvider.loadUserDetail()
+        self.facultieProvider.loadFaculties()},cancel: {})
     }
+
 
 
     // MARK: - Table view data source

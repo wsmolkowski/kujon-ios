@@ -110,9 +110,11 @@ class StudentDetailsViewController: UIViewController, UITableViewDataSource, UIT
         let myProgramme: StudentProgramme = self.studentProgrammes[forIndexPath.row]
         let popController = KierunkiViewController(nibName: "KierunkiViewController", bundle: NSBundle.mainBundle())
         popController.modalPresentationStyle = .OverCurrentContext
-        self.navigationController?.presentViewController(popController, animated: false, completion: { popController.showAnimate(); })
+        self.navigationController?.presentViewController(popController, animated: false, completion: {
+            popController.showAnimate();
+            popController.showInView(withProgramme: myProgramme.programme)})
 
-        popController.showInView(withProgramme: myProgramme.programme)
+
     }
 
 

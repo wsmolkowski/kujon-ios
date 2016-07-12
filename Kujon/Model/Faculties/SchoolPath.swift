@@ -6,13 +6,7 @@
 import Foundation
 import Decodable
 
-//"path": [
-//{
-//"id": "00000000",
-//"name": {
-//"en": "University of Warsaw",
-//"pl": "Uniwersytet Warszawski"
-//}
+
 struct SchoolPath {
 
     let id : String
