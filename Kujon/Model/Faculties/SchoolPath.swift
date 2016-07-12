@@ -10,7 +10,7 @@ import Decodable
 struct SchoolPath {
 
     let id : String
-    let schoolName : SchoolName
+    let schoolName : String
 }
 
 extension SchoolPath:Decodable{
