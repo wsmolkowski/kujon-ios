@@ -109,6 +109,7 @@ class CalendarViewController: MGCDayPlannerViewController,
         if var list = onlyLectureDictionary[date.dateToString()] {
             var eventView = MGCStandardEventView()
             let lecture = list[Int(index)] as! LectureWrapper;
+            eventView.color = UIColor.kujonBlueColorWithAplha()
             eventView.title = lecture.lecture.name
             eventView.detail = lecture.lecture.buldingName
             eventView.selected = false
