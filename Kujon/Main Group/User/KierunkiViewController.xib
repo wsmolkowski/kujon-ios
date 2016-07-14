@@ -10,7 +10,7 @@
                 <outlet property="descriptionLabel" destination="pD4-bd-jZ0" id="243-QE-uQ7"/>
                 <outlet property="idLabel" destination="GN1-O0-VWU" id="9yE-Hr-aFA"/>
                 <outlet property="kierunekLabel" destination="5pW-SZ-m3U" id="8Zx-Ra-NlO"/>
-                <outlet property="levelLabel" destination="GN1-O0-VWU" id="iQl-H5-f9w"/>
+                <outlet property="levelLabel" destination="KeO-Aj-shF" id="cDX-95-a7i"/>
                 <outlet property="okButton" destination="ORl-2E-mOn" id="1u9-sG-21x"/>
                 <outlet property="popUpView" destination="AoC-8C-g0m" id="qXo-Hj-6ML"/>
                 <outlet property="timeOfStudyLabel" destination="eWU-9A-e2a" id="qio-pG-cFd"/>
@@ -84,12 +84,12 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pW-SZ-m3U">
-                            <rect key="frame" x="0.0" y="8" width="580" height="59"/>
+                            <rect key="frame" x="8" y="8" width="564" height="59"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="1eA-Cm-bgd"/>
                                 <constraint firstAttribute="height" constant="59" id="YR5-uO-O24"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                             <variation key="default">
@@ -112,10 +112,10 @@
                         <constraint firstItem="JU4-B3-Vby" firstAttribute="top" secondItem="GN1-O0-VWU" secondAttribute="bottom" constant="8" symbolic="YES" id="TFg-8j-8Kg"/>
                         <constraint firstItem="pD4-bd-jZ0" firstAttribute="leading" secondItem="KeO-Aj-shF" secondAttribute="leading" id="Tjw-Hl-OjA"/>
                         <constraint firstItem="GN1-O0-VWU" firstAttribute="leading" secondItem="5pW-SZ-m3U" secondAttribute="leading" id="TwR-Dy-aQu"/>
-                        <constraint firstAttribute="trailing" secondItem="5pW-SZ-m3U" secondAttribute="trailing" id="U36-vw-1b3"/>
+                        <constraint firstAttribute="trailing" secondItem="5pW-SZ-m3U" secondAttribute="trailing" constant="8" id="U36-vw-1b3"/>
                         <constraint firstItem="5pW-SZ-m3U" firstAttribute="top" secondItem="AoC-8C-g0m" secondAttribute="topMargin" id="Utu-bD-7TP"/>
                         <constraint firstItem="KeO-Aj-shF" firstAttribute="leading" secondItem="eWU-9A-e2a" secondAttribute="leading" id="XTo-Ok-qUn"/>
-                        <constraint firstItem="5pW-SZ-m3U" firstAttribute="leading" secondItem="AoC-8C-g0m" secondAttribute="leading" id="aJa-d7-5Ot"/>
+                        <constraint firstItem="5pW-SZ-m3U" firstAttribute="leading" secondItem="AoC-8C-g0m" secondAttribute="leading" constant="8" id="aJa-d7-5Ot"/>
                         <constraint firstItem="JU4-B3-Vby" firstAttribute="top" secondItem="GN1-O0-VWU" secondAttribute="bottom" constant="37" id="b8q-yj-dOS"/>
                         <constraint firstItem="KeO-Aj-shF" firstAttribute="trailing" secondItem="eWU-9A-e2a" secondAttribute="trailing" id="bck-gT-lJ9"/>
                         <constraint firstItem="5pW-SZ-m3U" firstAttribute="leading" secondItem="AoC-8C-g0m" secondAttribute="leading" constant="580" id="dme-9W-B3u"/>

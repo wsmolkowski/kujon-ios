@@ -14,7 +14,8 @@ class UserTableViewController: UITableViewController
         , UserDetailsProviderDelegate
         , FacultiesProviderDelegate
         , OnImageLoadedFromRest
-        , TermsProviderDelegate {
+        , TermsProviderDelegate
+        , ProgrammeProviderDelegate {
 
     weak var delegate: NavigationMenuProtocol! = nil
     private let usedDetailCellId = "userDetailViewId"
@@ -24,11 +25,14 @@ class UserTableViewController: UITableViewController
     let userDetailsProvider: UserDetailsProvider! = ProvidersProviderImpl.sharedInstance.provideUserDetailsProvider()
     let facultieProvider: FacultiesProvider! = ProvidersProviderImpl.sharedInstance.providerFacultiesProvider()
     let termsProvider: TermsProvider! = ProvidersProviderImpl.sharedInstance.provideTermsProvider()
+    let programmeProvider: ProgrammeProvider! = ProvidersProviderImpl.sharedInstance.provideProgrammeProvider()
     let restImageProvider = RestImageProvider.sharedInstance
 
     var userDetails: UserDetail! = nil
     var userFaculties: Array<Facultie>! = nil
     var terms: Array<Term> = Array()
+    var programmes: Array<StudentProgramme> = Array()
+    var programmeLoaded = false;
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {
         self.delegate = delegate
     }
@@ -40,8 +44,11 @@ class UserTableViewController: UITableViewController
         userDetailsProvider.loadUserDetail()
         facultieProvider.delegate = self
         termsProvider.delegate = self
+        programmeProvider.delegate = self;
+
         facultieProvider.loadFaculties()
         termsProvider.loadTerms()
+        programmeProvider.loadProgramme()
         self.tableView.tableFooterView = UIView()
         self.tableView.registerNib(UINib(nibName: "UserDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: usedDetailCellId)
         self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: StudentProgrammeCellId)
@@ -56,6 +63,7 @@ class UserTableViewController: UITableViewController
 
     func onUserDetailLoaded(userDetails: UserDetail) {
         self.userDetails = userDetails;
+        self.programmes = userDetails.studentProgrammes
         self.tableView.reloadData()
     }
 
@@ -63,6 +71,12 @@ class UserTableViewController: UITableViewController
         self.userFaculties = list
         self.tableView.reloadData()
     }
+
+    func onProgrammeLoaded(terms: Array<StudentProgramme>) {
+        self.programmes = terms;
+        programmeLoaded = true;
+    }
+
 
     func onTermsLoaded(terms: Array<Term>) {
         self.terms = terms
@@ -185,7 +199,7 @@ class UserTableViewController: UITableViewController
         tapGestureRecognizer.numberOfTapsRequired = 1
         cell.userImageView.addGestureRecognizer(tapGestureRecognizer)
         cell.userImageView.userInteractionEnabled = true
-        self.loadImageFromUrl(UserDataHolder.sharedInstance.userUsosImage,indexPath: indexPath)
+        self.loadImageFromUrl(UserDataHolder.sharedInstance.userUsosImage, indexPath: indexPath)
         return cell
     }
 
@@ -214,7 +228,7 @@ class UserTableViewController: UITableViewController
 
     private func configureStudentProgrammeCell(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(StudentProgrammeCellId, forIndexPath: indexPath) as! GoFurtherViewCellTableViewCell
-        let myProgramme: StudentProgramme = self.userDetails.studentProgrammes[indexPath.row]
+        let myProgramme: StudentProgramme = self.programmes[indexPath.row]
         cell.plainLabel.text = myProgramme.programme.description
         return cell
     }
@@ -226,7 +240,7 @@ class UserTableViewController: UITableViewController
         return cell
     }
 
-    private func configureTermsCell(indexPath: NSIndexPath)-> UITableViewCell {
+    private func configureTermsCell(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(FacultieProgrammeCellId, forIndexPath: indexPath) as! GoFurtherViewCellTableViewCell
         let number = terms.count
         cell.plainLabel.text = StringHolder.cycles + "(" + String(number) + ")"
@@ -234,12 +248,15 @@ class UserTableViewController: UITableViewController
     }
 
     func clicked(forIndexPath: NSIndexPath) {
-        let myProgramme: StudentProgramme = self.userDetails.studentProgrammes[forIndexPath.row]
-        let popController = KierunkiViewController(nibName: "KierunkiViewController", bundle: NSBundle.mainBundle())
-        popController.modalPresentationStyle = .OverCurrentContext
-        self.navigationController?.presentViewController(popController, animated: false, completion: { popController.showAnimate(); })
+        if (programmeLoaded) {
+            let myProgramme: StudentProgramme = self.programmes[forIndexPath.row]
+            let popController = KierunkiViewController(nibName: "KierunkiViewController", bundle: NSBundle.mainBundle())
+            popController.modalPresentationStyle = .OverCurrentContext
+            self.navigationController?.presentViewController(popController, animated: false, completion: { popController.showAnimate(); })
 
-        popController.showInView(withProgramme: myProgramme.programme)
+            popController.showInView(withProgramme: myProgramme.programme)
+        }
+
     }
 
 
@@ -249,13 +266,14 @@ class UserTableViewController: UITableViewController
         faculiteController.facultie = myFac
         self.navigationController?.pushViewController(faculiteController, animated: true)
     }
-   private func clickedTerms(){
-       if(terms.count != 0){
-           let termsController = TermsTableViewController()
-           self.navigationController?.pushViewController(termsController, animated: true)
-           termsController.setUpTerms(self.terms)
-       }
-   }
+
+    private func clickedTerms() {
+        if (terms.count != 0) {
+            let termsController = TermsTableViewController()
+            self.navigationController?.pushViewController(termsController, animated: true)
+            termsController.setUpTerms(self.terms)
+        }
+    }
 
     private func loadImageFromUrl(urlString: String, indexPath: NSIndexPath) {
         let url = NSURL(string: urlString)

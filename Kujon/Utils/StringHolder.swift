@@ -54,4 +54,9 @@ class StringHolder {
     static let terms = "Cykle"
     static let yes = "TAK"
     static let no = "NIE"
+    static let identificator = "identyfikator"
+    static let tryb = "tryb"
+    static let time_length = "czas trwania"
+    static let level = "poziom"
+
 }

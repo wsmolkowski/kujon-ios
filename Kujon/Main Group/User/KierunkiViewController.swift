@@ -47,12 +47,12 @@ class KierunkiViewController: PopUpViewController {
 
         if(programme != nil){
             self.myProgramme = programme
-            levelLabel.text = myProgramme.levelOfStudies
+            levelLabel.text = StringHolder.level + ": " +  myProgramme.levelOfStudies!
             descriptionLabel.text = StringHolder.description + ": " + myProgramme.description
-            timeOfStudyLabel.text = myProgramme.duration
-            idLabel.text = myProgramme.id
-            trybeLabel.text = myProgramme.modeOfStudies
-            kierunekLabel.text = myProgramme.name
+            timeOfStudyLabel.text = StringHolder.time_length + ": " + myProgramme.duration!
+            idLabel.text = StringHolder.identificator + ": " + myProgramme.id
+            trybeLabel.text = StringHolder.tryb + ": " + myProgramme.modeOfStudies!
+            kierunekLabel.text = myProgramme.name!.characters.split{$0 == ","}.map(String.init)[0]
             self.view.userInteractionEnabled = true
         }
 

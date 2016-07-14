@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="496" height="219"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="496" height="219"/>
+                <rect key="frame" x="0.0" y="0.0" width="496" height="218.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cWg-B8-dz7" customClass="TermView" customModule="Kujon" customModuleProvider="target">
@@ -77,8 +77,8 @@
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="4aV-J2-Vks"/>
                                         <exclude reference="1px-Th-Geb"/>
+                                        <exclude reference="4aV-J2-Vks"/>
                                     </mask>
                                 </variation>
                             </label>
@@ -95,8 +95,8 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="4lL-ZH-BiY"/>
-                                        <exclude reference="mny-Cv-EYd"/>
                                         <exclude reference="YqO-mB-878"/>
+                                        <exclude reference="mny-Cv-EYd"/>
                                     </mask>
                                 </variation>
                             </label>
@@ -112,8 +112,8 @@
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="rh5-dr-u5b"/>
                                         <exclude reference="gAG-cS-MMp"/>
+                                        <exclude reference="rh5-dr-u5b"/>
                                         <exclude reference="v8h-g4-SHU"/>
                                     </mask>
                                 </variation>

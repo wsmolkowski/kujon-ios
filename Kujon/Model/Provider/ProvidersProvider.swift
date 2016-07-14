@@ -18,5 +18,6 @@ protocol ProvidersProvider {
     func provideCourseDetailsProvider() -> CourseDetailsProvider
     func provideDeleteAccount() -> DeleteAccountProvider
     func provideTermsProvider() -> TermsProvider
+    func provideProgrammeProvider() -> ProgrammeProvider
 
 }

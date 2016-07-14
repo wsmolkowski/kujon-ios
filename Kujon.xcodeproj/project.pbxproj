@@ -15,6 +15,7 @@
 		4C0D8084FED3B93B5DD390BF /* SectionHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8A851CC2821CF61DAFB2 /* SectionHelperProtocol.swift */; };
 		4C0D80C1B6E19F2B0AA40F67 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D83287522A1AF1593A071 /* UserDefaultsManager.swift */; };
 		4C0D80C2E817C52141156F68 /* TermsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8E059120C14FAE7A687F /* TermsResponse.swift */; };
+		4C0D80DAD146340FB32C5687 /* StudentProgrammeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D811FC0531FB6DF1A0375 /* StudentProgrammeResponse.swift */; };
 		4C0D80DAE7D9AB0E09AF4C8A /* JsonProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D871727A36DD3C1859A1D /* JsonProviderProtocol.swift */; };
 		4C0D80FE5955F53AE94D7556 /* ScheduleSectionImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D88397BF36FD00C1110E6 /* ScheduleSectionImpl.swift */; };
 		4C0D810FF3D931149777D70D /* EntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D87685BCBC669C324D0AB /* EntryViewController.xib */; };
@@ -42,6 +43,7 @@
 		4C0D8337B9F546A2FC16AF22 /* DayCellHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8D9BBCC3C778FFB78885 /* DayCellHandler.swift */; };
 		4C0D8393C1440593CBD091ED /* UsosesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8E76951D0DCEDCA216A9 /* UsosesProvider.swift */; };
 		4C0D839A5A8BDCE05EAE9808 /* DeleteAccountProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D82A55F80BAD8DE22A74D /* DeleteAccountProvider.swift */; };
+		4C0D839B3F6C4C9B5028F703 /* ProgrammeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D80602A034144DDC1A379 /* ProgrammeProvider.swift */; };
 		4C0D83AA5628FB3E4480BACA /* ClassTypeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D83FFD6EDC0C0A0B9ADEE /* ClassTypeSection.swift */; };
 		4C0D83CE72D77673367EB737 /* PassCriteriaSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D81CA0A7AD4A8E6032090 /* PassCriteriaSection.swift */; };
 		4C0D83DD9146C96D43851C5D /* ScheduleMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8738D3867C1931666FF9 /* ScheduleMenuItem.swift */; };
@@ -225,6 +227,7 @@
 		278B50858D941900E966A239 /* Pods-Kujon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kujon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kujon/Pods-Kujon.release.xcconfig"; sourceTree = "<group>"; };
 		4C0D800DE50A86489C4C7E74 /* Usos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usos.swift; sourceTree = "<group>"; };
 		4C0D8036A89B827020917722 /* LecturersSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturersSection.swift; sourceTree = "<group>"; };
+		4C0D80602A034144DDC1A379 /* ProgrammeProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammeProvider.swift; sourceTree = "<group>"; };
 		4C0D806D09BD6C9327949956 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		4C0D80A5587EE0FD141BB7F2 /* SchoolStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolStats.swift; sourceTree = "<group>"; };
 		4C0D80BE1D8E3820DDDB8539 /* UserDetailsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsResponse.swift; sourceTree = "<group>"; };
@@ -237,6 +240,7 @@
 		4C0D80FB23448BE80803C02F /* TermsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsProvider.swift; sourceTree = "<group>"; };
 		4C0D80FB3F45F945BDAE8122 /* EmploymentDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmploymentDetails.swift; sourceTree = "<group>"; };
 		4C0D80FC2419D914C8EA5BAC /* MenuItemWithController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemWithController.swift; sourceTree = "<group>"; };
+		4C0D811FC0531FB6DF1A0375 /* StudentProgrammeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentProgrammeResponse.swift; sourceTree = "<group>"; };
 		4C0D81848238BC6A569D3D0E /* DayWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayWrapper.swift; sourceTree = "<group>"; };
 		4C0D8187AF0AC9814758C9EB /* Usoses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Usoses.json; sourceTree = "<group>"; };
 		4C0D818C198D3E8ECD02EE91 /* LecturerProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturerProvider.swift; sourceTree = "<group>"; };
@@ -758,6 +762,7 @@
 				4C0D8E3A753C9C0EB791CF7B /* CourseDetailsProvider.swift */,
 				4C0D82A55F80BAD8DE22A74D /* DeleteAccountProvider.swift */,
 				4C0D80FB23448BE80803C02F /* TermsProvider.swift */,
+				4C0D80602A034144DDC1A379 /* ProgrammeProvider.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -858,6 +863,7 @@
 			children = (
 				4C0D8A64FF1DBA82355146B3 /* Programme.swift */,
 				4C0D8A53D4F9C21CACEEE68A /* StudentProgramme.swift */,
+				4C0D811FC0531FB6DF1A0375 /* StudentProgrammeResponse.swift */,
 			);
 			path = Programme;
 			sourceTree = "<group>";
@@ -1689,6 +1695,8 @@
 				4C0D82D460DB747874BBDCD4 /* TermsProvider.swift in Sources */,
 				4C0D80C2E817C52141156F68 /* TermsResponse.swift in Sources */,
 				4C0D851407C8CFA2E564494A /* TermsTableViewController.swift in Sources */,
+				4C0D839B3F6C4C9B5028F703 /* ProgrammeProvider.swift in Sources */,
+				4C0D80DAD146340FB32C5687 /* StudentProgrammeResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
