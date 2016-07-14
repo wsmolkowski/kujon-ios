@@ -90,6 +90,7 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
             let controller = SecondLoginViewController()
 
             self.userDataHolder.usosId = usos.usosId
+            self.userDataHolder.userUsosImage = usos.image
             self.presentViewController(controller, animated: true, completion: nil)
         }))
         alertController.addAction(UIAlertAction(title: StringHolder.cancel, style: .Cancel, handler: {

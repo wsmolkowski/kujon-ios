@@ -12,9 +12,11 @@ class UserDataHolder {
     private  let LOGGED_KEY = "is_logged_key"
     private  let EMAIL_KEY = "email_key"
     private  let TOKEN_KEY = "token_key"
+    private  let USOS_IMAGE_KEY = "token_key"
 
     private var loadedEmail: String! = nil
     private var loadedToken: String! = nil
+    private var usosImage: String! = nil
     var usosId: String! = "DEMO"
 
     private var defaultsManager: UserDefaultsManager
@@ -30,6 +32,15 @@ class UserDataHolder {
         }
         set(newEmail) {
             self.standardSetter(&loadedEmail, newValue: newEmail,key: EMAIL_KEY)
+        }
+    }
+
+    var userUsosImage:String!{
+        get {
+            return standardGetter(&usosImage,key: USOS_IMAGE_KEY)
+        }
+        set(newImage) {
+            self.standardSetter(&usosImage, newValue: newImage,key: USOS_IMAGE_KEY)
         }
     }
 

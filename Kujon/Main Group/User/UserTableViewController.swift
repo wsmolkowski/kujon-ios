@@ -185,7 +185,7 @@ class UserTableViewController: UITableViewController
         tapGestureRecognizer.numberOfTapsRequired = 1
         cell.userImageView.addGestureRecognizer(tapGestureRecognizer)
         cell.userImageView.userInteractionEnabled = true
-
+        self.loadImageFromUrl(UserDataHolder.sharedInstance.userUsosImage,indexPath: indexPath)
         return cell
     }
 
@@ -256,4 +256,25 @@ class UserTableViewController: UITableViewController
            termsController.setUpTerms(self.terms)
        }
    }
+
+    private func loadImageFromUrl(urlString: String, indexPath: NSIndexPath) {
+        let url = NSURL(string: urlString)
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url!, completionHandler: {
+            data, response, error -> Void in
+            if (data != nil) {
+                let image = UIImage(data: data!)
+                dispatch_async(dispatch_get_main_queue()) {
+                    if var cell = self.tableView.cellForRowAtIndexPath(indexPath) {
+                        (cell as! UserDetailsTableViewCell).schoolImageVirw.contentMode = UIViewContentMode.ScaleAspectFit;
+                        (cell as! UserDetailsTableViewCell).schoolImageVirw?.image = image
+
+
+                    }
+
+                }
+            }
+        })
+        task.resume()
+    }
 }
