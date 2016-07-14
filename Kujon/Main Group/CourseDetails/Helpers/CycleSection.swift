@@ -45,7 +45,11 @@ class CycleSection: SectionHelperProtocol {
 
     func reactOnSectionClick(position: Int, withController controller: UINavigationController?) {
         let term = terms[position]
-        //TODO popUp with cycle
+        let popController = TermsPopUpViewController(nibName: "TermsPopUpViewController", bundle: NSBundle.mainBundle())
+        popController.modalPresentationStyle = .OverCurrentContext
+        controller?.presentViewController(popController, animated: false, completion: { popController.showAnimate(); })
+
+        popController.showInView(term)
     }
 
 }

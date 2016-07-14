@@ -175,6 +175,8 @@
 		529513621D1931C6009D6FF2 /* HeaderViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529513601D1931C6009D6FF2 /* HeaderViewTableViewCell.swift */; };
 		529513631D1931C6009D6FF2 /* HeaderViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 529513611D1931C6009D6FF2 /* HeaderViewTableViewCell.xib */; };
 		529513651D196136009D6FF2 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529513641D196136009D6FF2 /* CalendarViewController.swift */; };
+		529C000D1D37CE0A004E1DF1 /* TermsPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529C000B1D37CE0A004E1DF1 /* TermsPopUpViewController.swift */; };
+		529C000E1D37CE0A004E1DF1 /* TermsPopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 529C000C1D37CE0A004E1DF1 /* TermsPopUpViewController.xib */; };
 		52AF77A11D09590B0058979A /* SecondLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF779F1D09590B0058979A /* SecondLoginViewController.swift */; };
 		52AF77A21D09590B0058979A /* SecondLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77A01D09590B0058979A /* SecondLoginViewController.xib */; };
 		52AF77A41D095C390058979A /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77A31D095C390058979A /* ContainerViewController.swift */; };
@@ -397,6 +399,8 @@
 		529513601D1931C6009D6FF2 /* HeaderViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderViewTableViewCell.swift; sourceTree = "<group>"; };
 		529513611D1931C6009D6FF2 /* HeaderViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderViewTableViewCell.xib; sourceTree = "<group>"; };
 		529513641D196136009D6FF2 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		529C000B1D37CE0A004E1DF1 /* TermsPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsPopUpViewController.swift; sourceTree = "<group>"; };
+		529C000C1D37CE0A004E1DF1 /* TermsPopUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TermsPopUpViewController.xib; sourceTree = "<group>"; };
 		52AF779F1D09590B0058979A /* SecondLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondLoginViewController.swift; sourceTree = "<group>"; };
 		52AF77A01D09590B0058979A /* SecondLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondLoginViewController.xib; sourceTree = "<group>"; };
 		52AF77A31D095C390058979A /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -951,6 +955,8 @@
 				52FF97271D23B7D500565763 /* CourseDetailsTableViewController.xib */,
 				4C0D8A9B7706A36D462DBE12 /* Helpers */,
 				4C0D87C51A13767414034248 /* Views */,
+				529C000B1D37CE0A004E1DF1 /* TermsPopUpViewController.swift */,
+				529C000C1D37CE0A004E1DF1 /* TermsPopUpViewController.xib */,
 			);
 			path = CourseDetails;
 			sourceTree = "<group>";
@@ -1213,6 +1219,7 @@
 				52FF972D1D23C9C400565763 /* CourseNameTableViewCell.xib in Resources */,
 				4C0D87058EAE5B71945F1AD8 /* Lecturers.json in Resources */,
 				5295135B1D17C76E009D6FF2 /* ScheduleTableViewController.xib in Resources */,
+				529C000E1D37CE0A004E1DF1 /* TermsPopUpViewController.xib in Resources */,
 				52AF77D01D0AD5C50058979A /* SettingsViewController.xib in Resources */,
 				5267503E1D21391F004AD243 /* CourseTableViewCell.xib in Resources */,
 				52382ED61D3516D800EBEA57 /* TermsTableViewCell.xib in Resources */,
@@ -1619,6 +1626,7 @@
 				4C0D863F610BFD74A4C029CC /* SchoolName.swift in Sources */,
 				5257C3311D267D670068FA56 /* ImageViewController.swift in Sources */,
 				4C0D807A59B2A7B85B701839 /* SchoolPath.swift in Sources */,
+				529C000D1D37CE0A004E1DF1 /* TermsPopUpViewController.swift in Sources */,
 				4C0D8809E711694A3F913024 /* SchoolStats.swift in Sources */,
 				4C0D818BA0EBA18711EA841E /* LogoUrls.swift in Sources */,
 				52590A7E1D1D1F0C00C285A0 /* GradesTableViewController.swift in Sources */,

@@ -250,11 +250,13 @@ class UserTableViewController: UITableViewController
     func clicked(forIndexPath: NSIndexPath) {
         if (programmeLoaded) {
             let myProgramme: StudentProgramme = self.programmes[forIndexPath.row]
-            let popController = KierunkiViewController(nibName: "KierunkiViewController", bundle: NSBundle.mainBundle())
-            popController.modalPresentationStyle = .OverCurrentContext
-            self.navigationController?.presentViewController(popController, animated: false, completion: { popController.showAnimate(); })
+            if (myProgramme.programme.duration != nil && myProgramme.programme.name != nil && myProgramme.programme.levelOfStudies != nil) {
+                let popController = KierunkiViewController(nibName: "KierunkiViewController", bundle: NSBundle.mainBundle())
+                popController.modalPresentationStyle = .OverCurrentContext
+                self.navigationController?.presentViewController(popController, animated: false, completion: { popController.showAnimate(); })
 
-            popController.showInView(withProgramme: myProgramme.programme)
+                popController.showInView(withProgramme: myProgramme.programme)
+            }
         }
 
     }

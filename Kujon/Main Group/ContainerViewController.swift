@@ -44,8 +44,8 @@ class ContainerViewController: UIViewController, LeftMenuTableViewControllerDele
         super.viewDidLoad()
 
         centerViewController.setNavigationProtocol(self)
-
         centerNavigationController = UINavigationController(rootViewController: centerViewController)
+        centerNavigationController?.interactivePopGestureRecognizer?.enabled = false
         view.addSubview(centerNavigationController.view)
         addChildViewController(centerNavigationController)
 
