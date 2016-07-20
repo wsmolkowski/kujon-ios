@@ -19,10 +19,14 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = StringHolder.chooseUsos
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+
         var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UsosesTableViewController.barTapped))
         tapGestureRecognizer.numberOfTapsRequired = 3
         self.navigationController?.navigationBar.addGestureRecognizer(tapGestureRecognizer)
         self.navigationController?.navigationBar.userInteractionEnabled = true
+        self.navigationController?.navigationBar.barTintColor = UIColor.kujonBlueColor()
+
         self.tableView.registerNib(UINib(nibName: "UsosTableViewCell", bundle: nil), forCellReuseIdentifier: UsosCellIdentifier)
         self.usosProvider.delegate = self
         self.usosProvider.loadUsoses()
@@ -71,7 +75,7 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
         cell.usosImageView?.image = nil
         self.loadImage(usos.image, indexPath: indexPath)
         (cell as! UsosTableViewCell).label.text = usos.name
-
+        cell.backgroundColor = UIColor.greyBackgroundColor()
         return cell
     }
 
