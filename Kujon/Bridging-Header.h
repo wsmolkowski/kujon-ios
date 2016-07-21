@@ -10,5 +10,6 @@
 #define Bridging_Header_h
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <OneSignal/OneSignal.h>
 
 #endif /* Bridging_Header_h */

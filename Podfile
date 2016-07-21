@@ -12,6 +12,7 @@ target 'Kujon' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod "CalendarLib"
+  pod 'OneSignal'
   # Pods for Kujon
 
   target 'KujonTests' do

@@ -40,6 +40,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window!.rootViewController = controller
         window!.makeKeyAndVisible()
+        //TODO setup proper OneSignal app Id
+        _ = OneSignal(launchOptions: launchOptions, appId: "b2f7f966-d8cc-11e4-bed1-df8f05be55ba", handleNotification: nil)
+        
+        OneSignal.defaultClient().enableInAppAlertNotification(true)
+        
     return value
     }
     
