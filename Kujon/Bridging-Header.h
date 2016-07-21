@@ -11,5 +11,6 @@
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <OneSignal/OneSignal.h>
+#import <Google/SignIn.h>
 
 #endif /* Bridging_Header_h */

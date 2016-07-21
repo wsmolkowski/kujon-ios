@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A42914C1D409659006D6DAB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A42914B1D409659006D6DAB /* GoogleService-Info.plist */; };
+		0A42914D1D409659006D6DAB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A42914B1D409659006D6DAB /* GoogleService-Info.plist */; };
+		0A42914E1D409659006D6DAB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A42914B1D409659006D6DAB /* GoogleService-Info.plist */; };
 		2BAFB7B3F960A01C5BFE57C7 /* Pods_Kujon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96504F7BCCB0EE28D6F0F6C4 /* Pods_Kujon.framework */; };
 		395726529DA26FEF655FEFAC /* Pods_KujonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C865AA5DFAADA9B9D2A08520 /* Pods_KujonUITests.framework */; };
 		4C0D8053B89C09BC0F888097 /* UsosHolderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D83195DBB1F80FC86451D /* UsosHolderController.swift */; };
@@ -224,6 +227,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A42914B1D409659006D6DAB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0A8B795B1D0C81E100CF6783 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		101369142C0F1D1AAD2DC121 /* Pods-KujonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KujonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KujonTests/Pods-KujonTests.release.xcconfig"; sourceTree = "<group>"; };
 		278B50858D941900E966A239 /* Pods-Kujon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kujon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kujon/Pods-Kujon.release.xcconfig"; sourceTree = "<group>"; };
@@ -493,6 +497,7 @@
 		4C0D821C1CE25F0226742C8A /* Kujon */ = {
 			isa = PBXGroup;
 			children = (
+				0A42914B1D409659006D6DAB /* GoogleService-Info.plist */,
 				4C0D85C01CA62A3C89F09CDA /* AppDelegate.swift */,
 				4C0D839EDCC8F1A06ECE450B /* Main.storyboard */,
 				4C0D80A307458D388D3B812C /* Supporting Files */,
@@ -1071,7 +1076,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C0D852217153B5DF861BC01 /* Build configuration list for PBXNativeTarget "KujonUITests" */;
 			buildPhases = (
-				AB6E61C222619DE2A7E1844F /* 📦 Check Pods Manifest.lock */,
+				AB6E61C222619DE2A7E1844F /* [CP] Check Pods Manifest.lock */,
 				FAAA2CC97B4C1C6DD5FFCD0E /* [CP] Check Pods Manifest.lock */,
 				22BD93CFA86DF9F42005F6BC /* [CP] Check Pods Manifest.lock */,
 				4C0D8559004C4E72ABEF3F22 /* Sources */,
@@ -1094,7 +1099,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C0D83E2B32A0A3CA367D6BC /* Build configuration list for PBXNativeTarget "Kujon" */;
 			buildPhases = (
-				0DB9E7ABC5EE0B2375404B75 /* 📦 Check Pods Manifest.lock */,
+				0DB9E7ABC5EE0B2375404B75 /* [CP] Check Pods Manifest.lock */,
 				E6163861099B1656EFEE125F /* [CP] Check Pods Manifest.lock */,
 				293CE0BA7AA50758856CB87C /* [CP] Check Pods Manifest.lock */,
 				4C0D85B77FB5458B1E641984 /* Sources */,
@@ -1119,7 +1124,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C0D84AE0478B34C40E62613 /* Build configuration list for PBXNativeTarget "KujonTests" */;
 			buildPhases = (
-				6ABFEEADFC0E43C0F79A368E /* 📦 Check Pods Manifest.lock */,
+				6ABFEEADFC0E43C0F79A368E /* [CP] Check Pods Manifest.lock */,
 				5D6222BAA59061EF311B6597 /* [CP] Check Pods Manifest.lock */,
 				64FF8464F4F4DAA37B8FFCFE /* [CP] Check Pods Manifest.lock */,
 				4C0D8B6C58599D9C41261A9F /* Sources */,
@@ -1153,6 +1158,14 @@
 				TargetAttributes = {
 					4C0D876E78B6409220622356 = {
 						DevelopmentTeam = WAJ9FR2DZL;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1180,6 +1193,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A42914E1D409659006D6DAB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1187,6 +1201,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A42914D1D409659006D6DAB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1195,6 +1210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				527B39BC1D12A0260028BCF9 /* TeacherDetailTableViewController.xib in Resources */,
+				0A42914C1D409659006D6DAB /* GoogleService-Info.plist in Resources */,
 				4C0D89623E9B561730C53F9A /* Main.storyboard in Resources */,
 				526750421D214A7B004AD243 /* CoursePopUpViewController.xib in Resources */,
 				52AF77A21D09590B0058979A /* SecondLoginViewController.xib in Resources */,
@@ -1289,14 +1305,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KujonTests/Pods-KujonTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		0DB9E7ABC5EE0B2375404B75 /* 📦 Check Pods Manifest.lock */ = {
+		0DB9E7ABC5EE0B2375404B75 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1394,14 +1410,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		6ABFEEADFC0E43C0F79A368E /* 📦 Check Pods Manifest.lock */ = {
+		6ABFEEADFC0E43C0F79A368E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1454,14 +1470,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kujon/Pods-Kujon-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AB6E61C222619DE2A7E1844F /* 📦 Check Pods Manifest.lock */ = {
+		AB6E61C222619DE2A7E1844F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

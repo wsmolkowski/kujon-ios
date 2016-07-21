@@ -12,6 +12,7 @@ target 'Kujon' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod "CalendarLib"
+  pod 'Google/SignIn'
   pod 'OneSignal'
   # Pods for Kujon
 

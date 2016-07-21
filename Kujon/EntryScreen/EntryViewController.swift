@@ -10,8 +10,9 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,OnFacebookCredentailSaved {
+class EntryViewController: UIViewController, FBSDKLoginButtonDelegate, OnFacebookCredentailSaved, GIDSignInUIDelegate {
 
+    @IBOutlet weak var googleLoginButton: GIDSignInButton!
     let facebookManager = FacebookManager.sharedInstance
     @IBOutlet weak var loginButton: FBSDKLoginButton!
     override func viewDidLoad() {
@@ -23,6 +24,7 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,OnFacebook
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         loginButton.delegate = self
 
+        GIDSignIn.sharedInstance().uiDelegate = self
 
     }
 
