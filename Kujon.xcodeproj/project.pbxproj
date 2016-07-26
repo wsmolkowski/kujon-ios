@@ -10,6 +10,9 @@
 		0A42914C1D409659006D6DAB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A42914B1D409659006D6DAB /* GoogleService-Info.plist */; };
 		0A42914D1D409659006D6DAB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A42914B1D409659006D6DAB /* GoogleService-Info.plist */; };
 		0A42914E1D409659006D6DAB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A42914B1D409659006D6DAB /* GoogleService-Info.plist */; };
+		0AB192071D47B3A000834773 /* GoogleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB192061D47B3A000834773 /* GoogleManager.swift */; };
+		0AB192081D47B3A000834773 /* GoogleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB192061D47B3A000834773 /* GoogleManager.swift */; };
+		0AB192091D47B3A000834773 /* GoogleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB192061D47B3A000834773 /* GoogleManager.swift */; };
 		2BAFB7B3F960A01C5BFE57C7 /* Pods_Kujon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96504F7BCCB0EE28D6F0F6C4 /* Pods_Kujon.framework */; };
 		395726529DA26FEF655FEFAC /* Pods_KujonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C865AA5DFAADA9B9D2A08520 /* Pods_KujonUITests.framework */; };
 		4C0D8053B89C09BC0F888097 /* UsosHolderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D83195DBB1F80FC86451D /* UsosHolderController.swift */; };
@@ -229,6 +232,7 @@
 /* Begin PBXFileReference section */
 		0A42914B1D409659006D6DAB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0A8B795B1D0C81E100CF6783 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		0AB192061D47B3A000834773 /* GoogleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleManager.swift; sourceTree = "<group>"; };
 		101369142C0F1D1AAD2DC121 /* Pods-KujonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KujonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KujonTests/Pods-KujonTests.release.xcconfig"; sourceTree = "<group>"; };
 		278B50858D941900E966A239 /* Pods-Kujon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kujon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kujon/Pods-Kujon.release.xcconfig"; sourceTree = "<group>"; };
 		4C0D800DE50A86489C4C7E74 /* Usos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usos.swift; sourceTree = "<group>"; };
@@ -686,6 +690,7 @@
 			isa = PBXGroup;
 			children = (
 				4C0D86B6033E7743D91C115B /* FacebookManager.swift */,
+				0AB192061D47B3A000834773 /* GoogleManager.swift */,
 			);
 			path = FacebookManager;
 			sourceTree = "<group>";
@@ -1567,6 +1572,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AB192091D47B3A000834773 /* GoogleManager.swift in Sources */,
 				4C0D8BA46C6D35D8501A8AD2 /* KujonUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1600,6 +1606,7 @@
 				4C0D87179E64FB71B0A00BE5 /* UserMenuItem.swift in Sources */,
 				52382ECE1D3510E000EBEA57 /* TermView.swift in Sources */,
 				52FF972C1D23C9C400565763 /* CourseNameTableViewCell.swift in Sources */,
+				0AB192071D47B3A000834773 /* GoogleManager.swift in Sources */,
 				52AF77CF1D0AD5C50058979A /* SettingsViewController.swift in Sources */,
 				52AF77D31D0AD80A0058979A /* SendOpinionViewController.swift in Sources */,
 				4C0D83DD9146C96D43851C5D /* ScheduleMenuItem.swift in Sources */,
@@ -1728,6 +1735,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AB192081D47B3A000834773 /* GoogleManager.swift in Sources */,
 				4C0D8308E6A3DCA02ADFE311 /* KujonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

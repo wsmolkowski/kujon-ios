@@ -26,26 +26,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         SessionManager.setCache()
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         var value = FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        var controller:UIViewController! = nil
-        
+
         // Initialize sign-in
         var configureError: NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
         assert(configureError == nil, "Error configuring Google services: \(configureError)")
-        
+
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().signInSilently()
-        
-        if (!isLoggedIn()) {
-            controller = EntryViewController()
-        } else {
-            openSignedInController()
-            
-        }
 
+        openControllerDependingOnLoginState()
 
-        window!.rootViewController = controller
-        window!.makeKeyAndVisible()
         
         //TODO setup proper OneSignal app Id
 //        _ = OneSignal(launchOptions: launchOptions, appId: "b2f7f966-d8cc-11e4-bed1-df8f05be55ba", handleNotification: nil)
@@ -123,20 +114,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
                 withError error: NSError!) {
         if (error == nil) {
-            isLoggedIn()
-            let userId = user.userID                  // For client-side use only!
-            let idToken = user.authentication.idToken // Safe to send to the server
-            let accessToken = user.authentication.accessToken
-            let fullName = user.profile.name
-            let givenName = user.profile.givenName
-            let familyName = user.profile.familyName
-            let email = user.profile.email
+            let googleManager = GoogleManager.sharedInstance
+            googleManager.loadGoogleParams()
+//            let userId = user.userID                  // For client-side use only!
+//            let idToken = user.authentication.idToken // Safe to send to the server
+//            let accessToken = user.authentication.accessToken
+//            let fullName = user.profile.name
+//            let givenName = user.profile.givenName
+//            let familyName = user.profile.familyName
+//            let email = user.profile.email
             openSignedInController()
         } else {
             print("\(error.localizedDescription)")
         }
     }
-    
+
+    func openControllerDependingOnLoginState() {
+        var controller:UIViewController! = nil
+        //TODO extract controller choosing logic
+        if (!isLoggedIn()) {
+            controller = EntryViewController()
+        } else {
+            if(userDataHolder.loggedToUsosForCurrentEmail){
+                controller = ContainerViewController()
+            }else{
+                controller =  UsosHolderController()
+            }
+        }
+
+        window!.rootViewController = controller
+        window!.makeKeyAndVisible()
+    }
+
     func openSignedInController() {
         var controller:UIViewController! = nil
         if(userDataHolder.loggedToUsosForCurrentEmail){
