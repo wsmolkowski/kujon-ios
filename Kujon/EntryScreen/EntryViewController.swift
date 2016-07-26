@@ -12,30 +12,32 @@ import FBSDKLoginKit
 
 class EntryViewController: UIViewController, FBSDKLoginButtonDelegate, OnFacebookCredentailSaved, GIDSignInUIDelegate {
 
+    let googleSignInManager = GIDSignIn.sharedInstance()
     @IBOutlet weak var googleLoginButton: GIDSignInButton!
     let facebookManager = FacebookManager.sharedInstance
     @IBOutlet weak var loginButton: FBSDKLoginButton!
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
-
 
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         loginButton.delegate = self
 
         GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().signInSilently()
 
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if(isLoggedIn()) {
+            onFacebookCredentailSaved(isLoggedIn())
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-
-    @IBAction func openList(sender: AnyObject) {
-
     }
 
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
@@ -67,4 +69,24 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate, OnFaceboo
         self.presentViewController(controller, animated: true, completion: nil)
     }
 
+    func isLoggedIn() -> Bool
+    {
+        var loggedToFB = false;
+        var loggedToGoogle = false;
+
+        if(FBSDKAccessToken.currentAccessToken() != nil) {
+            loggedToFB = true;
+        }
+
+        if (GIDSignIn.sharedInstance().currentUser != nil) {
+            let accessToken = GIDSignIn.sharedInstance().currentUser.authentication.accessToken
+            if(accessToken != nil) {
+                loggedToGoogle = true;
+            }
+        }
+        if(loggedToFB || loggedToGoogle) {
+
+        }
+        return loggedToFB || loggedToGoogle;
+    }
 }

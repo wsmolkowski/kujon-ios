@@ -27,14 +27,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         var value = FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         var controller:UIViewController! = nil
-        if (FBSDKAccessToken.currentAccessToken() == nil) {
+        
+        // Initialize sign-in
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().signInSilently()
+        
+        if (!isLoggedIn()) {
             controller = EntryViewController()
         } else {
-            if(userDataHolder.loggedToUsosForCurrentEmail){
-                controller = ContainerViewController()
-            }else{
-                controller =  UsosHolderController()
-            }
+            openSignedInController()
+            
         }
 
 
@@ -46,14 +52,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 //        
 //        OneSignal.defaultClient().enableInAppAlertNotification(true)
         
-        // Initialize sign-in
-        var configureError: NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
         
-        GIDSignIn.sharedInstance().delegate = self
         
     return value
+    }
+    
+    func isLoggedIn() -> Bool
+    {
+        var loggedToFB = false;
+        var loggedToGoogle = false;
+        
+        if(FBSDKAccessToken.currentAccessToken() != nil) {
+            loggedToFB = true;
+        }
+        
+        if (GIDSignIn.sharedInstance().currentUser != nil) {
+            let accessToken = GIDSignIn.sharedInstance().currentUser.authentication.accessToken
+            if(accessToken != nil) {
+                loggedToGoogle = true;
+            }
+        }
+        return loggedToFB || loggedToGoogle;
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
@@ -104,19 +123,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
                 withError error: NSError!) {
         if (error == nil) {
-            // Perform any operations on signed in user here.
+            isLoggedIn()
             let userId = user.userID                  // For client-side use only!
             let idToken = user.authentication.idToken // Safe to send to the server
+            let accessToken = user.authentication.accessToken
             let fullName = user.profile.name
             let givenName = user.profile.givenName
             let familyName = user.profile.familyName
             let email = user.profile.email
-            // ...
+            openSignedInController()
         } else {
             print("\(error.localizedDescription)")
         }
     }
     
+    func openSignedInController() {
+        var controller:UIViewController! = nil
+        if(userDataHolder.loggedToUsosForCurrentEmail){
+            controller = ContainerViewController()
+        }else{
+            controller =  UsosHolderController()
+        }
+        
+        window!.rootViewController = controller
+        window!.makeKeyAndVisible()
+    }
     func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
                 withError error: NSError!) {
         // Perform any operations when the user disconnects from app here.
