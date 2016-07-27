@@ -38,6 +38,7 @@ class FacebookManager {
 //            self.handleOpenCorrectController()
 
         }
+        self.userDataHolder.userLoginType = "FB"
     }
 
     func logout(){

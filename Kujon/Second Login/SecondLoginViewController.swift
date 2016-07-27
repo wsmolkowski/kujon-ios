@@ -18,7 +18,7 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.delegate = self
-        let url = String(format: "https:/api.kujon.mobi/authentication/register?email=%@&token=%@&usos_id=%@&type=FB", userDataHolder.userEmail, userDataHolder.userToken, userDataHolder.usosId)
+        let url = String(format: "https:/api.kujon.mobi/authentication/register?email=%@&token=%@&usos_id=%@&type=%@", userDataHolder.userEmail, userDataHolder.userToken, userDataHolder.usosId, userDataHolder.userLoginType)
         let request = NSURLRequest(URL: NSURL(string: url)!)
         webView.loadRequest(request)
         // Do any additional setup after loading the view.
