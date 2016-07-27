@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FBSDKCoreKit
 
 class GoogleManager {
     let userDataHolder = UserDataHolder.sharedInstance
@@ -29,5 +30,23 @@ class GoogleManager {
     func logout(){
         userDataHolder.userEmail = nil
         userDataHolder.userToken = nil
+    }
+
+    func isLoggedIn() -> Bool
+    {
+        var loggedToFB = false;
+        var loggedToGoogle = false;
+
+        if(FBSDKAccessToken.currentAccessToken() != nil) {
+            loggedToFB = true;
+        }
+
+        if (GIDSignIn.sharedInstance().currentUser != nil) {
+            let accessToken = GIDSignIn.sharedInstance().currentUser.authentication.accessToken
+            if(accessToken != nil) {
+                loggedToGoogle = true;
+            }
+        }
+        return loggedToFB || loggedToGoogle;
     }
 }

@@ -31,8 +31,8 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate, OnFaceboo
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if(isLoggedIn()) {
-            onFacebookCredentailSaved(isLoggedIn())
+        if(GoogleManager.sharedInstance.isLoggedIn()) {
+            onFacebookCredentailSaved(GoogleManager.sharedInstance.isLoggedIn())
         }
     }
     override func didReceiveMemoryWarning() {
@@ -69,24 +69,4 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate, OnFaceboo
         self.presentViewController(controller, animated: true, completion: nil)
     }
 
-    func isLoggedIn() -> Bool
-    {
-        var loggedToFB = false;
-        var loggedToGoogle = false;
-
-        if(FBSDKAccessToken.currentAccessToken() != nil) {
-            loggedToFB = true;
-        }
-
-        if (GIDSignIn.sharedInstance().currentUser != nil) {
-            let accessToken = GIDSignIn.sharedInstance().currentUser.authentication.accessToken
-            if(accessToken != nil) {
-                loggedToGoogle = true;
-            }
-        }
-        if(loggedToFB || loggedToGoogle) {
-
-        }
-        return loggedToFB || loggedToGoogle;
-    }
 }

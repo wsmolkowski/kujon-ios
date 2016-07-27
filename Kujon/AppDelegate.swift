@@ -48,24 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     return value
     }
     
-    func isLoggedIn() -> Bool
-    {
-        var loggedToFB = false;
-        var loggedToGoogle = false;
-        
-        if(FBSDKAccessToken.currentAccessToken() != nil) {
-            loggedToFB = true;
-        }
-        
-        if (GIDSignIn.sharedInstance().currentUser != nil) {
-            let accessToken = GIDSignIn.sharedInstance().currentUser.authentication.accessToken
-            if(accessToken != nil) {
-                loggedToGoogle = true;
-            }
-        }
-        return loggedToFB || loggedToGoogle;
-    }
-    
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         
        // TODO make some better handling
@@ -132,7 +114,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func openControllerDependingOnLoginState() {
         var controller:UIViewController! = nil
         //TODO extract controller choosing logic
-        if (!isLoggedIn()) {
+        if (!GoogleManager.sharedInstance.isLoggedIn()) {
             controller = EntryViewController()
         } else {
             if(userDataHolder.loggedToUsosForCurrentEmail){
