@@ -17,6 +17,12 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate, OnFaceboo
     let facebookManager = FacebookManager.sharedInstance
     @IBOutlet weak var loginButton: FBSDKLoginButton!
 
+    @IBAction func showTermsAndConditions(sender: AnyObject) {
+        NSlogManager.showLog("showTermsAndConditions")
+        var controller: UIViewController!
+        controller = WebViewController()
+        self.navigationController?.pushViewController(controller, animated:true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

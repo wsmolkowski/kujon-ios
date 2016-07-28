@@ -13,6 +13,12 @@
 		0AB192071D47B3A000834773 /* GoogleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB192061D47B3A000834773 /* GoogleManager.swift */; };
 		0AB192081D47B3A000834773 /* GoogleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB192061D47B3A000834773 /* GoogleManager.swift */; };
 		0AB192091D47B3A000834773 /* GoogleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB192061D47B3A000834773 /* GoogleManager.swift */; };
+		0AB192111D4AB8E800834773 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB1920F1D4AB8E800834773 /* WebViewController.swift */; };
+		0AB192121D4AB8E800834773 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB1920F1D4AB8E800834773 /* WebViewController.swift */; };
+		0AB192131D4AB8E800834773 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB1920F1D4AB8E800834773 /* WebViewController.swift */; };
+		0AB192141D4AB8E800834773 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AB192101D4AB8E800834773 /* WebViewController.xib */; };
+		0AB192151D4AB8E800834773 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AB192101D4AB8E800834773 /* WebViewController.xib */; };
+		0AB192161D4AB8E800834773 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AB192101D4AB8E800834773 /* WebViewController.xib */; };
 		2BAFB7B3F960A01C5BFE57C7 /* Pods_Kujon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96504F7BCCB0EE28D6F0F6C4 /* Pods_Kujon.framework */; };
 		395726529DA26FEF655FEFAC /* Pods_KujonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C865AA5DFAADA9B9D2A08520 /* Pods_KujonUITests.framework */; };
 		4C0D8053B89C09BC0F888097 /* UsosHolderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D83195DBB1F80FC86451D /* UsosHolderController.swift */; };
@@ -233,6 +239,8 @@
 		0A42914B1D409659006D6DAB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0A8B795B1D0C81E100CF6783 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		0AB192061D47B3A000834773 /* GoogleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleManager.swift; sourceTree = "<group>"; };
+		0AB1920F1D4AB8E800834773 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		0AB192101D4AB8E800834773 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		101369142C0F1D1AAD2DC121 /* Pods-KujonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KujonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KujonTests/Pods-KujonTests.release.xcconfig"; sourceTree = "<group>"; };
 		278B50858D941900E966A239 /* Pods-Kujon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kujon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kujon/Pods-Kujon.release.xcconfig"; sourceTree = "<group>"; };
 		4C0D800DE50A86489C4C7E74 /* Usos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usos.swift; sourceTree = "<group>"; };
@@ -472,6 +480,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0AB1920E1D4AB84900834773 /* WebViewPresentation */ = {
+			isa = PBXGroup;
+			children = (
+				0AB1920F1D4AB8E800834773 /* WebViewController.swift */,
+				0AB192101D4AB8E800834773 /* WebViewController.xib */,
+			);
+			name = WebViewPresentation;
+			sourceTree = "<group>";
+		};
 		4C0D80A307458D388D3B812C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -838,6 +855,7 @@
 		4C0D8AC64D4ECAED91008202 /* Main Group */ = {
 			isa = PBXGroup;
 			children = (
+				0AB1920E1D4AB84900834773 /* WebViewPresentation */,
 				52AF77A31D095C390058979A /* ContainerViewController.swift */,
 				52AF77A71D095CBF0058979A /* LeftMenuTableViewController.swift */,
 				4C0D85A734050E1AF280B388 /* User */,
@@ -1199,6 +1217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A42914E1D409659006D6DAB /* GoogleService-Info.plist in Resources */,
+				0AB192161D4AB8E800834773 /* WebViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1207,6 +1226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A42914D1D409659006D6DAB /* GoogleService-Info.plist in Resources */,
+				0AB192151D4AB8E800834773 /* WebViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1217,6 +1237,7 @@
 				527B39BC1D12A0260028BCF9 /* TeacherDetailTableViewController.xib in Resources */,
 				0A42914C1D409659006D6DAB /* GoogleService-Info.plist in Resources */,
 				4C0D89623E9B561730C53F9A /* Main.storyboard in Resources */,
+				0AB192141D4AB8E800834773 /* WebViewController.xib in Resources */,
 				526750421D214A7B004AD243 /* CoursePopUpViewController.xib in Resources */,
 				52AF77A21D09590B0058979A /* SecondLoginViewController.xib in Resources */,
 				52AF77E01D0EB4420058979A /* TeacherTableViewController.xib in Resources */,
@@ -1573,6 +1594,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AB192091D47B3A000834773 /* GoogleManager.swift in Sources */,
+				0AB192131D4AB8E800834773 /* WebViewController.swift in Sources */,
 				4C0D8BA46C6D35D8501A8AD2 /* KujonUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1692,6 +1714,7 @@
 				4C0D85E772027B77B2D540BD /* CoursesWrapper.swift in Sources */,
 				526750391D213902004AD243 /* CoursesTableViewController.swift in Sources */,
 				4C0D8BCEA9F6DF85809A280A /* PopUpViewController.swift in Sources */,
+				0AB192111D4AB8E800834773 /* WebViewController.swift in Sources */,
 				4C0D8E02015B88F38F0F59F4 /* FacultieResponse.swift in Sources */,
 				523B4FDD1D2BD090005FA79F /* TextViewController.swift in Sources */,
 				4C0D8FF661F42652FDB8257B /* FacultieProvider.swift in Sources */,
@@ -1736,6 +1759,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AB192081D47B3A000834773 /* GoogleManager.swift in Sources */,
+				0AB192121D4AB8E800834773 /* WebViewController.swift in Sources */,
 				4C0D8308E6A3DCA02ADFE311 /* KujonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
