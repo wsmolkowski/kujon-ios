@@ -22,7 +22,7 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate, OnFaceboo
         var controller: UIViewController!
         controller = WebViewController()
         let navigationController = UINavigationController(rootViewController: controller)
-        navigationController.navigationBar.barTintColor = UIColor.kujonBlueColor()
+//        navigationController.navigationBar.barTintColor = UIColor.kujonBlueColor()
 
         self.presentViewController(navigationController, animated: true, completion: nil)
 

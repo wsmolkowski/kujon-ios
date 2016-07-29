@@ -41,6 +41,7 @@
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="bSK-jv-UQb">
                     <rect key="frame" x="-48" y="494" width="697" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <state key="normal" title="Rejestrując się zgadzasz się na następujące warunki"/>
                     <connections>
                         <action selector="showTermsAndConditions:" destination="-1" eventType="touchUpInside" id="IAG-g1-Kcp"/>
