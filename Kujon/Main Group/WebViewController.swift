@@ -18,11 +18,11 @@ class WebViewController: UIViewController {
         let url = NSURL (string: "https://kujon.mobi/#disclaimer");
         let requestObj = NSURLRequest(URL: url!);
         webView.loadRequest(requestObj);
+         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Zamknij", style: UIBarButtonItemStyle.Done, target: self, action: "done")
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func done() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
 }

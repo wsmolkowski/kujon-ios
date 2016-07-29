@@ -21,7 +21,11 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate, OnFaceboo
         NSlogManager.showLog("showTermsAndConditions")
         var controller: UIViewController!
         controller = WebViewController()
-        self.navigationController?.pushViewController(controller, animated:true)
+        let navigationController = UINavigationController(rootViewController: controller)
+        navigationController.navigationBar.barTintColor = UIColor.kujonBlueColor()
+
+        self.presentViewController(navigationController, animated: true, completion: nil)
+
     }
 
     override func viewDidLoad() {
