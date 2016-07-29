@@ -46,6 +46,12 @@
                         <action selector="showTermsAndConditions:" destination="-1" eventType="touchUpInside" id="IAG-g1-Kcp"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="kujon-icon" translatesAutoresizingMaskIntoConstraints="NO" id="AUd-TK-qW5">
+                    <rect key="frame" x="180" y="57" width="240" height="244"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="240" id="NNM-BR-att"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -55,7 +61,12 @@
                 <constraint firstAttribute="trailing" secondItem="CZ2-Eu-BAD" secondAttribute="trailing" constant="100" id="JUy-t5-akX"/>
                 <constraint firstAttribute="trailing" secondItem="bSK-jv-UQb" secondAttribute="trailing" constant="100" id="SZf-3k-Lqe"/>
                 <constraint firstAttribute="trailing" secondItem="49K-dA-dFD" secondAttribute="trailing" constant="100" id="UDa-tL-f3s"/>
+                <constraint firstItem="AUd-TK-qW5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="100" id="W3i-bn-gfX"/>
+                <constraint firstAttribute="trailing" secondItem="AUd-TK-qW5" secondAttribute="trailing" constant="100" id="fNh-CT-Qvn"/>
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="kujon-icon" width="480" height="480"/>
+    </resources>
 </document>
