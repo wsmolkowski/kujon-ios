@@ -29,8 +29,17 @@ class GradesTableViewController: UITableViewController
         gradesProvider.test = true
         self.tableView.registerNib(UINib(nibName: "GradesTableViewCell", bundle: nil), forCellReuseIdentifier: GradeCellIdentiefer)
         gradesProvider.loadGrades()
-    }
 
+        refreshControl = UIRefreshControl()
+//        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
+        refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+    }
+    func refresh(refreshControl: UIRefreshControl) {
+        NSlogManager.showLog("Refresh was called")
+        gradesProvider.reload()
+        gradesProvider.loadGrades()
+
+    }
     func openDrawer() {
         delegate?.toggleLeftPanel()
     }
@@ -38,6 +47,7 @@ class GradesTableViewController: UITableViewController
     func onGradesLoaded(termGrades: Array<TermGrades>) {
         self.myTermGrades = termGrades
         self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
     }
 
     func onErrorOccurs() {
