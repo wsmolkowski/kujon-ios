@@ -19,6 +19,7 @@ class ScheduleTableViewController:
     static let DayCellId = "dayCellId"
     var isQuering = false
     var lastQueryDate: NSDate! = nil
+    var firstDate: NSDate! = nil
     var sectionsArray: Array<ScheduleSection> = Array()
     var onlyLectureDictionary: Dictionary<String, [LectureWrapper]> = Dictionary()
 
@@ -35,17 +36,28 @@ class ScheduleTableViewController:
         self.navigationItem.rightBarButtonItem = openCalendarButton
 
         lastQueryDate = NSDate.stringToDate("2015-05-01")
+        firstDate = lastQueryDate
         self.tableView.registerNib(UINib(nibName: "LectureTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.LectureCellId)
         self.tableView.registerNib(UINib(nibName: "DayTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.DayCellId)
         lectureProvider.delegate = self
-//        lectureProvider.test = true
         askForData()
+
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
+        refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
 
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         lectureProvider.delegate = self
+    }
+    func refresh(refreshControl: UIRefreshControl) {
+        NSlogManager.showLog("Refresh was called")
+        sectionsArray = Array()
+        onlyLectureDictionary = Dictionary()
+        lastQueryDate = firstDate
+        askForData()
     }
 
 
@@ -83,6 +95,7 @@ class ScheduleTableViewController:
 
         self.tableView.reloadData()
         isQuering = false
+        self.refreshControl?.endRefreshing()
     }
 
 
