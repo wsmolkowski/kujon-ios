@@ -26,6 +26,16 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
         lecturerProvider.loadLecturers()
         self.tableView.tableFooterView = UIView()
 
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
+        refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+    }
+
+    func refresh(refreshControl: UIRefreshControl) {
+        NSlogManager.showLog("Refresh was called")
+        lecturerProvider.reload()
+        lecturerProvider.loadLecturers()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,6 +51,7 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
     func onLecturersLoaded(lecturers: Array<SimpleUser>) {
         self.lecturers = lecturers
         self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
     }
 
     func onErrorOccurs() {

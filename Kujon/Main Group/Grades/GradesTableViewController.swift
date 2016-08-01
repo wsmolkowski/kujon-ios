@@ -40,6 +40,7 @@ class GradesTableViewController: UITableViewController
         gradesProvider.loadGrades()
 
     }
+
     func openDrawer() {
         delegate?.toggleLeftPanel()
     }
