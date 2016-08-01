@@ -43,6 +43,13 @@ class RestApiManager {
         }
     }
 
+    func reload(){
+        var request = NSMutableURLRequest(URL: NSURL(string: getMyUrl())!)
+        self.headerManager.addHeadersToRequest(&request)
+        SessionManager.clearCacheForRequest(request)
+    }
+
+
     func getMyUrl() -> String {
         return baseURL
     }
