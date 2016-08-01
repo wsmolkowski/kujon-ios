@@ -54,6 +54,13 @@ class ContainerViewController: UIViewController, LeftMenuTableViewControllerDele
     }
 
     func selectedMenuItem(menuController: LeftMenuTableViewController, menuItem: MenuItemWithController, withDelegate: Bool) {
+
+        if let cont = (centerNavigationController.visibleViewController as? NavigationDelegate){
+            if(cont.isSecond()){
+                self.centerNavigationController.viewControllers.removeLast()
+            }
+        }
+
         if let controller = menuItem.returnViewControllerFunction()() {
             self.toggleLeftPanel()
             if (withDelegate) {

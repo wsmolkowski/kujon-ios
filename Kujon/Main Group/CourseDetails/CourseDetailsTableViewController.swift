@@ -19,6 +19,23 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(CourseDetailsTableViewController.back),andTitle: StringHolder.courseDetails)
         courseDetailsProvider.delegate = self;
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        load()
+        for section in sectionHelpers{
+            section.registerView(self.tableView)
+        }
+
+    }
+
+    func refresh(refreshControl: UIRefreshControl) {
+        NSlogManager.showLog("Refresh was called")
+        courseDetailsProvider.reload()
+        load()
+
+    }
+
+    private func load(){
         if(course != nil ) {
             courseDetailsProvider.loadCourseDetails(course)
         }else if( courseId != nil && termId != nil){
@@ -27,11 +44,7 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
         }else{
             back()
         }
-        for section in sectionHelpers{
-            section.registerView(self.tableView)
-        }
     }
-
     private func createSections()->Array<SectionHelperProtocol>{
         return [NameSection(),FacultieSection(),DescriptionSection(),BibliographySection()
                 ,PassCriteriaSection(),CycleSection(),LecturersSection(),CoordinatorsSection(),ClassTypeSection(),ParticipantsSection()]
@@ -48,6 +61,7 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
             sectionHelper.fillUpWithData(courseDetails)
         }
         self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
     }
 
     func onErrorOccurs() {

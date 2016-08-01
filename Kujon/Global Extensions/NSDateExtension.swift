@@ -49,6 +49,15 @@ extension NSDate {
         componentsToSubtact.day = -weekdayComponents + gregorian.firstWeekday
         return gregorian.dateByAddingComponents(componentsToSubtact, toDate: today, options: .MatchStrictly)!
     }
+    func getStartOfTheWeek() -> NSDate {
+        let today = self
+        let gregorian = NSCalendar.currentCalendar()
+        gregorian.firstWeekday = 2
+        let weekdayComponents = gregorian.component(.Weekday, fromDate: today)
+        var componentsToSubtact = NSDateComponents()
+        componentsToSubtact.day = -weekdayComponents + gregorian.firstWeekday
+        return gregorian.dateByAddingComponents(componentsToSubtact, toDate: today, options: .MatchStrictly)!
+    }
 
 
     private static func getDateFormatter(format: String = dateFormat) -> NSDateFormatter {

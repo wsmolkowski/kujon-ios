@@ -19,8 +19,16 @@ extension JsonProviderProtocol{
         }catch {
             SessionManager.clearCache()
             NSlogManager.showLog("JSON serialization failed:  \(error)")
-            myError(message: "Nie ma takich danych")
-            return nil
+
+            do{
+                let json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
+                let error = try ErrorClass.decode(json)
+                myError(message: error.message)
+                return nil
+            }catch {
+                myError(message: StringHolder.errorOccures)
+                return nil
+            }
         }
     }
 }

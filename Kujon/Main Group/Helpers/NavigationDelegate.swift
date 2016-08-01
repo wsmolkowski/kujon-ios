@@ -7,4 +7,12 @@ import Foundation
 
 protocol NavigationDelegate {
     func setNavigationProtocol(delegate:NavigationMenuProtocol)
+    func isSecond()->Bool
+}
+
+extension NavigationDelegate{
+    func isSecond() -> Bool {
+        return false
+    }
+
 }

@@ -132,9 +132,16 @@ class ScheduleTableViewController:
     }
 
     func onErrorOccurs() {
-
+        ToastView.showInParent(self.navigationController?.view,withText: StringHolder.errorOccures , forDuration: 2.0)
         isQuering = false
     }
+
+
+    func onErrorOccurs(text: String) {
+        ToastView.showInParent(self.navigationController?.view,withText: text, forDuration: 2.0)
+        isQuering = false
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -70,11 +70,21 @@ class CalendarViewController: MGCDayPlannerViewController,
     }
 
     func onErrorOccurs() {
+        ToastView.showInParent(self.navigationController?.view,withText: StringHolder.errorOccures , forDuration: 2.0)
+    }
+
+
+    func onErrorOccurs(text: String) {
+        ToastView.showInParent(self.navigationController?.view,withText: text, forDuration: 2.0)
     }
 
 
     func openDrawer() {
         delegate?.toggleLeftPanel()
+    }
+
+    func isSecond() -> Bool {
+        return true
     }
 
     func openList() {
@@ -84,7 +94,7 @@ class CalendarViewController: MGCDayPlannerViewController,
 
     override func dayPlannerView(_ view: MGCDayPlannerView!, numberOfEventsOfType type: MGCEventType, atDate date: NSDate!) -> Int {
         if(date.isGreaterThanDate(lastQueryDate.dateByAddingTimeInterval(60 * 60 * 24 * 7))){
-            lastQueryDate = lastQueryDate.dateByAddingTimeInterval(60 * 60 * 24 * 7)
+            lastQueryDate = date.getStartOfTheWeek()
             askForData()
         }
         switch (type) {
