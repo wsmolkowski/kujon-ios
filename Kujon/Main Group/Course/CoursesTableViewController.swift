@@ -22,11 +22,23 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
         courseProvider.provideCourses()
         self.tableView.tableFooterView = UIView()
 
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
+        refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+
+    }
+
+    func refresh(refreshControl: UIRefreshControl) {
+        NSlogManager.showLog("Refresh was called")
+        courseProvider.reload()
+        courseProvider.provideCourses()
+
     }
 
     func coursesProvided(courses: Array<CoursesWrapper>) {
         self.courseWrappers = courses;
         self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
 
     }
 
