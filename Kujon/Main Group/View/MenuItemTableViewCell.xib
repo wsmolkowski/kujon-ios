@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -14,40 +14,39 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AJ5-PZ-Jjz">
-                        <rect key="frame" x="16" y="0.0" width="50" height="44"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xyh-Bu-p5R">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="44"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="123" id="0b4-cB-t1R"/>
-                            <constraint firstAttribute="width" constant="123" id="S9P-UP-MyB"/>
-                            <constraint firstAttribute="width" constant="50" id="o30-8Q-kbu"/>
+                            <constraint firstAttribute="width" constant="50" id="wJs-oQ-u0f"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="0b4-cB-t1R"/>
-                                <exclude reference="S9P-UP-MyB"/>
-                            </mask>
-                        </variation>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrU-CI-DUt">
-                        <rect key="frame" x="74" y="11" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4m-aQ-jLN">
+                        <rect key="frame" x="58" y="11" width="254" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="AJ5-PZ-Jjz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="CBV-bz-Jth"/>
-                    <constraint firstItem="lrU-CI-DUt" firstAttribute="leading" secondItem="AJ5-PZ-Jjz" secondAttribute="trailing" constant="8" symbolic="YES" id="DYf-oK-CbF"/>
-                    <constraint firstItem="lrU-CI-DUt" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="KzK-xp-FcW"/>
-                    <constraint firstItem="AJ5-PZ-Jjz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="R4w-Oy-04u"/>
-                    <constraint firstItem="lrU-CI-DUt" firstAttribute="centerY" secondItem="AJ5-PZ-Jjz" secondAttribute="centerY" id="Rtl-rH-Mk8"/>
+                    <constraint firstItem="Xyh-Bu-p5R" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="0a3-Sy-Pys"/>
+                    <constraint firstItem="f4m-aQ-jLN" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="5Nd-bK-UTD"/>
+                    <constraint firstItem="Xyh-Bu-p5R" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="JFI-XB-GuA"/>
+                    <constraint firstItem="Xyh-Bu-p5R" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="foR-Dw-d8P"/>
+                    <constraint firstItem="f4m-aQ-jLN" firstAttribute="centerY" secondItem="Xyh-Bu-p5R" secondAttribute="centerY" id="gIa-tg-jmc"/>
+                    <constraint firstItem="Xyh-Bu-p5R" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="r4C-wY-V7I"/>
+                    <constraint firstItem="f4m-aQ-jLN" firstAttribute="leading" secondItem="Xyh-Bu-p5R" secondAttribute="trailing" constant="8" symbolic="YES" id="uzh-bx-kZX"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="JFI-XB-GuA"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
-                <outlet property="imagePlace" destination="AJ5-PZ-Jjz" id="gy9-bF-gaf"/>
-                <outlet property="myLabel" destination="lrU-CI-DUt" id="3yP-X7-6fu"/>
-                <outlet property="textLabel" destination="lrU-CI-DUt" id="dBc-tZ-QpJ"/>
+                <outlet property="myImage" destination="Xyh-Bu-p5R" id="gQ2-EI-EXf"/>
+                <outlet property="myText" destination="f4m-aQ-jLN" id="uyt-Pm-KQU"/>
             </connections>
+            <point key="canvasLocation" x="139" y="342"/>
         </tableViewCell>
     </objects>
 </document>

@@ -53,11 +53,11 @@ class LeftMenuTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: MenuItemTableViewCell = tableView.dequeueReusableCellWithIdentifier(MenuItemCellIdentiefier, forIndexPath: indexPath) as! MenuItemTableViewCell
         var menuItem = self.getCurrentMenuItem(indexPath)
-        dispatch_async(dispatch_get_main_queue()) {
 
-            cell.imagePlace?.image = menuItem.returnImage()
-        }
-        cell.myLabel.text = menuItem.returnTitle()
+
+            cell.myImage?.image = menuItem.returnImage()
+
+        cell.myText.text = menuItem.returnTitle()
 
         return cell
     }

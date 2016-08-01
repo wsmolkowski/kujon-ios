@@ -27,7 +27,7 @@ class CalendarViewController: MGCDayPlannerViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(CalendarViewController.openDrawer), andTitle: StringHolder.schedule)
-        let openCalendarButton = UIBarButtonItem(title: "list", style: UIBarButtonItemStyle.Plain, target: self,
+        let openCalendarButton = UIBarButtonItem(image: UIImage(named: "calendar-list"), style: UIBarButtonItemStyle.Plain, target: self,
                 action: #selector(CalendarViewController.openList))
         self.navigationItem.rightBarButtonItem = openCalendarButton
         self.edgesForExtendedLayout = UIRectEdge.None

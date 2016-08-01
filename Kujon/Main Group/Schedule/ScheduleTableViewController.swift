@@ -28,13 +28,13 @@ class ScheduleTableViewController:
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(ScheduleTableViewController.openDrawer), andTitle: "Plan Zajęć")
+        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(ScheduleTableViewController.openDrawer), andTitle: StringHolder.schedule)
 
-        let openCalendarButton = UIBarButtonItem(title: "calendar", style: UIBarButtonItemStyle.Plain, target: self,
+        let openCalendarButton = UIBarButtonItem(image: UIImage(named: "calendar"), style: UIBarButtonItemStyle.Plain, target: self,
                 action: #selector(ScheduleTableViewController.openCalendar))
         self.navigationItem.rightBarButtonItem = openCalendarButton
 
-        lastQueryDate = NSDate.getCurrentStartOfWeek()
+        lastQueryDate = NSDate.stringToDate("2015-05-01")
         self.tableView.registerNib(UINib(nibName: "LectureTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.LectureCellId)
         self.tableView.registerNib(UINib(nibName: "DayTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.DayCellId)
         lectureProvider.delegate = self
