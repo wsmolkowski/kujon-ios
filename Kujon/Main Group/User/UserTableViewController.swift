@@ -45,10 +45,7 @@ class UserTableViewController: UITableViewController
         termsProvider.delegate = self
         programmeProvider.delegate = self;
 
-        userDetailsProvider.loadUserDetail()
-        facultieProvider.loadFaculties()
-        termsProvider.loadTerms()
-        programmeProvider.loadProgramme()
+        loadData()
         self.tableView.tableFooterView = UIView()
         self.tableView.registerNib(UINib(nibName: "UserDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: usedDetailCellId)
         self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: StudentProgrammeCellId)
@@ -61,33 +58,48 @@ class UserTableViewController: UITableViewController
 
     func refresh(refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")
-        refreshControl.endRefreshing()
+        userDetailsProvider.reload()
+        facultieProvider.reload()
+        termsProvider.reload()
+        programmeProvider.reload()
+        loadData()
+
     }
 
     func openDrawer() {
         delegate?.toggleLeftPanel()
+    }
+    private func loadData(){
+        userDetailsProvider.loadUserDetail()
+        facultieProvider.loadFaculties()
+        termsProvider.loadTerms()
+        programmeProvider.loadProgramme()
     }
 
     func onUserDetailLoaded(userDetails: UserDetail) {
         self.userDetails = userDetails;
         self.programmes = userDetails.studentProgrammes
         self.tableView.reloadData()
+        refreshControl?.endRefreshing()
     }
 
     func onFacultiesLoaded(list: Array<Facultie>) {
         self.userFaculties = list
         self.tableView.reloadData()
+        refreshControl?.endRefreshing()
     }
 
     func onProgrammeLoaded(terms: Array<StudentProgramme>) {
         self.programmes = terms;
         programmeLoaded = true;
+        refreshControl?.endRefreshing()
     }
 
 
     func onTermsLoaded(terms: Array<Term>) {
         self.terms = terms
         self.tableView.reloadData()
+        refreshControl?.endRefreshing()
     }
 
 
