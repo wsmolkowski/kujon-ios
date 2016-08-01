@@ -58,5 +58,7 @@ class StringHolder {
     static let tryb = "tryb"
     static let time_length = "czas trwania"
     static let level = "poziom"
+    static let refresh="Odswieżam"
+    static let appName = "Kujon"
 
 }

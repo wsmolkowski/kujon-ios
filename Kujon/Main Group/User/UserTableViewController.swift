@@ -39,13 +39,13 @@ class UserTableViewController: UITableViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(UserTableViewController.openDrawer), andTitle: "Kujon")
+        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(UserTableViewController.openDrawer), andTitle: StringHolder.appName)
         userDetailsProvider.delegate = self
-        userDetailsProvider.loadUserDetail()
         facultieProvider.delegate = self
         termsProvider.delegate = self
         programmeProvider.delegate = self;
 
+        userDetailsProvider.loadUserDetail()
         facultieProvider.loadFaculties()
         termsProvider.loadTerms()
         programmeProvider.loadProgramme()
@@ -54,8 +54,15 @@ class UserTableViewController: UITableViewController
         self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: StudentProgrammeCellId)
         self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: FacultieProgrammeCellId)
         self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: termsCellId)
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
+        refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
     }
 
+    func refresh(refreshControl: UIRefreshControl) {
+        NSlogManager.showLog("Refresh was called")
+        refreshControl.endRefreshing()
+    }
 
     func openDrawer() {
         delegate?.toggleLeftPanel()
