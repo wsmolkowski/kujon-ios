@@ -10,6 +10,8 @@ protocol ProgrammeProviderProtocol: JsonProviderProtocol {
     associatedtype T = StudentProgrammeResponse
 
     func loadProgramme()
+
+
 }
 
 protocol ProgrammeProviderDelegate: ErrorResponseProtocol {
@@ -17,19 +19,20 @@ protocol ProgrammeProviderDelegate: ErrorResponseProtocol {
 
 }
 
-class ProgrammeProvider:RestApiManager,ProgrammeProviderProtocol {
-    var delegate : ProgrammeProviderDelegate! = nil
+class ProgrammeProvider: RestApiManager, ProgrammeProviderProtocol {
+    var delegate: ProgrammeProviderDelegate! = nil
 
-    func loadProgramme() {self.makeHTTPAuthenticatedGetRequest({
-        json in
-        if let programeResponse = try! self.changeJsonToResposne(json, onError: {
-            text in
-            self.delegate?.onErrorOccurs(text)
-        }) {
+    func loadProgramme() {
+        self.makeHTTPAuthenticatedGetRequest({
+            json in
+            if let programeResponse = try! self.changeJsonToResposne(json, onError: {
+                text in
+                self.delegate?.onErrorOccurs(text)
+            }) {
 
-            self.delegate?.onProgrammeLoaded(programeResponse.list)
-        }
-    }, onError: { text in self.delegate?.onErrorOccurs() })
+                self.delegate?.onProgrammeLoaded(programeResponse.list)
+            }
+        }, onError: { text in self.delegate?.onErrorOccurs() })
     }
 
     override func getMyUrl() -> String {
@@ -39,7 +42,6 @@ class ProgrammeProvider:RestApiManager,ProgrammeProviderProtocol {
     override func getMyFakeJsonName() -> String! {
         return "Programmes"
     }
-
 
 
 }

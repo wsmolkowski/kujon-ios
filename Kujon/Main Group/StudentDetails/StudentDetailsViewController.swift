@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StudentDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UserDetailsProviderDelegate, OnImageLoadedFromRest {
+class StudentDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UserDetailsProviderDelegate, OnImageLoadedFromRest,ProgrammeIdProviderDelegate {
     let kierunekCellId = "kierunekCellId"
     @IBOutlet weak var kierunkiTableView: UITableView!
     @IBOutlet weak var accountNumberLabel: UILabel!
@@ -17,6 +17,7 @@ class StudentDetailsViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var studentNameLabel: UILabel!
     let restImageProvider = RestImageProvider.sharedInstance
     var provider = ProvidersProviderImpl.sharedInstance.provideUserDetailsProvider()
+    var programmeProvider = ProvidersProviderImpl.sharedInstance.provideProgrammeId()
     var user: SimpleUser! = nil
     var studentProgrammes: Array<StudentProgramme> = Array()
     var userDetails: UserDetail! = nil
@@ -33,9 +34,11 @@ class StudentDetailsViewController: UIViewController, UITableViewDataSource, UIT
         if (userId == nil) {
             userId = user.userId
         }
+        programmeProvider.delegate = self
         provider.delegate = self
         provider.loadUserDetail(userId)
     }
+
     func back(){
         self.navigationController?.popViewControllerAnimated(true)
     }
@@ -46,7 +49,10 @@ class StudentDetailsViewController: UIViewController, UITableViewDataSource, UIT
         studentStatusLabel.text = userDetails.studentStatus
         accountNumberLabel.text = userDetails.id
 
-        self.studentProgrammes = userDetails.studentProgrammes
+        self.studentProgrammes =  Array()
+        for programmess in userDetails.studentProgrammes{
+            programmeProvider.loadProgramme((programmess as StudentProgramme).programme.id)
+        }
         studentImageView.image = UIImage(named:"user-placeholder")
         if (userDetails.hasPhoto) {
             self.restImageProvider.loadImage("", urlString: self.userDetails.photoUrl!, onImageLoaded: self)
@@ -57,6 +63,12 @@ class StudentDetailsViewController: UIViewController, UITableViewDataSource, UIT
         studentImageView.addGestureRecognizer(tapGestureRecognizer)
         studentImageView.userInteractionEnabled = true
         kierunkiTableView.reloadData()
+    }
+
+
+    func onProgrammeLoaded(id: String, programme: StudentProgramme) {
+        self.studentProgrammes.append(programme)
+        self.kierunkiTableView.reloadData()
     }
 
     func imageLoaded(tag: String, image: UIImage) {

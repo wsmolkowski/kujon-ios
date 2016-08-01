@@ -23,13 +23,12 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         self.tableView.registerNib(UINib(nibName: "TeacherDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: TeacherDetailViewId)
         userDetailsProvider.delegate = self
         self.tableView.tableFooterView = UIView()
-        if(simpleUser != nil){
-            userDetailsProvider.loadUserDetail(simpleUser.id!)
-        }else{
+        loadUser()
 
-            let currentTeacher = CurrentTeacherHolder.sharedInstance
-            userDetailsProvider.loadUserDetail(currentTeacher.currentTeacher.id!)
-        }
+
+        refreshControl = UIRefreshControl()
+//        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
+        refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
 
     }
 
@@ -37,9 +36,27 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         self.navigationController?.popViewControllerAnimated(true)
     }
 
+
+    func refresh(refreshControl: UIRefreshControl) {
+        NSlogManager.showLog("Refresh was called")
+        userDetailsProvider.reload()
+        loadUser()
+    }
+
     func onUserDetailLoaded(userDetails: UserDetail) {
         self.userDetails = userDetails
         self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
+    }
+
+    private func loadUser(){
+        if(simpleUser != nil){
+            userDetailsProvider.loadUserDetail(simpleUser.id!)
+        }else{
+
+            let currentTeacher = CurrentTeacherHolder.sharedInstance
+            userDetailsProvider.loadUserDetail(currentTeacher.currentTeacher.id!)
+        }
     }
 
     func onErrorOccurs() {
