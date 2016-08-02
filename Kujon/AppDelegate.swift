@@ -39,9 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
         
         //TODO setup proper OneSignal app Id
-//        _ = OneSignal(launchOptions: launchOptions, appId: "b2f7f966-d8cc-11e4-bed1-df8f05be55ba", handleNotification: nil)
-//        
-//        OneSignal.defaultClient().enableInAppAlertNotification(true)
+        _ = OneSignal(launchOptions: launchOptions, appId: "f01a20f9-bbe7-4c89-a017-bf8930c61cf4", handleNotification: nil)
+        
+        OneSignal.defaultClient().enableInAppAlertNotification(true)
         
         
         
