@@ -31,6 +31,17 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
         self.usosProvider.delegate = self
         self.usosProvider.loadUsoses()
 
+
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
+        refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+    }
+
+    func refresh(refreshControl: UIRefreshControl) {
+        NSlogManager.showLog("Refresh was called")
+        usosProvider.reload()
+        usosProvider.loadUsoses()
+
     }
 
     func barTapped(){
@@ -107,10 +118,18 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
     func onUsosesLoaded(arrayOfUsoses: Array<Usos>) {
         self.usosList = arrayOfUsoses;
         self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
     }
 
     func onErrorOccurs() {
+        self.refreshControl?.endRefreshing()
     }
+
+    func onErrorOccurs(text: String) {
+
+        self.refreshControl?.endRefreshing()
+    }
+
 
     private func loadImage(urlString: String, indexPath: NSIndexPath) {
         let url = NSURL(string: urlString)

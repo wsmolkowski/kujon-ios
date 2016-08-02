@@ -38,6 +38,7 @@ class SettingsViewController: UIViewController,FBSDKLoginButtonDelegate,DeleteAc
 
     func accountDeleted() {
         UserDataHolder.sharedInstance.loggedToUsosForCurrentEmail = false
+        faceBookManager.logout()
         let controller  = EntryViewController()
         self.presentViewController(controller,animated:true,completion:nil)
     }

@@ -41,10 +41,8 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate, OnFaceboo
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if(GoogleManager.sharedInstance.isLoggedIn()) {
-            onFacebookCredentailSaved(GoogleManager.sharedInstance.isLoggedIn())
-        }
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

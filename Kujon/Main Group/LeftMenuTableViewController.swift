@@ -28,6 +28,7 @@ class LeftMenuTableViewController: UITableViewController {
         listOfUpperItems = MenuItemsHolder.sharedInstance.upperMenuItems;
         listOfLowerItems = MenuItemsHolder.sharedInstance.lowerMnuItems;
         self.tableView.registerNib(UINib(nibName: "MenuItemTableViewCell", bundle: nil), forCellReuseIdentifier: MenuItemCellIdentiefier)
+        self.tableView.tableFooterView = UIView()
     }
 
     override func didReceiveMemoryWarning() {
