@@ -47,6 +47,7 @@ class GoogleManager: UserLogin  {
 
 
      func logout(){
+         SessionManager.clearCache()
         userDataHolder.userEmail = nil
         userDataHolder.userToken = nil
     }
