@@ -41,6 +41,7 @@ class ScheduleTableViewController:
         firstDate = lastQueryDate
         self.tableView.registerNib(UINib(nibName: "LectureTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.LectureCellId)
         self.tableView.registerNib(UINib(nibName: "DayTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.DayCellId)
+        self.tableView.tableFooterView  = UIView()
         lectureProvider.delegate = self
         askForData()
 
@@ -141,12 +142,14 @@ class ScheduleTableViewController:
     func onErrorOccurs() {
         ToastView.showInParent(self.navigationController?.view, withText: StringHolder.errorOccures, forDuration: 2.0)
         isQuering = false
+        self.refreshControl?.endRefreshing()
     }
 
 
     func onErrorOccurs(text: String) {
         ToastView.showInParent(self.navigationController?.view, withText: text, forDuration: 2.0)
         isQuering = false
+        self.refreshControl?.endRefreshing()
     }
 
 
