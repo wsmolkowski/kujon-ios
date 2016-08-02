@@ -17,6 +17,7 @@ class ScheduleTableViewController:
     let lectureProvider = ProvidersProviderImpl.sharedInstance.provideLectureProvider()
     static let LectureCellId = "lectureCellId"
     static let DayCellId = "dayCellId"
+    static let textId = "simpleTextId"
     var isQuering = false
     var lastQueryDate: NSDate! = nil
     var firstDate: NSDate! = nil
@@ -35,7 +36,8 @@ class ScheduleTableViewController:
                 action: #selector(ScheduleTableViewController.openCalendar))
         self.navigationItem.rightBarButtonItem = openCalendarButton
 
-        lastQueryDate = NSDate.stringToDate("2015-05-01")
+//        lastQueryDate = NSDate.stringToDate("2015-05-01")
+        lastQueryDate = NSDate.getCurrentStartOfWeek()
         firstDate = lastQueryDate
         self.tableView.registerNib(UINib(nibName: "LectureTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.LectureCellId)
         self.tableView.registerNib(UINib(nibName: "DayTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.DayCellId)
@@ -52,6 +54,7 @@ class ScheduleTableViewController:
         super.viewWillAppear(animated)
         lectureProvider.delegate = self
     }
+
     func refresh(refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")
         sectionsArray = Array()
@@ -63,6 +66,10 @@ class ScheduleTableViewController:
 
     private func askForData() {
         isQuering = true
+        let keyOfQuerry = lastQueryDate.getMonthYearString()
+        if (sectionsArray.count == 0 || sectionsArray[sectionsArray.count - 1].getSectionTitle() != keyOfQuerry) {
+            sectionsArray.append(ScheduleSectionImpl(withDate: keyOfQuerry, listOfLecture: Array()))
+        }
         lectureProvider.loadLectures(lastQueryDate.dateToString())
     }
 
@@ -132,13 +139,13 @@ class ScheduleTableViewController:
     }
 
     func onErrorOccurs() {
-        ToastView.showInParent(self.navigationController?.view,withText: StringHolder.errorOccures , forDuration: 2.0)
+        ToastView.showInParent(self.navigationController?.view, withText: StringHolder.errorOccures, forDuration: 2.0)
         isQuering = false
     }
 
 
     func onErrorOccurs(text: String) {
-        ToastView.showInParent(self.navigationController?.view,withText: text, forDuration: 2.0)
+        ToastView.showInParent(self.navigationController?.view, withText: text, forDuration: 2.0)
         isQuering = false
     }
 
@@ -169,7 +176,7 @@ class ScheduleTableViewController:
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionSch = getScheduleSectionAtPosition(section)
-        return sectionSch.getSectionSize()
+        return sectionSch.getSectionSize() == 0 ? 1 : sectionSch.getSectionSize()
 
     }
 
@@ -206,13 +213,20 @@ class ScheduleTableViewController:
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var sectionSch = getScheduleSectionAtPosition(indexPath.section)
-        let cellStrategy = sectionSch.getElementAtPosition(indexPath.row)
-        var cell = cellStrategy.giveMeMyCell(tableView, cellForRowAtIndexPath: indexPath)
-        let strategy = cellStrategy.giveMyStrategy()
-        strategy.handleCell(&cell)
 
-        return cell
+        var sectionSch = getScheduleSectionAtPosition(indexPath.section)
+        if(sectionSch.getSectionSize() != 0){
+            let cellStrategy = sectionSch.getElementAtPosition(indexPath.row)
+            var cell = cellStrategy.giveMeMyCell(tableView, cellForRowAtIndexPath: indexPath)
+            let strategy = cellStrategy.giveMyStrategy()
+            strategy.handleCell(&cell)
+            return cell
+        }else {
+
+            var cell = UITableViewCell(style: .Default , reuseIdentifier: ScheduleTableViewController.textId)
+            cell.textLabel?.text = StringHolder.no_data
+            return cell
+        }
     }
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

@@ -61,5 +61,5 @@ class StringHolder {
     static let refresh="Odswieżam"
     static let appName = "Kujon"
     static let errorOccures = "Wystąpił błąd podczas komunikacji z serwerem. Spróbuj ponownie później"
-
+    static let no_data = "Brak zajęć w tym okresie"
 }
