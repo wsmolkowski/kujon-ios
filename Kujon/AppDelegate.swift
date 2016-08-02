@@ -114,7 +114,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func openControllerDependingOnLoginState() {
         var controller:UIViewController! = nil
         //TODO extract controller choosing logic
-        if (!GoogleManager.sharedInstance.isLoggedIn()) {
+        if (!GoogleManager.sharedInstance.isLoggedIn() ) {
             controller = EntryViewController()
         } else {
             if(userDataHolder.loggedToUsosForCurrentEmail){

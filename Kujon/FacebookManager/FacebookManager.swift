@@ -11,7 +11,7 @@ import FBSDKLoginKit
 protocol OnFacebookCredentailSaved{
     func onFacebookCredentailSaved(isLogged:Bool)
 }
-class FacebookManager {
+class FacebookManager : UserLogin {
     let userDataHolder = UserDataHolder.sharedInstance
 
     static let sharedInstance = FacebookManager()
@@ -38,11 +38,13 @@ class FacebookManager {
 //            self.handleOpenCorrectController()
 
         }
-        self.userDataHolder.userLoginType = "FB"
+        self.userDataHolder.userLoginType = StringHolder.fbType
     }
+
 
     func logout(){
         userDataHolder.userEmail = nil
         userDataHolder.userToken = nil
     }
+
 }

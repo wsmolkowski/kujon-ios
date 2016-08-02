@@ -8,17 +8,34 @@
 
 import UIKit
 import FBSDKLoginKit
-class SettingsViewController: UIViewController,FBSDKLoginButtonDelegate,DeleteAccountProviderDelegate {
-    let faceBookManager = FacebookManager.sharedInstance
 
-    var deleteAccountProvider =  ProvidersProviderImpl.sharedInstance.provideDeleteAccount()
+class SettingsViewController: UIViewController,
+        FBSDKLoginButtonDelegate,
+        DeleteAccountProviderDelegate,
+        GIDSignInUIDelegate {
+
+    var loginMenager: UserLogin! = nil
+
+    @IBOutlet weak var googleLogOutButton: UIButton!
+    var deleteAccountProvider = ProvidersProviderImpl.sharedInstance.provideDeleteAccount()
+    
     @IBOutlet weak var logOutButton: FBSDKLoginButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(SettingsViewController.back))
+        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SettingsViewController.back))
         self.edgesForExtendedLayout = UIRectEdge.None
         logOutButton.delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
         deleteAccountProvider.delegate = self
+        loginMenager = UserLoginEnum.getUserLogin()
+        switch (UserLoginEnum.getLoginType()) {
+        case .FACEBOOK:
+            googleLogOutButton.hidden  = true
+            break
+        case .GOOGLE:
+            logOutButton.hidden  = true
+            break
+        }
 
     }
 
@@ -27,20 +44,31 @@ class SettingsViewController: UIViewController,FBSDKLoginButtonDelegate,DeleteAc
 
     }
 
-    func back(){
+    @IBAction func googleLogOutAction(sender: AnyObject) {
+        GIDSignIn.sharedInstance().signOut()
+        goBackToEntryScreen();
+
+    }
+
+    private func goBackToEntryScreen(){
+        loginMenager.logout()
+        let controller = EntryViewController()
+        self.presentViewController(controller, animated: true, completion: nil)
+    }
+
+    func back() {
         self.navigationController?.popViewControllerAnimated(true)
     }
+
     @IBAction func deleteAccount(sender: AnyObject) {
-        showAlertApi(StringHolder.attention,text: StringHolder.deleteAccount,succes: {
+        showAlertApi(StringHolder.attention, text: StringHolder.deleteAccount, succes: {
             self.deleteAccountProvider.deleteAccount()
-        },cancel: {})
+        }, cancel: {})
     }
 
     func accountDeleted() {
         UserDataHolder.sharedInstance.loggedToUsosForCurrentEmail = false
-        faceBookManager.logout()
-        let controller  = EntryViewController()
-        self.presentViewController(controller,animated:true,completion:nil)
+        goBackToEntryScreen();
     }
 
     func onErrorOccurs() {
@@ -48,17 +76,20 @@ class SettingsViewController: UIViewController,FBSDKLoginButtonDelegate,DeleteAc
 
 
     @IBAction func regulaminAction(sender: AnyObject) {
-        if let url = NSURL(string:StringHolder.kujonRegulaminUrl) {
+        if let url = NSURL(string: StringHolder.kujonRegulaminUrl) {
             UIApplication.sharedApplication().openURL(url)
         }
     }
+
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
     }
 
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        faceBookManager.logout()
-        let controller  = EntryViewController()
-        self.presentViewController(controller,animated:true,completion:nil)
+        goBackToEntryScreen();
+    }
+
+
+    func onErrorOccurs(text: String) {
     }
 
 

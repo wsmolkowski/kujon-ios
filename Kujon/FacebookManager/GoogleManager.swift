@@ -9,7 +9,7 @@
 import Foundation
 import FBSDKCoreKit
 
-class GoogleManager {
+class GoogleManager: UserLogin  {
     let userDataHolder = UserDataHolder.sharedInstance
 
     static let sharedInstance = GoogleManager()
@@ -22,14 +22,9 @@ class GoogleManager {
             let email = GIDSignIn.sharedInstance().currentUser.profile.email
             self.userDataHolder.userToken = accessToken
             self.userDataHolder.userEmail = email
-            self.userDataHolder.userLoginType = "GOOGLE"
+            self.userDataHolder.userLoginType = StringHolder.googleType
         }
 
-    }
-
-    func logout(){
-        userDataHolder.userEmail = nil
-        userDataHolder.userToken = nil
     }
 
     func isLoggedIn() -> Bool
@@ -49,4 +44,11 @@ class GoogleManager {
         }
         return loggedToFB || loggedToGoogle;
     }
+
+
+     func logout(){
+        userDataHolder.userEmail = nil
+        userDataHolder.userToken = nil
+    }
+
 }
