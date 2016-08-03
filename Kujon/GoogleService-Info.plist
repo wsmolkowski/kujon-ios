@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>CLIENT_ID</key>
-	<string>290778404621-ocuv31f8m8lnsa4qkceai5b3uqj197ia.apps.googleusercontent.com</string>
-	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.290778404621-ocuv31f8m8lnsa4qkceai5b3uqj197ia</string>
-	<key>PLIST_VERSION</key>
-	<string>1</string>
-	<key>BUNDLE_ID</key>
-	<string>mobi.kujon.Kujon</string>
-	<key>PROJECT_ID</key>
-	<string>firebase-kujonios</string>
-	<key>IS_ADS_ENABLED</key>
-	<false/>
-	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
-	<key>IS_APPINVITE_ENABLED</key>
-	<false/>
-	<key>IS_GCM_ENABLED</key>
-	<false/>
-	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
-	<key>GOOGLE_APP_ID</key>
-	<string>1:290778404621:ios:a58e6dbeabbee643</string>
-</dict>
+	<dict>
+		<key>CLIENT_ID</key>
+		<string>679931313599-fso8uce3gdgpkersujmrrr8l8737da7n.apps.googleusercontent.com</string>
+		<key>REVERSED_CLIENT_ID</key>
+		<string>com.googleusercontent.apps.679931313599-fso8uce3gdgpkersujmrrr8l8737da7n</string>
+		<key>PLIST_VERSION</key>
+		<string>1</string>
+		<key>BUNDLE_ID</key>
+		<string>mobi.kujon.Kujon</string>
+		<key>PROJECT_ID</key>
+		<string>kujon-ios</string>
+		<key>IS_ADS_ENABLED</key>
+		<false/>
+		<key>IS_ANALYTICS_ENABLED</key>
+		<false/>
+		<key>IS_APPINVITE_ENABLED</key>
+		<false/>
+		<key>IS_GCM_ENABLED</key>
+		<false/>
+		<key>IS_SIGNIN_ENABLED</key>
+		<true/>
+		<key>GOOGLE_APP_ID</key>
+		<string>1:679931313599:ios:a58e6dbeabbee643</string>
+	</dict>
 </plist>
