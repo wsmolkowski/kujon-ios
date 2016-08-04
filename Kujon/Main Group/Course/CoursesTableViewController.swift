@@ -25,6 +25,8 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 140
 
     }
 
@@ -84,9 +86,7 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
         return cell
     }
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 48
-    }
+
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
      return 48
