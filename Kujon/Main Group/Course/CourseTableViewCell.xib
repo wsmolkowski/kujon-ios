@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -11,11 +11,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ak-KO-UTZ">
-                        <rect key="frame" x="139" y="12" width="42" height="21"/>
+                        <rect key="frame" x="16" y="11.5" width="288" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -23,12 +23,16 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="7ak-KO-UTZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="12x-cM-ABZ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="7ak-KO-UTZ" secondAttribute="trailing" constant="8" id="3fh-xo-eWN"/>
+                    <constraint firstItem="7ak-KO-UTZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="5LE-W4-5AU"/>
                     <constraint firstItem="7ak-KO-UTZ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Dgf-jP-ukt"/>
                     <constraint firstItem="7ak-KO-UTZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jgF-Pi-B8D"/>
+                    <constraint firstItem="7ak-KO-UTZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="wxX-CO-7nG"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
                         <exclude reference="12x-cM-ABZ"/>
+                        <exclude reference="jgF-Pi-B8D"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
