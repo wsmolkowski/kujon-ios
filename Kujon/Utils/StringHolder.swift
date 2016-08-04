@@ -13,7 +13,7 @@ class StringHolder {
     static let sendOpinion = "Prześlij opinię"
     static let settings = "Ustawienia"
     static let shareApp = "Podziel się"
-    static let lecturers = "Wykładowcy"
+    static let lecturers = "Kadra"
     static let lecturer = "Wykładowca"
     static let bibliography = "Bibliografia"
     static let classType = "Typ Zajęć"
