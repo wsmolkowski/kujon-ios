@@ -1201,7 +1201,7 @@
 				ORGANIZATIONNAME = Mobi;
 				TargetAttributes = {
 					4C0D876E78B6409220622356 = {
-						DevelopmentTeam = KBHT45SF63;
+						DevelopmentTeam = WAJ9FR2DZL;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1912,7 +1912,7 @@
 				INFOPLIST_FILE = Kujon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Kujon;
+				PRODUCT_BUNDLE_IDENTIFIER = mobi.kujon.Kujon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Kujon/Bridging-Header.h";
@@ -2032,7 +2032,7 @@
 				INFOPLIST_FILE = Kujon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Kujon;
+				PRODUCT_BUNDLE_IDENTIFIER = mobi.kujon.Kujon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Kujon/Bridging-Header.h";
