@@ -93,16 +93,7 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
     }
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return createLabel(self.courseWrappers[section].title)
-    }
-
-    private func createLabel(text: String) -> UIView {
-        let view = UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, 56))
-        let label = UILabel(frame: CGRectMake(0, 0, self.tableView.frame.size.width, 48))
-        label.text = text
-        label.textColor = UIColor.blackWithAlpha()
-        view.addSubview(label)
-        return view
+        return self.createLabelForSectionTitle(self.courseWrappers[section].title)
     }
 
 
