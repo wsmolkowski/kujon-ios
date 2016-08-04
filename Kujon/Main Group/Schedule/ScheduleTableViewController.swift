@@ -36,8 +36,8 @@ class ScheduleTableViewController:
                 action: #selector(ScheduleTableViewController.openCalendar))
         self.navigationItem.rightBarButtonItem = openCalendarButton
 
-        lastQueryDate = NSDate.stringToDate("2015-05-05")
-//        lastQueryDate = NSDate.getCurrentStartOfWeek()
+//        lastQueryDate = NSDate.stringToDate("2015-05-05")
+        lastQueryDate = NSDate.getCurrentStartOfWeek()
         firstDate = lastQueryDate
         self.tableView.registerNib(UINib(nibName: "LectureTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.LectureCellId)
         self.tableView.registerNib(UINib(nibName: "DayTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.DayCellId)
@@ -63,6 +63,7 @@ class ScheduleTableViewController:
         sectionsArray = Array()
         onlyLectureDictionary = Dictionary()
         lastQueryDate = firstDate
+        lectureProvider.reload()
         askForData()
     }
 
