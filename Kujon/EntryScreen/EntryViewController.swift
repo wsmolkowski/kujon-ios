@@ -9,7 +9,6 @@
 import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
-
 class EntryViewController: UIViewController, FBSDKLoginButtonDelegate, OnFacebookCredentailSaved, GIDSignInUIDelegate {
 
     let googleSignInManager = GIDSignIn.sharedInstance()
