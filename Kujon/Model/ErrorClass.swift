@@ -17,7 +17,7 @@ extension ErrorClass: Decodable {
         return try ErrorClass(
                 status: j => "status",
                 message: j => "message",
-                code: j => "code"
+                code: try? j => "code"
                 )
     }
 

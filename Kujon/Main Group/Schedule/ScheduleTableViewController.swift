@@ -36,12 +36,14 @@ class ScheduleTableViewController:
                 action: #selector(ScheduleTableViewController.openCalendar))
         self.navigationItem.rightBarButtonItem = openCalendarButton
 
-//        lastQueryDate = NSDate.stringToDate("2015-05-01")
-        lastQueryDate = NSDate.getCurrentStartOfWeek()
+        lastQueryDate = NSDate.stringToDate("2015-05-05")
+//        lastQueryDate = NSDate.getCurrentStartOfWeek()
         firstDate = lastQueryDate
         self.tableView.registerNib(UINib(nibName: "LectureTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.LectureCellId)
         self.tableView.registerNib(UINib(nibName: "DayTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.DayCellId)
         self.tableView.tableFooterView  = UIView()
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 140
         lectureProvider.delegate = self
         askForData()
 
@@ -230,10 +232,6 @@ class ScheduleTableViewController:
             cell.textLabel?.text = StringHolder.no_data
             return cell
         }
-    }
-
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 90
     }
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

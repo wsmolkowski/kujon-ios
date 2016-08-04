@@ -10,12 +10,12 @@ extension UIViewController {
 
     func showAlertApiError(repeatFunction: () -> Void, cancelFucnt: () -> Void) {
 
-        showAlertApi("Uwaga", text: "Wystąpił błąd w komunikacji z serwerem. Czy chcesz powtórzyć?", succes: repeatFunction, cancel: cancelFucnt)
+        showAlertApi("Uwaga", text: "Wystąpił błąd w komunikacji z serwerem.", succes: repeatFunction, cancel: cancelFucnt)
     }
 
 
     func showAlertApi(title: String, text: String, succes: () -> Void, cancel: () -> Void) {
-        let alertController = UIAlertController(title: title, message: text, preferredStyle: .Alert)
+        let alertController = UIAlertController(title: title, message: text + ". Czy chcesz spróbować ponownie ?", preferredStyle: .Alert)
 
         alertController.addAction(UIAlertAction(title: "Tak", style: .Default, handler: {
             (action: UIAlertAction!) in
