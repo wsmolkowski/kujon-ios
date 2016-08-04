@@ -6,20 +6,26 @@
 import Foundation
 
 import UIKit
-class LectureCellHandler:CellHandlerProtocol {
 
-    let wrapper :LectureWrapper
+class LectureCellHandler: CellHandlerProtocol {
 
-    init(lectureWrapper:LectureWrapper){
+    let wrapper: LectureWrapper
+
+    init(lectureWrapper: LectureWrapper) {
         self.wrapper = lectureWrapper
     }
 
     func handleCell(inout cell: UITableViewCell) {
 
         (cell as! LectureTableViewCell).timeLabel.text = wrapper.startTime + " \n" + wrapper.endTime + " \n" + "s. " + wrapper.lecture.roomNumber
-        let lecturer = wrapper.lecture.lecturers[0] as SimpleUser
+        let lecturer = wrapper.lecture.lecturers[0] as SimpleUser!
         cell.selectionStyle = UITableViewCellSelectionStyle.None
-        (cell as! LectureTableViewCell).topic.text = wrapper.lecture.name + " \n" + lecturer.firstName + " " + lecturer.lastName
+        if (lecturer != nil) {
+            (cell as! LectureTableViewCell).topic.text = wrapper.lecture.name
+        } else {
+
+            (cell as! LectureTableViewCell).topic.text = wrapper.lecture.name + " \n" + lecturer.firstName + " " + lecturer.lastName
+        }
     }
 
 
