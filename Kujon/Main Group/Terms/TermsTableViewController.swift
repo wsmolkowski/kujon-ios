@@ -52,8 +52,12 @@ class TermsTableViewController:UITableViewController {
         let term: Term = self.terms[indexPath.row]
 
         cell.endDateLabel.text = term.endDate
+        cell.endDateLabel.adjustsFontSizeToFitWidth = true
+
         cell.endindTimeLabel.text = term.finishDate
+        cell.endindTimeLabel.adjustsFontSizeToFitWidth = true
         cell.startDateLabel.text = term.startDate
+        cell.startDateLabel.adjustsFontSizeToFitWidth = true
         cell.termActiveLabel.text = term.active ? StringHolder.yes:StringHolder.no
         cell.termNameLabel.text = term.name
         cell.termNumberLabel.text = term.termId
