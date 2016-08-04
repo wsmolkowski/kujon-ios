@@ -26,6 +26,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         loadUser()
 
 
+
         refreshControl = UIRefreshControl()
 //        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)

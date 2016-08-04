@@ -7,11 +7,7 @@
 //
 
 //
-//  ContainerViewController.swift
-//  SlideOutNavigation
-//
-//  Created by James Frost on 03/08/2014.
-//  Copyright (c) 2014 James Frost. All rights reserved.
+
 //
 
 import UIKit
@@ -45,10 +41,16 @@ class ContainerViewController: UIViewController, LeftMenuTableViewControllerDele
 
         centerViewController.setNavigationProtocol(self)
         centerNavigationController = UINavigationController(rootViewController: centerViewController)
+        centerNavigationController.navigationBar.barTintColor = UIColor.kujonBlueColor()
+        centerNavigationController.navigationBar.tintColor = UIColor.whiteColor()
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        centerNavigationController.navigationBar.titleTextAttributes =  titleDict as? [String : AnyObject]
+
+
+        centerNavigationController.navigationBar.translucent = false
         centerNavigationController?.interactivePopGestureRecognizer?.enabled = false
         view.addSubview(centerNavigationController.view)
         addChildViewController(centerNavigationController)
-
         centerNavigationController.didMoveToParentViewController(self)
 
     }

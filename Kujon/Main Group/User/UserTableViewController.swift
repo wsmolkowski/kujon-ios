@@ -54,6 +54,7 @@ class UserTableViewController: UITableViewController
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.navigationController?.navigationBar.barTintColor = UIColor.kujonBlueColor()
     }
 
     func refresh(refreshControl: UIRefreshControl) {
