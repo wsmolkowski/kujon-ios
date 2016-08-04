@@ -13,7 +13,7 @@ class CalendarViewController: MGCDayPlannerViewController,
         NavigationDelegate,
         LectureProviderDelegate  {
 
-    let calendarDateFormant = "eee d"
+    let calendarDateFormant = "MMMM d"
     let dateFormatter = NSDateFormatter()
     weak var delegate: NavigationMenuProtocol! = nil
     var onlyLectureDictionary: Dictionary<String, [LectureWrapper]> = Dictionary()
