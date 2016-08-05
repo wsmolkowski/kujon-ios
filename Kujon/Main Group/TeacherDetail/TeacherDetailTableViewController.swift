@@ -62,9 +62,11 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         }
     }
 
-    func onErrorOccurs() {
+    func onErrorOccurs(text: String) {
+        self.showAlertApi(StringHolder.attention, text: text, succes: {
+            loadUser()
+        }, cancel: {})
     }
-
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch (indexPath.section) {

@@ -49,7 +49,7 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
             json in
            if let user = try! self.changeJsonToResposne(json, onError: {
                 text in
-                self.delegate?.onErrorOccurs()
+                self.delegate?.onErrorOccurs(text)
             }){
                self.delegate?.onUserDetailLoaded(user.data)
            }

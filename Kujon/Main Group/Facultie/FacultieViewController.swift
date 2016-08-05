@@ -43,9 +43,12 @@ class FacultieViewController: UIViewController, FacultieProviderDelegate {
         fillUpData()
     }
 
-    func onErrorOccurs() {
+    func onErrorOccurs(text: String) {
+        self.showAlertApi(StringHolder.attention, text: text, succes: {
+            facultieProvider.delegate = self
+            facultieProvider.loadFacultie(facultieId)
+        }, cancel: {})
     }
-
 
     private func fillUpData() {
         facultieAdress.text = facultie.postalAdress

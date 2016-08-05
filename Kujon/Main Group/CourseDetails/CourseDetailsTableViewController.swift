@@ -65,7 +65,7 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
         self.refreshControl?.endRefreshing()
     }
 
-    func onErrorOccurs() {
+    func onErrorOccurs(text: String) {
         self.showAlertApiError({
             if(self.course != nil ) {
                 self.courseDetailsProvider.loadCourseDetails(self.course)
@@ -76,6 +76,7 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
             self.back()
         })
     }
+
 
 
 

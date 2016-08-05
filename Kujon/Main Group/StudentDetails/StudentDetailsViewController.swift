@@ -89,9 +89,12 @@ class StudentDetailsViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
 
-    func onErrorOccurs() {
+    func onErrorOccurs(text: String) {
+        self.showAlertApi(StringHolder.attention, text: text, succes: {
+            provider.reload()
+            provider.loadUserDetail(userId)
+        }, cancel: {})
     }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

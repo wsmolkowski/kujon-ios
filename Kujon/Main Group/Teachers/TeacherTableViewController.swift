@@ -54,8 +54,13 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
         self.refreshControl?.endRefreshing()
     }
 
-    func onErrorOccurs() {
+    func onErrorOccurs(text: String) {
+        self.showAlertApi(StringHolder.attention, text: text, succes: {
+            lecturerProvider.reload()
+            lecturerProvider.loadLecturers()
+        }, cancel: {})
     }
+
 
     // MARK: - Table view data source
 

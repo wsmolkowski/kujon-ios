@@ -25,12 +25,12 @@ class UsosesProvider: RestApiManager, UsosProviderProtocol {
             json in
                 if let usoses = try! self.changeJsonToResposne(json, onError: {
                     text in
-                    self.delegate?.onErrorOccurs()
+                    self.delegate?.onErrorOccurs(text)
                 }) {
 
                     self.delegate?.onUsosesLoaded(usoses.data)
                 }
-        }, onError: {text in})
+        }, onError: {text in self.delegate?.onErrorOccurs(text)})
 
     }
 

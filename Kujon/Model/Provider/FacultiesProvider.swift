@@ -29,7 +29,7 @@ class FacultiesProvider: RestApiManager, FacultiesProviderProtocol {
             json in
                 if let faculties = try! self.changeJsonToResposne(json,onError: {
                     text in
-                    self.delegate?.onErrorOccurs()
+                    self.delegate?.onErrorOccurs(text)
                 }){
 
                     self.delegate?.onFacultiesLoaded(faculties.list)
