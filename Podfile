@@ -19,6 +19,7 @@ target 'Kujon' do
   target 'KujonTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Google/SignIn'
   end
 
   target 'KujonUITests' do

@@ -12,7 +12,7 @@ protocol GradesProviderProtocol: JsonProviderProtocol {
 }
 
 protocol GradesProviderDelegate: ErrorResponseProtocol {
-    func onGradesLoaded(termGrades: Array<TermGrades>)
+    func onGradesLoaded(termGrades: Array<PreparedTermGrades>)
 
 }
 
@@ -27,10 +27,23 @@ class GradesProvider: RestApiManager, GradesProviderProtocol {
             do {
                 if let grades = try self.changeJsonToResposne(json,onError: {
                     text in
-                    self.delegate?.onErrorOccurs()
+                    self.delegate?.onErrorOccurs(text)
                 }){
-
-                    self.delegate?.onGradesLoaded(grades.data)
+                    var preparedTermGrades = Array<PreparedTermGrades>()
+                    for termGrade in  grades.data{
+                        var preparedGrade  = Array<PreparedGrades>()
+                        for courseGrade in termGrade.grades{
+                            for grade in courseGrade.grades{
+                                preparedGrade.append(PreparedGrades(
+                                        courseName: courseGrade.courseName ,
+                                        courseId: courseGrade.courseId ,
+                                        grades: grade ,
+                                        termId:courseGrade.termId))
+                            }
+                        }
+                        preparedTermGrades.append(PreparedTermGrades(termId: termGrade.termId,grades: preparedGrade))
+                    }
+                    self.delegate?.onGradesLoaded(preparedTermGrades)
                 }
             } catch {
                 NSlogManager.showLog("JSON serialization failed:  \(error)")

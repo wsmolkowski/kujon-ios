@@ -64,7 +64,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
 
     func onErrorOccurs(text: String) {
         self.showAlertApi(StringHolder.attention, text: text, succes: {
-            loadUser()
+            self.loadUser()
         }, cancel: {})
     }
 

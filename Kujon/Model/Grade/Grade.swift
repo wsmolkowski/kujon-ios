@@ -17,16 +17,34 @@ import Decodable
 //    "class_type": "UNKNOWN"
 //}
 
-struct Grade {
-    let valueSymbol: String
+struct CourseGrade {
     let courseName: String
-    let valueDescription: String
-    let examId: Int
     let courseId: String
-    let termId: String
+
+    let grades:Array<Grade>
+    let termId:String
+
+
+
+}
+struct PreparedGrades {
+    let courseName: String
+    let courseId: String
+
+    let grades: Grade
+    let termId:String
+
+
+
+}
+
+
+struct Grade{
+    let valueDescription: String
+    let valueSymbol: String
+    let examId: Int
     let examSessionNumber: Int
     let classType: String
-
 
     func getGrade() -> GradeEnum {
         switch (valueSymbol) {
@@ -45,18 +63,31 @@ enum GradeEnum {
     case NIEDOSTATECZNY, DOSTATECZNY, DOBRY, BARDZO_DOBRY, CELUJACY , NIEKLASYFIKOWANY
 }
 
+extension CourseGrade: Decodable {
+    static func decode(j: AnyObject) throws -> CourseGrade {
+        return try CourseGrade(
+
+                courseName: j => "course_name",
+                courseId: j => "course_id",
+                grades: j => "grades",
+                termId: j => "term_id"
+
+        )
+    }
+
+}
+
+
 extension Grade: Decodable {
     static func decode(j: AnyObject) throws -> Grade {
         return try Grade(
-        valueSymbol: j => "value_symbol",
-                courseName: j => "course_name",
                 valueDescription: j => "value_description",
+                valueSymbol: j => "value_symbol",
                 examId: j => "exam_id",
-                courseId: j => "course_id",
-                termId: j => "term_id",
                 examSessionNumber: j => "exam_session_number",
                 classType: j => "class_type"
-        )
+
+                )
     }
 
 }

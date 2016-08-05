@@ -45,8 +45,8 @@ class FacultieViewController: UIViewController, FacultieProviderDelegate {
 
     func onErrorOccurs(text: String) {
         self.showAlertApi(StringHolder.attention, text: text, succes: {
-            facultieProvider.delegate = self
-            facultieProvider.loadFacultie(facultieId)
+            self.facultieProvider.delegate = self
+            self.facultieProvider.loadFacultie(self.facultieId)
         }, cancel: {})
     }
 

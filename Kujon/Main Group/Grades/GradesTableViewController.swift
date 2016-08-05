@@ -16,7 +16,7 @@ class GradesTableViewController: UITableViewController
     let gradesProvider = ProvidersProviderImpl.sharedInstance.provideGradesProvider()
     private let GradeCellIdentiefer = "GradeCellId"
 
-    private var myTermGrades  = Array<TermGrades>()
+    private var myTermGrades  = Array<PreparedTermGrades>()
 
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {
         self.delegate = delegate
@@ -26,7 +26,6 @@ class GradesTableViewController: UITableViewController
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(GradesTableViewController.openDrawer),andTitle: StringHolder.grades)
         gradesProvider.delegate = self
-        gradesProvider.test = true
         self.tableView.registerNib(UINib(nibName: "GradesTableViewCell", bundle: nil), forCellReuseIdentifier: GradeCellIdentiefer)
         gradesProvider.loadGrades()
 
@@ -45,15 +44,15 @@ class GradesTableViewController: UITableViewController
         delegate?.toggleLeftPanel()
     }
 
-    func onGradesLoaded(termGrades: Array<TermGrades>) {
+    func onGradesLoaded(termGrades: Array<PreparedTermGrades>) {
         self.myTermGrades = termGrades
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
     }
     func onErrorOccurs(text: String) {
         self.showAlertApi(StringHolder.attention, text: text, succes: {
-            gradesProvider.reload()
-            gradesProvider.loadGrades()
+            self.gradesProvider.reload()
+            self.gradesProvider.loadGrades()
         }, cancel: {})
     }
     // MARK: - Table view data source
@@ -83,22 +82,22 @@ class GradesTableViewController: UITableViewController
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier(GradeCellIdentiefer, forIndexPath: indexPath) as! GradesTableViewCell
-        let grade = self.myTermGrades[indexPath.section].grades[indexPath.row] as! Grade
+        let prepareGrade = self.myTermGrades[indexPath.section].grades[indexPath.row] as! PreparedGrades
 
-        cell.textGradeLabel.text = grade.valueDescription
-        cell.gradeNumberLabel.text = grade.valueSymbol
-        cell.descriptionLabel.text = grade.courseName
-        cell.secDescLabel.text = grade.classType + "  " + StringHolder.termin  + " " + String(grade.examSessionNumber)
+        cell.textGradeLabel.text = prepareGrade.grades.valueDescription
+        cell.gradeNumberLabel.text = prepareGrade.grades.valueSymbol
+        cell.descriptionLabel.text = prepareGrade.courseName
+        cell.secDescLabel.text = prepareGrade.grades.classType + "  " + StringHolder.termin  + " " + String(prepareGrade.grades.examSessionNumber)
 
         return cell
     }
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let grade = self.myTermGrades[indexPath.section].grades[indexPath.row] as! Grade
+        let prepareGrade = self.myTermGrades[indexPath.section].grades[indexPath.row] as! PreparedGrades
 
         let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: NSBundle.mainBundle())
-        courseDetails.courseId = grade.courseId
-        courseDetails.termId = grade.termId
+        courseDetails.courseId = prepareGrade.courseId
+        courseDetails.termId = prepareGrade.termId
         self.navigationController?.pushViewController(courseDetails, animated: true)
     }
 

@@ -56,8 +56,8 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
 
     func onErrorOccurs(text: String) {
         self.showAlertApi(StringHolder.attention, text: text, succes: {
-            lecturerProvider.reload()
-            lecturerProvider.loadLecturers()
+            self.lecturerProvider.reload()
+            self.lecturerProvider.loadLecturers()
         }, cancel: {})
     }
 

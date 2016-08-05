@@ -9,7 +9,12 @@ import Decodable
 
 struct TermGrades {
     let termId: String
-    let grades: Array<Grade>
+    let grades: Array<CourseGrade>
+}
+
+struct PreparedTermGrades {
+    let termId: String
+    let grades: Array<PreparedGrades>
 }
 
 
@@ -17,7 +22,7 @@ extension TermGrades: Decodable {
     static func decode(j: AnyObject) throws -> TermGrades {
         return try TermGrades(
         termId: j => "term_id",
-                grades: j => "grades"
+                grades: j => "courses"
         )
     }
 

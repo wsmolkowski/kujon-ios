@@ -91,8 +91,8 @@ class StudentDetailsViewController: UIViewController, UITableViewDataSource, UIT
 
     func onErrorOccurs(text: String) {
         self.showAlertApi(StringHolder.attention, text: text, succes: {
-            provider.reload()
-            provider.loadUserDetail(userId)
+            self.provider.reload()
+            self.provider.loadUserDetail(self.userId)
         }, cancel: {})
     }
 
