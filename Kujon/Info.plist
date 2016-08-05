@@ -23,7 +23,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb492289124303145</string>
+				<string>fb435328606663469</string>
 			</array>
 		</dict>
 		<dict>
@@ -60,9 +60,9 @@
 		</array>
 	</dict>
 	<key>FacebookAppID</key>
-	<string>492289124303145</string>
+	<string>435328606663469</string>
 	<key>FacebookDisplayName</key>
-	<string>Kujon Integration</string>
+	<string>Kujon</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
