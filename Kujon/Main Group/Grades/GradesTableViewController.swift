@@ -31,7 +31,7 @@ class GradesTableViewController: UITableViewController
         gradesProvider.loadGrades()
 
         refreshControl = UIRefreshControl()
-//        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
+        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
     }
     func refresh(refreshControl: UIRefreshControl) {

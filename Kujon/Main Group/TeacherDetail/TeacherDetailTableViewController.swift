@@ -23,12 +23,14 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         self.tableView.registerNib(UINib(nibName: "TeacherDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: TeacherDetailViewId)
         userDetailsProvider.delegate = self
         self.tableView.tableFooterView = UIView()
+        self.tableView.showsVerticalScrollIndicator = false
         loadUser()
 
+        self.tableView.estimatedRowHeight = 6000
 
 
         refreshControl = UIRefreshControl()
-//        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
+        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
 
     }
@@ -66,7 +68,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch (indexPath.section) {
-        case 0: return 400
+        case 0: return 460
             break;
         default: return 50
         }
@@ -90,6 +92,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
             break;
         default: cell = self.configureTeacherDetails(indexPath)
         }
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
 
         return cell
     }

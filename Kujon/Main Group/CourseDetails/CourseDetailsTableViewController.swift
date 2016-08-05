@@ -20,6 +20,7 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
         NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(CourseDetailsTableViewController.back),andTitle: StringHolder.courseDetails)
         courseDetailsProvider.delegate = self;
         refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         load()
         for section in sectionHelpers{
@@ -104,7 +105,9 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let helper = (sectionHelpers[indexPath.section] as! SectionHelperProtocol)
-        return helper.giveMeCellAtPosition(tableView,onPosition: indexPath)
+        var cell = helper.giveMeCellAtPosition(tableView,onPosition: indexPath)
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        return  cell
     }
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

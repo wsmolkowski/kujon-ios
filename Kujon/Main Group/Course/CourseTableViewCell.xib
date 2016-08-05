@@ -15,28 +15,32 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ak-KO-UTZ">
-                        <rect key="frame" x="16" y="11.5" width="296" height="24"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="16" y="11" width="271" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow-right" translatesAutoresizingMaskIntoConstraints="NO" id="FG1-sL-oqY">
+                        <rect key="frame" x="295" y="15.5" width="9" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="9" id="pDe-qh-yl5"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="7ak-KO-UTZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="12x-cM-ABZ"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="7ak-KO-UTZ" secondAttribute="trailing" id="3fh-xo-eWN"/>
-                    <constraint firstItem="7ak-KO-UTZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="5LE-W4-5AU"/>
                     <constraint firstAttribute="bottomMargin" secondItem="7ak-KO-UTZ" secondAttribute="bottom" id="ADD-70-pgk"/>
-                    <constraint firstItem="7ak-KO-UTZ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Dgf-jP-ukt"/>
-                    <constraint firstItem="7ak-KO-UTZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jgF-Pi-B8D"/>
+                    <constraint firstItem="FG1-sL-oqY" firstAttribute="top" secondItem="7ak-KO-UTZ" secondAttribute="top" id="Pt3-ka-RCd"/>
+                    <constraint firstItem="FG1-sL-oqY" firstAttribute="leading" secondItem="7ak-KO-UTZ" secondAttribute="trailing" constant="8" id="Tvz-cH-W0I"/>
+                    <constraint firstItem="FG1-sL-oqY" firstAttribute="centerY" secondItem="7ak-KO-UTZ" secondAttribute="centerY" id="igf-yI-lgc"/>
+                    <constraint firstItem="FG1-sL-oqY" firstAttribute="bottom" secondItem="7ak-KO-UTZ" secondAttribute="bottom" id="kar-Qg-ek1"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="FG1-sL-oqY" secondAttribute="trailing" constant="8" id="mI4-C1-2Hl"/>
                     <constraint firstItem="7ak-KO-UTZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3.5" id="p0R-p5-T3W"/>
                     <constraint firstItem="7ak-KO-UTZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="wxX-CO-7nG"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
-                        <exclude reference="12x-cM-ABZ"/>
-                        <exclude reference="5LE-W4-5AU"/>
-                        <exclude reference="Dgf-jP-ukt"/>
-                        <exclude reference="jgF-Pi-B8D"/>
+                        <exclude reference="Pt3-ka-RCd"/>
+                        <exclude reference="kar-Qg-ek1"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
@@ -45,4 +49,7 @@
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="arrow-right" width="9" height="15"/>
+    </resources>
 </document>
