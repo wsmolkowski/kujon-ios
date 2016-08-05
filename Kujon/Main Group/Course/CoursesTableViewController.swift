@@ -93,7 +93,7 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
     }
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return self.createLabelForSectionTitle(self.courseWrappers[section].title)
+        return self.createLabelForSectionTitle(self.courseWrappers[section].title,middle: true)
     }
 
 

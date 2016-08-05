@@ -33,14 +33,19 @@ extension UIViewController {
 }
 extension UITableViewController {
     
-    func createLabelForSectionTitle(text: String) -> UIView {
+    func createLabelForSectionTitle(text: String,middle:Bool = false) -> UIView {
         let view = UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, 56))
         view.backgroundColor = UIColor.whiteColor()
         let label = UILabel(frame: CGRectMake(8, 0, self.tableView.frame.size.width - 8, 48))
         label.font = label.font.fontWithSize(14)
         label.text = text
+        if(middle){
+            label.textAlignment = .Center
+        }
         label.textColor = UIColor.blackWithAlpha()
         view.addSubview(label)
         return view
     }
+
+
 }
