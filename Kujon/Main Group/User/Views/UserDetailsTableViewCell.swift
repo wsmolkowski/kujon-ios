@@ -13,6 +13,7 @@ class UserDetailsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameSurnameLabel: UILabel!
     
+    @IBOutlet weak var bigUsosImage: UIImageView!
     @IBOutlet weak var accountNumberLabel: UILabel!
     @IBOutlet weak var indexNumberLabel: UILabel!
     @IBOutlet weak var schoolNameLabel: UILabel!

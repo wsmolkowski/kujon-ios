@@ -166,7 +166,7 @@ class UserTableViewController: UITableViewController
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch (indexPath.section) {
-        case 0: return 290
+        case 0: return 210
             break;
         case 1: return 48
             break;
@@ -205,7 +205,7 @@ class UserTableViewController: UITableViewController
         let cell = tableView.dequeueReusableCellWithIdentifier(usedDetailCellId, forIndexPath: indexPath) as! UserDetailsTableViewCell
         cell.nameSurnameLabel.text = userDetails.firstName + " " + userDetails.lastName
         cell.studentStatusLabel.text = userDetails.studentStatus
-        cell.schoolNameLabel.text = userDetails.usosName
+//        cell.schoolNameLabel.text = userDetails.usosName
         cell.indexNumberLabel.text = userDetails.studentNumber
         cell.accountNumberLabel.text = userDetails.id
         cell.userImageView.makeMyselfCircle()
@@ -307,7 +307,9 @@ class UserTableViewController: UITableViewController
                 dispatch_async(dispatch_get_main_queue()) {
                     if var cell = self.tableView.cellForRowAtIndexPath(indexPath) {
                         (cell as! UserDetailsTableViewCell).schoolImageVirw.contentMode = UIViewContentMode.ScaleAspectFit;
+                        (cell as! UserDetailsTableViewCell).schoolImageVirw.makeMyselfCircle()
                         (cell as! UserDetailsTableViewCell).schoolImageVirw?.image = image
+                        (cell as! UserDetailsTableViewCell).bigUsosImage?.image = image
 
 
                     }
