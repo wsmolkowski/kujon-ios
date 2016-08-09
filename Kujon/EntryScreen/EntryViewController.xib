@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
@@ -21,18 +21,8 @@
                         <navigationItem title="Kujon" id="G6D-Ea-sdB" customClass="EntryVIE"/>
                     </items>
                 </navigationBar>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CZ2-Eu-BAD" userLabel="FBLogin Button" customClass="FBSDKLoginButton">
-                    <rect key="frame" x="180" y="305" width="240" height="36"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="36" id="2A4-6r-jEa"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="K9D-fS-Hnq"/>
-                        <constraint firstAttribute="width" constant="240" id="aas-Sc-3Zz"/>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="lm0-Bt-1fI"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="49K-dA-dFD" userLabel="Google Sign In Button" customClass="GIDSignInButton">
-                    <rect key="frame" x="180" y="382" width="240" height="46"/>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="49K-dA-dFD" userLabel="Google Sign In Button" customClass="GIDSignInButton">
+                    <rect key="frame" x="180" y="382" width="240" height="40"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="240" id="HbW-nM-cHy"/>
@@ -56,6 +46,16 @@
                         <constraint firstAttribute="height" constant="240" id="NNM-BR-att"/>
                     </constraints>
                 </imageView>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CZ2-Eu-BAD" userLabel="FBLogin Button" customClass="FBSDKLoginButton">
+                    <rect key="frame" x="180" y="338" width="240" height="36"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="2A4-6r-jEa"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="K9D-fS-Hnq"/>
+                        <constraint firstAttribute="width" constant="240" id="aas-Sc-3Zz"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="lm0-Bt-1fI"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
