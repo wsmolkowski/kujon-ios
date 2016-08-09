@@ -14,6 +14,7 @@ target 'Kujon' do
   pod "CalendarLib"
   pod 'Google/SignIn'
   pod 'OneSignal'
+  pod "LatoFont"
   # Pods for Kujon
 
   target 'KujonTests' do
