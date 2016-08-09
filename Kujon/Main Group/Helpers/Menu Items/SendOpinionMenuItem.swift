@@ -12,7 +12,7 @@ class SendOpinionMenuItem:MenuItemWithURL {
     }
 
     func returnImage() -> UIImage! {
-        return UIImage(named: "")
+        return UIImage(named: "opinion-icon")
     }
 
     func returnViewControllerFunction()->() -> UIViewController! {

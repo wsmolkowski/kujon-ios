@@ -183,6 +183,8 @@
 		523B4FDA1D2BCAD6005FA79F /* UserDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 523B4FD91D2BCAD6005FA79F /* UserDetailsTableViewCell.xib */; };
 		523B4FDD1D2BD090005FA79F /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B4FDB1D2BD090005FA79F /* TextViewController.swift */; };
 		523B4FDE1D2BD090005FA79F /* TextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 523B4FDC1D2BD090005FA79F /* TextViewController.xib */; };
+		52574A6D1D59DA9F009B8D08 /* NavDrawerHeaderViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52574A6B1D59DA9F009B8D08 /* NavDrawerHeaderViewCellTableViewCell.swift */; };
+		52574A6E1D59DA9F009B8D08 /* NavDrawerHeaderViewCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52574A6C1D59DA9F009B8D08 /* NavDrawerHeaderViewCellTableViewCell.xib */; };
 		5257C3311D267D670068FA56 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257C32F1D267D670068FA56 /* ImageViewController.swift */; };
 		5257C3321D267D670068FA56 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5257C3301D267D670068FA56 /* ImageViewController.xib */; };
 		52590A7E1D1D1F0C00C285A0 /* GradesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52590A7C1D1D1F0C00C285A0 /* GradesTableViewController.swift */; };
@@ -436,6 +438,8 @@
 		523B4FD91D2BCAD6005FA79F /* UserDetailsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		523B4FDB1D2BD090005FA79F /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		523B4FDC1D2BD090005FA79F /* TextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewController.xib; sourceTree = "<group>"; };
+		52574A6B1D59DA9F009B8D08 /* NavDrawerHeaderViewCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavDrawerHeaderViewCellTableViewCell.swift; sourceTree = "<group>"; };
+		52574A6C1D59DA9F009B8D08 /* NavDrawerHeaderViewCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavDrawerHeaderViewCellTableViewCell.xib; sourceTree = "<group>"; };
 		5257C32F1D267D670068FA56 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		5257C3301D267D670068FA56 /* ImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
 		52590A7C1D1D1F0C00C285A0 /* GradesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradesTableViewController.swift; sourceTree = "<group>"; };
@@ -1056,6 +1060,8 @@
 				4C0D83646FE2279154916A1A /* GoFurtherViewCellTableViewCell.swift */,
 				52382ECD1D3510E000EBEA57 /* TermView.swift */,
 				52382ECF1D3510ED00EBEA57 /* TermView.xib */,
+				52574A6B1D59DA9F009B8D08 /* NavDrawerHeaderViewCellTableViewCell.swift */,
+				52574A6C1D59DA9F009B8D08 /* NavDrawerHeaderViewCellTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1348,6 +1354,7 @@
 				4C0D87058EAE5B71945F1AD8 /* Lecturers.json in Resources */,
 				5295135B1D17C76E009D6FF2 /* ScheduleTableViewController.xib in Resources */,
 				529C000E1D37CE0A004E1DF1 /* TermsPopUpViewController.xib in Resources */,
+				52574A6E1D59DA9F009B8D08 /* NavDrawerHeaderViewCellTableViewCell.xib in Resources */,
 				52AF77D01D0AD5C50058979A /* SettingsViewController.xib in Resources */,
 				5267503E1D21391F004AD243 /* CourseTableViewCell.xib in Resources */,
 				52382ED61D3516D800EBEA57 /* TermsTableViewCell.xib in Resources */,
@@ -1830,6 +1837,7 @@
 				4C0D8BDDC17EAD30A73324A2 /* FacultiesProvider.swift in Sources */,
 				4C0D81849DAA7ACD6F8A1D47 /* JsonDataLoader.swift in Sources */,
 				4C0D8436123E61F0F64C9F9C /* UserDataHolder.swift in Sources */,
+				52574A6D1D59DA9F009B8D08 /* NavDrawerHeaderViewCellTableViewCell.swift in Sources */,
 				527B39BF1D12A08D0028BCF9 /* TeacherDetailsTableViewCell.swift in Sources */,
 				4C0D80C1B6E19F2B0AA40F67 /* UserDefaultsManager.swift in Sources */,
 				52FF97281D23B7D500565763 /* CourseDetailsTableViewController.swift in Sources */,

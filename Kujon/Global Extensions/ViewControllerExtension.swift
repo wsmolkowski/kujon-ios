@@ -37,7 +37,7 @@ extension UITableViewController {
         let view = UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, 51))
         view.backgroundColor = UIColor.greyBackgroundColor()
         let label = UILabel(frame: CGRectMake(11, 0, self.tableView.frame.size.width - 11, 48))
-        let font = UIFont(name: "Lato-Regular", size: 15)
+        let font = UIFont.kjnTextStyle2Font()
         label.font = font
         label.text = text
         if(middle){

@@ -27,6 +27,7 @@ class UserTableViewController: UITableViewController
     let termsProvider: TermsProvider! = ProvidersProviderImpl.sharedInstance.provideTermsProvider()
     let programmeProvider: ProgrammeProvider! = ProvidersProviderImpl.sharedInstance.provideProgrammeProvider()
     let restImageProvider = RestImageProvider.sharedInstance
+    private let userDataHolder = UserDataHolder.sharedInstance
 
     var userDetails: UserDetail! = nil
     var userFaculties: Array<Facultie>! = nil
@@ -39,6 +40,7 @@ class UserTableViewController: UITableViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.kujonBlueColor()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(UserTableViewController.openDrawer), andTitle: StringHolder.appName)
         userDetailsProvider.delegate = self
         facultieProvider.delegate = self
@@ -81,6 +83,7 @@ class UserTableViewController: UITableViewController
         self.userDetails = userDetails;
         self.programmes = userDetails.studentProgrammes
         self.tableView.reloadData()
+        self.userDataHolder.userName  = userDetails.firstName + " " + userDetails.lastName
         refreshControl?.endRefreshing()
     }
 
@@ -242,6 +245,7 @@ class UserTableViewController: UITableViewController
     func imageLoaded(tag: String, image: UIImage) {
         let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! UserDetailsTableViewCell
         cell.userImageView.image = image
+        self.userDataHolder.userImage  = image
         isThereImage = true
     }
 

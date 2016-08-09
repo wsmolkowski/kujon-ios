@@ -13,7 +13,7 @@ class ShareMenuItem : MenuItemWithController {
     }
 
     func returnImage() -> UIImage! {
-        return UIImage(named: "")
+        return UIImage(named: "share-icon")
     }
 
     func returnViewControllerFunction()->() -> UIViewController! {

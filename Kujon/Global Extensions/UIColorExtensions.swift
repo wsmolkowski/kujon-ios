@@ -13,4 +13,38 @@ extension UIColor{
     static func blackWithAlpha ()->UIColor{ return UIColor(colorLiteralRed: 0,green: 0,blue: 0,alpha: 0.34)}
     static func greyBackgroundColor ()->UIColor{ return UIColor(colorLiteralRed: 239/255,green: 242/255,blue: 248/255,alpha: 1)}
     static func lightGray ()->UIColor{ return UIColor(colorLiteralRed: 216/255,green: 216/255,blue: 216/255,alpha: 1)}
+    static func kjnTealBlueColor() -> UIColor {
+        return UIColor(red: 0.0 / 255.0, green: 128.0 / 255.0, blue: 179.0 / 255.0, alpha: 1.0)
+    }
+}
+
+// Color palette
+
+
+// Text styles
+
+extension UIFont {
+    class func kjnNavigationTitleFont() -> UIFont? {
+        return UIFont(name: "Texta-Medium", size: 18.0)
+    }
+
+    class func kjnTextStyle4Font() -> UIFont? {
+        return UIFont(name: "Lato-Semibold", size: 17.0)
+    }
+
+    class func kjnTextStyle3Font() -> UIFont? {
+        return UIFont(name: "Lato-Regular", size: 17.0)
+    }
+
+    class func kjnTextStyle5Font() -> UIFont? {
+        return UIFont(name: "Lato-Semibold", size: 15.0)
+    }
+
+    class func kjnTextStyle2Font() -> UIFont? {
+        return UIFont(name: "Lato-Regular", size: 15.0)
+    }
+
+    class func kjnTextStyleFont() -> UIFont? {
+        return UIFont(name: "Lato-Regular", size: 11.0)
+    }
 }

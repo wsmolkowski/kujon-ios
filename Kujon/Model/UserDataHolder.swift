@@ -16,6 +16,7 @@ class UserDataHolder {
     private  let LOGIN_TYPE_KEY = "login_type_key"
     
     private var loadedEmail: String! = nil
+
     private var loadedToken: String! = nil
     private var usosImage: String! = nil
     private var loginType: String! = nil
@@ -76,6 +77,8 @@ class UserDataHolder {
         }
     }
 
+    var userImage:UIImage! = nil
+    var userName: String!  = nil
 
     private func standardGetter(inout value: String!, key: String) -> String! {
         if (value == nil) {
