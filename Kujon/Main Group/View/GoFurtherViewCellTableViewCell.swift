@@ -16,6 +16,8 @@ class GoFurtherViewCellTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+//        self.layer.addBorder(UIRectEdge.Bottom,color:UIColor.lightGray(),thickness: 0.25)
+        self.layer.addBorder(UIRectEdge.Top,color:UIColor.lightGray(),thickness: 01)
         // Initialization code
     }
 
