@@ -4,6 +4,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -22,8 +27,8 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4m-aQ-jLN">
-                        <rect key="frame" x="34" y="11" width="278" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="42" y="13" width="270" height="18"/>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -35,7 +40,7 @@
                     <constraint firstItem="Xyh-Bu-p5R" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="foR-Dw-d8P"/>
                     <constraint firstItem="f4m-aQ-jLN" firstAttribute="centerY" secondItem="Xyh-Bu-p5R" secondAttribute="centerY" id="gIa-tg-jmc"/>
                     <constraint firstItem="Xyh-Bu-p5R" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="r4C-wY-V7I"/>
-                    <constraint firstItem="f4m-aQ-jLN" firstAttribute="leading" secondItem="Xyh-Bu-p5R" secondAttribute="trailing" constant="8" symbolic="YES" id="uzh-bx-kZX"/>
+                    <constraint firstItem="f4m-aQ-jLN" firstAttribute="leading" secondItem="Xyh-Bu-p5R" secondAttribute="trailing" constant="16" id="uzh-bx-kZX"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">

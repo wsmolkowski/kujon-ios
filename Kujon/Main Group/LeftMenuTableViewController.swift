@@ -71,6 +71,7 @@ class LeftMenuTableViewController: UITableViewController {
             var menuItem = self.getCurrentMenuItem(indexPath)
             cell.myImage?.image = menuItem.returnImage()
             cell.myText.text = menuItem.returnTitle()
+            cell.myText.font = UIFont.kjnTextStyle5Font()
             return cell
         }
 

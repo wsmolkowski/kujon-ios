@@ -15,7 +15,7 @@ class PopUpViewController: UIViewController {
         super.viewDidLoad()
         myPopUpView = setMyPopUpView();
         self.view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
-        self.myPopUpView.layer.cornerRadius = 5
+        self.myPopUpView.layer.cornerRadius = 12
         self.myPopUpView.layer.shadowOpacity = 0.8
         self.myPopUpView.layer.shadowOffset = CGSizeMake(0.0, 0.0)
         let tap = UITapGestureRecognizer(target: self, action: #selector(PopUpViewController.handleTap))

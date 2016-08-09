@@ -26,6 +26,8 @@ class KierunkiViewController: PopUpViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
+
     }
 
     override func setMyPopUpView() -> UIView! {
@@ -54,6 +56,7 @@ class KierunkiViewController: PopUpViewController {
             trybeLabel.text = StringHolder.tryb + ": " + myProgramme.modeOfStudies!
             kierunekLabel.text = myProgramme.name!.characters.split{$0 == ","}.map(String.init)[0]
             self.view.userInteractionEnabled = true
+//            okButton.layer.addBorder(UIRectEdge.Top, color: UIColor.lightGray(), thickness: 1)
         }
 
 
