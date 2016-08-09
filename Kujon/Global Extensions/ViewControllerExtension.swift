@@ -5,7 +5,7 @@
 
 import Foundation
 import UIKit
-import LatoFont
+
 extension UIViewController {
 
     func showAlertApiError(repeatFunction: () -> Void, cancelFucnt: () -> Void) {
@@ -34,10 +34,10 @@ extension UIViewController {
 extension UITableViewController {
     
     func createLabelForSectionTitle(text: String,middle:Bool = false) -> UIView {
-        let view = UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, 56))
+        let view = UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, 51))
         view.backgroundColor = UIColor.greyBackgroundColor()
         let label = UILabel(frame: CGRectMake(8, 0, self.tableView.frame.size.width - 8, 48))
-        let font = UIFont.lato(15)
+        let font = UIFont(name: "Lato-Regular", size: 15)
         label.font = font
         label.text = text
         if(middle){

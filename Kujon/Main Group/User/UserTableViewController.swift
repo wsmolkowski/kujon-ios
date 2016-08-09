@@ -168,10 +168,10 @@ class UserTableViewController: UITableViewController
         switch (indexPath.section) {
         case 0: return 210
             break;
-        case 1: return 48
+        case 1: return 51
             break;
-        case 2: return 48;
-        default: return 48
+        case 2: return 51;
+        default: return 51
         }
     }
 
@@ -180,10 +180,10 @@ class UserTableViewController: UITableViewController
         switch (section) {
         case 0: return 0
             break;
-        case 1: return 56
+        case 1: return 51
             break;
-        case 2: return 56;
-        case 3: return 56;
+        case 2: return 51;
+        case 3: return 51;
         default: return 0
         }
     }
