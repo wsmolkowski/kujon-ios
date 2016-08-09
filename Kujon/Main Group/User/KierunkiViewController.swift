@@ -56,7 +56,7 @@ class KierunkiViewController: PopUpViewController {
             trybeLabel.text = StringHolder.tryb + ": " + myProgramme.modeOfStudies!
             kierunekLabel.text = myProgramme.name!.characters.split{$0 == ","}.map(String.init)[0]
             self.view.userInteractionEnabled = true
-//            okButton.layer.addBorder(UIRectEdge.Top, color: UIColor.lightGray(), thickness: 1)
+            okButton.addTopBorder( UIColor.lightGray(), width: 1)
         }
 
 
