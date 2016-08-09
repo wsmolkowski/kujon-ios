@@ -2,16 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Icon-72.png",
+      "filename" : "uzytkownik-icon.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Icon-72@2x.png",
+      "filename" : "uzytkownik-icon@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "uzytkownik-icon@3x.png",
       "scale" : "3x"
     }
   ],

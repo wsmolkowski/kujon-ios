@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "photoPlaceholder60.png",
+      "filename" : "udostepnij-icon.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "photoPlaceholder60@2x.png",
+      "filename" : "udostepnij-icon@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "photoPlaceholder60@3x.png",
+      "filename" : "udostepnij-icon@3x.png",
       "scale" : "3x"
     }
   ],
