@@ -123,6 +123,7 @@
 		4C0D89623E9B561730C53F9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D839EDCC8F1A06ECE450B /* Main.storyboard */; };
 		4C0D8996D0987D3F6C88F611 /* GradesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8FBDE18C4279900F73A1 /* GradesProvider.swift */; };
 		4C0D89A149A07C2183D5E1B4 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8C220D5FABC7BDB1FE59 /* Course.swift */; };
+		4C0D89CAC447E567DA0D2EB3 /* ConfigProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8F4BDCF50FFB9A643A93 /* ConfigProvider.swift */; };
 		4C0D89E00B265048AE0AE93E /* LectureCellHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8EA3D990E00128CD5688 /* LectureCellHandler.swift */; };
 		4C0D89F29E7400D6E2ABD251 /* CoordinatorsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D856C38BE314D9CC0B20B /* CoordinatorsSection.swift */; };
 		4C0D8A10A84678CB89CBE6CA /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D84C99FCD82E7DB9F8F89 /* Lato-Regular.ttf */; };
@@ -142,6 +143,7 @@
 		4C0D8BCEA9F6DF85809A280A /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D87B65211FF5F8990C420 /* PopUpViewController.swift */; };
 		4C0D8BD54E52DB2C8D674422 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8E619AE4BB2F7B24C207 /* NSDateExtension.swift */; };
 		4C0D8BDDC17EAD30A73324A2 /* FacultiesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D850ABF2610D2E70286E2 /* FacultiesProvider.swift */; };
+		4C0D8C2760C9F3EC7CC1E8AD /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8A574E4B52995D53647A /* SpinnerView.swift */; };
 		4C0D8C544A21E6571C7428DE /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8483795CD8277CB4C113 /* EntryViewController.swift */; };
 		4C0D8C6232B539463B9C44FF /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D836250046CEA7DB038DB /* Lato-Italic.ttf */; };
 		4C0D8C706A100083B12A9B41 /* StandartSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8340744B7869FEC512C0 /* StandartSection.swift */; };
@@ -164,6 +166,7 @@
 		4C0D8E02015B88F38F0F59F4 /* FacultieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8FD2A35FC381A99E4C99 /* FacultieResponse.swift */; };
 		4C0D8E15F7108868A62344A9 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D83CB28E75B4CB3DE7FE9 /* NSDateExtensions.swift */; };
 		4C0D8E35546E06FE6E50627E /* Usos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D800DE50A86489C4C7E74 /* Usos.swift */; };
+		4C0D8E79EF248F656D747BE4 /* ConfigResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D85C3C43334F528850DDD /* ConfigResponse.swift */; };
 		4C0D8E7C2F8E9C4975AA3606 /* Lato-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8885E2586C07FE1D9A79 /* Lato-HeavyItalic.ttf */; };
 		4C0D8E84B66279CE377A8D78 /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8BDD61A989037FA8DB35 /* Lecture.swift */; };
 		4C0D8E8FDA4A6ABE3B6829A8 /* NSlogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8D8D2ED0C70726C86E66 /* NSlogManager.swift */; };
@@ -335,6 +338,7 @@
 		4C0D8528C393CB23A978EB8A /* FacultiesDetail.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FacultiesDetail.json; sourceTree = "<group>"; };
 		4C0D856C38BE314D9CC0B20B /* CoordinatorsSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorsSection.swift; sourceTree = "<group>"; };
 		4C0D85C01CA62A3C89F09CDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4C0D85C3C43334F528850DDD /* ConfigResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigResponse.swift; sourceTree = "<group>"; };
 		4C0D8625E8E36B19AFACD20C /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		4C0D86280FB812D16C7BBB30 /* FacultieSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacultieSection.swift; sourceTree = "<group>"; };
 		4C0D8652FF3FDA7161FFDB41 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
@@ -372,6 +376,7 @@
 		4C0D8A0FEDB8EB76142CE7BB /* KujonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KujonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C0D8A1264E6F356A458FE10 /* TermsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsTableViewController.swift; sourceTree = "<group>"; };
 		4C0D8A53D4F9C21CACEEE68A /* StudentProgramme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentProgramme.swift; sourceTree = "<group>"; };
+		4C0D8A574E4B52995D53647A /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		4C0D8A598E59F244E56634B5 /* SendOpinionMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendOpinionMenuItem.swift; sourceTree = "<group>"; };
 		4C0D8A64FF1DBA82355146B3 /* Programme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Programme.swift; sourceTree = "<group>"; };
 		4C0D8A7B09C45724433D49FA /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
@@ -423,6 +428,7 @@
 		4C0D8EC533BB73C186B4A0D1 /* LectureResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureResponse.swift; sourceTree = "<group>"; };
 		4C0D8EF68BB88E10C3A4AE1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		4C0D8F0FD29DE7CF921001CE /* Schedule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Schedule.json; sourceTree = "<group>"; };
+		4C0D8F4BDCF50FFB9A643A93 /* ConfigProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigProvider.swift; sourceTree = "<group>"; };
 		4C0D8F95B3ED6EA776E231E0 /* TermGrades.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermGrades.swift; sourceTree = "<group>"; };
 		4C0D8F9AE7CC36FAB36E4F34 /* CycleSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleSection.swift; sourceTree = "<group>"; };
 		4C0D8F9DC59F7A73E78EC669 /* SchoolName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolName.swift; sourceTree = "<group>"; };
@@ -567,6 +573,7 @@
 				4C0D83287522A1AF1593A071 /* UserDefaultsManager.swift */,
 				4C0D88235B779A6ADA001B55 /* Course */,
 				4C0D800C832CA7D7CEF0D4AB /* ErrorClass.swift */,
+				4C0D85C3C43334F528850DDD /* ConfigResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -604,6 +611,7 @@
 				523B4FDB1D2BD090005FA79F /* TextViewController.swift */,
 				523B4FDC1D2BD090005FA79F /* TextViewController.xib */,
 				4C0D8ACEDEE9F84A27992B79 /* StringHolder.swift */,
+				4C0D8A574E4B52995D53647A /* SpinnerView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -852,6 +860,7 @@
 				4C0D80FB23448BE80803C02F /* TermsProvider.swift */,
 				4C0D80602A034144DDC1A379 /* ProgrammeProvider.swift */,
 				4C0D8AB86FEE1F727E2F67FE /* ProgrammeIdProvider.swift */,
+				4C0D8F4BDCF50FFB9A643A93 /* ConfigProvider.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -1915,6 +1924,9 @@
 				4C0D8F3F7FF39000760EEB08 /* ErrorClass.swift in Sources */,
 				4C0D831E6FE91FD824774043 /* UserLogin.swift in Sources */,
 				4C0D86610EB3A7F8698DCC56 /* CALayerExtensions.swift in Sources */,
+				4C0D8E79EF248F656D747BE4 /* ConfigResponse.swift in Sources */,
+				4C0D89CAC447E567DA0D2EB3 /* ConfigProvider.swift in Sources */,
+				4C0D8C2760C9F3EC7CC1E8AD /* SpinnerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

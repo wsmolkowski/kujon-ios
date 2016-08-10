@@ -27,6 +27,20 @@ class RestApiManager {
         }
     }
 
+    func makeHTTPAuthenticatedPostRequest(onCompletion: onSucces, onError: onErrorOccurs) {
+        if (test) {
+            self.handelTestCase(onCompletion)
+        } else {
+            var request = NSMutableURLRequest(URL: NSURL(string: getMyUrl())!)
+            let session = SessionManager.provideSession()
+            request.HTTPMethod = "POST"
+            self.headerManager.addHeadersToRequest(&request)
+            let task = session.dataTaskWithRequest(request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
+            task.resume()
+
+        }
+    }
+
     func makeHTTPAuthenticatedGetRequest(onCompletion: onSucces, onError: onErrorOccurs) {
         if (test) {
             self.handelTestCase(onCompletion)

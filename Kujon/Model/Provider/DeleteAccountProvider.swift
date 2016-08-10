@@ -8,17 +8,22 @@ import Foundation
 protocol DeleteAccountProviderProtocol {
     func deleteAccount()
 }
+
 protocol DeleteAccountProviderDelegate: ErrorResponseProtocol {
 
     func accountDeleted()
 
 }
-class DeleteAccountProvider:RestApiManager,DeleteAccountProviderProtocol {
-    var delegate :DeleteAccountProviderDelegate! = nil
+
+class DeleteAccountProvider: RestApiManager, DeleteAccountProviderProtocol {
+    var delegate: DeleteAccountProviderDelegate! = nil
     func deleteAccount() {
-        self.makeHTTPAuthenticatedGetRequest({data in
-        self.delegate?.accountDeleted()
-        },onError: {text in
+        self.makeHTTPAuthenticatedPostRequest({
+            data in
+            self.delegate?.accountDeleted()
+            SessionManager.clearCache()
+        }, onError: {
+            text in
             self.delegate.onErrorOccurs()
         })
     }

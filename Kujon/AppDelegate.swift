@@ -13,7 +13,7 @@ import Fabric
 import Crashlytics
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     var window: UIWindow?
@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GGLContext.sharedInstance().configureWithError(&configureError)
         assert(configureError == nil, "Error configuring Google services: \(configureError)")
 
-        GIDSignIn.sharedInstance().delegate = self
+
         GIDSignIn.sharedInstance().signInSilently()
 
         openControllerDependingOnLoginState()
@@ -93,52 +93,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
 
 
-    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
-                withError error: NSError!) {
-        if (error == nil) {
-            let googleManager = GoogleManager.sharedInstance
-            googleManager.loadGoogleParams()
-//            let userId = user.userID                  // For client-side use only!
-//            let idToken = user.authentication.idToken // Safe to send to the server
-//            let accessToken = user.authentication.accessToken
-//            let fullName = user.profile.name
-//            let givenName = user.profile.givenName
-//            let familyName = user.profile.familyName
-//            let email = user.profile.email
-            openSignedInController()
-        } else {
-            print("\(error.localizedDescription)")
-        }
-    }
 
     func openControllerDependingOnLoginState() {
         var controller:UIViewController! = nil
         //TODO extract controller choosing logic
-        if (!GoogleManager.sharedInstance.isLoggedIn() ) {
+
             controller = EntryViewController()
-        } else {
-            if(userDataHolder.loggedToUsosForCurrentEmail){
-                controller = ContainerViewController()
-            }else{
-                controller =  UsosHolderController()
-            }
-        }
+
 
         window!.rootViewController = controller
         window!.makeKeyAndVisible()
     }
 
-    func openSignedInController() {
-        var controller:UIViewController! = nil
-        if(userDataHolder.loggedToUsosForCurrentEmail){
-            controller = ContainerViewController()
-        }else{
-            controller =  UsosHolderController()
-        }
-        
-        window!.rootViewController = controller
-        window!.makeKeyAndVisible()
-    }
+
     func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
                 withError error: NSError!) {
         // Perform any operations when the user disconnects from app here.

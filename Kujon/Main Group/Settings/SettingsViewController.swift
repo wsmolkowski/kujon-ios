@@ -45,7 +45,7 @@ class SettingsViewController: UIViewController,
     }
 
     @IBAction func googleLogOutAction(sender: AnyObject) {
-        GIDSignIn.sharedInstance().signOut()
+        loginMenager.logout()
         goBackToEntryScreen();
 
     }

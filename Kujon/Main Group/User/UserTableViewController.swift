@@ -308,26 +308,29 @@ class UserTableViewController: UITableViewController
         }
     }
 
-    private func loadImageFromUrl(urlString: String, indexPath: NSIndexPath) {
-        let url = NSURL(string: urlString)
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithURL(url!, completionHandler: {
-            data, response, error -> Void in
-            if (data != nil) {
-                let image = UIImage(data: data!)
-                dispatch_async(dispatch_get_main_queue()) {
-                    if var cell = self.tableView.cellForRowAtIndexPath(indexPath) {
-                        (cell as! UserDetailsTableViewCell).schoolImageVirw.contentMode = UIViewContentMode.ScaleAspectFit;
-                        (cell as! UserDetailsTableViewCell).schoolImageVirw.makeMyselfCircle()
-                        (cell as! UserDetailsTableViewCell).schoolImageVirw?.image = image
-                        (cell as! UserDetailsTableViewCell).bigUsosImage?.image = image
+    private func loadImageFromUrl(urlString: String!, indexPath: NSIndexPath) {
+        if(urlString != nil){
+            let url = NSURL(string: urlString)
+            let session = NSURLSession.sharedSession()
+            let task = session.dataTaskWithURL(url!, completionHandler: {
+                data, response, error -> Void in
+                if (data != nil) {
+                    let image = UIImage(data: data!)
+                    dispatch_async(dispatch_get_main_queue()) {
+                        if var cell = self.tableView.cellForRowAtIndexPath(indexPath) {
+                            (cell as! UserDetailsTableViewCell).schoolImageVirw.contentMode = UIViewContentMode.ScaleAspectFit;
+                            (cell as! UserDetailsTableViewCell).schoolImageVirw.makeMyselfCircle()
+                            (cell as! UserDetailsTableViewCell).schoolImageVirw?.image = image
+                            (cell as! UserDetailsTableViewCell).bigUsosImage?.image = image
 
+
+                        }
 
                     }
-
                 }
-            }
-        })
-        task.resume()
+            })
+            task.resume()
+        }
+
     }
 }

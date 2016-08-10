@@ -9,13 +9,13 @@
 import Foundation
 import FBSDKCoreKit
 
-class GoogleManager: UserLogin  {
+class GoogleManager: UserLogin {
     let userDataHolder = UserDataHolder.sharedInstance
 
     static let sharedInstance = GoogleManager()
 
 
-    func loadGoogleParams() {
+    func loadGoogleParams(listener: OnFacebookCredentailSaved) {
 
         if (GIDSignIn.sharedInstance().currentUser != nil) {
             let accessToken = GIDSignIn.sharedInstance().currentUser.authentication.idToken
@@ -23,22 +23,24 @@ class GoogleManager: UserLogin  {
             self.userDataHolder.userToken = accessToken
             self.userDataHolder.userEmail = email
             self.userDataHolder.userLoginType = StringHolder.googleType
+
+            self.userDataHolder.userEmail = email
+            listener.onFacebookCredentailSaved(self.userDataHolder.loggedToUsosForCurrentEmail)
         }
 
     }
 
-    func isLoggedIn() -> Bool
-    {
+    func isLoggedIn() -> Bool {
         var loggedToFB = false;
         var loggedToGoogle = false;
 
-        if(FBSDKAccessToken.currentAccessToken() != nil) {
+        if (FBSDKAccessToken.currentAccessToken() != nil) {
             loggedToFB = true;
         }
 
         if (GIDSignIn.sharedInstance().currentUser != nil) {
             let accessToken = GIDSignIn.sharedInstance().currentUser.authentication.accessToken
-            if(accessToken != nil) {
+            if (accessToken != nil) {
                 loggedToGoogle = true;
             }
         }
@@ -46,8 +48,10 @@ class GoogleManager: UserLogin  {
     }
 
 
-     func logout(){
-         SessionManager.clearCache()
+    func logout() {
+        GIDSignIn.sharedInstance().signOut()
+        GIDSignIn.sharedInstance().disconnect()
+        SessionManager.clearCache()
         userDataHolder.userEmail = nil
         userDataHolder.userToken = nil
     }

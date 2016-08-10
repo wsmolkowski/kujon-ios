@@ -65,4 +65,5 @@ class StringHolder {
     static let googleType = "GOOGLE"
     static let fbType = "FB"
     static let back  = "Powrót"
+    static let errorUsos  = "Nie możemy się połączyć z USOS."
 }

@@ -44,6 +44,7 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
 
     }
 
+
     func barTapped(){
         self.showDemoUniversity = true
         ToastView.showInParent(self.navigationController?.view,withText: StringHolder.addedDemo, forDuration: 2.0)
@@ -128,6 +129,10 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
     func onErrorOccurs(text: String) {
 
         self.refreshControl?.endRefreshing()
+        self.showAlertApi(StringHolder.attention, text: text, succes: {
+            self.usosProvider.loadUsoses()
+        }, cancel: {})
+
     }
 
 

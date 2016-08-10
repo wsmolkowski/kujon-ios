@@ -34,7 +34,7 @@ extension UIViewController {
 extension UITableViewController {
     
     func createLabelForSectionTitle(text: String,middle:Bool = false) -> UIView {
-        let view = UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, 51))
+        let view = UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, 48))
         view.backgroundColor = UIColor.greyBackgroundColor()
         let label = UILabel(frame: CGRectMake(11, 0, self.tableView.frame.size.width - 11, 48))
         let font = UIFont.kjnTextStyle2Font()
