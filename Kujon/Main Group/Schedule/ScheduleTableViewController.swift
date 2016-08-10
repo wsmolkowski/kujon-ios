@@ -61,6 +61,8 @@ class ScheduleTableViewController:
         let xPos = self.view.frame.size.width - floatingSize - floatingMargin
         let yPos = self.view.frame.origin.y + self.view.frame.size.height - floatingSize - floatingMargin
         floatingButton?.frame = CGRectMake(xPos, yPos, floatingSize, floatingSize)
+        floatingButton?.titleLabel?.numberOfLines = 2
+        floatingButton?.titleLabel?.textAlignment = .Center
         floatingButton?.setTitle(NSDate().getDayMonth(), forState: .Normal)
         floatingButton?.addTarget(self, action: #selector(ScheduleTableViewController.onTodayClick), forControlEvents: UIControlEvents.TouchUpInside)
         floatingButton?.titleLabel?.font = UIFont.kjnTextStyleFont()
