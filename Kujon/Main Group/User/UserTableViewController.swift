@@ -46,6 +46,13 @@ class UserTableViewController: UITableViewController
         facultieProvider.delegate = self
         termsProvider.delegate = self
         programmeProvider.delegate = self;
+        if let navigationController = self.navigationController {
+            let navigationBar = navigationController.navigationBar
+            let navigationSeparator = UIView(frame: CGRectMake(0, navigationBar.frame.size.height - 1, navigationBar.frame.size.width, 2))
+            navigationSeparator.backgroundColor = UIColor.kujonBlueColor()// Here your custom color
+            navigationSeparator.opaque = true
+            self.navigationController?.navigationBar.addSubview(navigationSeparator)
+        }
 
         loadData()
         self.tableView.tableFooterView = UIView()
