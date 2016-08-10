@@ -66,13 +66,13 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
     }
 
     func onErrorOccurs(text: String) {
-        self.showAlertApiError({
+        self.showAlertApi(StringHolder.attention,text:text,succes:{
             if(self.course != nil ) {
                 self.courseDetailsProvider.loadCourseDetails(self.course)
             }else if( self.courseId != nil && self.termId != nil){
                 self.courseDetailsProvider.loadCourseDetails(self.courseId,andTermId: self.termId)
             }
-        },cancelFucnt: {
+        },cancel: {
             self.back()
         })
     }
