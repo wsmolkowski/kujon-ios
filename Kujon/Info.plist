@@ -23,7 +23,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb492289124303145</string>
+				<string>fb435328606663469</string>
 			</array>
 		</dict>
 		<dict>
@@ -31,7 +31,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.679931313599-fso8uce3gdgpkersujmrrr8l8737da7n</string>
+				<string>com.googleusercontent.apps.896765768628-heoeo0ibbto9tgrtgf7bro06d06c2me1</string>
 			</array>
 		</dict>
 		<dict>
@@ -60,11 +60,12 @@
 		</array>
 	</dict>
 	<key>FacebookAppID</key>
-	<string>492289124303145</string>
+	<string>435328606663469</string>
 	<key>FacebookDisplayName</key>
 	<string>Kujon Integration</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
+	<string>Kujon</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
