@@ -40,7 +40,7 @@ class UserTableViewController: UITableViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.kujonBlueColor()
+//        self.view.backgroundColor = UIColor.kujonBlueColor()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(UserTableViewController.openDrawer), andTitle: StringHolder.appName)
         userDetailsProvider.delegate = self
         facultieProvider.delegate = self
@@ -176,7 +176,7 @@ class UserTableViewController: UITableViewController
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch (indexPath.section) {
-        case 0: return 210
+        case 0: return 196
             break;
         case 1: return 51
             break;
