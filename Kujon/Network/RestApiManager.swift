@@ -15,6 +15,7 @@ class RestApiManager {
 
     var test = false
     let baseURL = BASE_URL
+    var refresh = false
 
     func makeHTTPGetRequest(onCompletion: onSucces, onError: onErrorOccurs) {
         if (test) {
@@ -25,6 +26,7 @@ class RestApiManager {
             let task = session.dataTaskWithRequest(request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
             task.resume()
         }
+        refresh = false
     }
 
     func makeHTTPAuthenticatedPostRequest(onCompletion: onSucces, onError: onErrorOccurs) {
@@ -34,11 +36,12 @@ class RestApiManager {
             var request = NSMutableURLRequest(URL: NSURL(string: getMyUrl())!)
             let session = SessionManager.provideSession()
             request.HTTPMethod = "POST"
-            self.headerManager.addHeadersToRequest(&request)
+            self.headerManager.addHeadersToRequest(&request,refresh:refresh)
             let task = session.dataTaskWithRequest(request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
             task.resume()
 
         }
+        refresh = false
     }
 
     func makeHTTPAuthenticatedGetRequest(onCompletion: onSucces, onError: onErrorOccurs) {
@@ -48,19 +51,21 @@ class RestApiManager {
             if (headerManager.isAuthenticated()) {
                 var request = NSMutableURLRequest(URL: NSURL(string: getMyUrl())!)
                 let session = SessionManager.provideSession()
-                self.headerManager.addHeadersToRequest(&request)
+                self.headerManager.addHeadersToRequest(&request,refresh:refresh)
                 let task = session.dataTaskWithRequest(request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
                 task.resume()
             } else {
                 onError(text:StringHolder.not_auth)
             }
         }
+        refresh = false
     }
 
     func reload(){
         var request = NSMutableURLRequest(URL: NSURL(string: getMyUrl())!)
         self.headerManager.addHeadersToRequest(&request)
         SessionManager.clearCacheForRequest(request)
+        refresh = true
     }
 
 
