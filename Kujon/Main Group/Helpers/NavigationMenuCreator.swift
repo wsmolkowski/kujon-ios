@@ -18,8 +18,15 @@ class NavigationMenuCreator {
     }
 
     static func createNavMenuWithBackButton(controller:UIViewController,selector:Selector,andTitle title:String = ""){
-        let closeButton =  UIBarButtonItem(image:UIImage(named: "arrow-left"),style: UIBarButtonItemStyle.Plain,target: controller,
-                action: selector)
+        let image = UIImage(named: "arrow-left-white")
+        var button = UIButton(type: .Custom)
+        button.setImage(image, forState: .Normal)
+        button.setTitle(StringHolder.back, forState: .Normal)
+        let font = UIFont.kjnTextStyle2Font()
+        button.titleLabel?.font = font
+        button.addTarget(controller, action: selector, forControlEvents: UIControlEvents.TouchUpInside)
+        button.sizeToFit()
+        let closeButton =  UIBarButtonItem(customView: button)
         closeButton.action = selector
         controller.navigationItem.leftBarButtonItem = closeButton
         controller.navigationItem.title = title

@@ -64,4 +64,5 @@ class StringHolder {
     static let no_data = "Brak zajęć w tym okresie"
     static let googleType = "GOOGLE"
     static let fbType = "FB"
+    static let back  = "Powrót"
 }
