@@ -65,7 +65,6 @@
 	<string>Kujon Integration</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
-	<string>Kujon</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

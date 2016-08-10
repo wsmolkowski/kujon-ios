@@ -18,7 +18,7 @@ class GoogleManager: UserLogin  {
     func loadGoogleParams() {
 
         if (GIDSignIn.sharedInstance().currentUser != nil) {
-            let accessToken = GIDSignIn.sharedInstance().currentUser.authentication.accessToken
+            let accessToken = GIDSignIn.sharedInstance().currentUser.authentication.idToken
             let email = GIDSignIn.sharedInstance().currentUser.profile.email
             self.userDataHolder.userToken = accessToken
             self.userDataHolder.userEmail = email
