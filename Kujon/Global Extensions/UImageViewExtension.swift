@@ -10,4 +10,11 @@ extension UIImageView{
         self.layer.cornerRadius = self.frame.size.width / 2;
         self.clipsToBounds = true;
     }
+
+    func makeMyselfCircleWithBorder(){
+        self.makeMyselfCircle()
+        self.layer.borderColor = UIColor.whiteColor().CGColor
+        self.layer.borderWidth = 1
+
+    }
 }
