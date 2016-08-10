@@ -5,7 +5,7 @@
 
 import Foundation
 import UIKit
-extension UIImageView{
+extension UIView{
     func makeMyselfCircle(){
         self.layer.cornerRadius = self.frame.size.width / 2;
         self.clipsToBounds = true;

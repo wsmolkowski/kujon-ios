@@ -18,6 +18,9 @@ class ScheduleTableViewController:
     static let LectureCellId = "lectureCellId"
     static let DayCellId = "dayCellId"
     static let textId = "simpleTextId"
+    private let floatingSize: CGFloat = 55.0
+    private let floatingMargin: CGFloat = 15.0
+    private var floatingButton: UIButton! = nil
     var isQuering = false
     var lastQueryDate: NSDate! = nil
     var firstDate: NSDate! = nil
@@ -41,7 +44,7 @@ class ScheduleTableViewController:
         firstDate = lastQueryDate
         self.tableView.registerNib(UINib(nibName: "LectureTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.LectureCellId)
         self.tableView.registerNib(UINib(nibName: "DayTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.DayCellId)
-        self.tableView.tableFooterView  = UIView()
+        self.tableView.tableFooterView = UIView()
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140
         lectureProvider.delegate = self
@@ -53,10 +56,33 @@ class ScheduleTableViewController:
 
     }
 
+    private func addFloatingButton() {
+        floatingButton = UIButton(type: .Custom)
+        let xPos = self.view.frame.size.width - floatingSize - floatingMargin
+        let yPos = self.view.frame.origin.y + self.view.frame.size.height - floatingSize - floatingMargin
+        floatingButton?.frame = CGRectMake(xPos, yPos, floatingSize, floatingSize)
+        floatingButton?.setTitle(NSDate().getDayMonth(), forState: .Normal)
+        floatingButton?.addTarget(self, action: #selector(ScheduleTableViewController.onTodayClick), forControlEvents: UIControlEvents.TouchUpInside)
+        floatingButton?.titleLabel?.font = UIFont.kjnTextStyleFont()
+        floatingButton?.backgroundColor = UIColor.kujonBlueColor()
+        floatingButton?.makeMyselfCircle()
+        self.navigationController?.view.addSubview(floatingButton!)
+    }
+    override func viewWillDisappear(animated: Bool) {
+        floatingButton.removeFromSuperview()
+        super.viewWillDisappear(animated)
+    }
+    func onTodayClick() {
+
+    }
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        addFloatingButton()
         lectureProvider.delegate = self
     }
+
+
 
     func refresh(refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")
@@ -221,15 +247,15 @@ class ScheduleTableViewController:
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         var sectionSch = getScheduleSectionAtPosition(indexPath.section)
-        if(sectionSch.getSectionSize() != 0){
+        if (sectionSch.getSectionSize() != 0) {
             let cellStrategy = sectionSch.getElementAtPosition(indexPath.row)
             var cell = cellStrategy.giveMeMyCell(tableView, cellForRowAtIndexPath: indexPath)
             let strategy = cellStrategy.giveMyStrategy()
             strategy.handleCell(&cell)
             return cell
-        }else {
+        } else {
 
-            var cell = UITableViewCell(style: .Default , reuseIdentifier: ScheduleTableViewController.textId)
+            var cell = UITableViewCell(style: .Default, reuseIdentifier: ScheduleTableViewController.textId)
             cell.textLabel?.text = StringHolder.no_data
             return cell
         }

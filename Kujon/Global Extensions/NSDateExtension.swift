@@ -9,6 +9,7 @@ import Decodable
 extension NSDate {
     private static let dateFormatter = NSDateFormatter()
     private static let dateFormat = "yyyy-MM-dd"
+    private static let dateFormatDayMonth = "dd MMMM"
     private static let dateFormatMonth = "MMMM"
     private static let dateFormatYear = "yyyy"
     private static let dateFormatDay = "EEEE"
@@ -38,6 +39,10 @@ extension NSDate {
 
     func getMonthYearString() -> String {
         return NSDate.getDateFormatter(NSDate.dateFormatMonth).stringFromDate(self) + " " + NSDate.getDateFormatter(NSDate.dateFormatYear).stringFromDate(self)
+    }
+
+    func  getDayMonth()->String{
+        return NSDate.getDateFormatter(NSDate.dateFormatDayMonth).stringFromDate(self)
     }
 
     static func getCurrentStartOfWeek() -> NSDate {
