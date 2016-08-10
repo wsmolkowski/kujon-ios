@@ -40,7 +40,7 @@ class UserTableViewController: UITableViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.view.backgroundColor = UIColor.kujonBlueColor()
+
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(UserTableViewController.openDrawer), andTitle: StringHolder.appName)
         userDetailsProvider.delegate = self
         facultieProvider.delegate = self
@@ -53,14 +53,14 @@ class UserTableViewController: UITableViewController
             navigationSeparator.opaque = true
             self.navigationController?.navigationBar.addSubview(navigationSeparator)
         }
-
-        loadData()
-        self.tableView.tableFooterView = UIView()
+        view.backgroundColor = UIColor.whiteColor()
+        self.tableView.tableFooterView =  UIView()
         self.tableView.registerNib(UINib(nibName: "UserDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: usedDetailCellId)
         self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: StudentProgrammeCellId)
         self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: FacultieProgrammeCellId)
         self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: termsCellId)
         refreshControl = UIRefreshControl()
+        refreshControl?.backgroundColor = UIColor.kujonBlueColor()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         self.navigationController?.navigationBar.barTintColor = UIColor.kujonBlueColor()

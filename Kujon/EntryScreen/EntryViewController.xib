@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EntryViewController" customModule="Kujon" customModuleProvider="target">
             <connections>
                 <outlet property="loginButton" destination="CZ2-Eu-BAD" id="JDJ-JQ-lbL"/>
+                <outlet property="spinnerView" destination="5vv-VQ-Avk" id="vbj-cN-XLF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,8 +22,8 @@
                         <navigationItem title="Kujon" id="G6D-Ea-sdB" customClass="EntryVIE"/>
                     </items>
                 </navigationBar>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="49K-dA-dFD" userLabel="Google Sign In Button" customClass="GIDSignInButton">
-                    <rect key="frame" x="180" y="382" width="240" height="40"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="49K-dA-dFD" userLabel="Google Sign In Button" customClass="GIDSignInButton">
+                    <rect key="frame" x="180" y="382" width="240" height="46"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="240" id="HbW-nM-cHy"/>
@@ -40,20 +41,27 @@
                         <action selector="showTermsAndConditions:" destination="-1" eventType="touchUpInside" id="IAG-g1-Kcp"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="kujon-icon" translatesAutoresizingMaskIntoConstraints="NO" id="AUd-TK-qW5">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kujon-icon" translatesAutoresizingMaskIntoConstraints="NO" id="AUd-TK-qW5">
                     <rect key="frame" x="-212" y="57" width="1024" height="240"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="240" id="NNM-BR-att"/>
                     </constraints>
                 </imageView>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CZ2-Eu-BAD" userLabel="FBLogin Button" customClass="FBSDKLoginButton">
-                    <rect key="frame" x="180" y="338" width="240" height="36"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CZ2-Eu-BAD" userLabel="FBLogin Button" customClass="FBSDKLoginButton">
+                    <rect key="frame" x="180" y="305" width="240" height="36"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="2A4-6r-jEa"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="K9D-fS-Hnq"/>
                         <constraint firstAttribute="width" constant="240" id="aas-Sc-3Zz"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="lm0-Bt-1fI"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vv-VQ-Avk" customClass="SpinnerView" customModule="Kujon" customModuleProvider="target">
+                    <rect key="frame" x="200" y="200" width="200" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="B5e-0O-qZv"/>
+                        <constraint firstAttribute="height" constant="200" id="ahm-Gt-6zU"/>
                     </constraints>
                 </view>
             </subviews>
@@ -67,9 +75,11 @@
                 <constraint firstItem="swU-s7-4Hc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="FUs-sS-NOl"/>
                 <constraint firstAttribute="trailing" secondItem="CZ2-Eu-BAD" secondAttribute="trailing" constant="100" id="JUy-t5-akX"/>
                 <constraint firstAttribute="trailing" secondItem="bSK-jv-UQb" secondAttribute="trailing" constant="100" id="SZf-3k-Lqe"/>
+                <constraint firstItem="5vv-VQ-Avk" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="So1-9Y-tCe"/>
                 <constraint firstAttribute="trailing" secondItem="49K-dA-dFD" secondAttribute="trailing" constant="100" id="UDa-tL-f3s"/>
                 <constraint firstItem="AUd-TK-qW5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="100" id="W3i-bn-gfX"/>
                 <constraint firstItem="CZ2-Eu-BAD" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Xxe-R6-66G"/>
+                <constraint firstItem="5vv-VQ-Avk" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="a0W-k5-LEO"/>
                 <constraint firstItem="bSK-jv-UQb" firstAttribute="centerX" secondItem="swU-s7-4Hc" secondAttribute="centerX" id="dmy-CD-Yn3"/>
                 <constraint firstAttribute="trailing" secondItem="AUd-TK-qW5" secondAttribute="trailing" constant="100" id="fNh-CT-Qvn"/>
                 <constraint firstItem="bSK-jv-UQb" firstAttribute="top" secondItem="49K-dA-dFD" secondAttribute="bottom" constant="66" id="ivo-FC-Pux"/>

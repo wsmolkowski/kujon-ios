@@ -18,6 +18,7 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
 
     let googleSignInManager = GIDSignIn.sharedInstance()
 
+    @IBOutlet weak var spinnerView: SpinnerView!
 
     let facebookManager = FacebookManager.sharedInstance
     @IBOutlet weak var loginButton: FBSDKLoginButton!
@@ -48,6 +49,8 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
         GIDSignIn.sharedInstance().signInSilently()
         if (GoogleManager.sharedInstance.isLoggedIn()) {
             self.configProvider.checkConfig()
+        }else {
+            spinnerView.hidden = true
         }
 
     }
@@ -81,11 +84,13 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
 
     func onFacebookCredentailSaved(isLogged: Bool) {
         socialLogin = true
+        spinnerView.hidden = false
         self.configProvider.checkConfig()
 
     }
 
     func notLogged() {
+        spinnerView.hidden = true
         if (socialLogin) {
             var controller: UIViewController!
 
@@ -96,21 +101,26 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
     }
 
     func pairedWithUsos() {
+        spinnerView.hidden = true
         self.presentViewController(ContainerViewController(), animated: true, completion: nil)
     }
 
     func notPairedWithUsos() {
+        spinnerView.hidden = true
         self.presentViewController(UsosHolderController(), animated: true, completion: nil)
     }
 
     func usosDown() {
+        spinnerView.hidden = true
         self.showAlertApi(StringHolder.attention, text: StringHolder.errorUsos, succes: {
+            self.spinnerView.hidden = false
             self.configProvider.checkConfig()
         }, cancel: {})
     }
 
     func onErrorOccurs(text: String) {
         self.showAlertApi(StringHolder.attention, text: StringHolder.errorUsos, succes: {
+            self.spinnerView.hidden = false
             self.configProvider.checkConfig()
         }, cancel: {})
     }
