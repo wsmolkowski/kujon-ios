@@ -73,7 +73,7 @@ class ScheduleTableViewController:
         super.viewWillDisappear(animated)
     }
     func onTodayClick() {
-
+        NSlogManager.showLog("Kliknalem FABaaaa")
     }
 
     override func viewWillAppear(animated: Bool) {
