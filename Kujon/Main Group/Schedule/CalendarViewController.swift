@@ -11,14 +11,14 @@ import CalendarLib
 
 class CalendarViewController: MGCDayPlannerViewController,
         NavigationDelegate,
-        LectureProviderDelegate  {
+        LectureProviderDelegate {
 
-    let calendarDateFormant = "MMMM d"
+    let calendarDateFormant = "EEE d/M"
     let dateFormatter = NSDateFormatter()
     weak var delegate: NavigationMenuProtocol! = nil
     var onlyLectureDictionary: Dictionary<String, [LectureWrapper]> = Dictionary()
     var lastQueryDate: NSDate! = nil
-    var lectureProvider  = ProvidersProviderImpl.sharedInstance.provideLectureProvider()
+    var lectureProvider = ProvidersProviderImpl.sharedInstance.provideLectureProvider()
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {
         self.delegate = delegate
     }
@@ -31,15 +31,18 @@ class CalendarViewController: MGCDayPlannerViewController,
                 action: #selector(CalendarViewController.openList))
         self.navigationItem.rightBarButtonItem = openCalendarButton
         self.edgesForExtendedLayout = UIRectEdge.None
-        self.dayPlannerView.backgroundColor = UIColor.whiteColor()
-        self.dayPlannerView.backgroundView = UIView(frame: CGRectZero)
-        self.dayPlannerView.backgroundView.backgroundColor = UIColor.whiteColor()
+//        self.dayPlannerView.backgroundColor = UIColor.whiteColor()
+//        self.dayPlannerView.backgroundView = UIView(frame: CGRectZero)
+//        self.dayPlannerView.backgroundView.backgroundColor = UIColor.whiteColor()
         self.dayPlannerView.numberOfVisibleDays = 3
+        self.dayPlannerView.daySeparatorsColor = UIColor.calendarSeparatorColor()
+        self.dayPlannerView.timeSeparatorsColor = UIColor.calendarSeparatorColor()
         self.dayPlannerView.dateFormat = calendarDateFormant
-        (self.dayPlannerView as MGCDayPlannerView).hourRange  = NSRange(location:6,length:16)
+        (self.dayPlannerView as MGCDayPlannerView).hourRange = NSRange(location: 6, length: 16)
         dateFormatter.dateFormat = calendarDateFormant
         lectureProvider.delegate = self
-        let ekEventStore = EKEventStore()
+        self.dayPlannerView.scrollToDate(lastQueryDate, options: MGCDayPlannerScrollType.Date, animated: false)
+        _ = EKEventStore()
     }
 
 
@@ -70,12 +73,12 @@ class CalendarViewController: MGCDayPlannerViewController,
     }
 
     func onErrorOccurs() {
-        ToastView.showInParent(self.navigationController?.view,withText: StringHolder.errorOccures , forDuration: 2.0)
+        ToastView.showInParent(self.navigationController?.view, withText: StringHolder.errorOccures, forDuration: 2.0)
     }
 
 
     func onErrorOccurs(text: String) {
-        ToastView.showInParent(self.navigationController?.view,withText: text, forDuration: 2.0)
+        ToastView.showInParent(self.navigationController?.view, withText: text, forDuration: 2.0)
     }
 
 
@@ -92,14 +95,14 @@ class CalendarViewController: MGCDayPlannerViewController,
     }
 
 
-    override func dayPlannerView(_ view: MGCDayPlannerView!, numberOfEventsOfType type: MGCEventType, atDate date: NSDate!) -> Int {
-        if(date.isGreaterThanDate(lastQueryDate.dateByAddingTimeInterval(60 * 60 * 24 * 7))){
+    override func dayPlannerView(view: MGCDayPlannerView!, numberOfEventsOfType type: MGCEventType, atDate date: NSDate!) -> Int {
+        if (date.isGreaterThanDate(lastQueryDate.dateByAddingTimeInterval(60 * 60 * 24 * 7))) {
             lastQueryDate = date.getStartOfTheWeek()
             askForData()
         }
         switch (type) {
         case MGCEventType.TimedEventType:
-            if var list = onlyLectureDictionary[date.dateToString()] {
+            if var list = getListOfLecturesWrappers(date) {
                 return list.count
             }
             return 0
@@ -107,20 +110,22 @@ class CalendarViewController: MGCDayPlannerViewController,
         }
     }
 
-    override func dayPlannerView(_ view: MGCDayPlannerView!, dateRangeForEventOfType type: MGCEventType, atIndex index: UInt, date: NSDate!) -> MGCDateRange! {
-        if var list = onlyLectureDictionary[date.dateToString()] {
+    override func dayPlannerView(view: MGCDayPlannerView!, dateRangeForEventOfType type: MGCEventType, atIndex index: UInt, date: NSDate!) -> MGCDateRange! {
+        if var list = getListOfLecturesWrappers(date) {
             let lecture = list[Int(index)] as! LectureWrapper;
             return MGCDateRange(start: lecture.startNSDate, end: lecture.endNSDate)
         }
         return nil
     }
 
-    override func dayPlannerView(_ view: MGCDayPlannerView!, viewForEventOfType type: MGCEventType, atIndex index: UInt, date: NSDate!) -> MGCEventView! {
-        if var list = onlyLectureDictionary[date.dateToString()] {
-            var eventView = MGCStandardEventView()
-            let lecture = list[Int(index)] as! LectureWrapper;
-            eventView.color = UIColor.kujonBlueColorWithAplha()
-            eventView.title = lecture.lecture.name
+    override func dayPlannerView(view: MGCDayPlannerView!, viewForEventOfType type: MGCEventType, atIndex index: UInt, date: NSDate!) -> MGCEventView! {
+        if var list = getListOfLecturesWrappers(date) {
+            var eventView = MyEventView()
+            let lecture = list[Int(index)] ;
+            eventView.myBackgrounColor = UIColor.kujonCalendarBlue()
+            eventView.fontColor = UIColor.blackColor()
+            eventView.title = lecture.startTime + " " + lecture.endTime + "\n" +  lecture.lecture.courseName
+            var font = UIFont.kjnTextStyleFontSmall()
             eventView.detail = lecture.lecture.buldingName
             eventView.selected = false
             return eventView
@@ -130,12 +135,15 @@ class CalendarViewController: MGCDayPlannerViewController,
         return nil
     }
 
-    override func dayPlannerView(_ view: MGCDayPlannerView!, didSelectEventOfType type: MGCEventType, atIndex index: UInt, date: NSDate!) {
-        if var list = onlyLectureDictionary[date.dateToString()] {
+    override func dayPlannerView(view: MGCDayPlannerView!, didSelectEventOfType type: MGCEventType, atIndex index: UInt, date: NSDate!) {
+        if var list = getListOfLecturesWrappers(date) {
             let lecture = list[Int(index)] as! LectureWrapper;
             lecture.handleClick(self.navigationController)
         }
     }
 
+    private func getListOfLecturesWrappers(date: NSDate) -> Array<LectureWrapper>! {
+        return onlyLectureDictionary[date.dateToStringSchedule()]
+    }
 
 }

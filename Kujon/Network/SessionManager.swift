@@ -9,7 +9,7 @@ class SessionManager {
 
 
     static func provideSession() -> NSURLSession {
-        var conf = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let conf = NSURLSessionConfiguration.defaultSessionConfiguration()
         conf.requestCachePolicy = NSURLRequestCachePolicy.ReturnCacheDataElseLoad
         return NSURLSession(configuration: conf)
     }

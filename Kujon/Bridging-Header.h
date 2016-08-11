@@ -12,5 +12,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <OneSignal/OneSignal.h>
 #import <Google/SignIn.h>
+#import "MyEventView.h"
+
 
 #endif /* Bridging_Header_h */
