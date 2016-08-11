@@ -18,6 +18,7 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
 
     let googleSignInManager = GIDSignIn.sharedInstance()
 
+    @IBOutlet weak var googleLogInButton: GIDSignInButton!
     @IBOutlet weak var spinnerView: SpinnerView!
 
     let facebookManager = FacebookManager.sharedInstance
@@ -32,8 +33,6 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
         var controller: UIViewController!
         controller = WebViewController()
         let navigationController = UINavigationController(rootViewController: controller)
-
-//        navigationController.navigationBar.barTintColor = UIColor.kujonBlueColor()
         self.presentViewController(navigationController, animated: true, completion: nil)
 
     }

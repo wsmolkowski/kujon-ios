@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EntryViewController" customModule="Kujon" customModuleProvider="target">
             <connections>
+                <outlet property="googleLogInButton" destination="49K-dA-dFD" id="4LB-A1-az5"/>
                 <outlet property="loginButton" destination="CZ2-Eu-BAD" id="JDJ-JQ-lbL"/>
                 <outlet property="spinnerView" destination="5vv-VQ-Avk" id="vbj-cN-XLF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -22,14 +23,6 @@
                         <navigationItem title="Kujon" id="G6D-Ea-sdB" customClass="EntryVIE"/>
                     </items>
                 </navigationBar>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="49K-dA-dFD" userLabel="Google Sign In Button" customClass="GIDSignInButton">
-                    <rect key="frame" x="180" y="382" width="240" height="46"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="240" id="HbW-nM-cHy"/>
-                        <constraint firstAttribute="height" constant="46" id="j4N-DA-BOb"/>
-                    </constraints>
-                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="bSK-jv-UQb">
                     <rect key="frame" x="100" y="494" width="400" height="30"/>
                     <constraints>
@@ -62,6 +55,14 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="B5e-0O-qZv"/>
                         <constraint firstAttribute="height" constant="200" id="ahm-Gt-6zU"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="49K-dA-dFD" userLabel="Google Sign In Button" customClass="GIDSignInButton">
+                    <rect key="frame" x="180" y="382" width="240" height="46"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="HbW-nM-cHy"/>
+                        <constraint firstAttribute="height" constant="46" id="j4N-DA-BOb"/>
                     </constraints>
                 </view>
             </subviews>
