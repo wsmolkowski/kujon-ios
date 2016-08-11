@@ -20,10 +20,12 @@ class SessionManager {
 
     static func clearCache(){
         NSURLCache.sharedURLCache().removeAllCachedResponses()
+        setCache()
     }
 
     static func clearCacheForRequest(request : NSURLRequest){
 //        NSURLCache.sharedURLCache().removeCachedResponseForRequest( request)// this does not work, need to clear all
         NSURLCache.sharedURLCache().removeAllCachedResponses()
+        setCache()
     }
 }
