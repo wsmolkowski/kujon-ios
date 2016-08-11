@@ -52,7 +52,7 @@ class ScheduleTableViewController:
 
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(ScheduleTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
 
     }
 
@@ -76,6 +76,8 @@ class ScheduleTableViewController:
     }
     func onTodayClick() {
         NSlogManager.showLog("Kliknalem FABaaaa")
+        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0),atScrollPosition:.Top , animated:true)
+
     }
 
     override func viewWillAppear(animated: Bool) {
