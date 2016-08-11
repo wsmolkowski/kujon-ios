@@ -9,7 +9,7 @@ import Decodable
 extension NSDate {
     private static let dateFormatter = NSDateFormatter()
     private static let dateFormat = "yyyy-MM-dd"
-    private static let dateFormatDayMonth = "dd \n MMMM"
+    private static let dateFormatDayMonth = "dd \n MMM"
     private static let dateFormatMonth = "MMMM"
     private static let dateFormatYear = "yyyy"
     private static let dateFormatDay = "EEEE"

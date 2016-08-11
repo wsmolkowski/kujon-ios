@@ -6,6 +6,9 @@
 import Foundation
 import UIKit
 extension UIView{
+    func makeMeRadius(){
+
+    }
     func makeMyselfCircle(){
         self.layer.cornerRadius = self.frame.size.width / 2;
         self.clipsToBounds = true;

@@ -14,14 +14,6 @@ struct SimpleUser {
     let titles: Title?
 }
 
-//
-//"last_name": "G\u00f3ralowski",
-//"first_name": "Marek",
-//"titles": {
-//    "after": null,
-//    "before": "dr"
-//},
-//"id": "1"
 
 extension SimpleUser: Decodable {
     static func decode(j: AnyObject) throws -> SimpleUser {
@@ -36,5 +28,15 @@ extension SimpleUser: Decodable {
         )
     }
 
+    func getPrefix() -> String {
+        return self.titles?.before != nil ? self.titles!.before! : ""
+    }
 
+     func getSuffix() -> String {
+        return self.titles?.after != nil ? self.titles!.after! : ""
+    }
+
+    func getNameWithTitles() -> String{
+        return getPrefix() + " " + firstName + " " + lastName + " " + getSuffix()
+    }
 }

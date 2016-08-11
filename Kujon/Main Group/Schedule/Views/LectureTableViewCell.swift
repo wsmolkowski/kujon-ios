@@ -10,6 +10,7 @@ import UIKit
 
 class LectureTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var vieww: UIView!
     @IBOutlet weak var topic: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     override func awakeFromNib() {

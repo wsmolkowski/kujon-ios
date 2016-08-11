@@ -2,9 +2,13 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -16,61 +20,50 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZe-Kk-Acd">
-                        <rect key="frame" x="8" y="8" width="90" height="86.5"/>
-                        <color key="backgroundColor" red="0.39215686274509803" green="0.72941176470588232" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <rect key="frame" x="23" y="8" width="37" height="87"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="90" id="g9Z-kL-iih"/>
+                            <constraint firstAttribute="width" constant="37" id="g9Z-kL-iih"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="11"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1IB-j7-gwr">
+                        <rect key="frame" x="66" y="8" width="231" height="87"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cou-jU-Hm7">
-                        <rect key="frame" x="106" y="8" width="206" height="86.5"/>
+                        <rect key="frame" x="76" y="26" width="216" height="50.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="MZe-Kk-Acd" firstAttribute="bottom" secondItem="1IB-j7-gwr" secondAttribute="bottom" id="1x1-jf-nU8"/>
                     <constraint firstItem="MZe-Kk-Acd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="7IK-l7-TT1"/>
-                    <constraint firstItem="Cou-jU-Hm7" firstAttribute="firstBaseline" secondItem="MZe-Kk-Acd" secondAttribute="firstBaseline" id="Aqo-gi-0wD"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="Cou-jU-Hm7" secondAttribute="bottom" id="IkI-Uk-uqj"/>
-                    <constraint firstAttribute="topMargin" secondItem="Cou-jU-Hm7" secondAttribute="top" id="N1V-cI-Pnx"/>
-                    <constraint firstItem="Cou-jU-Hm7" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="NnT-JC-hNo"/>
+                    <constraint firstItem="Cou-jU-Hm7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="18" id="DWc-Ed-FT3"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Cou-jU-Hm7" secondAttribute="bottom" constant="18" id="FWt-i2-lpq"/>
+                    <constraint firstItem="MZe-Kk-Acd" firstAttribute="top" secondItem="1IB-j7-gwr" secondAttribute="top" id="M5P-d8-Tdd"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="1IB-j7-gwr" secondAttribute="bottom" id="S4s-tl-vWk"/>
                     <constraint firstAttribute="bottomMargin" secondItem="MZe-Kk-Acd" secondAttribute="bottom" id="UvI-rY-PXa"/>
-                    <constraint firstItem="MZe-Kk-Acd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="XV4-vT-kHg"/>
-                    <constraint firstItem="MZe-Kk-Acd" firstAttribute="top" secondItem="Cou-jU-Hm7" secondAttribute="top" id="YyC-qc-Mx5"/>
-                    <constraint firstItem="MZe-Kk-Acd" firstAttribute="bottom" secondItem="Cou-jU-Hm7" secondAttribute="bottom" id="ddY-VG-FPB"/>
-                    <constraint firstItem="Cou-jU-Hm7" firstAttribute="leading" secondItem="MZe-Kk-Acd" secondAttribute="trailing" constant="8" symbolic="YES" id="kOJ-2Y-njC"/>
-                    <constraint firstItem="Cou-jU-Hm7" firstAttribute="baseline" secondItem="MZe-Kk-Acd" secondAttribute="baseline" id="voU-rE-28K"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="1IB-j7-gwr" secondAttribute="trailing" constant="15" id="V0V-Nn-Et0"/>
+                    <constraint firstItem="1IB-j7-gwr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="WIU-M7-fUG"/>
+                    <constraint firstItem="MZe-Kk-Acd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="15" id="XV4-vT-kHg"/>
+                    <constraint firstItem="Cou-jU-Hm7" firstAttribute="trailing" secondItem="1IB-j7-gwr" secondAttribute="trailing" constant="-5" id="cRE-8x-n6Q"/>
+                    <constraint firstItem="1IB-j7-gwr" firstAttribute="leading" secondItem="MZe-Kk-Acd" secondAttribute="trailing" constant="6" id="iWp-DG-Tqs"/>
+                    <constraint firstItem="Cou-jU-Hm7" firstAttribute="leading" secondItem="1IB-j7-gwr" secondAttribute="leading" constant="10" id="oMm-BC-lBk"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
                         <exclude reference="7IK-l7-TT1"/>
                         <exclude reference="UvI-rY-PXa"/>
-                        <exclude reference="Aqo-gi-0wD"/>
-                        <exclude reference="voU-rE-28K"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
-            <constraints>
-                <constraint firstAttribute="bottom" secondItem="Cou-jU-Hm7" secondAttribute="bottom" id="HRy-nd-u5z"/>
-                <constraint firstItem="Cou-jU-Hm7" firstAttribute="top" secondItem="KGk-i7-Jjw" secondAttribute="top" constant="8" id="MRO-zA-sX7"/>
-                <constraint firstAttribute="bottom" secondItem="Cou-jU-Hm7" secondAttribute="bottom" constant="8" id="Yrz-Qh-tNR"/>
-                <constraint firstItem="Cou-jU-Hm7" firstAttribute="top" secondItem="KGk-i7-Jjw" secondAttribute="top" constant="8" id="uNs-8O-ItW"/>
-            </constraints>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="HRy-nd-u5z"/>
-                    <exclude reference="MRO-zA-sX7"/>
-                    <exclude reference="Yrz-Qh-tNR"/>
-                    <exclude reference="uNs-8O-ItW"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="timeLabel" destination="MZe-Kk-Acd" id="mzL-b2-WJt"/>
                 <outlet property="topic" destination="Cou-jU-Hm7" id="g6o-Gb-0LL"/>
+                <outlet property="vieww" destination="1IB-j7-gwr" id="aWz-8D-wz8"/>
             </connections>
             <point key="canvasLocation" x="181" y="444.5"/>
         </tableViewCell>
