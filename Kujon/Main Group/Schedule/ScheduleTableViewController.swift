@@ -77,7 +77,6 @@ class ScheduleTableViewController:
     }
 
     func onTodayClick() {
-        NSlogManager.showLog("Kliknalem FABaaaa")
         self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: .Top, animated: true)
 
     }
@@ -127,8 +126,8 @@ class ScheduleTableViewController:
             let pos = getPositionOfSection(key2)
             if(pos != nil){
                 onlyLectureDictionary[key2] = dictionaryOfDays[key2]!
-                let array = dictionaryOfDays[key2]!.map{ $0 as! CellHandlingStrategy}
-                (sectionsArray[pos] as! ScheduleSection).addToList(array)
+                let array = dictionaryOfDays[key2]!.map{ $0 as CellHandlingStrategy}
+                (sectionsArray[pos] ).addToList(array)
 
             }
         }
@@ -142,32 +141,6 @@ class ScheduleTableViewController:
     }
 
 
-    private func handleAddingToArray(key: String, oldList: Array<CellHandlingStrategy> = Array(), dicdays: Dictionary<String, [LectureWrapper]>) {
-
-        let sortedKeysDays = Array(dicdays.keys).sort(<)
-        var listOfCellStrategys: Array<CellHandlingStrategy> = Array()
-        sortedKeysDays.forEach {
-            dayKey in
-            listOfCellStrategys.append(DayWrapper(withDayTime: dayKey))
-            dicdays[dayKey]!.forEach {
-                wrap in
-                listOfCellStrategys.append(wrap as! CellHandlingStrategy)
-            }
-        }
-
-        var condition = true
-        if (sectionsArray.count > 0) {
-            for index in 0 ... sectionsArray.count - 1 {
-                if (key == sectionsArray[index].getSectionTitle()) {
-                    sectionsArray[index] = ScheduleSectionImpl(withDate: key, listOfLecture: oldList + listOfCellStrategys)
-                    condition = false
-                }
-            }
-        }
-        if (condition) {
-            sectionsArray.append(ScheduleSectionImpl(withDate: key, listOfLecture: oldList + listOfCellStrategys))
-        }
-    }
 
     private func getScheduleSectionAtPosition(pos: Int) -> ScheduleSection {
 
@@ -222,7 +195,7 @@ class ScheduleTableViewController:
     }
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var sectionSch = getScheduleSectionAtPosition(section)
+        let sectionSch = getScheduleSectionAtPosition(section)
         return createLabel(sectionSch.getSectionTitle())
 
     }
@@ -251,7 +224,7 @@ class ScheduleTableViewController:
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        var sectionSch = getScheduleSectionAtPosition(indexPath.section)
+        let sectionSch = getScheduleSectionAtPosition(indexPath.section)
         if (sectionSch.getSectionSize() != 0) {
             let cellStrategy = sectionSch.getElementAtPosition(indexPath.row)
             var cell = cellStrategy.giveMeMyCell(tableView, cellForRowAtIndexPath: indexPath)
@@ -260,14 +233,15 @@ class ScheduleTableViewController:
             return cell
         } else {
 
-            var cell = UITableViewCell(style: .Default, reuseIdentifier: ScheduleTableViewController.textId)
+            let cell = UITableViewCell(style: .Default, reuseIdentifier: ScheduleTableViewController.textId)
+            cell.textLabel?.font  = UIFont.kjnTextStyle2Font()
             cell.textLabel?.text = StringHolder.no_data
             return cell
         }
     }
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var sectionSch = getScheduleSectionAtPosition(indexPath.section)
+        let sectionSch = getScheduleSectionAtPosition(indexPath.section)
         let cellStrategy = sectionSch.getElementAtPosition(indexPath.row)
         cellStrategy.handleClick(self.navigationController)
     }
