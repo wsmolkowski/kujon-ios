@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics.self])
         SessionManager.setCache()
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let value = FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        var value = FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
         // Initialize sign-in
         var configureError: NSError?

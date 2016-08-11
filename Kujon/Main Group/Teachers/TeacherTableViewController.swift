@@ -28,7 +28,7 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
 
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(TeacherTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
     }
 
     func refresh(refreshControl: UIRefreshControl) {

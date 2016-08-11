@@ -36,7 +36,7 @@ class LecturersSection: SectionHelperProtocol {
 
     func giveMeCellAtPosition(tableView: UITableView, onPosition position: NSIndexPath) -> UITableViewCell! {
         let cell = tableView.dequeueReusableCellWithIdentifier(getMyCellId(), forIndexPath: position) as! GoFurtherViewCellTableViewCell
-        let teacher = list[position.row] as! SimpleUser
+        let teacher = list[position.row] 
         cell.plainLabel.text = teacher.firstName + " " + teacher.lastName
         return cell
     }

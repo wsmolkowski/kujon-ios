@@ -24,12 +24,12 @@ class LectureCellHandler: CellHandlerProtocol {
 //        (cell as! LectureTableViewCell).topic.backgroundColor  =  UIColor.kujonDarkerBlueColor()
         if (lecturer == nil) {
             let text  = wrapper.lecture.name
-            var atrText = NSMutableAttributedString(string: text)
+            let atrText = NSMutableAttributedString(string: text)
             atrText.addAttribute(NSFontAttributeName, value: UIFont.kjnTextStyle5Font()!, range: NSMakeRange(0, count(wrapper.lecture.courseName)))
             (cell as! LectureTableViewCell).topic.attributedText = atrText
         } else {
             let text  = wrapper.lecture.courseName + " \n" + wrapper.lecture.type + " \n" + lecturer.getNameWithTitles()
-            var atrText = NSMutableAttributedString(string: text)
+            let atrText = NSMutableAttributedString(string: text)
             var lenght = 0
             atrText.addAttribute(NSFontAttributeName, value: UIFont.kjnTextStyle5Font()!, range: NSMakeRange(0, count(wrapper.lecture.courseName)))
             lenght = count(wrapper.lecture.courseName)+2
@@ -37,7 +37,7 @@ class LectureCellHandler: CellHandlerProtocol {
             lenght += count(wrapper.lecture.type)+2
             atrText.addAttribute(NSFontAttributeName, value: UIFont.kjnTextStyle5Font()!, range: NSMakeRange(lenght, count(lecturer.getNameWithTitles())))
 
-            (cell as! LectureTableViewCell).topic.attributedText = atrText
+            (cell as! LectureTableViewCell).topic.attributedText = atrText;
             (cell as! LectureTableViewCell).vieww.layer.cornerRadius = 3
             (cell as! LectureTableViewCell).vieww.backgroundColor  =  UIColor.kujonDarkerBlueColor()
 
@@ -49,7 +49,7 @@ class LectureCellHandler: CellHandlerProtocol {
     }
     private func setTime()->NSAttributedString{
         let text  = wrapper.startTime + " \n" + wrapper.endTime + " \n" + "s. " + wrapper.lecture.roomNumber
-        var atrText = NSMutableAttributedString(string: text)
+        let atrText = NSMutableAttributedString(string: text)
         var lenght = 0
         atrText.addAttribute(NSFontAttributeName, value: UIFont.kjnTextStyleFont()!, range: NSMakeRange(0, count(wrapper.startTime)))
         atrText.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSMakeRange(0, count(wrapper.startTime)))

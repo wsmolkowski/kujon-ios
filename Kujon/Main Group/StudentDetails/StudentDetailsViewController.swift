@@ -58,7 +58,7 @@ class StudentDetailsViewController: UIViewController, UITableViewDataSource, UIT
             self.restImageProvider.loadImage("", urlString: self.userDetails.photoUrl!, onImageLoaded: self)
 
         }
-        var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(StudentDetailsViewController.imageTapped))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(StudentDetailsViewController.imageTapped))
         tapGestureRecognizer.numberOfTapsRequired = 1
         studentImageView.addGestureRecognizer(tapGestureRecognizer)
         studentImageView.userInteractionEnabled = true
@@ -101,20 +101,20 @@ class StudentDetailsViewController: UIViewController, UITableViewDataSource, UIT
         // Dispose of any resources that can be recreated.
     }
 
-    func tableView(_ tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 48
     }
 
-    func tableView(_ tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         clicked(indexPath)
     }
 
 
-    func tableView(_ tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return studentProgrammes.count
     }
 
-    func tableView(_ tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(kierunekCellId, forIndexPath: indexPath) as! GoFurtherViewCellTableViewCell
         let myProgramme: StudentProgramme = self.studentProgrammes[indexPath.row]
         cell.plainLabel.text = myProgramme.programme.description

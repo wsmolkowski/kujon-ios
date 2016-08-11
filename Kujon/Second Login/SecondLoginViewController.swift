@@ -32,11 +32,11 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
 
 
 
-    func webView(_ webView: UIWebView!, shouldStartLoadWithRequest request: NSURLRequest!, navigationType: UIWebViewNavigationType) -> Bool {
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
 
         if(request.URL!.absoluteString.containsString("https://api.kujon.mobi/authentication/verify")){
 
-            var requestC = NSMutableURLRequest(URL: NSURL(string: request.URL!.absoluteString)!)
+            let requestC = NSMutableURLRequest(URL: NSURL(string: request.URL!.absoluteString)!)
             let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookiesForURL(NSURL(string: RestApiManager.BASE_URL)!)
             var myMutableString = ""
             for cookie in cookies!{
@@ -45,27 +45,27 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
             requestC.setValue(myMutableString,forHTTPHeaderField: "Cookie")
 
             //TODO TEGO NIE JESTEM PEWIEN CZY TAK TO ZROBIC BO COS KRZYCZY ZE DEPRECATED
-            let urlConnection = NSURLConnection(request: requestC,delegate:self)
+            _ = NSURLConnection(request: requestC,delegate:self)
         }
         return true
     }
 
-    func webViewDidStartLoad(_ webView: UIWebView!) {
+    func webViewDidStartLoad(webView: UIWebView) {
     }
 
-    func webViewDidFinishLoad(_ webView: UIWebView!) {
+    func webViewDidFinishLoad(webView: UIWebView) {
         self.webView.stringByEvaluatingJavaScriptFromString("javascript:window.HtmlViewer.showHTML" +
                 "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');")
     }
 
-    func webView(_ webView: UIWebView!, didFailLoadWithError error: NSError!) {
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
     }
 
-    func connection(_ connection: NSURLConnection!, didReceiveResponse response: NSURLResponse!) {
+    func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
 
     }
 
-    func connection(_ connection: NSURLConnection!, didReceiveData data: NSData!) {
+    func connection(connection: NSURLConnection, didReceiveData data: NSData) {
         print("Logged Succesfully")
         //TODO TUTAJ BY PEWNIE SIE PRZYDALO DOLOZYC JAKIES PERSIST TYCH TOKENOW FACEBOOKOWYCH
         userDataHolder.loggedToUsosForCurrentEmail = true

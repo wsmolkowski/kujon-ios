@@ -18,7 +18,7 @@ class WebViewController: UIViewController {
         let url = NSURL (string: "https://kujon.mobi/#disclaimer");
         let requestObj = NSURLRequest(URL: url!);
         webView.loadRequest(requestObj);
-         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Zamknij", style: UIBarButtonItemStyle.Done, target: self, action: "done")
+         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Zamknij", style: UIBarButtonItemStyle.Done, target: self, action: #selector(WebViewController.done))
     }
 
     func done() {

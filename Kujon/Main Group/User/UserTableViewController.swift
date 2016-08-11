@@ -178,9 +178,7 @@ class UserTableViewController: UITableViewController
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch (indexPath.section) {
         case 0: return 196
-            break;
         case 1: return 51
-            break;
         case 2: return 51;
         default: return 51
         }
@@ -190,9 +188,7 @@ class UserTableViewController: UITableViewController
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch (section) {
         case 0: return 0
-            break;
         case 1: return 51
-            break;
         case 2: return 51;
         case 3: return 51;
         default: return 0
@@ -202,9 +198,7 @@ class UserTableViewController: UITableViewController
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch (section) {
         case 0: return nil
-            break;
         case 1: return createLabelForSectionTitle(StringHolder.kierunki)
-            break;
         case 2: return createLabelForSectionTitle(StringHolder.faculties)
         case 3: return createLabelForSectionTitle(StringHolder.statistics)
         default: return nil
@@ -226,7 +220,7 @@ class UserTableViewController: UITableViewController
 
         }
 
-        var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UserTableViewController.imageTapped))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UserTableViewController.imageTapped))
         tapGestureRecognizer.numberOfTapsRequired = 1
         cell.userImageView.addGestureRecognizer(tapGestureRecognizer)
         cell.userImageView.userInteractionEnabled = true
@@ -318,10 +312,10 @@ class UserTableViewController: UITableViewController
                 if (data != nil) {
                     let image = UIImage(data: data!)
                     dispatch_async(dispatch_get_main_queue()) {
-                        if var cell = self.tableView.cellForRowAtIndexPath(indexPath) {
+                        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) {
                             (cell as! UserDetailsTableViewCell).schoolImageVirw.contentMode = UIViewContentMode.ScaleAspectFit;
                             (cell as! UserDetailsTableViewCell).schoolImageVirw.makeMyselfCircle()
-                            (cell as! UserDetailsTableViewCell).schoolImageVirw?.image = image
+                            (cell as! UserDetailsTableViewCell).schoolImageVirw?.image = image;
                             (cell as! UserDetailsTableViewCell).bigUsosImage?.image = image
 
 

@@ -54,7 +54,7 @@ extension NSDate {
         let gregorian = NSCalendar.currentCalendar()
         gregorian.firstWeekday = 2
         let weekdayComponents = gregorian.component(.Weekday, fromDate: today)
-        var componentsToSubtact = NSDateComponents()
+        let componentsToSubtact = NSDateComponents()
         componentsToSubtact.day = -weekdayComponents + gregorian.firstWeekday
         return gregorian.dateByAddingComponents(componentsToSubtact, toDate: today, options: .MatchStrictly)!
     }
@@ -63,7 +63,7 @@ extension NSDate {
         let gregorian = NSCalendar.currentCalendar()
         gregorian.firstWeekday = 2
         let weekdayComponents = gregorian.component(.Weekday, fromDate: today)
-        var componentsToSubtact = NSDateComponents()
+        let componentsToSubtact = NSDateComponents()
         componentsToSubtact.day = -weekdayComponents + gregorian.firstWeekday
         return gregorian.dateByAddingComponents(componentsToSubtact, toDate: today, options: .MatchStrictly)!
     }

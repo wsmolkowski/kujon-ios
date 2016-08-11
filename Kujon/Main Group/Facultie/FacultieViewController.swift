@@ -65,7 +65,7 @@ class FacultieViewController: UIViewController, FacultieProviderDelegate {
         }
 
         facultiePhoneNumber.text = phoneString
-        var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(FacultieViewController.phoneTapped))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(FacultieViewController.phoneTapped))
         tapGestureRecognizer.numberOfTapsRequired = 1
         facultiePhoneNumber.addGestureRecognizer(tapGestureRecognizer)
         facultiePhoneNumber.userInteractionEnabled = true

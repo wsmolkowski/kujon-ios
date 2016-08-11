@@ -12,7 +12,7 @@ class ShareViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithBackButton(self,selector: Selector("back"))
+        NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(ShareViewController.back))
     }
 
     override func didReceiveMemoryWarning() {

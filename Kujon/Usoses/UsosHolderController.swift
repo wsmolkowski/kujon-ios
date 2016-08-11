@@ -14,7 +14,6 @@ class UsosHolderController:UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let usoses = UsosesTableViewController()
 
         centerNavigationController = UINavigationController(rootViewController: UsosesTableViewController())
         view.addSubview(centerNavigationController.view)

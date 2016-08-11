@@ -81,10 +81,10 @@ class SettingsViewController: UIViewController,
         }
     }
 
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
     }
 
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         goBackToEntryScreen();
     }
 

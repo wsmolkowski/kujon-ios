@@ -31,7 +31,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
 
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(TeacherDetailTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
 
     }
 
@@ -71,7 +71,6 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch (indexPath.section) {
         case 0: return 460
-            break;
         default: return 50
         }
     }
@@ -106,7 +105,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         cell.teacherEmailLabel.text = self.userDetails.email
         cell.teacherConsultationLabel.text = self.userDetails.officeHours
         if(self.userDetails.homepage != nil){
-            var tapWWW = UITapGestureRecognizer(target: self, action: #selector(TeacherDetailTableViewController.wwwTaped))
+            let tapWWW = UITapGestureRecognizer(target: self, action: #selector(TeacherDetailTableViewController.wwwTaped))
             tapWWW.numberOfTapsRequired = 1
             cell.teacherHomepageLabel.addGestureRecognizer(tapWWW)
             cell.teacherHomepageLabel.userInteractionEnabled = true
@@ -117,7 +116,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         if (userDetails.hasPhoto) {
             restImageProvider.loadImage("", urlString: userDetails.photoUrl!, onImageLoaded: self)
         }
-        var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TeacherDetailTableViewController.imageTapped))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TeacherDetailTableViewController.imageTapped))
         tapGestureRecognizer.numberOfTapsRequired = 1
         cell.teacherImageView.addGestureRecognizer(tapGestureRecognizer)
         cell.teacherImageView.userInteractionEnabled = true

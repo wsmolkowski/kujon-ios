@@ -21,7 +21,7 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
         self.navigationItem.title = StringHolder.chooseUsos
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
 
-        var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UsosesTableViewController.barTapped))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UsosesTableViewController.barTapped))
         tapGestureRecognizer.numberOfTapsRequired = 3
         self.navigationController?.navigationBar.addGestureRecognizer(tapGestureRecognizer)
         self.navigationController?.navigationBar.userInteractionEnabled = true
@@ -34,7 +34,7 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
 
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(UsosesTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
     }
 
     func refresh(refreshControl: UIRefreshControl) {
@@ -80,13 +80,13 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
     }
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: UsosTableViewCell = tableView.dequeueReusableCellWithIdentifier(UsosCellIdentifier, forIndexPath: indexPath) as! UsosTableViewCell
-        var usos = getShowDemo()[indexPath.row] as Usos
+        let cell: UsosTableViewCell = tableView.dequeueReusableCellWithIdentifier(UsosCellIdentifier, forIndexPath: indexPath) as! UsosTableViewCell
+        let usos = getShowDemo()[indexPath.row] as Usos
         cell.usosImageView?.contentMode = UIViewContentMode.ScaleAspectFit;
         cell.usosImageView?.clipsToBounds = true
         cell.usosImageView?.image = nil
         self.loadImage(usos.image, indexPath: indexPath)
-        (cell as! UsosTableViewCell).label.text = usos.name
+        (cell ).label.text = usos.name
         cell.backgroundColor = UIColor.greyBackgroundColor()
         return cell
     }
@@ -144,7 +144,7 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
             if (data != nil) {
                 let image = UIImage(data: data!)
                 dispatch_async(dispatch_get_main_queue()) {
-                    if var cell = self.tableView.cellForRowAtIndexPath(indexPath) {
+                    if let cell = self.tableView.cellForRowAtIndexPath(indexPath) {
                         (cell as! UsosTableViewCell).usosImageView?.contentMode = UIViewContentMode.ScaleAspectFit;
                         (cell as! UsosTableViewCell).usosImageView?.image = image
 

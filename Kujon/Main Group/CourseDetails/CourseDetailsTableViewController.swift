@@ -21,7 +21,7 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
         courseDetailsProvider.delegate = self;
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(CourseDetailsTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         load()
         for section in sectionHelpers{
             section.registerView(self.tableView)
@@ -84,11 +84,11 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
     // MARK: - Table view data source
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return (sectionHelpers[section] as! SectionHelperProtocol).getSectionHeaderHeight()
+        return (sectionHelpers[section]).getSectionHeaderHeight()
     }
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return createLabelForSectionTitle((sectionHelpers[section] as! SectionHelperProtocol).getSectionTitle())
+        return createLabelForSectionTitle((sectionHelpers[section]).getSectionTitle())
     }
 
 
@@ -100,70 +100,23 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return (sectionHelpers[section] as! SectionHelperProtocol).getSectionSize()
+        return (sectionHelpers[section]).getSectionSize()
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let helper = (sectionHelpers[indexPath.section] as! SectionHelperProtocol)
-        var cell = helper.giveMeCellAtPosition(tableView,onPosition: indexPath)
+        let helper = (sectionHelpers[indexPath.section] )
+        let cell = helper.giveMeCellAtPosition(tableView,onPosition: indexPath)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         return  cell
     }
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return CGFloat((sectionHelpers[indexPath.section] as! SectionHelperProtocol).getRowHeight())
+        return CGFloat((sectionHelpers[indexPath.section] ).getRowHeight())
     }
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        (sectionHelpers[indexPath.section] as! SectionHelperProtocol).reactOnSectionClick(indexPath.row,withController: self.navigationController)
+        (sectionHelpers[indexPath.section]).reactOnSectionClick(indexPath.row,withController: self.navigationController)
     }
 
-
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
 }

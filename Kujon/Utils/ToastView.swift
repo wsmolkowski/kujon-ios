@@ -19,16 +19,16 @@ class ToastView: UIView {
 
         for view in parentView.subviews {
             if (view.isKindOfClass(ToastView)) {
-                toastsAlreadyInParent++
+                toastsAlreadyInParent += 1
             }
         }
 
-        var parentFrame = parentView.frame;
+        let parentFrame = parentView.frame;
 
-        var yOrigin = parentFrame.size.height - getDouble(toastsAlreadyInParent)
+        let yOrigin = parentFrame.size.height - getDouble(toastsAlreadyInParent)
 
-        var selfFrame = CGRectMake(parentFrame.origin.x + 20.0, yOrigin, parentFrame.size.width - 40.0, toastHeight);
-        var toast = ToastView(frame: selfFrame)
+        let selfFrame = CGRectMake(parentFrame.origin.x + 20.0, yOrigin, parentFrame.size.width - 40.0, toastHeight);
+        let toast = ToastView(frame: selfFrame)
 
         toast.textLabel.backgroundColor = UIColor.clearColor()
         toast.textLabel.textAlignment = NSTextAlignment.Center

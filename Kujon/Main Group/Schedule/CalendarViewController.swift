@@ -99,7 +99,7 @@ class CalendarViewController: MGCDayPlannerViewController,
         }
         switch (type) {
         case MGCEventType.TimedEventType:
-            if var list = getListOfLecturesWrappers(date) {
+            if let list = getListOfLecturesWrappers(date) {
                 return list.count
             }
             return 0
@@ -109,7 +109,7 @@ class CalendarViewController: MGCDayPlannerViewController,
 
     override func dayPlannerView(view: MGCDayPlannerView!, dateRangeForEventOfType type: MGCEventType, atIndex index: UInt, date: NSDate!) -> MGCDateRange! {
         if var list = getListOfLecturesWrappers(date) {
-            let lecture = list[Int(index)] as! LectureWrapper;
+            let lecture = list[Int(index)] ;
             return MGCDateRange(start: lecture.startNSDate, end: lecture.endNSDate)
         }
         return nil
@@ -117,12 +117,12 @@ class CalendarViewController: MGCDayPlannerViewController,
 
     override func dayPlannerView(view: MGCDayPlannerView!, viewForEventOfType type: MGCEventType, atIndex index: UInt, date: NSDate!) -> MGCEventView! {
         if var list = getListOfLecturesWrappers(date) {
-            var eventView = MyEventView()
+            let eventView = MyEventView()
             let lecture = list[Int(index)] ;
             eventView.myBackgrounColor = UIColor.kujonCalendarBlue()
             eventView.fontColor = UIColor.blackColor()
             eventView.title = lecture.startTime + " " + lecture.endTime + "\n" +  lecture.lecture.courseName
-            var font = UIFont.kjnTextStyleFontSmall()
+            eventView.font = UIFont.kjnTextStyleFontSmall()
             eventView.detail = lecture.lecture.buldingName
             eventView.selected = false
             return eventView
@@ -134,7 +134,7 @@ class CalendarViewController: MGCDayPlannerViewController,
 
     override func dayPlannerView(view: MGCDayPlannerView!, didSelectEventOfType type: MGCEventType, atIndex index: UInt, date: NSDate!) {
         if var list = getListOfLecturesWrappers(date) {
-            let lecture = list[Int(index)] as! LectureWrapper;
+            let lecture = list[Int(index)] ;
             lecture.handleClick(self.navigationController)
         }
     }

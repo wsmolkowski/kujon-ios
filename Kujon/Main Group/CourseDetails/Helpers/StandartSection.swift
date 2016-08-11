@@ -7,7 +7,7 @@ import Foundation
 
 class StandartSection{
     static let rowHeight = 48
-    static let sectionHeight:CGFloat = 30
+    static let sectionHeight:CGFloat = 48
 
 
 

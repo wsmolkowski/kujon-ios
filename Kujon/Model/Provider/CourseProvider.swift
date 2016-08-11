@@ -30,10 +30,10 @@ class CourseProvider: RestApiManager {
                             let insideDic = courseDic as! NSDictionary
                             let key = insideDic.allKeys[0]
                             if let dictionaryForGivenKey = courseDic[key as! String]! {
-                                var courseWrapper = CoursesWrapper()
+                                let courseWrapper = CoursesWrapper()
                                 courseWrapper.title = key as! String
                                 for index in 0...dictionaryForGivenKey.count-1{
-                                    var course = try Course.decode(dictionaryForGivenKey[index])
+                                    let course = try Course.decode(dictionaryForGivenKey[index])
                                     courseWrapper.courses.append(course)
                                 }
                                 arrayOfCourses.append(courseWrapper)

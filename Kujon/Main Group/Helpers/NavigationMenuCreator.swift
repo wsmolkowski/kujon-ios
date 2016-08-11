@@ -19,7 +19,7 @@ class NavigationMenuCreator {
 
     static func createNavMenuWithBackButton(controller:UIViewController,selector:Selector,andTitle title:String = ""){
         let image = UIImage(named: "arrow-left-white")
-        var button = UIButton(type: .Custom)
+        let button = UIButton(type: .Custom)
         button.setImage(image, forState: .Normal)
         button.setTitle(StringHolder.back, forState: .Normal)
         let font = UIFont.kjnTextStyle2Font()

@@ -68,7 +68,7 @@ class LeftMenuTableViewController: UITableViewController {
         } else {
 
             let cell: MenuItemTableViewCell = tableView.dequeueReusableCellWithIdentifier(MenuItemCellIdentiefier, forIndexPath: indexPath) as! MenuItemTableViewCell
-            var menuItem = self.getCurrentMenuItem(indexPath)
+            let menuItem = self.getCurrentMenuItem(indexPath)
             cell.myImage?.image = menuItem.returnImage()
             cell.myText.text = menuItem.returnTitle()
             cell.myText.font = UIFont.kjnTextStyle5Font()
@@ -90,7 +90,7 @@ class LeftMenuTableViewController: UITableViewController {
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if (indexPath.section > 0) {
 
-            var menuItem = self.getCurrentMenuItem(indexPath)
+            let menuItem = self.getCurrentMenuItem(indexPath)
             if (menuItem.returnViewController()) {
                 self.delegate?.selectedMenuItem(self, menuItem: menuItem, withDelegate: indexPath.section == 1)
             } else {

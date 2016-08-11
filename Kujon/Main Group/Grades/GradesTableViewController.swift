@@ -31,7 +31,7 @@ class GradesTableViewController: UITableViewController
 
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(GradesTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
     }
     func refresh(refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")
@@ -81,8 +81,8 @@ class GradesTableViewController: UITableViewController
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier(GradeCellIdentiefer, forIndexPath: indexPath) as! GradesTableViewCell
-        let prepareGrade = self.myTermGrades[indexPath.section].grades[indexPath.row] as! PreparedGrades
+        let cell = tableView.dequeueReusableCellWithIdentifier(GradeCellIdentiefer, forIndexPath: indexPath) as! GradesTableViewCell
+        let prepareGrade = self.myTermGrades[indexPath.section].grades[indexPath.row] 
 
         cell.textGradeLabel.text = prepareGrade.grades.valueDescription
         cell.gradeNumberLabel.text = prepareGrade.grades.valueSymbol
@@ -93,7 +93,7 @@ class GradesTableViewController: UITableViewController
     }
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let prepareGrade = self.myTermGrades[indexPath.section].grades[indexPath.row] as! PreparedGrades
+        let prepareGrade = self.myTermGrades[indexPath.section].grades[indexPath.row] 
 
         let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: NSBundle.mainBundle())
         courseDetails.courseId = prepareGrade.courseId
