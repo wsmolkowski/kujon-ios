@@ -100,8 +100,6 @@ class ScheduleTableViewController:
 
     private func askForData() {
         isQuering = true
-
-
         for n in 0 ... 6 {
             sectionsArray.append(ScheduleSectionImpl(withDate: lastQueryDate.addDays(n).dateToStringSchedule(), listOfLecture: Array()))
         }
@@ -112,14 +110,10 @@ class ScheduleTableViewController:
         let wrappers = lectures.map {
             lecture in LectureWrapper(lecture: lecture)
         }
-//        let dicMonthYear = wrappers.groupBy {
-//            $0.monthYearNSDate
-////        }
         let dictionaryOfDays = wrappers.groupBy {
             $0.startDate
         }
         let sortedKeys = dictionaryOfDays.keys
-//
         sortedKeys.forEach {
             key2 in
 

@@ -31,9 +31,6 @@ class CalendarViewController: MGCDayPlannerViewController,
                 action: #selector(CalendarViewController.openList))
         self.navigationItem.rightBarButtonItem = openCalendarButton
         self.edgesForExtendedLayout = UIRectEdge.None
-//        self.dayPlannerView.backgroundColor = UIColor.whiteColor()
-//        self.dayPlannerView.backgroundView = UIView(frame: CGRectZero)
-//        self.dayPlannerView.backgroundView.backgroundColor = UIColor.whiteColor()
         self.dayPlannerView.numberOfVisibleDays = 3
         self.dayPlannerView.daySeparatorsColor = UIColor.calendarSeparatorColor()
         self.dayPlannerView.timeSeparatorsColor = UIColor.calendarSeparatorColor()
@@ -61,7 +58,7 @@ class CalendarViewController: MGCDayPlannerViewController,
 
         sortedKeys.forEach {
             key2 in
-            let key = key2.getMonthYearString();
+            _ = key2.getMonthYearString();
             var dict = dicMonthYear[key2]!.groupBy {
                 $0.startDate
             }
