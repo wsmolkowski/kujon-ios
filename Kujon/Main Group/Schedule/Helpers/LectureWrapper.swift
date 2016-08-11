@@ -22,7 +22,7 @@ class LectureWrapper: CellHandlingStrategy,ShowCourseDetailsDelegate {
         self.lecture = lecture
         self.startNSDate = NSDate.stringToDateWithClock(lecture.startTime)
         self.endNSDate = NSDate.stringToDateWithClock(lecture.endTime)
-        self.startDate = startNSDate.dateToString()
+        self.startDate = startNSDate.dateToStringSchedule()
         self.startTime = startNSDate.dateHoursToString()
         self.endTime = endNSDate.dateHoursToString()
         self.mothYearDate = startNSDate.getMonthYearString()

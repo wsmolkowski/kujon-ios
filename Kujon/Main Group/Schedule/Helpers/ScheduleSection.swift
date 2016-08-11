@@ -12,4 +12,5 @@ protocol ScheduleSection {
 
     func getElementAtPosition(position: Int) -> CellHandlingStrategy
     func getList() -> Array<CellHandlingStrategy>
+    func addToList(list:Array<CellHandlingStrategy>)
 }

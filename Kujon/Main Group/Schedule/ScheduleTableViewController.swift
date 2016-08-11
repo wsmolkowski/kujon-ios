@@ -70,13 +70,15 @@ class ScheduleTableViewController:
         floatingButton?.makeMyselfCircle()
         self.navigationController?.view.addSubview(floatingButton!)
     }
+
     override func viewWillDisappear(animated: Bool) {
         floatingButton.removeFromSuperview()
         super.viewWillDisappear(animated)
     }
+
     func onTodayClick() {
         NSlogManager.showLog("Kliknalem FABaaaa")
-        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0),atScrollPosition:.Top , animated:true)
+        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: .Top, animated: true)
 
     }
 
@@ -85,7 +87,6 @@ class ScheduleTableViewController:
         addFloatingButton()
         lectureProvider.delegate = self
     }
-
 
 
     func refresh(refreshControl: UIRefreshControl) {
@@ -100,9 +101,10 @@ class ScheduleTableViewController:
 
     private func askForData() {
         isQuering = true
-        let keyOfQuerry = lastQueryDate.getMonthYearString()
-        if (sectionsArray.count == 0 || sectionsArray[sectionsArray.count - 1].getSectionTitle() != keyOfQuerry) {
-            sectionsArray.append(ScheduleSectionImpl(withDate: keyOfQuerry, listOfLecture: Array()))
+
+
+        for n in 0 ... 6 {
+            sectionsArray.append(ScheduleSectionImpl(withDate: lastQueryDate.addDays(n).dateToStringSchedule(), listOfLecture: Array()))
         }
         lectureProvider.loadLectures(lastQueryDate.dateToString())
     }
@@ -111,32 +113,29 @@ class ScheduleTableViewController:
         let wrappers = lectures.map {
             lecture in LectureWrapper(lecture: lecture)
         }
-        let dicMonthYear = wrappers.groupBy {
-            $0.monthYearNSDate
+//        let dicMonthYear = wrappers.groupBy {
+//            $0.monthYearNSDate
+////        }
+        let dictionaryOfDays = wrappers.groupBy {
+            $0.startDate
         }
-        let sortedKeys = dicMonthYear.keys
-
+        let sortedKeys = dictionaryOfDays.keys
+//
         sortedKeys.forEach {
             key2 in
-            let key = key2.getMonthYearString();
-            var list = Array<CellHandlingStrategy>()
-            for section in sectionsArray {
-                if (section.getSectionTitle() == key) {
-                    list = section.getList()
-                }
+            let pos = getPositionOfSection(key2)
+            if(pos != nil){
+                let array = dictionaryOfDays[key2]!.map{ $0 as! CellHandlingStrategy}
+                (sectionsArray[pos] as! ScheduleSection).addToList(array)
             }
-            var dict = dicMonthYear[key2]!.groupBy {
-                $0.startDate
-            }
-            for day in dict.keys {
-                onlyLectureDictionary[day] = dict[day]
-            }
-            handleAddingToArray(key, oldList: list, dicdays: dict)
         }
 
         self.tableView.reloadData()
         isQuering = false
-        self.refreshControl?.endRefreshing()
+    }
+
+    private func getPositionOfSection(text:String) ->Int!{
+        return sectionsArray.indexOf{$0.getSectionTitle() == text}
     }
 
 
@@ -188,7 +187,6 @@ class ScheduleTableViewController:
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func openDrawer() {

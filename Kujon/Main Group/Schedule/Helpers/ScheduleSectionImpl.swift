@@ -8,7 +8,7 @@ import Foundation
 class ScheduleSectionImpl: ScheduleSection {
 
     let currentDate: String
-    let listOfStrategys: Array<CellHandlingStrategy>
+    var listOfStrategys: Array<CellHandlingStrategy>
     init(withDate: String, listOfLecture: Array<CellHandlingStrategy>) {
         currentDate = withDate
         self.listOfStrategys = listOfLecture
@@ -30,6 +30,11 @@ class ScheduleSectionImpl: ScheduleSection {
 
     func getList() -> Array<CellHandlingStrategy> {
         return listOfStrategys
+    }
+
+
+    func addToList(list: Array<CellHandlingStrategy>) {
+        listOfStrategys = listOfStrategys + list
     }
 
 

@@ -9,6 +9,7 @@ import Decodable
 extension NSDate {
     private static let dateFormatter = NSDateFormatter()
     private static let dateFormat = "yyyy-MM-dd"
+    private static let dateFormatSchedule = "EEEE d MMMM ,yyyy"
     private static let dateFormatDayMonth = "dd \n MMM"
     private static let dateFormatMonth = "MMMM"
     private static let dateFormatYear = "yyyy"
@@ -29,6 +30,9 @@ extension NSDate {
         return NSDate.getDateFormatter().stringFromDate(self)
     }
 
+    func dateToStringSchedule() -> String {
+        return NSDate.getDateFormatter(NSDate.dateFormatSchedule).stringFromDate(self)
+    }
     func dateHoursToString() -> String {
         return NSDate.getDateFormatter(NSDate.dateFormatOnlyTime).stringFromDate(self)
     }
