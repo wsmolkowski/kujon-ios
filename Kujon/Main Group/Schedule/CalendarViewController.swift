@@ -19,6 +19,9 @@ class CalendarViewController: MGCDayPlannerViewController,
     var onlyLectureDictionary: Dictionary<String, [LectureWrapper]> = Dictionary()
     var lastQueryDate: NSDate! = nil
     var lectureProvider = ProvidersProviderImpl.sharedInstance.provideLectureProvider()
+    private let floatingButtonDelegate = FloatingButtonDelegate()
+
+
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {
         self.delegate = delegate
     }
@@ -40,6 +43,27 @@ class CalendarViewController: MGCDayPlannerViewController,
         lectureProvider.delegate = self
         self.dayPlannerView.scrollToDate(lastQueryDate, options: MGCDayPlannerScrollType.Date, animated: false)
         _ = EKEventStore()
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        lectureProvider.delegate = self
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.floatingButtonDelegate.viewWillAppear(self, selector: #selector(CalendarViewController.onTodayClick))
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        floatingButtonDelegate.viewWillDisappear()
+        super.viewWillDisappear(animated)
+    }
+
+    func onTodayClick() {
+        self.dayPlannerView.scrollToDate(NSDate(), options: MGCDayPlannerScrollType.Date, animated: false)
+
     }
 
 
@@ -109,7 +133,7 @@ class CalendarViewController: MGCDayPlannerViewController,
 
     override func dayPlannerView(view: MGCDayPlannerView!, dateRangeForEventOfType type: MGCEventType, atIndex index: UInt, date: NSDate!) -> MGCDateRange! {
         if var list = getListOfLecturesWrappers(date) {
-            let lecture = list[Int(index)] ;
+            let lecture = list[Int(index)];
             return MGCDateRange(start: lecture.startNSDate, end: lecture.endNSDate)
         }
         return nil
@@ -118,10 +142,10 @@ class CalendarViewController: MGCDayPlannerViewController,
     override func dayPlannerView(view: MGCDayPlannerView!, viewForEventOfType type: MGCEventType, atIndex index: UInt, date: NSDate!) -> MGCEventView! {
         if var list = getListOfLecturesWrappers(date) {
             let eventView = MyEventView()
-            let lecture = list[Int(index)] ;
+            let lecture = list[Int(index)];
             eventView.myBackgrounColor = UIColor.kujonCalendarBlue()
             eventView.fontColor = UIColor.blackColor()
-            eventView.title = lecture.startTime + " " + lecture.endTime + "\n" +  lecture.lecture.courseName
+            eventView.title = lecture.startTime + " " + lecture.endTime + "\n" + lecture.lecture.courseName
             eventView.font = UIFont.kjnTextStyleFontSmall()
             eventView.detail = lecture.lecture.buldingName
             eventView.selected = false
@@ -134,7 +158,7 @@ class CalendarViewController: MGCDayPlannerViewController,
 
     override func dayPlannerView(view: MGCDayPlannerView!, didSelectEventOfType type: MGCEventType, atIndex index: UInt, date: NSDate!) {
         if var list = getListOfLecturesWrappers(date) {
-            let lecture = list[Int(index)] ;
+            let lecture = list[Int(index)];
             lecture.handleClick(self.navigationController)
         }
     }

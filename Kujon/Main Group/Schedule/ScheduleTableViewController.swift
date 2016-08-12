@@ -54,6 +54,11 @@ class ScheduleTableViewController:
         refreshControl?.addTarget(self, action: #selector(ScheduleTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
 
     }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.floatingButtonDelegate.viewWillAppear(self, selector: #selector(ScheduleTableViewController.onTodayClick))
+        lectureProvider.delegate = self
+    }
     override func viewWillDisappear(animated: Bool) {
         floatingButtonDelegate.viewWillDisappear()
         super.viewWillDisappear(animated)
@@ -64,11 +69,6 @@ class ScheduleTableViewController:
 
     }
 
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        self.floatingButtonDelegate.viewWillAppear(self, selector: #selector(ScheduleTableViewController.onTodayClick))
-        lectureProvider.delegate = self
-    }
 
 
     func refresh(refreshControl: UIRefreshControl) {
