@@ -36,6 +36,14 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         }
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if let cell = (self.tableView.cellForRowAtIndexPath( NSIndexPath(forRow:0, inSection: 0) ) as! MapTableViewCell!){
+            cell.mapView.delegate = self;
+        }
+
+    }
+
     func back() {
         self.navigationController?.popViewControllerAnimated(true)
     }
@@ -108,10 +116,6 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.section {
-        case 0:
-            break;
-        case 1:
-            break;
         case 2:
             self.openUrlString(self.facultie.phoneNumber[indexPath.row])
             break;
@@ -125,8 +129,12 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
     private func configureMapCell(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(mapCellId, forIndexPath: indexPath) as! MapTableViewCell
         cell.mapView.delegate = self
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(FacultieTableViewController.onMapClick))
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        cell.mapView.addGestureRecognizer(tapGestureRecognizer)
+        cell.mapView.userInteractionEnabled = true
+
         if(facultie != nil) {
-//            let adress = facultie.postalAdress.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet())
             let geocoder: CLGeocoder = CLGeocoder();
             geocoder.geocodeAddressString(facultie.postalAdress,completionHandler: {
                 (placemarks: [CLPlacemark]?, error: NSError?) -> Void in
@@ -168,12 +176,23 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
     }
 
 
+
+
     private func configureHeaderCell(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(headerCellId, forIndexPath: indexPath) as! FacultieHeaderTableViewCell
         cell.adressLabel.text = facultie.postalAdress
         cell.facultieNameLabel.text = facultie.name
         loadImage(facultie.logUrls.p100x100,indexPath: indexPath)
         return cell
+    }
+
+    func onMapClick() {
+        let baseUrl: String = "http://maps.apple.com/?q="
+        let encodedName = facultie.postalAdress.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet()) ?? ""
+        let finalUrl = baseUrl + encodedName
+        if let url = NSURL(string: finalUrl) {
+            UIApplication.sharedApplication().openURL(url)
+        }
     }
 
     private func configurePhoneCell(indexPath: NSIndexPath) -> UITableViewCell {
