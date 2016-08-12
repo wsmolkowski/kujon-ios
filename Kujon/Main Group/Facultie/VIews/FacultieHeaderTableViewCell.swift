@@ -10,6 +10,7 @@ import UIKit
 
 class FacultieHeaderTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var facultieImageView: UIImageView!
     @IBOutlet weak var adressLabel: UILabel!
     @IBOutlet weak var facultieNameLabel: UILabel!
     override func awakeFromNib() {

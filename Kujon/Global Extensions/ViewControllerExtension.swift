@@ -30,6 +30,12 @@ extension UIViewController {
         }))
         presentViewController(alertController, animated: true, completion: nil)
     }
+
+    func openUrlString(text: String){
+        if let url = NSURL(string: text) {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
 }
 extension UITableViewController {
     
@@ -48,6 +54,8 @@ extension UITableViewController {
         view.layer.addBorder(UIRectEdge.Top,color:UIColor.lightGray(),thickness: 0.5)
         return view
     }
+
+
 
 
 }

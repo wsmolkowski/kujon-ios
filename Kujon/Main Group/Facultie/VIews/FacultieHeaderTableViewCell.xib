@@ -75,6 +75,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="adressLabel" destination="8Eg-iz-WQ5" id="rRc-0r-yvS"/>
+                <outlet property="facultieImageView" destination="XKR-ee-CSL" id="qHi-W3-YyC"/>
                 <outlet property="facultieNameLabel" destination="QeA-vM-MDb" id="5b5-jN-HjC"/>
             </connections>
             <point key="canvasLocation" x="140" y="340.5"/>

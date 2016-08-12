@@ -290,7 +290,7 @@ class UserTableViewController: UITableViewController
 
     func clickedFacultie(forIndexPath: NSIndexPath) {
         let myFac: Facultie = self.userFaculties[forIndexPath.row]
-        let faculiteController = FacultieViewController(nibName: "FacultieViewController", bundle: NSBundle.mainBundle())
+        let faculiteController = FacultieTableViewController(nibName: "FacultieTableViewController", bundle: NSBundle.mainBundle())
         faculiteController.facultie = myFac
         self.navigationController?.pushViewController(faculiteController, animated: true)
     }

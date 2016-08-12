@@ -7,29 +7,39 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
-class FacultieTableViewController: UITableViewController, FacultieProviderDelegate {
+class FacultieTableViewController: UITableViewController, FacultieProviderDelegate, MKMapViewDelegate {
     var facultie: Facultie! = nil
     var facultieId: String! = nil
     var facultieProvider = ProvidersProviderImpl.sharedInstance.proivdeFacultieProvider()
-    static let mapCellId = "MapCellId";
-    static let headerCellId = "headerCellId";
-    static let telephoneCellId = "telephoneCellId";
-    static let wwwCellId = "wwwCellId";
+    let mapCellId = "MapCellId";
+    let headerCellId = "headerCellId";
+    let telephoneCellId = "telephoneCellId";
+    let wwwCellId = "wwwCellId";
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(FacultieViewController.back), andTitle: StringHolder.faculty)
+        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(FacultieTableViewController.back), andTitle: StringHolder.faculty)
+
+        self.tableView.registerNib(UINib(nibName: "MapTableViewCell", bundle: nil), forCellReuseIdentifier: mapCellId)
+        self.tableView.registerNib(UINib(nibName: "FacultieHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: headerCellId)
+        self.tableView.registerNib(UINib(nibName: "TelephoneTableViewCell", bundle: nil), forCellReuseIdentifier: telephoneCellId)
+        self.tableView.registerNib(UINib(nibName: "WWWTableViewCell", bundle: nil), forCellReuseIdentifier: wwwCellId)
+        self.tableView.tableFooterView =  UIView()
+        self.tableView.allowsSelection = false
         if (facultie != nil) {
-            
         } else if (facultieId != nil) {
             facultieProvider.delegate = self
             facultieProvider.loadFacultie(facultieId)
         }
-
-      
     }
-    
+
+    func back() {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+
     func onFacultieLoaded(fac: Facultie) {
         self.facultie = fac
         self.tableView.reloadData()
@@ -39,26 +49,25 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         self.showAlertApi(StringHolder.attention, text: text, succes: {
             self.facultieProvider.delegate = self
             self.facultieProvider.loadFacultie(self.facultieId)
-            }, cancel: {})
+        }, cancel: {})
     }
 
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+
         return 4
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0:
-            return 1
-        case 1: return self.facultie != nil ? 1:0
-        case 2: return self.facultie != nil ? self.facultie.phoneNumber.count:0
-        case 3: return self.facultie?.homePageUrl != nil ? 1:0
+        case 0: return 1
+        case 1: return self.facultie != nil ? 1 : 0
+        case 2: return self.facultie != nil ? self.facultie.phoneNumber.count : 0
+        case 3: return self.facultie?.homePageUrl != nil ? 1 : 0
         default:
-            0
+           return 0
         }
     }
 
@@ -67,27 +76,139 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
 
         switch indexPath.section {
         case 0:
-
-        break;
+            return configureMapCell(indexPath)
         case 1:
-
-        break;
+            return configureHeaderCell(indexPath)
         case 2:
-
-        break;
+            return configurePhoneCell(indexPath)
         case 3:
-
-        break;
+            return configureWWWCell(indexPath)
         default:
-            break;
+            return configureWWWCell(indexPath)
+
         }
     }
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let sectionSch = getScheduleSectionAtPosition(indexPath.section)
-        let cellStrategy = sectionSch.getElementAtPosition(indexPath.row)
-        cellStrategy.handleClick(self.navigationController)
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0:
+            return 120
+        case 1:
+            return 152
+        case 2:
+            return 60
+        case 3:
+            return 60
+        default:
+            return 60
+
+        }
     }
-   
-    
+
+
+    @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch indexPath.section {
+        case 0:
+            break;
+        case 1:
+            break;
+        case 2:
+            self.openUrlString(self.facultie.phoneNumber[indexPath.row])
+            break;
+        case 3:
+            self.openUrlString(self.facultie.homePageUrl)
+        break;
+        default: break;
+        }
+    }
+
+    private func configureMapCell(indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(mapCellId, forIndexPath: indexPath) as! MapTableViewCell
+        cell.mapView.delegate = self
+        if(facultie != nil) {
+//            let adress = facultie.postalAdress.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet())
+            let geocoder: CLGeocoder = CLGeocoder();
+            geocoder.geocodeAddressString(facultie.postalAdress,completionHandler: {
+                (placemarks: [CLPlacemark]?, error: NSError?) -> Void in
+                if placemarks?.count > 0 {
+                    let topResult: CLPlacemark = placemarks![0];
+                    let placemark: MKPlacemark = MKPlacemark(placemark: topResult);
+
+                    if let cell = self.tableView.cellForRowAtIndexPath(indexPath) {
+                        let rgn = MKCoordinateRegionMakeWithDistance(
+                                placemark.location!.coordinate, 500, 500);
+
+                        (cell as! MapTableViewCell).mapView.setRegion(rgn, animated: true);
+                        (cell as! MapTableViewCell).mapView.addAnnotation(placemark);
+                    }
+
+                }
+            })
+        }
+        return cell
+    }
+
+      func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        let reuseId = String(stringInterpolationSegment: annotation.coordinate.longitude)
+        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as! MKAnnotationView!
+
+        if pinView == nil {
+
+            pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            pinView!.image = UIImage(named: "map-pin-icon")
+        }
+
+
+        return pinView
+
+    }
+
+
+    private func configureHeaderCell(indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(headerCellId, forIndexPath: indexPath) as! FacultieHeaderTableViewCell
+        cell.adressLabel.text = facultie.postalAdress
+        cell.facultieNameLabel.text = facultie.name
+        loadImage(facultie.logUrls.p100x100,indexPath: indexPath)
+        return cell
+    }
+
+    private func configurePhoneCell(indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(telephoneCellId, forIndexPath: indexPath) as! TelephoneTableViewCell
+        cell.telephoneNumberLabel.text = self.facultie.phoneNumber[indexPath.row]
+        return cell
+    }
+
+    private func configureWWWCell(indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(wwwCellId, forIndexPath: indexPath) as! WWWTableViewCell
+        cell.wwwLabel.text = self.facultie.homePageUrl
+        return cell
+    }
+
+
+
+
+    private func loadImage(urlString: String, indexPath: NSIndexPath) {
+        let url = NSURL(string: urlString)
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url!, completionHandler: {
+            data, response, error -> Void in
+            if (data != nil) {
+                let image = UIImage(data: data!)
+                dispatch_async(dispatch_get_main_queue()) {
+                    if let cell = self.tableView.cellForRowAtIndexPath(indexPath) {
+                        (cell as! FacultieHeaderTableViewCell).facultieImageView.image = image
+                    }
+
+
+                }
+            }
+        })
+        task.resume()
+    }
+
+
 }
