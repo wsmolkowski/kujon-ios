@@ -31,7 +31,8 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
         self.usosProvider.delegate = self
         self.usosProvider.loadUsoses()
 
-
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 140
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(UsosesTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
@@ -57,7 +58,7 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
     }
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 70
+        return 60
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
