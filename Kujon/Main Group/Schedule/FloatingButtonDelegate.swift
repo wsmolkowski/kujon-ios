@@ -23,7 +23,9 @@ class FloatingButtonDelegate {
         floatingButton?.titleLabel?.font = UIFont.kjnTextStyleFont()
         floatingButton?.backgroundColor = UIColor.kujonBlueColor()
         floatingButton?.makeMyselfCircle()
+
         controller.navigationController?.view.addSubview(floatingButton!)
+
     }
 
      func viewWillDisappear() {

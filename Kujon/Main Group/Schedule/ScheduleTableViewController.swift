@@ -56,9 +56,14 @@ class ScheduleTableViewController:
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.floatingButtonDelegate.viewWillAppear(self, selector: #selector(ScheduleTableViewController.onTodayClick))
         lectureProvider.delegate = self
     }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.floatingButtonDelegate.viewWillAppear(self, selector: #selector(ScheduleTableViewController.onTodayClick))
+    }
+
     override func viewWillDisappear(animated: Bool) {
         floatingButtonDelegate.viewWillDisappear()
         super.viewWillDisappear(animated)
