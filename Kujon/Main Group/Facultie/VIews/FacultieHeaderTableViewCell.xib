@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+        </mutableArray>
+        <mutableArray key="Lato-Semibold.ttf">
+            <string>Lato-Semibold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="FacultieHeaderTableViewCell" customModule="Kujon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="151"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="151"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XKR-ee-CSL">
+                        <rect key="frame" x="8" y="21" width="78" height="74"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="78" id="7y9-r0-JTN"/>
+                            <constraint firstAttribute="width" constant="78" id="iy9-Mh-cnP"/>
+                            <constraint firstAttribute="height" constant="74" id="on6-Pj-zfV"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="7y9-r0-JTN"/>
+                            </mask>
+                        </variation>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeA-vM-MDb">
+                        <rect key="frame" x="94" y="21" width="218" height="74"/>
+                        <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="15"/>
+                        <color key="textColor" red="0.1647058824" green="0.20000000000000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l59-g0-vsc">
+                        <rect key="frame" x="16" y="109" width="45" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="45" id="RRa-Ed-P1a"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.34202586206896551" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Eg-iz-WQ5">
+                        <rect key="frame" x="16" y="127" width="296" height="23"/>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                        <color key="textColor" red="0.16470588743686676" green="0.20000000298023224" blue="0.24313725531101227" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="8Eg-iz-WQ5" firstAttribute="top" secondItem="l59-g0-vsc" secondAttribute="bottom" id="43A-Oy-vsb"/>
+                    <constraint firstItem="XKR-ee-CSL" firstAttribute="bottom" secondItem="QeA-vM-MDb" secondAttribute="bottom" id="4Pj-rH-bn7"/>
+                    <constraint firstItem="XKR-ee-CSL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="13" id="7Tm-2i-2ye"/>
+                    <constraint firstItem="l59-g0-vsc" firstAttribute="leading" secondItem="8Eg-iz-WQ5" secondAttribute="leading" id="KBx-zt-dVG"/>
+                    <constraint firstItem="l59-g0-vsc" firstAttribute="leading" secondItem="XKR-ee-CSL" secondAttribute="leading" constant="8" id="LN4-Nh-Rki"/>
+                    <constraint firstItem="l59-g0-vsc" firstAttribute="top" secondItem="XKR-ee-CSL" secondAttribute="bottom" constant="14" id="QJX-i5-0ay"/>
+                    <constraint firstItem="QeA-vM-MDb" firstAttribute="leading" secondItem="XKR-ee-CSL" secondAttribute="trailing" constant="8" symbolic="YES" id="VPM-Xd-WR3"/>
+                    <constraint firstItem="QeA-vM-MDb" firstAttribute="trailing" secondItem="8Eg-iz-WQ5" secondAttribute="trailing" id="Y1D-Vb-Fsp"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="8Eg-iz-WQ5" secondAttribute="bottom" constant="-7.5" id="bd0-2T-jtp"/>
+                    <constraint firstItem="QeA-vM-MDb" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="iNd-mq-pCk"/>
+                    <constraint firstItem="XKR-ee-CSL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="prR-4z-Adr"/>
+                    <constraint firstItem="XKR-ee-CSL" firstAttribute="top" secondItem="QeA-vM-MDb" secondAttribute="top" id="rKH-LB-yYx"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="adressLabel" destination="8Eg-iz-WQ5" id="rRc-0r-yvS"/>
+                <outlet property="facultieNameLabel" destination="QeA-vM-MDb" id="5b5-jN-HjC"/>
+            </connections>
+            <point key="canvasLocation" x="140" y="340.5"/>
+        </tableViewCell>
+    </objects>
+</document>

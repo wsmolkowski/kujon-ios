@@ -50,7 +50,7 @@ class ToastView: UIView {
         })
 
 
-        toast.performSelector(Selector("hideSelf"), withObject: nil, afterDelay: duration)
+        toast.performSelector(#selector(ToastView.hideSelf), withObject: nil, afterDelay: duration)
 
     }
 

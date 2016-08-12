@@ -12,7 +12,7 @@ class SendOpinionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithBackButton(self,selector: Selector("back"))
+        NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(SendOpinionViewController.back))
         // Do any additional setup after loading the view.
     }
 

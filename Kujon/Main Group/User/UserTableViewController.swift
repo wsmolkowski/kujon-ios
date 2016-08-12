@@ -62,7 +62,7 @@ class UserTableViewController: UITableViewController
         refreshControl = UIRefreshControl()
         refreshControl?.backgroundColor = UIColor.kujonBlueColor()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(UserTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
 
         self.navigationController?.navigationBar.barTintColor = UIColor.kujonBlueColor()
     }
