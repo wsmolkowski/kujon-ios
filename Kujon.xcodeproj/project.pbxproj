@@ -21,6 +21,7 @@
 		0AB192161D4AB8E800834773 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AB192101D4AB8E800834773 /* WebViewController.xib */; };
 		2BAFB7B3F960A01C5BFE57C7 /* Pods_Kujon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96504F7BCCB0EE28D6F0F6C4 /* Pods_Kujon.framework */; };
 		395726529DA26FEF655FEFAC /* Pods_KujonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C865AA5DFAADA9B9D2A08520 /* Pods_KujonUITests.framework */; };
+		4C0D8014EBE2BE09795543CE /* FloatingButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D814FCD163FFCE31C1C0B /* FloatingButtonDelegate.swift */; };
 		4C0D8053B89C09BC0F888097 /* UsosHolderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D83195DBB1F80FC86451D /* UsosHolderController.swift */; };
 		4C0D807545C280601AAB48CB /* StudentProgramme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8A53D4F9C21CACEEE68A /* StudentProgramme.swift */; };
 		4C0D807A59B2A7B85B701839 /* SchoolPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D848E36F1CC2CC1086439 /* SchoolPath.swift */; };
@@ -165,7 +166,6 @@
 		4C0D8DD1DC491DC007F98692 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8AE26100BB9C339355AC /* SessionManager.swift */; };
 		4C0D8DF43CBEECAE734FFDF2 /* ErrorResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8D8FB8953D1EC2EFF6C1 /* ErrorResponseProtocol.swift */; };
 		4C0D8E02015B88F38F0F59F4 /* FacultieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8FD2A35FC381A99E4C99 /* FacultieResponse.swift */; };
-		4C0D8E15F7108868A62344A9 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D83CB28E75B4CB3DE7FE9 /* NSDateExtensions.swift */; };
 		4C0D8E35546E06FE6E50627E /* Usos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D800DE50A86489C4C7E74 /* Usos.swift */; };
 		4C0D8E79EF248F656D747BE4 /* ConfigResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D85C3C43334F528850DDD /* ConfigResponse.swift */; };
 		4C0D8E7C2F8E9C4975AA3606 /* Lato-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8885E2586C07FE1D9A79 /* Lato-HeavyItalic.ttf */; };
@@ -292,6 +292,7 @@
 		4C0D80FB3F45F945BDAE8122 /* EmploymentDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmploymentDetails.swift; sourceTree = "<group>"; };
 		4C0D80FC2419D914C8EA5BAC /* MenuItemWithController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemWithController.swift; sourceTree = "<group>"; };
 		4C0D811FC0531FB6DF1A0375 /* StudentProgrammeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentProgrammeResponse.swift; sourceTree = "<group>"; };
+		4C0D814FCD163FFCE31C1C0B /* FloatingButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingButtonDelegate.swift; sourceTree = "<group>"; };
 		4C0D81848238BC6A569D3D0E /* DayWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayWrapper.swift; sourceTree = "<group>"; };
 		4C0D8187AF0AC9814758C9EB /* Usoses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Usoses.json; sourceTree = "<group>"; };
 		4C0D818C198D3E8ECD02EE91 /* LecturerProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturerProvider.swift; sourceTree = "<group>"; };
@@ -319,7 +320,6 @@
 		4C0D838970388E1D0B1D1DE9 /* ProgrameIdResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrameIdResponse.swift; sourceTree = "<group>"; };
 		4C0D83A67C7877F9C7E770ED /* Lato-Hairline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = "Lato-Hairline.ttf"; sourceTree = "<group>"; };
 		4C0D83A869F2202BBD42EC4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Kujon/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
-		4C0D83CB28E75B4CB3DE7FE9 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtensions.swift; sourceTree = "<group>"; };
 		4C0D83FFD6EDC0C0A0B9ADEE /* ClassTypeSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTypeSection.swift; sourceTree = "<group>"; };
 		4C0D8409BD33BD6E63358884 /* Lato-HairlineItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = "Lato-HairlineItalic.ttf"; sourceTree = "<group>"; };
 		4C0D841A2FE4461ECB9F5859 /* CourseEdition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseEdition.swift; sourceTree = "<group>"; };
@@ -832,6 +832,7 @@
 				529513641D196136009D6FF2 /* CalendarViewController.swift */,
 				5267503F1D214A7B004AD243 /* CoursePopUpViewController.swift */,
 				526750401D214A7B004AD243 /* CoursePopUpViewController.xib */,
+				4C0D814FCD163FFCE31C1C0B /* FloatingButtonDelegate.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -957,7 +958,6 @@
 				4C0D8E122D49E9F1EAC590CA /* ArrayExtension.swift */,
 				4C0D8DB54DD23281C3E2C08B /* UIViewExtension.swift */,
 				4C0D80D05F8472B37F41EF0B /* ViewControllerExtension.swift */,
-				4C0D83CB28E75B4CB3DE7FE9 /* NSDateExtensions.swift */,
 				4C0D80C60F18F352959F2C99 /* CALayerExtensions.swift */,
 			);
 			path = "Global Extensions";
@@ -1916,7 +1916,6 @@
 				4C0D8C8AA72AA75BAD58BB1B /* MenuItemWithURL.swift in Sources */,
 				4C0D8613E9AAE6706DD0D2B2 /* StringHolder.swift in Sources */,
 				4C0D86AB196D67D0C0451162 /* ClassType.swift in Sources */,
-				4C0D8E15F7108868A62344A9 /* NSDateExtensions.swift in Sources */,
 				4C0D82D460DB747874BBDCD4 /* TermsProvider.swift in Sources */,
 				4C0D80C2E817C52141156F68 /* TermsResponse.swift in Sources */,
 				4C0D851407C8CFA2E564494A /* TermsTableViewController.swift in Sources */,
@@ -1933,6 +1932,7 @@
 				4C0D89CAC447E567DA0D2EB3 /* ConfigProvider.swift in Sources */,
 				4C0D8C2760C9F3EC7CC1E8AD /* SpinnerView.swift in Sources */,
 				4C0D89E3D529752E92B8EB0F /* MyEventView.m in Sources */,
+				4C0D8014EBE2BE09795543CE /* FloatingButtonDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

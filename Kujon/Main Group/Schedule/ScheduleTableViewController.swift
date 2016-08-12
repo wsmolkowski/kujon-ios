@@ -18,13 +18,12 @@ class ScheduleTableViewController:
     static let LectureCellId = "lectureCellId"
     static let DayCellId = "dayCellId"
     static let textId = "simpleTextId"
-    private let floatingSize: CGFloat = 55.0
-    private let floatingMargin: CGFloat = 15.0
-    private var floatingButton: UIButton! = nil
+    private let floatingButtonDelegate  = FloatingButtonDelegate()
     var isQuering = false
     var lastQueryDate: NSDate! = nil
     var firstDate: NSDate! = nil
     var sectionsArray: Array<ScheduleSection> = Array()
+    var todaySection:Int = 0
     var onlyLectureDictionary: Dictionary<String, [LectureWrapper]> = Dictionary()
 
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {
@@ -41,7 +40,8 @@ class ScheduleTableViewController:
 
 //        lastQueryDate = NSDate.stringToDate("2015-05-05")
         lastQueryDate = NSDate.getCurrentStartOfWeek()
-        firstDate = lastQueryDate
+        NSDate().numberOfDaysUntilDateTime(lastQueryDate)
+        todaySection  = lastQueryDate.numberOfDaysUntilDateTime(NSDate());
         self.tableView.registerNib(UINib(nibName: "LectureTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.LectureCellId)
         self.tableView.registerNib(UINib(nibName: "DayTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.DayCellId)
         self.tableView.tableFooterView = UIView()
@@ -49,41 +49,24 @@ class ScheduleTableViewController:
         self.tableView.estimatedRowHeight = 140
         lectureProvider.delegate = self
         askForData()
-
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(ScheduleTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
 
     }
-
-    private func addFloatingButton() {
-        floatingButton = UIButton(type: .Custom)
-        let xPos = self.view.frame.size.width - floatingSize - floatingMargin
-        let yPos = self.view.frame.origin.y + self.view.frame.size.height - floatingSize - floatingMargin
-        floatingButton?.frame = CGRectMake(xPos, yPos, floatingSize, floatingSize)
-        floatingButton?.titleLabel?.numberOfLines = 2
-        floatingButton?.titleLabel?.textAlignment = .Center
-        floatingButton?.setTitle(NSDate().getDayMonth(), forState: .Normal)
-        floatingButton?.addTarget(self, action: #selector(ScheduleTableViewController.onTodayClick), forControlEvents: UIControlEvents.TouchUpInside)
-        floatingButton?.titleLabel?.font = UIFont.kjnTextStyleFont()
-        floatingButton?.backgroundColor = UIColor.kujonBlueColor()
-        floatingButton?.makeMyselfCircle()
-        self.navigationController?.view.addSubview(floatingButton!)
-    }
-
     override func viewWillDisappear(animated: Bool) {
-        floatingButton.removeFromSuperview()
+        floatingButtonDelegate.viewWillDisappear()
         super.viewWillDisappear(animated)
     }
 
     func onTodayClick() {
-        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: .Top, animated: true)
+        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: todaySection), atScrollPosition: .Top, animated: true)
 
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        addFloatingButton()
+        self.floatingButtonDelegate.viewWillAppear(self, selector: #selector(ScheduleTableViewController.onTodayClick))
         lectureProvider.delegate = self
     }
 
