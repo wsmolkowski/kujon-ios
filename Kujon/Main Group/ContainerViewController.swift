@@ -99,7 +99,6 @@ extension ContainerViewController: UIGestureRecognizerDelegate {
             recognizer.setTranslation(CGPointZero, inView: view)
         case .Ended:
             if (leftViewController != nil) {
-                // animate the side panel open or closed based on whether the view has moved more or less than halfway
                 let hasMovedGreaterThanHalfway = recognizer.view!.center.x > view.bounds.size.width
                 animateLeftPanel(hasMovedGreaterThanHalfway)
             }
