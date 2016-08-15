@@ -31,31 +31,30 @@ extension UIViewController {
         presentViewController(alertController, animated: true, completion: nil)
     }
 
-    func openUrlString(text: String){
+    func openUrlString(text: String) {
         if let url = NSURL(string: text) {
             UIApplication.sharedApplication().openURL(url)
         }
     }
 }
+
 extension UITableViewController {
-    
-    func createLabelForSectionTitle(text: String,middle:Bool = false) -> UIView {
-        let view = UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, 48))
+
+    func createLabelForSectionTitle(text: String, middle: Bool = false, height: CGFloat = 48) -> UIView {
+        let view = UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, height))
         view.backgroundColor = UIColor.greyBackgroundColor()
-        let label = UILabel(frame: CGRectMake(11, 0, self.tableView.frame.size.width - 11, 48))
+        let label = UILabel(frame: CGRectMake(11, 0, self.tableView.frame.size.width - 11, height))
         let font = UIFont.kjnTextStyle2Font()
         label.font = font
         label.text = text
-        if(middle){
+        if (middle) {
             label.textAlignment = .Center
         }
         label.textColor = UIColor.blackWithAlpha()
         view.addSubview(label)
-        view.layer.addBorder(UIRectEdge.Top,color:UIColor.lightGray(),thickness: 0.5)
+        view.layer.addBorder(UIRectEdge.Top, color: UIColor.lightGray(), thickness: 0.5)
         return view
     }
-
-
 
 
 }
