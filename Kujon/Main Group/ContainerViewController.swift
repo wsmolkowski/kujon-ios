@@ -45,7 +45,7 @@ class ContainerViewController: UIViewController, LeftMenuTableViewControllerDele
         centerNavigationController.navigationBar.barTintColor = UIColor.kujonBlueColor()
         centerNavigationController.navigationBar.tintColor = UIColor.whiteColor()
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        centerNavigationController.navigationBar.titleTextAttributes =  titleDict as? [String : AnyObject]
+        centerNavigationController.navigationBar.titleTextAttributes = titleDict as? [String:AnyObject]
 
 
         centerNavigationController.navigationBar.translucent = false
@@ -53,13 +53,14 @@ class ContainerViewController: UIViewController, LeftMenuTableViewControllerDele
         view.addSubview(centerNavigationController.view)
         addChildViewController(centerNavigationController)
         centerNavigationController.didMoveToParentViewController(self)
-
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
+        centerNavigationController.view.addGestureRecognizer(panGestureRecognizer)
     }
 
     func selectedMenuItem(menuController: LeftMenuTableViewController, menuItem: MenuItemWithController, withDelegate: Bool) {
 
-        if let cont = (centerNavigationController.visibleViewController as? NavigationDelegate){
-            if(cont.isSecond()){
+        if let cont = (centerNavigationController.visibleViewController as? NavigationDelegate) {
+            if (cont.isSecond()) {
                 self.centerNavigationController.viewControllers.removeLast()
             }
         }
@@ -74,6 +75,39 @@ class ContainerViewController: UIViewController, LeftMenuTableViewControllerDele
         }
     }
 
+
+}
+
+extension ContainerViewController: UIGestureRecognizerDelegate {
+    // MARK: Gesture recognizer
+
+    func handlePanGesture(recognizer: UIPanGestureRecognizer) {
+        let gestureIsDraggingFromLeftToRight = (recognizer.velocityInView(view).x > 0)
+        if (currentState == .Collapsed && !gestureIsDraggingFromLeftToRight) {
+            return
+        }
+        switch (recognizer.state) {
+        case .Began:
+            if (currentState == .Collapsed) {
+                if (gestureIsDraggingFromLeftToRight) {
+                    addLeftPanelViewController()
+                }
+                showShadowForCenterViewController(true)
+            }
+        case .Changed:
+            recognizer.view!.center.x = recognizer.view!.center.x + recognizer.translationInView(view).x
+            recognizer.setTranslation(CGPointZero, inView: view)
+        case .Ended:
+            if (leftViewController != nil) {
+                // animate the side panel open or closed based on whether the view has moved more or less than halfway
+                let hasMovedGreaterThanHalfway = recognizer.view!.center.x > view.bounds.size.width
+                animateLeftPanel(hasMovedGreaterThanHalfway)
+            }
+        default:
+            break
+        }
+
+    }
 
 }
 
