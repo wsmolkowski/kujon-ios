@@ -203,6 +203,8 @@
 		5267503E1D21391F004AD243 /* CourseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5267503C1D21391F004AD243 /* CourseTableViewCell.xib */; };
 		526750411D214A7B004AD243 /* CoursePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267503F1D214A7B004AD243 /* CoursePopUpViewController.swift */; };
 		526750421D214A7B004AD243 /* CoursePopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526750401D214A7B004AD243 /* CoursePopUpViewController.xib */; };
+		5273005F1D61C360003D51B6 /* TeacherHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5273005D1D61C360003D51B6 /* TeacherHeaderTableViewCell.swift */; };
+		527300601D61C360003D51B6 /* TeacherHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5273005E1D61C360003D51B6 /* TeacherHeaderTableViewCell.xib */; };
 		527B39B81D117B800028BCF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527B39B71D117B800028BCF9 /* Assets.xcassets */; };
 		527B39BB1D12A0260028BCF9 /* TeacherDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527B39B91D12A0260028BCF9 /* TeacherDetailTableViewController.swift */; };
 		527B39BC1D12A0260028BCF9 /* TeacherDetailTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527B39BA1D12A0260028BCF9 /* TeacherDetailTableViewController.xib */; };
@@ -472,6 +474,8 @@
 		5267503C1D21391F004AD243 /* CourseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseTableViewCell.xib; sourceTree = "<group>"; };
 		5267503F1D214A7B004AD243 /* CoursePopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoursePopUpViewController.swift; path = Views/CoursePopUpViewController.swift; sourceTree = "<group>"; };
 		526750401D214A7B004AD243 /* CoursePopUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CoursePopUpViewController.xib; path = Views/CoursePopUpViewController.xib; sourceTree = "<group>"; };
+		5273005D1D61C360003D51B6 /* TeacherHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		5273005E1D61C360003D51B6 /* TeacherHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeacherHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		527B39B71D117B800028BCF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		527B39B91D12A0260028BCF9 /* TeacherDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherDetailTableViewController.swift; sourceTree = "<group>"; };
 		527B39BA1D12A0260028BCF9 /* TeacherDetailTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeacherDetailTableViewController.xib; sourceTree = "<group>"; };
@@ -722,6 +726,8 @@
 			children = (
 				527B39BD1D12A08D0028BCF9 /* TeacherDetailsTableViewCell.swift */,
 				527B39BE1D12A08D0028BCF9 /* TeacherDetailsTableViewCell.xib */,
+				5273005D1D61C360003D51B6 /* TeacherHeaderTableViewCell.swift */,
+				5273005E1D61C360003D51B6 /* TeacherHeaderTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1387,6 +1393,7 @@
 				52AF77E01D0EB4420058979A /* TeacherTableViewController.xib in Resources */,
 				523B4FDA1D2BCAD6005FA79F /* UserDetailsTableViewCell.xib in Resources */,
 				4C0D8EDC5E5F870381B4C21D /* LaunchScreen.storyboard in Resources */,
+				527300601D61C360003D51B6 /* TeacherHeaderTableViewCell.xib in Resources */,
 				5282840E1D084D7200A602B4 /* UsosTableViewCell.xib in Resources */,
 				52382ED01D3510ED00EBEA57 /* TermView.xib in Resources */,
 				52C6275A1D1BFA0100A9BBA0 /* DayTableViewCell.xib in Resources */,
@@ -1932,6 +1939,7 @@
 				526750391D213902004AD243 /* CoursesTableViewController.swift in Sources */,
 				4C0D8BCEA9F6DF85809A280A /* PopUpViewController.swift in Sources */,
 				0AB192111D4AB8E800834773 /* WebViewController.swift in Sources */,
+				5273005F1D61C360003D51B6 /* TeacherHeaderTableViewCell.swift in Sources */,
 				4C0D8E02015B88F38F0F59F4 /* FacultieResponse.swift in Sources */,
 				523B4FDD1D2BD090005FA79F /* TextViewController.swift in Sources */,
 				4C0D8FF661F42652FDB8257B /* FacultieProvider.swift in Sources */,
