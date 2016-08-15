@@ -53,7 +53,7 @@ class ContainerViewController: UIViewController, LeftMenuTableViewControllerDele
         view.addSubview(centerNavigationController.view)
         addChildViewController(centerNavigationController)
         centerNavigationController.didMoveToParentViewController(self)
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ContainerViewController.handlePanGesture(_:)))
         centerNavigationController.view.addGestureRecognizer(panGestureRecognizer)
     }
 

@@ -38,6 +38,7 @@ class CalendarViewController: MGCDayPlannerViewController,
         self.dayPlannerView.daySeparatorsColor = UIColor.calendarSeparatorColor()
         self.dayPlannerView.timeSeparatorsColor = UIColor.calendarSeparatorColor()
         self.dayPlannerView.dateFormat = calendarDateFormant
+        self.dayPlannerView.showsAllDayEvents = false
         (self.dayPlannerView as MGCDayPlannerView).hourRange = NSRange(location: 6, length: 16)
         dateFormatter.dateFormat = calendarDateFormant
         lectureProvider.delegate = self

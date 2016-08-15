@@ -28,14 +28,8 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
     var configProvider = ProvidersProviderImpl.sharedInstance.provideConfigProvider()
     var socialLogin = true
 
-    @IBAction func showTermsAndConditions(sender: AnyObject) {
-        NSlogManager.showLog("showTermsAndConditions")
-        var controller: UIViewController!
-        controller = WebViewController()
-        let navigationController = UINavigationController(rootViewController: controller)
-        self.presentViewController(navigationController, animated: true, completion: nil)
 
-    }
+    @IBOutlet weak var rejestrujacLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +45,18 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
         }else {
             spinnerView.hidden = true
         }
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(EntryViewController.showTerms))
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        rejestrujacLabel.userInteractionEnabled = true
+        rejestrujacLabel.addGestureRecognizer(tapGestureRecognizer)
+
+    }
+    func showTerms(sender: UITapGestureRecognizer){
+        NSlogManager.showLog("showTermsAndConditions")
+        var controller: UIViewController!
+        controller = WebViewController()
+        let navigationController = UINavigationController(rootViewController: controller)
+        self.presentViewController(navigationController, animated: true, completion: nil)
 
     }
 
@@ -121,7 +127,9 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
         self.showAlertApi(StringHolder.attention, text: StringHolder.errorUsos, succes: {
             self.spinnerView.hidden = false
             self.configProvider.checkConfig()
-        }, cancel: {})
+        }, cancel: {
+            self.spinnerView.hidden = true
+        })
     }
 
 

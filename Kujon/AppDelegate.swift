@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        // TODO make some better handling
         let urlString: String = url.absoluteString
         if(urlString .containsString("googleusercontent")) {
-            var options: [String: AnyObject] = [UIApplicationOpenURLOptionsSourceApplicationKey: sourceApplication!,
+            let options: [String: AnyObject] = [UIApplicationOpenURLOptionsSourceApplicationKey: sourceApplication!,
                                                 UIApplicationOpenURLOptionsAnnotationKey: annotation]
             return GIDSignIn.sharedInstance().handleURL(url,
                                                         sourceApplication: sourceApplication,
