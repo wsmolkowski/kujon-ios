@@ -154,7 +154,7 @@ class ScheduleTableViewController:
     func openCalendar() {
         let calendarViewController = CalendarViewController()
         calendarViewController.onlyLectureDictionary = onlyLectureDictionary
-        calendarViewController.setNavigationProtocol(delegate!)
+        (calendarViewController as! NavigationDelegate).setNavigationProtocol(delegate!)
         calendarViewController.lastQueryDate = lastQueryDate
         self.navigationController?.pushViewController(calendarViewController, animated: true)
     }

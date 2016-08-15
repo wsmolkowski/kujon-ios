@@ -18,6 +18,7 @@ class CalendarViewController: MGCDayPlannerViewController,
     weak var delegate: NavigationMenuProtocol! = nil
     var onlyLectureDictionary: Dictionary<String, [LectureWrapper]> = Dictionary()
     var lastQueryDate: NSDate! = nil
+    var veryFirstDate: NSDate! = nil
     var lectureProvider = ProvidersProviderImpl.sharedInstance.provideLectureProvider()
     private let floatingButtonDelegate = FloatingButtonDelegate()
 
@@ -30,9 +31,9 @@ class CalendarViewController: MGCDayPlannerViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(CalendarViewController.openDrawer), andTitle: StringHolder.schedule)
-        let openCalendarButton = UIBarButtonItem(image: UIImage(named: "calendar-list"), style: UIBarButtonItemStyle.Plain, target: self,
-                action: #selector(CalendarViewController.openList))
-        self.navigationItem.rightBarButtonItem = openCalendarButton
+//        let openCalendarButton = UIBarButtonItem(image: UIImage(named: "calendar-list"), style: UIBarButtonItemStyle.Plain, target: self,
+//                action: #selector(CalendarViewController.openList))
+//        self.navigationItem.rightBarButtonItem = openCalendarButton
         self.edgesForExtendedLayout = UIRectEdge.None
         self.dayPlannerView.numberOfVisibleDays = 3
         self.dayPlannerView.daySeparatorsColor = UIColor.calendarSeparatorColor()
@@ -40,6 +41,11 @@ class CalendarViewController: MGCDayPlannerViewController,
         self.dayPlannerView.dateFormat = calendarDateFormant
         self.dayPlannerView.showsAllDayEvents = false
         (self.dayPlannerView as MGCDayPlannerView).hourRange = NSRange(location: 6, length: 16)
+
+        if(lastQueryDate == nil){
+            lastQueryDate = NSDate.getCurrentStartOfWeek()
+        }
+        veryFirstDate = lastQueryDate
         dateFormatter.dateFormat = calendarDateFormant
         lectureProvider.delegate = self
         self.dayPlannerView.scrollToDate(lastQueryDate, options: MGCDayPlannerScrollType.Date, animated: false)
@@ -68,8 +74,13 @@ class CalendarViewController: MGCDayPlannerViewController,
     }
 
 
-    private func askForData() {
-        lectureProvider.loadLectures(lastQueryDate.dateToString())
+    private func askForData(firstDate: NSDate! = nil) {
+        if( firstDate != nil){
+
+            lectureProvider.loadLectures(firstDate.dateToString())
+        }else {
+            lectureProvider.loadLectures(self.lastQueryDate.dateToString())
+        }
     }
 
     func onLectureLoaded(lectures: Array<Lecture>) {
@@ -109,7 +120,7 @@ class CalendarViewController: MGCDayPlannerViewController,
     }
 
     func isSecond() -> Bool {
-        return true
+        return false
     }
 
     func openList() {
@@ -121,6 +132,10 @@ class CalendarViewController: MGCDayPlannerViewController,
         if (date.isGreaterThanDate(lastQueryDate.dateByAddingTimeInterval(60 * 60 * 24 * 7))) {
             lastQueryDate = date.getStartOfTheWeek()
             askForData()
+        }
+        if( date.isLessThanDate(veryFirstDate) ){
+            veryFirstDate = veryFirstDate.dateByAddingTimeInterval(60 * 60 * 24 * 7 * -1)
+            askForData(veryFirstDate)
         }
         switch (type) {
         case MGCEventType.TimedEventType:

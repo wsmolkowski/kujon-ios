@@ -20,7 +20,6 @@ enum SlideOutState {
 }
 
 class ContainerViewController: UIViewController, LeftMenuTableViewControllerDelegate {
-
     var centerNavigationController: UINavigationController!
 
     var centerViewController: UserTableViewController = UserTableViewController()
@@ -84,6 +83,7 @@ extension ContainerViewController: UIGestureRecognizerDelegate {
     func handlePanGesture(recognizer: UIPanGestureRecognizer) {
         let gestureIsDraggingFromLeftToRight = (recognizer.velocityInView(view).x > 0)
         if (currentState == .Collapsed && !gestureIsDraggingFromLeftToRight) {
+            addLeftPanelViewController()
             return
         }
         switch (recognizer.state) {
@@ -95,8 +95,10 @@ extension ContainerViewController: UIGestureRecognizerDelegate {
                 showShadowForCenterViewController(true)
             }
         case .Changed:
-            recognizer.view!.center.x = recognizer.view!.center.x + recognizer.translationInView(view).x
-            recognizer.setTranslation(CGPointZero, inView: view)
+            if( self.centerNavigationController.view.frame.origin.x + recognizer.translationInView(view).x > 0){
+                recognizer.view!.center.x = recognizer.view!.center.x + recognizer.translationInView(view).x
+                recognizer.setTranslation(CGPointZero, inView: view)
+            }
         case .Ended:
             if (leftViewController != nil) {
                 let hasMovedGreaterThanHalfway = recognizer.view!.center.x > view.bounds.size.width
