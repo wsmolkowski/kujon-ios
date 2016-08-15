@@ -64,6 +64,7 @@ class LeftMenuTableViewController: UITableViewController {
             cell.userNameLabel.text = self.userDataHolder.userName
             cell.userImageView.image = self.userDataHolder.userImage
             cell.userImageView.makeMyselfCircle()
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell
         } else {
 
@@ -72,6 +73,7 @@ class LeftMenuTableViewController: UITableViewController {
             cell.myImage?.image = menuItem.returnImage()
             cell.myText.text = menuItem.returnTitle()
             cell.myText.font = UIFont.kjnTextStyle5Font()
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell
         }
 

@@ -41,7 +41,7 @@
                             <constraint firstAttribute="height" constant="80" id="NOw-KC-Scb"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXV-6Q-mJ2">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXV-6Q-mJ2">
                         <rect key="frame" x="8" y="110" width="304" height="21"/>
                         <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="17"/>
                         <color key="textColor" red="0.1647058874" green="0.20000000300000001" blue="0.24313725529999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -75,6 +75,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpQ-ne-BhR">
                         <rect key="frame" x="8" y="252" width="304" height="18"/>
                         <constraints>
+                            <constraint firstAttribute="height" constant="18" id="QC8-3K-t4X"/>
                             <constraint firstAttribute="height" constant="21" id="yjb-3P-hr2"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
@@ -95,6 +96,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ejr-6J-w6s">
                         <rect key="frame" x="8" y="310" width="304" height="18"/>
                         <constraints>
+                            <constraint firstAttribute="height" constant="18" id="URL-Q8-0vh"/>
                             <constraint firstAttribute="height" constant="21" id="zMK-1V-SfM"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
@@ -106,15 +108,10 @@
                             </mask>
                         </variation>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strona domowa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8S-Mz-dwf">
-                        <rect key="frame" x="8" y="344" width="304" height="18"/>
-                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.34202586210000002" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzZ-UH-5s8">
                         <rect key="frame" x="8" y="368" width="304" height="18"/>
                         <constraints>
+                            <constraint firstAttribute="height" constant="18" id="gj2-5D-KWx"/>
                             <constraint firstAttribute="height" constant="21" id="lyd-6J-zMA"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
@@ -136,6 +133,7 @@
                         <rect key="frame" x="8" y="426" width="304" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="62k-q2-vSj"/>
+                            <constraint firstAttribute="height" constant="18" id="9Bx-K9-RTC"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                         <color key="textColor" red="0.24705882370000001" green="0.72941178080000002" blue="0.85098040100000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -156,6 +154,7 @@
                         <rect key="frame" x="8" y="484" width="304" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="9es-x2-ahs"/>
+                            <constraint firstAttribute="height" constant="18" id="Jme-Uw-cJa"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                         <color key="textColor" red="0.1647058874" green="0.20000000300000001" blue="0.24313725529999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -166,7 +165,7 @@
                             </mask>
                         </variation>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zatrudnienie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="350-CO-8Tl">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zainteresowania" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="350-CO-8Tl">
                         <rect key="frame" x="8" y="518" width="304" height="18"/>
                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.34202586210000002" colorSpace="calibratedRGB"/>
@@ -176,6 +175,7 @@
                         <rect key="frame" x="8" y="542" width="304" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="ZMy-u8-sbw"/>
+                            <constraint firstAttribute="height" constant="18" id="kev-Io-IHb"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                         <color key="textColor" red="0.1647058874" green="0.20000000300000001" blue="0.24313725529999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -185,6 +185,12 @@
                                 <exclude reference="ZMy-u8-sbw"/>
                             </mask>
                         </variation>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strona domowa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8S-Mz-dwf">
+                        <rect key="frame" x="8" y="344" width="304" height="18"/>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.34202586210000002" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
@@ -202,6 +208,7 @@
                     <constraint firstItem="2Kc-aF-Ki2" firstAttribute="top" secondItem="Zxu-GE-9yF" secondAttribute="bottom" constant="27" id="DeR-3s-NgA"/>
                     <constraint firstItem="9nq-ED-6xK" firstAttribute="top" secondItem="kzZ-UH-5s8" secondAttribute="bottom" constant="16" id="EUI-35-lRw"/>
                     <constraint firstAttribute="trailing" secondItem="2Kc-aF-Ki2" secondAttribute="trailing" id="EgW-7Z-hiH"/>
+                    <constraint firstItem="9nq-ED-6xK" firstAttribute="top" secondItem="kzZ-UH-5s8" secondAttribute="bottom" constant="16" id="En0-D5-IAx"/>
                     <constraint firstItem="Ejr-6J-w6s" firstAttribute="top" secondItem="bLK-p1-7Zl" secondAttribute="bottom" constant="6" id="Er6-eM-Gea"/>
                     <constraint firstItem="Zxu-GE-9yF" firstAttribute="trailing" secondItem="lSF-qD-kFv" secondAttribute="trailing" id="H3o-EA-tbQ"/>
                     <constraint firstAttribute="topMargin" secondItem="Xwe-4n-L6B" secondAttribute="top" id="IL3-qb-Wfj"/>
@@ -227,8 +234,10 @@
                     <constraint firstItem="2Kc-aF-Ki2" firstAttribute="centerX" secondItem="lSF-qD-kFv" secondAttribute="centerX" id="jaD-cp-S7S"/>
                     <constraint firstItem="nFU-nQ-YCg" firstAttribute="trailing" secondItem="msU-lj-t0T" secondAttribute="trailing" id="kBe-Zg-haT"/>
                     <constraint firstItem="9nq-ED-6xK" firstAttribute="leading" secondItem="nFU-nQ-YCg" secondAttribute="leading" id="kPJ-ts-6Rr"/>
+                    <constraint firstItem="msU-lj-t0T" firstAttribute="top" secondItem="nFU-nQ-YCg" secondAttribute="bottom" constant="16" id="kaN-FQ-2uK"/>
                     <constraint firstItem="msU-lj-t0T" firstAttribute="trailing" secondItem="XnS-mo-az9" secondAttribute="trailing" id="lXo-vW-L5g"/>
                     <constraint firstItem="XnS-mo-az9" firstAttribute="leading" secondItem="350-CO-8Tl" secondAttribute="leading" id="mtK-Xz-enF"/>
+                    <constraint firstItem="bLK-p1-7Zl" firstAttribute="top" secondItem="kpQ-ne-BhR" secondAttribute="bottom" constant="16" id="myb-wz-v4X"/>
                     <constraint firstItem="XnS-mo-az9" firstAttribute="top" secondItem="msU-lj-t0T" secondAttribute="bottom" constant="6" id="n3h-fv-TSC"/>
                     <constraint firstItem="kpQ-ne-BhR" firstAttribute="trailing" secondItem="bLK-p1-7Zl" secondAttribute="trailing" id="rI7-5g-FQn"/>
                     <constraint firstItem="lSF-qD-kFv" firstAttribute="top" secondItem="2Kc-aF-Ki2" secondAttribute="bottom" constant="14" id="rye-Cp-yFK"/>
@@ -238,12 +247,17 @@
                     <constraint firstItem="bLK-p1-7Zl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="t9o-rT-8dL"/>
                     <constraint firstItem="kzZ-UH-5s8" firstAttribute="leading" secondItem="9nq-ED-6xK" secondAttribute="leading" id="tUk-bt-gEa"/>
                     <constraint firstItem="kpQ-ne-BhR" firstAttribute="top" secondItem="lSF-qD-kFv" secondAttribute="bottom" constant="6" id="urW-Dg-RYB"/>
+                    <constraint firstItem="350-CO-8Tl" firstAttribute="top" secondItem="XnS-mo-az9" secondAttribute="bottom" constant="16" id="wup-Y7-jOk"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
                         <exclude reference="IL3-qb-Wfj"/>
                         <exclude reference="Ug9-1f-92P"/>
+                        <exclude reference="YMA-Bv-WdJ"/>
                         <exclude reference="t9o-rT-8dL"/>
+                        <exclude reference="EUI-35-lRw"/>
+                        <exclude reference="ASy-7w-pmE"/>
+                        <exclude reference="YId-DT-iHM"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>

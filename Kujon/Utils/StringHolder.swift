@@ -23,6 +23,7 @@ class StringHolder {
     static let faculties = "Jednostki"
     static let faculty = "Jednostka"
     static let leadingLecturers = "Prowadzący"
+    static let lecturesConducted = "Prowadzone przedmioty"
     static let students = "Studenci"
     static let passCriteria = "Kryteria Oceny"
     static let courseDetails = "Szczegóły Przedmiotu"

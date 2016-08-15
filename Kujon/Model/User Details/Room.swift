@@ -17,11 +17,19 @@ struct Room {
 extension Room: Decodable {
     static func decode(j: AnyObject) throws -> Room {
         return try Room(
-        buildingId: try? j => "building_id",
+                buildingId: try? j => "building_id",
                 buildingName: try? j => "building_name",
                 number: try? j => "number",
                 id: try? j => "id"
-        )
+                )
     }
 
+}
+
+extension Room {
+    func getRoomString() -> String {
+        let st1 = self.buildingName != nil ? self.buildingName + " " : ""
+        let st2 = self.number != nil ? self.number + " " : ""
+        return st1 + st2
+    }
 }
