@@ -111,9 +111,7 @@ extension ContainerViewController: UIGestureRecognizerDelegate {
 
 }
 
-
 extension ContainerViewController: NavigationMenuProtocol {
-
 
     func collapseSidePanel() {
         switch (currentState) {
