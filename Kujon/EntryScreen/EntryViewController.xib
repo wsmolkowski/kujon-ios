@@ -61,7 +61,7 @@
                         <constraint firstAttribute="height" constant="50" id="feY-4g-hLe"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rejestrując się zgadzasz się na następujące warunki" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miO-Ux-yaG">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rejestrując się zgadzasz się na następujące warunki" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miO-Ux-yaG">
                     <rect key="frame" x="166" y="431" width="269" height="15"/>
                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                     <color key="textColor" red="0.24705882370000001" green="0.72941178080000002" blue="0.85098040100000005" alpha="1" colorSpace="calibratedRGB"/>

@@ -144,7 +144,7 @@ static CGFloat kSpace = 2;
 
     [self redrawStringInRect:drawRect];
 
-    CGRect boundingRect = [self.attrString boundingRectWithSize:CGSizeMake(drawRect.size.width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+
     drawRect.size.height = fminf(drawRect.size.height, self.visibleHeight);
 
 //    if (boundingRect.size.height > drawRect.size.height) {
