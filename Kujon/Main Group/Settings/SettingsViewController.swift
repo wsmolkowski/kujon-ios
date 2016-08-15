@@ -28,7 +28,7 @@ class SettingsViewController: UIViewController,
         GIDSignIn.sharedInstance().uiDelegate = self
         deleteAccountProvider.delegate = self
         loginMenager = UserLoginEnum.getUserLogin()
-        switch (UserLoginEnum.getLoginType()) {
+        switch (loginMenager.getLoginType()) {
         case .FACEBOOK:
             googleLogOutButton.hidden  = true
             break

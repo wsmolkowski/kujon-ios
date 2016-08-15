@@ -13,7 +13,7 @@ class UserDataHolder {
     private  let EMAIL_KEY = "email_key"
     private  let TOKEN_KEY = "token_key"
     private  let USOS_IMAGE_KEY = "usos_image_key"
-    private  let LOGIN_TYPE_KEY = "login_type_key"
+    private  let LOGIN_TYPE_KEY = "login_type_traalalal_key"
     
     private var loadedEmail: String! = nil
 

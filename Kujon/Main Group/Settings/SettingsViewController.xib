@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -24,25 +24,13 @@
                         <constraint firstAttribute="height" constant="48" id="ebA-nN-Yib"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYA-gv-3hZ">
-                    <rect key="frame" x="8" y="62" width="584" height="48"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="48" id="WlX-O3-frc"/>
-                    </constraints>
-                    <state key="normal" title="Skasuj konto">
-                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="deleteAccount:" destination="-1" eventType="touchUpInside" id="LjU-ht-w8r"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3E-cG-bTn">
                     <rect key="frame" x="8" y="118" width="584" height="48"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="8eu-4i-TJv"/>
                     </constraints>
                     <state key="normal" title="Regulamin">
-                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" red="0.16470588743686676" green="0.20000000298023224" blue="0.24313725531101227" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="regulaminAction:" destination="-1" eventType="touchUpInside" id="bZH-LT-obb"/>
@@ -53,9 +41,44 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="P5d-ED-l7c"/>
                     </constraints>
-                    <state key="normal" title="Wyloguj się"/>
+                    <state key="normal" title="Wyloguj się">
+                        <color key="titleColor" red="0.1647058874" green="0.20000000300000001" blue="0.24313725529999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="googleLogOutAction:" destination="-1" eventType="touchUpInside" id="RhT-ad-gpJ"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logout-icon" translatesAutoresizingMaskIntoConstraints="NO" id="0mx-MY-kXb">
+                    <rect key="frame" x="8" y="21" width="18" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="4eb-Sp-VGq"/>
+                        <constraint firstAttribute="width" constant="18" id="gua-GQ-teI"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delete-icon" translatesAutoresizingMaskIntoConstraints="NO" id="Q3O-fz-RIz">
+                    <rect key="frame" x="8" y="77" width="18" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="KDs-kk-6dJ"/>
+                        <constraint firstAttribute="width" constant="18" id="KsA-0P-Azd"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="regulamin-icon" translatesAutoresizingMaskIntoConstraints="NO" id="Mgi-DI-zA4">
+                    <rect key="frame" x="8" y="133" width="18" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="18" id="CMc-c8-Bux"/>
+                        <constraint firstAttribute="height" constant="18" id="dmC-Pt-1kp"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYA-gv-3hZ">
+                    <rect key="frame" x="8" y="62" width="584" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="WlX-O3-frc"/>
+                    </constraints>
+                    <state key="normal" title="Skasuj konto">
+                        <color key="titleColor" red="0.16470588743686676" green="0.20000000298023224" blue="0.24313725531101227" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="deleteAccount:" destination="-1" eventType="touchUpInside" id="LjU-ht-w8r"/>
                     </connections>
                 </button>
             </subviews>
@@ -64,23 +87,32 @@
                 <constraint firstItem="F3E-cG-bTn" firstAttribute="top" secondItem="WYA-gv-3hZ" secondAttribute="bottom" constant="8" id="0Mx-cP-xVt"/>
                 <constraint firstItem="MC6-th-e2q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="1H1-1a-lQ2"/>
                 <constraint firstItem="MC6-th-e2q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="24" id="3Y6-qd-id8"/>
+                <constraint firstItem="Mgi-DI-zA4" firstAttribute="leading" secondItem="F3E-cG-bTn" secondAttribute="leading" id="4dv-qw-f0b"/>
                 <constraint firstItem="WYA-gv-3hZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="62" id="6fX-3V-RNV"/>
                 <constraint firstItem="MC6-th-e2q" firstAttribute="trailing" secondItem="WYA-gv-3hZ" secondAttribute="trailing" id="7gx-Fc-MBE"/>
                 <constraint firstItem="MC6-th-e2q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="7l9-he-qHf"/>
                 <constraint firstItem="WYA-gv-3hZ" firstAttribute="trailing" secondItem="MC6-th-e2q" secondAttribute="trailing" id="8Ev-vQ-KlE"/>
+                <constraint firstItem="Q3O-fz-RIz" firstAttribute="top" secondItem="YjM-bu-bVk" secondAttribute="bottom" constant="21" id="ANZ-LH-W45"/>
                 <constraint firstItem="YjM-bu-bVk" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" constant="-521" id="Ass-hS-SPg"/>
                 <constraint firstItem="MC6-th-e2q" firstAttribute="trailing" secondItem="F3E-cG-bTn" secondAttribute="trailing" id="At6-8T-zqz"/>
                 <constraint firstItem="MC6-th-e2q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="topMargin" constant="16" id="CBu-Ia-93C"/>
                 <constraint firstItem="F3E-cG-bTn" firstAttribute="leading" secondItem="WYA-gv-3hZ" secondAttribute="leading" id="Dwt-GT-559"/>
                 <constraint firstItem="YjM-bu-bVk" firstAttribute="top" secondItem="WYA-gv-3hZ" secondAttribute="bottom" constant="8" symbolic="YES" id="EF2-p9-o53"/>
                 <constraint firstItem="F3E-cG-bTn" firstAttribute="leading" secondItem="WYA-gv-3hZ" secondAttribute="leading" id="GYB-QI-A3o"/>
+                <constraint firstItem="Mgi-DI-zA4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Gft-hk-C0X"/>
+                <constraint firstItem="Q3O-fz-RIz" firstAttribute="trailing" secondItem="0mx-MY-kXb" secondAttribute="trailing" id="JBa-qH-a0y"/>
                 <constraint firstItem="WYA-gv-3hZ" firstAttribute="top" secondItem="MC6-th-e2q" secondAttribute="bottom" constant="8" symbolic="YES" id="MZt-5N-mre"/>
                 <constraint firstItem="F3E-cG-bTn" firstAttribute="trailing" secondItem="WYA-gv-3hZ" secondAttribute="trailing" id="NhZ-By-pcD"/>
                 <constraint firstAttribute="bottom" secondItem="MC6-th-e2q" secondAttribute="bottom" constant="528" id="Nw5-wn-9uz"/>
                 <constraint firstItem="MC6-th-e2q" firstAttribute="leading" secondItem="WYA-gv-3hZ" secondAttribute="leading" id="OaM-OY-EPR"/>
                 <constraint firstItem="WYA-gv-3hZ" firstAttribute="leading" secondItem="MC6-th-e2q" secondAttribute="leading" id="Quj-I6-0CO"/>
+                <constraint firstItem="Mgi-DI-zA4" firstAttribute="centerY" secondItem="F3E-cG-bTn" secondAttribute="centerY" id="UV8-oP-hJm"/>
                 <constraint firstItem="YjM-bu-bVk" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ZnU-L8-K6H"/>
                 <constraint firstItem="F3E-cG-bTn" firstAttribute="trailing" secondItem="WYA-gv-3hZ" secondAttribute="trailing" id="a8W-Ca-TOl"/>
+                <constraint firstItem="0mx-MY-kXb" firstAttribute="leading" secondItem="MC6-th-e2q" secondAttribute="leading" id="haq-zI-BsG"/>
+                <constraint firstItem="0mx-MY-kXb" firstAttribute="centerY" secondItem="MC6-th-e2q" secondAttribute="centerY" id="iKZ-jZ-2Y6"/>
+                <constraint firstItem="Q3O-fz-RIz" firstAttribute="centerY" secondItem="WYA-gv-3hZ" secondAttribute="centerY" id="ice-oB-5GS"/>
+                <constraint firstItem="Q3O-fz-RIz" firstAttribute="leading" secondItem="WYA-gv-3hZ" secondAttribute="leading" id="j1A-Iq-U3r"/>
                 <constraint firstItem="MC6-th-e2q" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" id="kJ8-hs-XUE"/>
                 <constraint firstItem="WYA-gv-3hZ" firstAttribute="leading" secondItem="MC6-th-e2q" secondAttribute="leading" id="khL-HI-0JB"/>
                 <constraint firstItem="MC6-th-e2q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="6" id="lCL-R1-qpb"/>
@@ -92,6 +124,7 @@
                 <constraint firstAttribute="trailing" secondItem="MC6-th-e2q" secondAttribute="trailing" constant="8" id="s1E-3y-if6"/>
                 <constraint firstItem="WYA-gv-3hZ" firstAttribute="top" secondItem="MC6-th-e2q" secondAttribute="bottom" constant="8" id="w8j-sV-IRy"/>
                 <constraint firstAttribute="trailing" secondItem="YjM-bu-bVk" secondAttribute="trailing" constant="8" id="wJa-Gj-Yf6"/>
+                <constraint firstItem="WYA-gv-3hZ" firstAttribute="top" secondItem="0mx-MY-kXb" secondAttribute="bottom" constant="23" id="yp2-1f-t13"/>
                 <constraint firstItem="MC6-th-e2q" firstAttribute="leading" secondItem="F3E-cG-bTn" secondAttribute="leading" id="zce-tT-9W3"/>
             </constraints>
             <variation key="default">
@@ -113,12 +146,21 @@
                     <exclude reference="Quj-I6-0CO"/>
                     <exclude reference="mrv-Sk-lk3"/>
                     <exclude reference="w8j-sV-IRy"/>
+                    <exclude reference="yp2-1f-t13"/>
+                    <exclude reference="ANZ-LH-W45"/>
+                    <exclude reference="JBa-qH-a0y"/>
                     <exclude reference="GYB-QI-A3o"/>
                     <exclude reference="NhZ-By-pcD"/>
                     <exclude reference="oV5-Sn-aPc"/>
+                    <exclude reference="Gft-hk-C0X"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="506" y="423"/>
+            <point key="canvasLocation" x="479" y="414"/>
         </view>
     </objects>
+    <resources>
+        <image name="delete-icon" width="18" height="19"/>
+        <image name="logout-icon" width="18" height="18"/>
+        <image name="regulamin-icon" width="18" height="18"/>
+    </resources>
 </document>

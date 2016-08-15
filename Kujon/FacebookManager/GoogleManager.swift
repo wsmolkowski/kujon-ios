@@ -47,6 +47,10 @@ class GoogleManager: UserLogin {
         return loggedToFB || loggedToGoogle;
     }
 
+    func getLoginType() -> UserLoginEnum {
+        return .GOOGLE
+    }
+
 
     func logout() {
         GIDSignIn.sharedInstance().signOut()

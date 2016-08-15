@@ -42,4 +42,5 @@ extension UserLoginEnum {
 
 protocol UserLogin {
     func logout()
+    func getLoginType() -> UserLoginEnum
 }

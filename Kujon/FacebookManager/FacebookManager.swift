@@ -41,6 +41,10 @@ class FacebookManager : UserLogin {
         self.userDataHolder.userLoginType = StringHolder.fbType
     }
 
+    func getLoginType() -> UserLoginEnum {
+        return .FACEBOOK
+    }
+
 
     func logout(){
         SessionManager.clearCache()
