@@ -62,7 +62,10 @@ class LeftMenuTableViewController: UITableViewController {
             let cell: NavDrawerHeaderViewCellTableViewCell = tableView.dequeueReusableCellWithIdentifier(MenuItemHeaderIdentiefier, forIndexPath: indexPath) as! NavDrawerHeaderViewCellTableViewCell
             cell.userEmailLabel.text = self.userDataHolder.userEmail
             cell.userNameLabel.text = self.userDataHolder.userName
-            cell.userImageView.image = self.userDataHolder.userImage
+            if(self.userDataHolder.userImage != nil){
+
+                cell.userImageView.image = self.userDataHolder.userImage
+            }
             cell.userImageView.makeMyselfCircle()
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell
