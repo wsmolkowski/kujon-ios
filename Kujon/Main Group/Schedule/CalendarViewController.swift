@@ -42,9 +42,10 @@ class CalendarViewController: MGCDayPlannerViewController,
         self.dayPlannerView.showsAllDayEvents = false
         (self.dayPlannerView as MGCDayPlannerView).hourRange = NSRange(location: 6, length: 16)
 
-        if(lastQueryDate == nil){
+        if (lastQueryDate == nil) {
             lastQueryDate = NSDate.getCurrentStartOfWeek()
         }
+//        lastQueryDate = NSDate.stringToDate("2015-05-05")
         veryFirstDate = lastQueryDate
         dateFormatter.dateFormat = calendarDateFormant
         lectureProvider.delegate = self
@@ -75,10 +76,10 @@ class CalendarViewController: MGCDayPlannerViewController,
 
 
     private func askForData(firstDate: NSDate! = nil) {
-        if( firstDate != nil){
+        if (firstDate != nil) {
 
             lectureProvider.loadLectures(firstDate.dateToString())
-        }else {
+        } else {
             lectureProvider.loadLectures(self.lastQueryDate.dateToString())
         }
     }
@@ -133,7 +134,7 @@ class CalendarViewController: MGCDayPlannerViewController,
             lastQueryDate = date.getStartOfTheWeek()
             askForData()
         }
-        if( date.isLessThanDate(veryFirstDate) ){
+        if (date.isLessThanDate(veryFirstDate)) {
             veryFirstDate = veryFirstDate.dateByAddingTimeInterval(60 * 60 * 24 * 7 * -1)
             askForData(veryFirstDate)
         }

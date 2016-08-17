@@ -14,14 +14,12 @@ import UIKit
 
 class CoursePopUpViewController: PopUpViewController {
 
-    @IBOutlet weak var lectureTypeLabel: UILabel!
-    @IBOutlet weak var lectureGroupLabel: UILabel!
-    @IBOutlet weak var lectureBuldingNameLabel: UILabel!
-    @IBOutlet weak var lectureRoomNumberLabel: UILabel!
-    @IBOutlet weak var lectureTimeLabel: UILabel!
+    @IBOutlet weak var tekstLabel: UILabel!
     @IBOutlet weak var courseTitle: UILabel!
     @IBOutlet weak var popUpView: UIView!
 
+    @IBOutlet weak var okButton: UIButton!
+    @IBOutlet weak var showCourseButton: UIButton!
     weak var delegate:ShowCourseDetailsDelegate! = nil
 
     override func viewDidLoad() {
@@ -37,14 +35,15 @@ class CoursePopUpViewController: PopUpViewController {
 
 
     func showInView(withLecture lectureWrap : LectureWrapper){
-
-        
+        okButton.addTopBorder( UIColor.lightGray(), width: 1)
+        showCourseButton.addTopBorder( UIColor.lightGray(), width: 1)
         let lecture = lectureWrap.lecture
-        lectureTypeLabel.text  = createNiceString(StringHolder.type,two: lecture.type)
-        lectureGroupLabel.text  = createNiceString(StringHolder.group,two: String(lecture.groupNumber))
-        lectureBuldingNameLabel.text  = createNiceString(StringHolder.bulding,two: lecture.buldingName)
-        lectureRoomNumberLabel.text  = createNiceString(StringHolder.classRoom,two: lecture.roomNumber)
-        lectureTimeLabel.text  = lectureWrap.startTime + ":" + lecture.endTime
+        let string = lectureWrap.startTime + ":" + lectureWrap.endTime + "\n " + createNiceString(StringHolder.classRoom,two: lecture.roomNumber) +
+                 " \n " + createNiceString(StringHolder.bulding,two: lecture.buldingName) + " \n " +
+                createNiceString(StringHolder.group,two: String(lecture.groupNumber)) + " \n " +
+                createNiceString(StringHolder.type,two: lecture.type)
+            tekstLabel.text = string
+        
         courseTitle.text = lecture.courseName
 
     }
