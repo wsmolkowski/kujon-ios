@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="googleLogOutButton" destination="YjM-bu-bVk" id="NxV-oF-oxB"/>
                 <outlet property="logOutButton" destination="MC6-th-e2q" id="BDb-UK-amv"/>
+                <outlet property="logoutIcon" destination="0mx-MY-kXb" id="DQn-a7-Wen"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

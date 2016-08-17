@@ -34,11 +34,11 @@ class FacebookManager : UserLogin {
             let strFirstName: String = (result.objectForKey("first_name") as? String)!
             let email: String = (result.objectForKey("email") as? String)!
             self.userDataHolder.userEmail = email
+            self.userDataHolder.userLoginType = StringHolder.fbType
             listener.onFacebookCredentailSaved(self.userDataHolder.loggedToUsosForCurrentEmail)
 //            self.handleOpenCorrectController()
 
         }
-        self.userDataHolder.userLoginType = StringHolder.fbType
     }
 
     func getLoginType() -> UserLoginEnum {

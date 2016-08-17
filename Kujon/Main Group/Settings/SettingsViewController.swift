@@ -19,6 +19,7 @@ class SettingsViewController: UIViewController,
     @IBOutlet weak var googleLogOutButton: UIButton!
     var deleteAccountProvider = ProvidersProviderImpl.sharedInstance.provideDeleteAccount()
     
+    @IBOutlet weak var logoutIcon: UIImageView!
     @IBOutlet weak var logOutButton: FBSDKLoginButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,7 @@ class SettingsViewController: UIViewController,
         switch (loginMenager.getLoginType()) {
         case .FACEBOOK:
             googleLogOutButton.hidden  = true
+            logoutIcon.hidden  = true
             break
         case .GOOGLE:
             logOutButton.hidden  = true
