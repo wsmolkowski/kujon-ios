@@ -8,7 +8,6 @@
     <customFonts key="customFonts">
         <mutableArray key="Lato-Regular.ttf">
             <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -79,17 +78,6 @@
                         </mask>
                     </variation>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="bSK-jv-UQb">
-                    <rect key="frame" x="231" y="530" width="139" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="xwn-o4-dig"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
-                    <state key="normal" title="Rejestrując się zgadzasz się na następujące warunki"/>
-                    <connections>
-                        <action selector="showTermsAndConditions:" destination="-1" eventType="touchUpInside" id="IAG-g1-Kcp"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -99,33 +87,18 @@
                 <constraint firstItem="CZ2-Eu-BAD" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.45" id="BH6-v1-K0b"/>
                 <constraint firstItem="miO-Ux-yaG" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="I1Y-Aq-gbN"/>
                 <constraint firstItem="CZ2-Eu-BAD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="M3e-PK-Hps"/>
-                <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="49K-dA-dFD" secondAttribute="bottom" constant="4" id="Tgg-tR-ixB"/>
                 <constraint firstAttribute="bottom" secondItem="CZ2-Eu-BAD" secondAttribute="bottom" constant="259" id="Us5-d7-4EL"/>
                 <constraint firstItem="AUd-TK-qW5" firstAttribute="top" secondItem="swU-s7-4Hc" secondAttribute="bottom" constant="13" id="V1N-q5-8VX"/>
-                <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="AUd-TK-qW5" secondAttribute="bottom" constant="52" id="ZAB-dE-hXo"/>
                 <constraint firstItem="swU-s7-4Hc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZaW-4E-fCx"/>
                 <constraint firstItem="CZ2-Eu-BAD" firstAttribute="top" secondItem="AUd-TK-qW5" secondAttribute="bottom" constant="8" symbolic="YES" id="aAK-ag-CW6"/>
-                <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="CZ2-Eu-BAD" secondAttribute="bottom" constant="8" symbolic="YES" id="aph-UY-Lxy"/>
                 <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="49K-dA-dFD" secondAttribute="bottom" constant="4" id="b2O-6R-46H"/>
                 <constraint firstItem="swU-s7-4Hc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="d87-c8-PdK"/>
-                <constraint firstItem="bSK-jv-UQb" firstAttribute="centerX" secondItem="swU-s7-4Hc" secondAttribute="centerX" id="dmy-CD-Yn3"/>
                 <constraint firstItem="CZ2-Eu-BAD" firstAttribute="top" secondItem="49K-dA-dFD" secondAttribute="top" constant="4" id="eeO-YS-kqk"/>
                 <constraint firstItem="49K-dA-dFD" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" id="fDP-0A-Kej"/>
                 <constraint firstItem="swU-s7-4Hc" firstAttribute="centerX" secondItem="AUd-TK-qW5" secondAttribute="centerX" id="jtQ-tT-9Vb"/>
                 <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="CZ2-Eu-BAD" secondAttribute="bottom" constant="8" symbolic="YES" id="tUc-qf-8x1"/>
-                <constraint firstAttribute="bottom" secondItem="bSK-jv-UQb" secondAttribute="bottom" constant="76" id="yJr-KP-rqg"/>
                 <constraint firstAttribute="trailing" secondItem="swU-s7-4Hc" secondAttribute="trailing" id="yZ4-Ul-4Lr"/>
             </constraints>
-            <variation key="default">
-                <mask key="subviews">
-                    <exclude reference="bSK-jv-UQb"/>
-                </mask>
-                <mask key="constraints">
-                    <exclude reference="Tgg-tR-ixB"/>
-                    <exclude reference="ZAB-dE-hXo"/>
-                    <exclude reference="aph-UY-Lxy"/>
-                </mask>
-            </variation>
         </view>
     </objects>
     <resources>
