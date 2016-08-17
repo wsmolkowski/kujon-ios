@@ -180,6 +180,10 @@
 		4C0D8F84739469EB809E6E14 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D806D09BD6C9327949956 /* Room.swift */; };
 		4C0D8FF519F4291DEB02B9B3 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8BAB77F828B3EFA9CED3 /* Lato-Thin.ttf */; };
 		4C0D8FF661F42652FDB8257B /* FacultieProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D829AA588F62CB18CBDD0 /* FacultieProvider.swift */; };
+		52001CEA1D64520200DB074B /* StudentDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52001CE81D64520200DB074B /* StudentDetailsTableViewController.swift */; };
+		52001CEB1D64520200DB074B /* StudentDetailsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52001CE91D64520200DB074B /* StudentDetailsTableViewController.xib */; };
+		52001CEE1D64521F00DB074B /* StudentHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52001CEC1D64521F00DB074B /* StudentHeaderTableViewCell.swift */; };
+		52001CEF1D64521F00DB074B /* StudentHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52001CED1D64521F00DB074B /* StudentHeaderTableViewCell.xib */; };
 		52382ECE1D3510E000EBEA57 /* TermView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52382ECD1D3510E000EBEA57 /* TermView.swift */; };
 		52382ED01D3510ED00EBEA57 /* TermView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52382ECF1D3510ED00EBEA57 /* TermView.xib */; };
 		52382ED51D3516D800EBEA57 /* TermsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52382ED31D3516D800EBEA57 /* TermsTableViewCell.swift */; };
@@ -449,6 +453,10 @@
 		4C0D8FD2A35FC381A99E4C99 /* FacultieResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacultieResponse.swift; sourceTree = "<group>"; };
 		4C0D8FDD772870E1BD0EF952 /* Facultie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facultie.swift; sourceTree = "<group>"; };
 		4C0D8FE0C6C05C3CCF8C15E0 /* CellHandlerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellHandlerProtocol.swift; sourceTree = "<group>"; };
+		52001CE81D64520200DB074B /* StudentDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentDetailsTableViewController.swift; sourceTree = "<group>"; };
+		52001CE91D64520200DB074B /* StudentDetailsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentDetailsTableViewController.xib; sourceTree = "<group>"; };
+		52001CEC1D64521F00DB074B /* StudentHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		52001CED1D64521F00DB074B /* StudentHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		52382ECD1D3510E000EBEA57 /* TermView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermView.swift; sourceTree = "<group>"; };
 		52382ECF1D3510ED00EBEA57 /* TermView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TermView.xib; sourceTree = "<group>"; };
 		52382ED31D3516D800EBEA57 /* TermsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsTableViewCell.swift; sourceTree = "<group>"; };
@@ -944,6 +952,15 @@
 			path = Share;
 			sourceTree = "<group>";
 		};
+		4C0D896FC7386E05AE5289DE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				52001CEC1D64521F00DB074B /* StudentHeaderTableViewCell.swift */,
+				52001CED1D64521F00DB074B /* StudentHeaderTableViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		4C0D8A9B7706A36D462DBE12 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1123,6 +1140,9 @@
 			children = (
 				52BC424A1D2E779900C60CD6 /* StudentDetailsViewController.swift */,
 				52BC424B1D2E779900C60CD6 /* StudentDetailsViewController.xib */,
+				4C0D896FC7386E05AE5289DE /* Views */,
+				52001CE81D64520200DB074B /* StudentDetailsTableViewController.swift */,
+				52001CE91D64520200DB074B /* StudentDetailsTableViewController.xib */,
 			);
 			path = StudentDetails;
 			sourceTree = "<group>";
@@ -1411,6 +1431,7 @@
 				529C000E1D37CE0A004E1DF1 /* TermsPopUpViewController.xib in Resources */,
 				52574A6E1D59DA9F009B8D08 /* NavDrawerHeaderViewCellTableViewCell.xib in Resources */,
 				52AF77D01D0AD5C50058979A /* SettingsViewController.xib in Resources */,
+				52001CEB1D64520200DB074B /* StudentDetailsTableViewController.xib in Resources */,
 				5267503E1D21391F004AD243 /* CourseTableViewCell.xib in Resources */,
 				52382ED61D3516D800EBEA57 /* TermsTableViewCell.xib in Resources */,
 				52590A871D1D3E5A00C285A0 /* KierunkiViewController.xib in Resources */,
@@ -1423,6 +1444,7 @@
 				52AF77C01D0984FC0058979A /* MenuItemTableViewCell.xib in Resources */,
 				52F69F831D101A9000025C55 /* UserDetailView.xib in Resources */,
 				4C0D8D445517BAD9C52B3DF0 /* Usoses.json in Resources */,
+				52001CEF1D64521F00DB074B /* StudentHeaderTableViewCell.xib in Resources */,
 				4C0D810FF3D931149777D70D /* EntryViewController.xib in Resources */,
 				5257C3321D267D670068FA56 /* ImageViewController.xib in Resources */,
 				4C0D8ACB7F16326767AF48FD /* LecturerDetails.json in Resources */,
@@ -1821,6 +1843,7 @@
 				4C0D86EDDF1F15B819DBF358 /* AppDelegate.swift in Sources */,
 				52AF77A41D095C390058979A /* ContainerViewController.swift in Sources */,
 				5282840A1D08499000A602B4 /* UsosesTableViewController.swift in Sources */,
+				52001CEE1D64521F00DB074B /* StudentHeaderTableViewCell.swift in Sources */,
 				529513621D1931C6009D6FF2 /* HeaderViewTableViewCell.swift in Sources */,
 				5295135E1D192F29009D6FF2 /* LectureTableViewCell.swift in Sources */,
 				5295135A1D17C76E009D6FF2 /* ScheduleTableViewController.swift in Sources */,
@@ -1888,6 +1911,7 @@
 				529C000D1D37CE0A004E1DF1 /* TermsPopUpViewController.swift in Sources */,
 				4C0D8809E711694A3F913024 /* SchoolStats.swift in Sources */,
 				4C0D818BA0EBA18711EA841E /* LogoUrls.swift in Sources */,
+				52001CEA1D64520200DB074B /* StudentDetailsTableViewController.swift in Sources */,
 				52590A7E1D1D1F0C00C285A0 /* GradesTableViewController.swift in Sources */,
 				529513651D196136009D6FF2 /* CalendarViewController.swift in Sources */,
 				4C0D811BF9E0E00EDE9CA088 /* FacultiesResposne.swift in Sources */,

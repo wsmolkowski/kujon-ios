@@ -27,7 +27,7 @@ class ParticipantsSection:LecturersSection {
         if let myUser: SimpleUser = self.list[position] {
 
 
-            let teachController = StudentDetailsViewController(nibName: "StudentDetailsViewController", bundle: NSBundle.mainBundle())
+            let teachController = StudentDetailsTableViewController(nibName: "StudentDetailsTableViewController", bundle: NSBundle.mainBundle())
             teachController.userId = myUser.id
             controller?.pushViewController(teachController, animated: true)
 
