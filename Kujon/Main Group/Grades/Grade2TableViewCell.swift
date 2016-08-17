@@ -1,15 +1,15 @@
 //
-//  GradesTableViewCell.swift
+//  Grade2TableViewCell.swift
 //  Kujon
 //
-//  Created by Wojciech Maciejewski on 24/06/16.
+//  Created by Wojciech Maciejewski on 17/08/16.
 //  Copyright © 2016 Mobi. All rights reserved.
 //
 
 import UIKit
 
-class GradesTableViewCell: UITableViewCell {
-
+class Grade2TableViewCell: UITableViewCell {
+    
     @IBOutlet weak var textGradeLabel: UILabel!
     
     @IBOutlet weak var secDescLabel: UILabel!

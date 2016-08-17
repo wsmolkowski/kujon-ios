@@ -26,7 +26,7 @@ class GradesTableViewController: UITableViewController
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(GradesTableViewController.openDrawer),andTitle: StringHolder.grades)
         gradesProvider.delegate = self
-        self.tableView.registerNib(UINib(nibName: "GradesTableViewCell", bundle: nil), forCellReuseIdentifier: GradeCellIdentiefer)
+        self.tableView.registerNib(UINib(nibName: "Grade2TableViewCell", bundle: nil), forCellReuseIdentifier: GradeCellIdentiefer)
         gradesProvider.loadGrades()
 
         refreshControl = UIRefreshControl()
@@ -81,7 +81,7 @@ class GradesTableViewController: UITableViewController
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(GradeCellIdentiefer, forIndexPath: indexPath) as! GradesTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(GradeCellIdentiefer, forIndexPath: indexPath) as! Grade2TableViewCell
         let prepareGrade = self.myTermGrades[indexPath.section].grades[indexPath.row] 
 
         cell.textGradeLabel.text = prepareGrade.grades.valueDescription

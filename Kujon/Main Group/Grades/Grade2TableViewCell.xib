@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+        </mutableArray>
+        <mutableArray key="Lato-Semibold.ttf">
+            <string>Lato-Semibold</string>
+            <string>Lato-Semibold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="Grade2TableViewCell" customModule="Kujon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="89.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqF-OV-Ezl">
+                        <rect key="frame" x="8" y="8" width="224" height="41.5"/>
+                        <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="15"/>
+                        <color key="textColor" red="0.16470588743686676" green="0.20000000298023224" blue="0.24313725531101227" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVO-5U-Ftj">
+                        <rect key="frame" x="8" y="49" width="224" height="18"/>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.34202587600000001" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4c-SY-fhZ">
+                        <rect key="frame" x="240" y="26" width="72" height="21"/>
+                        <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="17"/>
+                        <color key="textColor" red="0.1647058874" green="0.20000000300000001" blue="0.24313725529999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbh-9G-srB">
+                        <rect key="frame" x="240" y="47" width="72" height="34.5"/>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="11"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="xbh-9G-srB" firstAttribute="trailing" secondItem="G4c-SY-fhZ" secondAttribute="trailing" id="275-qG-Guc"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="lVO-5U-Ftj" secondAttribute="leading" id="39H-cy-1De"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="eqF-OV-Ezl" secondAttribute="leading" id="BYN-Tl-8yc"/>
+                    <constraint firstItem="eqF-OV-Ezl" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.7" id="Gtl-Ia-NEA"/>
+                    <constraint firstItem="xbh-9G-srB" firstAttribute="top" secondItem="G4c-SY-fhZ" secondAttribute="bottom" id="HGO-bC-E96"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="xbh-9G-srB" secondAttribute="bottom" id="NrM-LU-XjI"/>
+                    <constraint firstAttribute="topMargin" secondItem="eqF-OV-Ezl" secondAttribute="top" id="SuZ-1F-qUg"/>
+                    <constraint firstItem="eqF-OV-Ezl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="V9Y-Pc-bUH"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="G4c-SY-fhZ" secondAttribute="trailing" id="VhW-5p-WBU"/>
+                    <constraint firstItem="xbh-9G-srB" firstAttribute="leading" secondItem="G4c-SY-fhZ" secondAttribute="leading" id="Z9W-RK-RcZ"/>
+                    <constraint firstItem="lVO-5U-Ftj" firstAttribute="trailing" secondItem="eqF-OV-Ezl" secondAttribute="trailing" id="iyi-2w-xVU"/>
+                    <constraint firstItem="lVO-5U-Ftj" firstAttribute="top" secondItem="eqF-OV-Ezl" secondAttribute="bottom" id="nWV-gr-GQx"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="lVO-5U-Ftj" secondAttribute="bottom" constant="14" id="qA2-2L-FdA"/>
+                    <constraint firstItem="G4c-SY-fhZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="18" id="tfS-Dn-JNc"/>
+                    <constraint firstItem="G4c-SY-fhZ" firstAttribute="leading" secondItem="eqF-OV-Ezl" secondAttribute="trailing" constant="8" id="xhn-EX-Llo"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="SuZ-1F-qUg"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="descriptionLabel" destination="eqF-OV-Ezl" id="E9D-ez-TKn"/>
+                <outlet property="gradeNumberLabel" destination="G4c-SY-fhZ" id="6UH-5d-JkX"/>
+                <outlet property="secDescLabel" destination="lVO-5U-Ftj" id="IaM-oy-HKa"/>
+                <outlet property="textGradeLabel" destination="xbh-9G-srB" id="kwh-Be-ZQF"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
