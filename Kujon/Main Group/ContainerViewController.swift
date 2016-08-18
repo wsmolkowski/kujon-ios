@@ -23,7 +23,7 @@ class ContainerViewController: UIViewController, LeftMenuTableViewControllerDele
     var centerNavigationController: UINavigationController!
 
     var centerViewController: UserTableViewController = UserTableViewController()
-
+    var loadedToUsos = false
     var currentState: SlideOutState = .Collapsed {
         didSet {
             let shouldShowShadow = currentState != .Collapsed
@@ -54,6 +54,10 @@ class ContainerViewController: UIViewController, LeftMenuTableViewControllerDele
         centerNavigationController.didMoveToParentViewController(self)
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ContainerViewController.handlePanGesture(_:)))
         centerNavigationController.view.addGestureRecognizer(panGestureRecognizer)
+        if(loadedToUsos){
+            loadedToUsos = false
+            self.centerNavigationController.pushViewController(IntroScreenViewController(nibName: "IntroScreenViewController", bundle:  NSBundle.mainBundle()), animated: true)
+        }
     }
 
     func selectedMenuItem(menuController: LeftMenuTableViewController, menuItem: MenuItemWithController, withDelegate: Bool) {

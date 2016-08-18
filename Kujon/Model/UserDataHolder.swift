@@ -21,6 +21,7 @@ class UserDataHolder {
     private var usosImage: String! = nil
     private var loginType: String! = nil
     var usosId: String! = "DEMO"
+    var usosName: String! = nil
 
     private var defaultsManager: UserDefaultsManager
 

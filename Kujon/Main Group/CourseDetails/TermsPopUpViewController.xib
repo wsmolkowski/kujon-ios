@@ -28,8 +28,8 @@
                 <outlet property="endDateLabel" destination="8pa-NZ-XbG" id="L1e-wA-C2k"/>
                 <outlet property="endindTimeLabel" destination="Z8v-eF-yIn" id="Wro-CF-WMP"/>
                 <outlet property="hahaView" destination="GrU-xA-K08" id="gGf-ie-M2s"/>
-
-
+                <outlet property="myPopUpView" destination="GrU-xA-K08" id="4BJ-I9-efd"/>
+                <outlet property="popUpView" destination="uJo-JS-vnz" id="IbX-QN-pPe"/>
                 <outlet property="startDateLabel" destination="TOf-f7-eSU" id="G1S-PG-0hf"/>
                 <outlet property="termActiveLabel" destination="dTg-hb-XCg" id="cgE-pW-hFf"/>
                 <outlet property="termNameLabel" destination="uJo-JS-vnz" id="MHf-NA-VsF"/>
@@ -149,7 +149,7 @@
                                 </mask>
                             </variation>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pa-NZ-XbG">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pa-NZ-XbG">
                             <rect key="frame" x="344" y="84" width="36" height="18"/>
                             <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                             <color key="textColor" red="0.16470588743686676" green="0.20000000298023224" blue="0.24313725531101227" alpha="1" colorSpace="calibratedRGB"/>

@@ -70,6 +70,7 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
         //TODO TUTAJ BY PEWNIE SIE PRZYDALO DOLOZYC JAKIES PERSIST TYCH TOKENOW FACEBOOKOWYCH
         userDataHolder.loggedToUsosForCurrentEmail = true
         let controller  = ContainerViewController()
+        controller.loadedToUsos = true
         self.presentViewController(controller,animated:true,completion:nil)
     }
 

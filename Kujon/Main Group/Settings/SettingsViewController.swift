@@ -18,26 +18,19 @@ class SettingsViewController: UIViewController,
 
     @IBOutlet weak var googleLogOutButton: UIButton!
     var deleteAccountProvider = ProvidersProviderImpl.sharedInstance.provideDeleteAccount()
-    
+
     @IBOutlet weak var logoutIcon: UIImageView!
     @IBOutlet weak var logOutButton: FBSDKLoginButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SettingsViewController.back))
+        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SettingsViewController.back), andTitle: StringHolder.settings)
         self.edgesForExtendedLayout = UIRectEdge.None
         logOutButton.delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         deleteAccountProvider.delegate = self
         loginMenager = UserLoginEnum.getUserLogin()
-        switch (loginMenager.getLoginType()) {
-        case .FACEBOOK:
-            googleLogOutButton.hidden  = true
-            logoutIcon.hidden  = true
-            break
-        case .GOOGLE:
-            logOutButton.hidden  = true
-            break
-        }
+        logOutButton.hidden = true
+
 
     }
 
@@ -47,12 +40,11 @@ class SettingsViewController: UIViewController,
     }
 
     @IBAction func googleLogOutAction(sender: AnyObject) {
-        loginMenager.logout()
         goBackToEntryScreen();
 
     }
 
-    private func goBackToEntryScreen(){
+    private func goBackToEntryScreen() {
         loginMenager.logout()
         let controller = EntryViewController()
         self.presentViewController(controller, animated: true, completion: nil)
@@ -70,6 +62,7 @@ class SettingsViewController: UIViewController,
 
     func accountDeleted() {
         UserDataHolder.sharedInstance.loggedToUsosForCurrentEmail = false
+
         goBackToEntryScreen();
     }
 

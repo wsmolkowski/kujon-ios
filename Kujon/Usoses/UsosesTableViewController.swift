@@ -107,6 +107,7 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
             let controller = SecondLoginViewController()
 
             self.userDataHolder.usosId = usos.usosId
+            self.userDataHolder.usosName = usos.name
             self.userDataHolder.userUsosImage = usos.image
             self.presentViewController(controller, animated: true, completion: nil)
         }))

@@ -67,4 +67,6 @@ class StringHolder {
     static let fbType = "FB"
     static let back  = "Powrót"
     static let errorUsos  = "Nie możemy się połączyć z USOS."
+    static let usosGreetings = "Gratulacje! Udało Ci się zalogować na "
+    static let loggin = "Logowanie"
 }
