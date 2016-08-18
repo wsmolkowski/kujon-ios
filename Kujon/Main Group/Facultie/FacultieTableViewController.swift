@@ -27,7 +27,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         self.tableView.registerNib(UINib(nibName: "FacultieHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: headerCellId)
         self.tableView.registerNib(UINib(nibName: "TelephoneTableViewCell", bundle: nil), forCellReuseIdentifier: telephoneCellId)
         self.tableView.registerNib(UINib(nibName: "WWWTableViewCell", bundle: nil), forCellReuseIdentifier: wwwCellId)
-        self.tableView.tableFooterView =  UIView()
+        self.tableView.tableFooterView = UIView()
         self.tableView.allowsSelection = false
         if (facultie != nil) {
         } else if (facultieId != nil) {
@@ -38,7 +38,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if let cell = (self.tableView.cellForRowAtIndexPath( NSIndexPath(forRow:0, inSection: 0) ) as! MapTableViewCell!){
+        if let cell = (self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! MapTableViewCell!) {
             cell.mapView.delegate = self;
         }
 
@@ -75,7 +75,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         case 2: return self.facultie != nil ? self.facultie.phoneNumber.count : 0
         case 3: return self.facultie?.homePageUrl != nil ? 1 : 0
         default:
-           return 0
+            return 0
         }
     }
 
@@ -117,11 +117,13 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.section {
         case 2:
-            self.openUrlString(self.facultie.phoneNumber[indexPath.row])
+
+            self.openUrlString("tel://" + self.facultie.phoneNumber[indexPath.row])
+
             break;
         case 3:
             self.openUrlString(self.facultie.homePageUrl)
-        break;
+            break;
         default: break;
         }
     }
@@ -134,9 +136,9 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         cell.mapView.addGestureRecognizer(tapGestureRecognizer)
         cell.mapView.userInteractionEnabled = true
 
-        if(facultie != nil) {
+        if (facultie != nil) {
             let geocoder: CLGeocoder = CLGeocoder();
-            geocoder.geocodeAddressString(facultie.postalAdress,completionHandler: {
+            geocoder.geocodeAddressString(facultie.postalAdress, completionHandler: {
                 (placemarks: [CLPlacemark]?, error: NSError?) -> Void in
                 if placemarks?.count > 0 {
                     let topResult: CLPlacemark = placemarks![0];
@@ -156,7 +158,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         return cell
     }
 
-      func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
             return nil
         }
@@ -176,13 +178,11 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
     }
 
 
-
-
     private func configureHeaderCell(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(headerCellId, forIndexPath: indexPath) as! FacultieHeaderTableViewCell
         cell.adressLabel.text = facultie.postalAdress
         cell.facultieNameLabel.text = facultie.name
-        loadImage(facultie.logUrls.p100x100,indexPath: indexPath)
+        loadImage(facultie.logUrls.p100x100, indexPath: indexPath)
         return cell
     }
 
@@ -206,8 +206,6 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         cell.wwwLabel.text = self.facultie.homePageUrl
         return cell
     }
-
-
 
 
     private func loadImage(urlString: String, indexPath: NSIndexPath) {

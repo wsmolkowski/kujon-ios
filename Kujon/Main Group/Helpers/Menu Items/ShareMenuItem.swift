@@ -5,7 +5,7 @@
 
 import Foundation
 import UIKit
-class ShareMenuItem : MenuItemWithController {
+class ShareMenuItem : MenuItemWithURL {
 
 
     func returnTitle() -> String {
@@ -17,11 +17,15 @@ class ShareMenuItem : MenuItemWithController {
     }
 
     func returnViewControllerFunction()->() -> UIViewController! {
-        return {return ShareViewController()}
+        return {return nil}
     }
 
     func returnViewController() -> Bool {
         return true
+    }
+
+    func returnURL() -> NSURL! {
+        return nil
     }
 
 
