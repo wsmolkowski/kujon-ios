@@ -29,7 +29,6 @@
                 <outlet property="endindTimeLabel" destination="Z8v-eF-yIn" id="Wro-CF-WMP"/>
                 <outlet property="hahaView" destination="GrU-xA-K08" id="gGf-ie-M2s"/>
                 <outlet property="myPopUpView" destination="GrU-xA-K08" id="4BJ-I9-efd"/>
-
                 <outlet property="startDateLabel" destination="TOf-f7-eSU" id="G1S-PG-0hf"/>
                 <outlet property="termActiveLabel" destination="dTg-hb-XCg" id="cgE-pW-hFf"/>
                 <outlet property="termNameLabel" destination="uJo-JS-vnz" id="MHf-NA-VsF"/>
@@ -108,7 +107,7 @@
                             </variation>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data zakończenia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="49g-sd-5QT">
-                            <rect key="frame" x="344" y="55" width="164" height="21"/>
+                            <rect key="frame" x="352" y="55" width="164" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="584" id="EYH-uc-XaM"/>
                                 <constraint firstAttribute="width" constant="197" id="ZYF-Hb-9eh"/>
@@ -149,8 +148,8 @@
                                 </mask>
                             </variation>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pa-NZ-XbG">
-                            <rect key="frame" x="344" y="84" width="36" height="18"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pa-NZ-XbG">
+                            <rect key="frame" x="352" y="84" width="36" height="18"/>
                             <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                             <color key="textColor" red="0.16470588743686676" green="0.20000000298023224" blue="0.24313725531101227" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -201,7 +200,7 @@
                         <constraint firstItem="mJg-8x-SbF" firstAttribute="firstBaseline" secondItem="3Aj-y1-mSV" secondAttribute="firstBaseline" id="J4Z-Vp-v33"/>
                         <constraint firstItem="49g-sd-5QT" firstAttribute="trailing" secondItem="8pa-NZ-XbG" secondAttribute="trailing" id="LLo-Qb-b1U"/>
                         <constraint firstItem="49g-sd-5QT" firstAttribute="width" secondItem="GrU-xA-K08" secondAttribute="width" multiplier="7:24" id="LmB-W2-72i"/>
-                        <constraint firstItem="bRT-kK-Tfg" firstAttribute="leading" secondItem="0yC-EV-Xcl" secondAttribute="trailing" constant="8" symbolic="YES" id="Ltk-Lo-oRh"/>
+                        <constraint firstItem="bRT-kK-Tfg" firstAttribute="leading" secondItem="0yC-EV-Xcl" secondAttribute="trailing" constant="8" id="Ltk-Lo-oRh"/>
                         <constraint firstItem="0yC-EV-Xcl" firstAttribute="top" secondItem="uJo-JS-vnz" secondAttribute="bottom" constant="8" symbolic="YES" id="T2g-Ne-Qrv"/>
                         <constraint firstItem="SCG-gR-PKC" firstAttribute="trailing" secondItem="GrU-xA-K08" secondAttribute="trailingMargin" id="TJA-vj-2ek"/>
                         <constraint firstItem="Z8v-eF-yIn" firstAttribute="top" secondItem="bRT-kK-Tfg" secondAttribute="bottom" constant="8" symbolic="YES" id="Teh-3f-0j3"/>
@@ -225,7 +224,7 @@
                         <constraint firstItem="yhB-S5-yH1" firstAttribute="baseline" secondItem="uJo-JS-vnz" secondAttribute="baseline" id="qev-kI-vur"/>
                         <constraint firstItem="mJg-8x-SbF" firstAttribute="leading" secondItem="GrU-xA-K08" secondAttribute="leadingMargin" id="sx6-Nd-a1Q"/>
                         <constraint firstItem="49g-sd-5QT" firstAttribute="baseline" secondItem="bRT-kK-Tfg" secondAttribute="baseline" id="wWO-zR-fZA"/>
-                        <constraint firstItem="49g-sd-5QT" firstAttribute="leading" secondItem="bRT-kK-Tfg" secondAttribute="trailing" id="zvH-4O-KkV"/>
+                        <constraint firstItem="49g-sd-5QT" firstAttribute="leading" secondItem="bRT-kK-Tfg" secondAttribute="trailing" constant="8" id="zvH-4O-KkV"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
