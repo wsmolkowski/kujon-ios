@@ -11,6 +11,7 @@ protocol UserDetailsProviderProtocol: JsonProviderProtocol {
     func loadUserDetail()
 
     func loadUserDetail(id: String)
+    func loadStudentDetails(id: String)
 }
 
 protocol UserDetailsProviderDelegate: ErrorResponseProtocol {
@@ -53,6 +54,19 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
             }){
                self.delegate?.onUserDetailLoaded(user.data)
            }
+        }, onError: {text in self.delegate?.onErrorOccurs() })
+    }
+
+    func loadStudentDetails(id: String) {
+        endpoint = "/users/" + id
+        self.makeHTTPAuthenticatedGetRequest({
+            json in
+            if let user = try! self.changeJsonToResposne(json, onError: {
+                text in
+                self.delegate?.onErrorOccurs(text)
+            }){
+                self.delegate?.onUserDetailLoaded(user.data)
+            }
         }, onError: {text in self.delegate?.onErrorOccurs() })
     }
 }

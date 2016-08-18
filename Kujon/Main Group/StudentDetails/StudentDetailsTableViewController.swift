@@ -34,7 +34,7 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
         }
         programmeProvider.delegate = self
         provider.delegate = self
-        provider.loadUserDetail(userId)
+        provider.loadStudentDetails(userId)
 
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
