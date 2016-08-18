@@ -52,8 +52,13 @@ extension UITableViewController {
         }
         label.textColor = UIColor.blackWithAlpha()
         view.addSubview(label)
-        view.layer.addBorder(UIRectEdge.Top, color: UIColor.lightGray(), thickness: 0.5)
+        view.layer.addBorder(UIRectEdge.Top, color: UIColor.lightGray(), thickness: 1)
         return view
+    }
+
+
+    func createTopBorder(tableViewCell: UITableViewCell){
+        tableViewCell.layer.addBorder(UIRectEdge.Bottom,color:UIColor.lightGray(),thickness: 1)
     }
 
 

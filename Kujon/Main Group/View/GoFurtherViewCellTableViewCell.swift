@@ -10,16 +10,25 @@ import UIKit
 
 class GoFurtherViewCellTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var goButton: UIButton!
+    
     @IBOutlet weak var plainLabel: UILabel!
 
 
     override func awakeFromNib() {
         super.awakeFromNib()
-//        self.layer.addBorder(UIRectEdge.Bottom,color:UIColor.lightGray(),thickness: 0.25)
-        self.layer.addBorder(UIRectEdge.Top,color:UIColor.lightGray(),thickness: 01)
-        // Initialization code
+
+
     }
+    override var frame: CGRect {
+        didSet {
+            self.layer.addBorder(UIRectEdge.Top,color:UIColor.lightGray(),thickness: 1)
+        }
+    }
+
+    override var layer: CALayer {
+        return super.layer
+    }
+
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
