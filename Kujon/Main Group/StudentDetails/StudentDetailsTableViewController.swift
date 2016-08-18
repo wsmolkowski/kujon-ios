@@ -107,7 +107,7 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
     private func studentCellConfigure(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(headerCellId, forIndexPath: indexPath) as! StudentHeaderTableViewCell
         cell.studentImageView.image = UIImage(named: "user-placeholder")
-        if (self.userDetails.hasPhoto) {
+        if (self.userDetails.photoUrl != nil) {
             self.restImageProvider.loadImage("", urlString: self.userDetails.photoUrl!, onImageLoaded: self)
 
         }

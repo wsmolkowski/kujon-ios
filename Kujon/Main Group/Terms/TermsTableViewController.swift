@@ -66,7 +66,7 @@ class TermsTableViewController:UITableViewController {
 
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 150
+        return 120
     }
 
 

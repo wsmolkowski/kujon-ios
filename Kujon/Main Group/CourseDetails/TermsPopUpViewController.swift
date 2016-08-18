@@ -10,7 +10,10 @@ import UIKit
 
 class TermsPopUpViewController: PopUpViewController {
 
-    @IBOutlet weak var popUpView: UILabel!
+
+    
+    
+    @IBOutlet weak var hahaView: TermView!
     @IBOutlet weak var endindTimeLabel: UILabel!
     @IBOutlet weak var endDateLabel: UILabel!
     @IBOutlet weak var startDateLabel: UILabel!
@@ -38,7 +41,7 @@ class TermsPopUpViewController: PopUpViewController {
     }
 
     override func setMyPopUpView() -> UIView! {
-        return popUpView
+        return hahaView
     }
 /*
     // MARK: - Navigation
