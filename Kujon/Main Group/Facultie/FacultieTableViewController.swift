@@ -28,6 +28,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         self.tableView.registerNib(UINib(nibName: "TelephoneTableViewCell", bundle: nil), forCellReuseIdentifier: telephoneCellId)
         self.tableView.registerNib(UINib(nibName: "WWWTableViewCell", bundle: nil), forCellReuseIdentifier: wwwCellId)
         self.tableView.tableFooterView = UIView()
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.allowsSelection = false
         if (facultie != nil) {
         } else if (facultieId != nil) {

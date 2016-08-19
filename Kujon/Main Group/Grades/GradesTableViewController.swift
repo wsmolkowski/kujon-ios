@@ -88,7 +88,7 @@ class GradesTableViewController: UITableViewController
         cell.gradeNumberLabel.text = prepareGrade.grades.valueSymbol
         cell.descriptionLabel.text = prepareGrade.courseName
         cell.secDescLabel.text = prepareGrade.grades.classType + "  " + StringHolder.termin  + " " + String(prepareGrade.grades.examSessionNumber)
-
+        cell.layer.addBorder( UIRectEdge.Top, color: UIColor.lightGray(), thickness: 1)
         return cell
     }
 

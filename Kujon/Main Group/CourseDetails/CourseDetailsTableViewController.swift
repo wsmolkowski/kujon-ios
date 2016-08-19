@@ -26,7 +26,7 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
         for section in sectionHelpers{
             section.registerView(self.tableView)
         }
-
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
     }
 
     func refresh(refreshControl: UIRefreshControl) {
