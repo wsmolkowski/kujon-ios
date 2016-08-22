@@ -1260,7 +1260,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C0D852217153B5DF861BC01 /* Build configuration list for PBXNativeTarget "KujonUITests" */;
 			buildPhases = (
-				CBEEC6910D64295D8A576864 /* 📦 Check Pods Manifest.lock */,
+				CBEEC6910D64295D8A576864 /* [CP] Check Pods Manifest.lock */,
 				AB6E61C222619DE2A7E1844F /* [CP] Check Pods Manifest.lock */,
 				FAAA2CC97B4C1C6DD5FFCD0E /* [CP] Check Pods Manifest.lock */,
 				22BD93CFA86DF9F42005F6BC /* [CP] Check Pods Manifest.lock */,
@@ -1284,7 +1284,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C0D83E2B32A0A3CA367D6BC /* Build configuration list for PBXNativeTarget "Kujon" */;
 			buildPhases = (
-				9452A03E9DB7936C24EE5CF7 /* 📦 Check Pods Manifest.lock */,
+				9452A03E9DB7936C24EE5CF7 /* [CP] Check Pods Manifest.lock */,
 				0DB9E7ABC5EE0B2375404B75 /* [CP] Check Pods Manifest.lock */,
 				E6163861099B1656EFEE125F /* [CP] Check Pods Manifest.lock */,
 				293CE0BA7AA50758856CB87C /* [CP] Check Pods Manifest.lock */,
@@ -1310,7 +1310,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C0D84AE0478B34C40E62613 /* Build configuration list for PBXNativeTarget "KujonTests" */;
 			buildPhases = (
-				CAD03D4FE798D3668B9C9F8B /* 📦 Check Pods Manifest.lock */,
+				CAD03D4FE798D3668B9C9F8B /* [CP] Check Pods Manifest.lock */,
 				6ABFEEADFC0E43C0F79A368E /* [CP] Check Pods Manifest.lock */,
 				5D6222BAA59061EF311B6597 /* [CP] Check Pods Manifest.lock */,
 				64FF8464F4F4DAA37B8FFCFE /* [CP] Check Pods Manifest.lock */,
@@ -1344,7 +1344,7 @@
 				ORGANIZATIONNAME = Mobi;
 				TargetAttributes = {
 					4C0D876E78B6409220622356 = {
-						DevelopmentTeam = WAJ9FR2DZL;
+						DevelopmentTeam = KBHT45SF63;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1641,14 +1641,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		9452A03E9DB7936C24EE5CF7 /* 📦 Check Pods Manifest.lock */ = {
+		9452A03E9DB7936C24EE5CF7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1716,14 +1716,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		CAD03D4FE798D3668B9C9F8B /* 📦 Check Pods Manifest.lock */ = {
+		CAD03D4FE798D3668B9C9F8B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1746,14 +1746,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kujon/Pods-Kujon-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CBEEC6910D64295D8A576864 /* 📦 Check Pods Manifest.lock */ = {
+		CBEEC6910D64295D8A576864 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2094,7 +2094,7 @@
 				INFOPLIST_FILE = Kujon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = mobi.kujon.Kujon;
+				PRODUCT_BUNDLE_IDENTIFIER = Kujon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Kujon/Bridging-Header.h";
@@ -2214,7 +2214,7 @@
 				INFOPLIST_FILE = Kujon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = mobi.kujon.Kujon;
+				PRODUCT_BUNDLE_IDENTIFIER = Kujon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Kujon/Bridging-Header.h";
