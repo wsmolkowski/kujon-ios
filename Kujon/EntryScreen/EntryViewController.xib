@@ -32,8 +32,8 @@
                         <constraint firstAttribute="height" constant="240" id="cMk-r0-tGc"/>
                     </constraints>
                 </imageView>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CZ2-Eu-BAD" userLabel="FBLogin Button" customClass="FBSDKLoginButton">
-                    <rect key="frame" x="322" y="272" width="270" height="69"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CZ2-Eu-BAD" userLabel="FBLogin Button" customClass="FBSDKLoginButton">
+                    <rect key="frame" x="322" y="272" width="270" height="52"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="K9D-fS-Hnq"/>
@@ -49,22 +49,23 @@
                     </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vv-VQ-Avk" customClass="SpinnerView" customModule="Kujon" customModuleProvider="target">
-                    <rect key="frame" x="275" y="349" width="50" height="50"/>
+                    <rect key="frame" x="275" y="332" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="Ui7-RF-jcZ"/>
                         <constraint firstAttribute="height" constant="50" id="feY-4g-hLe"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rejestrując się zgadzasz się na następujące warunki" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miO-Ux-yaG">
-                    <rect key="frame" x="166" y="431" width="269" height="15"/>
+                    <rect key="frame" x="166" y="414" width="269" height="15"/>
                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                     <color key="textColor" red="0.24705882370000001" green="0.72941178080000002" blue="0.85098040100000005" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="49K-dA-dFD" userLabel="Google Sign In Button" customClass="GIDSignInButton">
-                    <rect key="frame" x="8" y="268" width="270" height="77"/>
+                    <rect key="frame" x="8" y="268" width="270" height="60"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="height" constant="60" id="6xo-e8-4Rf"/>
                         <constraint firstAttribute="width" constant="240" id="HbW-nM-cHy"/>
                     </constraints>
                     <variation key="default">
@@ -88,11 +89,12 @@
                 <constraint firstAttribute="bottom" secondItem="CZ2-Eu-BAD" secondAttribute="bottom" constant="259" id="Us5-d7-4EL"/>
                 <constraint firstItem="CZ2-Eu-BAD" firstAttribute="top" secondItem="AUd-TK-qW5" secondAttribute="bottom" constant="16" id="aAK-ag-CW6"/>
                 <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="49K-dA-dFD" secondAttribute="bottom" constant="4" id="b2O-6R-46H"/>
-                <constraint firstItem="CZ2-Eu-BAD" firstAttribute="bottom" secondItem="49K-dA-dFD" secondAttribute="bottom" constant="4" id="cZf-wJ-B5O"/>
+                <constraint firstItem="CZ2-Eu-BAD" firstAttribute="bottom" secondItem="49K-dA-dFD" secondAttribute="bottom" constant="-4" id="cZf-wJ-B5O"/>
                 <constraint firstItem="CZ2-Eu-BAD" firstAttribute="top" secondItem="49K-dA-dFD" secondAttribute="top" constant="4" id="eeO-YS-kqk"/>
                 <constraint firstItem="49K-dA-dFD" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" id="fDP-0A-Kej"/>
                 <constraint firstAttribute="trailing" secondItem="CZ2-Eu-BAD" secondAttribute="trailing" constant="8" id="gRQ-vA-Lfq"/>
                 <constraint firstItem="AUd-TK-qW5" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="kx6-Ma-73Q"/>
+                <constraint firstItem="CZ2-Eu-BAD" firstAttribute="centerY" secondItem="49K-dA-dFD" secondAttribute="centerY" id="nDy-aX-BfY"/>
                 <constraint firstItem="AUd-TK-qW5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="16" id="oog-Pj-bTT"/>
                 <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="CZ2-Eu-BAD" secondAttribute="bottom" constant="4" id="tUc-qf-8x1"/>
             </constraints>
@@ -102,6 +104,7 @@
                     <exclude reference="M3e-PK-Hps"/>
                     <exclude reference="Us5-d7-4EL"/>
                     <exclude reference="aAK-ag-CW6"/>
+                    <exclude reference="5eQ-2C-06P"/>
                     <exclude reference="tUc-qf-8x1"/>
                 </mask>
             </variation>

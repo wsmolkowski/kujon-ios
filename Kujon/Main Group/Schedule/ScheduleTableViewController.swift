@@ -108,7 +108,7 @@ class ScheduleTableViewController:
                 key2 in
 
                 let pos = getPositionOfSection(key2)
-                if (pos != nil) { k
+                if (pos != nil) {
                     onlyLectureDictionary[key2] = dictionaryOfDays[key2]!
                     let array = dictionaryOfDays[key2]!.map {
                         $0 as CellHandlingStrategy
