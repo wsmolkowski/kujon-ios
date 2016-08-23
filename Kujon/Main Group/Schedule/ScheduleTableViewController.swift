@@ -18,12 +18,12 @@ class ScheduleTableViewController:
     static let LectureCellId = "lectureCellId"
     static let DayCellId = "dayCellId"
     static let textId = "simpleTextId"
-    private let floatingButtonDelegate  = FloatingButtonDelegate()
+    private let floatingButtonDelegate = FloatingButtonDelegate()
     var isQuering = false
     var lastQueryDate: NSDate! = nil
     var firstDate: NSDate! = nil
     var sectionsArray: Array<ScheduleSection> = Array()
-    var todaySection:Int = 0
+    var todaySection: Int = 0
     var onlyLectureDictionary: Dictionary<String, [LectureWrapper]> = Dictionary()
 
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {
@@ -41,7 +41,7 @@ class ScheduleTableViewController:
 //        lastQueryDate = NSDate.stringToDate("2015-05-05")
         lastQueryDate = NSDate.getCurrentStartOfWeek()
         NSDate().numberOfDaysUntilDateTime(lastQueryDate)
-        todaySection  = lastQueryDate.numberOfDaysUntilDateTime(NSDate());
+        todaySection = lastQueryDate.numberOfDaysUntilDateTime(NSDate());
         self.tableView.registerNib(UINib(nibName: "LectureTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.LectureCellId)
         self.tableView.registerNib(UINib(nibName: "DayTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.DayCellId)
         self.tableView.tableFooterView = UIView()
@@ -54,6 +54,7 @@ class ScheduleTableViewController:
         refreshControl?.addTarget(self, action: #selector(ScheduleTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
 
     }
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         lectureProvider.delegate = self
@@ -75,7 +76,6 @@ class ScheduleTableViewController:
     }
 
 
-
     func refresh(refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")
         sectionsArray = Array()
@@ -95,33 +95,40 @@ class ScheduleTableViewController:
     }
 
     func onLectureLoaded(lectures: Array<Lecture>) {
-        let wrappers = lectures.map {
-            lecture in LectureWrapper(lecture: lecture)
-        }
-        let dictionaryOfDays = wrappers.groupBy {
-            $0.startDate
-        }
-        let sortedKeys = dictionaryOfDays.keys
-        sortedKeys.forEach {
-            key2 in
-
-            let pos = getPositionOfSection(key2)
-            if(pos != nil){
-                onlyLectureDictionary[key2] = dictionaryOfDays[key2]!
-                let array = dictionaryOfDays[key2]!.map{ $0 as CellHandlingStrategy}
-                (sectionsArray[pos] ).addToList(array)
-
+        do {
+            let wrappers = try lectures.map {
+                lecture in LectureWrapper(lecture: lecture)
             }
+
+            let dictionaryOfDays = wrappers.groupBy {
+                $0.startDate
+            }
+            let sortedKeys = dictionaryOfDays.keys
+            try! sortedKeys.forEach {
+                key2 in
+
+                let pos = getPositionOfSection(key2)
+                if (pos != nil) { k
+                    onlyLectureDictionary[key2] = dictionaryOfDays[key2]!
+                    let array = dictionaryOfDays[key2]!.map {
+                        $0 as CellHandlingStrategy
+                    }
+                    (sectionsArray[pos]).addToList(array)
+
+                }
+            }
+
+            self.tableView.reloadData()
+            isQuering = false
+        } catch {
         }
-
-        self.tableView.reloadData()
-        isQuering = false
     }
 
-    private func getPositionOfSection(text:String) ->Int!{
-        return sectionsArray.indexOf{$0.getSectionTitle() == text}
+    private func getPositionOfSection(text: String) -> Int! {
+        return sectionsArray.indexOf {
+            $0.getSectionTitle() == text
+        }
     }
-
 
 
     private func getScheduleSectionAtPosition(pos: Int) -> ScheduleSection {
@@ -154,7 +161,7 @@ class ScheduleTableViewController:
     func openCalendar() {
         let calendarViewController = CalendarViewController()
         calendarViewController.onlyLectureDictionary = onlyLectureDictionary
-        (calendarViewController as! NavigationDelegate).setNavigationProtocol(delegate!)
+        (calendarViewController).setNavigationProtocol(delegate!)
         calendarViewController.lastQueryDate = lastQueryDate
         self.navigationController?.pushViewController(calendarViewController, animated: true)
     }
@@ -216,7 +223,7 @@ class ScheduleTableViewController:
         } else {
 
             let cell = UITableViewCell(style: .Default, reuseIdentifier: ScheduleTableViewController.textId)
-            cell.textLabel?.font  = UIFont.kjnTextStyle2Font()
+            cell.textLabel?.font = UIFont.kjnTextStyle2Font()
             cell.textLabel?.text = StringHolder.no_data
             return cell
         }

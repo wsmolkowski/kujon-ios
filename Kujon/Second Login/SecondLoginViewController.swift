@@ -17,6 +17,14 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
+        navigationController?.navigationBar.barTintColor = UIColor.kujonBlueColor()
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navigationController?.navigationBar.titleTextAttributes = titleDict as? [String:AnyObject]
+
+        self.edgesForExtendedLayout = UIRectEdge.None
+        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SecondLoginViewController.back), andTitle: "Logowanie do USOS")
         webView.delegate = self
         let url = String(format: "https:/api.kujon.mobi/authentication/register?email=%@&token=%@&usos_id=%@&type=%@", userDataHolder.userEmail, userDataHolder.userToken, userDataHolder.usosId, userDataHolder.userLoginType)
         let request = NSURLRequest(URL: NSURL(string: url)!)
@@ -30,6 +38,11 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
     }
     
 
+    func back(){
+        let controller = UsosHolderController()
+
+        self.presentViewController(controller, animated: true, completion: nil)
+    }
 
 
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {

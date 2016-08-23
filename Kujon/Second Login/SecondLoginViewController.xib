@@ -15,26 +15,17 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="huA-4S-S6v">
-                    <rect key="frame" x="0.0" y="14" width="600" height="44"/>
-                    <items>
-                        <navigationItem title="Logowanie do USOS" id="kog-w9-HFs"/>
-                    </items>
-                </navigationBar>
                 <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRP-DS-MyP">
-                    <rect key="frame" x="0.0" y="58" width="600" height="542"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                 </webView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="huA-4S-S6v" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1Zf-bD-gzD"/>
-                <constraint firstItem="huA-4S-S6v" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="14" id="4s3-gx-lCx"/>
-                <constraint firstItem="fRP-DS-MyP" firstAttribute="top" secondItem="huA-4S-S6v" secondAttribute="bottom" id="5V2-Jp-phW"/>
-                <constraint firstItem="fRP-DS-MyP" firstAttribute="trailing" secondItem="huA-4S-S6v" secondAttribute="trailing" id="5ao-82-A3Q"/>
+                <constraint firstItem="fRP-DS-MyP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GJl-cg-WsH"/>
                 <constraint firstAttribute="bottom" secondItem="fRP-DS-MyP" secondAttribute="bottom" id="LBg-kn-afU"/>
                 <constraint firstAttribute="trailing" secondItem="fRP-DS-MyP" secondAttribute="trailing" id="iah-6k-VEC"/>
-                <constraint firstItem="fRP-DS-MyP" firstAttribute="leading" secondItem="huA-4S-S6v" secondAttribute="leading" id="zId-Xf-Jwl"/>
+                <constraint firstItem="fRP-DS-MyP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="jiP-Ga-MpD"/>
             </constraints>
         </view>
     </objects>

@@ -105,11 +105,12 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
             (action: UIAlertAction!) in
             alertController.dismissViewControllerAnimated(true, completion: nil)
             let controller = SecondLoginViewController()
+            let  navigationController = UINavigationController(rootViewController: controller)
 
             self.userDataHolder.usosId = usos.usosId
             self.userDataHolder.usosName = usos.name
             self.userDataHolder.userUsosImage = usos.image
-            self.presentViewController(controller, animated: true, completion: nil)
+            self.presentViewController(navigationController, animated: true, completion: nil)
         }))
         alertController.addAction(UIAlertAction(title: StringHolder.cancel, style: .Cancel, handler: {
             (action: UIAlertAction!) in

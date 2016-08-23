@@ -18,6 +18,7 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
 
     let googleSignInManager = GIDSignIn.sharedInstance()
 
+    @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var googleLogInButton: GIDSignInButton!
     @IBOutlet weak var spinnerView: SpinnerView!
 
@@ -33,7 +34,14 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
+        navigationController?.navigationBar.barTintColor = UIColor.kujonBlueColor()
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navigationController?.navigationBar.titleTextAttributes = titleDict as? [String:AnyObject]
 
+        self.edgesForExtendedLayout = UIRectEdge.None
+        self.title = "Kujon"
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         loginButton.delegate = self
         self.configProvider.delegate = self
@@ -124,7 +132,7 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
     }
 
     func onErrorOccurs(text: String) {
-        self.showAlertApi(StringHolder.attention, text: StringHolder.errorUsos, succes: {
+        self.showAlertApi(StringHolder.attention, text: text, succes: {
             self.spinnerView.hidden = false
             self.configProvider.checkConfig()
         }, cancel: {

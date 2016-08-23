@@ -37,21 +37,24 @@ class ConfigProvider: RestApiManager, ConfigProviderProtocol {
                     self.delegate?.notLogged()
                     return
                 }
-                if (!config.usosWorks) {
-                    self.delegate?.usosDown()
-                    return
-                }
 
                 if (config.usosPaired) {
+                    if (!config.usosWorks) {
+                        self.delegate?.usosDown()
+                        return
+                    }
                     self.delegate?.pairedWithUsos()
+                    return
                 } else {
                     self.delegate?.notPairedWithUsos()
+                    return
                 }
 
             }
         }, onError: {
             text in
-            self.delegate?.onErrorOccurs(text) })
+            self.delegate?.onErrorOccurs(text)
+        })
 
     }
 

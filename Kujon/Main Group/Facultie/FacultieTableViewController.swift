@@ -164,7 +164,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
             return nil
         }
         let reuseId = String(stringInterpolationSegment: annotation.coordinate.longitude)
-        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as! MKAnnotationView!
+        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as MKAnnotationView!
 
         if pinView == nil {
 

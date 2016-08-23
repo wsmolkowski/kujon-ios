@@ -95,13 +95,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func openControllerDependingOnLoginState() {
-        var controller:UIViewController! = nil
-        //TODO extract controller choosing logic
+        let controller = EntryViewController()
+        let  navigationController = UINavigationController(rootViewController: controller)
 
-            controller = EntryViewController()
-
-
-        window!.rootViewController = controller
+        window!.rootViewController = navigationController
         window!.makeKeyAndVisible()
     }
 

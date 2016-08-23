@@ -25,20 +25,15 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="swU-s7-4Hc" colorLabel="IBBuiltInLabel-Yellow">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                    <items>
-                        <navigationItem title="Kujon" id="G6D-Ea-sdB" customClass="EntryVIE"/>
-                    </items>
-                </navigationBar>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kujon-icon" translatesAutoresizingMaskIntoConstraints="NO" id="AUd-TK-qW5">
-                    <rect key="frame" x="-212" y="57" width="1024" height="240"/>
+                    <rect key="frame" x="180" y="16" width="240" height="240"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="240" id="C2i-8a-hdg"/>
                         <constraint firstAttribute="height" constant="240" id="cMk-r0-tGc"/>
                     </constraints>
                 </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CZ2-Eu-BAD" userLabel="FBLogin Button" customClass="FBSDKLoginButton">
-                    <rect key="frame" x="8" y="305" width="270" height="36"/>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CZ2-Eu-BAD" userLabel="FBLogin Button" customClass="FBSDKLoginButton">
+                    <rect key="frame" x="322" y="272" width="270" height="69"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="K9D-fS-Hnq"/>
@@ -67,7 +62,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="49K-dA-dFD" userLabel="Google Sign In Button" customClass="GIDSignInButton">
-                    <rect key="frame" x="322" y="301" width="270" height="44"/>
+                    <rect key="frame" x="8" y="268" width="270" height="77"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="240" id="HbW-nM-cHy"/>
@@ -84,24 +79,35 @@
                 <constraint firstItem="AUd-TK-qW5" firstAttribute="centerX" secondItem="5vv-VQ-Avk" secondAttribute="centerX" id="14m-df-0CQ"/>
                 <constraint firstItem="miO-Ux-yaG" firstAttribute="top" secondItem="5vv-VQ-Avk" secondAttribute="bottom" constant="32" id="3BJ-kF-QqZ"/>
                 <constraint firstItem="49K-dA-dFD" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.45" id="3r1-gw-hsP"/>
+                <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="AUd-TK-qW5" secondAttribute="bottom" constant="93" id="5eQ-2C-06P"/>
                 <constraint firstItem="CZ2-Eu-BAD" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.45" id="BH6-v1-K0b"/>
                 <constraint firstItem="miO-Ux-yaG" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="I1Y-Aq-gbN"/>
+                <constraint firstItem="49K-dA-dFD" firstAttribute="top" secondItem="AUd-TK-qW5" secondAttribute="bottom" constant="12" id="LCc-dE-xoH"/>
                 <constraint firstItem="CZ2-Eu-BAD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="M3e-PK-Hps"/>
+                <constraint firstItem="49K-dA-dFD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="QKV-KZ-4gp"/>
                 <constraint firstAttribute="bottom" secondItem="CZ2-Eu-BAD" secondAttribute="bottom" constant="259" id="Us5-d7-4EL"/>
-                <constraint firstItem="AUd-TK-qW5" firstAttribute="top" secondItem="swU-s7-4Hc" secondAttribute="bottom" constant="13" id="V1N-q5-8VX"/>
-                <constraint firstItem="swU-s7-4Hc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZaW-4E-fCx"/>
-                <constraint firstItem="CZ2-Eu-BAD" firstAttribute="top" secondItem="AUd-TK-qW5" secondAttribute="bottom" constant="8" symbolic="YES" id="aAK-ag-CW6"/>
+                <constraint firstItem="CZ2-Eu-BAD" firstAttribute="top" secondItem="AUd-TK-qW5" secondAttribute="bottom" constant="16" id="aAK-ag-CW6"/>
                 <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="49K-dA-dFD" secondAttribute="bottom" constant="4" id="b2O-6R-46H"/>
-                <constraint firstItem="swU-s7-4Hc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="d87-c8-PdK"/>
+                <constraint firstItem="CZ2-Eu-BAD" firstAttribute="bottom" secondItem="49K-dA-dFD" secondAttribute="bottom" constant="4" id="cZf-wJ-B5O"/>
                 <constraint firstItem="CZ2-Eu-BAD" firstAttribute="top" secondItem="49K-dA-dFD" secondAttribute="top" constant="4" id="eeO-YS-kqk"/>
                 <constraint firstItem="49K-dA-dFD" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" id="fDP-0A-Kej"/>
-                <constraint firstItem="swU-s7-4Hc" firstAttribute="centerX" secondItem="AUd-TK-qW5" secondAttribute="centerX" id="jtQ-tT-9Vb"/>
-                <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="CZ2-Eu-BAD" secondAttribute="bottom" constant="8" symbolic="YES" id="tUc-qf-8x1"/>
-                <constraint firstAttribute="trailing" secondItem="swU-s7-4Hc" secondAttribute="trailing" id="yZ4-Ul-4Lr"/>
+                <constraint firstAttribute="trailing" secondItem="CZ2-Eu-BAD" secondAttribute="trailing" constant="8" id="gRQ-vA-Lfq"/>
+                <constraint firstItem="AUd-TK-qW5" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="kx6-Ma-73Q"/>
+                <constraint firstItem="AUd-TK-qW5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="16" id="oog-Pj-bTT"/>
+                <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="CZ2-Eu-BAD" secondAttribute="bottom" constant="4" id="tUc-qf-8x1"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="fDP-0A-Kej"/>
+                    <exclude reference="M3e-PK-Hps"/>
+                    <exclude reference="Us5-d7-4EL"/>
+                    <exclude reference="aAK-ag-CW6"/>
+                    <exclude reference="tUc-qf-8x1"/>
+                </mask>
+            </variation>
         </view>
     </objects>
     <resources>
-        <image name="kujon-icon" width="1024" height="1024"/>
+        <image name="kujon-icon" width="120" height="120"/>
     </resources>
 </document>

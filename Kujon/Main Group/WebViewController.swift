@@ -15,7 +15,7 @@ class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let url = NSURL (string: "https://kujon.mobi/#disclaimer");
+        let url = NSURL (string: "https://kujon.mobi/regulamin");
         let requestObj = NSURLRequest(URL: url!);
         webView.loadRequest(requestObj);
          self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Zamknij", style: UIBarButtonItemStyle.Done, target: self, action: #selector(WebViewController.done))
