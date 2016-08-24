@@ -63,6 +63,7 @@ class StringHolder {
     static let appName = "Kujon"
     static let errorOccures = "Wystąpił błąd podczas komunikacji z serwerem."
     static let no_data = "Brak zajęć w tym dniu"
+    static let no_grades = "Brak ocen"
     static let googleType = "GOOGLE"
     static let fbType = "FB"
     static let back  = "Powrót"

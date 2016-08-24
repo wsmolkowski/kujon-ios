@@ -15,7 +15,7 @@ class GradesTableViewController: UITableViewController
     weak var delegate: NavigationMenuProtocol! = nil
     let gradesProvider = ProvidersProviderImpl.sharedInstance.provideGradesProvider()
     private let GradeCellIdentiefer = "GradeCellId"
-
+    let textId = "myTextSuperId"
     private var myTermGrades  = Array<PreparedTermGrades>()
 
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {
@@ -28,7 +28,7 @@ class GradesTableViewController: UITableViewController
         gradesProvider.delegate = self
         self.tableView.registerNib(UINib(nibName: "Grade2TableViewCell", bundle: nil), forCellReuseIdentifier: GradeCellIdentiefer)
         gradesProvider.loadGrades()
-
+        self.tableView.tableFooterView = UIView()
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(GradesTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
@@ -59,10 +59,13 @@ class GradesTableViewController: UITableViewController
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.myTermGrades.count
+        return noDataCondition() ? 1:self.myTermGrades.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(noDataCondition()){
+            return 1
+        }
         return self.myTermGrades[section].grades.count
     }
 
@@ -71,17 +74,29 @@ class GradesTableViewController: UITableViewController
     }
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if(noDataCondition()){
+            return 0
+        }
         return 50
     }
 
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if(noDataCondition()){
+            return nil
+        }
         return self.createLabelForSectionTitle(self.myTermGrades[section].termId,middle: true)
     }
 
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if(noDataCondition()){
+            let cell = UITableViewCell(style: .Default, reuseIdentifier: textId)
+            cell.textLabel?.font = UIFont.kjnTextStyle2Font()
+            cell.textLabel?.text = StringHolder.no_grades
+            return cell
+        }
         let cell = tableView.dequeueReusableCellWithIdentifier(GradeCellIdentiefer, forIndexPath: indexPath) as! Grade2TableViewCell
         let prepareGrade = self.myTermGrades[indexPath.section].grades[indexPath.row] 
 
@@ -91,6 +106,10 @@ class GradesTableViewController: UITableViewController
         cell.secDescLabel.text = prepareGrade.grades.classType + "  " + StringHolder.termin  + " " + String(prepareGrade.grades.examSessionNumber)
         cell.layer.addBorder( UIRectEdge.Top, color: UIColor.lightGray(), thickness: 1)
         return cell
+    }
+
+    private func noDataCondition()->Bool{
+        return self.myTermGrades.count == 0
     }
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
