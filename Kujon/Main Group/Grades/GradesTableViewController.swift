@@ -54,7 +54,9 @@ class GradesTableViewController: UITableViewController
         self.showAlertApi(StringHolder.attention, text: text, succes: {
             self.gradesProvider.reload()
             self.gradesProvider.loadGrades()
-        }, cancel: {})
+        }, cancel: {
+            self.refreshControl?.endRefreshing()
+        })
     }
     // MARK: - Table view data source
 
@@ -103,7 +105,7 @@ class GradesTableViewController: UITableViewController
         cell.textGradeLabel.text = prepareGrade.grades.valueDescription
         cell.gradeNumberLabel.text = prepareGrade.grades.valueSymbol
         cell.descriptionLabel.text = prepareGrade.courseName
-        cell.secDescLabel.text = prepareGrade.grades.classType + "  " + StringHolder.termin  + " " + String(prepareGrade.grades.examSessionNumber)
+        cell.secDescLabel.text = prepareGrade.grades.getClassType() + "  " + StringHolder.termin  + " " + String(prepareGrade.grades.examSessionNumber)
         cell.layer.addBorder( UIRectEdge.Top, color: UIColor.lightGray(), thickness: 1)
         return cell
     }
