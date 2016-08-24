@@ -24,7 +24,7 @@ class SendOpinionMenuItem:MenuItemWithURL {
     }
 
     func returnURL() -> NSURL! {
-        return NSURL(string: "mailto:kujon@kujon.mobi&subject=Uwaga do Kujona".stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
+        return NSURL(string: "mailto:kujon@kujon.mobi&subject=Uwaga%20do%20Kujona")
     }
 
 
