@@ -65,6 +65,7 @@
                 <constraint firstAttribute="trailing" secondItem="o3A-Cg-LFK" secondAttribute="trailing" constant="18" id="R6g-Bv-q02"/>
             </constraints>
             <connections>
+                <outlet property="arrow" destination="o3A-Cg-LFK" id="2Zv-Q6-9bK"/>
                 <outlet property="plainLabel" destination="sYE-Eh-tHK" id="KJv-Jc-QGc"/>
             </connections>
         </tableViewCell>

@@ -42,6 +42,7 @@ class ClassTypeSection:SectionHelperProtocol {
     func giveMeCellAtPosition(tableView: UITableView, onPosition position: NSIndexPath) -> UITableViewCell! {
         let cell = tableView.dequeueReusableCellWithIdentifier(classTypeCellId, forIndexPath: position) as! GoFurtherViewCellTableViewCell
         cell.plainLabel.text = description
+        cell.arrow.hidden = true
         return cell
     }
 

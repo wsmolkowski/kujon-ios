@@ -13,6 +13,7 @@ class GoFurtherViewCellTableViewCell: UITableViewCell {
     
     @IBOutlet weak var plainLabel: UILabel!
 
+    @IBOutlet weak var arrow: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
