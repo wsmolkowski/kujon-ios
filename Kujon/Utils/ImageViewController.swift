@@ -17,7 +17,13 @@ class ImageViewController: UIViewController {
         super.viewDidLoad()
         imageView.contentMode = UIViewContentMode.ScaleAspectFit;
         imageView.image = image
-        // Do any additional setup after loading the view.
+        if(self.navigationController != nil){
+            NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(ImageViewController.back))
+        }
+    }
+
+    func back() {
+        self.navigationController?.popViewControllerAnimated(true)
     }
 
     override func didReceiveMemoryWarning() {
