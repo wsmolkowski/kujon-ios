@@ -128,7 +128,7 @@ class UserTableViewController: UITableViewController
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 5
+       return userDetails == nil ? 0 : 5
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

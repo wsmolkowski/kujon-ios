@@ -77,8 +77,7 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 2
+        return self.userDetails != nil ? 2 : 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -80,8 +80,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 2
+        return userDetails == nil ? 0 : 2
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
