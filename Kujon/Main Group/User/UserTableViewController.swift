@@ -63,7 +63,7 @@ class UserTableViewController: UITableViewController
         refreshControl?.backgroundColor = UIColor.kujonBlueColor()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(UserTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
-
+        refreshControl?.beginRefreshingManually()
         self.navigationController?.navigationBar.barTintColor = UIColor.kujonBlueColor()
         loadData()
     }
@@ -283,6 +283,9 @@ class UserTableViewController: UITableViewController
                 self.navigationController?.presentViewController(popController, animated: false, completion: { popController.showAnimate(); })
 
                 popController.showInView(withProgramme: myProgramme.programme)
+            }else {
+                programmeLoaded = false
+                programmeProvider.loadProgramme()
             }
         }
 

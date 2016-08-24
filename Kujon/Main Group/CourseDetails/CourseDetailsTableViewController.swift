@@ -22,6 +22,7 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(CourseDetailsTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.beginRefreshingManually()
         load()
         for section in sectionHelpers{
             section.registerView(self.tableView)

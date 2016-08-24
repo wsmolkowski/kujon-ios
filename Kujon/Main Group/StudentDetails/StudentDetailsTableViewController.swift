@@ -39,6 +39,7 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(StudentDetailsTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.beginRefreshingManually()
 
     }
 

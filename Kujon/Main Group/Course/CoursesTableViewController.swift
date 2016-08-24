@@ -25,6 +25,7 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(CoursesTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.beginRefreshingManually()
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140
 
