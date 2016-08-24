@@ -44,3 +44,12 @@ protocol UserLogin {
     func logout()
     func getLoginType() -> UserLoginEnum
 }
+
+extension UserLogin{
+    func logoutUserData(userData: UserDataHolder){
+        userData.userEmail = nil
+        userData.userToken = nil
+        userData.userImage = nil
+        userData.userName = nil
+    }
+}

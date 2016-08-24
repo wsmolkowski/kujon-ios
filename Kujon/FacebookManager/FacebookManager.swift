@@ -50,8 +50,7 @@ class FacebookManager : UserLogin {
         fbManager.logOut()
         FBSDKAccessToken.setCurrentAccessToken(nil)
         SessionManager.clearCache()
-        userDataHolder.userEmail = nil
-        userDataHolder.userToken = nil
+        self.logoutUserData(userDataHolder)
     }
 
 }

@@ -56,8 +56,7 @@ class GoogleManager: UserLogin {
         GIDSignIn.sharedInstance().signOut()
         GIDSignIn.sharedInstance().disconnect()
         SessionManager.clearCache()
-        userDataHolder.userEmail = nil
-        userDataHolder.userToken = nil
+        self.logoutUserData(userDataHolder)
     }
 
 }
