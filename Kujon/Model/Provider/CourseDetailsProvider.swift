@@ -23,12 +23,16 @@ class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
     var endpoint:String! = nil
     var delegate: CourseDetailsProviderDelegate! = nil
     func loadCourseDetails(course: Course) {
-        endpoint = course.courseId + "/" + course.termId
+        let courseString = course.courseId.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
+        let termsString = course.termId.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
+        endpoint = courseString + "/" + termsString
         makeApiShot()
 
     }
 
     func loadCourseDetails(courseId: String, andTermId termId: String) {
+        let courseString = courseId.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
+        let termsString = termId.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
         endpoint = courseId + "/" + termId
         makeApiShot()
     }

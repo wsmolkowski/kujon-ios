@@ -9,7 +9,7 @@ import UIKit
 class PopUpViewController: UIViewController {
 
     var myPopUpView: UIView! = nil
-
+    let animationDuration = 0.150
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,16 +34,16 @@ class PopUpViewController: UIViewController {
     func showAnimate() {
         self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
         self.view.alpha = 0.0;
-        UIView.animateWithDuration(0.300, animations: {
+        UIView.animateWithDuration(animationDuration, animations: {
             self.view.alpha = 1.0
             self.view.transform = CGAffineTransformMakeScale(1.0, 1.0)
-        },completion: {
+        }, completion: {
             (finished: Bool) in
         });
     }
 
     func removeAnimate() {
-        UIView.animateWithDuration(0.300, animations: {
+        UIView.animateWithDuration(animationDuration, animations: {
             self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
             self.view.alpha = 0.0;
         }, completion: {
@@ -53,8 +53,9 @@ class PopUpViewController: UIViewController {
             }
         });
     }
-    func removeAnimate(funca: () ->Void) {
-        UIView.animateWithDuration(0.300, animations: {
+
+    func removeAnimate(funca: () -> Void) {
+        UIView.animateWithDuration(animationDuration, animations: {
             self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
             self.view.alpha = 0.0;
         }, completion: {
