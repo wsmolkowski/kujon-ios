@@ -80,8 +80,11 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
 
         if error == nil {
-            print("Load FB params on login success")
-            facebookManager.loadFBParams(self)
+            if(result != nil && !result!.isCancelled){
+                print("Load FB params on login success")
+                facebookManager.loadFBParams(self)
+            }
+
 
 //            self.openList(nil)
         } else {

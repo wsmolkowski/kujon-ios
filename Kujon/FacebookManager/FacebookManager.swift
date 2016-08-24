@@ -36,7 +36,6 @@ class FacebookManager : UserLogin {
             self.userDataHolder.userEmail = email
             self.userDataHolder.userLoginType = StringHolder.fbType
             listener.onFacebookCredentailSaved(self.userDataHolder.loggedToUsosForCurrentEmail)
-//            self.handleOpenCorrectController()
 
         }
     }

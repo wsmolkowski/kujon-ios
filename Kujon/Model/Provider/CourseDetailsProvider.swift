@@ -25,7 +25,7 @@ class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
     func loadCourseDetails(course: Course) {
         let courseString = course.courseId.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
         let termsString = course.termId.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
-        endpoint = courseString + "/" + termsString
+        endpoint = courseString! + "/" + termsString!
         makeApiShot()
 
     }
@@ -33,7 +33,7 @@ class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
     func loadCourseDetails(courseId: String, andTermId termId: String) {
         let courseString = courseId.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
         let termsString = termId.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
-        endpoint = courseId + "/" + termId
+        endpoint = courseString! + "/" + termsString!
         makeApiShot()
     }
 
