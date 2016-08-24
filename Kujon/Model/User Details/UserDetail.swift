@@ -21,7 +21,7 @@ struct UserDetail {
     let studentNumber: String!
     let room: Room!
     let courseEditionsConducted: Array<CourseEdition>!
-    let emailUrl: String
+    let emailUrl: String!
     let studentStatus: String
     let name: String?
     let officeHours: String!

@@ -30,10 +30,18 @@ class GradesProvider: RestApiManager, GradesProviderProtocol {
                     self.delegate?.onErrorOccurs(text)
                 }){
                     var preparedTermGrades = Array<PreparedTermGrades>()
-                    for termGrade in  grades.data{
+                    for i in  0...grades.data.count - 1 {
+
+                        var termGrade = grades.data[i]
                         var preparedGrade  = Array<PreparedGrades>()
-                        for courseGrade in termGrade.grades{
-                            for grade in courseGrade.grades{
+
+                        for j in 0...termGrade.grades.count - 1 {
+
+                            var courseGrade = termGrade.grades[j]
+
+                            for k in 0...courseGrade.grades.count - 1{
+
+                                var grade = courseGrade.grades[k]
                                 preparedGrade.append(PreparedGrades(
                                         courseName: courseGrade.courseName ,
                                         courseId: courseGrade.courseId ,

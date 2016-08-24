@@ -26,6 +26,7 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
         self.edgesForExtendedLayout = UIRectEdge.None
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SecondLoginViewController.back), andTitle: "Logowanie do USOS")
         webView.delegate = self
+        webView.scalesPageToFit = true;
         let url = String(format: "https:/api.kujon.mobi/authentication/register?email=%@&token=%@&usos_id=%@&type=%@", userDataHolder.userEmail, userDataHolder.userToken, userDataHolder.usosId, userDataHolder.userLoginType)
         let request = NSURLRequest(URL: NSURL(string: url)!)
         webView.loadRequest(request)
@@ -57,7 +58,6 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
             }
             requestC.setValue(myMutableString,forHTTPHeaderField: "Cookie")
 
-            //TODO TEGO NIE JESTEM PEWIEN CZY TAK TO ZROBIC BO COS KRZYCZY ZE DEPRECATED
             _ = NSURLConnection(request: requestC,delegate:self)
         }
         return true
@@ -67,11 +67,21 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
     }
 
     func webViewDidFinishLoad(webView: UIWebView) {
+
+//        let contentSize = webView.scrollView.contentSize;
+//        let viewSize = webView.bounds.size;
+//
+//        let rw = viewSize.width / contentSize.width;
+//
+//        webView.scrollView.minimumZoomScale = rw;
+//        webView.scrollView.maximumZoomScale = rw;
+//        webView.scrollView.zoomScale = rw;
         self.webView.stringByEvaluatingJavaScriptFromString("javascript:window.HtmlViewer.showHTML" +
                 "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');")
     }
 
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+        print("Logged error")
     }
 
     func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
@@ -80,7 +90,6 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
 
     func connection(connection: NSURLConnection, didReceiveData data: NSData) {
         print("Logged Succesfully")
-        //TODO TUTAJ BY PEWNIE SIE PRZYDALO DOLOZYC JAKIES PERSIST TYCH TOKENOW FACEBOOKOWYCH
         userDataHolder.loggedToUsosForCurrentEmail = true
         let controller  = ContainerViewController()
         controller.loadedToUsos = true

@@ -44,7 +44,7 @@ struct Grade{
     let valueSymbol: String
     let examId: Int
     let examSessionNumber: Int
-    let classType: String
+    let classType: String?
 
     func getGrade() -> GradeEnum {
         switch (valueSymbol) {
@@ -54,6 +54,14 @@ struct Grade{
         case "5": return GradeEnum.BARDZO_DOBRY
         case "6": return GradeEnum.CELUJACY
         default: return GradeEnum.NIEKLASYFIKOWANY
+        }
+    }
+
+    func getClassType()->String{
+        if(classType == nil){
+            return ""
+        }else {
+            return self.classType!
         }
     }
 
@@ -85,9 +93,11 @@ extension Grade: Decodable {
                 valueSymbol: j => "value_symbol",
                 examId: j => "exam_id",
                 examSessionNumber: j => "exam_session_number",
-                classType: j => "class_type"
+                classType: try? j => "class_type"
 
                 )
     }
+
+
 
 }
