@@ -10,6 +10,9 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
         </mutableArray>
+        <mutableArray key="Lato-Semibold.ttf">
+            <string>Lato-Semibold</string>
+        </mutableArray>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EntryViewController" customModule="Kujon" customModuleProvider="target">
@@ -27,7 +30,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CZ2-Eu-BAD" userLabel="FBLogin Button" customClass="FBSDKLoginButton">
-                    <rect key="frame" x="188.5" y="369" width="223.5" height="40"/>
+                    <rect key="frame" x="188" y="389" width="223.5" height="40"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="K9D-fS-Hnq"/>
@@ -44,14 +47,14 @@
                     </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vv-VQ-Avk" customClass="SpinnerView" customModule="Kujon" customModuleProvider="target">
-                    <rect key="frame" x="275" y="417" width="50" height="50"/>
+                    <rect key="frame" x="275" y="437" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="Ui7-RF-jcZ"/>
                         <constraint firstAttribute="height" constant="50" id="feY-4g-hLe"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rejestrując się wyrażasz zgodę  na następujące warunki" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miO-Ux-yaG">
-                    <rect key="frame" x="190" y="215" width="220" height="36"/>
+                    <rect key="frame" x="190" y="245" width="220" height="36"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="220" id="dlg-rQ-55G"/>
                         <constraint firstAttribute="width" constant="180" id="vZV-u6-wHc"/>
@@ -66,7 +69,7 @@
                     </variation>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="49K-dA-dFD" userLabel="Google Sign In Button" customClass="GIDSignInButton">
-                    <rect key="frame" x="185" y="311" width="230" height="48"/>
+                    <rect key="frame" x="185" y="331" width="230" height="48"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="6xo-e8-4Rf"/>
@@ -85,7 +88,13 @@
                     <color key="textColor" red="0.16470588743686676" green="0.20000000298023224" blue="0.24313725531101227" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kujon-icon" translatesAutoresizingMaskIntoConstraints="NO" id="AUd-TK-qW5">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="w Kujon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7SU-Cg-8cS">
+                    <rect key="frame" x="255" y="199" width="90.5" height="30"/>
+                    <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="25"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="owl" translatesAutoresizingMaskIntoConstraints="NO" id="AUd-TK-qW5">
                     <rect key="frame" x="243" y="36" width="114" height="114"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="114" id="C2i-8a-hdg"/>
@@ -100,6 +109,7 @@
                 <constraint firstItem="49K-dA-dFD" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.45" id="3r1-gw-hsP"/>
                 <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="AUd-TK-qW5" secondAttribute="bottom" constant="93" id="5eQ-2C-06P"/>
                 <constraint firstItem="CZ2-Eu-BAD" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.45" id="BH6-v1-K0b"/>
+                <constraint firstItem="miO-Ux-yaG" firstAttribute="top" secondItem="7SU-Cg-8cS" secondAttribute="bottom" constant="16" id="F4V-pq-xlA"/>
                 <constraint firstItem="miO-Ux-yaG" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="I1Y-Aq-gbN"/>
                 <constraint firstItem="49K-dA-dFD" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="K15-MP-hku"/>
                 <constraint firstItem="49K-dA-dFD" firstAttribute="top" secondItem="AUd-TK-qW5" secondAttribute="bottom" constant="12" id="LCc-dE-xoH"/>
@@ -120,17 +130,20 @@
                 <constraint firstItem="49K-dA-dFD" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" id="fDP-0A-Kej"/>
                 <constraint firstItem="miO-Ux-yaG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fQL-9G-Uo7"/>
                 <constraint firstAttribute="trailing" secondItem="CZ2-Eu-BAD" secondAttribute="trailing" constant="8" id="gRQ-vA-Lfq"/>
+                <constraint firstItem="7SU-Cg-8cS" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hMx-GG-UkL"/>
                 <constraint firstItem="AUd-TK-qW5" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="kx6-Ma-73Q"/>
                 <constraint firstItem="CZ2-Eu-BAD" firstAttribute="centerY" secondItem="49K-dA-dFD" secondAttribute="centerY" id="nDy-aX-BfY"/>
                 <constraint firstItem="AUd-TK-qW5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="36" id="oog-Pj-bTT"/>
                 <constraint firstAttribute="trailing" secondItem="miO-Ux-yaG" secondAttribute="trailing" id="paC-GD-c9E"/>
                 <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="CZ2-Eu-BAD" secondAttribute="bottom" constant="4" id="tUc-qf-8x1"/>
-                <constraint firstItem="49K-dA-dFD" firstAttribute="top" secondItem="miO-Ux-yaG" secondAttribute="bottom" constant="60" id="ybY-hN-69T"/>
+                <constraint firstItem="7SU-Cg-8cS" firstAttribute="top" secondItem="mY1-at-Y1Z" secondAttribute="bottom" id="uEW-Z9-ofe"/>
+                <constraint firstItem="49K-dA-dFD" firstAttribute="top" secondItem="miO-Ux-yaG" secondAttribute="bottom" constant="50" id="ybY-hN-69T"/>
                 <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="CZ2-Eu-BAD" secondAttribute="bottom" constant="8" id="zMb-5u-ctw"/>
             </constraints>
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="3BJ-kF-QqZ"/>
+                    <exclude reference="cUP-Az-xdf"/>
                     <exclude reference="fQL-9G-Uo7"/>
                     <exclude reference="paC-GD-c9E"/>
                     <exclude reference="YcG-Ir-ijj"/>
@@ -154,6 +167,6 @@
         </view>
     </objects>
     <resources>
-        <image name="kujon-icon" width="114" height="114"/>
+        <image name="owl" width="116" height="75"/>
     </resources>
 </document>
