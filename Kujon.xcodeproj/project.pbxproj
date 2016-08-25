@@ -244,8 +244,6 @@
 		52AF77C01D0984FC0058979A /* MenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77BE1D0984FC0058979A /* MenuItemTableViewCell.xib */; };
 		52AF77CF1D0AD5C50058979A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77CD1D0AD5C50058979A /* SettingsViewController.swift */; };
 		52AF77D01D0AD5C50058979A /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77CE1D0AD5C50058979A /* SettingsViewController.xib */; };
-		52AF77D31D0AD80A0058979A /* SendOpinionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77D11D0AD80A0058979A /* SendOpinionViewController.swift */; };
-		52AF77D41D0AD80A0058979A /* SendOpinionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77D21D0AD80A0058979A /* SendOpinionViewController.xib */; };
 		52AF77D71D0AD83A0058979A /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77D51D0AD83A0058979A /* ShareViewController.swift */; };
 		52AF77D81D0AD83A0058979A /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77D61D0AD83A0058979A /* ShareViewController.xib */; };
 		52AF77DF1D0EB4420058979A /* TeacherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77DD1D0EB4420058979A /* TeacherTableViewController.swift */; };
@@ -518,8 +516,6 @@
 		52AF77BE1D0984FC0058979A /* MenuItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuItemTableViewCell.xib; sourceTree = "<group>"; };
 		52AF77CD1D0AD5C50058979A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		52AF77CE1D0AD5C50058979A /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
-		52AF77D11D0AD80A0058979A /* SendOpinionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendOpinionViewController.swift; sourceTree = "<group>"; };
-		52AF77D21D0AD80A0058979A /* SendOpinionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendOpinionViewController.xib; sourceTree = "<group>"; };
 		52AF77D51D0AD83A0058979A /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		52AF77D61D0AD83A0058979A /* ShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareViewController.xib; sourceTree = "<group>"; };
 		52AF77DD1D0EB4420058979A /* TeacherTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherTableViewController.swift; sourceTree = "<group>"; };
@@ -883,15 +879,6 @@
 			path = Schedule;
 			sourceTree = "<group>";
 		};
-		4C0D87F830454DB0D2206F16 /* Send Opinion */ = {
-			isa = PBXGroup;
-			children = (
-				52AF77D11D0AD80A0058979A /* SendOpinionViewController.swift */,
-				52AF77D21D0AD80A0058979A /* SendOpinionViewController.xib */,
-			);
-			path = "Send Opinion";
-			sourceTree = "<group>";
-		};
 		4C0D87FBB08D0EE524630F2E /* Provider */ = {
 			isa = PBXGroup;
 			children = (
@@ -995,7 +982,6 @@
 				4C0D8E9FE0544625CD42B9F0 /* Teachers */,
 				4C0D854E52E691438A34E0B1 /* Settings */,
 				4C0D894ECCF8686ED62F6BAD /* Share */,
-				4C0D87F830454DB0D2206F16 /* Send Opinion */,
 				4C0D82C7795D7EB1A1FA4279 /* TeacherDetail */,
 				4C0D83437388037019156C43 /* Facultie */,
 				4C0D8CAAEFA500387C0BF406 /* CourseDetails */,
@@ -1423,7 +1409,6 @@
 				523B4FDE1D2BD090005FA79F /* TextViewController.xib in Resources */,
 				52590A7F1D1D1F0C00C285A0 /* GradesTableViewController.xib in Resources */,
 				4C0D8665D94A08D7002946B8 /* Courses.json in Resources */,
-				52AF77D41D0AD80A0058979A /* SendOpinionViewController.xib in Resources */,
 				4C0D85F69F40F41D39640CFD /* Grades.json in Resources */,
 				528BCAC21D5DF0BC00A9E49C /* TelephoneTableViewCell.xib in Resources */,
 				52FF972D1D23C9C400565763 /* CourseNameTableViewCell.xib in Resources */,
@@ -1914,7 +1899,6 @@
 				52FF972C1D23C9C400565763 /* CourseNameTableViewCell.swift in Sources */,
 				0AB192071D47B3A000834773 /* GoogleManager.swift in Sources */,
 				52AF77CF1D0AD5C50058979A /* SettingsViewController.swift in Sources */,
-				52AF77D31D0AD80A0058979A /* SendOpinionViewController.swift in Sources */,
 				4C0D83DD9146C96D43851C5D /* ScheduleMenuItem.swift in Sources */,
 				4C0D8272DA00131511B32AF8 /* CourseMenuItems.swift in Sources */,
 				4C0D8B852BE5B63017986E90 /* GradesMenuItem.swift in Sources */,

@@ -10,6 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
+
 class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
         OnFacebookCredentailSaved,
         GIDSignInUIDelegate,
@@ -57,6 +58,9 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
         tapGestureRecognizer.numberOfTapsRequired = 1
         rejestrujacLabel.userInteractionEnabled = true
         rejestrujacLabel.addGestureRecognizer(tapGestureRecognizer)
+
+        loginButton.tooltipColorStyle = .NeutralGray
+//        googleLogInButton.colorScheme = .kGIDSignInButtonColorSchemeDark
 
     }
     func showTerms(sender: UITapGestureRecognizer){

@@ -47,7 +47,8 @@ class SettingsViewController: UIViewController,
     private func goBackToEntryScreen() {
         loginMenager.logout()
         let controller = EntryViewController()
-        self.presentViewController(controller, animated: true, completion: nil)
+        let  navigationController = UINavigationController(rootViewController: controller)
+        self.presentViewController(navigationController, animated: true, completion: nil)
     }
 
     func back() {
