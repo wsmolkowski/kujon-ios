@@ -8,6 +8,7 @@
     <customFonts key="customFonts">
         <mutableArray key="Lato-Regular.ttf">
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -25,19 +26,13 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kujon-icon" translatesAutoresizingMaskIntoConstraints="NO" id="AUd-TK-qW5">
-                    <rect key="frame" x="180" y="16" width="240" height="240"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="240" id="C2i-8a-hdg"/>
-                        <constraint firstAttribute="height" constant="240" id="cMk-r0-tGc"/>
-                    </constraints>
-                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CZ2-Eu-BAD" userLabel="FBLogin Button" customClass="FBSDKLoginButton">
-                    <rect key="frame" x="322" y="272" width="270" height="52"/>
+                    <rect key="frame" x="188.5" y="369" width="223.5" height="40"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="K9D-fS-Hnq"/>
                         <constraint firstAttribute="width" constant="240" id="aas-Sc-3Zz"/>
+                        <constraint firstAttribute="height" constant="40" id="hci-bx-Z9c"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="lm0-Bt-1fI"/>
                     </constraints>
                     <variation key="default">
@@ -49,24 +44,34 @@
                     </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vv-VQ-Avk" customClass="SpinnerView" customModule="Kujon" customModuleProvider="target">
-                    <rect key="frame" x="275" y="332" width="50" height="50"/>
+                    <rect key="frame" x="275" y="417" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="Ui7-RF-jcZ"/>
                         <constraint firstAttribute="height" constant="50" id="feY-4g-hLe"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rejestrując się zgadzasz się na następujące warunki" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miO-Ux-yaG">
-                    <rect key="frame" x="166" y="414" width="269" height="15"/>
-                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rejestrując się wyrażasz zgodę  na następujące warunki" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miO-Ux-yaG">
+                    <rect key="frame" x="190" y="215" width="220" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="220" id="dlg-rQ-55G"/>
+                        <constraint firstAttribute="width" constant="180" id="vZV-u6-wHc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                     <color key="textColor" red="0.24705882370000001" green="0.72941178080000002" blue="0.85098040100000005" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="vZV-u6-wHc"/>
+                        </mask>
+                    </variation>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="49K-dA-dFD" userLabel="Google Sign In Button" customClass="GIDSignInButton">
-                    <rect key="frame" x="8" y="268" width="270" height="60"/>
+                    <rect key="frame" x="185" y="311" width="230" height="48"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="60" id="6xo-e8-4Rf"/>
+                        <constraint firstAttribute="height" constant="48" id="6xo-e8-4Rf"/>
                         <constraint firstAttribute="width" constant="240" id="HbW-nM-cHy"/>
+                        <constraint firstAttribute="width" constant="230" id="IIc-x3-cun"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
@@ -74,6 +79,19 @@
                         </mask>
                     </variation>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zarejestruj się" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mY1-at-Y1Z">
+                    <rect key="frame" x="232" y="172" width="136" height="27"/>
+                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
+                    <color key="textColor" red="0.16470588743686676" green="0.20000000298023224" blue="0.24313725531101227" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kujon-icon" translatesAutoresizingMaskIntoConstraints="NO" id="AUd-TK-qW5">
+                    <rect key="frame" x="243" y="36" width="114" height="114"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="114" id="C2i-8a-hdg"/>
+                        <constraint firstAttribute="height" constant="114" id="cMk-r0-tGc"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -83,34 +101,59 @@
                 <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="AUd-TK-qW5" secondAttribute="bottom" constant="93" id="5eQ-2C-06P"/>
                 <constraint firstItem="CZ2-Eu-BAD" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.45" id="BH6-v1-K0b"/>
                 <constraint firstItem="miO-Ux-yaG" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="I1Y-Aq-gbN"/>
+                <constraint firstItem="49K-dA-dFD" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="K15-MP-hku"/>
                 <constraint firstItem="49K-dA-dFD" firstAttribute="top" secondItem="AUd-TK-qW5" secondAttribute="bottom" constant="12" id="LCc-dE-xoH"/>
+                <constraint firstItem="CZ2-Eu-BAD" firstAttribute="width" secondItem="49K-dA-dFD" secondAttribute="width" multiplier="0.97" id="LJD-zE-aIm"/>
                 <constraint firstItem="CZ2-Eu-BAD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="M3e-PK-Hps"/>
+                <constraint firstItem="mY1-at-Y1Z" firstAttribute="centerX" secondItem="miO-Ux-yaG" secondAttribute="centerX" id="PCk-ek-w9A"/>
                 <constraint firstItem="49K-dA-dFD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="QKV-KZ-4gp"/>
+                <constraint firstItem="CZ2-Eu-BAD" firstAttribute="top" secondItem="49K-dA-dFD" secondAttribute="bottom" constant="10" id="SFs-m9-8w6"/>
+                <constraint firstItem="mY1-at-Y1Z" firstAttribute="top" secondItem="AUd-TK-qW5" secondAttribute="bottom" constant="22" id="TnR-IC-AjW"/>
                 <constraint firstAttribute="bottom" secondItem="CZ2-Eu-BAD" secondAttribute="bottom" constant="259" id="Us5-d7-4EL"/>
+                <constraint firstItem="CZ2-Eu-BAD" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Vik-AC-WA7"/>
+                <constraint firstItem="mY1-at-Y1Z" firstAttribute="centerX" secondItem="5vv-VQ-Avk" secondAttribute="centerX" id="YcG-Ir-ijj"/>
                 <constraint firstItem="CZ2-Eu-BAD" firstAttribute="top" secondItem="AUd-TK-qW5" secondAttribute="bottom" constant="16" id="aAK-ag-CW6"/>
                 <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="49K-dA-dFD" secondAttribute="bottom" constant="4" id="b2O-6R-46H"/>
+                <constraint firstItem="miO-Ux-yaG" firstAttribute="top" secondItem="mY1-at-Y1Z" secondAttribute="bottom" constant="16" id="cUP-Az-xdf"/>
                 <constraint firstItem="CZ2-Eu-BAD" firstAttribute="bottom" secondItem="49K-dA-dFD" secondAttribute="bottom" constant="-4" id="cZf-wJ-B5O"/>
                 <constraint firstItem="CZ2-Eu-BAD" firstAttribute="top" secondItem="49K-dA-dFD" secondAttribute="top" constant="4" id="eeO-YS-kqk"/>
                 <constraint firstItem="49K-dA-dFD" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" id="fDP-0A-Kej"/>
+                <constraint firstItem="miO-Ux-yaG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fQL-9G-Uo7"/>
                 <constraint firstAttribute="trailing" secondItem="CZ2-Eu-BAD" secondAttribute="trailing" constant="8" id="gRQ-vA-Lfq"/>
                 <constraint firstItem="AUd-TK-qW5" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="kx6-Ma-73Q"/>
                 <constraint firstItem="CZ2-Eu-BAD" firstAttribute="centerY" secondItem="49K-dA-dFD" secondAttribute="centerY" id="nDy-aX-BfY"/>
-                <constraint firstItem="AUd-TK-qW5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="16" id="oog-Pj-bTT"/>
+                <constraint firstItem="AUd-TK-qW5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="36" id="oog-Pj-bTT"/>
+                <constraint firstAttribute="trailing" secondItem="miO-Ux-yaG" secondAttribute="trailing" id="paC-GD-c9E"/>
                 <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="CZ2-Eu-BAD" secondAttribute="bottom" constant="4" id="tUc-qf-8x1"/>
+                <constraint firstItem="49K-dA-dFD" firstAttribute="top" secondItem="miO-Ux-yaG" secondAttribute="bottom" constant="60" id="ybY-hN-69T"/>
+                <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="CZ2-Eu-BAD" secondAttribute="bottom" constant="8" id="zMb-5u-ctw"/>
             </constraints>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="3BJ-kF-QqZ"/>
+                    <exclude reference="fQL-9G-Uo7"/>
+                    <exclude reference="paC-GD-c9E"/>
+                    <exclude reference="YcG-Ir-ijj"/>
+                    <exclude reference="3r1-gw-hsP"/>
+                    <exclude reference="LCc-dE-xoH"/>
+                    <exclude reference="QKV-KZ-4gp"/>
                     <exclude reference="fDP-0A-Kej"/>
+                    <exclude reference="BH6-v1-K0b"/>
                     <exclude reference="M3e-PK-Hps"/>
                     <exclude reference="Us5-d7-4EL"/>
                     <exclude reference="aAK-ag-CW6"/>
+                    <exclude reference="cZf-wJ-B5O"/>
+                    <exclude reference="eeO-YS-kqk"/>
+                    <exclude reference="gRQ-vA-Lfq"/>
+                    <exclude reference="nDy-aX-BfY"/>
                     <exclude reference="5eQ-2C-06P"/>
+                    <exclude reference="b2O-6R-46H"/>
                     <exclude reference="tUc-qf-8x1"/>
                 </mask>
             </variation>
         </view>
     </objects>
     <resources>
-        <image name="kujon-icon" width="120" height="120"/>
+        <image name="kujon-icon" width="114" height="114"/>
     </resources>
 </document>
