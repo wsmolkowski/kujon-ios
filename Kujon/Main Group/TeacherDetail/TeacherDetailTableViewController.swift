@@ -86,7 +86,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch (section){
             case 0: return userDetails == nil ? 0 : 1
-            case 1: return userDetails?.courseEditionsConducted == nil ? 0 : userDetails.courseEditionsConducted.count
+            case 1: return userDetails?.courseEditionsConducted == nil ? 0 : userDetails.courseEditionsConducted!.count
         default: return 0
         }
 
@@ -104,7 +104,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
     }
 
     private func clicked(pos:Int){
-        let coursEdition = self.userDetails?.courseEditionsConducted[pos]
+        let coursEdition = self.userDetails!.courseEditionsConducted?[pos]
         if(coursEdition != nil){
             let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: NSBundle.mainBundle())
             courseDetails.courseId = coursEdition!.courseId
@@ -164,7 +164,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         cell.teacherImageView.image = UIImage(named: "user-placeholder")
 
         if(self.userDetails.room  != nil){
-            cell.teacherRoomLabel.text = self.userDetails.room.getRoomString()
+            cell.teacherRoomLabel.text = self.userDetails.room!.getRoomString()
         }
 
         if (userDetails.hasPhoto) {
@@ -181,7 +181,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
 
     func configureTeacherCourse(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(programmesIdCell, forIndexPath: indexPath) as! GoFurtherViewCellTableViewCell
-        let courseEdition = self.userDetails?.courseEditionsConducted[indexPath.row]
+        let courseEdition = self.userDetails?.courseEditionsConducted?[indexPath.row]
         if (courseEdition != nil){
             cell.plainLabel.text = courseEdition!.courseName
         }
@@ -205,7 +205,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
 
     func wwwTaped(sender: UITapGestureRecognizer) {
         print(sender.view?.tag)
-        if let url = NSURL(string: self.userDetails.homepage) {
+        if let url = NSURL(string: self.userDetails.homepage != nil ? self.userDetails.homepage! : "") {
             UIApplication.sharedApplication().openURL(url)
         }
     }

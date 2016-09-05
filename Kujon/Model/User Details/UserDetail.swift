@@ -19,15 +19,15 @@ struct UserDetail {
     let studentProgrammes: Array<StudentProgramme>
     let id: String
     let studentNumber: String!
-    let room: Room!
-    let courseEditionsConducted: Array<CourseEdition>!
+    let room: Room?
+    let courseEditionsConducted: Array<CourseEdition>?
     let emailUrl: String!
     let studentStatus: String
     let name: String?
-    let officeHours: String!
+    let officeHours: String?
     let usosName: String?
-    let homepage: String!
-    let employmentPosition: Array<EmploymentPosition>!
+    let homepage: String?
+    let employmentPosition: Array<EmploymentPosition>?
     let hasEmail: Bool
     let usosId: String?
     let hasPhoto: Bool
@@ -50,15 +50,15 @@ extension UserDetail: Decodable {
                 studentProgrammes: j => "student_programmes",
                 id: j => "id",
                 studentNumber: j => "student_number",
-                room: j => "room",
-                courseEditionsConducted: j => "course_editions_conducted",
+                room: try? j => "room",
+                courseEditionsConducted: try? j => "course_editions_conducted",
                 emailUrl: j => "email_url",
                 studentStatus: j => "student_status",
                 name: try? j => "name",
-                officeHours: j => "office_hours",
+                officeHours: try? j => "office_hours",
                 usosName: try? j => "usos_name",
-                homepage: j => "homepage_url",
-                employmentPosition: j => "employment_positions",
+                homepage: try? j => "homepage_url",
+                employmentPosition: try? j => "employment_positions",
                 hasEmail: j => "has_email",
                 usosId: try? j => "usos_id",
                 hasPhoto: j => "has_photo",
