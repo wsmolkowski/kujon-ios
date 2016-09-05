@@ -71,4 +71,5 @@ class StringHolder {
     static let usosGreetings = "Gratulacje! Udało Ci się zalogować na "
     static let loggin = "Logowanie"
     static let contactEmail = "kujon@kujon.mobi"
+    static let appItunesLink = "http://appstore.com/kujonklientusos"
 }
