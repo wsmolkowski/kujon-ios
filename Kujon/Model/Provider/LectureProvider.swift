@@ -22,6 +22,7 @@ class LectureProvider: RestApiManager, LectureProviderProtocol {
 
     var delegate: LectureProviderDelegate!
     var endpoint: String! = nil
+    var endpointParameter: String = "?lecturers_info=False"
     func loadLectures(date: String) {
         endpoint = "/tt/" + date
         self.makeHTTPAuthenticatedGetRequest({
@@ -38,7 +39,7 @@ class LectureProvider: RestApiManager, LectureProviderProtocol {
     }
 
     override func getMyUrl() -> String {
-        return baseURL + endpoint
+        return baseURL + endpoint + endpointParameter
     }
 
 }

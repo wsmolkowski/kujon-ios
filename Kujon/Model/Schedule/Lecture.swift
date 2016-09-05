@@ -28,7 +28,8 @@ import Decodable
 //"building_name": "Wydzia\u0142 Matematyki, Informatyki i Mechaniki - Budynek Dydaktyczny"
 
 struct Lecture {
-    let lecturers: Array<SimpleUser>
+    let lecturers: Array<SimpleUser>?
+    let lecturersIds: Array<Int>?
     let courseName: String
     let name: String
     let startTime: String
@@ -45,7 +46,8 @@ struct Lecture {
 extension Lecture: Decodable {
     static func decode(j: AnyObject) throws -> Lecture {
         return try Lecture(
-        lecturers: j => "lecturers",
+        lecturers: try? j => "lecturers",
+                lecturersIds: try? j => "lecturer_ids",
                 courseName: j => "course_name",
                 name: j => "name",
                 startTime: j => "start_time",

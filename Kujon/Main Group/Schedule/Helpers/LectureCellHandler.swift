@@ -19,7 +19,7 @@ class LectureCellHandler: CellHandlerProtocol {
 
 
         (cell as! LectureTableViewCell).timeLabel.attributedText = setTime()
-        let lecturer = wrapper.lecture.lecturers[0] as SimpleUser!
+        let lecturer = wrapper.lecture.lecturers?[0] as SimpleUser!
         cell.selectionStyle = UITableViewCellSelectionStyle.None
 //        (cell as! LectureTableViewCell).topic.backgroundColor  =  UIColor.kujonDarkerBlueColor()
         if (lecturer == nil) {

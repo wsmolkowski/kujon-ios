@@ -45,7 +45,7 @@ class CalendarViewController: MGCDayPlannerViewController,
         if (lastQueryDate == nil) {
             lastQueryDate = NSDate.getCurrentStartOfWeek()
         }
-//        lastQueryDate = NSDate.stringToDate("2015-05-05")
+        lastQueryDate = NSDate.stringToDate("2015-05-05")
         veryFirstDate = lastQueryDate
         dateFormatter.dateFormat = calendarDateFormant
         lectureProvider.delegate = self
