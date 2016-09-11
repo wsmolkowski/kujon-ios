@@ -30,26 +30,27 @@ class GradesProvider: RestApiManager, GradesProviderProtocol {
                     self.delegate?.onErrorOccurs(text)
                 }){
                     var preparedTermGrades = Array<PreparedTermGrades>()
-                    for i in  0...grades.data.count - 1 {
+                    if grades.data.count > 0 {
+                        for i in  0...grades.data.count - 1 {
 
-                        var termGrade = grades.data[i]
-                        var preparedGrade  = Array<PreparedGrades>()
+                            var termGrade = grades.data[i]
+                            var preparedGrade  = Array<PreparedGrades>()
+                            for j in 0...termGrade.grades.count - 1 {
 
-                        for j in 0...termGrade.grades.count - 1 {
+                                var courseGrade = termGrade.grades[j]
 
-                            var courseGrade = termGrade.grades[j]
+                                for k in 0...courseGrade.grades.count - 1{
 
-                            for k in 0...courseGrade.grades.count - 1{
-
-                                var grade = courseGrade.grades[k]
-                                preparedGrade.append(PreparedGrades(
-                                        courseName: courseGrade.courseName ,
-                                        courseId: courseGrade.courseId ,
-                                        grades: grade ,
-                                        termId:courseGrade.termId))
+                                    var grade = courseGrade.grades[k]
+                                    preparedGrade.append(PreparedGrades(
+                                            courseName: courseGrade.courseName ,
+                                            courseId: courseGrade.courseId ,
+                                            grades: grade ,
+                                            termId:courseGrade.termId))
+                                }
                             }
+                            preparedTermGrades.append(PreparedTermGrades(termId: termGrade.termId,grades: preparedGrade))
                         }
-                        preparedTermGrades.append(PreparedTermGrades(termId: termGrade.termId,grades: preparedGrade))
                     }
                     self.delegate?.onGradesLoaded(preparedTermGrades)
                 }
