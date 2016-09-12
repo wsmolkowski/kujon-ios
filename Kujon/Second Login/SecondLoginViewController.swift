@@ -68,14 +68,6 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
 
     func webViewDidFinishLoad(webView: UIWebView) {
 
-//        let contentSize = webView.scrollView.contentSize;
-//        let viewSize = webView.bounds.size;
-//
-//        let rw = viewSize.width / contentSize.width;
-//
-//        webView.scrollView.minimumZoomScale = rw;
-//        webView.scrollView.maximumZoomScale = rw;
-//        webView.scrollView.zoomScale = rw;
         self.webView.stringByEvaluatingJavaScriptFromString("javascript:window.HtmlViewer.showHTML" +
                 "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');")
     }

@@ -45,7 +45,7 @@ class CalendarViewController: MGCDayPlannerViewController,
         if (lastQueryDate == nil) {
             lastQueryDate = NSDate.getCurrentStartOfWeek()
         }
-        lastQueryDate = NSDate.stringToDate("2015-05-05")
+//        lastQueryDate = NSDate.stringToDate("2015-05-05")
         veryFirstDate = lastQueryDate
         dateFormatter.dateFormat = calendarDateFormant
         lectureProvider.delegate = self
@@ -85,7 +85,7 @@ class CalendarViewController: MGCDayPlannerViewController,
     }
 
     func onLectureLoaded(lectures: Array<Lecture>) {
-        let wrappers = lectures.map {
+        let wrappers = try! lectures.map {
             lecture in LectureWrapper(lecture: lecture)
         }
         let dicMonthYear = wrappers.groupBy {
@@ -93,7 +93,7 @@ class CalendarViewController: MGCDayPlannerViewController,
         }
         let sortedKeys = dicMonthYear.keys
 
-        sortedKeys.forEach {
+        try! sortedKeys.forEach {
             key2 in
             _ = key2.getMonthYearString();
             var dict = dicMonthYear[key2]!.groupBy {
