@@ -62,7 +62,7 @@ class LeftMenuTableViewController: UITableViewController {
             let cell: NavDrawerHeaderViewCellTableViewCell = tableView.dequeueReusableCellWithIdentifier(MenuItemHeaderIdentiefier, forIndexPath: indexPath) as! NavDrawerHeaderViewCellTableViewCell
             cell.userEmailLabel.text = self.userDataHolder.userEmail
             cell.userNameLabel.text = self.userDataHolder.userName
-            if(self.userDataHolder.userImage != nil){
+            if (self.userDataHolder.userImage != nil) {
 
                 cell.userImageView.image = self.userDataHolder.userImage
             }
@@ -96,14 +96,17 @@ class LeftMenuTableViewController: UITableViewController {
         if (indexPath.section > 0) {
 
             let menuItem = self.getCurrentMenuItem(indexPath)
-            if(menuItem.returnTitle() == StringHolder.shareApp){
-                let controller =  UIActivityViewController(activityItems: [StringHolder.appItunesLink], applicationActivities: nil)
+            if (menuItem.returnTitle() == StringHolder.shareApp) {
+                let controller = UIActivityViewController(activityItems: [StringHolder.appItunesLink], applicationActivities: nil)
+                if let actv = controller.popoverPresentationController {
+                    actv.sourceView = self.view;
+                }
                 self.presentViewController(controller, animated: true, completion: nil)
             }
             if (menuItem.returnViewController()) {
                 self.delegate?.selectedMenuItem(self, menuItem: menuItem, withDelegate: indexPath.section == 1)
             } else {
-                if let url = (menuItem as! MenuItemWithURL).returnURL(){
+                if let url = (menuItem as! MenuItemWithURL).returnURL() {
 
                     UIApplication.sharedApplication().openURL(url)
                 }

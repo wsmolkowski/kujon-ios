@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -105,71 +104,21 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="AUd-TK-qW5" firstAttribute="centerX" secondItem="5vv-VQ-Avk" secondAttribute="centerX" id="14m-df-0CQ"/>
-                <constraint firstItem="miO-Ux-yaG" firstAttribute="top" secondItem="5vv-VQ-Avk" secondAttribute="bottom" constant="32" id="3BJ-kF-QqZ"/>
-                <constraint firstItem="49K-dA-dFD" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.45" id="3r1-gw-hsP"/>
-                <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="AUd-TK-qW5" secondAttribute="bottom" constant="93" id="5eQ-2C-06P"/>
                 <constraint firstItem="49K-dA-dFD" firstAttribute="top" secondItem="7SU-Cg-8cS" secondAttribute="bottom" constant="16" id="7Q5-Id-Ffd"/>
-                <constraint firstItem="CZ2-Eu-BAD" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.45" id="BH6-v1-K0b"/>
-                <constraint firstItem="miO-Ux-yaG" firstAttribute="top" secondItem="7SU-Cg-8cS" secondAttribute="bottom" constant="16" id="F4V-pq-xlA"/>
                 <constraint firstItem="miO-Ux-yaG" firstAttribute="top" secondItem="CZ2-Eu-BAD" secondAttribute="bottom" constant="16" id="F6C-D0-2fX"/>
                 <constraint firstItem="miO-Ux-yaG" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="I1Y-Aq-gbN"/>
                 <constraint firstItem="49K-dA-dFD" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="K15-MP-hku"/>
-                <constraint firstItem="49K-dA-dFD" firstAttribute="top" secondItem="AUd-TK-qW5" secondAttribute="bottom" constant="12" id="LCc-dE-xoH"/>
                 <constraint firstItem="CZ2-Eu-BAD" firstAttribute="width" secondItem="49K-dA-dFD" secondAttribute="width" multiplier="0.97" id="LJD-zE-aIm"/>
-                <constraint firstItem="CZ2-Eu-BAD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="M3e-PK-Hps"/>
                 <constraint firstItem="mY1-at-Y1Z" firstAttribute="centerX" secondItem="miO-Ux-yaG" secondAttribute="centerX" id="PCk-ek-w9A"/>
-                <constraint firstItem="49K-dA-dFD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="QKV-KZ-4gp"/>
                 <constraint firstItem="CZ2-Eu-BAD" firstAttribute="top" secondItem="49K-dA-dFD" secondAttribute="bottom" constant="10" id="SFs-m9-8w6"/>
                 <constraint firstItem="mY1-at-Y1Z" firstAttribute="top" secondItem="AUd-TK-qW5" secondAttribute="bottom" constant="22" id="TnR-IC-AjW"/>
-                <constraint firstAttribute="bottom" secondItem="CZ2-Eu-BAD" secondAttribute="bottom" constant="259" id="Us5-d7-4EL"/>
                 <constraint firstItem="CZ2-Eu-BAD" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Vik-AC-WA7"/>
-                <constraint firstItem="mY1-at-Y1Z" firstAttribute="centerX" secondItem="5vv-VQ-Avk" secondAttribute="centerX" id="YcG-Ir-ijj"/>
-                <constraint firstItem="CZ2-Eu-BAD" firstAttribute="top" secondItem="AUd-TK-qW5" secondAttribute="bottom" constant="16" id="aAK-ag-CW6"/>
-                <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="49K-dA-dFD" secondAttribute="bottom" constant="4" id="b2O-6R-46H"/>
-                <constraint firstItem="miO-Ux-yaG" firstAttribute="top" secondItem="mY1-at-Y1Z" secondAttribute="bottom" constant="16" id="cUP-Az-xdf"/>
-                <constraint firstItem="CZ2-Eu-BAD" firstAttribute="bottom" secondItem="49K-dA-dFD" secondAttribute="bottom" constant="-4" id="cZf-wJ-B5O"/>
-                <constraint firstItem="CZ2-Eu-BAD" firstAttribute="top" secondItem="49K-dA-dFD" secondAttribute="top" constant="4" id="eeO-YS-kqk"/>
-                <constraint firstItem="49K-dA-dFD" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" id="fDP-0A-Kej"/>
-                <constraint firstItem="miO-Ux-yaG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fQL-9G-Uo7"/>
-                <constraint firstAttribute="trailing" secondItem="CZ2-Eu-BAD" secondAttribute="trailing" constant="8" id="gRQ-vA-Lfq"/>
                 <constraint firstItem="7SU-Cg-8cS" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hMx-GG-UkL"/>
                 <constraint firstItem="AUd-TK-qW5" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="kx6-Ma-73Q"/>
-                <constraint firstItem="CZ2-Eu-BAD" firstAttribute="centerY" secondItem="49K-dA-dFD" secondAttribute="centerY" id="nDy-aX-BfY"/>
                 <constraint firstItem="AUd-TK-qW5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="36" id="oog-Pj-bTT"/>
-                <constraint firstAttribute="trailing" secondItem="miO-Ux-yaG" secondAttribute="trailing" id="paC-GD-c9E"/>
-                <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="CZ2-Eu-BAD" secondAttribute="bottom" constant="4" id="tUc-qf-8x1"/>
                 <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="miO-Ux-yaG" secondAttribute="bottom" constant="8" id="tq8-rE-WQs"/>
                 <constraint firstItem="7SU-Cg-8cS" firstAttribute="top" secondItem="mY1-at-Y1Z" secondAttribute="bottom" id="uEW-Z9-ofe"/>
-                <constraint firstItem="49K-dA-dFD" firstAttribute="top" secondItem="miO-Ux-yaG" secondAttribute="bottom" constant="50" id="ybY-hN-69T"/>
-                <constraint firstItem="5vv-VQ-Avk" firstAttribute="top" secondItem="CZ2-Eu-BAD" secondAttribute="bottom" constant="8" id="zMb-5u-ctw"/>
             </constraints>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="YcG-Ir-ijj"/>
-                    <exclude reference="3r1-gw-hsP"/>
-                    <exclude reference="LCc-dE-xoH"/>
-                    <exclude reference="QKV-KZ-4gp"/>
-                    <exclude reference="fDP-0A-Kej"/>
-                    <exclude reference="ybY-hN-69T"/>
-                    <exclude reference="BH6-v1-K0b"/>
-                    <exclude reference="M3e-PK-Hps"/>
-                    <exclude reference="Us5-d7-4EL"/>
-                    <exclude reference="aAK-ag-CW6"/>
-                    <exclude reference="cZf-wJ-B5O"/>
-                    <exclude reference="eeO-YS-kqk"/>
-                    <exclude reference="gRQ-vA-Lfq"/>
-                    <exclude reference="nDy-aX-BfY"/>
-                    <exclude reference="3BJ-kF-QqZ"/>
-                    <exclude reference="F4V-pq-xlA"/>
-                    <exclude reference="cUP-Az-xdf"/>
-                    <exclude reference="fQL-9G-Uo7"/>
-                    <exclude reference="paC-GD-c9E"/>
-                    <exclude reference="5eQ-2C-06P"/>
-                    <exclude reference="b2O-6R-46H"/>
-                    <exclude reference="tUc-qf-8x1"/>
-                    <exclude reference="zMb-5u-ctw"/>
-                </mask>
-            </variation>
         </view>
     </objects>
     <resources>
