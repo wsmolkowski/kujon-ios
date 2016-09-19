@@ -72,4 +72,8 @@ class StringHolder {
     static let loggin = "Logowanie"
     static let contactEmail = "kujon@kujon.mobi"
     static let appItunesLink = "http://appstore.com/kujonklientusos"
+    static let errorPassword = "Bład rejestracji"
+    static let emailPasswordError = "Proszę podać poprawny email"
+    static let passwordPasswordError = "Hasło musi mieć co najmniej jedną cyfrę i jedną litere"
+    static let identicalPasswordError = "Hasła muszą być identyczne"
 }

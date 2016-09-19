@@ -20,9 +20,11 @@ class LoginProvider:RestApiManager,RegistrationProviderProtocol {
     func register(email: String, password: String) {
         let data = Register.createLoginJSON(email, password: password)
         self.makeHTTPPostRequest({
-            delegate!.onLoginResponse()
+            json in
+            self.delegate!.onLoginResponse()
         }, onError: {
-            delegate!.onErrorOccurs("")
+            text in
+            self.delegate!.onErrorOccurs(text)
         }, json: data)
     }
 

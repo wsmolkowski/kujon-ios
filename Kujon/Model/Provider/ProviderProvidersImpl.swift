@@ -95,5 +95,11 @@ class ProvidersProviderImpl: ProvidersProvider {
         return configProvider
     }
 
+    lazy var registrationProvider = RegistrationProvider()
+
+    func provideRegistrationProvider() -> RegistrationProvider {
+        return registrationProvider
+    }
+
 
 }

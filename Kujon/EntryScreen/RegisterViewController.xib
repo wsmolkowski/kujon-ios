@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController" customModule="Kujon" customModuleProvider="target">
+            <connections>
+                <outlet property="emailTextField" destination="P6O-OO-84K" id="sFB-06-VBh"/>
+                <outlet property="passwordTextField" destination="Ol2-0X-9Ci" id="nii-zi-rDd"/>
+                <outlet property="seconPasswordTextField" destination="PR1-aZ-mjc" id="pN3-pT-hzh"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="P6O-OO-84K">
+                    <rect key="frame" x="44" y="36" width="512" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="a7U-qk-9r3"/>
+                    </constraints>
+                    <color key="textColor" red="0.1647058874" green="0.20000000300000001" blue="0.24313725529999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hasło" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="Ol2-0X-9Ci">
+                    <rect key="frame" x="44" y="74" width="512" height="30"/>
+                    <color key="textColor" red="0.1647058874" green="0.20000000300000001" blue="0.24313725529999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Powtórz hasło" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="PR1-aZ-mjc">
+                    <rect key="frame" x="44" y="112" width="512" height="30"/>
+                    <color key="textColor" red="0.1647058874" green="0.20000000300000001" blue="0.24313725529999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rejestrując się wyrażasz zgodę  na następujące warunki" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERa-3M-ByD">
+                    <rect key="frame" x="190" y="158" width="220" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="180" id="EFM-9e-Cnf"/>
+                        <constraint firstAttribute="width" constant="220" id="qkT-Am-Cal"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                    <color key="textColor" red="0.24705882370000001" green="0.72941178080000002" blue="0.85098040100000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="EFM-9e-Cnf"/>
+                        </mask>
+                    </variation>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7GC-gr-UJH">
+                    <rect key="frame" x="44" y="210" width="512" height="36"/>
+                    <color key="backgroundColor" red="0.24705882370471954" green="0.729411780834198" blue="0.85098040103912354" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="yu3-ri-HCz"/>
+                    </constraints>
+                    <state key="normal" title="Zarejestruj się">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onRegisterClick:" destination="-1" eventType="touchUpInside" id="sBa-UK-Bua"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="P6O-OO-84K" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" constant="-36" id="8iG-cW-88c"/>
+                <constraint firstItem="Ol2-0X-9Ci" firstAttribute="top" secondItem="P6O-OO-84K" secondAttribute="bottom" constant="8" symbolic="YES" id="EB9-EP-5M4"/>
+                <constraint firstItem="Ol2-0X-9Ci" firstAttribute="leading" secondItem="P6O-OO-84K" secondAttribute="leading" id="GLA-01-VJj"/>
+                <constraint firstItem="7GC-gr-UJH" firstAttribute="leading" secondItem="PR1-aZ-mjc" secondAttribute="leading" id="OhM-Nd-BAF"/>
+                <constraint firstItem="ERa-3M-ByD" firstAttribute="top" secondItem="PR1-aZ-mjc" secondAttribute="bottom" constant="16" id="TGV-B0-RfG"/>
+                <constraint firstItem="ERa-3M-ByD" firstAttribute="centerX" secondItem="PR1-aZ-mjc" secondAttribute="centerX" id="UDf-Af-yGv"/>
+                <constraint firstItem="7GC-gr-UJH" firstAttribute="trailing" secondItem="PR1-aZ-mjc" secondAttribute="trailing" id="Xcz-Hf-64o"/>
+                <constraint firstItem="7GC-gr-UJH" firstAttribute="top" secondItem="ERa-3M-ByD" secondAttribute="bottom" constant="16" id="Z2t-nh-ax8"/>
+                <constraint firstItem="PR1-aZ-mjc" firstAttribute="top" secondItem="Ol2-0X-9Ci" secondAttribute="bottom" constant="8" symbolic="YES" id="i88-JA-Jap"/>
+                <constraint firstItem="Ol2-0X-9Ci" firstAttribute="trailing" secondItem="P6O-OO-84K" secondAttribute="trailing" id="m9Z-cS-zgM"/>
+                <constraint firstItem="P6O-OO-84K" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="36" id="nHO-xD-r9X"/>
+                <constraint firstItem="PR1-aZ-mjc" firstAttribute="leading" secondItem="Ol2-0X-9Ci" secondAttribute="leading" id="nSh-ov-A1x"/>
+                <constraint firstItem="P6O-OO-84K" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" constant="36" id="o5V-It-diA"/>
+                <constraint firstItem="PR1-aZ-mjc" firstAttribute="trailing" secondItem="Ol2-0X-9Ci" secondAttribute="trailing" id="snG-Ed-L1U"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

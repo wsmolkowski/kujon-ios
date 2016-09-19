@@ -12,9 +12,26 @@ class Register {
     private static let DEVICE_TYPE_KEY = "device_type"
     private static let DEVICE_ID_KEY = "device_id"
     static func createRegisterJSON(email: String, password: String) -> NSData {
-        return [EMAIL_KEY : email , PASSWORD_KEY : password, DEVICE_TYPE_KEY : "IOS", DEVICE_ID_KEY : "123"]
+
+        let dict = [EMAIL_KEY: email, PASSWORD_KEY: password, DEVICE_TYPE_KEY: "IOS", DEVICE_ID_KEY: "123"]
+
+        do {
+            return try NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions())
+        } catch {
+
+            return NSData()
+        }
+
     }
+
     static func createLoginJSON(email: String, password: String) -> NSData {
-        return [EMAIL_KEY : email , PASSWORD_KEY : password]
+        let dict = [EMAIL_KEY: email, PASSWORD_KEY: password]
+        do {
+            return try NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions())
+        } catch {
+
+            return NSData()
+        }
+
     }
 }

@@ -71,10 +71,13 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
         self.presentViewController(navigationController, animated: true, completion: nil)
 
     }
-
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    @IBAction func registerClick(sender: AnyObject) {
+        let controller = RegisterViewController()
+        self.navigationController?.pushViewController(controller, animated: true)
     }
+
+    @IBOutlet weak var loginClick: UIButton!
+   
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

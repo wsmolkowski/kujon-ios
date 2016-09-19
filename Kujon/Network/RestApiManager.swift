@@ -9,7 +9,7 @@ typealias onSucces = (NSData!) -> Void
 typealias onErrorOccurs = (text:String) -> Void
 
 class RestApiManager {
-    static let BASE_URL: String = "https://api.kujon.mobi"
+    static let BASE_URL: String = "https://api-demo.kujon.mobi"
 
     private var headerManager = HeaderManager()
 
@@ -37,6 +37,7 @@ class RestApiManager {
             let session = SessionManager.provideSession()
             request.HTTPMethod = "POST"
             request.HTTPBody = json
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             let task = session.dataTaskWithRequest(request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
             task.resume()
 
