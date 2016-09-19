@@ -76,8 +76,6 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
         self.navigationController?.pushViewController(controller, animated: true)
     }
 
-    @IBOutlet weak var loginClick: UIButton!
-   
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

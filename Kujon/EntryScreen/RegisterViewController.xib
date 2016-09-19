@@ -17,6 +17,7 @@
             <connections>
                 <outlet property="emailTextField" destination="P6O-OO-84K" id="sFB-06-VBh"/>
                 <outlet property="passwordTextField" destination="Ol2-0X-9Ci" id="nii-zi-rDd"/>
+                <outlet property="rejestrujacLabel" destination="ERa-3M-ByD" id="RhF-Da-GcJ"/>
                 <outlet property="seconPasswordTextField" destination="PR1-aZ-mjc" id="pN3-pT-hzh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -68,7 +69,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="yu3-ri-HCz"/>
                     </constraints>
-                    <state key="normal" title="Zarejestruj się">
+                    <state key="normal" title="Załóż konto">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>

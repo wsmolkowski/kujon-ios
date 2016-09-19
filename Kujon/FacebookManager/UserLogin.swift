@@ -8,6 +8,7 @@ import Foundation
 enum UserLoginEnum {
     case FACEBOOK
     case GOOGLE
+    case EMAIL
 }
 
 extension UserLoginEnum {
@@ -17,8 +18,10 @@ extension UserLoginEnum {
 
             if (type == StringHolder.googleType) {
                 return .GOOGLE
-            } else {
+            } else if (type == StringHolder.fbType) {
                 return .FACEBOOK
+            }else{
+                return .EMAIL
             }
         }
         return .FACEBOOK
@@ -31,8 +34,10 @@ extension UserLoginEnum {
 
             if (type == StringHolder.googleType) {
                 return GoogleManager.sharedInstance
-            } else {
+            } else if (type == StringHolder.fbType) {
                 return FacebookManager.sharedInstance
+            }else{
+                return .EMAIL
             }
         }
         return FacebookManager.sharedInstance

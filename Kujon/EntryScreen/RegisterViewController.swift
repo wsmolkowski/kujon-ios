@@ -10,6 +10,7 @@ import UIKit
 
 class RegisterViewController: UIViewController,RegistrationProviderDelegate {
 
+    @IBOutlet weak var rejestrujacLabel: UILabel!
     @IBOutlet weak var seconPasswordTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -21,7 +22,22 @@ class RegisterViewController: UIViewController,RegistrationProviderDelegate {
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(RegisterViewController.back), andTitle: StringHolder.appName)
         self.edgesForExtendedLayout = UIRectEdge.None
         self.registerProvider.delegate = self;
+
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterViewController.showTerms))
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        rejestrujacLabel.userInteractionEnabled = true
+        rejestrujacLabel.addGestureRecognizer(tapGestureRecognizer)
     }
+
+    func showTerms(sender: UITapGestureRecognizer){
+        NSlogManager.showLog("showTermsAndConditions")
+        var controller: UIViewController!
+        controller = WebViewController()
+        let navigationController = UINavigationController(rootViewController: controller)
+        self.presentViewController(navigationController, animated: true, completion: nil)
+
+    }
+
     func back() {
         self.navigationController?.popViewControllerAnimated(true)
     }

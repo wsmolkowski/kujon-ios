@@ -44,6 +44,7 @@ class GoogleManager: UserLogin {
                 loggedToGoogle = true;
             }
         }
+//        if(userDataHolder.)
         return loggedToFB || loggedToGoogle;
     }
 

@@ -101,6 +101,7 @@
 		4C0D864F9F51B36FAD9866D5 /* KujonResponseSchools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8322F7C59F7DA152C337 /* KujonResponseSchools.swift */; };
 		4C0D865D9B6FEF3BD55EA8C4 /* FacId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D80C7FFEBB9339A2E9DA5 /* FacId.swift */; };
 		4C0D86610EB3A7F8698DCC56 /* CALayerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D80C60F18F352959F2C99 /* CALayerExtensions.swift */; };
+		4C0D8661262C91F12E11330E /* EmailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D832E54AC26D10D34A52D /* EmailManager.swift */; };
 		4C0D8665D94A08D7002946B8 /* Courses.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D84747D175C76418230EA /* Courses.json */; };
 		4C0D869D18F5884265AD7390 /* MenuItemsHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D80CFD63C02C2FFE99366 /* MenuItemsHolder.swift */; };
 		4C0D86AB196D67D0C0451162 /* ClassType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D89ABC6BC21973F643DE7 /* ClassType.swift */; };
@@ -202,6 +203,8 @@
 		523B4FDA1D2BCAD6005FA79F /* UserDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 523B4FD91D2BCAD6005FA79F /* UserDetailsTableViewCell.xib */; };
 		523B4FDD1D2BD090005FA79F /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B4FDB1D2BD090005FA79F /* TextViewController.swift */; };
 		523B4FDE1D2BD090005FA79F /* TextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 523B4FDC1D2BD090005FA79F /* TextViewController.xib */; };
+		5246F67C1D902276007AEC0A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5246F67A1D902276007AEC0A /* LoginViewController.swift */; };
+		5246F67D1D902276007AEC0A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5246F67B1D902276007AEC0A /* LoginViewController.xib */; };
 		52574A6D1D59DA9F009B8D08 /* NavDrawerHeaderViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52574A6B1D59DA9F009B8D08 /* NavDrawerHeaderViewCellTableViewCell.swift */; };
 		52574A6E1D59DA9F009B8D08 /* NavDrawerHeaderViewCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52574A6C1D59DA9F009B8D08 /* NavDrawerHeaderViewCellTableViewCell.xib */; };
 		5257C3311D267D670068FA56 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257C32F1D267D670068FA56 /* ImageViewController.swift */; };
@@ -333,6 +336,7 @@
 		4C0D83195DBB1F80FC86451D /* UsosHolderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsosHolderController.swift; sourceTree = "<group>"; };
 		4C0D8322F7C59F7DA152C337 /* KujonResponseSchools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KujonResponseSchools.swift; sourceTree = "<group>"; };
 		4C0D83287522A1AF1593A071 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		4C0D832E54AC26D10D34A52D /* EmailManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailManager.swift; sourceTree = "<group>"; };
 		4C0D8340744B7869FEC512C0 /* StandartSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandartSection.swift; sourceTree = "<group>"; };
 		4C0D83451742C0465B1D8D85 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		4C0D83563DFB6E74ACCE441B /* UserMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMenuItem.swift; sourceTree = "<group>"; };
@@ -480,6 +484,8 @@
 		523B4FD91D2BCAD6005FA79F /* UserDetailsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		523B4FDB1D2BD090005FA79F /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		523B4FDC1D2BD090005FA79F /* TextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewController.xib; sourceTree = "<group>"; };
+		5246F67A1D902276007AEC0A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5246F67B1D902276007AEC0A /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		52574A6B1D59DA9F009B8D08 /* NavDrawerHeaderViewCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavDrawerHeaderViewCellTableViewCell.swift; sourceTree = "<group>"; };
 		52574A6C1D59DA9F009B8D08 /* NavDrawerHeaderViewCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavDrawerHeaderViewCellTableViewCell.xib; sourceTree = "<group>"; };
 		5257C32F1D267D670068FA56 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
@@ -735,6 +741,8 @@
 				4C0D8A8C0978C3C611A33942 /* Checker.swift */,
 				4C0D8F9C87F896A68250474E /* RegisterViewController.swift */,
 				4C0D82AB5AAC403921386765 /* RegisterViewController.xib */,
+				5246F67A1D902276007AEC0A /* LoginViewController.swift */,
+				5246F67B1D902276007AEC0A /* LoginViewController.xib */,
 			);
 			path = EntryScreen;
 			sourceTree = "<group>";
@@ -821,6 +829,7 @@
 				4C0D86B6033E7743D91C115B /* FacebookManager.swift */,
 				0AB192061D47B3A000834773 /* GoogleManager.swift */,
 				4C0D8A7B09C45724433D49FA /* UserLogin.swift */,
+				4C0D832E54AC26D10D34A52D /* EmailManager.swift */,
 			);
 			path = FacebookManager;
 			sourceTree = "<group>";
@@ -1481,6 +1490,7 @@
 				4C0D82983500855989BA22B8 /* Lato-Light.ttf in Resources */,
 				4C0D851B8EF18E75A2D6E5C2 /* Lato-LightItalic.ttf in Resources */,
 				4C0D81232D2C18BCBF411F54 /* Lato-Medium.ttf in Resources */,
+				5246F67D1D902276007AEC0A /* LoginViewController.xib in Resources */,
 				52001CF31D64641700DB074B /* Grade2TableViewCell.xib in Resources */,
 				4C0D84F81218E23D2DF5FDB3 /* Lato-MediumItalic.ttf in Resources */,
 				4C0D8A10A84678CB89CBE6CA /* Lato-Regular.ttf in Resources */,
@@ -1953,6 +1963,7 @@
 				4C0D84713F8CA8059672D225 /* Grade.swift in Sources */,
 				52F69F851D101F0C00025C55 /* UserTableViewController.swift in Sources */,
 				4C0D827CF48397DB7AD364B3 /* TermGrades.swift in Sources */,
+				5246F67C1D902276007AEC0A /* LoginViewController.swift in Sources */,
 				52382ED51D3516D800EBEA57 /* TermsTableViewCell.swift in Sources */,
 				4C0D88190EFAA340F1D2D178 /* GradeResponse.swift in Sources */,
 				4C0D8996D0987D3F6C88F611 /* GradesProvider.swift in Sources */,
@@ -2073,6 +2084,7 @@
 				4C0D83F598B52ADFF2CA1A31 /* RegisterResponse.swift in Sources */,
 				4C0D8FC66916620BE65A643B /* Checker.swift in Sources */,
 				4C0D80780FF95992C4C71322 /* RegisterViewController.swift in Sources */,
+				4C0D8661262C91F12E11330E /* EmailManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
