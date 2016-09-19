@@ -14,4 +14,7 @@ class Register {
     static func createRegisterJSON(email: String, password: String) -> NSData {
         return [EMAIL_KEY : email , PASSWORD_KEY : password, DEVICE_TYPE_KEY : "IOS", DEVICE_ID_KEY : "123"]
     }
+    static func createLoginJSON(email: String, password: String) -> NSData {
+        return [EMAIL_KEY : email , PASSWORD_KEY : password]
+    }
 }
