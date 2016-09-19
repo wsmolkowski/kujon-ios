@@ -31,6 +31,7 @@
 		4C0D80DAD146340FB32C5687 /* StudentProgrammeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D811FC0531FB6DF1A0375 /* StudentProgrammeResponse.swift */; };
 		4C0D80DAE7D9AB0E09AF4C8A /* JsonProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D871727A36DD3C1859A1D /* JsonProviderProtocol.swift */; };
 		4C0D80FE5955F53AE94D7556 /* ScheduleSectionImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D88397BF36FD00C1110E6 /* ScheduleSectionImpl.swift */; };
+		4C0D810245563FE50B783EAD /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8DD0D3C91B9B2831963D /* Register.swift */; };
 		4C0D810FF3D931149777D70D /* EntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D87685BCBC669C324D0AB /* EntryViewController.xib */; };
 		4C0D81140EF8EDB90CA288CD /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D819D1038F2869B558512 /* Term.swift */; };
 		4C0D8114A3AD4971E2BB867E /* ProgrameIdResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D838970388E1D0B1D1DE9 /* ProgrameIdResponse.swift */; };
@@ -167,6 +168,7 @@
 		4C0D8DF43CBEECAE734FFDF2 /* ErrorResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8D8FB8953D1EC2EFF6C1 /* ErrorResponseProtocol.swift */; };
 		4C0D8E02015B88F38F0F59F4 /* FacultieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8FD2A35FC381A99E4C99 /* FacultieResponse.swift */; };
 		4C0D8E35546E06FE6E50627E /* Usos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D800DE50A86489C4C7E74 /* Usos.swift */; };
+		4C0D8E5C59CE4D50F375AC43 /* RegistrationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D82B76F48ACDCB3B9E76E /* RegistrationProvider.swift */; };
 		4C0D8E79EF248F656D747BE4 /* ConfigResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D85C3C43334F528850DDD /* ConfigResponse.swift */; };
 		4C0D8E7C2F8E9C4975AA3606 /* Lato-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8885E2586C07FE1D9A79 /* Lato-HeavyItalic.ttf */; };
 		4C0D8E84B66279CE377A8D78 /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8BDD61A989037FA8DB35 /* Lecture.swift */; };
@@ -317,6 +319,7 @@
 		4C0D8269192F611DE27E5FF6 /* LectureWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureWrapper.swift; sourceTree = "<group>"; };
 		4C0D829AA588F62CB18CBDD0 /* FacultieProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacultieProvider.swift; sourceTree = "<group>"; };
 		4C0D82A55F80BAD8DE22A74D /* DeleteAccountProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAccountProvider.swift; sourceTree = "<group>"; };
+		4C0D82B76F48ACDCB3B9E76E /* RegistrationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationProvider.swift; sourceTree = "<group>"; };
 		4C0D82CBCF84CAB5E56A1F3C /* Lecturers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Lecturers.json; sourceTree = "<group>"; };
 		4C0D82F54FFBE7F27B43632A /* RestApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestApiManager.swift; sourceTree = "<group>"; };
 		4C0D8312007436E128DE9972 /* JsonDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonDataLoader.swift; sourceTree = "<group>"; };
@@ -427,6 +430,7 @@
 		4C0D8D9BBCC3C778FFB78885 /* DayCellHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCellHandler.swift; sourceTree = "<group>"; };
 		4C0D8DA8FC8C986A648A91B5 /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = "Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
 		4C0D8DB54DD23281C3E2C08B /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		4C0D8DD0D3C91B9B2831963D /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		4C0D8DEBF05D51B5DDB08766 /* CourseGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseGroup.swift; sourceTree = "<group>"; };
 		4C0D8DEE8305AB820902C1F8 /* KujonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KujonTests.swift; sourceTree = "<group>"; };
 		4C0D8DF1F70FE276B8432FF2 /* NavigationMenuProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationMenuProtocol.swift; sourceTree = "<group>"; };
@@ -601,6 +605,7 @@
 				4C0D88235B779A6ADA001B55 /* Course */,
 				4C0D800C832CA7D7CEF0D4AB /* ErrorClass.swift */,
 				4C0D85C3C43334F528850DDD /* ConfigResponse.swift */,
+				4C0D88412A231BD822156857 /* Authenticate */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -900,6 +905,7 @@
 				4C0D80602A034144DDC1A379 /* ProgrammeProvider.swift */,
 				4C0D8AB86FEE1F727E2F67FE /* ProgrammeIdProvider.swift */,
 				4C0D8F4BDCF50FFB9A643A93 /* ConfigProvider.swift */,
+				4C0D82B76F48ACDCB3B9E76E /* RegistrationProvider.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -918,6 +924,14 @@
 				4C0D8E059120C14FAE7A687F /* TermsResponse.swift */,
 			);
 			path = Course;
+			sourceTree = "<group>";
+		};
+		4C0D88412A231BD822156857 /* Authenticate */ = {
+			isa = PBXGroup;
+			children = (
+				4C0D8DD0D3C91B9B2831963D /* Register.swift */,
+			);
+			path = Authenticate;
 			sourceTree = "<group>";
 		};
 		4C0D8873DDE812269064F351 /* Usoses */ = {
@@ -2037,6 +2051,8 @@
 				528BCAC71D5DF42100A9E49C /* WWWTableViewCell.swift in Sources */,
 				4C0D89E3D529752E92B8EB0F /* MyEventView.m in Sources */,
 				4C0D8014EBE2BE09795543CE /* FloatingButtonDelegate.swift in Sources */,
+				4C0D8E5C59CE4D50F375AC43 /* RegistrationProvider.swift in Sources */,
+				4C0D810245563FE50B783EAD /* Register.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

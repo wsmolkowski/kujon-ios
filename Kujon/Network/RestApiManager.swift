@@ -4,7 +4,7 @@
 //
 
 import Foundation
-
+import Decodable
 typealias onSucces = (NSData!) -> Void
 typealias onErrorOccurs = (text:String) -> Void
 
@@ -25,6 +25,21 @@ class RestApiManager {
             let session = NSURLSession.sharedSession()
             let task = session.dataTaskWithRequest(request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
             task.resume()
+        }
+        refresh = false
+    }
+
+    func makeHTTPPostRequest(onCompletion: onSucces, onError: onErrorOccurs,json:NSData) {
+        if (test) {
+            self.handelTestCase(onCompletion)
+        } else {
+            var request = NSMutableURLRequest(URL: NSURL(string: getMyUrl())!)
+            let session = SessionManager.provideSession()
+            request.HTTPMethod = "POST"
+            request.HTTPBody = json
+            let task = session.dataTaskWithRequest(request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
+            task.resume()
+
         }
         refresh = false
     }
