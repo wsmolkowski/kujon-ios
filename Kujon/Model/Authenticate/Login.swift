@@ -26,7 +26,7 @@ struct LoginResponse {
 }
 
 
-extension Login: LoginResponse {
+extension LoginResponse: Decodable {
     static func decode(j: AnyObject) throws -> LoginResponse {
         return try LoginResponse(
                 data: j => "data",

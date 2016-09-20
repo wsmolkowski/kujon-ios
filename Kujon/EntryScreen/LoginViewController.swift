@@ -17,6 +17,7 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
     var loginProvider = ProvidersProviderImpl.sharedInstance.provideLoginProvider()
     let emailManager = EmailManager.sharedInstance
     var email:String = ""
+    private let checker = Checker()
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(RegisterViewController.back), andTitle: StringHolder.appName)
@@ -37,7 +38,7 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
 
     func onLoginResponse(token: String) {
         self.back()
-        emailManager.login(email, token: token)
+        emailManager.login(email, token: token,listener: delegeta)
     }
 
 
@@ -59,12 +60,12 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
         self.navigationController?.popViewControllerAnimated(true)
     }
     @IBAction func onLoginClick(sender: AnyObject) {
-        email = emailTextField.text!
+        email = emailLabel.text!
         if(!checker.isEmail(email)){
             showAlert(StringHolder.emailPasswordError)
             return
         }
-        let password = passwordTextField.text!
+        let password = passwordLabel.text!
         if(!checker.arePasswordGoodRegex(password)){
             showAlert(StringHolder.passwordPasswordError)
             return

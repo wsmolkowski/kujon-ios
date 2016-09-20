@@ -13,10 +13,11 @@ protocol JsonProviderProtocol {
 extension JsonProviderProtocol{
      func changeJsonToResposne(jsonData:NSData,onError myError: (message:String)->Void) throws ->T! {
         do{
-            NSlogManager.showLog(NSString(data:jsonData, encoding:NSUTF8StringEncoding) as! String)
-//            let json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
+//            NSlogManager.showLog(NSString(data:jsonData, encoding:NSUTF8StringEncoding) as! String)
+            let json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
             return try T.decode(json)
         }catch {
+            NSlogManager.showLog(NSString(data:jsonData, encoding:NSUTF8StringEncoding) as! String)
             SessionManager.clearCache()
             NSlogManager.showLog("JSON serialization failed:  \(error)")
 

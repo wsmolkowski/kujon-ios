@@ -13,6 +13,7 @@ struct Programme {
     let levelOfStudies: String?
     let id: String
     let description: String
+    let ectsUsedSum: Double?
 }
 
 extension Programme: Decodable {
@@ -23,7 +24,9 @@ extension Programme: Decodable {
                 duration: try? j => "duration",
                 levelOfStudies: try? j => "level_of_studies",
                 id: j => "id",
-                description: j => "description"
+                description: j => "description",
+                ectsUsedSum: try? j => "ects_used_sum"
+
         )
     }
 }
