@@ -33,6 +33,7 @@ class GoogleManager: UserLogin {
     func isLoggedIn() -> Bool {
         var loggedToFB = false;
         var loggedToGoogle = false;
+        var loggedViaEmail = false;
 
         if (FBSDKAccessToken.currentAccessToken() != nil) {
             loggedToFB = true;
@@ -44,8 +45,10 @@ class GoogleManager: UserLogin {
                 loggedToGoogle = true;
             }
         }
-//        if(userDataHolder.)
-        return loggedToFB || loggedToGoogle;
+        if (userDataHolder.userLoginType == StringHolder.emailType && userDataHolder.userToken != nil) {
+            loggedViaEmail = true
+        }
+        return loggedToFB || loggedToGoogle || loggedViaEmail;
     }
 
     func getLoginType() -> UserLoginEnum {

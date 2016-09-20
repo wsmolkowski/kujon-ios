@@ -66,7 +66,7 @@ class StringHolder {
     static let no_grades = "Brak ocen"
     static let googleType = "GOOGLE"
     static let fbType = "FB"
-    static let emailType = "FB"
+    static let emailType = "EMAIL"
     static let back  = "Powrót"
     static let errorUsos  = "Nie możemy się połączyć z USOS."
     static let usosGreetings = "Gratulacje! Udało Ci się zalogować na "

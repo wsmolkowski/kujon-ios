@@ -183,6 +183,7 @@
 		4C0D8EDC5E5F870381B4C21D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D83B44B564B4E55F64BE8 /* LaunchScreen.storyboard */; };
 		4C0D8EE0854E8A315B37467E /* LectureWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8269192F611DE27E5FF6 /* LectureWrapper.swift */; };
 		4C0D8EE504A6F04F1B414751 /* Schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8F0FD29DE7CF921001CE /* Schedule.json */; };
+		4C0D8F2CCD958EC1CD5966C9 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8AB5B02E8762206BAB22 /* Login.swift */; };
 		4C0D8F3F7FF39000760EEB08 /* ErrorClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D800C832CA7D7CEF0D4AB /* ErrorClass.swift */; };
 		4C0D8F84739469EB809E6E14 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D806D09BD6C9327949956 /* Room.swift */; };
 		4C0D8FC66916620BE65A643B /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8A8C0978C3C611A33942 /* Checker.swift */; };
@@ -412,6 +413,7 @@
 		4C0D8A8C0978C3C611A33942 /* Checker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
 		4C0D8AA6C79613D718788CD7 /* CourseDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetails.swift; sourceTree = "<group>"; };
 		4C0D8AB071A0E15BDE1C94C4 /* Lato-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = "Lato-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		4C0D8AB5B02E8762206BAB22 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		4C0D8AB86FEE1F727E2F67FE /* ProgrammeIdProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammeIdProvider.swift; sourceTree = "<group>"; };
 		4C0D8ACA8016BD60B47C3197 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
 		4C0D8ACCBE0A1A11117A7D68 /* Programmes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Programmes.json; sourceTree = "<group>"; };
@@ -954,6 +956,7 @@
 			children = (
 				4C0D8DD0D3C91B9B2831963D /* Register.swift */,
 				4C0D82DE74DFFF0A9D0A5B39 /* RegisterResponse.swift */,
+				4C0D8AB5B02E8762206BAB22 /* Login.swift */,
 			);
 			path = Authenticate;
 			sourceTree = "<group>";
@@ -2085,6 +2088,7 @@
 				4C0D8FC66916620BE65A643B /* Checker.swift in Sources */,
 				4C0D80780FF95992C4C71322 /* RegisterViewController.swift in Sources */,
 				4C0D8661262C91F12E11330E /* EmailManager.swift in Sources */,
+				4C0D8F2CCD958EC1CD5966C9 /* Login.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

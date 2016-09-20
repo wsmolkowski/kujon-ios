@@ -22,4 +22,5 @@ protocol ProvidersProvider {
     func provideProgrammeId() -> ProgrammeIdProvider
     func provideConfigProvider() -> ConfigProvider
     func provideRegistrationProvider() -> RegistrationProvider
+    func provideLoginProvider() -> LoginProvider
 }

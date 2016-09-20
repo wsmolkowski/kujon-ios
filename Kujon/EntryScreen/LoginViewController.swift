@@ -10,12 +10,13 @@ import UIKit
 
 class LoginViewController: UIViewController,LoginProviderDelegate {
     @IBOutlet weak var emailLabel: UITextField!
-
     @IBOutlet weak var rejestrujacLabel: UILabel!
     @IBOutlet weak var passwordLabel: UITextField!
 
     var delegeta: OnFacebookCredentailSaved! = nil
-
+    var loginProvider = ProvidersProviderImpl.sharedInstance.provideLoginProvider()
+    let emailManager = EmailManager.sharedInstance
+    var email:String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(RegisterViewController.back), andTitle: StringHolder.appName)
@@ -25,7 +26,7 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
         tapGestureRecognizer.numberOfTapsRequired = 1
         rejestrujacLabel.userInteractionEnabled = true
         rejestrujacLabel.addGestureRecognizer(tapGestureRecognizer)
-        // Do any additional setup after loading the view.
+        loginProvider.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,10 +35,14 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
     }
 
 
-    func onLoginResponse() {
+    func onLoginResponse(token: String) {
+        self.back()
+        emailManager.login(email, token: token)
     }
 
+
     func onErrorOccurs(text: String) {
+        showAlert(text)
     }
 
 
@@ -54,7 +59,28 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
         self.navigationController?.popViewControllerAnimated(true)
     }
     @IBAction func onLoginClick(sender: AnyObject) {
+        email = emailTextField.text!
+        if(!checker.isEmail(email)){
+            showAlert(StringHolder.emailPasswordError)
+            return
+        }
+        let password = passwordTextField.text!
+        if(!checker.arePasswordGoodRegex(password)){
+            showAlert(StringHolder.passwordPasswordError)
+            return
+        }
+        loginProvider.login(email, password: password)
     }
 
 
+
+    private func showAlert(text: String){
+        let alertController = UIAlertController(title: "Błąd Logowania ", message: text, preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
+            (action: UIAlertAction!) in
+            alertController.dismissViewControllerAnimated(true, completion: nil)
+
+        }))
+        presentViewController(alertController, animated: true, completion: nil)
+    }
 }

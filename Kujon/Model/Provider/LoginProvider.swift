@@ -5,32 +5,42 @@
 
 import Foundation
 
-protocol LoginProviderProtocol {
-
+protocol LoginProviderProtocol:JsonProviderProtocol {
+    associatedtype T = LoginResponse
 
     func login(email: String, password:String)
 
 }
 protocol LoginProviderDelegate: ErrorResponseProtocol {
-    func onLoginResponse()
+    func onLoginResponse(token: String)
 }
-class LoginProvider:RestApiManager,RegistrationProviderProtocol {
+class LoginProvider:RestApiManager,LoginProviderProtocol {
     var delegate : LoginProviderDelegate! = nil
 
-    func register(email: String, password: String) {
+
+    func login(email: String, password: String) {
         let data = Register.createLoginJSON(email, password: password)
         self.makeHTTPPostRequest({
             json in
-            self.delegate!.onLoginResponse()
+            if let loginResponse = try! self.changeJsonToResposne(json,onError: {
+                text in
+                self.delegate?.onErrorOccurs(text)
+            }){
+                self.delegate?.LoginProviderDelegate(loginResponse.data.token)
+            }
+
         }, onError: {
             text in
             self.delegate!.onErrorOccurs(text)
         }, json: data)
+
     }
 
 
+
+
     override func getMyUrl() -> String {
-        return baseURL + "/authentication/email_login/"
+        return baseURL + "/authentication/email_login"
     }
 }
 

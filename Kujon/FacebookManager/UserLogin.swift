@@ -37,7 +37,7 @@ extension UserLoginEnum {
             } else if (type == StringHolder.fbType) {
                 return FacebookManager.sharedInstance
             }else{
-                return .EMAIL
+                return EmailManager.sharedInstance
             }
         }
         return FacebookManager.sharedInstance

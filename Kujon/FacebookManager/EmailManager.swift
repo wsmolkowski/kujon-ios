@@ -10,8 +10,11 @@ class EmailManager: UserLogin {
 
     static let sharedInstance = EmailManager()
 
-    func login() {
+    func login(email: String ,token: String,listener: OnFacebookCredentailSaved) {
         self.userDataHolder.userLoginType = StringHolder.emailType
+        self.userDataHolder.userEmail = email
+        self.userDataHolder.userToken = token
+        listener.onFacebookCredentailSaved(self.userDataHolder.loggedToUsosForCurrentEmail)
     }
 
     func logout() {

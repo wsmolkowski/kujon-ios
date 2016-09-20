@@ -101,5 +101,11 @@ class ProvidersProviderImpl: ProvidersProvider {
         return registrationProvider
     }
 
+    lazy var loginProvider = LoginProvider()
+
+    func provideLoginProvider() -> LoginProvider {
+        return loginProvider
+    }
+
 
 }
