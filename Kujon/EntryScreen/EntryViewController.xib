@@ -118,6 +118,9 @@
                     <state key="normal" title="Mam już konto">
                         <color key="titleColor" red="0.24705882370000001" green="0.72941178080000002" blue="0.85098040100000005" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="onLoginClick:" destination="-1" eventType="touchUpInside" id="Dyc-Dm-3vM"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- lub -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3v4-pU-hof">
                     <rect key="frame" x="280" y="365" width="40" height="18"/>

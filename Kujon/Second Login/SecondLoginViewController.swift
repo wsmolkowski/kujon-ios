@@ -27,7 +27,7 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SecondLoginViewController.back), andTitle: "Logowanie do USOS")
         webView.delegate = self
         webView.scalesPageToFit = true;
-        let url = String(format: "https:/api.kujon.mobi/authentication/register?email=%@&token=%@&usos_id=%@&type=%@", userDataHolder.userEmail, userDataHolder.userToken, userDataHolder.usosId, userDataHolder.userLoginType)
+        let url = String(format: "%@/authentication/register?email=%@&token=%@&usos_id=%@&type=%@",RestApiManager.BASE_URL, userDataHolder.userEmail, userDataHolder.userToken, userDataHolder.usosId, userDataHolder.userLoginType)
         let request = NSURLRequest(URL: NSURL(string: url)!)
         webView.loadRequest(request)
         // Do any additional setup after loading the view.
@@ -47,8 +47,8 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
 
 
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-
-        if(request.URL!.absoluteString.containsString("https://api.kujon.mobi/authentication/verify")){
+        let toCatch = String(format:"%@/authentication/verify",RestApiManager.BASE_URL)
+        if(request.URL!.absoluteString.containsString(toCatch)){
 
             let requestC = NSMutableURLRequest(URL: NSURL(string: request.URL!.absoluteString)!)
             let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookiesForURL(NSURL(string: RestApiManager.BASE_URL)!)

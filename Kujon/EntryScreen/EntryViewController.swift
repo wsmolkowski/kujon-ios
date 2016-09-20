@@ -76,6 +76,11 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
         self.navigationController?.pushViewController(controller, animated: true)
     }
 
+    @IBAction func onLoginClick(sender: AnyObject) {
+        let controller = LoginViewController()
+        controller.delegeta = self
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

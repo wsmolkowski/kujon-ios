@@ -14,7 +14,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Kujon" customModuleProvider="target">
             <connections>
                 <outlet property="emailLabel" destination="X1n-N9-BEb" id="0AO-Jh-sPU"/>
-                <outlet property="onLoginClick" destination="TKF-5E-2yC" id="d0y-xP-NfQ"/>
                 <outlet property="passwordLabel" destination="WSB-D1-srk" id="Iup-wz-6lV"/>
                 <outlet property="rejestrujacLabel" destination="Lnu-mU-Mou" id="HPB-e8-gh1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
