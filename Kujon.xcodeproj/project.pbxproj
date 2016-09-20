@@ -131,6 +131,7 @@
 		4C0D8996D0987D3F6C88F611 /* GradesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8FBDE18C4279900F73A1 /* GradesProvider.swift */; };
 		4C0D89A149A07C2183D5E1B4 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8C220D5FABC7BDB1FE59 /* Course.swift */; };
 		4C0D89CAC447E567DA0D2EB3 /* ConfigProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8F4BDCF50FFB9A643A93 /* ConfigProvider.swift */; };
+		4C0D89D485ABDF85FC8CA4D6 /* LogoutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D82E193F971F9CCCC0806 /* LogoutProvider.swift */; };
 		4C0D89E00B265048AE0AE93E /* LectureCellHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8EA3D990E00128CD5688 /* LectureCellHandler.swift */; };
 		4C0D89E3D529752E92B8EB0F /* MyEventView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8F8107D8E09EC2E7B71A /* MyEventView.m */; };
 		4C0D89F29E7400D6E2ABD251 /* CoordinatorsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D856C38BE314D9CC0B20B /* CoordinatorsSection.swift */; };
@@ -332,6 +333,7 @@
 		4C0D82B76F48ACDCB3B9E76E /* RegistrationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationProvider.swift; sourceTree = "<group>"; };
 		4C0D82CBCF84CAB5E56A1F3C /* Lecturers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Lecturers.json; sourceTree = "<group>"; };
 		4C0D82DE74DFFF0A9D0A5B39 /* RegisterResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterResponse.swift; sourceTree = "<group>"; };
+		4C0D82E193F971F9CCCC0806 /* LogoutProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutProvider.swift; sourceTree = "<group>"; };
 		4C0D82F54FFBE7F27B43632A /* RestApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestApiManager.swift; sourceTree = "<group>"; };
 		4C0D8312007436E128DE9972 /* JsonDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonDataLoader.swift; sourceTree = "<group>"; };
 		4C0D83195DBB1F80FC86451D /* UsosHolderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsosHolderController.swift; sourceTree = "<group>"; };
@@ -931,6 +933,7 @@
 				4C0D8F4BDCF50FFB9A643A93 /* ConfigProvider.swift */,
 				4C0D82B76F48ACDCB3B9E76E /* RegistrationProvider.swift */,
 				4C0D897908D608D65BB44DA4 /* LoginProvider.swift */,
+				4C0D82E193F971F9CCCC0806 /* LogoutProvider.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -2089,6 +2092,7 @@
 				4C0D80780FF95992C4C71322 /* RegisterViewController.swift in Sources */,
 				4C0D8661262C91F12E11330E /* EmailManager.swift in Sources */,
 				4C0D8F2CCD958EC1CD5966C9 /* Login.swift in Sources */,
+				4C0D89D485ABDF85FC8CA4D6 /* LogoutProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

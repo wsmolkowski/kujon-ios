@@ -45,12 +45,13 @@ class FacebookManager : UserLogin {
     }
 
 
-    func logout(){
+    func logout(succes: LogoutSucces){
         let fbManager = FBSDKLoginManager()
         fbManager.logOut()
         FBSDKAccessToken.setCurrentAccessToken(nil)
         SessionManager.clearCache()
         self.logoutUserData(userDataHolder)
+        succes.succes()
     }
 
 }

@@ -107,5 +107,11 @@ class ProvidersProviderImpl: ProvidersProvider {
         return loginProvider
     }
 
+    lazy var logoutProvider  = LogoutProvider()
+
+    func provideLogoutProvider() -> LogoutProvider {
+        return logoutProvider
+    }
+
 
 }

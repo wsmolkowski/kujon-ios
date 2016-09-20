@@ -44,9 +44,13 @@ extension UserLoginEnum {
     }
 }
 
+protocol LogoutSucces{
+    func succes();
+    func failed(text: String);
+}
 
 protocol UserLogin {
-    func logout()
+    func logout(succes: LogoutSucces)
     func getLoginType() -> UserLoginEnum
 }
 

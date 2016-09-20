@@ -103,7 +103,7 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
 
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         print("User Loged out...")
-        facebookManager.logout()
+//        facebookManager.logout(LogoutSucces())
     }
 
 

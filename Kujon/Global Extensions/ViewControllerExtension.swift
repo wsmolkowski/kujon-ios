@@ -15,7 +15,7 @@ extension UIViewController {
 
 
     func showAlertApi(title: String, text: String, succes: () -> Void, cancel: () -> Void) {
-        let alertController = UIAlertController(title: title, message: text + ". Czy chcesz spróbować ponownie ?", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: title, message: text + " Czy chcesz spróbować ponownie ?", preferredStyle: .Alert)
 
         alertController.addAction(UIAlertAction(title: "Tak", style: .Default, handler: {
             (action: UIAlertAction!) in

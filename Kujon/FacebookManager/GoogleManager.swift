@@ -56,11 +56,12 @@ class GoogleManager: UserLogin {
     }
 
 
-    func logout() {
+    func logout(succes: LogoutSucces) {
         GIDSignIn.sharedInstance().signOut()
         GIDSignIn.sharedInstance().disconnect()
         SessionManager.clearCache()
         self.logoutUserData(userDataHolder)
+        succes.succes()
     }
 
 }

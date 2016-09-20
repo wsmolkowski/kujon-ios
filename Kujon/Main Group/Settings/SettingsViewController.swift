@@ -12,6 +12,7 @@ import FBSDKLoginKit
 class SettingsViewController: UIViewController,
         FBSDKLoginButtonDelegate,
         DeleteAccountProviderDelegate,
+        LogoutSucces,
         GIDSignInUIDelegate {
 
     var loginMenager: UserLogin! = nil
@@ -45,11 +46,22 @@ class SettingsViewController: UIViewController,
     }
 
     private func goBackToEntryScreen() {
-        loginMenager.logout()
+        loginMenager.logout(self)
+
+    }
+
+    func succes() {
         let controller = EntryViewController()
         let  navigationController = UINavigationController(rootViewController: controller)
         self.presentViewController(navigationController, animated: true, completion: nil)
     }
+
+    func failed(text: String) {
+        self.showAlertApiError({
+            self.goBackToEntryScreen()
+        }, cancelFucnt: {})
+    }
+
 
     func back() {
         self.navigationController?.popViewControllerAnimated(true)
@@ -67,8 +79,7 @@ class SettingsViewController: UIViewController,
         goBackToEntryScreen();
     }
 
-    func onErrorOccurs() {
-    }
+
 
 
     @IBAction func regulaminAction(sender: AnyObject) {
@@ -84,6 +95,8 @@ class SettingsViewController: UIViewController,
         goBackToEntryScreen();
     }
 
+    func onSuccesfullLogout() {
+    }
 
     func onErrorOccurs(text: String) {
     }
