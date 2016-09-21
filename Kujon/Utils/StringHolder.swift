@@ -77,4 +77,5 @@ class StringHolder {
     static let emailPasswordError = "Proszę podać poprawny email"
     static let passwordPasswordError = "Hasło musi mieć co najmniej jedną cyfrę i jedną litere"
     static let identicalPasswordError = "Hasła muszą być identyczne"
+    static let ectsPoints =  "suma punktów ECTS"
 }

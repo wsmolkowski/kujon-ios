@@ -21,11 +21,11 @@ class KierunkiViewController: PopUpViewController {
     @IBOutlet weak var timeOfStudyLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
 
+    @IBOutlet weak var ectsLabel: UILabel!
     @IBOutlet weak var okButton: UIButton!
     var myProgramme: Programme! = nil;
     override func viewDidLoad() {
         super.viewDidLoad()
-
 
 
     }
@@ -45,30 +45,33 @@ class KierunkiViewController: PopUpViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func showInView( withProgramme programme: Programme!) {
+    func showInView(withProgramme programme: Programme!) {
 
-        if(programme != nil){
+        if (programme != nil) {
             self.myProgramme = programme
-            levelLabel.text = StringHolder.level + ": " +  myProgramme.levelOfStudies!
+            levelLabel.text = StringHolder.level + ": " + myProgramme.levelOfStudies!
             descriptionLabel.text = StringHolder.description + ": " + myProgramme.description
             timeOfStudyLabel.text = StringHolder.time_length + ": " + myProgramme.duration!
             idLabel.text = StringHolder.identificator + ": " + myProgramme.id
             trybeLabel.text = StringHolder.tryb + ": " + myProgramme.modeOfStudies!
-            kierunekLabel.text = myProgramme.name!.characters.split{$0 == ","}.map(String.init)[0]
+            if (myProgramme.ectsUsedSum != nil) {
+                ectsLabel.text = StringHolder.ectsPoints + ": " + String(myProgramme.ectsUsedSum!)
+            }
+
+            kierunekLabel.text = myProgramme.name!.characters.split {
+                $0 == ","
+            }.map(String.init)[0]
             self.view.userInteractionEnabled = true
-            okButton.addTopBorder( UIColor.lightGray(), width: 1)
+            okButton.addTopBorder(UIColor.lightGray(), width: 1)
         }
 
 
     }
 
 
-
-
     @IBAction func dismissClick(sender: AnyObject) {
         removeAnimate()
     }
-
 
 
 }
