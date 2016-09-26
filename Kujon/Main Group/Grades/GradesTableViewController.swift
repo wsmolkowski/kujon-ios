@@ -17,6 +17,7 @@ class GradesTableViewController: UITableViewController
     private let GradeCellIdentiefer = "GradeCellId"
     let textId = "myTextSuperId"
     private var myTermGrades  = Array<PreparedTermGrades>()
+    private var dataBack = false;
 
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {
         self.delegate = delegate
@@ -33,6 +34,7 @@ class GradesTableViewController: UITableViewController
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(GradesTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         refreshControl?.beginRefreshingManually()
+        dataBack = false;
     }
     func refresh(refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")
@@ -46,6 +48,7 @@ class GradesTableViewController: UITableViewController
     }
 
     func onGradesLoaded(termGrades: Array<PreparedTermGrades>) {
+        dataBack = true
         self.myTermGrades = termGrades
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
@@ -96,7 +99,9 @@ class GradesTableViewController: UITableViewController
         if(noDataCondition()){
             let cell = UITableViewCell(style: .Default, reuseIdentifier: textId)
             cell.textLabel?.font = UIFont.kjnTextStyle2Font()
-            cell.textLabel?.text = StringHolder.no_grades
+            if(dataBack){
+                cell.textLabel?.text = StringHolder.no_grades
+            }
             return cell
         }
         let cell = tableView.dequeueReusableCellWithIdentifier(GradeCellIdentiefer, forIndexPath: indexPath) as! Grade2TableViewCell
