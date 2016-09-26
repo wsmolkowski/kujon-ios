@@ -45,8 +45,11 @@ class GoogleManager: UserLogin {
                 loggedToGoogle = true;
             }
         }
-        if (userDataHolder.userLoginType == StringHolder.emailType && userDataHolder.userToken != nil) {
-            loggedViaEmail = true
+
+        if(userDataHolder.userLoginType != nil){
+            if (userDataHolder.userLoginType == StringHolder.emailType && userDataHolder.userToken != nil) {
+                loggedViaEmail = true
+            }
         }
         return loggedToFB || loggedToGoogle || loggedViaEmail;
     }
