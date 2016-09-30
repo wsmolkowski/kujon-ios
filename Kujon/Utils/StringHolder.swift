@@ -72,7 +72,7 @@ class StringHolder {
     static let usosGreetings = "Gratulacje! Udało Ci się zalogować na "
     static let loggin = "Logowanie"
     static let contactEmail = "kujon@kujon.mobi"
-    static let appItunesLink = "http://appstore.com/kujonklientusos"
+    static let appItunesLink = "https://itunes.apple.com/pl/app/kujon-klient-usos/id1150898148"
     static let errorPassword = "Bład rejestracji"
     static let emailPasswordError = "Proszę podać poprawny email"
     static let passwordPasswordError = "Hasło musi mieć co najmniej jedną cyfrę i jedną litere"
