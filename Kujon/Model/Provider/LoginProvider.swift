@@ -23,10 +23,7 @@ class LoginProvider:RestApiManager,LoginProviderProtocol {
 
         self.makeHTTPPostRequest({
             json in
-            if let loginResponse = try! self.changeJsonToResposne(json,onError: {
-                text in
-                self.delegate?.onErrorOccurs(text)
-            }){
+            if let loginResponse = try! self.changeJsonToResposne(json,errorR: self.delegate){
                 self.delegate?.onLoginResponse(loginResponse.data.token)
             }
 

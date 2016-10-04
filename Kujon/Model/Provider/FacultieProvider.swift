@@ -28,10 +28,7 @@ class FacultieProvider: RestApiManager, FacultieProviderProtocol {
         self.endpoint = id
         self.makeHTTPAuthenticatedGetRequest({
             json in
-                if let facult = try! self.changeJsonToResposne(json,onError: {
-                    text in
-                    self.delegate?.onErrorOccurs(text)
-                }){
+                if let facult = try! self.changeJsonToResposne(json,errorR: self.delegate){
                     self.delegate?.onFacultieLoaded(facult.list)
                 }
         }, onError: { text in self.delegate?.onErrorOccurs() })

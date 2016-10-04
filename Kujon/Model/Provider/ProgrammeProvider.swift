@@ -25,10 +25,7 @@ class ProgrammeProvider: RestApiManager, ProgrammeProviderProtocol {
     func loadProgramme() {
         self.makeHTTPAuthenticatedGetRequest({
             json in
-            if let programeResponse = try! self.changeJsonToResposne(json, onError: {
-                text in
-                self.delegate?.onErrorOccurs(text)
-            }) {
+            if let programeResponse = try! self.changeJsonToResposne(json,errorR: self.delegate) {
 
                 self.delegate?.onProgrammeLoaded(programeResponse.list)
             }

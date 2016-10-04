@@ -21,10 +21,7 @@ class TermsProvider: RestApiManager, TermsProviderProtocol {
     func loadTerms() {
         self.makeHTTPAuthenticatedGetRequest({
             json in
-            if let termsResponse = try! self.changeJsonToResposne(json, onError: {
-                text in
-                self.delegate?.onErrorOccurs(text)
-            }) {
+            if let termsResponse = try! self.changeJsonToResposne(json,errorR: self.delegate) {
 
                 self.delegate?.onTermsLoaded(termsResponse.terms)
             }

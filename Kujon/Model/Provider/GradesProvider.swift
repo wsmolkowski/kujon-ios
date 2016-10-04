@@ -25,10 +25,7 @@ class GradesProvider: RestApiManager, GradesProviderProtocol {
         self.makeHTTPAuthenticatedGetRequest({
             json in
             do {
-                if let grades = try self.changeJsonToResposne(json,onError: {
-                    text in
-                    self.delegate?.onErrorOccurs(text)
-                }){
+                if let grades = try self.changeJsonToResposne(json,errorR: self.delegate){
                     var preparedTermGrades = Array<PreparedTermGrades>()
                     if grades.data.count > 0 {
                         for i in  0...grades.data.count - 1 {

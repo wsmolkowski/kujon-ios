@@ -27,10 +27,7 @@ class FacultiesProvider: RestApiManager, FacultiesProviderProtocol {
     func loadFaculties() {
         self.makeHTTPAuthenticatedGetRequest({
             json in
-                if let faculties = try! self.changeJsonToResposne(json,onError: {
-                    text in
-                    self.delegate?.onErrorOccurs(text)
-                }){
+                if let faculties = try! self.changeJsonToResposne(json,errorR: self.delegate){
 
                     self.delegate?.onFacultiesLoaded(faculties.list)
                 }

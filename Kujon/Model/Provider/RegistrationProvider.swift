@@ -27,10 +27,7 @@ class RegistrationProvider :RestApiManager,RegistrationProviderProtocol {
         self.makeHTTPPostRequest({
 
             json in
-            if let registerResponse = try! self.changeJsonToResposne(json, onError: {
-                text in
-                self.delegate?.onErrorOccurs(text)
-            }) {
+            if let registerResponse = try! self.changeJsonToResposne(json,errorR: self.delegate) {
                 self.delegate?.onRegisterResponse(registerResponse.data)
             }
         }, onError: { text in

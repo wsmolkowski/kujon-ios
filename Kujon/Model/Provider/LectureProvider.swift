@@ -27,10 +27,7 @@ class LectureProvider: RestApiManager, LectureProviderProtocol {
         endpoint = "/tt/" + date
         self.makeHTTPAuthenticatedGetRequest({
             json in
-                if let lectureResponse = try! self.changeJsonToResposne(json,onError: {
-                    text in
-                    self.delegate?.onErrorOccurs(text)
-                }){
+                if let lectureResponse = try! self.changeJsonToResposne(json,errorR: self.delegate){
                     self.delegate?.onLectureLoaded(lectureResponse.data)
                 }
         }, onError: {text in

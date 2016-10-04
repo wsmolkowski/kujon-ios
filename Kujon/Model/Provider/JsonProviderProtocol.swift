@@ -7,27 +7,33 @@ import Foundation
 import Decodable
 
 protocol JsonProviderProtocol {
-    associatedtype T:Decodable
+    associatedtype T: Decodable
 
 }
-extension JsonProviderProtocol{
-     func changeJsonToResposne(jsonData:NSData,onError myError: (message:String)->Void) throws ->T! {
-        do{
+
+extension JsonProviderProtocol {
+    func changeJsonToResposne(jsonData: NSData, errorR: ErrorResponseProtocol!) throws -> T! {
+        do {
 //            NSlogManager.showLog(NSString(data:jsonData, encoding:NSUTF8StringEncoding) as! String)
             let json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
             return try T.decode(json)
-        }catch {
-            NSlogManager.showLog(NSString(data:jsonData, encoding:NSUTF8StringEncoding) as! String)
+        } catch {
+            NSlogManager.showLog(NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String)
             SessionManager.clearCache()
             NSlogManager.showLog("JSON serialization failed:  \(error)")
 
-            do{
+            do {
                 let json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
                 let error = try ErrorClass.decode(json)
-                myError(message: error.message)
+                if(errorR != nil){
+
+                    errorR.onErrorOccurs(error.message)
+                }
                 return nil
-            }catch {
-                myError(message: StringHolder.errorOccures)
+            } catch {
+                if(errorR != nil) {
+                    errorR.onErrorOccurs(StringHolder.errorOccures)
+                }
                 return nil
             }
         }

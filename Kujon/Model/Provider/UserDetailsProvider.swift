@@ -30,10 +30,7 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
         self.makeHTTPAuthenticatedGetRequest({
             json in
 
-            if let user = try! self.changeJsonToResposne(json, onError: {
-                text in
-                self.delegate?.onErrorOccurs(text)
-            }) {
+            if let user = try! self.changeJsonToResposne(json,errorR: self.delegate) {
 
                 self.delegate?.onUserDetailLoaded(user.data)
             }
@@ -48,10 +45,7 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
         endpoint = "/lecturers/" + id
         self.makeHTTPAuthenticatedGetRequest({
             json in
-           if let user = try! self.changeJsonToResposne(json, onError: {
-                text in
-                self.delegate?.onErrorOccurs(text)
-            }){
+           if let user = try! self.changeJsonToResposne(json,errorR: self.delegate){
                self.delegate?.onUserDetailLoaded(user.data)
            }
         }, onError: {text in self.delegate?.onErrorOccurs() })
@@ -61,10 +55,7 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
         endpoint = "/users/" + id
         self.makeHTTPAuthenticatedGetRequest({
             json in
-            if let user = try! self.changeJsonToResposne(json, onError: {
-                text in
-                self.delegate?.onErrorOccurs(text)
-            }){
+            if let user = try! self.changeJsonToResposne(json,errorR: self.delegate){
                 self.delegate?.onUserDetailLoaded(user.data)
             }
         }, onError: {text in self.delegate?.onErrorOccurs() })
