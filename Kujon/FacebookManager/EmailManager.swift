@@ -40,6 +40,12 @@ class EmailManager: UserLogin, LogoutProviderDelegate {
         suc = nil
     }
 
+    func unauthorized(text: String){
+        suc.failed(text)
+        suc = nil
+    }
+    
+
 
     func getLoginType() -> UserLoginEnum {
         return .EMAIL

@@ -7,5 +7,5 @@ import Foundation
 
 protocol Unauthorized {
 
-    func Unauthorized()
+    func unauthorized(text: String)
 }

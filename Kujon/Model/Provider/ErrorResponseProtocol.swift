@@ -5,7 +5,7 @@
 
 import Foundation
 
-protocol ErrorResponseProtocol {
+protocol ErrorResponseProtocol: Unauthorized {
     func onErrorOccurs(text:String)
 }
 

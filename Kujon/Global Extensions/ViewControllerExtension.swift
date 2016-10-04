@@ -72,3 +72,21 @@ extension UIRefreshControl {
         beginRefreshing()
     }
 }
+
+extension UIViewController:Unauthorized{
+
+    func unauthorized(text: String) {
+        let alertController = UIAlertController(title: StringHolder.autorizationError , message: text, preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "Tak", style: .Default, handler: {
+            (action: UIAlertAction!) in
+            alertController.dismissViewControllerAnimated(true, completion: nil)
+            let controller  = EntryViewController(nibName: "EntryViewController", bundle: nil)
+            UserDataHolder.sharedInstance.userEmail = nil
+            UserDataHolder.sharedInstance.userToken = nil
+            UserDataHolder.sharedInstance.userImage = nil
+            UserDataHolder.sharedInstance.userName = nil
+            self.presentViewController(controller, animated: true, completion: nil)
+        }))
+    }
+
+}

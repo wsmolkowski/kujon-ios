@@ -25,17 +25,28 @@ extension JsonProviderProtocol {
             do {
                 let json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
                 let error = try ErrorClass.decode(json)
-                if(errorR != nil){
-
-                    errorR.onErrorOccurs(error.message)
+                if (error.code != nil && errorR != nil) {
+                    switchOverCodes(error.code!, text: error.message, errorR: errorR!)
                 }
                 return nil
             } catch {
-                if(errorR != nil) {
+                if (errorR != nil) {
                     errorR.onErrorOccurs(StringHolder.errorOccures)
                 }
                 return nil
             }
         }
     }
+
+    private func switchOverCodes(code: String, text: String, errorR: ErrorResponseProtocol) {
+        switch code {
+        case "401":
+            errorR.unauthorized(text)
+            break;
+        default:
+            errorR.onErrorOccurs(text)
+            break;
+        }
+    }
 }
+
