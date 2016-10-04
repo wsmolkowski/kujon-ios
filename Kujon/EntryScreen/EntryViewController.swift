@@ -9,7 +9,7 @@
 import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
-
+import Crashlytics
 
 class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
         OnFacebookCredentailSaved,
@@ -34,6 +34,8 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
     @IBOutlet weak var rejestrujacLabel: UILabel!
 
     override func viewDidLoad() {
+
+
         super.viewDidLoad()
         UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
         navigationController?.navigationBar.barTintColor = UIColor.kujonBlueColor()
@@ -63,9 +65,10 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
         rejestrujacLabel.addGestureRecognizer(tapGestureRecognizer)
 
         loginButton.tooltipColorStyle = .NeutralGray
-//        googleLogInButton.colorScheme = .kGIDSignInButtonColorSchemeDark
 
     }
+
+
     func showTerms(sender: UITapGestureRecognizer){
         NSlogManager.showLog("showTermsAndConditions")
         var controller: UIViewController!

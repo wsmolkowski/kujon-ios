@@ -4,7 +4,7 @@
 target 'Kujon' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-  pod 'Decodable', '~> 0.4'
+  pod 'Decodable', '~> 0.4.3'
   
   pod 'FBSDKCoreKit'
   pod 'FBSDKShareKit'
@@ -13,7 +13,7 @@ target 'Kujon' do
   pod 'Crashlytics'
   pod "CalendarLib"
   pod 'Google/SignIn'
-  pod 'OneSignal'
+  pod 'OneSignal', '~> 1.13.3'
 
   # Pods for Kujon
 

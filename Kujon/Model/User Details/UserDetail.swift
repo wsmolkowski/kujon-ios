@@ -34,17 +34,7 @@ struct UserDetail {
     let email: String?
     let google: Account?
 }
-extension UserDetail: SearchElementProtocol {
 
-    func getTitle() -> String {
-        return ""
-    }
-
-    func reactOnClick(mainController: UINavigationController) {
-    }
-
-
-}
 extension UserDetail: Decodable {
     static func decode(j: AnyObject) throws -> UserDetail {
         return try UserDetail(

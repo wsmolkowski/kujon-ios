@@ -153,15 +153,19 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## Fabric
 
-Fabric: Copyright 2015 Twitter, Inc. All Rights Reserved. Use of this software is subject to the terms and conditions of the Fabric Software and Services Agreement located at https://fabric.io/terms. OSS: http://get.fabric.io/terms/opensource.txt
+Fabric: Copyright 2016 Twitter, Inc. All Rights Reserved. Use of this software is subject to the terms and conditions of the Fabric Software and Services Agreement located at https://fabric.io/terms. OSS: http://get.fabric.io/terms/opensource.txt
 
 ## FirebaseAnalytics
 
-Copyright 2016 Google Inc.
+Copyright 2016 Google
+
+## FirebaseCore
+
+Copyright 2016 Google
 
 ## FirebaseInstanceID
 
-Copyright 2016 Google Inc.
+Copyright 2016 Google
 
 ## Google
 
@@ -169,19 +173,19 @@ Copyright 2016 Google Inc.
 
 ## GoogleAppUtilities
 
-Copyright 2015 Google Inc.
+Copyright 2016 Google
 
 ## GoogleAuthUtilities
 
-Copyright 2015 Google Inc.
+Copyright 2016 Google
 
 ## GoogleInterchangeUtilities
 
-Copyright 2015 Google Inc.
+Copyright 2016 Google
 
 ## GoogleNetworkingUtilities
 
-Copyright 2015 Google Inc.
+Copyright 2016 Google
 
 ## GoogleSignIn
 
@@ -189,11 +193,11 @@ Copyright 2015 Google Inc. All Rights Reserved.
 
 ## GoogleSymbolUtilities
 
-Copyright 2015 Google Inc.
+Copyright 2016 Google
 
 ## GoogleUtilities
 
-Copyright 2015 Google Inc.
+Copyright 2016 Google
 
 ## OSCache
 
@@ -300,7 +304,7 @@ Includes portions from BSMobileProvision:
 
 OrderedDictionary
 
-Version 1.2, September 28th, 2014
+Version 1.4, September 12th, 2016
 
 Copyright (C) 2010 Charcoal Design
 

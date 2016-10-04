@@ -43,6 +43,9 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
         }else if( courseId != nil && termId != nil){
             courseDetailsProvider.loadCourseDetails(courseId,andTermId: termId)
 
+        }else if (courseId != nil && termId == nil){
+            courseDetailsProvider.loadCourseDetails(courseId)
+
         }else{
             back()
         }

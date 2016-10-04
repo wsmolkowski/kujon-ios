@@ -13,6 +13,7 @@ protocol CourseDetailsProviderProtocol: JsonProviderProtocol {
 
     func loadCourseDetails(course: Course)
     func loadCourseDetails(courseId : String, andTermId termId: String)
+    func loadCourseDetails(courseId : String)
 }
 
 protocol CourseDetailsProviderDelegate: ErrorResponseProtocol {
@@ -36,6 +37,13 @@ class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
         endpoint = courseString! + "/" + termsString!
         makeApiShot()
     }
+
+    func loadCourseDetails(courseId: String) {
+        let courseString = courseId.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
+        endpoint = courseString!
+        makeApiShot()
+    }
+
 
     private func makeApiShot(){
         self.makeHTTPAuthenticatedGetRequest({

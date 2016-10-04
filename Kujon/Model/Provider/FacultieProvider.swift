@@ -32,8 +32,6 @@ class FacultieProvider: RestApiManager, FacultieProviderProtocol {
                     self.delegate?.onFacultieLoaded(facult.list)
                 }
         }, onError: { text in self.delegate?.onErrorOccurs() })
-
-
     }
 
 }
