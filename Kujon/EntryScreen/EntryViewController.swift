@@ -167,6 +167,7 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
 
 
         } else {
+            self.spinnerView.hidden = true
             print("\(error.localizedDescription)")
         }
     }

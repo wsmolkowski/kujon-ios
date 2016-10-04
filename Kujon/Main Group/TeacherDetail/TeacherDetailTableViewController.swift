@@ -59,6 +59,8 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
     private func loadUser(){
         if(simpleUser != nil){
             userDetailsProvider.loadUserDetail(simpleUser.id!)
+        }else if(teacherId != nil){
+            userDetailsProvider.loadUserDetail(teacherId)
         }else{
 
             let currentTeacher = CurrentTeacherHolder.sharedInstance
