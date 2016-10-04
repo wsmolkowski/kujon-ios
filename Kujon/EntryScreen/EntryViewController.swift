@@ -48,12 +48,15 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
         self.configProvider.delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().signInSilently()
-        if (GoogleManager.sharedInstance.isLoggedIn()) {
+
+        GoogleManager.sharedInstance.isLoggedIn({
             self.configProvider.checkConfig()
-        }else {
-            spinnerView.hidden = true
-        }
+        },googleComplete: {
+            GIDSignIn.sharedInstance().signInSilently()
+        } , noLogged: {
+            self.spinnerView.hidden = true
+        })
+
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(EntryViewController.showTerms))
         tapGestureRecognizer.numberOfTapsRequired = 1
         rejestrujacLabel.userInteractionEnabled = true

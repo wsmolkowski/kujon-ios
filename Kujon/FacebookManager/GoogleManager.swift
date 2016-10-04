@@ -30,28 +30,30 @@ class GoogleManager: UserLogin {
 
     }
 
-    func isLoggedIn() -> Bool {
+    func isLoggedIn(logComplete:() ->Void,googleComplete:()->Void,noLogged:()->Void)  {
         var loggedToFB = false;
         var loggedToGoogle = false;
         var loggedViaEmail = false;
 
         if (FBSDKAccessToken.currentAccessToken() != nil) {
-            loggedToFB = true;
+            logComplete()
+            return
         }
 
-        if (GIDSignIn.sharedInstance().currentUser != nil) {
-            let accessToken = GIDSignIn.sharedInstance().currentUser.authentication.accessToken
-            if (accessToken != nil) {
-                loggedToGoogle = true;
+        if (userDataHolder.userLoginType != nil ) {
+            if (userDataHolder.userLoginType == StringHolder.googleType) {
+                googleComplete();
+                return
             }
         }
 
         if(userDataHolder.userLoginType != nil){
             if (userDataHolder.userLoginType == StringHolder.emailType && userDataHolder.userToken != nil) {
-                loggedViaEmail = true
+                logComplete()
+                return
             }
         }
-        return loggedToFB || loggedToGoogle || loggedViaEmail;
+        noLogged()
     }
 
     func getLoginType() -> UserLoginEnum {
