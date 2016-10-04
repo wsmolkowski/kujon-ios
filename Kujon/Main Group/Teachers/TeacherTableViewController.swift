@@ -46,9 +46,6 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
         // Dispose of any resources that can be recreated.
     }
 
-    func openDrawer() {
-        delegate?.toggleLeftPanel()
-    }
 
     func onLecturersLoaded(lecturers: Array<SimpleUser>) {
         self.lecturers = lecturers
@@ -64,6 +61,9 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
     }
 
 
+    func openDrawer() {
+        delegate?.toggleLeftPanel()
+    }
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

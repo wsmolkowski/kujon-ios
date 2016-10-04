@@ -7,7 +7,6 @@ import Foundation
 import Decodable
 
 struct CourseSearchResponse {
-    let status: String
     let data: CourseSearchData
 
 }
@@ -15,7 +14,6 @@ struct CourseSearchResponse {
 extension CourseSearchResponse: Decodable {
     static func decode(j: AnyObject) throws -> CourseSearchResponse {
         return try CourseSearchResponse(
-                status: j => "status",
                 data: j => "data"
                 )
     }
@@ -27,7 +25,7 @@ struct CourseSearchData: Decodable {
     let nextPage: Bool
     static func decode(j: AnyObject) throws -> CourseSearchData {
         return try CourseSearchData(
-                items: j => "status",
+                items: j => "items",
                 nextPage: j => "next_page"
                 )
     }

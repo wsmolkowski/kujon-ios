@@ -6,6 +6,7 @@
 import Foundation
 
 class StringHolder {
+    static let search = "Szukaj"
     static let user = "Użytkownik"
     static let courses = "Przedmioty"
     static let grades = "Oceny"

@@ -26,7 +26,7 @@ class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
     func loadCourseDetails(course: Course) {
         let courseString = course.courseId.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
         let termsString = course.termId.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
-        endpoint = courseString! + "/" + termsString!
+        endpoint = "/courseseditions/" + courseString! + "/" + termsString!
         makeApiShot()
 
     }
@@ -34,13 +34,13 @@ class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
     func loadCourseDetails(courseId: String, andTermId termId: String) {
         let courseString = courseId.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
         let termsString = termId.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
-        endpoint = courseString! + "/" + termsString!
+        endpoint = "/courseseditions/" + courseString! + "/" + termsString!
         makeApiShot()
     }
 
     func loadCourseDetails(courseId: String) {
         let courseString = courseId.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
-        endpoint = courseString!
+        endpoint = "/courses/" + courseString!
         makeApiShot()
     }
 
@@ -59,8 +59,10 @@ class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
             }
         }, onError: { text in self.delegate?.onErrorOccurs() })
     }
+
+
     override func getMyUrl() -> String {
-        return baseURL + "/courseseditions/" + endpoint
+        return baseURL + endpoint
     }
 
     override func getMyFakeJsonName() -> String! {

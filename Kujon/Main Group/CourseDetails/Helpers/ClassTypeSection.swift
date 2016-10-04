@@ -13,8 +13,10 @@ class ClassTypeSection:SectionHelperProtocol {
     private var description: String! = nil
     func fillUpWithData(courseDetails: CourseDetails) {
         description = ""
-        for courseGroup in courseDetails.groups {
-            description.appendContentsOf(courseGroup.classType +  "\n")
+        if(courseDetails.groups != nil){
+            for courseGroup in courseDetails.groups! {
+                description.appendContentsOf(courseGroup.classType +  "\n")
+            }
         }
     }
 

@@ -5,15 +5,13 @@
 
 import Foundation
 
-
-protocol CoursesSearchProtocol: JsonProviderProtocol {
-    associatedtype T = CourseSearchResponse
+protocol FacultySearchProviderProtocol: JsonProviderProtocol {
+    associatedtype T = FacultySearchResponse
 
 
 }
 
-
-class CoursesSearchProvider: RestApiManager, CoursesSearchProtocol, SearchProviderProtocol {
+class FacultySearchProvider: RestApiManager, FacultySearchProviderProtocol, SearchProviderProtocol {
 
     var delegate: SearchProviderDelegate!
     func setDelegate(delegate: SearchProviderDelegate) {
@@ -21,7 +19,7 @@ class CoursesSearchProvider: RestApiManager, CoursesSearchProtocol, SearchProvid
     }
 
     override func getMyUrl() -> String {
-        return baseURL + "/search/courses/" + endpoint
+        return baseURL + "/search/faculties/" + endpoint
     }
 
     var endpoint = ""
@@ -29,7 +27,7 @@ class CoursesSearchProvider: RestApiManager, CoursesSearchProtocol, SearchProvid
         endpoint = text
         self.makeHTTPAuthenticatedGetRequest({
             json in
-            let val  = try! self.changeJsonToResposne(json, errorR: self.delegate)
+            let val = try! self.changeJsonToResposne(json, errorR: self.delegate)
             if (val != nil) {
                 let data = val!.data;
                 var array: Array<SearchElementProtocol> = Array()
@@ -37,11 +35,8 @@ class CoursesSearchProvider: RestApiManager, CoursesSearchProtocol, SearchProvid
                     array.append(courseSearch)
                 }
                 self.delegate?.searchedItems(array)
-//
+
             }
         }, onError: { text in self.delegate?.onErrorOccurs() })
     }
 }
-
-
-

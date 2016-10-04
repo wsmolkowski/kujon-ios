@@ -7,7 +7,11 @@ import Foundation
 import Decodable
 protocol SearchProviderProtocol {
     func search(text: String)
+    func setDelegate(delegate: SearchProviderDelegate)
 }
+
+
+
 
 
 protocol SearchProviderDelegate: ErrorResponseProtocol {

@@ -18,7 +18,6 @@ extension JsonProviderProtocol {
             let json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
             return try T.decode(json)
         } catch {
-            NSlogManager.showLog(NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String)
             SessionManager.clearCache()
             NSlogManager.showLog("JSON serialization failed:  \(error)")
 
