@@ -11,7 +11,7 @@ import UIKit
 class SearchTableViewController: UITableViewController,NavigationDelegate {
 
 
-    let array: Array<SearchViewProtocol> = [UserSearchElement(), CourseSearchElement()]
+    let array: Array<SearchViewProtocol> = [UserSearchElement(), CourseSearchElement(),FacultySearchElement()]
     weak var delegate: NavigationMenuProtocol! = nil
 
     override func viewDidLoad() {

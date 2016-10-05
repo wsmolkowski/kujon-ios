@@ -9,7 +9,7 @@ import Decodable
 
 
 struct FacultySearchResponse:Decodable{
-    let data: CourseSearchData
+    let data: FacultySearchData
     static func decode(j: AnyObject) throws -> FacultySearchResponse {
         return try FacultySearchResponse(
                 data: j => "data"
@@ -30,7 +30,7 @@ struct FacultySearchData: Decodable {
     }
 
 }
-struct FacultySearch:Decodable {
+struct FacultySearch:Decodable,SearchElementProtocol {
     let facId: String
     let match: String
 

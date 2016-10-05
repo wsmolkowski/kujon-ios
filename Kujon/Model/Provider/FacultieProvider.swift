@@ -10,8 +10,7 @@ protocol FacultieProviderProtocol: JsonProviderProtocol {
 
     func loadFacultie(id: String)
 }
-
-protocol FacultieProviderDelegate: ErrorResponseProtocol {
+ protocol FacultieProviderDelegate: ErrorResponseProtocol {
     func onFacultieLoaded(fac: Facultie)
 }
 

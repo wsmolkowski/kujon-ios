@@ -116,6 +116,7 @@
 		4C0D869D18F5884265AD7390 /* MenuItemsHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D80CFD63C02C2FFE99366 /* MenuItemsHolder.swift */; };
 		4C0D86AB196D67D0C0451162 /* ClassType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D89ABC6BC21973F643DE7 /* ClassType.swift */; };
 		4C0D86B48ECAE549129243B8 /* TeachersMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D844C4BA870C5823E72AB /* TeachersMenuItem.swift */; };
+		4C0D86DB6171DFAAED5E3227 /* FacultySearchElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D80A76AAE6836D0EFB5E3 /* FacultySearchElement.swift */; };
 		4C0D86EDDF1F15B819DBF358 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D85C01CA62A3C89F09CDA /* AppDelegate.swift */; };
 		4C0D87058EAE5B71945F1AD8 /* Lecturers.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D82CBCF84CAB5E56A1F3C /* Lecturers.json */; };
 		4C0D87179E64FB71B0A00BE5 /* UserMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D83563DFB6E74ACCE441B /* UserMenuItem.swift */; };
@@ -330,6 +331,7 @@
 		4C0D80883A4507BB621D8A2F /* Unauthorized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unauthorized.swift; sourceTree = "<group>"; };
 		4C0D809A2804B4D3E100904E /* SingleProgramme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleProgramme.swift; sourceTree = "<group>"; };
 		4C0D80A5587EE0FD141BB7F2 /* SchoolStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolStats.swift; sourceTree = "<group>"; };
+		4C0D80A76AAE6836D0EFB5E3 /* FacultySearchElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacultySearchElement.swift; sourceTree = "<group>"; };
 		4C0D80B5BF869AF43842D236 /* SearchViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewProtocol.swift; sourceTree = "<group>"; };
 		4C0D80BE1D8E3820DDDB8539 /* UserDetailsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsResponse.swift; sourceTree = "<group>"; };
 		4C0D80C3D710A319BFC49A74 /* FacultiesResposne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacultiesResposne.swift; sourceTree = "<group>"; };
@@ -947,6 +949,7 @@
 			children = (
 				4C0D84FE47A7C6D76B11FFC0 /* UserSearchElement.swift */,
 				4C0D84D4067D635C772B0971 /* CourseSearchElement.swift */,
+				4C0D80A76AAE6836D0EFB5E3 /* FacultySearchElement.swift */,
 			);
 			path = "Search Elements";
 			sourceTree = "<group>";
@@ -2281,6 +2284,7 @@
 				4C0D838F1B89C96AAE63D698 /* UserSearchElement.swift in Sources */,
 				4C0D813686330C6489FC5532 /* CourseSearchElement.swift in Sources */,
 				4C0D8AB0C909996F68717D01 /* SearchMenuItem.swift in Sources */,
+				4C0D86DB6171DFAAED5E3227 /* FacultySearchElement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
