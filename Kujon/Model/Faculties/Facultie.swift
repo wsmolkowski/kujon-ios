@@ -38,7 +38,7 @@ struct Facultie {
     let logUrls: LogoUrls
     let schoolStats: SchoolStats
     let name: String
-    let postalAdress: String
+    let postalAdress: String!
     let facultyId: String
     let homePageUrl: String!
     let schoolPath: Array<SchoolPath>

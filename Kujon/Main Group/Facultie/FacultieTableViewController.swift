@@ -137,7 +137,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         cell.mapView.addGestureRecognizer(tapGestureRecognizer)
         cell.mapView.userInteractionEnabled = true
 
-        if (facultie != nil) {
+        if (facultie != nil && facultie.postalAdress != nil) {
             let geocoder: CLGeocoder = CLGeocoder();
             geocoder.geocodeAddressString(facultie.postalAdress, completionHandler: {
                 (placemarks: [CLPlacemark]?, error: NSError?) -> Void in
@@ -188,11 +188,13 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
     }
 
     func onMapClick() {
-        let baseUrl: String = "http://maps.apple.com/?q="
-        let encodedName = facultie.postalAdress.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet()) ?? ""
-        let finalUrl = baseUrl + encodedName
-        if let url = NSURL(string: finalUrl) {
-            UIApplication.sharedApplication().openURL(url)
+        if(facultie.postalAdress != nil){
+            let baseUrl: String = "http://maps.apple.com/?q="
+            let encodedName = facultie.postalAdress.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet()) ?? ""
+            let finalUrl = baseUrl + encodedName
+            if let url = NSURL(string: finalUrl) {
+                UIApplication.sharedApplication().openURL(url)
+            }
         }
     }
 
