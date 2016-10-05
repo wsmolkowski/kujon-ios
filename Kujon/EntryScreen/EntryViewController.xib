@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="16B2338c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -47,21 +47,6 @@
                         </mask>
                     </variation>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rejestrując się wyrażasz zgodę  na następujące warunki" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miO-Ux-yaG">
-                    <rect key="frame" x="190" y="321" width="220" height="36"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="220" id="dlg-rQ-55G"/>
-                        <constraint firstAttribute="width" constant="180" id="vZV-u6-wHc"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                    <color key="textColor" red="0.24705882370000001" green="0.72941178080000002" blue="0.85098040100000005" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="vZV-u6-wHc"/>
-                        </mask>
-                    </variation>
-                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="49K-dA-dFD" userLabel="Google Sign In Button" customClass="GIDSignInButton">
                     <rect key="frame" x="185" y="225" width="230" height="40"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -77,7 +62,7 @@
                     </variation>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zaloguj się" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mY1-at-Y1Z">
-                    <rect key="frame" x="248" y="152" width="103" height="27"/>
+                    <rect key="frame" x="248.5" y="152" width="103" height="27"/>
                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                     <color key="textColor" red="0.16470588743686676" green="0.20000000298023224" blue="0.24313725531101227" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -96,7 +81,7 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pi5-mO-0sB">
-                    <rect key="frame" x="185" y="391" width="230" height="36"/>
+                    <rect key="frame" x="185" y="359" width="230" height="36"/>
                     <color key="backgroundColor" red="0.24705882370000001" green="0.72941178080000002" blue="0.85098040100000005" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="iLA-in-JZI"/>
@@ -110,7 +95,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxJ-ZU-fTQ">
-                    <rect key="frame" x="185" y="435" width="230" height="36"/>
+                    <rect key="frame" x="185" y="403" width="230" height="36"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="rOK-LG-NOR"/>
                     </constraints>
@@ -123,24 +108,40 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- lub -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3v4-pU-hof">
-                    <rect key="frame" x="280" y="365" width="40" height="18"/>
+                    <rect key="frame" x="280" y="323" width="40" height="18"/>
                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vv-VQ-Avk" customClass="SpinnerView" customModule="Kujon" customModuleProvider="target">
-                    <rect key="frame" x="275" y="365" width="50" height="50"/>
+                    <rect key="frame" x="275" y="275" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="Ui7-RF-jcZ"/>
                         <constraint firstAttribute="height" constant="50" id="feY-4g-hLe"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rejestrując się wyrażasz zgodę  na następujące warunki" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miO-Ux-yaG">
+                    <rect key="frame" x="190" y="489" width="220" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="220" id="dlg-rQ-55G"/>
+                        <constraint firstAttribute="width" constant="180" id="vZV-u6-wHc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                    <color key="textColor" red="0.24705882370000001" green="0.72941178080000002" blue="0.85098040100000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="vZV-u6-wHc"/>
+                        </mask>
+                    </variation>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="AUd-TK-qW5" firstAttribute="centerX" secondItem="5vv-VQ-Avk" secondAttribute="centerX" id="14m-df-0CQ"/>
-                <constraint firstItem="pi5-mO-0sB" firstAttribute="top" secondItem="3v4-pU-hof" secondAttribute="bottom" constant="8" id="1sg-Yc-a2W"/>
+                <constraint firstItem="pi5-mO-0sB" firstAttribute="top" secondItem="3v4-pU-hof" secondAttribute="bottom" constant="18" id="1sg-Yc-a2W"/>
                 <constraint firstItem="bxJ-ZU-fTQ" firstAttribute="leading" secondItem="pi5-mO-0sB" secondAttribute="leading" id="3kb-Uu-Sj7"/>
+                <constraint firstItem="5vv-VQ-Avk" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="3rJ-Wv-6El"/>
                 <constraint firstItem="49K-dA-dFD" firstAttribute="top" secondItem="7SU-Cg-8cS" secondAttribute="bottom" constant="16" id="7Q5-Id-Ffd"/>
                 <constraint firstItem="3v4-pU-hof" firstAttribute="top" secondItem="miO-Ux-yaG" secondAttribute="bottom" constant="8" id="CGQ-Mn-TgV"/>
                 <constraint firstItem="miO-Ux-yaG" firstAttribute="top" secondItem="CZ2-Eu-BAD" secondAttribute="bottom" constant="16" id="F6C-D0-2fX"/>
@@ -156,8 +157,10 @@
                 <constraint firstItem="mY1-at-Y1Z" firstAttribute="top" secondItem="AUd-TK-qW5" secondAttribute="bottom" constant="16" id="TnR-IC-AjW"/>
                 <constraint firstItem="CZ2-Eu-BAD" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Vik-AC-WA7"/>
                 <constraint firstItem="3v4-pU-hof" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="YfX-a2-KcD"/>
+                <constraint firstItem="3v4-pU-hof" firstAttribute="top" secondItem="CZ2-Eu-BAD" secondAttribute="bottom" constant="18" id="ZsM-bI-mz5"/>
                 <constraint firstItem="pi5-mO-0sB" firstAttribute="top" secondItem="5vv-VQ-Avk" secondAttribute="bottom" constant="8" id="aeJ-Wd-gl9"/>
                 <constraint firstItem="7SU-Cg-8cS" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hMx-GG-UkL"/>
+                <constraint firstItem="miO-Ux-yaG" firstAttribute="top" secondItem="bxJ-ZU-fTQ" secondAttribute="bottom" constant="50" id="j9k-Wi-ru9"/>
                 <constraint firstItem="AUd-TK-qW5" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="kx6-Ma-73Q"/>
                 <constraint firstItem="AUd-TK-qW5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="12" id="oog-Pj-bTT"/>
                 <constraint firstItem="pi5-mO-0sB" firstAttribute="leading" secondItem="49K-dA-dFD" secondAttribute="leading" id="p4J-x4-mXE"/>
@@ -167,7 +170,10 @@
             </constraints>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="tq8-rE-WQs"/>
                     <exclude reference="aeJ-Wd-gl9"/>
+                    <exclude reference="CGQ-Mn-TgV"/>
+                    <exclude reference="F6C-D0-2fX"/>
                 </mask>
             </variation>
         </view>
