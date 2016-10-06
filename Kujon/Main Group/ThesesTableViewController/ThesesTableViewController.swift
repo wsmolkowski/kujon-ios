@@ -10,14 +10,11 @@ import UIKit
 
 class ThesesTableViewController: UITableViewController {
 
-    var theses: [Thesis]!
+    var theses: [Thesis]?
     private let cellId = "ThesisCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if theses == nil {
-            theses = []
-        }
         title = StringHolder.theses
         setupTableView()
     }
@@ -42,13 +39,13 @@ class ThesesTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return theses.count
+        return theses?.count ?? 0
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! ThesisCell
-        cell.thesis = theses[indexPath.row]
+        cell.thesis = theses?[indexPath.row]
         return cell
     }
 

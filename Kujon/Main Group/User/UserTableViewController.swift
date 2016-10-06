@@ -146,7 +146,7 @@ class UserTableViewController: UITableViewController
         case 0: cell = self.configureUserDetails(indexPath)
         case 1: cell = self.configureStudentProgrammeCell(indexPath)
         case 2: cell = self.configureFacultieCell(indexPath)
-        case 3: cell = self.self.configureStatsCellForIndexPath(indexPath)
+        case 3: cell = self.configureStatsCellForIndexPath(indexPath)
         default: cell = self.configureUserDetails(indexPath)
         }
         cell.selectionStyle = UITableViewCellSelectionStyle.None
