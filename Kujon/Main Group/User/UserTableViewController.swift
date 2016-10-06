@@ -60,6 +60,8 @@ class UserTableViewController: UITableViewController
         self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: StudentProgrammeCellId)
         self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: FacultieProgrammeCellId)
         self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: termsCellId)
+        tableView.separatorStyle = .None
+        tableView.backgroundColor = UIColor.lightGray()
         refreshControl = UIRefreshControl()
         refreshControl?.backgroundColor = UIColor.kujonBlueColor()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)

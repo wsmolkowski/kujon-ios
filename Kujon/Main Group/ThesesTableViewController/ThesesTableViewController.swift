@@ -24,7 +24,7 @@ class ThesesTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 400
         tableView.separatorStyle = .None
-        tableView.backgroundColor = .lightGrayColor()
+        tableView.backgroundColor = .lightGray()
     }
 
     override func didReceiveMemoryWarning() {
