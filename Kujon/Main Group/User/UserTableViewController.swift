@@ -314,8 +314,11 @@ class UserTableViewController: UITableViewController
     }
 
     private func clickedThesesCell() {
-        // TODO
-        print("NOT IMPLEMENTED")
+        if (userDetail.theses?.count > 0) {
+            let thesesTableViewController = ThesesTableViewController()
+            thesesTableViewController.theses = userDetail.theses
+            self.navigationController?.pushViewController(thesesTableViewController, animated: true)
+        }
     }
 
     private func loadImageFromUrl(urlString: String?, indexPath: NSIndexPath) {

@@ -13,7 +13,7 @@ struct Thesis : Decodable{
     let id : String
     let title: String
     let type: String
-    let sypervisors: Array<SimpleUser>
+    let supervisors: Array<SimpleUser>
 
     static func decode(j: AnyObject) throws -> Thesis {
         return try Thesis(authors: j => "authors",
@@ -21,7 +21,7 @@ struct Thesis : Decodable{
                 id: j => "id",
                 title: j => "title",
                 type: j => "type",
-                sypervisors: j => "supervisors")
+                supervisors: j => "supervisors")
     }
 
 }

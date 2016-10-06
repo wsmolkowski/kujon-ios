@@ -298,6 +298,9 @@
 		52FF97291D23B7D500565763 /* CourseDetailsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FF97271D23B7D500565763 /* CourseDetailsTableViewController.xib */; };
 		52FF972C1D23C9C400565763 /* CourseNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FF972A1D23C9C400565763 /* CourseNameTableViewCell.swift */; };
 		52FF972D1D23C9C400565763 /* CourseNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FF972B1D23C9C400565763 /* CourseNameTableViewCell.xib */; };
+		66D506491DA69CD300B5CE1B /* ThesesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D506481DA69CD300B5CE1B /* ThesesTableViewController.swift */; };
+		66D506551DA6BD9000B5CE1B /* ThesisCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D506531DA6BD9000B5CE1B /* ThesisCell.swift */; };
+		66D506561DA6BD9000B5CE1B /* ThesisCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66D506541DA6BD9000B5CE1B /* ThesisCell.xib */; };
 		756D007AF88EC699124E5CBF /* Pods_KujonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 576A3371E79EA9353F622036 /* Pods_KujonTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -612,6 +615,9 @@
 		52FF972B1D23C9C400565763 /* CourseNameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseNameTableViewCell.xib; sourceTree = "<group>"; };
 		576A3371E79EA9353F622036 /* Pods_KujonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KujonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66BCCCAE95D0BBA8FFC5B406 /* Pods-KujonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KujonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KujonTests/Pods-KujonTests.debug.xcconfig"; sourceTree = "<group>"; };
+		66D506481DA69CD300B5CE1B /* ThesesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesesTableViewController.swift; sourceTree = "<group>"; };
+		66D506531DA6BD9000B5CE1B /* ThesisCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesisCell.swift; sourceTree = "<group>"; };
+		66D506541DA6BD9000B5CE1B /* ThesisCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThesisCell.xib; sourceTree = "<group>"; };
 		71EE9BFC3F34701DCA4852FA /* Pods-Kujon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kujon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kujon/Pods-Kujon.debug.xcconfig"; sourceTree = "<group>"; };
 		738B26E893DA09D88D3AB47D /* Pods-KujonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KujonUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KujonUITests/Pods-KujonUITests.release.xcconfig"; sourceTree = "<group>"; };
 		96504F7BCCB0EE28D6F0F6C4 /* Pods_Kujon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kujon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1131,6 +1137,7 @@
 		4C0D8AC64D4ECAED91008202 /* Main Group */ = {
 			isa = PBXGroup;
 			children = (
+				66D506471DA69CB800B5CE1B /* ThesesTableViewController */,
 				0AB1920E1D4AB84900834773 /* WebViewPresentation */,
 				52AF77A31D095C390058979A /* ContainerViewController.swift */,
 				52AF77A71D095CBF0058979A /* LeftMenuTableViewController.swift */,
@@ -1393,6 +1400,24 @@
 			path = Teachers;
 			sourceTree = "<group>";
 		};
+		66D506471DA69CB800B5CE1B /* ThesesTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				66D506521DA6BD7300B5CE1B /* Views */,
+				66D506481DA69CD300B5CE1B /* ThesesTableViewController.swift */,
+			);
+			path = ThesesTableViewController;
+			sourceTree = "<group>";
+		};
+		66D506521DA6BD7300B5CE1B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				66D506531DA6BD9000B5CE1B /* ThesisCell.swift */,
+				66D506541DA6BD9000B5CE1B /* ThesisCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		76619CA6A37CBF3A704E2BD4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1620,6 +1645,7 @@
 				52FF97251D23AC8E00565763 /* FacultieViewController.xib in Resources */,
 				52FF97291D23B7D500565763 /* CourseDetailsTableViewController.xib in Resources */,
 				4C0D87C7BA4C2A4E4CBCF087 /* GoFurtherViewCellTableViewCell.xib in Resources */,
+				66D506561DA6BD9000B5CE1B /* ThesisCell.xib in Resources */,
 				4C0D88E3FFF806ADAB7E9661 /* Terms.json in Resources */,
 				4C0D82A00E6BB9E12219B536 /* Lato-Black.ttf in Resources */,
 				4C0D8C7BDA7E9A064DC853E9 /* Lato-BlackItalic.ttf in Resources */,
@@ -2165,6 +2191,7 @@
 				4C0D8910C3D7307032A67057 /* LecturerProvider.swift in Sources */,
 				4C0D8125E905FFA9FF65765F /* LecturerDetail.swift in Sources */,
 				4C0D80DAE7D9AB0E09AF4C8A /* JsonProviderProtocol.swift in Sources */,
+				66D506551DA6BD9000B5CE1B /* ThesisCell.swift in Sources */,
 				4C0D8276D4657EED0BD1B0C2 /* LecturersResponse.swift in Sources */,
 				4C0D853633AEE49F996B454C /* CourseEdition.swift in Sources */,
 				4C0D8A432E3EC531C1FE79D7 /* UIColorExtensions.swift in Sources */,
@@ -2249,6 +2276,7 @@
 				4C0D885C9F63A51806665EB1 /* LecturersSection.swift in Sources */,
 				4C0D89F29E7400D6E2ABD251 /* CoordinatorsSection.swift in Sources */,
 				4C0D8728CF32D05C9860E24E /* ParticipantsSection.swift in Sources */,
+				66D506491DA69CD300B5CE1B /* ThesesTableViewController.swift in Sources */,
 				4C0D83AA5628FB3E4480BACA /* ClassTypeSection.swift in Sources */,
 				4C0D8053B89C09BC0F888097 /* UsosHolderController.swift in Sources */,
 				4C0D839A5A8BDCE05EAE9808 /* DeleteAccountProvider.swift in Sources */,
