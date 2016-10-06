@@ -6,7 +6,7 @@
 import Foundation
 import Decodable
 
-struct These : Decodable{
+struct Thesis : Decodable{
 
     let authors:Array<SimpleUser>
     let faculty:FacultyShort
@@ -15,12 +15,13 @@ struct These : Decodable{
     let type: String
     let sypervisors: Array<SimpleUser>
 
-    static func decode(j: AnyObject) throws -> These {
-        return try These(authors: j => "authors",
+    static func decode(j: AnyObject) throws -> Thesis {
+        return try Thesis(authors: j => "authors",
                 faculty: j => "faculty",
                 id: j => "id",
                 title: j => "title",
-                type: j => "type", sypervisors: j => "supervisors")
+                type: j => "type",
+                sypervisors: j => "supervisors")
     }
 
 }

@@ -52,6 +52,7 @@ class StringHolder {
     static let ok = "OK"
     static let statistics = "Statystyki"
     static let cycles = "Cykle"
+    static let theses = "Prace naukowe"
     static let not_auth = "Brak autoryzacji"
     static let terms = "Cykle"
     static let yes = "TAK"
