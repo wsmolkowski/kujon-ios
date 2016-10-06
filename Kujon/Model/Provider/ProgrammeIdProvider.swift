@@ -18,7 +18,7 @@ protocol ProgrammeIdProviderDelegate: ErrorResponseProtocol {
 }
 
 class ProgrammeIdProvider: RestApiManager, ProgrammeIdProviderProtocol {
-    var delegate: ProgrammeIdProviderDelegate! = nil
+    weak var delegate: ProgrammeIdProviderDelegate! = nil
     var endpoint = "/programmes"
 
     func loadProgramme(id: String) {

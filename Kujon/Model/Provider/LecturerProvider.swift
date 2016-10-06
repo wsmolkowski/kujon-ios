@@ -19,7 +19,7 @@ protocol LecturerProviderDelegate: ErrorResponseProtocol {
 
 class LecturerProvider: RestApiManager, LecturerProviderProtocol {
 
-    var delegate: LecturerProviderDelegate!
+    weak  var delegate: LecturerProviderDelegate!
 
 
     func loadLecturers() {

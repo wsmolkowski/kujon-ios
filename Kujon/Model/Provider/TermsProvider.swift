@@ -17,7 +17,7 @@ protocol TermsProviderDelegate: ErrorResponseProtocol {
 }
 
 class TermsProvider: RestApiManager, TermsProviderProtocol {
-    var delegate: TermsProviderDelegate! = nil
+    weak   var delegate: TermsProviderDelegate! = nil
     func loadTerms() {
         self.makeHTTPAuthenticatedGetRequest({
             json in

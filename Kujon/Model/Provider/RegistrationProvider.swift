@@ -20,7 +20,7 @@ protocol RegistrationProviderDelegate: ErrorResponseProtocol {
 }
 
 class RegistrationProvider :RestApiManager,RegistrationProviderProtocol {
-    var delegate : RegistrationProviderDelegate! = nil
+    weak   var delegate : RegistrationProviderDelegate! = nil
 
     func register(email: String, password: String) {
         let data = Register.createRegisterJSON(email, password: password)

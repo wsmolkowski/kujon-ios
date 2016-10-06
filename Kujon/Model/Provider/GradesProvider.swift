@@ -17,7 +17,7 @@ protocol GradesProviderDelegate: ErrorResponseProtocol {
 }
 
 class GradesProvider: RestApiManager, GradesProviderProtocol {
-    var delegate: GradesProviderDelegate!
+weak var delegate: GradesProviderDelegate!
 
 
     func loadGrades() {

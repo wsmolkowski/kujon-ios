@@ -1,19 +1,22 @@
 //
-// Created by Wojciech Maciejewski on 04/10/16.
+// Created by Wojciech Maciejewski on 06/10/16.
 // Copyright (c) 2016 Mobi. All rights reserved.
 //
 
 import Foundation
 
 
-protocol CoursesSearchProtocol: JsonProviderProtocol {
-    associatedtype T = CourseSearchResponse
+
+
+protocol ProgrammeSearchProtocol: JsonProviderProtocol {
+    associatedtype T = ProgrammeSearchResponse
 
 
 }
 
 
-class CoursesSearchProvider: RestApiManager, CoursesSearchProtocol, SearchProviderProtocol {
+class ProgrammeSearchProvider:RestApiManager,ProgrammeSearchProtocol,SearchProviderProtocol {
+
 
     weak var delegate: SearchProviderDelegate!
     func setDelegate(delegate: SearchProviderDelegate) {
@@ -21,7 +24,7 @@ class CoursesSearchProvider: RestApiManager, CoursesSearchProtocol, SearchProvid
     }
 
     override func getMyUrl() -> String {
-        return baseURL + "/search/courses/" + endpoint
+        return baseURL + "/search/programmes/" + endpoint
     }
 
     var endpoint = ""
@@ -41,7 +44,6 @@ class CoursesSearchProvider: RestApiManager, CoursesSearchProtocol, SearchProvid
             }
         }, onError: { text in self.delegate?.onErrorOccurs() })
     }
+
+
 }
-
-
-

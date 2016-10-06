@@ -16,7 +16,7 @@ protocol DeleteAccountProviderDelegate: ErrorResponseProtocol {
 }
 
 class DeleteAccountProvider: RestApiManager, DeleteAccountProviderProtocol {
-    var delegate: DeleteAccountProviderDelegate! = nil
+    weak var delegate: DeleteAccountProviderDelegate! = nil
     func deleteAccount() {
         self.makeHTTPAuthenticatedPostRequest({
             data in

@@ -20,7 +20,7 @@ protocol LectureProviderDelegate: ErrorResponseProtocol {
 
 class LectureProvider: RestApiManager, LectureProviderProtocol {
 
-    var delegate: LectureProviderDelegate!
+weak var delegate: LectureProviderDelegate!
     var endpoint: String! = nil
     var endpointParameter: String = "?lecturers_info=False"
 

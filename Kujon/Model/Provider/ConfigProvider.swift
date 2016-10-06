@@ -23,7 +23,7 @@ protocol ConfigProviderDelegate: ErrorResponseProtocol {
 }
 
 class ConfigProvider: RestApiManager, ConfigProviderProtocol {
-    var delegate: ConfigProviderDelegate! = nil
+    weak var delegate: ConfigProviderDelegate! = nil
 
     func checkConfig() {
         self.makeHTTPAuthenticatedGetRequest({

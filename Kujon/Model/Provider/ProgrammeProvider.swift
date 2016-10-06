@@ -20,7 +20,7 @@ protocol ProgrammeProviderDelegate: ErrorResponseProtocol {
 }
 
 class ProgrammeProvider: RestApiManager, ProgrammeProviderProtocol {
-    var delegate: ProgrammeProviderDelegate! = nil
+    weak var delegate: ProgrammeProviderDelegate! = nil
 
     func loadProgramme() {
         self.makeHTTPAuthenticatedGetRequest({

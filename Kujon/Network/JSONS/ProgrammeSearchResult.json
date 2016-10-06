@@ -4,9 +4,7 @@
       "match": "",
       "programme": {
         "duration": "1-roczne",
-        "faculty": {
-          "id": "10000000"
-        },
+
         "id": "DWS-MAT",
         "level_of_studies": "Jednolite magisterskie",
         "mode_of_studies": "Stacjonarne",
@@ -16,3 +14,4 @@
   ],
   "next_page": false
 }
+

@@ -5,7 +5,7 @@
 
 import Foundation
 
-protocol Unauthorized {
+protocol Unauthorized :class{
 
     func unauthorized(text: String)
 }

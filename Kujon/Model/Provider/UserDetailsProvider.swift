@@ -22,7 +22,7 @@ protocol UserDetailsProviderDelegate: ErrorResponseProtocol {
 class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
 
 
-    var delegate: UserDetailsProviderDelegate!
+    weak  var delegate: UserDetailsProviderDelegate!
 
     private var endpoint: String = "/users"
     func loadUserDetail() {

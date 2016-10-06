@@ -23,7 +23,7 @@ class SearchResultTableViewController: UITableViewController,SearchProviderDeleg
         tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: myCellId)
         if(provider != nil && searchQuery != nil){
             provider.setDelegate(self)
-            provider.search(searchQuery)
+            provider.search(searchQuery,more: 0)
         }
     }
 

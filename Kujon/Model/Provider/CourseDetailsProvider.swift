@@ -22,7 +22,7 @@ protocol CourseDetailsProviderDelegate: ErrorResponseProtocol {
 
 class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
     var endpoint:String! = nil
-    var delegate: CourseDetailsProviderDelegate! = nil
+   weak var delegate: CourseDetailsProviderDelegate! = nil
     func loadCourseDetails(course: Course) {
         let courseString = course.courseId.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
         let termsString = course.termId.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())

@@ -15,7 +15,7 @@ protocol LoginProviderDelegate: ErrorResponseProtocol {
     func onLoginResponse(token: String)
 }
 class LoginProvider:RestApiManager,LoginProviderProtocol {
-    var delegate : LoginProviderDelegate! = nil
+    weak var delegate : LoginProviderDelegate! = nil
 
 
     func login(email: String, password: String) {

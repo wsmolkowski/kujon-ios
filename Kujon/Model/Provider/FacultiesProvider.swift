@@ -17,7 +17,7 @@ protocol FacultiesProviderDelegate: ErrorResponseProtocol {
 
 class FacultiesProvider: RestApiManager, FacultiesProviderProtocol {
 
-    var delegate: FacultiesProviderDelegate! = nil
+weak var delegate: FacultiesProviderDelegate! = nil
 
 
     override func getMyUrl() -> String {

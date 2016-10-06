@@ -6,7 +6,7 @@
 import Foundation
 import Decodable
 protocol SearchProviderProtocol {
-    func search(text: String)
+    func search(text: String, more: Int)
     func setDelegate(delegate: SearchProviderDelegate)
 }
 

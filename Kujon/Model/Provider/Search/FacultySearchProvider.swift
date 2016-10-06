@@ -23,8 +23,8 @@ class FacultySearchProvider: RestApiManager, FacultySearchProviderProtocol, Sear
     }
 
     var endpoint = ""
-    func search(text: String) {
-        endpoint = text
+    func search(text: String, more: Int) {
+        endpoint = text + "?start=" + String(more)
         self.makeHTTPAuthenticatedGetRequest({
             json in
             let val = try! self.changeJsonToResposne(json, errorR: self.delegate)

@@ -14,7 +14,8 @@ protocol UsersSearchProtocol: JsonProviderProtocol {
 
 class UserSearchProvider : RestApiManager, UsersSearchProtocol, SearchProviderProtocol {
 
-    var delegate: SearchProviderDelegate!
+    weak var delegate: SearchProviderDelegate!
+
     func setDelegate(delegate: SearchProviderDelegate) {
         self.delegate = delegate
     }
@@ -24,8 +25,8 @@ class UserSearchProvider : RestApiManager, UsersSearchProtocol, SearchProviderPr
     }
 
     var endpoint = ""
-    func search(text: String) {
-        endpoint = text
+    func search(text: String, more: Int){
+        endpoint = text + "?start=" + String(more)
         self.makeHTTPAuthenticatedGetRequest({
             json in
             let val  = try! self.changeJsonToResposne(json, errorR: self.delegate)

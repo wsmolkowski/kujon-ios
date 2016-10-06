@@ -16,7 +16,7 @@ protocol FacultieProviderProtocol: JsonProviderProtocol {
 
 class FacultieProvider: RestApiManager, FacultieProviderProtocol {
 
-    var delegate: FacultieProviderDelegate! = nil
+weak var delegate: FacultieProviderDelegate! = nil
 
     var endpoint: String! = nil
     override func getMyUrl() -> String {

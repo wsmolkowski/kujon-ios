@@ -15,7 +15,7 @@ protocol LogoutProviderDelegate: ErrorResponseProtocol {
 }
 
 class LogoutProvider: RestApiManager, LogoutProviderProtocol {
-    var delegate: LogoutProviderDelegate! = nil
+    weak var delegate: LogoutProviderDelegate! = nil
 
 
     func logout() {
