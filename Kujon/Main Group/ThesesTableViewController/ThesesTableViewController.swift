@@ -10,7 +10,7 @@ import UIKit
 
 class ThesesTableViewController: UITableViewController {
 
-    var theses: Array<Thesis>!
+    var theses: [Thesis]!
     private let cellId = "ThesisCell"
 
     override func viewDidLoad() {
@@ -25,7 +25,7 @@ class ThesesTableViewController: UITableViewController {
     private func setupTableView() {
         tableView.registerNib(UINib(nibName: "ThesisCell", bundle: nil), forCellReuseIdentifier: cellId)
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 140
+        tableView.estimatedRowHeight = 400
         tableView.separatorStyle = .None
         tableView.backgroundColor = .lightGrayColor()
     }
