@@ -6,21 +6,22 @@
 import Foundation
 import Decodable
 
-struct These : Decodable{
+struct Thesis : Decodable{
 
     let authors:Array<SimpleUser>
     let faculty:FacultyShort
     let id : String
     let title: String
     let type: String
-    let sypervisors: Array<SimpleUser>
+    let supervisors: Array<SimpleUser>
 
-    static func decode(j: AnyObject) throws -> These {
-        return try These(authors: j => "authors",
+    static func decode(j: AnyObject) throws -> Thesis {
+        return try Thesis(authors: j => "authors",
                 faculty: j => "faculty",
                 id: j => "id",
                 title: j => "title",
-                type: j => "type", sypervisors: j => "supervisors")
+                type: j => "type",
+                supervisors: j => "supervisors")
     }
 
 }

@@ -29,11 +29,12 @@ class UserTableViewController: UITableViewController
     let restImageProvider = RestImageProvider.sharedInstance
     private let userDataHolder = UserDataHolder.sharedInstance
 
-    var userDetails: UserDetail! = nil
+    var userDetail: UserDetail! = nil
     var userFaculties: Array<Facultie>! = nil
     var terms: Array<Term> = Array()
     var programmes: Array<StudentProgramme> = Array()
     var programmeLoaded = false;
+
     func setNavigationProtocol(delegate: NavigationMenuProtocol) {
         self.delegate = delegate
     }
@@ -88,11 +89,11 @@ class UserTableViewController: UITableViewController
         programmeProvider.loadProgramme()
     }
 
-    func onUserDetailLoaded(userDetails: UserDetail) {
-        self.userDetails = userDetails;
-        self.programmes = userDetails.studentProgrammes
+    func onUserDetailLoaded(userDetail: UserDetail) {
+        self.userDetail = userDetail;
+        self.programmes = userDetail.studentProgrammes
         self.tableView.reloadData()
-        self.userDataHolder.userName  = userDetails.firstName + " " + userDetails.lastName
+        self.userDataHolder.userName  = userDetail.firstName + " " + userDetail.lastName
         refreshControl?.endRefreshing()
     }
 
@@ -123,60 +124,52 @@ class UserTableViewController: UITableViewController
         }, cancel: {})
     }
 
-
-
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-       return userDetails == nil ? 0 : 5
+       return userDetail == nil ? 0 : 5
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch (section) {
-        case 0: return userDetails == nil ? 0 : 1
-        case 1: return userDetails == nil ? 0 : userDetails.studentProgrammes.count
+        case 0: return userDetail == nil ? 0 : 1
+        case 1: return userDetail == nil ? 0 : userDetail.studentProgrammes.count
         case 2: return userFaculties == nil ? 0 : userFaculties.count
-        case 3:  return 1
+        case 3: return userDetail == nil ? 0 : 2
         default: return 0
         }
     }
-
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: UITableViewCell!
         switch (indexPath.section) {
         case 0: cell = self.configureUserDetails(indexPath)
-            break;
         case 1: cell = self.configureStudentProgrammeCell(indexPath)
-            break;
         case 2: cell = self.configureFacultieCell(indexPath)
-            break;
-        case 3: cell = self.configureTermsCell(indexPath)
-            break;
+        case 3: cell = self.self.configureStatsCellForIndexPath(indexPath)
         default: cell = self.configureUserDetails(indexPath)
         }
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch (indexPath.section) {
-        case 1:
-            self.clicked(indexPath)
-            break;
-        case 2:
-            self.clickedFacultie(indexPath)
-            break;
-        case 3:
-            self.clickedTerms()
-            break;
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cellPosition: (section: Int, row: Int) = (section:indexPath.section, row:indexPath.row)
+        switch (cellPosition) {
+        case (section:1, row: _):
+            clicked(indexPath)
+        case (section:2, row: _):
+            clickedFacultie(indexPath)
+        case (section:3, row: 0):
+            clickedTermsCell()
+        case (section:3, row: 1):
+            clickedThesesCell()
         default:
             break;
         }
     }
 
-
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch (indexPath.section) {
         case 0: return 196
         case 1: return 51
@@ -186,7 +179,7 @@ class UserTableViewController: UITableViewController
     }
 
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch (section) {
         case 0: return 0
         case 1: return 51
@@ -196,7 +189,7 @@ class UserTableViewController: UITableViewController
         }
     }
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch (section) {
         case 0: return nil
         case 1: return createLabelForSectionTitle(StringHolder.kierunki)
@@ -209,15 +202,15 @@ class UserTableViewController: UITableViewController
 
     private func configureUserDetails(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(usedDetailCellId, forIndexPath: indexPath) as! UserDetailsTableViewCell
-        cell.nameSurnameLabel.text = userDetails.firstName + " " + userDetails.lastName
-        cell.studentStatusLabel.text = userDetails.studentStatus
+        cell.nameSurnameLabel.text = userDetail.firstName + " " + userDetail.lastName
+        cell.studentStatusLabel.text = userDetail.studentStatus
 //        cell.schoolNameLabel.text = userDetails.usosName
-        cell.indexNumberLabel.text = userDetails.studentNumber
-        cell.accountNumberLabel.text = userDetails.id
+        cell.indexNumberLabel.text = userDetail.studentNumber
+        cell.accountNumberLabel.text = userDetail.id
         cell.userImageView.makeMyselfCircleWithBorder()
         cell.userImageView.image = UIImage(named: "user-placeholder")
-        if (userDetails.hasPhoto) {
-            self.restImageProvider.loadImage("", urlString: self.userDetails.photoUrl!, onImageLoaded: self)
+        if (userDetail.hasPhoto) {
+            self.restImageProvider.loadImage("", urlString: self.userDetail.photoUrl!, onImageLoaded: self)
 
         }
 
@@ -228,7 +221,6 @@ class UserTableViewController: UITableViewController
         self.loadImageFromUrl(UserDataHolder.sharedInstance.userUsosImage, indexPath: indexPath)
         return cell
     }
-
 
     func imageTapped(sender: UITapGestureRecognizer) {
         print(sender.view?.tag)
@@ -252,7 +244,6 @@ class UserTableViewController: UITableViewController
         isThereImage = true
     }
 
-
     private func configureStudentProgrammeCell(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(StudentProgrammeCellId, forIndexPath: indexPath) as! GoFurtherViewCellTableViewCell
         let myProgramme: StudentProgramme = self.programmes[indexPath.row]
@@ -267,10 +258,26 @@ class UserTableViewController: UITableViewController
         return cell
     }
 
-    private func configureTermsCell(indexPath: NSIndexPath) -> UITableViewCell {
+    private func configureStatsCellForIndexPath(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(FacultieProgrammeCellId, forIndexPath: indexPath) as! GoFurtherViewCellTableViewCell
-        let number = terms.count
-        cell.plainLabel.text = StringHolder.cycles + "(" + String(number) + ")"
+
+        let termsIndex: Int = 0
+        let thesesIndex: Int = 1
+        var itemName: String = ""
+        var itemsCount: Int = 0
+
+        switch indexPath.row {
+        case termsIndex:
+            itemsCount = terms.count
+            itemName = StringHolder.cycles
+        case thesesIndex:
+            itemsCount = userDetail.theses == nil ? 0 : userDetail.theses!.count
+            itemName = StringHolder.theses
+        default:
+            fatalError("Unidentified cell row in stats section")
+        }
+
+        cell.plainLabel.text = itemName + " (" + String(itemsCount) + ")"
         return cell
     }
 
@@ -291,7 +298,6 @@ class UserTableViewController: UITableViewController
 
     }
 
-
     func clickedFacultie(forIndexPath: NSIndexPath) {
         let myFac: Facultie = self.userFaculties[forIndexPath.row]
         let faculiteController = FacultieTableViewController(nibName: "FacultieTableViewController", bundle: NSBundle.mainBundle())
@@ -299,7 +305,7 @@ class UserTableViewController: UITableViewController
         self.navigationController?.pushViewController(faculiteController, animated: true)
     }
 
-    private func clickedTerms() {
+    private func clickedTermsCell() {
         if (terms.count != 0) {
             let termsController = TermsTableViewController()
             self.navigationController?.pushViewController(termsController, animated: true)
@@ -307,29 +313,36 @@ class UserTableViewController: UITableViewController
         }
     }
 
-    private func loadImageFromUrl(urlString: String!, indexPath: NSIndexPath) {
-        if(urlString != nil){
-            let url = NSURL(string: urlString)
-            let session = NSURLSession.sharedSession()
-            let task = session.dataTaskWithURL(url!, completionHandler: {
-                data, response, error -> Void in
-                if (data != nil) {
-                    let image = UIImage(data: data!)
-                    dispatch_async(dispatch_get_main_queue()) {
-                        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) {
-                            (cell as! UserDetailsTableViewCell).schoolImageVirw.contentMode = UIViewContentMode.ScaleAspectFit;
-                            (cell as! UserDetailsTableViewCell).schoolImageVirw.makeMyselfCircle()
-                            (cell as! UserDetailsTableViewCell).schoolImageVirw?.image = image;
-                            (cell as! UserDetailsTableViewCell).bigUsosImage?.image = image
-
-
-                        }
-
-                    }
-                }
-            })
-            task.resume()
+    private func clickedThesesCell() {
+        if (userDetail.theses?.count > 0) {
+            let thesesTableViewController = ThesesTableViewController()
+            thesesTableViewController.theses = userDetail.theses
+            self.navigationController?.pushViewController(thesesTableViewController, animated: true)
         }
+    }
 
+    private func loadImageFromUrl(urlString: String?, indexPath: NSIndexPath) {
+        guard
+            let urlString = urlString,
+            let url = NSURL(string: urlString) else {
+            return
+        }
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url, completionHandler: { [weak self] data, response, error in
+            guard
+                let data = data,
+                let image = UIImage(data: data) else {
+                return
+            }
+            dispatch_async(dispatch_get_main_queue()) {
+                if let cell = self?.tableView.cellForRowAtIndexPath(indexPath) as? UserDetailsTableViewCell {
+                    cell.schoolImageVirw.contentMode = .ScaleAspectFit;
+                    cell.schoolImageVirw.makeMyselfCircle()
+                    cell.schoolImageVirw?.image = image;
+                    cell.bigUsosImage?.image = image
+                }
+            }
+        })
+        task.resume()
     }
 }

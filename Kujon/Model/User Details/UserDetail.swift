@@ -27,7 +27,7 @@ struct UserDetail: Decodable {
     let officeHours: String?
     let usosName: String?
     let homepage: String?
-    let theses: Array<These>?
+    let theses: Array<Thesis>?
     let employmentPosition: Array<EmploymentPosition>?
     let hasEmail: Bool
     let usosId: String?
