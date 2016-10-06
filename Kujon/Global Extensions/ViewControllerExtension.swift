@@ -14,20 +14,29 @@ extension UIViewController {
     }
 
 
-    func showAlertApi(title: String, text: String, succes: () -> Void, cancel: () -> Void) {
-        let alertController = UIAlertController(title: title, message: text + " Czy chcesz spróbować ponownie ?", preferredStyle: .Alert)
+    func showAlertApi(title: String, text: String, succes: () -> Void, cancel: () -> Void, show:Bool = true) {
+        let text2 = show ? text + " Czy chcesz spróbować ponownie ?": text;
+        let alertController = UIAlertController(title: title, message: text2, preferredStyle: .Alert)
+        if(show){
+            alertController.addAction(UIAlertAction(title: "Tak", style: .Default, handler: {
+                (action: UIAlertAction!) in
+                alertController.dismissViewControllerAnimated(true, completion: nil)
+                succes()
 
-        alertController.addAction(UIAlertAction(title: "Tak", style: .Default, handler: {
-            (action: UIAlertAction!) in
-            alertController.dismissViewControllerAnimated(true, completion: nil)
-            succes()
+            }))
+            alertController.addAction(UIAlertAction(title: "Nie", style: .Cancel, handler: {
+                (action: UIAlertAction!) in
+                alertController.dismissViewControllerAnimated(true, completion: nil)
+                cancel()
+            }))
+        }else{
+            alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: {
+                (action: UIAlertAction!) in
+                alertController.dismissViewControllerAnimated(true, completion: nil)
+                cancel()
+            }))
+        }
 
-        }))
-        alertController.addAction(UIAlertAction(title: "Nie", style: .Cancel, handler: {
-            (action: UIAlertAction!) in
-            alertController.dismissViewControllerAnimated(true, completion: nil)
-            cancel()
-        }))
         presentViewController(alertController, animated: true, completion: nil)
     }
 

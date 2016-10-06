@@ -6,7 +6,7 @@
 import Foundation
 import Decodable
 
-struct UserDetail {
+struct UserDetail: Decodable {
     let updateTime: String?
     let createdTime: String?
     let titles: Title
@@ -27,18 +27,18 @@ struct UserDetail {
     let officeHours: String?
     let usosName: String?
     let homepage: String?
+    let theses: Array<These>?
     let employmentPosition: Array<EmploymentPosition>?
     let hasEmail: Bool
     let usosId: String?
     let hasPhoto: Bool
     let email: String?
     let google: Account?
-}
 
-extension UserDetail: Decodable {
+
     static func decode(j: AnyObject) throws -> UserDetail {
-        return try UserDetail(
-        updateTime: try? j =>  "update_time",
+        return try UserDetail (
+                updateTime: try? j => "update_time",
                 createdTime: try? j => "user_created",
                 titles: j => "titles",
                 staffStatus: j => "staff_status",
@@ -58,48 +58,14 @@ extension UserDetail: Decodable {
                 officeHours: try? j => "office_hours",
                 usosName: try? j => "usos_name",
                 homepage: try? j => "homepage_url",
+                theses: try? j => "theses",
                 employmentPosition: try? j => "employment_positions",
                 hasEmail: j => "has_email",
                 usosId: try? j => "usos_id",
                 hasPhoto: j => "has_photo",
                 email: try? j => "email",
-                google: try? j => "google"
-        )
+                google: try? j => "google")
+
     }
 
-
 }
-
-//
-//extension UserDetail: Decodable {
-//    static func decode(j: AnyObject) throws -> UserDetail {
-//        return try UserDetail(
-//        updateTime: j => "update_time",
-//                createdTime: j => "user_created",
-//                titles: j => "titles",
-//                staffStatus: j => "staff_status",
-//                userType: j => "user_type",
-//                sex: j => "sex",
-//                firstName: j => "first_name",
-//                lastName: j => "last_name",
-//                photoUrl: j => "photo_url",
-//                studentProgrammes: j => "student_programmes",
-//                id: j => "id",
-//                studentNumber: j => "student_number",
-//                room: j => "room",
-//                courseEditionsConducted: j => "course_editions_conducted",
-//                emailUrl: j => "email_url",
-//                studentStatus: j => "student_status",
-//                name: j => "name",
-//                officeHours: j => "office_hours",
-//                usosName: j => "usos_name",
-//                homepage: j => "homepage_url",
-//                employmentPosition: j => "employment_positions",
-//                hasEmail: j => "has_email",
-//                usosId: j => "usos_id",
-//                hasPhoto: j => "has_photo",
-//                email: j => "email",
-//                google: j => "google"
-//        )
-//    }
-//}

@@ -14,7 +14,7 @@ protocol JsonProviderProtocol {
 extension JsonProviderProtocol {
     func changeJsonToResposne(jsonData: NSData, errorR: ErrorResponseProtocol!) throws -> T! {
         do {
-//            NSlogManager.showLog(NSString(data:jsonData, encoding:NSUTF8StringEncoding) as! String)
+            NSlogManager.showLog(NSString(data:jsonData, encoding:NSUTF8StringEncoding) as! String)
             let json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
             return try T.decode(json)
         } catch {
@@ -23,9 +23,9 @@ extension JsonProviderProtocol {
 
             do {
                 let json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
-                let error = try ErrorClass.decode(json)
-                if (error.code != nil && errorR != nil) {
-                    switchOverCodes(error.code!, text: error.message, errorR: errorR!)
+                let errora = try ErrorClass.decode(json)
+                if (errora.code != nil && errorR != nil) {
+                    switchOverCodes(errora.code!, text: errora.message, errorR: errorR!)
                 }
                 return nil
             } catch {
@@ -37,9 +37,9 @@ extension JsonProviderProtocol {
         }
     }
 
-    private func switchOverCodes(code: String, text: String, errorR: ErrorResponseProtocol) {
+    private func switchOverCodes(code: Int, text: String, errorR: ErrorResponseProtocol) {
         switch code {
-        case "401":
+        case 401:
             errorR.unauthorized(text)
             break;
         default:

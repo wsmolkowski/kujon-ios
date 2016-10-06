@@ -151,11 +151,20 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
 
     func onErrorOccurs(text: String) {
         self.showAlertApi(StringHolder.attention, text: text, succes: {
+            self.spinnerView.hidden = true
+        }, cancel: {
+            self.spinnerView.hidden = true
+        })
+    }
+
+
+    override func unauthorized(text: String) {
+        self.showAlertApi(StringHolder.attention, text: text, succes: {
             self.spinnerView.hidden = false
             self.configProvider.checkConfig()
         }, cancel: {
             self.spinnerView.hidden = true
-        })
+        },show: false)
     }
 
 

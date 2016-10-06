@@ -8,7 +8,7 @@ import Decodable
 struct ErrorClass {
     let status: String
     let message: String
-    let code: String?
+    let code: Int?
 }
 
 

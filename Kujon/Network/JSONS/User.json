@@ -1,21 +1,18 @@
 {
-  "status": "success",
   "data": {
-    "update_time": "2016-06-10 13:41:50",
-    "google": {
-      "picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
-      "name": "kujon test",
-      "email": "kujontest@gmail.com"
-    },
-    "titles": {
-      "after": null,
-      "before": null
-    },
-    "staff_status": "Nieaktywny pracownik",
-    "user_type": "google",
-    "sex": "M",
+    "created_time": "2016-10-06 09:32:17",
+    "email": "wojciechmaciejewski1985@gmail.com",
+    "email_access": "plaintext",
+    "email_url": "https://usosweb.demo.usos.edu.pl/kontroler.php?_action=katalog2/osoby/pokazOsobe&focus=email&os_id=1167405",
+    "first_name": "Jakub",
+    "has_email": true,
+    "has_photo": true,
+    "id": "1167405",
     "last_name": "Jamrozik",
-    "photo_url": "https://api.kujon.mobi/users_info_photos/5756c9d4855ef94993a374c9",
+    "photo_url": "https://api.kujon.mobi/users_info_photos/57f4eb42855ef9029c278d15",
+    "sex": "M",
+    "staff_status": "Nieaktywny pracownik",
+    "student_number": "1234187610",
     "student_programmes": [
       {
         "id": "342896",
@@ -39,22 +36,72 @@
         }
       }
     ],
-    "user_created": "2016-06-07 15:17:48",
-    "id": "1167405",
-    "student_number": "1234187610",
-    "room": null,
-    "course_editions_conducted": [],
-    "first_name": "Jakub",
-    "email_url": "https://usosweb.demo.usos.edu.pl/kontroler.php?_action=actionx:katalog2/osoby/pokazOsobe(os_id:1167405;focus:email)",
-    "student_status": "aktywny student",
-    "name": "kujon test",
-    "office_hours": null,
-    "usos_name": "Uniwersytet DEMO w Nibylandi",
-    "homepage_url": null,
-    "employment_positions": [],
-    "has_email": true,
+    "student_status": "nieaktywny student",
+    "theses": [
+      {
+        "authors": [
+          {
+            "first_name": "Jakub",
+            "id": "1167405",
+            "last_name": "Jamrozik"
+          }
+        ],
+        "faculty": {
+          "id": "10000000",
+          "name": "Wydzia\u0142 Matematyki, Informatyki i Mechaniki"
+        },
+        "id": "130927",
+        "supervisors": [
+          {
+            "first_name": "Marek",
+            "id": "1",
+            "last_name": "G\u00f3ralowski"
+          }
+        ],
+        "title": "Distributed slicing in mobile wireless networks",
+        "type": "master"
+      },
+      {
+        "authors": [
+          {
+            "first_name": "Jan",
+            "id": "1850886",
+            "last_name": "Rogacki"
+          },
+          {
+            "first_name": "Katarzyna",
+            "id": "1541571",
+            "last_name": "Montewka"
+          },
+          {
+            "first_name": "Jakub",
+            "id": "1167405",
+            "last_name": "Jamrozik"
+          }
+        ],
+        "faculty": {
+          "id": "10000000",
+          "name": "Wydzia\u0142 Matematyki, Informatyki i Mechaniki"
+        },
+        "id": "124553",
+        "supervisors": [
+          {
+            "first_name": "\u0141ucja",
+            "id": "1891175",
+            "last_name": "Bojar"
+          }
+        ],
+        "title": "Aran\u017cacja mebli za pomoc\u0105 Oculus Rift",
+        "type": "licentiate"
+      }
+    ],
+    "titles": {
+      "after": null,
+      "before": null
+    },
+    "user_type": "GOOGLE",
     "usos_id": "DEMO",
-    "has_photo": true,
-    "email": "kujontest@gmail.com"
-  }
+    "usos_name": "Uniwersytet DEMO w Nibylandi"
+  },
+  "status": "success"
 }
