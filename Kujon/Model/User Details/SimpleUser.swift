@@ -29,14 +29,14 @@ extension SimpleUser: Decodable {
     }
 
     func getPrefix() -> String {
-        return self.titles?.before != nil ? self.titles!.before! : ""
+        return self.titles?.before != nil ? self.titles!.before! + " " : ""
     }
 
      func getSuffix() -> String {
-        return self.titles?.after != nil ? self.titles!.after! : ""
+        return self.titles?.after != nil ? self.titles!.after! + " " : ""
     }
 
     func getNameWithTitles() -> String{
-        return getPrefix() + " " + firstName + " " + lastName + " " + getSuffix()
+        return getPrefix() + firstName + " " + lastName + getSuffix()
     }
 }
