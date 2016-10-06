@@ -69,15 +69,6 @@ class UserTableViewController: UITableViewController
         loadData()
     }
 
-    //TODO: DELETE
-    override func viewDidAppear(animated: Bool) {
-        print("USER: ",userDetail.firstName," ", userDetail.lastName,", THESES NO:",userDetail.theses?.count)
-        print("FACULTIES NO: ",userFaculties.count)
-        print("TERMS NO: ",terms.count)
-        print("PROGRAMMES NO: ",programmes.count)
-
-    }
-
     func refresh(refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")
         userDetailsProvider.reload()
@@ -153,13 +144,9 @@ class UserTableViewController: UITableViewController
         var cell: UITableViewCell!
         switch (indexPath.section) {
         case 0: cell = self.configureUserDetails(indexPath)
-            break;
         case 1: cell = self.configureStudentProgrammeCell(indexPath)
-            break;
         case 2: cell = self.configureFacultieCell(indexPath)
-            break;
         case 3: cell = self.self.configureStatsCellForIndexPath(indexPath)
-            break;
         default: cell = self.configureUserDetails(indexPath)
         }
         cell.selectionStyle = UITableViewCellSelectionStyle.None
@@ -167,20 +154,16 @@ class UserTableViewController: UITableViewController
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cellPosition = (section:indexPath.section, row:indexPath.row)
+        let cellPosition: (section: Int, row: Int) = (section:indexPath.section, row:indexPath.row)
         switch (cellPosition) {
         case (section:1, row: _):
             clicked(indexPath)
-            break;
         case (section:2, row: _):
             clickedFacultie(indexPath)
-            break;
         case (section:3, row: 0):
             clickedTermsCell()
-            break;
         case (section:3, row: 1):
             clickedThesesCell()
-            break;
         default:
             break;
         }
