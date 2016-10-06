@@ -47,13 +47,7 @@ class UserTableViewController: UITableViewController
         facultieProvider.delegate = self
         termsProvider.delegate = self
         programmeProvider.delegate = self;
-        if let navigationController = self.navigationController {
-            let navigationBar = navigationController.navigationBar
-            let navigationSeparator = UIView(frame: CGRectMake(0, navigationBar.frame.size.height - 1, navigationBar.frame.size.width, 2))
-            navigationSeparator.backgroundColor = UIColor.kujonBlueColor()// Here your custom color
-            navigationSeparator.opaque = true
-            self.navigationController?.navigationBar.addSubview(navigationSeparator)
-        }
+        addNavigationSeparator()
         view.backgroundColor = UIColor.whiteColor()
         self.tableView.tableFooterView =  UIView()
         self.tableView.registerNib(UINib(nibName: "UserDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: usedDetailCellId)
@@ -69,6 +63,22 @@ class UserTableViewController: UITableViewController
         refreshControl?.beginRefreshingManually()
         self.navigationController?.navigationBar.barTintColor = UIColor.kujonBlueColor()
         loadData()
+    }
+
+    private func addNavigationSeparator() {
+        guard let navigationController = self.navigationController else {
+            return
+        }
+        let navigationBar = navigationController.navigationBar
+        let navigationSeparator = UIView(frame: CGRectMake(0, navigationBar.frame.size.height - 1, navigationBar.frame.size.width, 2))
+        navigationSeparator.backgroundColor = UIColor.kujonBlueColor()// Here your custom color
+        navigationSeparator.opaque = true
+        navigationController.navigationBar.addSubview(navigationSeparator)
+        let constraints: [NSLayoutConstraint] = [
+            navigationSeparator.leadingAnchor.constraintEqualToAnchor(navigationBar.leadingAnchor),
+            navigationSeparator.trailingAnchor.constraintEqualToAnchor(navigationBar.trailingAnchor),
+        ]
+            NSLayoutConstraint.activateConstraints(constraints)
     }
 
     func refresh(refreshControl: UIRefreshControl) {
