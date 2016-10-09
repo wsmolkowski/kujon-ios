@@ -179,6 +179,7 @@
 		4C0D8C86D91CC1729F2BB5C3 /* DayWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D81848238BC6A569D3D0E /* DayWrapper.swift */; };
 		4C0D8C8AA72AA75BAD58BB1B /* MenuItemWithURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D87A69C3A4C12E606AC99 /* MenuItemWithURL.swift */; };
 		4C0D8CAF7182C850446EEF26 /* ShareMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D80FA12B14BE8A3AB7DBD /* ShareMenuItem.swift */; };
+		4C0D8CF51338806E147F4244 /* OpenLoginScreenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8A8156B95E39738E705B /* OpenLoginScreenProtocol.swift */; };
 		4C0D8D1041B61DE7CCC02962 /* SimpleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8689AC8770C24958D39B /* SimpleUser.swift */; };
 		4C0D8D321D204EEBF3D52C12 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8D567C0AACBD0AB1D8F7 /* Lato-Bold.ttf */; };
 		4C0D8D445517BAD9C52B3DF0 /* Usoses.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8187AF0AC9814758C9EB /* Usoses.json */; };
@@ -463,6 +464,7 @@
 		4C0D8A5E32ECD20C47DE7742 /* MyEventView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyEventView.h; sourceTree = "<group>"; };
 		4C0D8A64FF1DBA82355146B3 /* Programme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Programme.swift; sourceTree = "<group>"; };
 		4C0D8A7B09C45724433D49FA /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
+		4C0D8A8156B95E39738E705B /* OpenLoginScreenProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenLoginScreenProtocol.swift; sourceTree = "<group>"; };
 		4C0D8A851CC2821CF61DAFB2 /* SectionHelperProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHelperProtocol.swift; sourceTree = "<group>"; };
 		4C0D8A8C0978C3C611A33942 /* Checker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
 		4C0D8AA6C79613D718788CD7 /* CourseDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetails.swift; sourceTree = "<group>"; };
@@ -831,6 +833,7 @@
 				4C0D82AB5AAC403921386765 /* RegisterViewController.xib */,
 				5246F67A1D902276007AEC0A /* LoginViewController.swift */,
 				5246F67B1D902276007AEC0A /* LoginViewController.xib */,
+				4C0D8A8156B95E39738E705B /* OpenLoginScreenProtocol.swift */,
 			);
 			path = EntryScreen;
 			sourceTree = "<group>";
@@ -2342,6 +2345,7 @@
 				4C0D84EA2ECE10D624CD3221 /* ProgrammeSearchResponse.swift in Sources */,
 				4C0D8A3C3D93B49A75DE6498 /* ProgrammeSearchProvider.swift in Sources */,
 				4C0D895F871560BA2D9035FA /* ProgrammeSearchElement.swift in Sources */,
+				4C0D8CF51338806E147F4244 /* OpenLoginScreenProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

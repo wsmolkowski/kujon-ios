@@ -13,14 +13,14 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
     @IBOutlet weak var rejestrujacLabel: UILabel!
     @IBOutlet weak var passwordLabel: UITextField!
 
-    var delegeta: OnFacebookCredentailSaved! = nil
+    weak var delegeta: OnFacebookCredentailSaved! = nil
     var loginProvider = ProvidersProviderImpl.sharedInstance.provideLoginProvider()
     let emailManager = EmailManager.sharedInstance
     var email:String = ""
     private let checker = Checker()
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(RegisterViewController.back), andTitle: StringHolder.appName)
+        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(RegisterViewController.back), andTitle: StringHolder.loggin2)
         self.edgesForExtendedLayout = UIRectEdge.None
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterViewController.showTerms))
@@ -28,6 +28,7 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
         rejestrujacLabel.userInteractionEnabled = true
         rejestrujacLabel.addGestureRecognizer(tapGestureRecognizer)
         loginProvider.delegate = self
+        emailLabel.text = email
     }
 
     override func didReceiveMemoryWarning() {

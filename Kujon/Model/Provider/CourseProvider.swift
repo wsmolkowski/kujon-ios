@@ -12,7 +12,7 @@ protocol CourseProviderDelegate: ErrorResponseProtocol {
 }
 
 class CourseProvider: RestApiManager {
-weak var delegate: CourseProviderDelegate! = nil
+    var delegate: CourseProviderDelegate! = nil
 
     func provideCourses() {
         self.makeHTTPAuthenticatedGetRequest({

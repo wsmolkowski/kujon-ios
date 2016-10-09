@@ -8,7 +8,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 
-protocol OnFacebookCredentailSaved{
+protocol OnFacebookCredentailSaved: class{
     func onFacebookCredentailSaved(isLogged:Bool)
 }
 class FacebookManager : UserLogin {

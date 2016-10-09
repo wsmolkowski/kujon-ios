@@ -31,9 +31,6 @@ class GoogleManager: UserLogin {
     }
 
     func isLoggedIn(logComplete:() ->Void,googleComplete:()->Void,noLogged:()->Void)  {
-        var loggedToFB = false;
-        var loggedToGoogle = false;
-        var loggedViaEmail = false;
 
         if (FBSDKAccessToken.currentAccessToken() != nil) {
             logComplete()

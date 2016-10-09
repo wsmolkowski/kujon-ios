@@ -15,7 +15,8 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
         OnFacebookCredentailSaved,
         GIDSignInUIDelegate,
         GIDSignInDelegate,
-        ConfigProviderDelegate {
+        ConfigProviderDelegate,
+        OpenLoginScreenProtocol{
 
     let googleSignInManager = GIDSignIn.sharedInstance()
 
@@ -79,6 +80,7 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
     }
     @IBAction func registerClick(sender: AnyObject) {
         let controller = RegisterViewController()
+        controller.delegate = self
         self.navigationController?.pushViewController(controller, animated: true)
     }
 
@@ -180,5 +182,13 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
             print("\(error.localizedDescription)")
         }
     }
+
+    func openLoginScreenWithEmail(email: String) {
+        let controller = LoginViewController()
+        controller.delegeta = self
+        controller.email = email
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+
 
 }

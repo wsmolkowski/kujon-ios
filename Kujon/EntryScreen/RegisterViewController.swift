@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController,RegistrationProviderDelegate {
+class RegisterViewController: UIViewController, RegistrationProviderDelegate {
 
     @IBOutlet weak var rejestrujacLabel: UILabel!
     @IBOutlet weak var seconPasswordTextField: UITextField!
@@ -16,6 +16,9 @@ class RegisterViewController: UIViewController,RegistrationProviderDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     private let checker = Checker()
     private let registerProvider = ProvidersProviderImpl.sharedInstance.provideRegistrationProvider()
+
+    weak var delegate: OpenLoginScreenProtocol! = nil
+    private var emailText=""
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -29,7 +32,7 @@ class RegisterViewController: UIViewController,RegistrationProviderDelegate {
         rejestrujacLabel.addGestureRecognizer(tapGestureRecognizer)
     }
 
-    func showTerms(sender: UITapGestureRecognizer){
+    func showTerms(sender: UITapGestureRecognizer) {
         NSlogManager.showLog("showTermsAndConditions")
         var controller: UIViewController!
         controller = WebViewController()
@@ -41,6 +44,7 @@ class RegisterViewController: UIViewController,RegistrationProviderDelegate {
     func back() {
         self.navigationController?.popViewControllerAnimated(true)
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -53,6 +57,9 @@ class RegisterViewController: UIViewController,RegistrationProviderDelegate {
             (action: UIAlertAction!) in
             alertController.dismissViewControllerAnimated(true, completion: nil)
             self.back()
+            if(self.delegate != nil){
+                self.delegate.openLoginScreenWithEmail(self.emailText)
+            }
 
         }))
         presentViewController(alertController, animated: true, completion: nil)
@@ -64,25 +71,26 @@ class RegisterViewController: UIViewController,RegistrationProviderDelegate {
 
     @IBAction func onRegisterClick(sender: AnyObject) {
         let email = emailTextField.text!
-        if(!checker.isEmail(email)){
-           showAlert(StringHolder.emailPasswordError)
+        if (!checker.isEmail(email)) {
+            showAlert(StringHolder.emailPasswordError)
             return
         }
         let password = passwordTextField.text!
-        if(!checker.arePasswordGoodRegex(password)){
+        if (!checker.arePasswordGoodRegex(password)) {
             showAlert(StringHolder.passwordPasswordError)
             return
         }
-        if(password != seconPasswordTextField.text){
+        if (password != seconPasswordTextField.text) {
             showAlert(StringHolder.identicalPasswordError)
             return
         }
+        self.emailText = email;
         registerProvider.register(email, password: password)
 
     }
 
 
-    private func showAlert(text: String){
+    private func showAlert(text: String) {
         let alertController = UIAlertController(title: "Błąd rejestracji ", message: text, preferredStyle: .Alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
             (action: UIAlertAction!) in

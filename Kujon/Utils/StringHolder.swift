@@ -73,6 +73,7 @@ class StringHolder {
     static let errorUsos  = "Nie możemy się połączyć z USOS."
     static let usosGreetings = "Gratulacje! Udało Ci się zalogować na "
     static let loggin = "Logowanie"
+    static let loggin2 = "Zaloguj się"
     static let contactEmail = "kujon@kujon.mobi"
     static let appItunesLink = "https://itunes.apple.com/pl/app/kujon-klient-usos/id1150898148"
     static let errorPassword = "Bład rejestracji"
