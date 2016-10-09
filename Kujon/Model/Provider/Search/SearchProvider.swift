@@ -10,12 +10,22 @@ protocol SearchProviderProtocol {
     func setDelegate(delegate: SearchProviderDelegate)
 }
 
+extension SearchProviderProtocol{
+    func getSearchElements(getList: GetListOfSearchElements)->Array<SearchElementProtocol>{
+        return getList.getList()
+    }
+    func isThereNext(getList: GetListOfSearchElements) -> Bool{
+        return getList.isThereNext()
+    }
+}
 
 
 
 
 protocol SearchProviderDelegate: ErrorResponseProtocol {
     func searchedItems(array: Array<SearchElementProtocol>)
+    func isThereNextPage(isThere:Bool)
+
 }
 
 enum SearchTypes {

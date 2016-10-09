@@ -8,28 +8,56 @@
 
 import UIKit
 
-class SearchResultTableViewController: UITableViewController,SearchProviderDelegate {
+class SearchResultTableViewController: UITableViewController, SearchProviderDelegate {
 
 
-    var array:Array<SearchElementProtocol> = Array()
+    var array: Array<SearchElementProtocol> = Array()
     var searchQuery: String! = nil
-    var provider:SearchProviderProtocol! = nil
+    var provider: SearchProviderProtocol! = nil
     let myCellId = "asjfnainnjagdandgp"
-
+    var number = 0;
+    var isThereNext = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SearchResultTableViewController.back), andTitle: StringHolder.search)
         tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: myCellId)
-        if(provider != nil && searchQuery != nil){
+        if (provider != nil && searchQuery != nil) {
             provider.setDelegate(self)
-            provider.search(searchQuery,more: 0)
+
         }
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
+        refreshControl?.addTarget(self, action: #selector(SearchResultTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.beginRefreshingManually()
+        askForData()
+    }
+
+    func refresh(refreshControl: UIRefreshControl) {
+        NSlogManager.showLog("Refresh was called")
+        self.array = Array()
+        number = 0
+        askForData()
+    }
+
+    func isThereNextPage(isThere: Bool) {
+        self.isThereNext = isThere
     }
 
 
+    private func askForData() {
+        if (isThereNext) {
+            isQuering = true
+            isThereNext = false
+            provider.search(searchQuery, more: number)
+            number = number + 20
+        }
+    }
+
     func searchedItems(array: Array<SearchElementProtocol>) {
-        self.array = array;
+        self.refreshControl?.endRefreshing()
+        isQuering = false
+        self.array = self.array + array
         self.tableView.reloadData();
     }
 
@@ -64,7 +92,18 @@ class SearchResultTableViewController: UITableViewController,SearchProviderDeleg
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         array[indexPath.row].reactOnClick(self.navigationController!)
     }
+    var isQuering = false
+    @available(iOS 2.0, *) override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
 
+        let height = scrollView.frame.size.height
+        let contetyYOffset = scrollView.contentOffset.y
+        let distanceFromBottom = scrollView.contentSize.height - contetyYOffset
+        if (distanceFromBottom <= height) {
+            NSlogManager.showLog("End of list, load more")
+            if (!isQuering) {
+                askForData()
+            }
+        }
+    }
 
-    
 }

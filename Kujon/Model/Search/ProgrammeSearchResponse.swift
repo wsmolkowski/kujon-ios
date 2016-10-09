@@ -10,12 +10,28 @@ struct ProgrammeSearchResponse{
 
 }
 
-extension ProgrammeSearchResponse: Decodable {
+extension ProgrammeSearchResponse: Decodable, GetListOfSearchElements {
     static func decode(j: AnyObject) throws -> ProgrammeSearchResponse {
         return try ProgrammeSearchResponse(
                 data: j => "data"
                 )
     }
+
+    func getList() -> Array<SearchElementProtocol> {
+        let data = self.data;
+        var array:Array<SearchElementProtocol>  = Array()
+        for userSearch in data.items{
+            array.append(userSearch)
+        }
+        return array;
+
+
+    }
+
+    func isThereNext() -> Bool {
+        return self.data.nextPage
+    }
+
 }
 
 

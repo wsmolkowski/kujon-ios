@@ -29,13 +29,8 @@ class FacultySearchProvider: RestApiManager, FacultySearchProviderProtocol, Sear
             json in
             let val = try! self.changeJsonToResposne(json, errorR: self.delegate)
             if (val != nil) {
-                let data = val!.data;
-                var array: Array<SearchElementProtocol> = Array()
-                for courseSearch in data.items {
-                    array.append(courseSearch)
-                }
-                self.delegate?.searchedItems(array)
-
+                self.delegate?.searchedItems(self.getSearchElements(val))
+                self.delegate?.isThereNextPage(self.isThereNext(val));
             }
         }, onError: { text in self.delegate?.onErrorOccurs() })
     }

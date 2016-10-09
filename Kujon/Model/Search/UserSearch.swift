@@ -6,8 +6,22 @@
 import Foundation
 import Decodable
 
-struct UserSearchResponse {
+struct UserSearchResponse: GetListOfSearchElements {
     let data: UserSearchData
+
+    func getList() -> Array<SearchElementProtocol> {
+        let data = self.data;
+        var array:Array<SearchElementProtocol>  = Array()
+        for userSearch in data.items{
+            array.append(userSearch)
+        }
+        return array;
+    }
+
+
+    func isThereNext() -> Bool {
+        return self.data.nextPage
+    }
 
 }
 

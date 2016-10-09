@@ -8,12 +8,26 @@ import Foundation
 import Decodable
 
 
-struct FacultySearchResponse:Decodable{
+struct FacultySearchResponse:Decodable, GetListOfSearchElements{
     let data: FacultySearchData
     static func decode(j: AnyObject) throws -> FacultySearchResponse {
         return try FacultySearchResponse(
                 data: j => "data"
                 )
+    }
+
+    func getList() -> Array<SearchElementProtocol> {
+        let data = self.data;
+        var array:Array<SearchElementProtocol>  = Array()
+        for userSearch in data.items{
+            array.append(userSearch)
+        }
+        return array;
+
+    }
+
+    func isThereNext() -> Bool {
+        return self.data.nextPage
     }
 }
 

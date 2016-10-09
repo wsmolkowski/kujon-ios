@@ -12,7 +12,7 @@ protocol UsersSearchProtocol: JsonProviderProtocol {
 }
 
 
-class UserSearchProvider : RestApiManager, UsersSearchProtocol, SearchProviderProtocol {
+class UserSearchProvider: RestApiManager, UsersSearchProtocol, SearchProviderProtocol {
 
     weak var delegate: SearchProviderDelegate!
 
@@ -25,23 +25,17 @@ class UserSearchProvider : RestApiManager, UsersSearchProtocol, SearchProviderPr
     }
 
     var endpoint = ""
-    func search(text: String, more: Int){
+    func search(text: String, more: Int) {
         endpoint = text + "?start=" + String(more)
         self.makeHTTPAuthenticatedGetRequest({
             json in
-            let val  = try! self.changeJsonToResposne(json, errorR: self.delegate)
+            let val = try! self.changeJsonToResposne(json, errorR: self.delegate)
             if (val != nil) {
-                let data = val!.data;
-                var array:Array<SearchElementProtocol>  = Array()
-                for userSearch in data.items{
-                    array.append(userSearch)
-                }
-                self.delegate?.searchedItems(array)
-//
+                self.delegate?.searchedItems(self.getSearchElements(val))
+                self.delegate?.isThereNextPage(self.isThereNext(val));
             }
         }, onError: { text in self.delegate?.onErrorOccurs() })
     }
-
 
 
 }
