@@ -36,6 +36,7 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
     func refresh(refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")
         self.array = Array()
+        self.tableView.reloadData();
         number = 0
         askForData()
     }
