@@ -50,7 +50,7 @@ class StringHolder {
     static let demoId = "DEMO"
     static let moveToUsos = "Zostaniesz przekierowany do USOS żeby się zalogować"
     static let ok = "OK"
-    static let statistics = "Statystyki"
+    static let statistics = "Informacje"
     static let cycles = "Cykle"
     static let theses = "Prace naukowe"
     static let not_auth = "Brak autoryzacji"
