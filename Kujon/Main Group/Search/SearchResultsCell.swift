@@ -15,7 +15,7 @@ class SearchResultsCell: GoFurtherViewCellTableViewCell {
     internal var title: String? {
         didSet {
             if let title = title {
-                title.attributedStringFromHTMLWithFont() { [weak self] attributedString in
+                title.attributedStringFromHTML() { [weak self] attributedString in
                     guard let mutableAttributedString = attributedString?.mutableCopy() as? NSMutableAttributedString else {
                         return
                     }

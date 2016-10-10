@@ -42,21 +42,12 @@ class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
       func configureSearchButton() {
         let title = StringHolder.searchButtonLabel
 
-        let attributesNormalState: [String:AnyObject]? = [
-            NSFontAttributeName: UIFont.kjnFontLatoMedium(size:17)!,
-            NSForegroundColorAttributeName: UIColor.color3FBAD9(alpha: 1.0)
-        ]
+        let titleForStateEnabled = title.attributedStringWithFont(UIFont.kjnFontLatoMedium(size:17)!, color: UIColor.color3FBAD9(alpha: 1.0))
+        button.setAttributedTitle(titleForStateEnabled, forState: .Normal)
 
-        let titleStateNormal = NSAttributedString(string: title, attributes: attributesNormalState)
-        button.setAttributedTitle(titleStateNormal, forState: .Normal)
+        let titleForStateDisabled = title.attributedStringWithFont(UIFont.kjnFontLatoMedium(size:17)!, color: UIColor.color3FBAD9(alpha: 0.4))
+        button.setAttributedTitle(titleForStateDisabled, forState: .Disabled)
 
-        let attributesDisabledState: [String:AnyObject]? = [
-            NSFontAttributeName: UIFont.kjnFontLatoMedium(size:17)!,
-            NSForegroundColorAttributeName: UIColor.color3FBAD9(alpha: 0.4)
-        ]
-
-        let titleStateDisabled = NSAttributedString(string: title, attributes: attributesDisabledState)
-        button.setAttributedTitle(titleStateDisabled, forState: .Disabled)
     }
 
     internal func configureCellWithTitle(cellTitle:String, textInputPlaceholder placeholder:String) {

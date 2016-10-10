@@ -18,14 +18,14 @@ extension String {
         return NSAttributedString(string:self, attributes:attributes)
     }
 
-    func attributedStringFromHTMLWithFont(completion: NSAttributedString? ->()) {
+    func attributedStringFromHTML(completion: NSAttributedString? ->()) {
         guard let data = dataUsingEncoding(NSUTF8StringEncoding) else {
             print("Unable to decode data from html string: \(self)")
             return completion(nil)
         }
 
         let options = [ NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType,
-                        NSCharacterEncodingDocumentAttribute: NSNumber(unsignedInteger:NSUTF8StringEncoding),
+                        NSCharacterEncodingDocumentAttribute: NSNumber(unsignedInteger:NSUTF8StringEncoding)
         ]
 
         dispatch_async(dispatch_get_main_queue()) {

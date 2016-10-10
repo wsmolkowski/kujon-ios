@@ -26,7 +26,7 @@ extension UIColor{
         return UIColor(red: 0.0 / 255.0, green: 128.0 / 255.0, blue: 179.0 / 255.0, alpha: 1.0)
     }
 
-    // MARK: helper mapping for communication with designer
+    // helper mapping for communication with designer
 
     static func color3FBAD9(alpha alpha: CGFloat = 1.0) -> UIColor {
         return UIColor.kujonBlueColor(alpha: alpha)
