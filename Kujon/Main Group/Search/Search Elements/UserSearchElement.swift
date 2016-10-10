@@ -21,7 +21,7 @@ class UserSearchElement : SearchViewProtocol {
 
     func provideUITableViewCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> SearchTableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(myCellId, forIndexPath: indexPath) as! SearchTableViewCell
-        cell.textView.placeholder = "Znajdź studenta lub pracownika"
+        cell.configureCellWithTitle("Studenci i pracownicy", textInputPlaceholder: "Imię i nazwisko")
         return cell
     }
 

@@ -6,7 +6,6 @@
 import Foundation
 
 class StringHolder {
-    static let search = "Szukaj"
     static let user = "Użytkownik"
     static let courses = "Przedmioty"
     static let grades = "Oceny"
@@ -82,4 +81,8 @@ class StringHolder {
     static let identicalPasswordError = "Hasła muszą być identyczne"
     static let ectsPoints =  "suma punktów ECTS"
     static let autorizationError = "Błąd autoryzacji"
+    static let search = "Wyszukiwanie"
+    static let searchResults = "Wyniki wyszukiwania"
+    static let searchButtonLabel = "Znajdź"
+
 }

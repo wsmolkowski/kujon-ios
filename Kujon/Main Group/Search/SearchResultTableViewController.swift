@@ -14,14 +14,15 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
     var array: Array<SearchElementProtocol> = Array()
     var searchQuery: String! = nil
     var provider: SearchProviderProtocol! = nil
-    let myCellId = "asjfnainnjagdandgp"
+    let myCellId = "SearchResultsCell"
     var number = 0;
     var isThereNext = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SearchResultTableViewController.back), andTitle: StringHolder.search)
-        tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: myCellId)
+        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SearchResultTableViewController.back), andTitle: StringHolder.searchResults)
+        tableView.separatorStyle = .None
+        tableView.registerNib(UINib(nibName: "SearchResultsCell", bundle: nil), forCellReuseIdentifier: myCellId)
         if (provider != nil && searchQuery != nil) {
             provider.setDelegate(self)
 
@@ -84,18 +85,22 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(myCellId, forIndexPath: indexPath) as! GoFurtherViewCellTableViewCell
-        cell.plainLabel.text = array[indexPath.row].getTitle()
+        let cell = tableView.dequeueReusableCellWithIdentifier(myCellId, forIndexPath: indexPath) as! SearchResultsCell
+        cell.title = array[indexPath.row].getTitle()
         return cell
 
     }
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 50.0
+    }
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         array[indexPath.row].reactOnClick(self.navigationController!)
     }
     var isQuering = false
-    @available(iOS 2.0, *) override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
 
+    override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         let height = scrollView.frame.size.height
         let contetyYOffset = scrollView.contentOffset.y
         let distanceFromBottom = scrollView.contentSize.height - contetyYOffset
