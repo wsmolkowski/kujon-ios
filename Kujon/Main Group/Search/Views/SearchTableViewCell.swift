@@ -37,7 +37,6 @@ class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
         textField.addTarget(self, action: #selector(textFieldDidChange(_:)), forControlEvents: .EditingChanged)
         textField.text = ""
 
-        selected = true
     }
 
       func configureSearchButton() {
