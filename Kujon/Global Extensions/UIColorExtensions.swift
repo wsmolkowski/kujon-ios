@@ -7,18 +7,43 @@ import Foundation
 import UIKit
 
 extension UIColor{
-    static func kujonBlueColor ()->UIColor{ return UIColor(colorLiteralRed: 63.0/255,green: 186.0/255,blue: 217.0/255,alpha: 1.0)}
-    static func kujonDarkerBlueColor ()->UIColor{ return UIColor(colorLiteralRed: 58.0/255,green: 168.0/255,blue: 198.0/255,alpha: 1.0)}
-    static func kujonBlueColorWithAplha ()->UIColor{ return UIColor(colorLiteralRed: 63/255,green: 186/255,blue: 217/255,alpha: 0.5)}
-    static func kujonDarkTextColor ()->UIColor{ return UIColor(colorLiteralRed: 42/255,green: 51/255,blue: 62/255,alpha: 0.5)}
-    static func kujonCalendarBlue ()->UIColor{ return UIColor(colorLiteralRed: 217/255,green: 241/255,blue: 247/255,alpha: 1)}
-    static func blackWithAlpha ()->UIColor{ return UIColor(colorLiteralRed: 0,green: 0,blue: 0,alpha: 0.34)}
+    static func kujonBlueColor(alpha alpha: CGFloat = 1.0)->UIColor{
+        return UIColor(red: 63.0/255,green: 186.0/255,blue: 217.0/255,alpha:alpha)
+    }
+    static func kujonDarkerBlueColor ()->UIColor{ return UIColor(red: 58.0/255,green: 168.0/255,blue: 198.0/255,alpha: 1.0)}
+    static func kujonBlueColorWithAplha ()->UIColor{ return UIColor(red: 63/255,green: 186/255,blue: 217/255,alpha: 0.5)}
+    static func kujonDarkTextColor(alpha alpha: CGFloat = 0.5) -> UIColor {
+        return UIColor(red: 42/255,green: 51/255,blue: 62/255,alpha: alpha)
+    }
+    static func blackWithAlpha(alpha alpha: CGFloat = 0.34) -> UIColor {
+        return UIColor(red: 0,green: 0,blue: 0, alpha: alpha)
+    }
+    static func kujonCalendarBlue ()->UIColor{ return UIColor(red: 217/255,green: 241/255,blue: 247/255,alpha: 1)}
     static func greyBackgroundColor ()->UIColor{ return UIColor(colorLiteralRed: 239/255,green: 242/255,blue: 248/255,alpha: 1)}
-    static func lightGray ()->UIColor{ return UIColor(colorLiteralRed: 216/255,green: 216/255,blue: 216/255,alpha: 1)}
-    static func calendarSeparatorColor ()->UIColor{ return UIColor(colorLiteralRed: 160/255,green: 160/255,blue: 160/255,alpha: 0.6)}
+    static func lightGray(alpha alpha: CGFloat = 1.0)->UIColor{ return UIColor(red: 216/255,green: 216/255,blue: 216/255,alpha: alpha)}
+    static func calendarSeparatorColor ()->UIColor{ return UIColor(red: 160/255,green: 160/255,blue: 160/255,alpha: 0.6)}
     static func kjnTealBlueColor() -> UIColor {
         return UIColor(red: 0.0 / 255.0, green: 128.0 / 255.0, blue: 179.0 / 255.0, alpha: 1.0)
     }
+
+    // MARK: helper mapping for communication with designer
+
+    static func color3FBAD9(alpha alpha: CGFloat = 1.0) -> UIColor {
+        return UIColor.kujonBlueColor(alpha: alpha)
+    }
+    static func colorD8D8D8(alpha alpha: CGFloat = 1.0) -> UIColor {
+        return UIColor.lightGray(alpha: alpha)
+    }
+    static func color2A333E(alpha alpha: CGFloat = 1.0) -> UIColor {
+        return UIColor.kujonDarkTextColor(alpha: alpha)
+    }
+    static func color000000(alpha alpha: CGFloat = 1.0) -> UIColor {
+        return UIColor.kujonDarkTextColor(alpha: alpha)
+    }
+
+
+
+
 }
 
 // Color palette
@@ -54,4 +79,18 @@ extension UIFont {
     class func kjnTextStyleFontSmall() -> UIFont? {
         return UIFont(name: "Lato-Regular", size: 9.0)
     }
+
+    class func kjnFontLatoMediumSize(size:CGFloat) -> UIFont? {
+        return UIFont(name: "Lato-Medium", size: size)
+    }
+
+    class func kjnFontLatoRegularSize(size:CGFloat) -> UIFont? {
+        return UIFont(name: "Lato-Regular", size: size)
+    }
+
+    func bold() -> UIFont {
+        let descriptor = fontDescriptor().fontDescriptorWithSymbolicTraits(.TraitBold)
+            return UIFont(descriptor: descriptor, size: 0)
+        }
+
 }

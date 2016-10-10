@@ -20,7 +20,7 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SearchResultTableViewController.back), andTitle: StringHolder.search)
+        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SearchResultTableViewController.back), andTitle: StringHolder.searchResults)
         tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: myCellId)
         if (provider != nil && searchQuery != nil) {
             provider.setDelegate(self)
