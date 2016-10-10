@@ -62,20 +62,12 @@ class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     internal func configureCellWithTitle(cellTitle:String, textInputPlaceholder placeholder:String) {
 
-        title.attributedText = attributedTextForString(cellTitle, font: UIFont.kjnFontLatoRegularSize(17)!, color: UIColor.color2A333E())
+        title.attributedText = cellTitle.attributedStringWithFont(UIFont.kjnFontLatoRegularSize(17)!, color: UIColor.color2A333E())
 
-        textField.attributedText = attributedTextForString(placeholder, font: UIFont.kjnFontLatoRegularSize(13)!, color: UIColor.color000000(alpha: 0.35))
+        textField.attributedText = placeholder.attributedStringWithFont(UIFont.kjnFontLatoRegularSize(13)!, color: UIColor.color000000(alpha: 0.35))
 
         textField.placeholder = placeholder
         
-    }
-
-    private func attributedTextForString(text:String, font:UIFont, color:UIColor) -> NSAttributedString {
-        let attibutes: [String:AnyObject]? = [
-            NSFontAttributeName: font,
-            NSForegroundColorAttributeName: color
-        ]
-        return NSAttributedString(string:text, attributes:attibutes)
     }
 
     // MARK: User actions

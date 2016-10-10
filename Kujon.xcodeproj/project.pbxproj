@@ -306,6 +306,9 @@
 		52FF97291D23B7D500565763 /* CourseDetailsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FF97271D23B7D500565763 /* CourseDetailsTableViewController.xib */; };
 		52FF972C1D23C9C400565763 /* CourseNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FF972A1D23C9C400565763 /* CourseNameTableViewCell.swift */; };
 		52FF972D1D23C9C400565763 /* CourseNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FF972B1D23C9C400565763 /* CourseNameTableViewCell.xib */; };
+		662DAFE71DAC0FCD0094867E /* SearchResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662DAFE61DAC0FCD0094867E /* SearchResultsCell.swift */; };
+		662DAFE91DAC0FD20094867E /* SearchResultsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 662DAFE81DAC0FD20094867E /* SearchResultsCell.xib */; };
+		662DAFED1DAC14150094867E /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662DAFEC1DAC14150094867E /* String+.swift */; };
 		66D506491DA69CD300B5CE1B /* ThesesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D506481DA69CD300B5CE1B /* ThesesTableViewController.swift */; };
 		66D506551DA6BD9000B5CE1B /* ThesisCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D506531DA6BD9000B5CE1B /* ThesisCell.swift */; };
 		66D506561DA6BD9000B5CE1B /* ThesisCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66D506541DA6BD9000B5CE1B /* ThesisCell.xib */; };
@@ -630,6 +633,9 @@
 		52FF972A1D23C9C400565763 /* CourseNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseNameTableViewCell.swift; sourceTree = "<group>"; };
 		52FF972B1D23C9C400565763 /* CourseNameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseNameTableViewCell.xib; sourceTree = "<group>"; };
 		576A3371E79EA9353F622036 /* Pods_KujonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KujonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		662DAFE61DAC0FCD0094867E /* SearchResultsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsCell.swift; sourceTree = "<group>"; };
+		662DAFE81DAC0FD20094867E /* SearchResultsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultsCell.xib; sourceTree = "<group>"; };
+		662DAFEC1DAC14150094867E /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		66BCCCAE95D0BBA8FFC5B406 /* Pods-KujonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KujonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KujonTests/Pods-KujonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		66D506481DA69CD300B5CE1B /* ThesesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesesTableViewController.swift; sourceTree = "<group>"; };
 		66D506531DA6BD9000B5CE1B /* ThesisCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesisCell.swift; sourceTree = "<group>"; };
@@ -867,6 +873,8 @@
 				4C0D86CF0438260E36F63534 /* Search Elements */,
 				527A0EC01DA426A7003A251A /* SearchResultTableViewController.swift */,
 				527A0EC11DA426A7003A251A /* SearchResultTableViewController.xib */,
+				662DAFE61DAC0FCD0094867E /* SearchResultsCell.swift */,
+				662DAFE81DAC0FD20094867E /* SearchResultsCell.xib */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1204,6 +1212,7 @@
 				4C0D8DB54DD23281C3E2C08B /* UIViewExtension.swift */,
 				4C0D80D05F8472B37F41EF0B /* ViewControllerExtension.swift */,
 				4C0D80C60F18F352959F2C99 /* CALayerExtensions.swift */,
+				662DAFEC1DAC14150094867E /* String+.swift */,
 			);
 			path = "Global Extensions";
 			sourceTree = "<group>";
@@ -1657,6 +1666,7 @@
 				528BCAC81D5DF42100A9E49C /* WWWTableViewCell.xib in Resources */,
 				527B39B81D117B800028BCF9 /* Assets.xcassets in Resources */,
 				4C0D87FF3ADA197F8655E408 /* Programmes.json in Resources */,
+				662DAFE91DAC0FD20094867E /* SearchResultsCell.xib in Resources */,
 				4C0D85BA322F0D6699947ECE /* CourseEditions.json in Resources */,
 				5267503A1D213902004AD243 /* CoursesTableTableViewController.xib in Resources */,
 				52AF77C01D0984FC0058979A /* MenuItemTableViewCell.xib in Resources */,
@@ -2218,6 +2228,7 @@
 				66D506551DA6BD9000B5CE1B /* ThesisCell.swift in Sources */,
 				4C0D8276D4657EED0BD1B0C2 /* LecturersResponse.swift in Sources */,
 				4C0D853633AEE49F996B454C /* CourseEdition.swift in Sources */,
+				662DAFED1DAC14150094867E /* String+.swift in Sources */,
 				4C0D8A432E3EC531C1FE79D7 /* UIColorExtensions.swift in Sources */,
 				4C0D82084D092C855DB2FB09 /* RestApiManager.swift in Sources */,
 				4C0D8BBDB59E0DEB6B91BD0E /* UserDetailView.swift in Sources */,
@@ -2237,6 +2248,7 @@
 				4C0D8BDDC17EAD30A73324A2 /* FacultiesProvider.swift in Sources */,
 				4C0D81849DAA7ACD6F8A1D47 /* JsonDataLoader.swift in Sources */,
 				4C0D8436123E61F0F64C9F9C /* UserDataHolder.swift in Sources */,
+				662DAFE71DAC0FCD0094867E /* SearchResultsCell.swift in Sources */,
 				52574A6D1D59DA9F009B8D08 /* NavDrawerHeaderViewCellTableViewCell.swift in Sources */,
 				4C0D80C1B6E19F2B0AA40F67 /* UserDefaultsManager.swift in Sources */,
 				52FF97281D23B7D500565763 /* CourseDetailsTableViewController.swift in Sources */,
