@@ -91,12 +91,16 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
 
     }
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 50.0
+    }
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         array[indexPath.row].reactOnClick(self.navigationController!)
     }
     var isQuering = false
-    @available(iOS 2.0, *) override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
 
+    override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         let height = scrollView.frame.size.height
         let contetyYOffset = scrollView.contentOffset.y
         let distanceFromBottom = scrollView.contentSize.height - contetyYOffset
