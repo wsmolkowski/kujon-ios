@@ -15,8 +15,16 @@ class SearchResultsCell: GoFurtherViewCellTableViewCell {
     internal var title: String? {
         didSet {
             if let title = title {
-                title.attributedStringFromHTMLWithFont(UIFont.kjnFontLatoRegularSize(15.0)!, color: UIColor.color2A333E()) { [weak self] attributedString in
-                    self?.titleLabel.attributedText = attributedString
+                title.attributedStringFromHTMLWithFont() { [weak self] attributedString in
+                    guard let mutableAttributedString = attributedString?.mutableCopy() as? NSMutableAttributedString else {
+                        return
+                    }
+                    let attributes: [String:AnyObject] = [
+                        NSFontAttributeName: UIFont.kjnFontLatoRegularSize(15.0)!,
+                        NSForegroundColorAttributeName: UIColor.color2A333E()
+                    ]
+                    mutableAttributedString.addAttributes(attributes, range: NSMakeRange(0, mutableAttributedString.length))
+                    self?.titleLabel.attributedText = mutableAttributedString.copy() as? NSAttributedString
                 }
             }
         }

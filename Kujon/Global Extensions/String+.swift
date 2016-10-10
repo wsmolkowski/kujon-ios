@@ -11,14 +11,14 @@ import Foundation
 extension String {
 
     func attributedStringWithFont(font:UIFont, color:UIColor) -> NSAttributedString {
-        let attibutes: [String:AnyObject]? = [
+        let attributes: [String:AnyObject]? = [
             NSFontAttributeName: font,
             NSForegroundColorAttributeName: color
         ]
-        return NSAttributedString(string:self, attributes:attibutes)
+        return NSAttributedString(string:self, attributes:attributes)
     }
 
-    func attributedStringFromHTMLWithFont(font:UIFont, color:UIColor, completion:NSAttributedString? ->()) {
+    func attributedStringFromHTMLWithFont(completion: NSAttributedString? ->()) {
         guard let data = dataUsingEncoding(NSUTF8StringEncoding) else {
             print("Unable to decode data from html string: \(self)")
             return completion(nil)
@@ -26,8 +26,6 @@ extension String {
 
         let options = [ NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType,
                         NSCharacterEncodingDocumentAttribute: NSNumber(unsignedInteger:NSUTF8StringEncoding),
-                        NSFontAttributeName: font,
-                        NSForegroundColorAttributeName: color
         ]
 
         dispatch_async(dispatch_get_main_queue()) {
