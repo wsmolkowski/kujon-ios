@@ -19,7 +19,7 @@ class ProgrammeSearchElement: SearchViewProtocol {
 
     func provideUITableViewCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> SearchTableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(myCellId, forIndexPath: indexPath) as! SearchTableViewCell
-        cell.textView.placeholder = "Znajdź kierunek"
+        cell.configureCellWithTitle("Kierunek", textInputPlaceholder: "Nazwa kierunku")
         return cell
     }
 

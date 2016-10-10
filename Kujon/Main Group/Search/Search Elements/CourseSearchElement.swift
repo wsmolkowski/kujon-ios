@@ -19,7 +19,7 @@ class CourseSearchElement : SearchViewProtocol {
 
     func provideUITableViewCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> SearchTableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(myCellId, forIndexPath: indexPath) as! SearchTableViewCell
-        cell.textView.placeholder = "Znajdź przedmiot"
+        cell.configureCellWithTitle("Przedmioty", textInputPlaceholder: "Nazwa przedmiotu")
         return cell
     }
 

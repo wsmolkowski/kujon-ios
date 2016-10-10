@@ -20,7 +20,7 @@ class ThesisSearchElement: SearchViewProtocol {
 
     func provideUITableViewCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> SearchTableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(myCellId, forIndexPath: indexPath) as! SearchTableViewCell
-        cell.textView.placeholder = "Znajdź Pracę Dyplomową"
+        cell.configureCellWithTitle("Prace dyplomowe", textInputPlaceholder: "Tytuł pracy")
         return cell
     }
 
