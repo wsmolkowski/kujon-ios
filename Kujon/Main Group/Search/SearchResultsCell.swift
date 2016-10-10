@@ -20,7 +20,7 @@ class SearchResultsCell: GoFurtherViewCellTableViewCell {
                         return
                     }
                     let attributes: [String:AnyObject] = [
-                        NSFontAttributeName: UIFont.kjnFontLatoRegularSize(15.0)!,
+                        NSFontAttributeName: UIFont.kjnFontLatoRegular(size:15.0)!,
                         NSForegroundColorAttributeName: UIColor.color2A333E()
                     ]
                     mutableAttributedString.addAttributes(attributes, range: NSMakeRange(0, mutableAttributedString.length))

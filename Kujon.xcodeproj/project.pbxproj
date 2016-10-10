@@ -633,8 +633,8 @@
 		52FF972A1D23C9C400565763 /* CourseNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseNameTableViewCell.swift; sourceTree = "<group>"; };
 		52FF972B1D23C9C400565763 /* CourseNameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseNameTableViewCell.xib; sourceTree = "<group>"; };
 		576A3371E79EA9353F622036 /* Pods_KujonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KujonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		662DAFE61DAC0FCD0094867E /* SearchResultsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsCell.swift; sourceTree = "<group>"; };
-		662DAFE81DAC0FD20094867E /* SearchResultsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultsCell.xib; sourceTree = "<group>"; };
+		662DAFE61DAC0FCD0094867E /* SearchResultsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultsCell.swift; path = ../SearchResultsCell.swift; sourceTree = "<group>"; };
+		662DAFE81DAC0FD20094867E /* SearchResultsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchResultsCell.xib; path = ../SearchResultsCell.xib; sourceTree = "<group>"; };
 		662DAFEC1DAC14150094867E /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		66BCCCAE95D0BBA8FFC5B406 /* Pods-KujonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KujonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KujonTests/Pods-KujonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		66D506481DA69CD300B5CE1B /* ThesesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesesTableViewController.swift; sourceTree = "<group>"; };
@@ -873,8 +873,6 @@
 				4C0D86CF0438260E36F63534 /* Search Elements */,
 				527A0EC01DA426A7003A251A /* SearchResultTableViewController.swift */,
 				527A0EC11DA426A7003A251A /* SearchResultTableViewController.xib */,
-				662DAFE61DAC0FCD0094867E /* SearchResultsCell.swift */,
-				662DAFE81DAC0FD20094867E /* SearchResultsCell.xib */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1197,6 +1195,8 @@
 		4C0D8B149F86218419843441 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				662DAFE61DAC0FCD0094867E /* SearchResultsCell.swift */,
+				662DAFE81DAC0FD20094867E /* SearchResultsCell.xib */,
 				4C0D8E22CC8BB5D73B89D32B /* SearchTableViewCell.xib */,
 				4C0D884DDF372AD7AA21E78D /* SearchTableViewCell.swift */,
 			);

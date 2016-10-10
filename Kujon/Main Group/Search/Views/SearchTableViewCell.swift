@@ -44,7 +44,7 @@ class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
         let title = StringHolder.searchButtonLabel
 
         let attributesNormalState: [String:AnyObject]? = [
-            NSFontAttributeName: UIFont.kjnFontLatoMediumSize(17)!,
+            NSFontAttributeName: UIFont.kjnFontLatoMedium(size:17)!,
             NSForegroundColorAttributeName: UIColor.color3FBAD9(alpha: 1.0)
         ]
 
@@ -52,7 +52,7 @@ class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
         button.setAttributedTitle(titleStateNormal, forState: .Normal)
 
         let attributesDisabledState: [String:AnyObject]? = [
-            NSFontAttributeName: UIFont.kjnFontLatoMediumSize(17)!,
+            NSFontAttributeName: UIFont.kjnFontLatoMedium(size:17)!,
             NSForegroundColorAttributeName: UIColor.color3FBAD9(alpha: 0.4)
         ]
 
@@ -62,9 +62,9 @@ class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     internal func configureCellWithTitle(cellTitle:String, textInputPlaceholder placeholder:String) {
 
-        title.attributedText = cellTitle.attributedStringWithFont(UIFont.kjnFontLatoRegularSize(17)!, color: UIColor.color2A333E())
+        title.attributedText = cellTitle.attributedStringWithFont(UIFont.kjnFontLatoRegular(size:17)!, color: UIColor.color2A333E())
 
-        textField.attributedText = placeholder.attributedStringWithFont(UIFont.kjnFontLatoRegularSize(13)!, color: UIColor.color000000(alpha: 0.35))
+        textField.attributedPlaceholder = placeholder.attributedStringWithFont(UIFont.kjnFontLatoRegular(size:15)!, color: UIColor.color000000(alpha: 0.35))
 
         textField.placeholder = placeholder
         
@@ -96,12 +96,17 @@ class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
     // MARK: UITextFieldDelegate
 
     func textFieldDidBeginEditing(textField: UITextField) {
+        textField.font = UIFont.kjnFontLatoRegular(size:15.0)
+        textField.textColor = UIColor.color2A333E()
         textField.text = searchQuery
         selected = true
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        if !searchQuery.isEmpty {
+            delegate?.searchTableViewCell(self, didTriggerSearchWithQuery: searchQuery)
+        }
         return true
     }
 

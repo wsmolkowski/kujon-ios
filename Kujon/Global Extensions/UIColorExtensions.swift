@@ -80,11 +80,11 @@ extension UIFont {
         return UIFont(name: "Lato-Regular", size: 9.0)
     }
 
-    class func kjnFontLatoMediumSize(size:CGFloat) -> UIFont? {
+    class func kjnFontLatoMedium(size size:CGFloat) -> UIFont? {
         return UIFont(name: "Lato-Medium", size: size)
     }
 
-    class func kjnFontLatoRegularSize(size:CGFloat) -> UIFont? {
+    class func kjnFontLatoRegular(size size:CGFloat) -> UIFont? {
         return UIFont(name: "Lato-Regular", size: size)
     }
 
