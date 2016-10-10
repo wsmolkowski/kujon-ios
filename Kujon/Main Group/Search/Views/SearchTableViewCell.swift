@@ -10,23 +10,23 @@ import UIKit
 
 protocol SearchTableViewCellDelegate:class {
 
-    func  searchTableViewCell(cell: SearchTableViewCell, didTriggerSearchWithQuery searchQuery:String)
-    func  searchTableViewCellDidChangeSelection()
+    func searchTableViewCell(cell: SearchTableViewCell, didTriggerSearchWithQuery searchQuery:String)
+    func searchTableViewCellDidChangeSelection()
 }
 
-class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
+internal class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
 
-    @IBOutlet weak var button: UIButton!
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var separator: UIView!
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet internal weak var button: UIButton!
+    @IBOutlet internal weak var title: UILabel!
+    @IBOutlet internal weak var separator: UIView!
+    @IBOutlet internal weak var textField: UITextField!
     private var searchQuery = String()
     internal weak var delegate: SearchTableViewCellDelegate?
     internal var index: Int = 0
 
     // MARK: Initial section
 
-    override func awakeFromNib() {
+    override internal func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .None
         configureSearchButton()
@@ -39,7 +39,7 @@ class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     }
 
-      func configureSearchButton() {
+    private func configureSearchButton() {
         let title = StringHolder.searchButtonLabel
 
         let titleForStateEnabled = title.attributedStringWithFont(UIFont.kjnFontLatoMedium(size:17)!, color: UIColor.color3FBAD9(alpha: 1.0))
@@ -47,7 +47,6 @@ class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
 
         let titleForStateDisabled = title.attributedStringWithFont(UIFont.kjnFontLatoMedium(size:17)!, color: UIColor.color3FBAD9(alpha: 0.4))
         button.setAttributedTitle(titleForStateDisabled, forState: .Disabled)
-
     }
 
     internal func configureCellWithTitle(cellTitle:String, textInputPlaceholder placeholder:String) {
@@ -57,18 +56,17 @@ class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
         textField.attributedPlaceholder = placeholder.attributedStringWithFont(UIFont.kjnFontLatoRegular(size:15)!, color: UIColor.color000000(alpha: 0.35))
 
         textField.placeholder = placeholder
-        
     }
 
     // MARK: User actions
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override internal func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         delegate?.searchTableViewCellDidChangeSelection()
         updateSeparatorColor()
     }
 
-    @IBAction func searchButtonDidTap(sender: UIButton) {
+    @IBAction internal func searchButtonDidTap(sender: UIButton) {
         if !searchQuery.isEmpty {
             delegate?.searchTableViewCell(self, didTriggerSearchWithQuery: searchQuery)
         }
@@ -85,14 +83,14 @@ class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     // MARK: UITextFieldDelegate
 
-    func textFieldDidBeginEditing(textField: UITextField) {
+    internal func textFieldDidBeginEditing(textField: UITextField) {
         textField.font = UIFont.kjnFontLatoRegular(size:15.0)
         textField.textColor = UIColor.color2A333E()
         textField.text = searchQuery
         selected = true
     }
 
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    internal func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if !searchQuery.isEmpty {
             delegate?.searchTableViewCell(self, didTriggerSearchWithQuery: searchQuery)
@@ -100,7 +98,7 @@ class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
         return true
     }
 
-    func textFieldDidChange(textField:UITextField) {
+    internal func textFieldDidChange(textField:UITextField) {
         if let text = textField.text {
             searchQuery = text
             updateSearchButtonState()
@@ -111,8 +109,4 @@ class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
         button.enabled = !searchQuery.isEmpty
     }
 
-
 }
-
-
-
