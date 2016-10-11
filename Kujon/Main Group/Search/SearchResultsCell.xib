@@ -7,23 +7,23 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SearchResultsCell" rowHeight="50" id="qFr-UV-6dW" customClass="SearchResultsCell" customModule="Kujon" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SearchResultsCell" rowHeight="89" id="qFr-UV-6dW" customClass="SearchResultsCell" customModule="Kujon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="351" height="89"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qFr-UV-6dW" id="GAF-nE-VV5">
-                <rect key="frame" x="0.0" y="0.0" width="287" height="49.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="318" height="88.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QGa-E8-tI4">
-                        <rect key="frame" x="0.0" y="0.0" width="287" height="50"/>
+                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="50" translatesAutoresizingMaskIntoConstraints="NO" id="QGa-E8-tI4">
+                        <rect key="frame" x="0.0" y="0.0" width="318" height="88.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rnf-0c-Tj9">
-                                <rect key="frame" x="8" y="0.0" width="271" height="50"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rnf-0c-Tj9">
+                                <rect key="frame" x="8" y="16" width="302" height="56.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="fQw-lP-nH4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -36,10 +36,15 @@
                         <constraints>
                             <constraint firstItem="rnf-0c-Tj9" firstAttribute="trailing" secondItem="QGa-E8-tI4" secondAttribute="trailingMargin" id="9Fe-A7-7k7"/>
                             <constraint firstAttribute="height" constant="50" id="O3u-cz-RPb"/>
-                            <constraint firstItem="rnf-0c-Tj9" firstAttribute="top" secondItem="QGa-E8-tI4" secondAttribute="top" id="QSF-06-3lH"/>
+                            <constraint firstItem="rnf-0c-Tj9" firstAttribute="top" secondItem="QGa-E8-tI4" secondAttribute="top" constant="16" id="QSF-06-3lH"/>
                             <constraint firstItem="rnf-0c-Tj9" firstAttribute="leading" secondItem="QGa-E8-tI4" secondAttribute="leadingMargin" id="lim-ey-zF7"/>
-                            <constraint firstAttribute="bottom" secondItem="rnf-0c-Tj9" secondAttribute="bottom" id="mR4-Sp-MJ8"/>
+                            <constraint firstAttribute="bottom" secondItem="rnf-0c-Tj9" secondAttribute="bottom" constant="16" id="mR4-Sp-MJ8"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="O3u-cz-RPb"/>
+                            </mask>
+                        </variation>
                     </view>
                 </subviews>
                 <constraints>
@@ -48,16 +53,11 @@
                     <constraint firstItem="QGa-E8-tI4" firstAttribute="leading" secondItem="GAF-nE-VV5" secondAttribute="leading" id="gyd-BP-ApU"/>
                     <constraint firstAttribute="bottom" secondItem="QGa-E8-tI4" secondAttribute="bottom" id="hL7-Ea-TqV"/>
                 </constraints>
-                <variation key="default">
-                    <mask key="constraints">
-                        <exclude reference="hL7-Ea-TqV"/>
-                    </mask>
-                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="titleLabel" destination="rnf-0c-Tj9" id="d7F-8k-Moo"/>
             </connections>
-            <point key="canvasLocation" x="282" y="230"/>
+            <point key="canvasLocation" x="296.5" y="238.5"/>
         </tableViewCell>
     </objects>
 </document>

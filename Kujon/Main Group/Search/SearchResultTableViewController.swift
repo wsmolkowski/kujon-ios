@@ -23,6 +23,8 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SearchResultTableViewController.back), andTitle: StringHolder.searchResults)
         tableView.separatorStyle = .None
         tableView.registerNib(UINib(nibName: "SearchResultsCell", bundle: nil), forCellReuseIdentifier: myCellId)
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 50.0
         if (provider != nil && searchQuery != nil) {
             provider.setDelegate(self)
 
@@ -99,10 +101,6 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
         cell.title = array[indexPath.row].getTitle()
         return cell
 
-    }
-
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50.0
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
