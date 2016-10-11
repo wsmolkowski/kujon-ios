@@ -17,9 +17,9 @@ class GoFurtherViewCellTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
-
+        selectionStyle = .None
     }
+    
     override var frame: CGRect {
         didSet {
             self.layer.addBorder(UIRectEdge.Top,color:UIColor.lightGray(),thickness: 1)
@@ -28,13 +28,6 @@ class GoFurtherViewCellTableViewCell: UITableViewCell {
 
     override var layer: CALayer {
         return super.layer
-    }
-
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

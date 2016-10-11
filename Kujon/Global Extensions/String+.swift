@@ -20,7 +20,7 @@ extension String {
 
     func attributedStringFromHTML(completion: NSAttributedString? ->()) {
         guard let data = dataUsingEncoding(NSUTF8StringEncoding) else {
-            print("Unable to decode data from html string: \(self)")
+            print("Unable to decode data from html string")
             return completion(nil)
         }
 
@@ -32,7 +32,7 @@ extension String {
             if let attributedString = try? NSAttributedString(data:data, options:options, documentAttributes:nil) {
                 completion(attributedString)
             } else {
-                print("Unable to create attributed string from html string: \(self)")
+                print("Unable to create attributed string from html string")
                 completion(nil)
             }
         }

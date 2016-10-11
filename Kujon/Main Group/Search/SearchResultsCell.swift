@@ -29,19 +29,4 @@ class SearchResultsCell: GoFurtherViewCellTableViewCell {
         }
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        selectionStyle = .None
-    }
-
-    override var frame: CGRect {
-        didSet {
-            self.layer.addBorder(UIRectEdge.Top,color:UIColor.lightGray(),thickness: 1)
-        }
-    }
-
-    override var layer: CALayer {
-        return super.layer
-    }
-
 }
