@@ -10,9 +10,6 @@ import UIKit
 
 class TermsPopUpViewController: PopUpViewController {
 
-
-    
-    
     @IBOutlet weak var hahaView: TermView!
     @IBOutlet weak var endindTimeLabel: UILabel!
     @IBOutlet weak var endDateLabel: UILabel!
@@ -20,15 +17,9 @@ class TermsPopUpViewController: PopUpViewController {
     @IBOutlet weak var termActiveLabel: UILabel!
     @IBOutlet weak var termNumberLabel: UILabel!
     @IBOutlet weak var termNameLabel: UILabel!
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func closeButtonDidTap(sender: UIButton) {
+        dismissViewControllerAnimated(false, completion: nil)
     }
 
     func showInView(term:Term){
@@ -43,14 +34,5 @@ class TermsPopUpViewController: PopUpViewController {
     override func setMyPopUpView() -> UIView! {
         return hahaView
     }
-/*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
