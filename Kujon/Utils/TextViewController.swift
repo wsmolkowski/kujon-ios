@@ -18,7 +18,7 @@ class TextViewController: UIViewController {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(TextViewController.back), andTitle: myTitle)
         if(text != nil){
-            textView.text  =  text
+            textView.text  = String.stripHTMLFromString(text)
         }
         // Do any additional setup after loading the view.
     }
@@ -32,14 +32,6 @@ class TextViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

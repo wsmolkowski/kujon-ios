@@ -46,6 +46,17 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
         self.isThereNext = isThere
     }
 
+    func onErrorOccurs(text: String) {
+        showAlertApi("Bład",text:text,succes: {
+            self.isQuering = false
+            self.isThereNext = true
+            self.number = self.number - 20;
+            self.askForData()
+        },cancel: {
+            self.back()
+        })
+    }
+
 
     private func askForData() {
         if (isThereNext) {
@@ -63,8 +74,7 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
         self.tableView.reloadData();
     }
 
-    func onErrorOccurs(text: String) {
-    }
+
 
     func back() {
         self.navigationController?.popViewControllerAnimated(true)

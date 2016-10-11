@@ -11,7 +11,7 @@ import UIKit
 class SearchResultsCell: GoFurtherViewCellTableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
-    internal var title: String? {
+     var title: String? {
         didSet {
             if let title = title {
                 title.attributedStringFromHTML() { [weak self] attributedString in

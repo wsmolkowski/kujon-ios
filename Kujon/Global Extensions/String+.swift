@@ -37,6 +37,14 @@ extension String {
             }
         }
     }
-
+    static func stripHTMLFromString(string: String) -> String {
+        var copy = string
+        while let range = copy.rangeOfString("<[^>]+>", options: .RegularExpressionSearch) {
+            copy = copy.stringByReplacingCharactersInRange(range, withString: "")
+        }
+        copy = copy.stringByReplacingOccurrencesOfString("&nbsp;", withString: " ")
+        copy = copy.stringByReplacingOccurrencesOfString("&amp;", withString: "&")
+        return copy
+    }
 
 }
