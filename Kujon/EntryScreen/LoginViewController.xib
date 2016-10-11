@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="16B2338c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
@@ -25,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="X1n-N9-BEb">
-                    <rect key="frame" x="44" y="8" width="512" height="30"/>
+                    <rect key="frame" x="44" y="80" width="512" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="aYm-nt-Uj2"/>
                     </constraints>
@@ -34,13 +34,13 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hasło" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="WSB-D1-srk">
-                    <rect key="frame" x="44" y="46" width="512" height="30"/>
+                    <rect key="frame" x="44" y="130" width="512" height="30"/>
                     <color key="textColor" red="0.1647058874" green="0.20000000300000001" blue="0.24313725529999999" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rejestrując się wyrażasz zgodę  na następujące warunki" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lnu-mU-Mou">
-                    <rect key="frame" x="190" y="130" width="220" height="36"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rejestrując się wyrażasz zgodę  na następujące warunki" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lnu-mU-Mou">
+                    <rect key="frame" x="190" y="214" width="220" height="36"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="220" id="78P-f3-E0W"/>
                         <constraint firstAttribute="width" constant="180" id="hMH-VX-Tla"/>
@@ -54,8 +54,8 @@
                         </mask>
                     </variation>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKF-5E-2yC">
-                    <rect key="frame" x="44" y="182" width="513" height="36"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKF-5E-2yC">
+                    <rect key="frame" x="44" y="266" width="513" height="36"/>
                     <color key="backgroundColor" red="0.24705882370000001" green="0.72941178080000002" blue="0.85098040100000005" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="aEG-eg-J0K"/>
@@ -79,9 +79,9 @@
                 <constraint firstAttribute="trailing" secondItem="X1n-N9-BEb" secondAttribute="trailing" constant="44" id="nbM-0Y-ms3"/>
                 <constraint firstItem="WSB-D1-srk" firstAttribute="trailing" secondItem="X1n-N9-BEb" secondAttribute="trailing" id="owi-mO-5y9"/>
                 <constraint firstItem="TKF-5E-2yC" firstAttribute="leading" secondItem="X1n-N9-BEb" secondAttribute="leading" id="qWd-1i-qlp"/>
-                <constraint firstItem="WSB-D1-srk" firstAttribute="top" secondItem="X1n-N9-BEb" secondAttribute="bottom" constant="8" symbolic="YES" id="sX8-5Z-JjT"/>
+                <constraint firstItem="WSB-D1-srk" firstAttribute="top" secondItem="X1n-N9-BEb" secondAttribute="bottom" constant="20" id="sX8-5Z-JjT"/>
                 <constraint firstItem="TKF-5E-2yC" firstAttribute="top" secondItem="Lnu-mU-Mou" secondAttribute="bottom" constant="16" id="zOb-DK-Qyc"/>
-                <constraint firstItem="X1n-N9-BEb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="zos-DI-IeZ"/>
+                <constraint firstItem="X1n-N9-BEb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="zos-DI-IeZ"/>
             </constraints>
         </view>
     </objects>
