@@ -18,15 +18,29 @@ class TeacherHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var teacherConsultationLabel: UILabel!
     @IBOutlet weak var teacherHomepageLabel: UILabel!
     @IBOutlet weak var teacherRoomLabel: UILabel!
+    @IBOutlet weak var checkEmailURLButton: UIButton!
+
+    internal var teacherEmailURL: String? {
+        didSet {
+            updateButtonState()
+        }
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        updateButtonState()
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    @IBAction func checkEmailURLButtonDidTap(sender: UIButton) {
 
-        // Configure the view for the selected state
+        if let teacherEmailURL = teacherEmailURL,
+            let URL = NSURL(string: teacherEmailURL, relativeToURL: nil) {
+            UIApplication.sharedApplication().openURL(URL)
+        }
     }
-    
+
+    private func updateButtonState() {
+        checkEmailURLButton.enabled = teacherEmailURL != nil
+    }
+
 }
