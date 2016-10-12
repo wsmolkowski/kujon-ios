@@ -82,7 +82,12 @@ class StringHolder {
     static let ectsPoints =  "suma punktów ECTS"
     static let autorizationError = "Błąd autoryzacji"
     static let search = "Wyszukiwanie"
-    static let searchResults = "Wyniki wyszukiwania"
+    static let searchResults = "Wyniki"
     static let searchButtonLabel = "Znajdź"
+    static let thesisDetailTitle = "Szczegóły"
+    static let authors = "Autorzy"
+    static let supervisors = "Pod kierunkiem"
+    static let none = "Brak"
+
 
 }

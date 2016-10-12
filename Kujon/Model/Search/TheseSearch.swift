@@ -58,6 +58,9 @@ struct TheseSearch: Decodable, SearchElementProtocol {
     }
 
     func reactOnClick(mainController: UINavigationController) {
+        let thesisDetailController = ThesisDetailTableViewController()
+        thesisDetailController.thesis = thesis
+        mainController.pushViewController(thesisDetailController, animated: true)
     }
 
 }
