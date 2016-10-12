@@ -21,6 +21,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(TeacherDetailTableViewController.back), andTitle: StringHolder.lecturer)
+        title = StringHolder.teacher
         self.tableView.registerNib(UINib(nibName: "TeacherHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: TeacherDetailViewId)
         self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: programmesIdCell)
         userDetailsProvider.delegate = self

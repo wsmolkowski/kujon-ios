@@ -34,7 +34,7 @@ class ThesisDetailTableViewController: UITableViewController {
     let sectionsCount: Int = 4
 
     var thesis: ThesisSearchInside?
-
+    
     // MARK: - Initial section
 
     override func viewDidLoad() {
@@ -109,11 +109,52 @@ class ThesisDetailTableViewController: UITableViewController {
         switch section {
         case .Header: labelText = nil
         case .Authors: labelText = thesis?.authors?[indexPath.row].getNameWithTitles() ?? StringHolder.none
-        case .Supervisors: labelText = thesis?.supervisors?[indexPath.row].getNameWithTitles() ?? StringHolder.none
+        case .Supervisors:
+            labelText = thesis?.supervisors?[indexPath.row].getNameWithTitles() ?? StringHolder.none
         case .Faculty: labelText = thesis?.faculty?.name ?? StringHolder.none
         }
         cell.plainLabel.text = labelText
         return cell
+    }
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let section = SectionMap.sectionForIndex(indexPath.section)
+        switch section {
+        case .Authors:
+            if let user = thesis?.authors?[indexPath.row] {
+                presentStudentDetailControllerWithSimpleUser(user)
+            }
+        case .Supervisors:
+            if let user = thesis?.supervisors?[indexPath.row] {
+                presentTeacherDetailControllerWithSimpleUser(user)
+            }
+        case .Faculty:
+            if let faculty = thesis?.faculty {
+                 presentFacultyDetailControllerWithFaculty(faculty)
+            }
+
+        default: return
+        }
+    }
+
+    private func presentStudentDetailControllerWithSimpleUser(user: SimpleUser) {
+        let studentDetailController = StudentDetailsTableViewController(nibName: "StudentDetailsTableViewController", bundle: nil)
+        studentDetailController.user = user
+        studentDetailController.userId = user.id
+        navigationController?.pushViewController(studentDetailController, animated: true)
+    }
+
+    private func presentTeacherDetailControllerWithSimpleUser(user: SimpleUser) {
+        let teacherDetailController = TeacherDetailTableViewController(nibName: "TeacherDetailTableViewController", bundle: nil)
+        teacherDetailController.simpleUser = user
+        teacherDetailController.teacherId = user.id
+        navigationController?.pushViewController(teacherDetailController, animated: true)
+    }
+
+    private func presentFacultyDetailControllerWithFaculty(faculty:FacultyShort) {
+        let facultyDetailController = FacultieViewController(nibName: "FacultieViewController", bundle: nil)
+        facultyDetailController.facultieId = faculty.id
+        navigationController?.pushViewController(facultyDetailController, animated: true)
     }
 
 

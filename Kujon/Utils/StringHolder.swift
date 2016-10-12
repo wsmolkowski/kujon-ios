@@ -86,7 +86,9 @@ class StringHolder {
     static let searchButtonLabel = "Znajdź"
     static let thesisDetailTitle = "Szczegóły"
     static let authors = "Autorzy"
+    static let student = "Student"
     static let supervisors = "Pod kierunkiem"
+    static let teacher = "Wykładowca"
     static let none = "Brak"
 
 

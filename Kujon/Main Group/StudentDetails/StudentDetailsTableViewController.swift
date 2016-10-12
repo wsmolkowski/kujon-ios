@@ -26,6 +26,7 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(StudentDetailsTableViewController.back))
+        title = StringHolder.student
         self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: kierunekCellId)
         self.tableView.registerNib(UINib(nibName: "StudentHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: headerCellId)
         self.tableView.tableFooterView = UIView()
