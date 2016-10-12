@@ -43,18 +43,18 @@ internal class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
     private func configureSearchButton() {
         let title = StringHolder.searchButtonLabel
 
-        let titleForStateEnabled = title.attributedStringWithFont(UIFont.kjnFontLatoMedium(size:17)!, color: UIColor.color3FBAD9(alpha: 1.0))
+        let titleForStateEnabled = title.toAttributedStringWithFont(UIFont.kjnFontLatoMedium(size:17)!, color: UIColor.color3FBAD9(alpha: 1.0))
         button.setAttributedTitle(titleForStateEnabled, forState: .Normal)
 
-        let titleForStateDisabled = title.attributedStringWithFont(UIFont.kjnFontLatoMedium(size:17)!, color: UIColor.color3FBAD9(alpha: 0.4))
+        let titleForStateDisabled = title.toAttributedStringWithFont(UIFont.kjnFontLatoMedium(size:17)!, color: UIColor.color3FBAD9(alpha: 0.4))
         button.setAttributedTitle(titleForStateDisabled, forState: .Disabled)
     }
 
     internal func configureCellWithTitle(cellTitle:String, textInputPlaceholder placeholder:String) {
 
-        title.attributedText = cellTitle.attributedStringWithFont(UIFont.kjnFontLatoRegular(size:17)!, color: UIColor.color2A333E())
+        title.attributedText = cellTitle.toAttributedStringWithFont(UIFont.kjnFontLatoRegular(size:17)!, color: UIColor.color2A333E())
 
-        textField.attributedPlaceholder = placeholder.attributedStringWithFont(UIFont.kjnFontLatoRegular(size:15)!, color: UIColor.color000000(alpha: 0.35))
+        textField.attributedPlaceholder = placeholder.toAttributedStringWithFont(UIFont.kjnFontLatoRegular(size:15)!, color: UIColor.color000000(alpha: 0.35))
 
         textField.placeholder = placeholder
     }

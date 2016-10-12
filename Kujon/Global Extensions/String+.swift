@@ -10,7 +10,7 @@ import Foundation
 
 extension String {
 
-    func attributedStringWithFont(font:UIFont, color:UIColor) -> NSAttributedString {
+    func toAttributedStringWithFont(font:UIFont, color:UIColor) -> NSAttributedString {
         let attributes: [String:AnyObject]? = [
             NSFontAttributeName: font,
             NSForegroundColorAttributeName: color
