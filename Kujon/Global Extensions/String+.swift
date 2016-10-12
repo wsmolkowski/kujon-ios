@@ -44,6 +44,7 @@ extension String {
         }
         copy = copy.stringByReplacingOccurrencesOfString("&nbsp;", withString: " ")
         copy = copy.stringByReplacingOccurrencesOfString("&amp;", withString: "&")
+        copy = copy.stringByReplacingOccurrencesOfString("&quot;", withString: "\"")
         return copy
     }
 
