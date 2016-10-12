@@ -21,6 +21,7 @@ internal class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet internal weak var separator: UIView!
     @IBOutlet internal weak var textField: UITextField!
     private var searchQuery = String()
+    private let searchQueryMinimumLength: Int = 4
     internal weak var delegate: SearchTableViewCellDelegate?
     internal var index: Int = 0
 
@@ -106,7 +107,7 @@ internal class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
 
     private func updateSearchButtonState() {
-        button.enabled = !searchQuery.isEmpty
+        button.enabled = !(searchQuery.characters.count < searchQueryMinimumLength)
     }
 
 }
