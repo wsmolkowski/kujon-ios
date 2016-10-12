@@ -92,7 +92,8 @@ class ThesisDetailTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return indexPath.section == 0 ? headerCellForIndexPath(indexPath) : itemCellForIndexPath(indexPath)
+        let section = SectionMap.sectionForIndex(indexPath.section)
+        return section == .Header ? headerCellForIndexPath(indexPath) : itemCellForIndexPath(indexPath)
     }
 
     private func headerCellForIndexPath(indexPath: NSIndexPath) -> ThesisDetailHeaderCell {
@@ -114,6 +115,7 @@ class ThesisDetailTableViewController: UITableViewController {
             labelText = thesis?.supervisors?[indexPath.row].getNameWithTitles()
         case .Faculty: labelText = thesis?.faculty?.name
         }
+
         cell.plainLabel.text = labelText
         return cell
     }
