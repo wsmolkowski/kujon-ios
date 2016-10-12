@@ -306,6 +306,7 @@
 		52FF97291D23B7D500565763 /* CourseDetailsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FF97271D23B7D500565763 /* CourseDetailsTableViewController.xib */; };
 		52FF972C1D23C9C400565763 /* CourseNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FF972A1D23C9C400565763 /* CourseNameTableViewCell.swift */; };
 		52FF972D1D23C9C400565763 /* CourseNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FF972B1D23C9C400565763 /* CourseNameTableViewCell.xib */; };
+		661D1C221DAD974500BA9EE9 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 661D1C211DAD974500BA9EE9 /* HTMLParser.m */; };
 		662DAFE71DAC0FCD0094867E /* SearchResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662DAFE61DAC0FCD0094867E /* SearchResultsCell.swift */; };
 		662DAFE91DAC0FD20094867E /* SearchResultsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 662DAFE81DAC0FD20094867E /* SearchResultsCell.xib */; };
 		662DAFED1DAC14150094867E /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662DAFEC1DAC14150094867E /* String+.swift */; };
@@ -633,6 +634,8 @@
 		52FF972A1D23C9C400565763 /* CourseNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseNameTableViewCell.swift; sourceTree = "<group>"; };
 		52FF972B1D23C9C400565763 /* CourseNameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseNameTableViewCell.xib; sourceTree = "<group>"; };
 		576A3371E79EA9353F622036 /* Pods_KujonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KujonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		661D1C201DAD974500BA9EE9 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLParser.h; path = "../Global Extensions/HTMLParser.h"; sourceTree = "<group>"; };
+		661D1C211DAD974500BA9EE9 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLParser.m; path = "../Global Extensions/HTMLParser.m"; sourceTree = "<group>"; };
 		662DAFE61DAC0FCD0094867E /* SearchResultsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultsCell.swift; path = ../SearchResultsCell.swift; sourceTree = "<group>"; };
 		662DAFE81DAC0FD20094867E /* SearchResultsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchResultsCell.xib; path = ../SearchResultsCell.xib; sourceTree = "<group>"; };
 		662DAFEC1DAC14150094867E /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
@@ -741,6 +744,8 @@
 		4C0D82489E8A720F1EED7B19 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				661D1C201DAD974500BA9EE9 /* HTMLParser.h */,
+				661D1C211DAD974500BA9EE9 /* HTMLParser.m */,
 				4C0D8D8D2ED0C70726C86E66 /* NSlogManager.swift */,
 				4C0D87B65211FF5F8990C420 /* PopUpViewController.swift */,
 				5257C32F1D267D670068FA56 /* ImageViewController.swift */,
@@ -2185,6 +2190,7 @@
 				4C0D849262CBC0E3CAA11A36 /* MenuItemWithController.swift in Sources */,
 				528BCABD1D5DED0800A9E49C /* FacultieHeaderTableViewCell.swift in Sources */,
 				4C0D869D18F5884265AD7390 /* MenuItemsHolder.swift in Sources */,
+				661D1C221DAD974500BA9EE9 /* HTMLParser.m in Sources */,
 				4C0D81C6128C12946244195F /* NavigationDelegate.swift in Sources */,
 				4C0D87E638ACCDF0858CD694 /* NavigationMenuProtocol.swift in Sources */,
 				526750411D214A7B004AD243 /* CoursePopUpViewController.swift in Sources */,

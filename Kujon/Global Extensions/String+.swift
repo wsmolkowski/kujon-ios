@@ -18,25 +18,6 @@ extension String {
         return NSAttributedString(string:self, attributes:attributes)
     }
 
-    func attributedStringFromHTML(completion: NSAttributedString? ->()) {
-        guard let data = dataUsingEncoding(NSUTF8StringEncoding) else {
-            print("Unable to decode data from html string")
-            return completion(nil)
-        }
-
-        let options = [ NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType,
-                        NSCharacterEncodingDocumentAttribute: NSNumber(unsignedInteger:NSUTF8StringEncoding)
-        ]
-
-        dispatch_async(dispatch_get_main_queue()) {
-            if let attributedString = try? NSAttributedString(data:data, options:options, documentAttributes:nil) {
-                completion(attributedString)
-            } else {
-                print("Unable to create attributed string from html string")
-                completion(nil)
-            }
-        }
-    }
     static func stripHTMLFromString(string: String) -> String {
         var copy = string
         while let range = copy.rangeOfString("<[^>]+>", options: .RegularExpressionSearch) {

@@ -14,11 +14,9 @@ class SearchResultsCell: GoFurtherViewCellTableViewCell {
      var title: String? {
         didSet {
             if let title = title {
-                let cleanTitle = String.stripHTMLFromString(title)
-                self.titleLabel.text = cleanTitle
-                self.titleLabel.attributedText = cleanTitle.attributedStringWithFont(UIFont.kjnFontLatoRegular(size:15.0)!, color: .color2A333E())
+                    self.titleLabel.text = title
+                    self.titleLabel.attributedText = HTMLParser.parseHTMLString(title, usingRegularFont: UIFont.kjnFontLatoRegular(size: 15.0), andBoldFont: UIFont.kjnFontLatoBold(size: 15.0))
                 }
             }
-
         }
     }

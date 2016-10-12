@@ -88,9 +88,8 @@ extension UIFont {
         return UIFont(name: "Lato-Regular", size: size)
     }
 
-    func bold() -> UIFont {
-        let descriptor = fontDescriptor().fontDescriptorWithSymbolicTraits(.TraitBold)
-            return UIFont(descriptor: descriptor, size: 0)
-        }
+    class func kjnFontLatoBold(size size:CGFloat) -> UIFont? {
+        return UIFont(name: "Lato-Bold", size: size)
+    }
 
 }

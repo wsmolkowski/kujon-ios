@@ -13,6 +13,6 @@
 #import <OneSignal/OneSignal.h>
 #import <Google/SignIn.h>
 #import "MyEventView.h"
-
+#import "HTMLParser.h"
 
 #endif /* Bridging_Header_h */

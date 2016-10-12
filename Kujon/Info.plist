@@ -107,9 +107,9 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Lato-Medium.ttf</string>
+		<string>Lato-Bold.ttf</string>
 		<string>Lato-Italic.tff</string>
 		<string>Lato-Regular.tff</string>
-		<string>Lato-Bold.tff</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
