@@ -29,6 +29,7 @@ class ThesisDetailTableViewController: UITableViewController {
 
     let itemCellId: String = "itemCellId"
     let itemCellHeight: CGFloat = 50.0
+    let itemHeaderHeight: CGFloat = 50.0
     let headerCellId: String = "headerCellId"
     let headerCellHeight: CGFloat = 200.0
     let sectionsCount: Int = 4
@@ -82,7 +83,7 @@ class ThesisDetailTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let section = SectionMap.sectionForIndex(section)
-        return section == .Header ? 0.0 : itemCellHeight
+        return section == .Header ? 0.0 : itemHeaderHeight
     }
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -108,14 +109,16 @@ class ThesisDetailTableViewController: UITableViewController {
 
         switch section {
         case .Header: labelText = nil
-        case .Authors: labelText = thesis?.authors?[indexPath.row].getNameWithTitles() ?? StringHolder.none
+        case .Authors: labelText = thesis?.authors?[indexPath.row].getNameWithTitles()
         case .Supervisors:
-            labelText = thesis?.supervisors?[indexPath.row].getNameWithTitles() ?? StringHolder.none
-        case .Faculty: labelText = thesis?.faculty?.name ?? StringHolder.none
+            labelText = thesis?.supervisors?[indexPath.row].getNameWithTitles()
+        case .Faculty: labelText = thesis?.faculty?.name
         }
         cell.plainLabel.text = labelText
         return cell
     }
+
+    // MARK: - Table view delegate
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let section = SectionMap.sectionForIndex(indexPath.section)
