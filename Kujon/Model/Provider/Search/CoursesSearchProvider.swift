@@ -35,7 +35,7 @@ class CoursesSearchProvider: RestApiManager, CoursesSearchProtocol, SearchProvid
                 self.delegate?.isThereNextPage(self.isThereNext(val));
 //
             }
-        }, onError: { text in self.delegate?.onErrorOccurs() })
+        }, onError: { text in self.delegate?.onErrorOccurs(text) })
     }
 }
 

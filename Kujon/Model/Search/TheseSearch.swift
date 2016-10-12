@@ -68,7 +68,7 @@ struct ThesisSearchInside: Decodable {
     let type: String
     let authors: Array<SimpleUser>?
     let supervisors: Array<SimpleUser>?
-    let faculty: FacultySearchThesis?
+    let faculty: FacultyShort?
 
     static func decode(j: AnyObject) throws -> ThesisSearchInside {
         return try ThesisSearchInside(
@@ -83,24 +83,5 @@ struct ThesisSearchInside: Decodable {
 }
 
 
-struct FacultySearchThesis: Decodable{
-    let facultyId: String
-    let name : NameSearch
-
-    static func decode(json: AnyObject) throws -> FacultySearchThesis {
-        return try FacultySearchThesis(facultyId: json => "id", name: json => "name")
-    }
-
-}
-
-struct NameSearch: Decodable{
-    let pl: String
-    let eng: String
-
-    static func decode(json: AnyObject) throws -> NameSearch {
-        return try NameSearch(pl: json => "pl", eng: json => "en")
-    }
-
-}
 
 
