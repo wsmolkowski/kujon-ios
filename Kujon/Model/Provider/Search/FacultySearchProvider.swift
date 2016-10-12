@@ -32,6 +32,6 @@ class FacultySearchProvider: RestApiManager, FacultySearchProviderProtocol, Sear
                 self.delegate?.searchedItems(self.getSearchElements(val))
                 self.delegate?.isThereNextPage(self.isThereNext(val));
             }
-        }, onError: { text in self.delegate?.onErrorOccurs() })
+        }, onError: { text in self.delegate?.onErrorOccurs(text) })
     }
 }
