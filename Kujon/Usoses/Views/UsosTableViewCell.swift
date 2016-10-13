@@ -23,6 +23,8 @@ class UsosTableViewCell: UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .None
         updateCellState()
+        backgroundColor = UIColor.greyBackgroundColor()
+
     }
 
     private func updateCellState() {
