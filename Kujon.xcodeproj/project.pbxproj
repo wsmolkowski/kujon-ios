@@ -300,8 +300,6 @@
 		52C6275A1D1BFA0100A9BBA0 /* DayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C627581D1BFA0100A9BBA0 /* DayTableViewCell.xib */; };
 		52F69F831D101A9000025C55 /* UserDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52F69F821D101A9000025C55 /* UserDetailView.xib */; };
 		52F69F851D101F0C00025C55 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F69F841D101F0C00025C55 /* UserTableViewController.swift */; };
-		52FF97241D23AC8E00565763 /* FacultieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FF97221D23AC8E00565763 /* FacultieViewController.swift */; };
-		52FF97251D23AC8E00565763 /* FacultieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FF97231D23AC8E00565763 /* FacultieViewController.xib */; };
 		52FF97281D23B7D500565763 /* CourseDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FF97261D23B7D500565763 /* CourseDetailsTableViewController.swift */; };
 		52FF97291D23B7D500565763 /* CourseDetailsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FF97271D23B7D500565763 /* CourseDetailsTableViewController.xib */; };
 		52FF972C1D23C9C400565763 /* CourseNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FF972A1D23C9C400565763 /* CourseNameTableViewCell.swift */; };
@@ -630,8 +628,6 @@
 		52C627581D1BFA0100A9BBA0 /* DayTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayTableViewCell.xib; sourceTree = "<group>"; };
 		52F69F821D101A9000025C55 /* UserDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserDetailView.xib; sourceTree = "<group>"; };
 		52F69F841D101F0C00025C55 /* UserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
-		52FF97221D23AC8E00565763 /* FacultieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacultieViewController.swift; sourceTree = "<group>"; };
-		52FF97231D23AC8E00565763 /* FacultieViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FacultieViewController.xib; sourceTree = "<group>"; };
 		52FF97261D23B7D500565763 /* CourseDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailsTableViewController.swift; sourceTree = "<group>"; };
 		52FF97271D23B7D500565763 /* CourseDetailsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseDetailsTableViewController.xib; sourceTree = "<group>"; };
 		52FF972A1D23C9C400565763 /* CourseNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseNameTableViewCell.swift; sourceTree = "<group>"; };
@@ -815,8 +811,6 @@
 		4C0D83437388037019156C43 /* Facultie */ = {
 			isa = PBXGroup;
 			children = (
-				52FF97221D23AC8E00565763 /* FacultieViewController.swift */,
-				52FF97231D23AC8E00565763 /* FacultieViewController.xib */,
 				528BCAAD1D5DE70C00A9E49C /* FacultieTableViewController.swift */,
 				528BCAAE1D5DE70C00A9E49C /* FacultieTableViewController.xib */,
 				4C0D864A9E6313234B7118E0 /* VIews */,
@@ -1699,7 +1693,6 @@
 				4C0D810FF3D931149777D70D /* EntryViewController.xib in Resources */,
 				5257C3321D267D670068FA56 /* ImageViewController.xib in Resources */,
 				4C0D8ACB7F16326767AF48FD /* LecturerDetails.json in Resources */,
-				52FF97251D23AC8E00565763 /* FacultieViewController.xib in Resources */,
 				52FF97291D23B7D500565763 /* CourseDetailsTableViewController.xib in Resources */,
 				4C0D87C7BA4C2A4E4CBCF087 /* GoFurtherViewCellTableViewCell.xib in Resources */,
 				66D506561DA6BD9000B5CE1B /* ThesisCell.xib in Resources */,
@@ -2283,7 +2276,6 @@
 				4C0D818695E40BF4D795A14A /* EmploymentDetails.swift in Sources */,
 				4C0D85B76A95117FB20F3FEA /* EmploymentPosition.swift in Sources */,
 				4C0D8D638B4D5A845F1F0A32 /* RestImageProvider.swift in Sources */,
-				52FF97241D23AC8E00565763 /* FacultieViewController.swift in Sources */,
 				4C0D8A5C9CCCA95A2FD4629A /* HeaderManager.swift in Sources */,
 				4C0D84DCF5F4EDC332B23A08 /* CurrentTeacherHolder.swift in Sources */,
 				4C0D8DD1DC491DC007F98692 /* SessionManager.swift in Sources */,
