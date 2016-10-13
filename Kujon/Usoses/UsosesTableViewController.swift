@@ -83,18 +83,27 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UsosTableViewCell = tableView.dequeueReusableCellWithIdentifier(UsosCellIdentifier, forIndexPath: indexPath) as! UsosTableViewCell
         let usos = getShowDemo()[indexPath.row] as Usos
+
+        let cellEnabled = usos.enable != nil && usos.enable == true
+        cell.enabled = cellEnabled
         cell.usosImageView?.contentMode = UIViewContentMode.ScaleAspectFit;
         cell.usosImageView?.clipsToBounds = true
         cell.usosImageView?.image = nil
         self.loadImage(usos.image, indexPath: indexPath)
-        (cell ).label.text = usos.name
-        cell.backgroundColor = UIColor.greyBackgroundColor()
+        cell.label.text = usos.name
         return cell
     }
 
 
     @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        showAlert(getShowDemo()[indexPath.row] as Usos)
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) as? UsosTableViewCell {
+            let usos = getShowDemo()[indexPath.row] as Usos
+            if cell.enabled {
+                showAlert(usos)
+                return
+            }
+            presentAlertWithMessage(usos.comment, title: "Informacja")
+        }
     }
 
 
@@ -137,7 +146,6 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
         }, cancel: {})
 
     }
-
 
     private func loadImage(urlString: String, indexPath: NSIndexPath) {
         let url = NSURL(string: urlString)

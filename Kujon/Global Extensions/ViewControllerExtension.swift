@@ -8,6 +8,12 @@ import UIKit
 
 extension UIViewController {
 
+    func presentAlertWithMessage(message:String, title:String) {
+        let alert = UIAlertController(title:title, message:message, preferredStyle:.Alert)
+        alert.addAction(UIAlertAction(title:"OK", style:.Default, handler:nil))
+        parentViewController?.presentViewController(alert, animated:true, completion:nil)
+    }
+
     func showAlertApiError(repeatFunction: () -> Void, cancelFucnt: () -> Void) {
 
         showAlertApi("Uwaga", text: "Wystąpił błąd w komunikacji z serwerem.", succes: repeatFunction, cancel: cancelFucnt)

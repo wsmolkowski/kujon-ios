@@ -10,22 +10,25 @@ import UIKit
 
 class UsosTableViewCell: UITableViewCell {
 
-
-
     @IBOutlet weak var usosImageView: UIImageView!
     @IBOutlet weak var label: UILabel!
-   
+
+    var enabled: Bool = false {
+        didSet {
+            updateCellState()
+        }
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
-
-
+        selectionStyle = .None
+        updateCellState()
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
+    private func updateCellState() {
+        label.alpha = enabled ? 1.0 : 0.4
+        usosImageView.alpha = enabled ? 1.0 : 0.4
     }
-    
- 
-    
+
+
 }
