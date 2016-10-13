@@ -10,7 +10,7 @@ import UIKit
 
 class ThesisDetailTableViewController: UITableViewController {
 
-    enum SectionMap: Int {
+    private enum SectionMap: Int {
         case Header = 0
         case Authors
         case Supervisors
@@ -27,12 +27,12 @@ class ThesisDetailTableViewController: UITableViewController {
         }
     }
 
-    let itemCellId: String = "itemCellId"
-    let itemCellHeight: CGFloat = 50.0
-    let itemHeaderHeight: CGFloat = 50.0
-    let headerCellId: String = "headerCellId"
-    let headerCellHeight: CGFloat = 200.0
-    let sectionsCount: Int = 4
+    private let itemCellId: String = "itemCellId"
+    private let itemCellHeight: CGFloat = 50.0
+    private let itemHeaderHeight: CGFloat = 50.0
+    private let headerCellId: String = "headerCellId"
+    private let headerCellHeight: CGFloat = 200.0
+    private let sectionsCount: Int = 4
 
     var thesis: ThesisSearchInside?
     
@@ -111,8 +111,7 @@ class ThesisDetailTableViewController: UITableViewController {
         switch section {
         case .Header: labelText = nil
         case .Authors: labelText = thesis?.authors?[indexPath.row].getNameWithTitles()
-        case .Supervisors:
-            labelText = thesis?.supervisors?[indexPath.row].getNameWithTitles()
+        case .Supervisors: labelText = thesis?.supervisors?[indexPath.row].getNameWithTitles()
         case .Faculty: labelText = thesis?.faculty?.name
         }
 
@@ -137,7 +136,6 @@ class ThesisDetailTableViewController: UITableViewController {
             if let faculty = thesis?.faculty {
                  presentFacultyDetailControllerWithFaculty(faculty)
             }
-
         default: return
         }
     }

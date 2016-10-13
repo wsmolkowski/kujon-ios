@@ -45,7 +45,7 @@
     [[attributedString mutableString] replaceOccurrencesOfString:@"</s>" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, attributedString.length)];
     [[attributedString mutableString] replaceOccurrencesOfString:@"&quot;" withString:@"\"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, attributedString.length)];
     [[attributedString mutableString] replaceOccurrencesOfString:@"&amp;" withString:@"&" options:NSCaseInsensitiveSearch range:NSMakeRange(0, attributedString.length)];
-    [[attributedString mutableString] replaceOccurrencesOfString:@"&nbsp;" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, attributedString.length)];
+    [[attributedString mutableString] replaceOccurrencesOfString:@"&nbsp;" withString:@" " options:NSCaseInsensitiveSearch range:NSMakeRange(0, attributedString.length)];
     
     return [attributedString copy];
 }
