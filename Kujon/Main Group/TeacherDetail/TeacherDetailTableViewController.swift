@@ -187,7 +187,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         let cell = tableView.dequeueReusableCellWithIdentifier(programmesIdCell, forIndexPath: indexPath) as! GoFurtherViewCellTableViewCell
         let courseEdition = self.userDetails?.courseEditionsConducted?[indexPath.row]
         if (courseEdition != nil){
-            cell.plainLabel.text = courseEdition!.courseName
+            cell.plainLabel.text = courseEdition!.courseName + "(" + courseEdition!.termId + ")"
         }
         return cell
     }

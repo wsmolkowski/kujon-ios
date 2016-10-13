@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4C0D8EDB39DFBA4C3B9DF455"
-               BuildableName = "KujonTests.xctest"
+               BuildableName = "KujonTests"
                BlueprintName = "KujonTests"
                ReferencedContainer = "container:Kujon.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4C0D8EDB39DFBA4C3B9DF455"
-               BuildableName = "KujonTests.xctest"
+               BuildableName = "KujonTests"
                BlueprintName = "KujonTests"
                ReferencedContainer = "container:Kujon.xcodeproj">
             </BuildableReference>

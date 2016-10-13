@@ -157,7 +157,7 @@ class ThesisDetailTableViewController: UITableViewController {
     }
 
     private func presentFacultyDetailControllerWithFaculty(faculty:FacultyShort) {
-        let facultyDetailController = FacultieViewController(nibName: "FacultieViewController", bundle: nil)
+        let facultyDetailController = FacultieTableViewController(nibName: "FacultieTableViewController", bundle: nil)
         facultyDetailController.facultieId = faculty.id
         navigationController?.pushViewController(facultyDetailController, animated: true)
     }

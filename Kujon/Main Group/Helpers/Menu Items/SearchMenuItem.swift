@@ -12,7 +12,7 @@ class SearchMenuItem: MenuItemWithController {
     }
 
     func returnImage() -> UIImage! {
-        return UIImage(named: "courses-icon")
+        return UIImage(named: "search-icon")
     }
 
     func returnViewControllerFunction() -> () -> UIViewController! {
