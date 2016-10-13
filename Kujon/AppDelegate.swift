@@ -31,11 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GGLContext.sharedInstance().configureWithError(&configureError)
         assert(configureError == nil, "Error configuring Google services: \(configureError)")
 
-
-        GIDSignIn.sharedInstance().signInSilently()
+        let googleSignIn = GIDSignIn.sharedInstance()
+        var currentScopes = googleSignIn.scopes
+        currentScopes.append("https://www.googleapis.com/auth/calendar")
+        currentScopes.append("https://www.googleapis.com/auth/contacts")
+        googleSignIn.scopes = currentScopes
+        googleSignIn.signInSilently()
 
         openControllerDependingOnLoginState()
-
 
         //TODO setup proper OneSignal app Id
         _ = OneSignal(launchOptions: launchOptions, appId: "f01a20f9-bbe7-4c89-a017-bf8930c61cf4", handleNotification: nil)
