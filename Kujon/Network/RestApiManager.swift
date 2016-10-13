@@ -9,8 +9,8 @@ typealias onSucces = (NSData!) -> Void
 typealias onErrorOccurs = (text:String) -> Void
 
 class RestApiManager {
-//    static let BASE_URL: String = "https://api-demo.kujon.mobi"
-    static let BASE_URL: String = "https://api.kujon.mobi"
+    static let BASE_URL: String = "https://api-demo.kujon.mobi"
+//    static let BASE_URL: String = "https://api.kujon.mobi"
 
     private var headerManager = HeaderManager()
 

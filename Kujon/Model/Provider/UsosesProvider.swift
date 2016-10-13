@@ -32,7 +32,7 @@ class UsosesProvider: RestApiManager, UsosProviderProtocol {
     }
 
     override func getMyUrl() -> String {
-        return baseURL + "/usoses"
+        return baseURL + "/usosesall"
     }
 
 }
