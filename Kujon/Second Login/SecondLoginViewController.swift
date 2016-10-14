@@ -45,7 +45,6 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
         self.presentViewController(controller, animated: true, completion: nil)
     }
 
-//TODO: add safety checks
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         let toCatch = String(format:"%@/authentication/verify",RestApiManager.BASE_URL)
         if let URL = request.URL?.absoluteString where URL.containsString(toCatch) {
