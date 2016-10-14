@@ -49,11 +49,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return value
     }
-
+    //TODO: add safety checks
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
 
         // TODO make some better handling
-        let urlString: String = url.absoluteString
+        let urlString: String = url.absoluteString!
         if (urlString.containsString("googleusercontent")) {
             let options: [String:AnyObject] = [UIApplicationOpenURLOptionsSourceApplicationKey: sourceApplication!,
                                                UIApplicationOpenURLOptionsAnnotationKey: annotation]
