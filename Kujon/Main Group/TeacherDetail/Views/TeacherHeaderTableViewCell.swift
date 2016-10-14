@@ -14,7 +14,7 @@ class TeacherHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var teacherImageView: UIImageView!
     @IBOutlet weak var teacherNameLabel: UILabel!
     @IBOutlet weak var teacherStatusLabel: UILabel!
-    @IBOutlet weak var teacherEmailLabel: UILabel!
+
     @IBOutlet weak var teacherConsultationLabel: UILabel!
     @IBOutlet weak var teacherHomepageLabel: UILabel!
     @IBOutlet weak var teacherRoomLabel: UILabel!
