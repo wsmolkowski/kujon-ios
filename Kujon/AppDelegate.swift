@@ -49,12 +49,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return value
     }
-    //TODO: add safety checks
+
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
 
         // TODO make some better handling
-        let urlString: String = url.absoluteString!
-        if (urlString.containsString("googleusercontent")) {
+
+        if let urlString: String = url.absoluteString where urlString.containsString("googleusercontent") {
             let options: [String:AnyObject] = [UIApplicationOpenURLOptionsSourceApplicationKey: sourceApplication!,
                                                UIApplicationOpenURLOptionsAnnotationKey: annotation]
             return GIDSignIn.sharedInstance().handleURL(url,
