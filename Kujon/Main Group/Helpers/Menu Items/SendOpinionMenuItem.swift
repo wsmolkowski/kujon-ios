@@ -24,7 +24,8 @@ class SendOpinionMenuItem:MenuItemWithURL {
     }
 
     func returnURL() -> URL! {
-        return URL(string: "mailto:kujon@kujon.mobi?subject=Uwaga do Kujona".addingPercentEscapes(using: String.Encoding.utf8)!)
+        let URLCharactersSet = NSCharacterSet.urlQueryAllowed
+        return URL(string: "mailto:kujon@kujon.mobi?subject=Uwaga do Kujona".addingPercentEncoding(withAllowedCharacters: URLCharactersSet)!)
     }
 
 

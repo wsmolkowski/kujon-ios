@@ -94,33 +94,28 @@ class ScheduleTableViewController:
     }
 
     func onLectureLoaded(_ lectures: Array<Lecture>) {
-        do {
-            let wrappers = try lectures.map {
-                lecture in LectureWrapper(lecture: lecture)
-            }
-
-            let dictionaryOfDays = wrappers.groupBy {
-                $0.startDate
-            }
-            let sortedKeys = dictionaryOfDays.keys
-            try! sortedKeys.forEach {
-                key2 in
-
-                let pos = getPositionOfSection(key2)
-                if (pos != nil) {
-                    onlyLectureDictionary[key2] = dictionaryOfDays[key2]!
-                    let array = dictionaryOfDays[key2]!.map {
-                        $0 as CellHandlingStrategy
-                    }
-                    (sectionsArray[pos!]).addToList(array)
-
-                }
-            }
-
-            self.tableView.reloadData()
-            isQuering = false
-        } catch {
+        let wrappers = lectures.map {
+            lecture in LectureWrapper(lecture: lecture)
         }
+
+        let dictionaryOfDays = wrappers.groupBy {
+            $0.startDate
+        }
+        let sortedKeys = dictionaryOfDays.keys
+        sortedKeys.forEach {
+            key2 in
+            let pos = getPositionOfSection(key2)
+            if (pos != nil) {
+                onlyLectureDictionary[key2] = dictionaryOfDays[key2]!
+                let array = dictionaryOfDays[key2]!.map {
+                    $0 as CellHandlingStrategy
+                }
+                (sectionsArray[pos!]).addToList(array)
+            }
+        }
+
+        self.tableView.reloadData()
+        isQuering = false
     }
 
     fileprivate func getPositionOfSection(_ text: String) -> Int! {
@@ -228,7 +223,7 @@ class ScheduleTableViewController:
         }
     }
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sectionSch = getScheduleSectionAtPosition((indexPath as NSIndexPath).section)
         let cellStrategy = sectionSch.getElementAtPosition((indexPath as NSIndexPath).row)
         cellStrategy.handleClick(self.navigationController)

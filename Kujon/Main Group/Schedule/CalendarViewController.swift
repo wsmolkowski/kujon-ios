@@ -85,7 +85,7 @@ class CalendarViewController: MGCDayPlannerViewController,
     }
 
     func onLectureLoaded(_ lectures: Array<Lecture>) {
-        let wrappers = try! lectures.map {
+        let wrappers = lectures.map {
             lecture in LectureWrapper(lecture: lecture)
         }
         let dicMonthYear = wrappers.groupBy {
@@ -93,7 +93,7 @@ class CalendarViewController: MGCDayPlannerViewController,
         }
         let sortedKeys = dicMonthYear.keys
 
-        try! sortedKeys.forEach {
+        sortedKeys.forEach {
             key2 in
             _ = key2.getMonthYearString();
             var dict = dicMonthYear[key2]!.groupBy {

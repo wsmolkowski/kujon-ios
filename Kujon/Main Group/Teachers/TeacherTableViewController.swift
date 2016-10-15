@@ -57,7 +57,7 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
         self.showAlertApi(StringHolder.attention, text: text, succes: {
             self.lecturerProvider.reload()
             self.lecturerProvider.loadLecturers()
-        }, cancel: {})
+            }, cancel: {})
     }
 
 
@@ -94,18 +94,17 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
     }
 
 
-    func connected( _ indexPath: IndexPath) {
-
-        if let myUser: SimpleUser = self.lecturers[(indexPath as NSIndexPath).row] {
-            let currentTeacher  = CurrentTeacherHolder.sharedInstance
-            currentTeacher.currentTeacher = myUser
-            let controller = TeacherDetailTableViewController()
-            controller.simpleUser = myUser
-
-            self.navigationController?.pushViewController(controller, animated: true)
-
-
+    func connected(_ indexPath: IndexPath) {
+        guard indexPath.row < lecturers.count else {
+            return
         }
+        let myUser: SimpleUser = self.lecturers[indexPath.row]
+        let currentTeacher  = CurrentTeacherHolder.sharedInstance
+        currentTeacher.currentTeacher = myUser
+        let controller = TeacherDetailTableViewController()
+        controller.simpleUser = myUser
+        self.navigationController?.pushViewController(controller, animated: true)
+        
     }
-
+    
 }

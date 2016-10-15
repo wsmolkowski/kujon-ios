@@ -24,15 +24,13 @@ class ParticipantsSection:LecturersSection {
     }
 
     override func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?) {
-        if let myUser: SimpleUser = self.list[position] {
-
-
-            let teachController = StudentDetailsTableViewController(nibName: "StudentDetailsTableViewController", bundle: Bundle.main)
-            teachController.userId = myUser.id
-            controller?.pushViewController(teachController, animated: true)
-
-
+        guard position < list.count else {
+            return
         }
+        let myUser: SimpleUser = list[position]
+        let teachController = StudentDetailsTableViewController(nibName: "StudentDetailsTableViewController", bundle: Bundle.main)
+        teachController.userId = myUser.id
+        controller?.pushViewController(teachController, animated: true)
     }
 
 

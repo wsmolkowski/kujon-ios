@@ -30,15 +30,15 @@ weak var delegate: GradesProviderDelegate!
                     if grades.data.count > 0 {
                         for i in  0...grades.data.count - 1 {
 
-                            var termGrade = grades.data[i]
+                            let termGrade = grades.data[i]
                             var preparedGrade  = Array<PreparedGrades>()
                             for j in 0...termGrade.grades.count - 1 {
 
-                                var courseGrade = termGrade.grades[j]
+                                let courseGrade = termGrade.grades[j]
 
                                 for k in 0...courseGrade.grades.count - 1{
 
-                                    var grade = courseGrade.grades[k]
+                                    let grade = courseGrade.grades[k]
                                     preparedGrade.append(PreparedGrades(
                                             courseName: courseGrade.courseName ,
                                             courseId: courseGrade.courseId ,

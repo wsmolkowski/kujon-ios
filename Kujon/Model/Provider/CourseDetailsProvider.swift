@@ -49,7 +49,7 @@ class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
         self.makeHTTPAuthenticatedGetRequest({
             json in
             do {
-                if let courseResponse = try! self.changeJsonToResposne(json,errorR: self.delegate){
+                if let courseResponse = try self.changeJsonToResposne(json,errorR: self.delegate){
 
                     self.delegate?.onCourseDetailsLoaded(courseResponse.details)
                 }

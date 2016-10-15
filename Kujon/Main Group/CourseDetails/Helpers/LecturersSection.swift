@@ -42,15 +42,15 @@ class LecturersSection: SectionHelperProtocol {
     }
 
     func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?) {
-        if let myUser: SimpleUser = self.list[position] {
-            let currentTeacher = CurrentTeacherHolder.sharedInstance
-            currentTeacher.currentTeacher = myUser
-            let teachController = TeacherDetailTableViewController()
-            teachController.simpleUser = myUser
-            controller?.pushViewController(teachController, animated: true)
-
-
+        guard position < list.count else {
+            return
         }
+        let myUser: SimpleUser = self.list[position]
+        let currentTeacher = CurrentTeacherHolder.sharedInstance
+        currentTeacher.currentTeacher = myUser
+        let teachController = TeacherDetailTableViewController()
+        teachController.simpleUser = myUser
+        controller?.pushViewController(teachController, animated: true)
     }
 
     func getMyCellId() -> String {

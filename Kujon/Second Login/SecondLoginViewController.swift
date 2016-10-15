@@ -17,7 +17,7 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIApplication.shared.setStatusBarStyle(.lightContent, animated: true)
+        UIApplication.shared.statusBarStyle = .lightContent
         navigationController?.navigationBar.barTintColor = UIColor.kujonBlueColor()
         navigationController?.navigationBar.tintColor = UIColor.white
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]

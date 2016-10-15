@@ -52,15 +52,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // TODO make some better handling
 
-        if let urlString: String = url.absoluteString , urlString.contains("googleusercontent") {
-            let options: [String:AnyObject] = [UIApplicationOpenURLOptionsKey.sourceApplication.rawValue: sourceApplication! as AnyObject,
-                                               UIApplicationOpenURLOptionsKey.annotation.rawValue: annotation as AnyObject]
+        if url.absoluteString.contains("googleusercontent") {
+            //let options: [String:AnyObject] = [UIApplicationOpenURLOptionsKey.sourceApplication.rawValue: sourceApplication! as AnyObject, UIApplicationOpenURLOptionsKey.annotation.rawValue: annotation as AnyObject]
             return GIDSignIn.sharedInstance().handle(url,
                     sourceApplication: sourceApplication,
                     annotation: annotation)
         }
-
-
         return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 
