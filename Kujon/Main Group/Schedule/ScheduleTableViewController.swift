@@ -40,8 +40,7 @@ class ScheduleTableViewController:
 
 //        lastQueryDate = NSDate.stringToDate("2015-05-05")
         lastQueryDate = Date.getCurrentStartOfWeek()
-        Date().numberOfDaysUntilDateTime(lastQueryDate)
-        todaySection = lastQueryDate.numberOfDaysUntilDateTime(Date());
+        todaySection = lastQueryDate.numberOfDaysUntilDateTime(toDateTime: lastQueryDate, calendar: Calendar.current)
         self.tableView.register(UINib(nibName: "LectureTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.LectureCellId)
         self.tableView.register(UINib(nibName: "DayTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewController.DayCellId)
         self.tableView.tableFooterView = UIView()

@@ -24,22 +24,22 @@ class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
     var endpoint:String! = nil
    weak var delegate: CourseDetailsProviderDelegate! = nil
     func loadCourseDetails(_ course: Course) {
-        let courseString = course.courseId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed())
-        let termsString = course.termId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed())
+        let courseString = course.courseId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        let termsString = course.termId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         endpoint = "/courseseditions/" + courseString! + "/" + termsString!
         makeApiShot()
 
     }
 
     func loadCourseDetails(_ courseId: String, andTermId termId: String) {
-        let courseString = courseId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed())
-        let termsString = termId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed())
+        let courseString = courseId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        let termsString = termId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         endpoint = "/courseseditions/" + courseString! + "/" + termsString!
         makeApiShot()
     }
 
     func loadCourseDetails(_ courseId: String) {
-        let courseString = courseId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed())
+        let courseString = courseId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         endpoint = "/courses/" + courseString!
         makeApiShot()
     }
