@@ -132,18 +132,10 @@ extension Date {
         return dateWithHoursAdded
     }
 
-    func numberOfDaysUntilDateTime(_ toDateTime: Date, inTimeZone timeZone: TimeZone? = nil) -> Int {
-        var calendar = Calendar.current
-        if let timeZone = timeZone {
-            calendar.timeZone = timeZone
-        }
-
-        var fromDate: Date?, toDate: Date?
-
-        (calendar as NSCalendar).range(of: .day, start: &fromDate as NSDate?, interval: nil, for: self)
-        (calendar as NSCalendar).range(of: .day, start: &toDate as NSDate?, interval: nil, for: toDateTime)
-
-        let difference = (calendar as NSCalendar).components(.day, from: fromDate!, to: toDate!, options: [])
+    func numberOfDaysUntilDateTime(toDateTime: Date, calendar: Calendar) -> Int {
+        let fromDate = calendar.startOfDay(for: self)
+        let toDate = calendar.startOfDay(for: toDateTime)
+        let difference = calendar.dateComponents([.day], from: fromDate, to: toDate)
         return difference.day!
     }
 }
