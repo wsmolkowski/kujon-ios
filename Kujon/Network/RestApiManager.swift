@@ -24,7 +24,21 @@ class RestApiManager {
         } else {
             let request = URLRequest(url: URL(string: getMyUrl())!)
             let session = URLSession.shared
-            let task = session.dataTask(with: request, completionHandler: createCompletionHanlder(onCompletion, onError: onError) as! (Data?, URLResponse?, Error?) -> Void)
+            let task = session.dataTask(with: request) {
+                data, response, error in
+                NSlogManager.showLog(String(format: "Disk cache %i of %i", URLCache.shared.currentDiskUsage, URLCache.shared.diskCapacity))
+                NSlogManager.showLog(String(format: "Memory Cache %i of %i", URLCache.shared.currentMemoryUsage, URLCache.shared.memoryCapacity))
+                if let error = error {
+                    DispatchQueue.main.async {
+                        onError(error.localizedDescription)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        onCompletion(data!)
+                    }
+                }
+            }
+
             task.resume()
         }
         refresh = false
@@ -39,7 +53,21 @@ class RestApiManager {
             request.httpMethod = "POST"
             request.httpBody = json
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            let task = session.dataTask(with: request, completionHandler: createCompletionHanlder(onCompletion, onError: onError) as! (Data?, URLResponse?, Error?) -> Void)
+            let task = session.dataTask(with: request) {
+                data, response, error in
+                NSlogManager.showLog(String(format: "Disk cache %i of %i", URLCache.shared.currentDiskUsage, URLCache.shared.diskCapacity))
+                NSlogManager.showLog(String(format: "Memory Cache %i of %i", URLCache.shared.currentMemoryUsage, URLCache.shared.memoryCapacity))
+                if let error = error {
+                    DispatchQueue.main.async {
+                        onError(error.localizedDescription)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        onCompletion(data!)
+                    }
+                }
+            }
+
             task.resume()
 
         }
@@ -54,7 +82,21 @@ class RestApiManager {
             let session = SessionManager.provideSession()
             request.httpMethod = "POST"
             self.headerManager.addHeadersToRequest(&request,refresh:refresh)
-            let task = session.dataTask(with: request, completionHandler: createCompletionHanlder(onCompletion, onError: onError) as! (Data?, URLResponse?, Error?) -> Void)
+            let task = session.dataTask(with: request) {
+                data, response, error in
+                NSlogManager.showLog(String(format: "Disk cache %i of %i", URLCache.shared.currentDiskUsage, URLCache.shared.diskCapacity))
+                NSlogManager.showLog(String(format: "Memory Cache %i of %i", URLCache.shared.currentMemoryUsage, URLCache.shared.memoryCapacity))
+                if let error = error {
+                    DispatchQueue.main.async {
+                        onError(error.localizedDescription)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        onCompletion(data!)
+                    }
+                }
+            }
+
             task.resume()
 
         }
@@ -69,7 +111,21 @@ class RestApiManager {
                 var request = URLRequest(url: URL(string: getMyUrl())!)
                 let session = SessionManager.provideSession()
                 self.headerManager.addHeadersToRequest(&request,refresh:refresh)
-                let task = session.dataTask(with: request, completionHandler: createCompletionHanlder(onCompletion, onError:onError) as! (Data?, URLResponse?, Error?) -> Void)
+                let task = session.dataTask(with: request) {
+                    data, response, error in
+                    NSlogManager.showLog(String(format: "Disk cache %i of %i", URLCache.shared.currentDiskUsage, URLCache.shared.diskCapacity))
+                    NSlogManager.showLog(String(format: "Memory Cache %i of %i", URLCache.shared.currentMemoryUsage, URLCache.shared.memoryCapacity))
+                    if let error = error {
+                        DispatchQueue.main.async {
+                            onError(error.localizedDescription)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            onCompletion(data!)
+                        }
+                    }
+                }
+
                 task.resume()
             } else {
                 onError(StringHolder.not_auth)
@@ -95,15 +151,14 @@ class RestApiManager {
     }
 
 
-    fileprivate func createCompletionHanlder(_ onCompletion: @escaping onSucces, onError: @escaping onErrorOccurs) -> (Data?, URLResponse?, NSError?) -> () {
+    fileprivate func createCompletionHanlder(_ onCompletion: @escaping onSucces, onError: @escaping onErrorOccurs) -> (Data?, URLResponse?, NSError?) -> Void {
         return {
-            data, response, error -> Void in
+            data, response, error in
             NSlogManager.showLog(String(format: "Disk cache %i of %i", URLCache.shared.currentDiskUsage, URLCache.shared.diskCapacity))
             NSlogManager.showLog(String(format: "Memory Cache %i of %i", URLCache.shared.currentMemoryUsage, URLCache.shared.memoryCapacity))
-            if (error != nil) {
-
+            if let error = error {
                 DispatchQueue.main.async {
-                    onError(error!.localizedDescription)
+                    onError(error.localizedDescription)
                 }
             } else {
                 DispatchQueue.main.async {
