@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0730"
+   LastUpgradeVersion = "0800"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4C0D8EDB39DFBA4C3B9DF455"
+               BlueprintIdentifier = "66F402F01DB12E82001E28D1"
                BuildableName = "KujonTests.xctest"
                BlueprintName = "KujonTests"
                ReferencedContainer = "container:Kujon.xcodeproj">
@@ -42,7 +42,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4C0D848D5C78D9032575A10E"
+               BlueprintIdentifier = "66F402E21DB12E75001E28D1"
                BuildableName = "KujonUITests.xctest"
                BlueprintName = "KujonUITests"
                ReferencedContainer = "container:Kujon.xcodeproj">
