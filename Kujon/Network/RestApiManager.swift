@@ -22,9 +22,9 @@ class RestApiManager {
         if (test) {
             self.handelTestCase(onCompletion)
         } else {
-            let request = NSMutableURLRequest(url: URL(string: getMyUrl())!)
+            let request = URLRequest(url: URL(string: getMyUrl())!)
             let session = URLSession.shared
-            let task = session.dataTask(with: request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
+            let task = session.dataTask(with: request, completionHandler: createCompletionHanlder(onCompletion, onError: onError) as! (Data?, URLResponse?, Error?) -> Void)
             task.resume()
         }
         refresh = false
@@ -34,12 +34,12 @@ class RestApiManager {
         if (test) {
             self.handelTestCase(onCompletion)
         } else {
-            var request = NSMutableURLRequest(url: URL(string: getMyUrl())!)
+            var request = URLRequest(url: URL(string: getMyUrl())!)
             let session = SessionManager.provideSession()
             request.httpMethod = "POST"
             request.httpBody = json
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            let task = session.dataTask(with: request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
+            let task = session.dataTask(with: request, completionHandler: createCompletionHanlder(onCompletion, onError: onError) as! (Data?, URLResponse?, Error?) -> Void)
             task.resume()
 
         }
@@ -50,11 +50,11 @@ class RestApiManager {
         if (test) {
             self.handelTestCase(onCompletion)
         } else {
-            var request = NSMutableURLRequest(url: URL(string: getMyUrl())!)
+            var request = URLRequest(url: URL(string: getMyUrl())!)
             let session = SessionManager.provideSession()
             request.httpMethod = "POST"
             self.headerManager.addHeadersToRequest(&request,refresh:refresh)
-            let task = session.dataTask(with: request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
+            let task = session.dataTask(with: request, completionHandler: createCompletionHanlder(onCompletion, onError: onError) as! (Data?, URLResponse?, Error?) -> Void)
             task.resume()
 
         }
@@ -66,10 +66,10 @@ class RestApiManager {
             self.handelTestCase(onCompletion)
         } else {
             if (headerManager.isAuthenticated()) {
-                var request = NSMutableURLRequest(url: URL(string: getMyUrl())!)
+                var request = URLRequest(url: URL(string: getMyUrl())!)
                 let session = SessionManager.provideSession()
                 self.headerManager.addHeadersToRequest(&request,refresh:refresh)
-                let task = session.dataTask(with: request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
+                let task = session.dataTask(with: request, completionHandler: createCompletionHanlder(onCompletion, onError:onError) as! (Data?, URLResponse?, Error?) -> Void)
                 task.resume()
             } else {
                 onError(StringHolder.not_auth)
@@ -79,9 +79,9 @@ class RestApiManager {
     }
 
     func reload(){
-        var request = NSMutableURLRequest(url: URL(string: getMyUrl())!)
+        var request = URLRequest(url: URL(string: getMyUrl())!)
         self.headerManager.addHeadersToRequest(&request)
-        SessionManager.clearCacheForRequest(request)
+        SessionManager.clearCacheForRequest(request as URLRequest)
         refresh = true
     }
 
@@ -95,7 +95,7 @@ class RestApiManager {
     }
 
 
-    fileprivate func creteCompletionHanlder(_ onCompletion: @escaping onSucces, onError: @escaping onErrorOccurs) -> (Data?, URLResponse?, NSError?) -> Void {
+    fileprivate func createCompletionHanlder(_ onCompletion: @escaping onSucces, onError: @escaping onErrorOccurs) -> (Data?, URLResponse?, NSError?) -> () {
         return {
             data, response, error -> Void in
             NSlogManager.showLog(String(format: "Disk cache %i of %i", URLCache.shared.currentDiskUsage, URLCache.shared.diskCapacity))

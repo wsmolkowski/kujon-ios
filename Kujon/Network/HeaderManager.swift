@@ -15,7 +15,7 @@ class HeaderManager {
     func isAuthenticated()->Bool{
         return (userDataHolder.userEmail != nil) && (userDataHolder.userToken != nil)
     }
-    func addHeadersToRequest(_ request: inout NSMutableURLRequest, refresh:Bool = false) {
+    func addHeadersToRequest(_ request: inout URLRequest, refresh:Bool = false) {
         request.addValue(userDataHolder.userEmail, forHTTPHeaderField: EMAIL_HEADER)
         request.addValue(userDataHolder.userToken, forHTTPHeaderField: TOKEN_HEADER)
         if(refresh){
