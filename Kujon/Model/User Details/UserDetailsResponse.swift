@@ -13,7 +13,7 @@ struct UserDetailsResponse {
 
 
 extension UserDetailsResponse: Decodable {
-    static func decode(j: AnyObject) throws -> UserDetailsResponse {
+    static func decode(_ j: Any) throws -> UserDetailsResponse {
         return try UserDetailsResponse(
                 status: j => "status",
                 data: j => "data"

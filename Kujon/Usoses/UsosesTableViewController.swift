@@ -10,24 +10,24 @@ import UIKit
 
 class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
 
-    private let UsosCellIdentifier = "reusableUsosCell"
-    private let usosProvider = ProvidersProviderImpl.sharedInstance.provideUsosesProvider()
-    private var usosList: Array<Usos> = Array()
+    fileprivate let UsosCellIdentifier = "reusableUsosCell"
+    fileprivate let usosProvider = ProvidersProviderImpl.sharedInstance.provideUsosesProvider()
+    fileprivate var usosList: Array<Usos> = Array()
     let userDataHolder = UserDataHolder.sharedInstance
     var showDemoUniversity = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = StringHolder.chooseUsos
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UsosesTableViewController.barTapped))
         tapGestureRecognizer.numberOfTapsRequired = 3
         self.navigationController?.navigationBar.addGestureRecognizer(tapGestureRecognizer)
-        self.navigationController?.navigationBar.userInteractionEnabled = true
+        self.navigationController?.navigationBar.isUserInteractionEnabled = true
         self.navigationController?.navigationBar.barTintColor = UIColor.kujonBlueColor()
 
-        self.tableView.registerNib(UINib(nibName: "UsosTableViewCell", bundle: nil), forCellReuseIdentifier: UsosCellIdentifier)
+        self.tableView.register(UINib(nibName: "UsosTableViewCell", bundle: nil), forCellReuseIdentifier: UsosCellIdentifier)
         self.usosProvider.delegate = self
         self.usosProvider.loadUsoses()
 
@@ -35,10 +35,10 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
         self.tableView.estimatedRowHeight = 140
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: #selector(UsosesTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(UsosesTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
     }
 
-    func refresh(refreshControl: UIRefreshControl) {
+    func refresh(_ refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")
         usosProvider.reload()
         usosProvider.loadUsoses()
@@ -53,15 +53,15 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
     }
 
     @available(iOS 2.0, *)
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
 
@@ -69,7 +69,7 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
 
     }
 
-    private func getShowDemo() -> Array<Usos> {
+    fileprivate func getShowDemo() -> Array<Usos> {
         if (showDemoUniversity) {
             return self.usosList
         } else {
@@ -80,13 +80,13 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
         }
     }
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UsosTableViewCell = tableView.dequeueReusableCellWithIdentifier(UsosCellIdentifier, forIndexPath: indexPath) as! UsosTableViewCell
-        let usos = getShowDemo()[indexPath.row] as Usos
+    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: UsosTableViewCell = tableView.dequeueReusableCell(withIdentifier: UsosCellIdentifier, for: indexPath) as! UsosTableViewCell
+        let usos = getShowDemo()[(indexPath as NSIndexPath).row] as Usos
 
         let cellEnabled = usos.enable != nil && usos.enable == true
         cell.enabled = cellEnabled
-        cell.usosImageView?.contentMode = UIViewContentMode.ScaleAspectFit;
+        cell.usosImageView?.contentMode = UIViewContentMode.scaleAspectFit;
         cell.usosImageView?.clipsToBounds = true
         cell.usosImageView?.image = nil
         self.loadImage(usos.image, indexPath: indexPath)
@@ -95,9 +95,9 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
     }
 
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let cell = tableView.cellForRowAtIndexPath(indexPath) as? UsosTableViewCell {
-            let usos = getShowDemo()[indexPath.row] as Usos
+    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? UsosTableViewCell {
+            let usos = getShowDemo()[(indexPath as NSIndexPath).row] as Usos
             if cell.enabled {
                 showAlert(usos)
                 return
@@ -107,28 +107,28 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
     }
 
 
-    func showAlert(usos: Usos) {
-        let alertController = UIAlertController(title: StringHolder.attention, message: StringHolder.moveToUsos, preferredStyle: .Alert)
+    func showAlert(_ usos: Usos) {
+        let alertController = UIAlertController(title: StringHolder.attention, message: StringHolder.moveToUsos, preferredStyle: .alert)
 
-        alertController.addAction(UIAlertAction(title: StringHolder.ok, style: .Default, handler: {
+        alertController.addAction(UIAlertAction(title: StringHolder.ok, style: .default, handler: {
             (action: UIAlertAction!) in
-            alertController.dismissViewControllerAnimated(true, completion: nil)
+            alertController.dismiss(animated: true, completion: nil)
             let controller = SecondLoginViewController()
             let  navigationController = UINavigationController(rootViewController: controller)
 
             self.userDataHolder.usosId = usos.usosId
             self.userDataHolder.usosName = usos.name
             self.userDataHolder.userUsosImage = usos.image
-            self.presentViewController(navigationController, animated: true, completion: nil)
+            self.present(navigationController, animated: true, completion: nil)
         }))
-        alertController.addAction(UIAlertAction(title: StringHolder.cancel, style: .Cancel, handler: {
+        alertController.addAction(UIAlertAction(title: StringHolder.cancel, style: .cancel, handler: {
             (action: UIAlertAction!) in
-            alertController.dismissViewControllerAnimated(true, completion: nil)
+            alertController.dismiss(animated: true, completion: nil)
         }))
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 
-    func onUsosesLoaded(arrayOfUsoses: Array<Usos>) {
+    func onUsosesLoaded(_ arrayOfUsoses: Array<Usos>) {
         self.usosList = arrayOfUsoses;
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
@@ -138,7 +138,7 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
         self.refreshControl?.endRefreshing()
     }
 
-    func onErrorOccurs(text: String) {
+    func onErrorOccurs(_ text: String) {
 
         self.refreshControl?.endRefreshing()
         self.showAlertApi(StringHolder.attention, text: text, succes: {
@@ -147,16 +147,16 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
 
     }
 
-    private func loadImage(urlString: String, indexPath: NSIndexPath) {
-        let url = NSURL(string: urlString)
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithURL(url!, completionHandler: {
+    fileprivate func loadImage(_ urlString: String, indexPath: IndexPath) {
+        let url = URL(string: urlString)
+        let session = URLSession.shared
+        let task = session.dataTask(with: url!, completionHandler: {
             data, response, error -> Void in
             if (data != nil) {
                 let image = UIImage(data: data!)
-                dispatch_async(dispatch_get_main_queue()) {
-                    if let cell = self.tableView.cellForRowAtIndexPath(indexPath) {
-                        (cell as! UsosTableViewCell).usosImageView?.contentMode = UIViewContentMode.ScaleAspectFit;
+                DispatchQueue.main.async {
+                    if let cell = self.tableView.cellForRow(at: indexPath) {
+                        (cell as! UsosTableViewCell).usosImageView?.contentMode = UIViewContentMode.scaleAspectFit;
                         (cell as! UsosTableViewCell).usosImageView?.image = image
 
 

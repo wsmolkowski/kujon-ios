@@ -10,7 +10,7 @@ protocol CellHandlingStrategy {
 
     func amILectureWrapper() -> Bool
 
-    func giveMeMyCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func giveMeMyCell(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell
 
-    func handleClick(controller:UINavigationController?)
+    func handleClick(_ controller:UINavigationController?)
 }

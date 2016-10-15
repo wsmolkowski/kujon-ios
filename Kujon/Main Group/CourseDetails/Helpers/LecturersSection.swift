@@ -7,14 +7,14 @@ import Foundation
 
 class LecturersSection: SectionHelperProtocol {
     var list: Array<SimpleUser>! = Array()
-    func fillUpWithData(courseDetails: CourseDetails) {
+    func fillUpWithData(_ courseDetails: CourseDetails) {
         if (courseDetails.lecturers != nil) {
             list = courseDetails.lecturers
         }
     }
 
-    func registerView(tableView: UITableView) {
-        tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: getMyCellId())
+    func registerView(_ tableView: UITableView) {
+        tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: getMyCellId())
     }
 
     func getSectionTitle() -> String {
@@ -34,14 +34,14 @@ class LecturersSection: SectionHelperProtocol {
         return StandartSection.sectionHeight
     }
 
-    func giveMeCellAtPosition(tableView: UITableView, onPosition position: NSIndexPath) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCellWithIdentifier(getMyCellId(), forIndexPath: position) as! GoFurtherViewCellTableViewCell
-        let teacher = list[position.row] 
+    func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath) -> UITableViewCell! {
+        let cell = tableView.dequeueReusableCell(withIdentifier: getMyCellId(), for: position) as! GoFurtherViewCellTableViewCell
+        let teacher = list[(position as NSIndexPath).row] 
         cell.plainLabel.text = teacher.firstName + " " + teacher.lastName
         return cell
     }
 
-    func reactOnSectionClick(position: Int, withController controller: UINavigationController?) {
+    func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?) {
         if let myUser: SimpleUser = self.list[position] {
             let currentTeacher = CurrentTeacherHolder.sharedInstance
             currentTeacher.currentTeacher = myUser

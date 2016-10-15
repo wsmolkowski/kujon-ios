@@ -7,5 +7,5 @@ import Foundation
 
 protocol CellHandlerProtocol {
 
-    func handleCell(inout cell:UITableViewCell);
+    func handleCell(_ cell:inout UITableViewCell);
 }

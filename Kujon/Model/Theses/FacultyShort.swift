@@ -11,7 +11,7 @@ struct FacultyShort : Decodable{
     let id: String
     let name: String
 
-    static func decode(json: AnyObject) throws -> FacultyShort {
+    static func decode(_ json: Any) throws -> FacultyShort {
         return try FacultyShort(id: json => "id", name: json => "name")
     }
 

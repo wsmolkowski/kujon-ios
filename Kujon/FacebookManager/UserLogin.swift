@@ -6,9 +6,9 @@
 import Foundation
 
 enum UserLoginEnum {
-    case FACEBOOK
-    case GOOGLE
-    case EMAIL
+    case facebook
+    case google
+    case email
 }
 
 extension UserLoginEnum {
@@ -17,14 +17,14 @@ extension UserLoginEnum {
         if let type = userHolder.userLoginType {
 
             if (type == StringHolder.googleType) {
-                return .GOOGLE
+                return .google
             } else if (type == StringHolder.fbType) {
-                return .FACEBOOK
+                return .facebook
             }else{
-                return .EMAIL
+                return .email
             }
         }
-        return .FACEBOOK
+        return .facebook
     }
 
     static func getUserLogin() -> UserLogin {
@@ -46,16 +46,16 @@ extension UserLoginEnum {
 
 protocol LogoutSucces{
     func succes();
-    func failed(text: String);
+    func failed(_ text: String);
 }
 
 protocol UserLogin {
-    func logout(succes: LogoutSucces)
+    func logout(_ succes: LogoutSucces)
     func getLoginType() -> UserLoginEnum
 }
 
 extension UserLogin{
-    func logoutUserData(userData: UserDataHolder){
+    func logoutUserData(_ userData: UserDataHolder){
         userData.userEmail = nil
         userData.userToken = nil
         userData.userImage = nil

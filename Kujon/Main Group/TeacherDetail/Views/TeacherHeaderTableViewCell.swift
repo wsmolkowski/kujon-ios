@@ -31,16 +31,16 @@ class TeacherHeaderTableViewCell: UITableViewCell {
         updateButtonState()
     }
 
-    @IBAction func checkEmailURLButtonDidTap(sender: UIButton) {
+    @IBAction func checkEmailURLButtonDidTap(_ sender: UIButton) {
 
         if let teacherEmailURL = teacherEmailURL,
-            let URL = NSURL(string: teacherEmailURL, relativeToURL: nil) {
-            UIApplication.sharedApplication().openURL(URL)
+            let URL = URL(string: teacherEmailURL, relativeTo: nil) {
+            UIApplication.shared.openURL(URL)
         }
     }
 
-    private func updateButtonState() {
-        checkEmailURLButton.enabled = teacherEmailURL != nil
+    fileprivate func updateButtonState() {
+        checkEmailURLButton.isEnabled = teacherEmailURL != nil
     }
 
 }

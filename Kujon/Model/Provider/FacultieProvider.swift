@@ -8,10 +8,10 @@ import Foundation
 protocol FacultieProviderProtocol: JsonProviderProtocol {
     associatedtype T = FacultieResponse
 
-    func loadFacultie(id: String)
+    func loadFacultie(_ id: String)
 }
  protocol FacultieProviderDelegate: ErrorResponseProtocol {
-    func onFacultieLoaded(fac: Facultie)
+    func onFacultieLoaded(_ fac: Facultie)
 }
 
 class FacultieProvider: RestApiManager, FacultieProviderProtocol {
@@ -23,7 +23,7 @@ weak var delegate: FacultieProviderDelegate! = nil
         return baseURL + "/faculties/" + endpoint
     }
 
-    func loadFacultie(id: String) {
+    func loadFacultie(_ id: String) {
         self.endpoint = id
         self.makeHTTPAuthenticatedGetRequest({
             json in

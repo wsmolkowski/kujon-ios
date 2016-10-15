@@ -15,8 +15,8 @@ import QuartzCore
 
 
 enum SlideOutState {
-    case Collapsed
-    case LeftPanelExpanded
+    case collapsed
+    case leftPanelExpanded
 }
 
 class ContainerViewController: UIViewController, LeftMenuTableViewControllerDelegate {
@@ -24,9 +24,9 @@ class ContainerViewController: UIViewController, LeftMenuTableViewControllerDele
 
     var centerViewController: UserTableViewController = UserTableViewController()
     var loadedToUsos = false
-    var currentState: SlideOutState = .Collapsed {
+    var currentState: SlideOutState = .collapsed {
         didSet {
-            let shouldShowShadow = currentState != .Collapsed
+            let shouldShowShadow = currentState != .collapsed
             showShadowForCenterViewController(shouldShowShadow)
         }
     }
@@ -38,29 +38,29 @@ class ContainerViewController: UIViewController, LeftMenuTableViewControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.kujonBlueColor()
-        UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
+        UIApplication.shared.setStatusBarStyle(.lightContent, animated: true)
         centerViewController.setNavigationProtocol(self)
         centerNavigationController = UINavigationController(rootViewController: centerViewController)
         centerNavigationController.navigationBar.barTintColor = UIColor.kujonBlueColor()
-        centerNavigationController.navigationBar.tintColor = UIColor.whiteColor()
-        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        centerNavigationController.navigationBar.tintColor = UIColor.white
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
         centerNavigationController.navigationBar.titleTextAttributes = titleDict as? [String:AnyObject]
 
 
-        centerNavigationController.navigationBar.translucent = false
-        centerNavigationController?.interactivePopGestureRecognizer?.enabled = false
+        centerNavigationController.navigationBar.isTranslucent = false
+        centerNavigationController?.interactivePopGestureRecognizer?.isEnabled = false
         view.addSubview(centerNavigationController.view)
         addChildViewController(centerNavigationController)
-        centerNavigationController.didMoveToParentViewController(self)
+        centerNavigationController.didMove(toParentViewController: self)
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ContainerViewController.handlePanGesture(_:)))
         centerNavigationController.view.addGestureRecognizer(panGestureRecognizer)
         if(loadedToUsos){
             loadedToUsos = false
-            self.centerNavigationController.pushViewController(IntroScreenViewController(nibName: "IntroScreenViewController", bundle:  NSBundle.mainBundle()), animated: true)
+            self.centerNavigationController.pushViewController(IntroScreenViewController(nibName: "IntroScreenViewController", bundle:  Bundle.main), animated: true)
         }
     }
 
-    func selectedMenuItem(menuController: LeftMenuTableViewController, menuItem: MenuItemWithController, withDelegate: Bool) {
+    func selectedMenuItem(_ menuController: LeftMenuTableViewController, menuItem: MenuItemWithController, withDelegate: Bool) {
 
         if let cont = (centerNavigationController.visibleViewController as? NavigationDelegate) {
             if (cont.isSecond()) {
@@ -84,26 +84,26 @@ class ContainerViewController: UIViewController, LeftMenuTableViewControllerDele
 extension ContainerViewController: UIGestureRecognizerDelegate {
     // MARK: Gesture recognizer
 
-    func handlePanGesture(recognizer: UIPanGestureRecognizer) {
-        let gestureIsDraggingFromLeftToRight = (recognizer.velocityInView(view).x > 0)
-        if (currentState == .Collapsed && !gestureIsDraggingFromLeftToRight) {
+    func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
+        let gestureIsDraggingFromLeftToRight = (recognizer.velocity(in: view).x > 0)
+        if (currentState == .collapsed && !gestureIsDraggingFromLeftToRight) {
             addLeftPanelViewController()
             return
         }
         switch (recognizer.state) {
-        case .Began:
-            if (currentState == .Collapsed) {
+        case .began:
+            if (currentState == .collapsed) {
                 if (gestureIsDraggingFromLeftToRight) {
                     addLeftPanelViewController()
                 }
                 showShadowForCenterViewController(true)
             }
-        case .Changed:
-            if( self.centerNavigationController.view.frame.origin.x + recognizer.translationInView(view).x > 0){
-                recognizer.view!.center.x = recognizer.view!.center.x + recognizer.translationInView(view).x
-                recognizer.setTranslation(CGPointZero, inView: view)
+        case .changed:
+            if( self.centerNavigationController.view.frame.origin.x + recognizer.translation(in: view).x > 0){
+                recognizer.view!.center.x = recognizer.view!.center.x + recognizer.translation(in: view).x
+                recognizer.setTranslation(CGPoint.zero, in: view)
             }
-        case .Ended:
+        case .ended:
             if (leftViewController != nil) {
                 let hasMovedGreaterThanHalfway = recognizer.view!.center.x > view.bounds.size.width
                 animateLeftPanel(hasMovedGreaterThanHalfway)
@@ -120,7 +120,7 @@ extension ContainerViewController: NavigationMenuProtocol {
 
     func collapseSidePanel() {
         switch (currentState) {
-        case .LeftPanelExpanded:
+        case .leftPanelExpanded:
             toggleLeftPanel()
         default:
             break
@@ -128,7 +128,7 @@ extension ContainerViewController: NavigationMenuProtocol {
     }
 
     func toggleLeftPanel() {
-        let notAlreadyExpanded = (currentState != .LeftPanelExpanded)
+        let notAlreadyExpanded = (currentState != .leftPanelExpanded)
 
         if notAlreadyExpanded {
             addLeftPanelViewController()
@@ -146,26 +146,26 @@ extension ContainerViewController: NavigationMenuProtocol {
         }
     }
 
-    func addChildSidePanelController(leftMenuController: LeftMenuTableViewController) {
+    func addChildSidePanelController(_ leftMenuController: LeftMenuTableViewController) {
         leftMenuController.delegate = self
 
-        view.insertSubview(leftMenuController.view, atIndex: 0)
+        view.insertSubview(leftMenuController.view, at: 0)
 
         addChildViewController(leftMenuController)
-        leftMenuController.didMoveToParentViewController(self)
+        leftMenuController.didMove(toParentViewController: self)
     }
 
 
-    func animateLeftPanel(shouldExpand: Bool) {
+    func animateLeftPanel(_ shouldExpand: Bool) {
         if (shouldExpand) {
-            currentState = .LeftPanelExpanded
-            if (CGRectGetWidth(centerNavigationController.view.frame) - centerPanelExpandedOffset >= 0) {
-                animateCenterPanelXPosition(CGRectGetWidth(centerNavigationController.view.frame) - centerPanelExpandedOffset)
+            currentState = .leftPanelExpanded
+            if (centerNavigationController.view.frame.width - centerPanelExpandedOffset >= 0) {
+                animateCenterPanelXPosition(centerNavigationController.view.frame.width - centerPanelExpandedOffset)
             }
         } else {
             animateCenterPanelXPosition(0) {
                 finished in
-                self.currentState = .Collapsed
+                self.currentState = .collapsed
 
                 self.leftViewController!.view.removeFromSuperview()
                 self.leftViewController = nil;
@@ -173,14 +173,14 @@ extension ContainerViewController: NavigationMenuProtocol {
         }
     }
 
-    func animateCenterPanelXPosition(targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil) {
-        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .CurveEaseInOut, animations: {
+    func animateCenterPanelXPosition(_ targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions(), animations: {
             self.centerNavigationController.view.frame.origin.x = targetPosition
         }, completion: completion)
     }
 
 
-    func showShadowForCenterViewController(shouldShowShadow: Bool) {
+    func showShadowForCenterViewController(_ shouldShowShadow: Bool) {
         if (shouldShowShadow) {
             centerNavigationController.view.layer.shadowOpacity = 0.8
         } else {

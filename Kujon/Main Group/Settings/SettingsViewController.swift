@@ -25,12 +25,12 @@ class SettingsViewController: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SettingsViewController.back), andTitle: StringHolder.settings)
-        self.edgesForExtendedLayout = UIRectEdge.None
+        self.edgesForExtendedLayout = UIRectEdge()
         logOutButton.delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         deleteAccountProvider.delegate = self
         loginMenager = UserLoginEnum.getUserLogin()
-        logOutButton.hidden = true
+        logOutButton.isHidden = true
 
 
     }
@@ -40,12 +40,12 @@ class SettingsViewController: UIViewController,
 
     }
 
-    @IBAction func googleLogOutAction(sender: AnyObject) {
+    @IBAction func googleLogOutAction(_ sender: AnyObject) {
         goBackToEntryScreen();
 
     }
 
-    private func goBackToEntryScreen() {
+    fileprivate func goBackToEntryScreen() {
         loginMenager.logout(self)
 
     }
@@ -53,10 +53,10 @@ class SettingsViewController: UIViewController,
     func succes() {
         let controller = EntryViewController()
         let  navigationController = UINavigationController(rootViewController: controller)
-        self.presentViewController(navigationController, animated: true, completion: nil)
+        self.present(navigationController, animated: true, completion: nil)
     }
 
-    func failed(text: String) {
+    func failed(_ text: String) {
         self.showAlertApiError({
             self.goBackToEntryScreen()
         }, cancelFucnt: {})
@@ -64,10 +64,10 @@ class SettingsViewController: UIViewController,
 
 
     func back() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
 
-    @IBAction func deleteAccount(sender: AnyObject) {
+    @IBAction func deleteAccount(_ sender: AnyObject) {
         showAlertApi(StringHolder.attention, text: StringHolder.deleteAccount, succes: {
             self.deleteAccountProvider.deleteAccount()
         }, cancel: {})
@@ -82,23 +82,23 @@ class SettingsViewController: UIViewController,
 
 
 
-    @IBAction func regulaminAction(sender: AnyObject) {
-        if let url = NSURL(string: StringHolder.kujonRegulaminUrl) {
-            UIApplication.sharedApplication().openURL(url)
+    @IBAction func regulaminAction(_ sender: AnyObject) {
+        if let url = URL(string: StringHolder.kujonRegulaminUrl) {
+            UIApplication.shared.openURL(url)
         }
     }
 
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
     }
 
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         goBackToEntryScreen();
     }
 
     func onSuccesfullLogout() {
     }
 
-    func onErrorOccurs(text: String) {
+    func onErrorOccurs(_ text: String) {
     }
 
 

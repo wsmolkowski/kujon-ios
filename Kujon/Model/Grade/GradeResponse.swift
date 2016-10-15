@@ -13,7 +13,7 @@ struct GradeResponse {
 
 
 extension GradeResponse: Decodable {
-    static func decode(j: AnyObject) throws -> GradeResponse {
+    static func decode(_ j: Any) throws -> GradeResponse {
         return try GradeResponse(
         status: j => "status",
                 data: j => "data"

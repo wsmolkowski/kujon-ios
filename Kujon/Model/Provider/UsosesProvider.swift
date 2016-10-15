@@ -13,7 +13,7 @@ protocol UsosProviderProtocol: JsonProviderProtocol {
 }
 
 protocol UsosesProviderDelegate: ErrorResponseProtocol {
-    func onUsosesLoaded(arrayOfUsoses: Array<Usos>)
+    func onUsosesLoaded(_ arrayOfUsoses: Array<Usos>)
 
 }
 

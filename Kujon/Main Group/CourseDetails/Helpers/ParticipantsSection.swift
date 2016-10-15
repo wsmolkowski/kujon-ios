@@ -13,7 +13,7 @@ class ParticipantsSection:LecturersSection {
         return "participantsId"
     }
 
-    override func fillUpWithData(courseDetails: CourseDetails) {
+    override func fillUpWithData(_ courseDetails: CourseDetails) {
         if(courseDetails.participants != nil){
             self.list = courseDetails.participants
         }
@@ -23,11 +23,11 @@ class ParticipantsSection:LecturersSection {
         return StringHolder.students
     }
 
-    override func reactOnSectionClick(position: Int, withController controller: UINavigationController?) {
+    override func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?) {
         if let myUser: SimpleUser = self.list[position] {
 
 
-            let teachController = StudentDetailsTableViewController(nibName: "StudentDetailsTableViewController", bundle: NSBundle.mainBundle())
+            let teachController = StudentDetailsTableViewController(nibName: "StudentDetailsTableViewController", bundle: Bundle.main)
             teachController.userId = myUser.id
             controller?.pushViewController(teachController, animated: true)
 

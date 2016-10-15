@@ -5,81 +5,81 @@
 
 import Foundation
 import Decodable
-typealias onSucces = (NSData!) -> Void
-typealias onErrorOccurs = (text:String) -> Void
+typealias onSucces = (Data!) -> Void
+typealias onErrorOccurs = (_ text:String) -> Void
 
 class RestApiManager {
 //    static let BASE_URL: String = "https://api-demo.kujon.mobi"
     static let BASE_URL: String = "https://api.kujon.mobi"
 
-    private var headerManager = HeaderManager()
+    fileprivate var headerManager = HeaderManager()
 
     var test = false
     let baseURL = BASE_URL
     var refresh = false
 
-    func makeHTTPGetRequest(onCompletion: onSucces, onError: onErrorOccurs) {
+    func makeHTTPGetRequest(_ onCompletion: @escaping onSucces, onError: @escaping onErrorOccurs) {
         if (test) {
             self.handelTestCase(onCompletion)
         } else {
-            let request = NSMutableURLRequest(URL: NSURL(string: getMyUrl())!)
-            let session = NSURLSession.sharedSession()
-            let task = session.dataTaskWithRequest(request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
+            let request = NSMutableURLRequest(url: URL(string: getMyUrl())!)
+            let session = URLSession.shared
+            let task = session.dataTask(with: request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
             task.resume()
         }
         refresh = false
     }
 
-    func makeHTTPPostRequest(onCompletion: onSucces, onError: onErrorOccurs,json:NSData) {
+    func makeHTTPPostRequest(_ onCompletion: @escaping onSucces, onError: @escaping onErrorOccurs,json:Data) {
         if (test) {
             self.handelTestCase(onCompletion)
         } else {
-            var request = NSMutableURLRequest(URL: NSURL(string: getMyUrl())!)
+            var request = NSMutableURLRequest(url: URL(string: getMyUrl())!)
             let session = SessionManager.provideSession()
-            request.HTTPMethod = "POST"
-            request.HTTPBody = json
+            request.httpMethod = "POST"
+            request.httpBody = json
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            let task = session.dataTaskWithRequest(request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
+            let task = session.dataTask(with: request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
             task.resume()
 
         }
         refresh = false
     }
 
-    func makeHTTPAuthenticatedPostRequest(onCompletion: onSucces, onError: onErrorOccurs) {
+    func makeHTTPAuthenticatedPostRequest(_ onCompletion: @escaping onSucces, onError: @escaping onErrorOccurs) {
         if (test) {
             self.handelTestCase(onCompletion)
         } else {
-            var request = NSMutableURLRequest(URL: NSURL(string: getMyUrl())!)
+            var request = NSMutableURLRequest(url: URL(string: getMyUrl())!)
             let session = SessionManager.provideSession()
-            request.HTTPMethod = "POST"
+            request.httpMethod = "POST"
             self.headerManager.addHeadersToRequest(&request,refresh:refresh)
-            let task = session.dataTaskWithRequest(request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
+            let task = session.dataTask(with: request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
             task.resume()
 
         }
         refresh = false
     }
 
-    func makeHTTPAuthenticatedGetRequest(onCompletion: onSucces, onError: onErrorOccurs) {
+    func makeHTTPAuthenticatedGetRequest(_ onCompletion: @escaping onSucces, onError: @escaping onErrorOccurs) {
         if (test) {
             self.handelTestCase(onCompletion)
         } else {
             if (headerManager.isAuthenticated()) {
-                var request = NSMutableURLRequest(URL: NSURL(string: getMyUrl())!)
+                var request = NSMutableURLRequest(url: URL(string: getMyUrl())!)
                 let session = SessionManager.provideSession()
                 self.headerManager.addHeadersToRequest(&request,refresh:refresh)
-                let task = session.dataTaskWithRequest(request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
+                let task = session.dataTask(with: request, completionHandler: creteCompletionHanlder(onCompletion, onError: onError))
                 task.resume()
             } else {
-                onError(text:StringHolder.not_auth)
+                onError(StringHolder.not_auth)
             }
         }
         refresh = false
     }
 
     func reload(){
-        var request = NSMutableURLRequest(URL: NSURL(string: getMyUrl())!)
+        var request = NSMutableURLRequest(url: URL(string: getMyUrl())!)
         self.headerManager.addHeadersToRequest(&request)
         SessionManager.clearCacheForRequest(request)
         refresh = true
@@ -95,18 +95,18 @@ class RestApiManager {
     }
 
 
-    private func creteCompletionHanlder(onCompletion: onSucces, onError: onErrorOccurs) -> (NSData?, NSURLResponse?, NSError?) -> Void {
+    fileprivate func creteCompletionHanlder(_ onCompletion: @escaping onSucces, onError: @escaping onErrorOccurs) -> (Data?, URLResponse?, NSError?) -> Void {
         return {
             data, response, error -> Void in
-            NSlogManager.showLog(String(format: "Disk cache %i of %i", NSURLCache.sharedURLCache().currentDiskUsage, NSURLCache.sharedURLCache().diskCapacity))
-            NSlogManager.showLog(String(format: "Memory Cache %i of %i", NSURLCache.sharedURLCache().currentMemoryUsage, NSURLCache.sharedURLCache().memoryCapacity))
+            NSlogManager.showLog(String(format: "Disk cache %i of %i", URLCache.shared.currentDiskUsage, URLCache.shared.diskCapacity))
+            NSlogManager.showLog(String(format: "Memory Cache %i of %i", URLCache.shared.currentMemoryUsage, URLCache.shared.memoryCapacity))
             if (error != nil) {
 
-                dispatch_async(dispatch_get_main_queue()) {
-                    onError(text:error!.localizedDescription)
+                DispatchQueue.main.async {
+                    onError(error!.localizedDescription)
                 }
             } else {
-                dispatch_async(dispatch_get_main_queue()) {
+                DispatchQueue.main.async {
                     onCompletion(data!)
                 }
             }
@@ -114,7 +114,7 @@ class RestApiManager {
     }
 
 
-    private func handelTestCase(onCompletion: onSucces) {
+    fileprivate func handelTestCase(_ onCompletion: onSucces) {
         var string: String
         switch (getMyUrl()) {
         case baseURL + "/usoses":
@@ -137,7 +137,7 @@ class RestApiManager {
         default: string = "Usoses"
         }
 
-        if (getMyUrl().containsString("/tt/")) {
+        if (getMyUrl().contains("/tt/")) {
             string = "Schedule"
         }
         if(getMyFakeJsonName() != nil){

@@ -19,7 +19,7 @@ struct CourseEdition {
 
 extension CourseEdition:Decodable{
 
-    static func decode(j: AnyObject) throws -> CourseEdition {
+    static func decode(_ j: Any) throws -> CourseEdition {
         return try CourseEdition(
             courseId: j => "course_id",
                     termId: j => "term_id",

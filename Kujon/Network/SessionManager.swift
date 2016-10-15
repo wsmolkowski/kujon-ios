@@ -8,24 +8,24 @@ import Foundation
 class SessionManager {
 
 
-    static func provideSession() -> NSURLSession {
-        let conf = NSURLSessionConfiguration.defaultSessionConfiguration()
-        conf.requestCachePolicy = NSURLRequestCachePolicy.ReturnCacheDataElseLoad
-        return NSURLSession(configuration: conf)
+    static func provideSession() -> URLSession {
+        let conf = URLSessionConfiguration.default
+        conf.requestCachePolicy = NSURLRequest.CachePolicy.returnCacheDataElseLoad
+        return URLSession(configuration: conf)
     }
     static func setCache(){
-        let URLCache = NSURLCache(memoryCapacity: 4 * 1024 * 1024, diskCapacity: 20 * 1024 * 1024, diskPath: nil)
-        NSURLCache.setSharedURLCache(URLCache)
+        let URLCache = Foundation.URLCache(memoryCapacity: 4 * 1024 * 1024, diskCapacity: 20 * 1024 * 1024, diskPath: nil)
+        Foundation.URLCache.setSharedURLCache(URLCache)
     }
 
     static func clearCache(){
-        NSURLCache.sharedURLCache().removeAllCachedResponses()
+        URLCache.shared.removeAllCachedResponses()
         setCache()
     }
 
-    static func clearCacheForRequest(request : NSURLRequest){
+    static func clearCacheForRequest(_ request : URLRequest){
 //        NSURLCache.sharedURLCache().removeCachedResponseForRequest( request)// this does not work, need to clear all
-        NSURLCache.sharedURLCache().removeAllCachedResponses()
+        URLCache.shared.removeAllCachedResponses()
         setCache()
     }
 }

@@ -21,23 +21,23 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
         courseDetailsProvider.delegate = self;
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: #selector(CourseDetailsTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(CourseDetailsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         refreshControl?.beginRefreshingManually()
         load()
         for section in sectionHelpers{
             section.registerView(self.tableView)
         }
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
 
-    func refresh(refreshControl: UIRefreshControl) {
+    func refresh(_ refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")
         courseDetailsProvider.reload()
         load()
 
     }
 
-    private func load(){
+    fileprivate func load(){
         if(course != nil ) {
             courseDetailsProvider.loadCourseDetails(course)
         }else if( courseId != nil && termId != nil){
@@ -50,16 +50,16 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
             back()
         }
     }
-    private func createSections()->Array<SectionHelperProtocol>{
+    fileprivate func createSections()->Array<SectionHelperProtocol>{
         return [NameSection(),FacultieSection(),DescriptionSection(),BibliographySection()
                 ,PassCriteriaSection(),CycleSection(),LecturersSection(),CoordinatorsSection(),ClassTypeSection(),ParticipantsSection()]
     }
     func back(){
 
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
 
-    func onCourseDetailsLoaded(courseDetails: CourseDetails) {
+    func onCourseDetailsLoaded(_ courseDetails: CourseDetails) {
         sectionHelpers = createSections()
         for sectionHelper in sectionHelpers{
             sectionHelper.registerView(self.tableView)
@@ -69,7 +69,7 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
         self.refreshControl?.endRefreshing()
     }
 
-    func onErrorOccurs(text: String) {
+    func onErrorOccurs(_ text: String) {
         self.showAlertApi(StringHolder.attention,text:text,succes:{
             if(self.course != nil ) {
                 self.courseDetailsProvider.loadCourseDetails(self.course)
@@ -87,40 +87,40 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
 
     // MARK: - Table view data source
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return (sectionHelpers[section]).getSectionHeaderHeight()
     }
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return createLabelForSectionTitle((sectionHelpers[section]).getSectionTitle())
     }
 
 
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return sectionHelpers.count
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return (sectionHelpers[section]).getSectionSize()
     }
 
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let helper = (sectionHelpers[indexPath.section] )
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let helper = (sectionHelpers[(indexPath as NSIndexPath).section] )
         let cell = helper.giveMeCellAtPosition(tableView,onPosition: indexPath)
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
-        return  cell
+        cell?.selectionStyle = UITableViewCellSelectionStyle.none
+        return  cell!
     }
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return CGFloat((sectionHelpers[indexPath.section] ).getRowHeight())
+    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat((sectionHelpers[(indexPath as NSIndexPath).section] ).getRowHeight())
     }
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        (sectionHelpers[indexPath.section]).reactOnSectionClick(indexPath.row,withController: self.navigationController)
+    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        (sectionHelpers[(indexPath as NSIndexPath).section]).reactOnSectionClick((indexPath as NSIndexPath).row,withController: self.navigationController)
     }
 
 }

@@ -10,7 +10,7 @@ struct EmploymentDetails {
     let name: String
 }
 extension EmploymentDetails:Decodable{
-    static func decode(j: AnyObject) throws -> EmploymentDetails {
+    static func decode(_ j: Any) throws -> EmploymentDetails {
         return try EmploymentDetails(
             id: j => "id",
                     name : j => "name"

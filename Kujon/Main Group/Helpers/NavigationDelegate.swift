@@ -6,7 +6,7 @@
 import Foundation
 
 protocol NavigationDelegate {
-    func setNavigationProtocol(delegate:NavigationMenuProtocol)
+    func setNavigationProtocol(_ delegate:NavigationMenuProtocol)
     func isSecond()->Bool
 }
 

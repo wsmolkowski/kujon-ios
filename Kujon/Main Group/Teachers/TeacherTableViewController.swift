@@ -9,31 +9,31 @@
 import UIKit
 
 class TeacherTableViewController: UITableViewController, NavigationDelegate, LecturerProviderDelegate {
-    private let TeachCellId = "teacherCellId"
+    fileprivate let TeachCellId = "teacherCellId"
     weak var delegate: NavigationMenuProtocol! = nil
     let lecturerProvider = ProvidersProviderImpl.sharedInstance.provideLecturerProvider()
-    private var lecturers: Array<SimpleUser>! = nil
+    fileprivate var lecturers: Array<SimpleUser>! = nil
 
-    func setNavigationProtocol(delegate: NavigationMenuProtocol) {
+    func setNavigationProtocol(_ delegate: NavigationMenuProtocol) {
         self.delegate = delegate
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(TeacherTableViewController.openDrawer),andTitle: StringHolder.lecturers)
-        self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: TeachCellId)
+        self.tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: TeachCellId)
         lecturerProvider.delegate = self
         lecturerProvider.loadLecturers()
         self.tableView.tableFooterView = UIView()
 
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: #selector(TeacherTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(TeacherTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         refreshControl?.beginRefreshingManually()
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
 
-    func refresh(refreshControl: UIRefreshControl) {
+    func refresh(_ refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")
         lecturerProvider.reload()
         lecturerProvider.loadLecturers()
@@ -47,13 +47,13 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
     }
 
 
-    func onLecturersLoaded(lecturers: Array<SimpleUser>) {
+    func onLecturersLoaded(_ lecturers: Array<SimpleUser>) {
         self.lecturers = lecturers
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
     }
 
-    func onErrorOccurs(text: String) {
+    func onErrorOccurs(_ text: String) {
         self.showAlertApi(StringHolder.attention, text: text, succes: {
             self.lecturerProvider.reload()
             self.lecturerProvider.loadLecturers()
@@ -66,12 +66,12 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
     }
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (self.lecturers != nil) {
             return self.lecturers.count
         } else {
@@ -80,23 +80,23 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
     }
 
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: GoFurtherViewCellTableViewCell = tableView.dequeueReusableCellWithIdentifier(TeachCellId, forIndexPath: indexPath) as! GoFurtherViewCellTableViewCell
-        let myUser: SimpleUser = self.lecturers[indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: GoFurtherViewCellTableViewCell = tableView.dequeueReusableCell(withIdentifier: TeachCellId, for: indexPath) as! GoFurtherViewCellTableViewCell
+        let myUser: SimpleUser = self.lecturers[(indexPath as NSIndexPath).row]
         cell.plainLabel.text = myUser.lastName + " " + myUser.firstName
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
 
         return cell
     }
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.connected(indexPath)
     }
 
 
-    func connected( indexPath: NSIndexPath) {
+    func connected( _ indexPath: IndexPath) {
 
-        if let myUser: SimpleUser = self.lecturers[indexPath.row] {
+        if let myUser: SimpleUser = self.lecturers[(indexPath as NSIndexPath).row] {
             let currentTeacher  = CurrentTeacherHolder.sharedInstance
             currentTeacher.currentTeacher = myUser
             let controller = TeacherDetailTableViewController()

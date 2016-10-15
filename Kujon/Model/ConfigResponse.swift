@@ -14,7 +14,7 @@ struct Config {
 }
 
 extension Config: Decodable {
-    static func decode(j: AnyObject) throws -> Config {
+    static func decode(_ j: Any) throws -> Config {
         return try Config(
                 apiUrl: j => "API_URL",
                 userLogged: j => "USER_LOGGED",
@@ -30,7 +30,7 @@ struct ConfigResponse {
 }
 
 extension ConfigResponse: Decodable {
-    static func decode(j: AnyObject) throws -> ConfigResponse {
+    static func decode(_ j: Any) throws -> ConfigResponse {
         return try ConfigResponse(
                 data: j => "data"
                 )

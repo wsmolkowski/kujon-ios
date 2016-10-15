@@ -7,7 +7,7 @@ import Foundation
 
 protocol CourseProviderDelegate: ErrorResponseProtocol {
 
-    func coursesProvided(courses: Array<CoursesWrapper>)
+    func coursesProvided(_ courses: Array<CoursesWrapper>)
 
 }
 
@@ -20,8 +20,7 @@ class CourseProvider: RestApiManager {
             if (data != nil) {
                 do {
 
-                    let json = try NSJSONSerialization.JSONObjectWithData(data, options: [])
-                    _ = json["status"]!
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
                     var arrayOfCourses = Array<CoursesWrapper>()
                     if let dictData = json["data"]! {
                         let array = try dictData as! NSArray

@@ -9,36 +9,36 @@
 import UIKit
 
 class CoursesTableViewController: UITableViewController, NavigationDelegate,CourseProviderDelegate {
-    private let CourseCellId = "courseCellId"
-    private let courseProvider = ProvidersProviderImpl.sharedInstance.provideCourseProvider()
-    private var courseWrappers = Array<CoursesWrapper>()
+    fileprivate let CourseCellId = "courseCellId"
+    fileprivate let courseProvider = ProvidersProviderImpl.sharedInstance.provideCourseProvider()
+    fileprivate var courseWrappers = Array<CoursesWrapper>()
     weak var delegate: NavigationMenuProtocol! = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(CoursesTableViewController.openDrawer),andTitle: StringHolder.courses)
-        self.tableView.registerNib(UINib(nibName: "CourseTableViewCell", bundle: nil), forCellReuseIdentifier: CourseCellId)
+        self.tableView.register(UINib(nibName: "CourseTableViewCell", bundle: nil), forCellReuseIdentifier: CourseCellId)
         courseProvider.delegate = self
         courseProvider.provideCourses()
         self.tableView.tableFooterView = UIView()
 
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: #selector(CoursesTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(CoursesTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         refreshControl?.beginRefreshingManually()
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140
 
     }
 
-    func refresh(refreshControl: UIRefreshControl) {
+    func refresh(_ refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")
         courseProvider.reload()
         courseProvider.provideCourses()
 
     }
 
-    func coursesProvided(courses: Array<CoursesWrapper>) {
+    func coursesProvided(_ courses: Array<CoursesWrapper>) {
         self.courseWrappers = courses;
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
@@ -48,7 +48,7 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
     func onErrorOccurs() {
     }
 
-    func setNavigationProtocol(delegate: NavigationMenuProtocol) {
+    func setNavigationProtocol(_ delegate: NavigationMenuProtocol) {
         self.delegate = delegate
     }
 
@@ -58,30 +58,30 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return courseWrappers.count
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return courseWrappers[section].courses.count
     }
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let course = self.courseWrappers[indexPath.section].courses[indexPath.row]  as Course
-        let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: NSBundle.mainBundle())
+    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let course = self.courseWrappers[(indexPath as NSIndexPath).section].courses[(indexPath as NSIndexPath).row]  as Course
+        let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: Bundle.main)
         courseDetails.course = course
         self.navigationController?.pushViewController(courseDetails, animated: true)
     }
 
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CourseCellId, forIndexPath: indexPath) as! CourseTableViewCell
-        let course = self.courseWrappers[indexPath.section].courses[indexPath.row]  as Course
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CourseCellId, for: indexPath) as! CourseTableViewCell
+        let course = self.courseWrappers[(indexPath as NSIndexPath).section].courses[(indexPath as NSIndexPath).row]  as Course
 
         cell.courseNameLabel.text = course.courseName
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
 
 
         return cell
@@ -89,11 +89,11 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
 
 
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
      return 48
     }
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return self.createLabelForSectionTitle(self.courseWrappers[section].title,middle: true)
     }
 

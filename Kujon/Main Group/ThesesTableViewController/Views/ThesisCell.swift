@@ -26,15 +26,15 @@ class ThesisCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.selectionStyle = .None
+        self.selectionStyle = .none
     }
 
-    private func propagateContentForThesis(thesis: Thesis) {
+    fileprivate func propagateContentForThesis(_ thesis: Thesis) {
         titleLabel.text = thesis.title
         let authors: [String] = thesis.authors.map { $0.getNameWithTitles() }
-        authorsLabel.text = authors.joinWithSeparator(", ")
+        authorsLabel.text = authors.joined(separator: ", ")
         let reviewers: [String] = thesis.supervisors.map { $0.getNameWithTitles() }
-        reviewersLabel.text = reviewers.joinWithSeparator(", ")
+        reviewersLabel.text = reviewers.joined(separator: ", ")
         thesisTypeLabel.text = thesis.type
         facultyLabel.text = thesis.faculty.name
     }

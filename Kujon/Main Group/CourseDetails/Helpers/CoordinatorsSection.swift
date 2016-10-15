@@ -8,7 +8,7 @@ import Foundation
 class CoordinatorsSection: LecturersSection {
 
 
-    override func fillUpWithData(courseDetails: CourseDetails) {
+    override func fillUpWithData(_ courseDetails: CourseDetails) {
         if(courseDetails.coordinators != nil){
 
             super.list = courseDetails.coordinators

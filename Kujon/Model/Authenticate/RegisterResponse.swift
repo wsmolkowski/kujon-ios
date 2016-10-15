@@ -12,7 +12,7 @@ struct RegisterResponse {
 
 
 extension RegisterResponse: Decodable {
-    static func decode(j: AnyObject) throws -> RegisterResponse {
+    static func decode(_ j: Any) throws -> RegisterResponse {
         return try RegisterResponse(
                 data: j => "data",
                 status: j => "status"

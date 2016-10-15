@@ -11,7 +11,7 @@ struct SingleProgramme {
 }
 
 extension SingleProgramme: Decodable {
-    static func decode(j: AnyObject) throws -> SingleProgramme {
+    static func decode(_ j: Any) throws -> SingleProgramme {
         return try SingleProgramme(
                 id: j => "id",
                 programmeWithId: j => "programme"

@@ -9,7 +9,7 @@ import FBSDKLoginKit
 
 
 protocol OnFacebookCredentailSaved: class{
-    func onFacebookCredentailSaved(isLogged:Bool)
+    func onFacebookCredentailSaved(_ isLogged:Bool)
 }
 class FacebookManager : UserLogin {
     let userDataHolder = UserDataHolder.sharedInstance
@@ -20,35 +20,36 @@ class FacebookManager : UserLogin {
 
 
 
-    func loadFBParams(listener: OnFacebookCredentailSaved) {
+    func loadFBParams(_ listener: OnFacebookCredentailSaved) {
 
-        if (FBSDKAccessToken.currentAccessToken() != nil) {
-            let token: String = FBSDKAccessToken.currentAccessToken().tokenString;
+        if (FBSDKAccessToken.current() != nil) {
+            let token: String = FBSDKAccessToken.current().tokenString;
             print("Token : \(token) ")
             self.userDataHolder.userToken = token
 
         }
 
-        FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields": "first_name, last_name, email"]).startWithCompletionHandler {
+        FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields": "first_name, last_name, email"]).start {
             (connection, result, error) -> Void in
-            let strFirstName: String = (result.objectForKey("first_name") as? String)!
-            let email: String = (result.objectForKey("email") as? String)!
-            self.userDataHolder.userEmail = email
-            self.userDataHolder.userLoginType = StringHolder.fbType
-            listener.onFacebookCredentailSaved(self.userDataHolder.loggedToUsosForCurrentEmail)
-
+            if let resultDictionary = result as? [String: AnyObject] {
+                //let strFirstName: String = (resultDictionary["first_name"] as? String)!
+                let email: String = resultDictionary["email"] as! String
+                self.userDataHolder.userEmail = email
+                self.userDataHolder.userLoginType = StringHolder.fbType
+                listener.onFacebookCredentailSaved(self.userDataHolder.loggedToUsosForCurrentEmail)
+            }
         }
     }
 
     func getLoginType() -> UserLoginEnum {
-        return .FACEBOOK
+        return .facebook
     }
 
 
-    func logout(succes: LogoutSucces){
+    func logout(_ succes: LogoutSucces){
         let fbManager = FBSDKLoginManager()
         fbManager.logOut()
-        FBSDKAccessToken.setCurrentAccessToken(nil)
+        FBSDKAccessToken.setCurrent(nil)
         SessionManager.clearCache()
         self.logoutUserData(userDataHolder)
         succes.succes()

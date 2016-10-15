@@ -6,70 +6,70 @@
 import Foundation
 import Decodable
 
-extension NSDate {
-    private static let dateFormatter = NSDateFormatter()
-    private static let dateFormat = "yyyy-MM-dd"
-    private static let dateFormatSchedule = "EEEE d MMMM ,yyyy"
-    private static let dateFormatDayMonth = "dd \n MMM"
-    private static let dateFormatMonth = "MMMM"
-    private static let dateFormatYear = "yyyy"
-    private static let dateFormatDay = "EEEE"
-    private static let dateFormatWithClock = "yyyy-MM-dd HH:mm:ss"
-    private static let dateFormatOnlyTime = "HH:mm"
+extension Date {
+    fileprivate static let dateFormatter = DateFormatter()
+    fileprivate static let dateFormat = "yyyy-MM-dd"
+    fileprivate static let dateFormatSchedule = "EEEE d MMMM ,yyyy"
+    fileprivate static let dateFormatDayMonth = "dd \n MMM"
+    fileprivate static let dateFormatMonth = "MMMM"
+    fileprivate static let dateFormatYear = "yyyy"
+    fileprivate static let dateFormatDay = "EEEE"
+    fileprivate static let dateFormatWithClock = "yyyy-MM-dd HH:mm:ss"
+    fileprivate static let dateFormatOnlyTime = "HH:mm"
 
 
-    static func stringToDate(dateString: String) -> NSDate! {
-        return getDateFormatter().dateFromString(dateString)
+    static func stringToDate(_ dateString: String) -> Date! {
+        return getDateFormatter().date(from: dateString)
     }
 
-    static func stringToDateWithClock(dateString: String) -> NSDate! {
-        return getDateFormatter(NSDate.dateFormatWithClock).dateFromString(dateString)
+    static func stringToDateWithClock(_ dateString: String) -> Date! {
+        return getDateFormatter(Date.dateFormatWithClock).date(from: dateString)
     }
 
     func dateToString() -> String {
-        return NSDate.getDateFormatter().stringFromDate(self)
+        return Date.getDateFormatter().string(from: self)
     }
 
     func dateToStringSchedule() -> String {
-        return NSDate.getDateFormatter(NSDate.dateFormatSchedule).stringFromDate(self)
+        return Date.getDateFormatter(Date.dateFormatSchedule).string(from: self)
     }
     func dateHoursToString() -> String {
-        return NSDate.getDateFormatter(NSDate.dateFormatOnlyTime).stringFromDate(self)
+        return Date.getDateFormatter(Date.dateFormatOnlyTime).string(from: self)
     }
 
     func dateWithDayToString() -> String {
-        return NSDate.getDateFormatter(NSDate.dateFormatDay).stringFromDate(self) + " " + NSDate.getDateFormatter().stringFromDate(self)
+        return Date.getDateFormatter(Date.dateFormatDay).string(from: self) + " " + Date.getDateFormatter().string(from: self)
     }
 
     func getMonthYearString() -> String {
-        return NSDate.getDateFormatter(NSDate.dateFormatMonth).stringFromDate(self) + " " + NSDate.getDateFormatter(NSDate.dateFormatYear).stringFromDate(self)
+        return Date.getDateFormatter(Date.dateFormatMonth).string(from: self) + " " + Date.getDateFormatter(Date.dateFormatYear).string(from: self)
     }
 
     func  getDayMonth()->String{
-        return NSDate.getDateFormatter(NSDate.dateFormatDayMonth).stringFromDate(self)
+        return Date.getDateFormatter(Date.dateFormatDayMonth).string(from: self)
     }
 
-    static func getCurrentStartOfWeek() -> NSDate {
-        let today = NSDate()
-        let gregorian = NSCalendar.currentCalendar()
+    static func getCurrentStartOfWeek() -> Date {
+        let today = Date()
+        var gregorian = Calendar.current
         gregorian.firstWeekday = 2
-        let weekdayComponents = gregorian.component(.Weekday, fromDate: today)
-        let componentsToSubtact = NSDateComponents()
+        let weekdayComponents = (gregorian as NSCalendar).component(.weekday, from: today)
+        var componentsToSubtact = DateComponents()
         componentsToSubtact.day = -weekdayComponents + gregorian.firstWeekday
-        return gregorian.dateByAddingComponents(componentsToSubtact, toDate: today, options: .MatchStrictly)!
+        return (gregorian as NSCalendar).date(byAdding: componentsToSubtact, to: today, options: .matchStrictly)!
     }
-    func getStartOfTheWeek() -> NSDate {
+    func getStartOfTheWeek() -> Date {
         let today = self
-        let gregorian = NSCalendar.currentCalendar()
+        var gregorian = Calendar.current
         gregorian.firstWeekday = 2
-        let weekdayComponents = gregorian.component(.Weekday, fromDate: today)
-        let componentsToSubtact = NSDateComponents()
+        let weekdayComponents = (gregorian as NSCalendar).component(.weekday, from: today)
+        var componentsToSubtact = DateComponents()
         componentsToSubtact.day = -weekdayComponents + gregorian.firstWeekday
-        return gregorian.dateByAddingComponents(componentsToSubtact, toDate: today, options: .MatchStrictly)!
+        return (gregorian as NSCalendar).date(byAdding: componentsToSubtact, to: today, options: .matchStrictly)!
     }
 
 
-    private static func getDateFormatter(format: String = dateFormat) -> NSDateFormatter {
+    fileprivate static func getDateFormatter(_ format: String = dateFormat) -> DateFormatter {
         dateFormatter.dateFormat = format
         return dateFormatter
     }
@@ -77,12 +77,12 @@ extension NSDate {
 
 
 
-    func isGreaterThanDate(dateToCompare: NSDate) -> Bool {
+    func isGreaterThanDate(_ dateToCompare: Date) -> Bool {
         //Declare Variables
         var isGreater = false
 
         //Compare Values
-        if self.compare(dateToCompare) == NSComparisonResult.OrderedDescending {
+        if self.compare(dateToCompare) == ComparisonResult.orderedDescending {
             isGreater = true
         }
 
@@ -90,12 +90,12 @@ extension NSDate {
         return isGreater
     }
 
-    func isLessThanDate(dateToCompare: NSDate) -> Bool {
+    func isLessThanDate(_ dateToCompare: Date) -> Bool {
         //Declare Variables
         var isLess = false
 
         //Compare Values
-        if self.compare(dateToCompare) == NSComparisonResult.OrderedAscending {
+        if self.compare(dateToCompare) == ComparisonResult.orderedAscending {
             isLess = true
         }
 
@@ -103,12 +103,12 @@ extension NSDate {
         return isLess
     }
 
-    func equalToDate(dateToCompare: NSDate) -> Bool {
+    func equalToDate(_ dateToCompare: Date) -> Bool {
         //Declare Variables
         var isEqualTo = false
 
         //Compare Values
-        if self.compare(dateToCompare) == NSComparisonResult.OrderedSame {
+        if self.compare(dateToCompare) == ComparisonResult.orderedSame {
             isEqualTo = true
         }
 
@@ -116,35 +116,35 @@ extension NSDate {
         return isEqualTo
     }
 
-    func addDays(daysToAdd: Int) -> NSDate {
-        let secondsInDays: NSTimeInterval = Double(daysToAdd) * 60 * 60 * 24
-        let dateWithDaysAdded: NSDate = self.dateByAddingTimeInterval(secondsInDays)
+    func addDays(_ daysToAdd: Int) -> Date {
+        let secondsInDays: TimeInterval = Double(daysToAdd) * 60 * 60 * 24
+        let dateWithDaysAdded: Date = self.addingTimeInterval(secondsInDays)
 
         //Return Result
         return dateWithDaysAdded
     }
 
-    func addHours(hoursToAdd: Int) -> NSDate {
-        let secondsInHours: NSTimeInterval = Double(hoursToAdd) * 60 * 60
-        let dateWithHoursAdded: NSDate = self.dateByAddingTimeInterval(secondsInHours)
+    func addHours(_ hoursToAdd: Int) -> Date {
+        let secondsInHours: TimeInterval = Double(hoursToAdd) * 60 * 60
+        let dateWithHoursAdded: Date = self.addingTimeInterval(secondsInHours)
 
         //Return Result
         return dateWithHoursAdded
     }
 
-    func numberOfDaysUntilDateTime(toDateTime: NSDate, inTimeZone timeZone: NSTimeZone? = nil) -> Int {
-        let calendar = NSCalendar.currentCalendar()
+    func numberOfDaysUntilDateTime(_ toDateTime: Date, inTimeZone timeZone: TimeZone? = nil) -> Int {
+        var calendar = Calendar.current
         if let timeZone = timeZone {
             calendar.timeZone = timeZone
         }
 
-        var fromDate: NSDate?, toDate: NSDate?
+        var fromDate: Date?, toDate: Date?
 
-        calendar.rangeOfUnit(.Day, startDate: &fromDate, interval: nil, forDate: self)
-        calendar.rangeOfUnit(.Day, startDate: &toDate, interval: nil, forDate: toDateTime)
+        (calendar as NSCalendar).range(of: .day, start: &fromDate as NSDate?, interval: nil, for: self)
+        (calendar as NSCalendar).range(of: .day, start: &toDate as NSDate?, interval: nil, for: toDateTime)
 
-        let difference = calendar.components(.Day, fromDate: fromDate!, toDate: toDate!, options: [])
-        return difference.day
+        let difference = (calendar as NSCalendar).components(.day, from: fromDate!, to: toDate!, options: [])
+        return difference.day!
     }
 }
 

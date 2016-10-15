@@ -14,10 +14,10 @@ class PopUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         myPopUpView = setMyPopUpView();
-        self.view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         self.myPopUpView.layer.cornerRadius = 12
         self.myPopUpView.layer.shadowOpacity = 0.8
-        self.myPopUpView.layer.shadowOffset = CGSizeMake(0.0, 0.0)
+        self.myPopUpView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         let tap = UITapGestureRecognizer(target: self, action: #selector(PopUpViewController.handleTap))
         self.view.addGestureRecognizer(tap)
     }
@@ -32,36 +32,36 @@ class PopUpViewController: UIViewController {
 
 
     func showAnimate() {
-        self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
+        self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         self.view.alpha = 0.0;
-        UIView.animateWithDuration(animationDuration, animations: {
+        UIView.animate(withDuration: animationDuration, animations: {
             self.view.alpha = 1.0
-            self.view.transform = CGAffineTransformMakeScale(1.0, 1.0)
+            self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         }, completion: {
             (finished: Bool) in
         });
     }
 
     func removeAnimate() {
-        UIView.animateWithDuration(animationDuration, animations: {
-            self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
+        UIView.animate(withDuration: animationDuration, animations: {
+            self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
             self.view.alpha = 0.0;
         }, completion: {
             (finished: Bool) in
             if (finished) {
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             }
         });
     }
 
-    func removeAnimate(funca: () -> Void) {
-        UIView.animateWithDuration(animationDuration, animations: {
-            self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
+    func removeAnimate(_ funca: @escaping () -> Void) {
+        UIView.animate(withDuration: animationDuration, animations: {
+            self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
             self.view.alpha = 0.0;
         }, completion: {
             (finished: Bool) in
             if (finished) {
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
                 funca()
             }
         });

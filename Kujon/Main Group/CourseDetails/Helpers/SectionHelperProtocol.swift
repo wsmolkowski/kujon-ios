@@ -7,9 +7,9 @@ import Foundation
 import UIKit
 protocol SectionHelperProtocol {
 
-    func fillUpWithData(courseDetails: CourseDetails)
+    func fillUpWithData(_ courseDetails: CourseDetails)
 
-    func registerView(tableView: UITableView)
+    func registerView(_ tableView: UITableView)
 
     func getSectionTitle() -> String
 
@@ -19,7 +19,7 @@ protocol SectionHelperProtocol {
 
     func getSectionHeaderHeight() -> CGFloat
 
-    func giveMeCellAtPosition(tableView: UITableView, onPosition position: NSIndexPath)->UITableViewCell!
+    func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath)->UITableViewCell!
 
-    func reactOnSectionClick(position: Int, withController controller: UINavigationController?)
+    func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?)
 }

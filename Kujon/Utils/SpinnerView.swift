@@ -15,14 +15,14 @@ class SpinnerView : UIView {
         }
     }
 
-    override class func layerClass() -> AnyClass {
+    override class var layerClass : AnyClass {
         return CAShapeLayer.self
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.fillColor = nil
-        layer.strokeColor = UIColor.blackColor().CGColor
+        layer.strokeColor = UIColor.black.cgColor
         layer.lineWidth = 3
         setPath()
     }
@@ -31,8 +31,8 @@ class SpinnerView : UIView {
         animate()
     }
 
-    private func setPath() {
-        layer.path = UIBezierPath(ovalInRect: CGRectInset(bounds, layer.lineWidth / 2, layer.lineWidth / 2)).CGPath
+    fileprivate func setPath() {
+        layer.path = UIBezierPath(ovalIn: bounds.insetBy(dx: layer.lineWidth / 2, dy: layer.lineWidth / 2)).cgPath
     }
 
     struct Pose {
@@ -68,9 +68,9 @@ class SpinnerView : UIView {
         var rotations = [CGFloat]()
         var strokeEnds = [CGFloat]()
 
-        let totalSeconds = self.dynamicType.poses.reduce(0) { $0 + $1.secondsSincePriorPose }
+        let totalSeconds = type(of: self).poses.reduce(0) { $0 + $1.secondsSincePriorPose }
 
-        for pose in self.dynamicType.poses {
+        for pose in type(of: self).poses {
             time += pose.secondsSincePriorPose
             times.append(time / totalSeconds)
             start = pose.start
@@ -88,27 +88,27 @@ class SpinnerView : UIView {
         animateStrokeHueWithDuration(totalSeconds * 5)
     }
 
-    func animateKeyPath(keyPath: String, duration: CFTimeInterval, times: [CFTimeInterval], values: [CGFloat]) {
+    func animateKeyPath(_ keyPath: String, duration: CFTimeInterval, times: [CFTimeInterval], values: [CGFloat]) {
         let animation = CAKeyframeAnimation(keyPath: keyPath)
-        animation.keyTimes = times
+        animation.keyTimes = times as [NSNumber]?
         animation.values = values
         animation.calculationMode = kCAAnimationLinear
         animation.duration = duration
         animation.repeatCount = Float.infinity
-        layer.addAnimation(animation, forKey: animation.keyPath)
+        layer.add(animation, forKey: animation.keyPath)
     }
 
-    func animateStrokeHueWithDuration(duration: CFTimeInterval) {
+    func animateStrokeHueWithDuration(_ duration: CFTimeInterval) {
         let count = 36
         let animation = CAKeyframeAnimation(keyPath: "strokeColor")
-        animation.keyTimes = (0 ... count).map { CFTimeInterval($0) / CFTimeInterval(count) }
+        animation.keyTimes = (0 ... count).map { CFTimeInterval($0)/CFTimeInterval(count) }
         animation.values = (0 ... count).map {
-            UIColor(hue: CGFloat($0) / CGFloat(count), saturation: 1, brightness: 1, alpha: 1).CGColor
+            UIColor(hue: CGFloat($0) / CGFloat(count), saturation: 1, brightness: 1, alpha: 1).cgColor
         }
         animation.duration = duration
         animation.calculationMode = kCAAnimationLinear
         animation.repeatCount = Float.infinity
-        layer.addAnimation(animation, forKey: animation.keyPath)
+        layer.add(animation, forKey: animation.keyPath)
     }
 
 }

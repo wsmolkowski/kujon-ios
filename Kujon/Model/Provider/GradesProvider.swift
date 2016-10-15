@@ -12,7 +12,7 @@ protocol GradesProviderProtocol: JsonProviderProtocol {
 }
 
 protocol GradesProviderDelegate: ErrorResponseProtocol {
-    func onGradesLoaded(termGrades: Array<PreparedTermGrades>)
+    func onGradesLoaded(_ termGrades: Array<PreparedTermGrades>)
 
 }
 

@@ -11,18 +11,18 @@ import Foundation
 protocol RegistrationProviderProtocol:JsonProviderProtocol {
 
     associatedtype T = RegisterResponse
-    func register(email: String, password:String)
+    func register(_ email: String, password:String)
 
 }
 
 protocol RegistrationProviderDelegate: ErrorResponseProtocol {
-    func onRegisterResponse(text: String)
+    func onRegisterResponse(_ text: String)
 }
 
 class RegistrationProvider :RestApiManager,RegistrationProviderProtocol {
     weak   var delegate : RegistrationProviderDelegate! = nil
 
-    func register(email: String, password: String) {
+    func register(_ email: String, password: String) {
         let data = Register.createRegisterJSON(email, password: password)
         self.makeHTTPPostRequest({
 

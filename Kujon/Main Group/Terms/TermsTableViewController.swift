@@ -14,7 +14,7 @@ class TermsTableViewController:UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(TermsTableViewController.back),andTitle: StringHolder.terms)
-        self.tableView.registerNib(UINib(nibName: "TermsTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
+        self.tableView.register(UINib(nibName: "TermsTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
         self.tableView.tableFooterView = UIView()
 
     }
@@ -24,32 +24,32 @@ class TermsTableViewController:UITableViewController {
         self.tableView.reloadData()
         // Dispose of any resources that can be recreated.
     }
-    func setUpTerms(terms:Array<Term>){
+    func setUpTerms(_ terms:Array<Term>){
         self.terms = terms
         self.tableView.reloadData()
     }
 
     func back(){
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
 
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         return terms.count
     }
 
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: TermsTableViewCell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! TermsTableViewCell
-        let term: Term = self.terms[indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: TermsTableViewCell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! TermsTableViewCell
+        let term: Term = self.terms[(indexPath as NSIndexPath).row]
 
         cell.endDateLabel.text = term.endDate
         cell.endDateLabel.adjustsFontSizeToFitWidth = true
@@ -65,7 +65,7 @@ class TermsTableViewController:UITableViewController {
     }
 
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
 
