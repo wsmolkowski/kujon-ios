@@ -22,13 +22,17 @@ class CourseProvider: RestApiManager {
 
                     let json = try JSONSerialization.jsonObject(with: data, options: [])
                     var arrayOfCourses = Array<CoursesWrapper>()
-                    if let dictData = json["data"]! {
-                        let array = try dictData as! NSArray
+
+                    if  let json = json as? Dictionary<String, NSArray>,
+                        let dictData = json["data"] {
+
+                        let array = dictData 
                         try array.forEach {
                             courseDic in
-                            let insideDic = courseDic as! NSDictionary
+                            let courseDic = courseDic as! NSDictionary
+                            let insideDic = courseDic 
                             let key = insideDic.allKeys[0]
-                            if let dictionaryForGivenKey = courseDic[key as! String]! {
+                            if let dictionaryForGivenKey = courseDic[key as! String] as? NSDictionary {
                                 let courseWrapper = CoursesWrapper()
                                 courseWrapper.title = key as! String
                                 for index in 0...dictionaryForGivenKey.count-1{

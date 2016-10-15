@@ -210,7 +210,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
     func onMapClick() {
         if(facultie.postalAdress != nil){
             let baseUrl: String = "http://maps.apple.com/?q="
-            let encodedName = facultie.postalAdress.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed()) ?? ""
+            let encodedName = facultie.postalAdress.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
             let finalUrl = baseUrl + encodedName
             if let url = URL(string: finalUrl) {
                 UIApplication.shared.openURL(url)
