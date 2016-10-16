@@ -11,7 +11,7 @@ struct FacultieResponse {
 }
 
 extension FacultieResponse: Decodable {
-    static func decode(j: AnyObject) throws -> FacultieResponse {
+    static func decode(_ j: Any) throws -> FacultieResponse {
         return try FacultieResponse(
         status: j => "status",
                 list: j => "data"

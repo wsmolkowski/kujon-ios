@@ -14,7 +14,7 @@ class NameSection: SectionHelperProtocol {
     var isOn: String! = nil
     let NameCellId = "nameCellIdtralalala"
 
-    func fillUpWithData(courseDetails: CourseDetails) {
+    func fillUpWithData(_ courseDetails: CourseDetails) {
         titleString = courseDetails.courseName
         id = courseDetails.courseId
         if(courseDetails.languageId != nil){
@@ -26,8 +26,8 @@ class NameSection: SectionHelperProtocol {
         isOn = courseDetails.isConducted
     }
 
-    func registerView(tableView: UITableView) {
-        tableView.registerNib(UINib(nibName: "CourseNameTableViewCell", bundle: nil), forCellReuseIdentifier: NameCellId)
+    func registerView(_ tableView: UITableView) {
+        tableView.register(UINib(nibName: "CourseNameTableViewCell", bundle: nil), forCellReuseIdentifier: NameCellId)
     }
 
     func getSectionTitle() -> String {
@@ -47,14 +47,14 @@ class NameSection: SectionHelperProtocol {
         return 90
     }
 
-    func giveMeCellAtPosition(tableView: UITableView, onPosition position: NSIndexPath) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCellWithIdentifier(NameCellId, forIndexPath: position) as! CourseNameTableViewCell
+    func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath) -> UITableViewCell! {
+        let cell = tableView.dequeueReusableCell(withIdentifier: NameCellId, for: position) as! CourseNameTableViewCell
         cell.nameLabel.text = titleString
         cell.detailLabel.text = "id: " + id + ", język: " + language + ", prowadzony: " + isOn
         return cell
     }
 
-    func reactOnSectionClick(position: Int, withController controller: UINavigationController?) {
+    func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?) {
     }
 
 }

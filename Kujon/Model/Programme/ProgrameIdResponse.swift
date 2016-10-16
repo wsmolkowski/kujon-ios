@@ -12,7 +12,7 @@ struct ProgrameIdResponse {
 }
 
 extension ProgrameIdResponse: Decodable {
-    static func decode(j: AnyObject) throws -> ProgrameIdResponse {
+    static func decode(_ j: Any) throws -> ProgrameIdResponse {
         return try ProgrameIdResponse(
                 status: j => "status",
                 singleProgramme: j => "data"

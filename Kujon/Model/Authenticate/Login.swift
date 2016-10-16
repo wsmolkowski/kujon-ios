@@ -11,7 +11,7 @@ struct Login {
 }
 
 extension Login: Decodable {
-    static func decode(j: AnyObject) throws -> Login {
+    static func decode(_ j: Any) throws -> Login {
         return try Login(
                 token: j => "token"
                 )
@@ -27,7 +27,7 @@ struct LoginResponse {
 
 
 extension LoginResponse: Decodable {
-    static func decode(j: AnyObject) throws -> LoginResponse {
+    static func decode(_ j: Any) throws -> LoginResponse {
         return try LoginResponse(
                 data: j => "data",
                 status: j => "status"

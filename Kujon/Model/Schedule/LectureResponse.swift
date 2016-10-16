@@ -12,7 +12,7 @@ struct LectureResponse {
 
 
 extension LectureResponse: Decodable {
-    static func decode(j: AnyObject) throws -> LectureResponse {
+    static func decode(_ j: Any) throws -> LectureResponse {
         return try LectureResponse(
         status: j => "status",
                 data: j => "data"

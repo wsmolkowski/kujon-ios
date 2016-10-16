@@ -44,7 +44,7 @@ struct Lecture {
 }
 
 extension Lecture: Decodable {
-    static func decode(j: AnyObject) throws -> Lecture {
+    static func decode(_ j: Any) throws -> Lecture {
         return try Lecture(
         lecturers: try? j => "lecturers",
                 lecturersIds: try? j => "lecturer_ids",

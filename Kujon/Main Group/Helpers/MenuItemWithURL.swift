@@ -6,5 +6,5 @@
 import Foundation
 
 protocol MenuItemWithURL: MenuItemWithController {
-    func returnURL() -> NSURL!
+    func returnURL() -> URL!
 }

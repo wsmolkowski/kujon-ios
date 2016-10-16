@@ -17,12 +17,12 @@ class GoFurtherViewCellTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .None
+        selectionStyle = .none
     }
     
     override var frame: CGRect {
         didSet {
-            self.layer.addBorder(UIRectEdge.Top,color:UIColor.lightGray(),thickness: 1)
+            self.layer.addBorder(UIRectEdge.top,color:UIColor.lightGray(),thickness: 1)
         }
     }
 

@@ -10,7 +10,7 @@ import UIKit
 
 protocol SearchTableViewCellDelegate:class {
 
-    func searchTableViewCell(cell: SearchTableViewCell, didTriggerSearchWithQuery searchQuery:String)
+    func searchTableViewCell(_ cell: SearchTableViewCell, didTriggerSearchWithQuery searchQuery:String)
     func searchTableViewCellDidChangeSelection()
 }
 
@@ -22,38 +22,38 @@ internal class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet internal weak var textField: UITextField!
     internal weak var delegate: SearchTableViewCellDelegate?
     internal var index: Int = 0
-    private var searchQuery = String()
-    private let searchQueryMinimumLength: Int = 4
-    private var canTriggerQuery: Bool {
+    fileprivate var searchQuery = String()
+    fileprivate let searchQueryMinimumLength: Int = 4
+    fileprivate var canTriggerQuery: Bool {
         return searchQuery.characters.count >= searchQueryMinimumLength
     }
     // MARK: Initial section
 
     override internal func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .None
+        selectionStyle = .none
         configureSearchButton()
         updateSeparatorColor()
         updateSearchButtonState()
 
         textField.delegate = self
-        textField.addTarget(self, action: #selector(textFieldDidChange(_:)), forControlEvents: .EditingChanged)
+        textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         textField.text = ""
-        textField.clearButtonMode = .WhileEditing
+        textField.clearButtonMode = .whileEditing
 
     }
 
-    private func configureSearchButton() {
+    fileprivate func configureSearchButton() {
         let title = StringHolder.searchButtonLabel
 
         let titleForStateEnabled = title.toAttributedStringWithFont(UIFont.kjnFontLatoMedium(size:17)!, color: UIColor.color3FBAD9(alpha: 1.0))
-        button.setAttributedTitle(titleForStateEnabled, forState: .Normal)
+        button.setAttributedTitle(titleForStateEnabled, for: UIControlState())
 
         let titleForStateDisabled = title.toAttributedStringWithFont(UIFont.kjnFontLatoMedium(size:17)!, color: UIColor.color3FBAD9(alpha: 0.4))
-        button.setAttributedTitle(titleForStateDisabled, forState: .Disabled)
+        button.setAttributedTitle(titleForStateDisabled, for: .disabled)
     }
 
-    internal func configureCellWithTitle(cellTitle:String, textInputPlaceholder placeholder:String) {
+    internal func configureCellWithTitle(_ cellTitle:String, textInputPlaceholder placeholder:String) {
 
         title.attributedText = cellTitle.toAttributedStringWithFont(UIFont.kjnFontLatoRegular(size:17)!, color: UIColor.color2A333E())
 
@@ -64,20 +64,20 @@ internal class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     // MARK: User actions
 
-    override internal func setSelected(selected: Bool, animated: Bool) {
+    override internal func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         delegate?.searchTableViewCellDidChangeSelection()
         updateSeparatorColor()
     }
 
-    @IBAction internal func searchButtonDidTap(sender: UIButton) {
+    @IBAction internal func searchButtonDidTap(_ sender: UIButton) {
         if !searchQuery.isEmpty {
             delegate?.searchTableViewCell(self, didTriggerSearchWithQuery: searchQuery)
         }
     }
 
-    private func updateSeparatorColor() {
-        separator.backgroundColor = selected ? .color3FBAD9() : .colorD8D8D8()
+    fileprivate func updateSeparatorColor() {
+        separator.backgroundColor = isSelected ? .color3FBAD9() : .colorD8D8D8()
     }
 
     internal func reset() {
@@ -87,14 +87,14 @@ internal class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     // MARK: UITextFieldDelegate
 
-    internal func textFieldDidBeginEditing(textField: UITextField) {
+    internal func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.font = UIFont.kjnFontLatoRegular(size:15.0)
         textField.textColor = UIColor.color2A333E()
         textField.text = searchQuery
-        selected = true
+        isSelected = true
     }
 
-    internal func textFieldShouldReturn(textField: UITextField) -> Bool {
+    internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if canTriggerQuery {
             delegate?.searchTableViewCell(self, didTriggerSearchWithQuery: searchQuery)
             textField.resignFirstResponder()
@@ -103,15 +103,15 @@ internal class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
         return false
     }
 
-    internal func textFieldDidChange(textField:UITextField) {
+    internal func textFieldDidChange(_ textField:UITextField) {
         if let text = textField.text {
             searchQuery = text
             updateSearchButtonState()
         }
     }
 
-    private func updateSearchButtonState() {
-        button.enabled = canTriggerQuery
+    fileprivate func updateSearchButtonState() {
+        button.isEnabled = canTriggerQuery
     }
 
 

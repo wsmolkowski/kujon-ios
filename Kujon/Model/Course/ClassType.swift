@@ -13,7 +13,7 @@ struct ClassType {
 
 
 extension ClassType: Decodable {
-    static func decode(json: AnyObject) throws -> ClassType {
+    static func decode(_ json: Any) throws -> ClassType {
         return try ClassType(
         en: json => "en",
                 pl: json => "pl"

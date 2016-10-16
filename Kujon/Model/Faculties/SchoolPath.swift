@@ -14,7 +14,7 @@ struct SchoolPath {
 }
 
 extension SchoolPath:Decodable{
-    static func decode(j: AnyObject) throws -> SchoolPath {
+    static func decode(_ j: Any) throws -> SchoolPath {
         return try SchoolPath(
             id: j => "id",
             schoolName: j => "name"

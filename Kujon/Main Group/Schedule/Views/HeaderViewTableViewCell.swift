@@ -18,7 +18,7 @@ class HeaderViewTableViewCell: UIView {
     }
 
     class func instanceFromNib() -> HeaderViewTableViewCell {
-        return UINib(nibName: "HeaderViewTableViewCell", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! HeaderViewTableViewCell
+        return UINib(nibName: "HeaderViewTableViewCell", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! HeaderViewTableViewCell
     }
     
 }

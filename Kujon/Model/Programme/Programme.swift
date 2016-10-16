@@ -17,7 +17,7 @@ struct Programme {
 }
 
 extension Programme: Decodable {
-    static func decode(j: AnyObject) throws -> Programme {
+    static func decode(_ j: Any) throws -> Programme {
         return try Programme(
                 name:  try? j => "name",
                 modeOfStudies: try? j => "mode_of_studies",

@@ -21,8 +21,8 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SearchResultTableViewController.back), andTitle: StringHolder.searchResults)
-        tableView.separatorStyle = .None
-        tableView.registerNib(UINib(nibName: "SearchResultsCell", bundle: nil), forCellReuseIdentifier: myCellId)
+        tableView.separatorStyle = .none
+        tableView.register(UINib(nibName: "SearchResultsCell", bundle: nil), forCellReuseIdentifier: myCellId)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50.0
         if (provider != nil && searchQuery != nil) {
@@ -31,12 +31,12 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
         }
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: #selector(SearchResultTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(SearchResultTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         refreshControl?.beginRefreshingManually()
         askForData()
     }
 
-    func refresh(refreshControl: UIRefreshControl) {
+    func refresh(_ refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")
         self.array = Array()
         self.tableView.reloadData();
@@ -44,11 +44,11 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
         askForData()
     }
 
-    func isThereNextPage(isThere: Bool) {
+    func isThereNextPage(_ isThere: Bool) {
         self.isThereNext = isThere
     }
 
-    func onErrorOccurs(text: String) {
+    func onErrorOccurs(_ text: String) {
         showAlertApi("Bład",text:text,succes: {
             self.isQuering = false
             self.isThereNext = true
@@ -60,7 +60,7 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
     }
 
 
-    private func askForData() {
+    fileprivate func askForData() {
         if (isThereNext) {
             isQuering = true
             isThereNext = false
@@ -69,7 +69,7 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
         }
     }
 
-    func searchedItems(array: Array<SearchElementProtocol>) {
+    func searchedItems(_ array: Array<SearchElementProtocol>) {
         self.refreshControl?.endRefreshing()
         isQuering = false
         self.array = self.array + array
@@ -79,36 +79,36 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
 
 
     func back() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
 
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return array.count
     }
 
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(myCellId, forIndexPath: indexPath) as! SearchResultsCell
-        cell.title = array[indexPath.row].getTitle()
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: myCellId, for: indexPath) as! SearchResultsCell
+        cell.title = array[(indexPath as NSIndexPath).row].getTitle()
         return cell
 
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        array[indexPath.row].reactOnClick(self.navigationController!)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        array[(indexPath as NSIndexPath).row].reactOnClick(self.navigationController!)
     }
     var isQuering = false
 
-    override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let height = scrollView.frame.size.height
         let contetyYOffset = scrollView.contentOffset.y
         let distanceFromBottom = scrollView.contentSize.height - contetyYOffset

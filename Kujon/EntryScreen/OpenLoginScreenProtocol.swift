@@ -6,5 +6,5 @@
 import Foundation
 
 protocol OpenLoginScreenProtocol: class {
-    func openLoginScreenWithEmail(email: String)
+    func openLoginScreenWithEmail(_ email: String)
 }

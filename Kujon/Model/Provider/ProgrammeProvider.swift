@@ -15,7 +15,7 @@ protocol ProgrammeProviderProtocol: JsonProviderProtocol {
 }
 
 protocol ProgrammeProviderDelegate: ErrorResponseProtocol {
-    func onProgrammeLoaded(terms: Array<StudentProgramme>)
+    func onProgrammeLoaded(_ terms: Array<StudentProgramme>)
 
 }
 

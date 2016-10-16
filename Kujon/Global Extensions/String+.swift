@@ -10,7 +10,7 @@ import Foundation
 
 extension String {
 
-    func toAttributedStringWithFont(font:UIFont, color:UIColor) -> NSAttributedString {
+    func toAttributedStringWithFont(_ font:UIFont, color:UIColor) -> NSAttributedString {
         let attributes: [String:AnyObject]? = [
             NSFontAttributeName: font,
             NSForegroundColorAttributeName: color
@@ -18,14 +18,14 @@ extension String {
         return NSAttributedString(string:self, attributes:attributes)
     }
 
-    static func stripHTMLFromString(string: String) -> String {
+    static func stripHTMLFromString(_ string: String) -> String {
         var copy = string
-        while let range = copy.rangeOfString("<[^>]+>", options: .RegularExpressionSearch) {
-            copy = copy.stringByReplacingCharactersInRange(range, withString: "")
+        while let range = copy.range(of: "<[^>]+>", options: .regularExpression) {
+            copy = copy.replacingCharacters(in: range, with: "")
         }
-        copy = copy.stringByReplacingOccurrencesOfString("&nbsp;", withString: " ")
-        copy = copy.stringByReplacingOccurrencesOfString("&amp;", withString: "&")
-        copy = copy.stringByReplacingOccurrencesOfString("&quot;", withString: "\"")
+        copy = copy.replacingOccurrences(of: "&nbsp;", with: " ")
+        copy = copy.replacingOccurrences(of: "&amp;", with: "&")
+        copy = copy.replacingOccurrences(of: "&quot;", with: "\"")
         return copy
     }
 

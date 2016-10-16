@@ -21,13 +21,13 @@ class UsosTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .None
+        selectionStyle = .none
         updateCellState()
         backgroundColor = UIColor.greyBackgroundColor()
 
     }
 
-    private func updateCellState() {
+    fileprivate func updateCellState() {
         label.alpha = enabled ? 1.0 : 0.4
         usosImageView.alpha = enabled ? 1.0 : 0.4
     }

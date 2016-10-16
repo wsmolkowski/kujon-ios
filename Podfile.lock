@@ -10,7 +10,7 @@ PODS:
     - OSCache (~> 1.2)
   - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
-  - Decodable (0.4.3)
+  - Decodable (0.5)
   - Fabric (1.6.10)
   - FBSDKCoreKit (4.16.0):
     - Bolts (~> 1.7)
@@ -56,7 +56,7 @@ PODS:
 DEPENDENCIES:
   - CalendarLib
   - Crashlytics
-  - Decodable (~> 0.4.3)
+  - Decodable (~> 0.5)
   - Fabric
   - FBSDKCoreKit
   - FBSDKLoginKit
@@ -68,7 +68,7 @@ SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   CalendarLib: 040a8a655376581d8dc7c3c63196ddcf5223f471
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
-  Decodable: ab6c7d02a5df949d3ab16b2696528a3241e37c76
+  Decodable: 7c90acc68d357b71d0d6efc120faf9c53c644b7e
   Fabric: c73f371ee543e3f0b80608f2674750e4910d1669
   FBSDKCoreKit: 7a6baaed4a2b2a244ba253346713bdbc74df135b
   FBSDKLoginKit: 469a56cebe2e1ed62b1621d0b155970fd6aac2d8
@@ -88,6 +88,6 @@ SPEC CHECKSUMS:
   OrderedDictionary: 138c8d2e358d3a0c9adda15c6c7db24e8e3b09e6
   OSCache: 826996b68e8542a8a3d8af1ab0a0fc3070d8f357
 
-PODFILE CHECKSUM: dd59961ed1e594afc3b11859b19bc1d193506cbe
+PODFILE CHECKSUM: 50ab4ee88be17e3dc74ef8f7bdd2218b12b0a1a3
 
 COCOAPODS: 1.0.1

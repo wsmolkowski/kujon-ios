@@ -18,10 +18,10 @@ class IntroScreenViewController: UIViewController {
     }
 
     func back() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
 
-    @IBAction func onContinueClick(sender: AnyObject) {
+    @IBAction func onContinueClick(_ sender: AnyObject) {
         self.back()
     }
 

@@ -13,7 +13,7 @@ struct Account {
 }
 
 extension Account: Decodable {
-    static func decode(j: AnyObject) throws -> Account {
+    static func decode(_ j: Any) throws -> Account {
         return try Account(
                 pictureUrl: j => "picture",
                 name: j => "name",

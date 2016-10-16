@@ -23,7 +23,7 @@ class ScheduleSectionImpl: ScheduleSection {
         return listOfStrategys.count
     }
 
-    func getElementAtPosition(position: Int) -> CellHandlingStrategy {
+    func getElementAtPosition(_ position: Int) -> CellHandlingStrategy {
         return listOfStrategys[position]
     }
 
@@ -33,7 +33,7 @@ class ScheduleSectionImpl: ScheduleSection {
     }
 
 
-    func addToList(list: Array<CellHandlingStrategy>) {
+    func addToList(_ list: Array<CellHandlingStrategy>) {
         listOfStrategys = listOfStrategys + list
     }
 

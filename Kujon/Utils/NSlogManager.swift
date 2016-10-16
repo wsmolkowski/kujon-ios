@@ -7,7 +7,7 @@ import Foundation
 
 class NSlogManager {
 
-    static func showLog(text: String) {
+    static func showLog(_ text: String) {
 
         #if DEBUG
             NSLog(text)
