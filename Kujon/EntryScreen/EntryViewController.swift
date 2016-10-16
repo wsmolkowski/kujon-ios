@@ -105,6 +105,7 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
 //            self.openList(nil)
         } else {
             print(error.localizedDescription)
+            
         }
     }
 

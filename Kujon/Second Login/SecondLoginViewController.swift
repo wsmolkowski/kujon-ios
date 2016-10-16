@@ -55,7 +55,6 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
                 myMutableString=myMutableString+(cookie as HTTPCookie).name + "=" + (cookie as HTTPCookie).value + ";"
             }
             requestC.setValue(myMutableString,forHTTPHeaderField: "Cookie")
-
             _ = NSURLConnection(request: requestC as URLRequest,delegate:self)
         }
         return true

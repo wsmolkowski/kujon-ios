@@ -26,6 +26,7 @@ class RestApiManager {
             let session = URLSession.shared
             let task = session.dataTask(with: request) {
                 data, response, error in
+
                 NSlogManager.showLog(String(format: "Disk cache %i of %i", URLCache.shared.currentDiskUsage, URLCache.shared.diskCapacity))
                 NSlogManager.showLog(String(format: "Memory Cache %i of %i", URLCache.shared.currentMemoryUsage, URLCache.shared.memoryCapacity))
                 if let error = error {
@@ -38,7 +39,6 @@ class RestApiManager {
                     }
                 }
             }
-
             task.resume()
         }
         refresh = false
@@ -55,6 +55,7 @@ class RestApiManager {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             let task = session.dataTask(with: request) {
                 data, response, error in
+
                 NSlogManager.showLog(String(format: "Disk cache %i of %i", URLCache.shared.currentDiskUsage, URLCache.shared.diskCapacity))
                 NSlogManager.showLog(String(format: "Memory Cache %i of %i", URLCache.shared.currentMemoryUsage, URLCache.shared.memoryCapacity))
                 if let error = error {
@@ -84,6 +85,7 @@ class RestApiManager {
             self.headerManager.addHeadersToRequest(&request,refresh:refresh)
             let task = session.dataTask(with: request) {
                 data, response, error in
+
                 NSlogManager.showLog(String(format: "Disk cache %i of %i", URLCache.shared.currentDiskUsage, URLCache.shared.diskCapacity))
                 NSlogManager.showLog(String(format: "Memory Cache %i of %i", URLCache.shared.currentMemoryUsage, URLCache.shared.memoryCapacity))
                 if let error = error {
@@ -113,6 +115,7 @@ class RestApiManager {
                 self.headerManager.addHeadersToRequest(&request,refresh:refresh)
                 let task = session.dataTask(with: request) {
                     data, response, error in
+
                     NSlogManager.showLog(String(format: "Disk cache %i of %i", URLCache.shared.currentDiskUsage, URLCache.shared.diskCapacity))
                     NSlogManager.showLog(String(format: "Memory Cache %i of %i", URLCache.shared.currentMemoryUsage, URLCache.shared.memoryCapacity))
                     if let error = error {
@@ -125,7 +128,6 @@ class RestApiManager {
                         }
                     }
                 }
-
                 task.resume()
             } else {
                 onError(StringHolder.not_auth)
@@ -150,7 +152,8 @@ class RestApiManager {
         return nil
     }
 
-
+    // TODO: update for swift 3
+    /*
     fileprivate func createCompletionHanlder(_ onCompletion: @escaping onSucces, onError: @escaping onErrorOccurs) -> (Data?, URLResponse?, NSError?) -> Void {
         return {
             data, response, error in
@@ -167,7 +170,7 @@ class RestApiManager {
             }
         }
     }
-
+ */
 
     fileprivate func handelTestCase(_ onCompletion: onSucces) {
         var string: String

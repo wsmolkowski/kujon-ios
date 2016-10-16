@@ -52,12 +52,12 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
         self.tableView.reloadData()
     }
 
-    @available(iOS 2.0, *)
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
 
@@ -80,7 +80,7 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
         }
     }
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UsosTableViewCell = tableView.dequeueReusableCell(withIdentifier: UsosCellIdentifier, for: indexPath) as! UsosTableViewCell
         let usos = getShowDemo()[(indexPath as NSIndexPath).row] as Usos
 
@@ -95,7 +95,7 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
     }
 
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? UsosTableViewCell {
             let usos = getShowDemo()[(indexPath as NSIndexPath).row] as Usos
             if cell.enabled {

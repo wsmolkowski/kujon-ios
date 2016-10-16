@@ -7,12 +7,9 @@ import Foundation
 
 class UsosHolderController:UIViewController {
 
-
     var centerNavigationController: UINavigationController!
 
-
-
-    override func viewDidLoad() {
+   override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.statusBarStyle = .lightContent
         centerNavigationController = UINavigationController(rootViewController: UsosesTableViewController())

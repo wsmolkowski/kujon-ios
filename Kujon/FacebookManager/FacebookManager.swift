@@ -11,14 +11,11 @@ import FBSDKLoginKit
 protocol OnFacebookCredentailSaved: class{
     func onFacebookCredentailSaved(_ isLogged:Bool)
 }
+
 class FacebookManager : UserLogin {
+
     let userDataHolder = UserDataHolder.sharedInstance
-
     static let sharedInstance = FacebookManager()
-
-
-
-
 
     func loadFBParams(_ listener: OnFacebookCredentailSaved) {
 

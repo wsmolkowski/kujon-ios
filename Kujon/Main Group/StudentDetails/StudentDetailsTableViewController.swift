@@ -47,6 +47,7 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
     func back() {
         self.navigationController?.popViewController(animated: true)
     }
+
     func refresh(_ refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")
         provider.reload()
