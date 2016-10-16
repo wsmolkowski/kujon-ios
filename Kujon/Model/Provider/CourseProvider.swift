@@ -17,31 +17,25 @@ class CourseProvider: RestApiManager {
     func provideCourses() {
         self.makeHTTPAuthenticatedGetRequest({
             data in
+            
             if (data != nil) {
                 do {
-
                     let json = try JSONSerialization.jsonObject(with: data, options: [])
                     var arrayOfCourses = Array<CoursesWrapper>()
-
-                    if  let json = json as? Dictionary<String, NSArray>,
-                        let dictData = json["data"] {
-
-                        let array = dictData 
-                        try array.forEach {
-                            courseDic in
+                    if  let json = json as? NSDictionary,
+                        let array = json["data"] as? NSArray {
+                        for courseDic in array  {
                             let courseDic = courseDic as! NSDictionary
-                            let insideDic = courseDic 
-                            let key = insideDic.allKeys[0]
-                            if let dictionaryForGivenKey = courseDic[key as! String] as? NSDictionary {
+                            let key = courseDic.allKeys[0] as! String
+                            if let dictionaryForGivenKey = courseDic[key] as? NSArray {
                                 let courseWrapper = CoursesWrapper()
-                                courseWrapper.title = key as! String
+                                courseWrapper.title = key
                                 for index in 0...dictionaryForGivenKey.count-1{
                                     let course = try Course.decode(dictionaryForGivenKey[index])
                                     courseWrapper.courses.append(course)
                                 }
                                 arrayOfCourses.append(courseWrapper)
                             }
-
                         }
                     }
                     self.delegate?.coursesProvided(arrayOfCourses)

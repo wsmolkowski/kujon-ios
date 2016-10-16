@@ -17,6 +17,7 @@ class CourseMenuItem: MenuItemWithController {
 
     func returnViewControllerFunction()->() -> UIViewController! {
         return {
+
             return CoursesTableViewController()
         }
     }

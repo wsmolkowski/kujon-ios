@@ -41,6 +41,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(FacultieTableViewController.back), andTitle: StringHolder.faculty)
 
         self.tableView.register(UINib(nibName: "MapTableViewCell", bundle: nil), forCellReuseIdentifier: mapCellId)
@@ -50,6 +51,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         self.tableView.tableFooterView = UIView()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         self.tableView.allowsSelection = false
+
         if (facultie != nil) {
         } else if (facultieId != nil) {
             facultieProvider.delegate = self
@@ -70,11 +72,13 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
     }
 
     func onFacultieLoaded(_ fac: Facultie) {
+
         self.facultie = fac
         self.tableView.reloadData()
     }
 
     func onErrorOccurs(_ text: String) {
+
         self.showAlertApi(StringHolder.attention, text: text, succes: {
             self.facultieProvider.delegate = self
             self.facultieProvider.loadFacultie(self.facultieId)
