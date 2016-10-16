@@ -21,7 +21,7 @@ class CourseProvider: RestApiManager {
             if (data != nil) {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: [])
-                    var arrayOfCourses = Array<CoursesWrapper>()
+                    let arrayOfCourses: NSMutableArray = NSMutableArray()
                     if  let json = json as? NSDictionary,
                         let array = json["data"] as? NSArray {
                         for courseDic in array  {
@@ -34,11 +34,12 @@ class CourseProvider: RestApiManager {
                                     let course = try Course.decode(dictionaryForGivenKey[index])
                                     courseWrapper.courses.append(course)
                                 }
-                                arrayOfCourses.append(courseWrapper)
+                                arrayOfCourses.add(courseWrapper)
                             }
                         }
                     }
-                    self.delegate?.coursesProvided(arrayOfCourses)
+
+                    self.delegate?.coursesProvided(arrayOfCourses.copy() as! Array<CoursesWrapper>)
 
                 } catch {
                     NSlogManager.showLog("JSON serialization failed:  \(error)")
