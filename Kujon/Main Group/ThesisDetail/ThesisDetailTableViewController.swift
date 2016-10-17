@@ -17,13 +17,10 @@ class ThesisDetailTableViewController: UITableViewController {
         case faculty
 
         static func sectionForIndex(_ index:Int) -> SectionMap {
-            switch index {
-            case header.rawValue: return header
-            case authors.rawValue: return authors
-            case supervisors.rawValue: return supervisors
-            case faculty.rawValue: return faculty
-            default: fatalError("Invalid section index")
+            if let section = SectionMap(rawValue: index) {
+                return section
             }
+           fatalError("Invalid section index")
         }
     }
 
