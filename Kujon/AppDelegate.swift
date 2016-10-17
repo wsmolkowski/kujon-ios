@@ -47,23 +47,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
 
-        // TODO make some better handling
-
-        if url.absoluteString.contains("googleusercontent") {
-            //let options: [String:AnyObject] = [UIApplicationOpenURLOptionsKey.sourceApplication.rawValue: sourceApplication! as AnyObject, UIApplicationOpenURLOptionsKey.annotation.rawValue: annotation as AnyObject]
-            return GIDSignIn.sharedInstance().handle(url,
-                    sourceApplication: sourceApplication,
-                    annotation: annotation)
+        if FBSDKApplicationDelegate.sharedInstance().application(application, open: url as URL!, sourceApplication: sourceApplication, annotation: annotation)
+        {
+            return true;
         }
-        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url as URL!, sourceApplication: sourceApplication, annotation: annotation)
-
+        else if GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
+        {
+            return true;
+            
+        }
+        return false;
     }
 
-    public func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+     public func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
 
-        return FBSDKApplicationDelegate.sharedInstance().application(app, open: url as URL!, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String, annotation: options[UIApplicationOpenURLOptionsKey.annotation]
-        )
+        let annotation = options[UIApplicationOpenURLOptionsKey.annotation]
+        let sourceApplication = options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String
+
+        if FBSDKApplicationDelegate.sharedInstance().application(app, open: url as URL!, sourceApplication: sourceApplication, annotation: annotation)
+        {
+            return true;
+        }
+        else if GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
+        {
+            return true;
+
+        }
+        return false;
     }
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
