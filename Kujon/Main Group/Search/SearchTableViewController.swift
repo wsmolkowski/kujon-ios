@@ -32,6 +32,7 @@ class SearchTableViewController: UITableViewController,NavigationDelegate, Searc
 
     func openDrawer() {
         delegate?.toggleLeftPanel()
+        tableView.visibleCells.forEach { ($0 as! SearchTableViewCell).textField.resignFirstResponder() }
     }
 
     // MARK: UITableViewDataSource
