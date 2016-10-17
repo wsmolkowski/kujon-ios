@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics.self])
         SessionManager.setCache()
         window = UIWindow(frame: UIScreen.main.bounds)
-        let value = FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
         // Initialize sign-in
         var configureError: NSError?
@@ -43,9 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         OneSignal.defaultClient().enable(inAppAlertNotification: true)
 
-
-
-        return value
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
@@ -58,7 +55,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     sourceApplication: sourceApplication,
                     annotation: annotation)
         }
-        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url as URL!, sourceApplication: sourceApplication, annotation: annotation)
+
+    }
+
+    public func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+
+        return FBSDKApplicationDelegate.sharedInstance().application(app, open: url as URL!, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String, annotation: options[UIApplicationOpenURLOptionsKey.annotation]
+        )
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

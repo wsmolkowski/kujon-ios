@@ -11,7 +11,8 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import Crashlytics
 
-class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
+class EntryViewController: UIViewController,
+        FBSDKLoginButtonDelegate,
         OnFacebookCredentailSaved,
         GIDSignInUIDelegate,
         GIDSignInDelegate,
@@ -100,10 +101,8 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
                 print("Load FB params on login success")
                 facebookManager.loadFBParams(self)
             }
-
-
-//            self.openList(nil)
         } else {
+            presentAlertWithMessage("Wystąpił błąd podczas logowania przez serwis Facebook", title: "Błąd")
             print(error.localizedDescription)
             
         }
