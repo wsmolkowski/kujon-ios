@@ -164,7 +164,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         if (facultie != nil && facultie.postalAdress != nil) {
             let geocoder: CLGeocoder = CLGeocoder();
             geocoder.geocodeAddressString(facultie.postalAdress, completionHandler: {
-                (placemarks: [CLPlacemark]?, error: NSError?) -> Void in
+                placemarks, error in
                 if placemarks?.count > 0 {
                     let topResult: CLPlacemark = placemarks![0];
                     let placemark: MKPlacemark = MKPlacemark(placemark: topResult);
@@ -178,7 +178,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
                     }
 
                 }
-            } as! CLGeocodeCompletionHandler)
+            })
         }
         return cell
     }
