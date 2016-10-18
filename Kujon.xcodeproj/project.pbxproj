@@ -643,7 +643,7 @@
 		66F402F11DB12E82001E28D1 /* KujonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KujonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		66F402F31DB12E82001E28D1 /* KujonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KujonTests.swift; sourceTree = "<group>"; };
 		66F402F51DB12E82001E28D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		66F4BC6A1DB2597000425E39 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		66F4BC6A1DB2597000425E39 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		71EE9BFC3F34701DCA4852FA /* Pods-Kujon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kujon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kujon/Pods-Kujon.debug.xcconfig"; sourceTree = "<group>"; };
 		738B26E893DA09D88D3AB47D /* Pods-KujonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KujonUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KujonUITests/Pods-KujonUITests.release.xcconfig"; sourceTree = "<group>"; };
 		96504F7BCCB0EE28D6F0F6C4 /* Pods_Kujon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kujon.framework; sourceTree = BUILT_PRODUCTS_DIR; };

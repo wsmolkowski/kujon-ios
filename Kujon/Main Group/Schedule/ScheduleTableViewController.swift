@@ -173,11 +173,11 @@ class ScheduleTableViewController:
 
     }
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 48
     }
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionSch = getScheduleSectionAtPosition(section)
         return createLabel(sectionSch.getSectionTitle())
 
@@ -190,7 +190,7 @@ class ScheduleTableViewController:
     }
 
 
-    @available(iOS 2.0, *) override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
 
         let height = scrollView.frame.size.height
         let contetyYOffset = scrollView.contentOffset.y

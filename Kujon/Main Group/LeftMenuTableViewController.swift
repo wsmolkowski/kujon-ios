@@ -82,7 +82,7 @@ class LeftMenuTableViewController: UITableViewController {
 
     }
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch (indexPath.section) {
         case 0: return 145
         case 1: return 48
@@ -92,7 +92,7 @@ class LeftMenuTableViewController: UITableViewController {
     }
 
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section > 0) {
 
             let menuItem = self.getCurrentMenuItem(indexPath)

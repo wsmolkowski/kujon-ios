@@ -91,7 +91,7 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
 
     }
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch (indexPath.section) {
         case 0: return 216
         default: return 50
@@ -160,7 +160,7 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
     }
 
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch (section) {
         case 0: return 0
 
@@ -169,7 +169,7 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
     }
 
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch (section) {
         case 0: return nil
         case 1: return createLabelForSectionTitle(StringHolder.kierunki)
@@ -177,7 +177,7 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
         }
     }
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section) {
         case 1:
             self.clicked(indexPath)

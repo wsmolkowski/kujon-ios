@@ -139,7 +139,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
     }
 
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 2:
 

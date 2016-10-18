@@ -89,7 +89,7 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
         return cell
     }
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.connected(indexPath)
     }
 

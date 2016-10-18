@@ -74,11 +74,11 @@ class GradesTableViewController: UITableViewController
         return self.myTermGrades[section].grades.count
     }
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if(noDataCondition()){
             return 0
         }
@@ -86,7 +86,7 @@ class GradesTableViewController: UITableViewController
     }
 
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if(noDataCondition()){
             return nil
         }
@@ -119,7 +119,7 @@ class GradesTableViewController: UITableViewController
         return self.myTermGrades.count == 0
     }
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let prepareGrade = self.myTermGrades[indexPath.section].grades[indexPath.row] 
 
         let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: Bundle.main)

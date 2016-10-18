@@ -71,7 +71,7 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
         return courseWrappers[section].courses.count
     }
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let course = self.courseWrappers[indexPath.section].courses[indexPath.row]  as Course
         let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: Bundle.main)
         courseDetails.course = course
@@ -92,11 +92,11 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
 
 
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
      return 48
     }
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return self.createLabelForSectionTitle(self.courseWrappers[section].title,middle: true)
     }
 

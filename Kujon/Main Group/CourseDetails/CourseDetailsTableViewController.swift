@@ -87,11 +87,11 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
 
     // MARK: - Table view data source
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return (sectionHelpers[section]).getSectionHeaderHeight()
     }
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return createLabelForSectionTitle((sectionHelpers[section]).getSectionTitle())
     }
 
@@ -115,11 +115,11 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
         return  cell!
     }
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat((sectionHelpers[indexPath.section] ).getRowHeight())
     }
 
-    @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         (sectionHelpers[indexPath.section]).reactOnSectionClick(indexPath.row,withController: self.navigationController)
     }
 
