@@ -17,7 +17,7 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
     var loginProvider = ProvidersProviderImpl.sharedInstance.provideLoginProvider()
     let emailManager = EmailManager.sharedInstance
     var email:String = ""
-    fileprivate let checker = Checker()
+    private let checker = Checker()
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(RegisterViewController.back), andTitle: StringHolder.loggin2)
@@ -76,7 +76,7 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
 
 
 
-    fileprivate func showAlert(_ text: String){
+    private func showAlert(_ text: String){
         let alertController = UIAlertController(title: "Błąd Logowania ", message: text, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {
             (action: UIAlertAction!) in

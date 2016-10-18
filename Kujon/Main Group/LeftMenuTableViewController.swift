@@ -15,13 +15,13 @@ protocol LeftMenuTableViewControllerDelegate {
 
 class LeftMenuTableViewController: UITableViewController {
 
-    fileprivate let MenuItemCellIdentiefier = "menuUsosCell"
-    fileprivate let MenuItemHeaderIdentiefier = "menuItemHeader"
-    fileprivate let userDataHolder = UserDataHolder.sharedInstance
+    private let MenuItemCellIdentiefier = "menuUsosCell"
+    private let MenuItemHeaderIdentiefier = "menuItemHeader"
+    private let userDataHolder = UserDataHolder.sharedInstance
     var delegate: LeftMenuTableViewControllerDelegate?
 
-    fileprivate var listOfUpperItems: Array<MenuItemWithController>!
-    fileprivate var listOfLowerItems: Array<MenuItemWithController>!
+    private var listOfUpperItems: Array<MenuItemWithController>!
+    private var listOfLowerItems: Array<MenuItemWithController>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +58,7 @@ class LeftMenuTableViewController: UITableViewController {
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if ((indexPath as NSIndexPath).section == 0) {
+        if (indexPath.section == 0) {
             let cell: NavDrawerHeaderViewCellTableViewCell = tableView.dequeueReusableCell(withIdentifier: MenuItemHeaderIdentiefier, for: indexPath) as! NavDrawerHeaderViewCellTableViewCell
             cell.userEmailLabel.text = self.userDataHolder.userEmail
             cell.userNameLabel.text = self.userDataHolder.userName
@@ -83,7 +83,7 @@ class LeftMenuTableViewController: UITableViewController {
     }
 
     @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch ((indexPath as NSIndexPath).section) {
+        switch (indexPath.section) {
         case 0: return 145
         case 1: return 48
         case 2: return 48
@@ -93,7 +93,7 @@ class LeftMenuTableViewController: UITableViewController {
 
 
     @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if ((indexPath as NSIndexPath).section > 0) {
+        if (indexPath.section > 0) {
 
             let menuItem = self.getCurrentMenuItem(indexPath)
             if (menuItem.returnTitle() == StringHolder.shareApp) {
@@ -104,7 +104,7 @@ class LeftMenuTableViewController: UITableViewController {
                 self.present(controller, animated: true, completion: nil)
             }
             if (menuItem.returnViewController()) {
-                self.delegate?.selectedMenuItem(self, menuItem: menuItem, withDelegate: (indexPath as NSIndexPath).section == 1)
+                self.delegate?.selectedMenuItem(self, menuItem: menuItem, withDelegate: indexPath.section == 1)
             } else {
                 if let url = (menuItem as! MenuItemWithURL).returnURL() {
 
@@ -114,9 +114,9 @@ class LeftMenuTableViewController: UITableViewController {
         }
     }
 
-    fileprivate func getCurrentMenuItem(_ indexPath: IndexPath) -> MenuItemWithController {
-        var list = (indexPath as NSIndexPath).section - 1 == 0 ? listOfUpperItems : listOfLowerItems
-        return list![(indexPath as NSIndexPath).row] as MenuItemWithController
+    private func getCurrentMenuItem(_ indexPath: IndexPath) -> MenuItemWithController {
+        var list = indexPath.section - 1 == 0 ? listOfUpperItems : listOfLowerItems
+        return list![indexPath.row] as MenuItemWithController
     }
 
 

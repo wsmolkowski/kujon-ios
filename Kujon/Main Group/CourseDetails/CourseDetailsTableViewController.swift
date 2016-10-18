@@ -37,7 +37,7 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
 
     }
 
-    fileprivate func load(){
+    private func load(){
         if(course != nil ) {
             courseDetailsProvider.loadCourseDetails(course)
         }else if( courseId != nil && termId != nil){
@@ -50,7 +50,7 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
             back()
         }
     }
-    fileprivate func createSections()->Array<SectionHelperProtocol>{
+    private func createSections()->Array<SectionHelperProtocol>{
         return [NameSection(),FacultieSection(),DescriptionSection(),BibliographySection()
                 ,PassCriteriaSection(),CycleSection(),LecturersSection(),CoordinatorsSection(),ClassTypeSection(),ParticipantsSection()]
     }
@@ -109,18 +109,18 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let helper = (sectionHelpers[(indexPath as NSIndexPath).section] )
+        let helper = (sectionHelpers[indexPath.section] )
         let cell = helper.giveMeCellAtPosition(tableView,onPosition: indexPath)
         cell?.selectionStyle = UITableViewCellSelectionStyle.none
         return  cell!
     }
 
     @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat((sectionHelpers[(indexPath as NSIndexPath).section] ).getRowHeight())
+        return CGFloat((sectionHelpers[indexPath.section] ).getRowHeight())
     }
 
     @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        (sectionHelpers[(indexPath as NSIndexPath).section]).reactOnSectionClick((indexPath as NSIndexPath).row,withController: self.navigationController)
+        (sectionHelpers[indexPath.section]).reactOnSectionClick(indexPath.row,withController: self.navigationController)
     }
 
 }

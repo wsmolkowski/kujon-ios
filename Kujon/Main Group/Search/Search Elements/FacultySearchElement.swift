@@ -7,7 +7,7 @@ import Foundation
 
 class FacultySearchElement: SearchViewProtocol {
 
-    fileprivate let myCellId = "assafasfasfaf"
+    private let myCellId = "assafasfasfaf"
 
     func provideSearchProtocol() -> SearchProviderProtocol {
         return FacultySearchProvider()

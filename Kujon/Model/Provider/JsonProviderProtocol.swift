@@ -39,7 +39,7 @@ extension JsonProviderProtocol {
         }
     }
 
-    fileprivate func switchOverCodes(_ code: Int, text: String, errorR: ErrorResponseProtocol) {
+    private func switchOverCodes(_ code: Int, text: String, errorR: ErrorResponseProtocol) {
         switch code {
         case 401:
             errorR.unauthorized(text)

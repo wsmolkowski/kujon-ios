@@ -48,7 +48,7 @@ class CoursePopUpViewController: PopUpViewController {
 
     }
 
-    fileprivate func createNiceString(_ one:String, two:String)->String{
+    private func createNiceString(_ one:String, two:String)->String{
         return String(format: "%@: %@",one,two)
     }
 

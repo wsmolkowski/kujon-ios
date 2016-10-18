@@ -7,7 +7,7 @@ import Foundation
 
 class FacultieSection: SectionHelperProtocol {
     let facultieCellId="facCellIde"
-    fileprivate var facId :FacId! = nil
+    private var facId :FacId! = nil
     func fillUpWithData(_ courseDetails: CourseDetails) {
         facId = courseDetails.facId
     }

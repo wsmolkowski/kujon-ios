@@ -8,7 +8,7 @@ import Foundation
 class ThesisSearchElement: SearchViewProtocol {
 
 
-    fileprivate let myCellId = "safasf01jswfn29fun"
+    private let myCellId = "safasf01jswfn29fun"
 
     func provideSearchProtocol() -> SearchProviderProtocol {
         return ThesisSearchProvider()

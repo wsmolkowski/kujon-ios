@@ -11,7 +11,7 @@ import UIKit
 class ThesesTableViewController: UITableViewController {
 
     var theses: [Thesis]?
-    fileprivate let cellId = "ThesisCell"
+    private let cellId = "ThesisCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,7 @@ class ThesesTableViewController: UITableViewController {
         setupTableView()
     }
 
-    fileprivate func setupTableView() {
+    private func setupTableView() {
         tableView.register(UINib(nibName: "ThesisCell", bundle: nil), forCellReuseIdentifier: cellId)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 400
@@ -45,7 +45,7 @@ class ThesesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ThesisCell
-        cell.thesis = theses?[(indexPath as NSIndexPath).row]
+        cell.thesis = theses?[indexPath.row]
         return cell
     }
 

@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+private func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
     return l < r
@@ -20,7 +20,7 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+private func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
     return l > r
@@ -107,7 +107,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        switch (indexPath as NSIndexPath).section {
+        switch indexPath.section {
         case 0:
             return configureMapCell(indexPath)
         case 1:
@@ -123,7 +123,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch (indexPath as NSIndexPath).section {
+        switch indexPath.section {
         case 0:
             return 120
         case 1:
@@ -140,10 +140,10 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
 
 
     @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch (indexPath as NSIndexPath).section {
+        switch indexPath.section {
         case 2:
 
-            self.openUrlString("tel://" + self.facultie.phoneNumber[(indexPath as NSIndexPath).row])
+            self.openUrlString("tel://" + self.facultie.phoneNumber[indexPath.row])
 
             break;
         case 3:
@@ -153,7 +153,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         }
     }
 
-    fileprivate func configureMapCell(_ indexPath: IndexPath) -> UITableViewCell {
+    private func configureMapCell(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: mapCellId, for: indexPath) as! MapTableViewCell
         cell.mapView.delegate = self
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(FacultieTableViewController.onMapClick))
@@ -203,7 +203,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
     }
 
 
-    fileprivate func configureHeaderCell(_ indexPath: IndexPath) -> UITableViewCell {
+    private func configureHeaderCell(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: headerCellId, for: indexPath) as! FacultieHeaderTableViewCell
         cell.adressLabel.text = facultie.postalAdress
         cell.facultieNameLabel.text = facultie.name
@@ -222,20 +222,20 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         }
     }
 
-    fileprivate func configurePhoneCell(_ indexPath: IndexPath) -> UITableViewCell {
+    private func configurePhoneCell(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: telephoneCellId, for: indexPath) as! TelephoneTableViewCell
-        cell.telephoneNumberLabel.text = self.facultie.phoneNumber[(indexPath as NSIndexPath).row]
+        cell.telephoneNumberLabel.text = self.facultie.phoneNumber[indexPath.row]
         return cell
     }
 
-    fileprivate func configureWWWCell(_ indexPath: IndexPath) -> UITableViewCell {
+    private func configureWWWCell(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: wwwCellId, for: indexPath) as! WWWTableViewCell
         cell.wwwLabel.text = self.facultie.homePageUrl
         return cell
     }
 
 
-    fileprivate func loadImage(_ urlString: String, indexPath: IndexPath) {
+    private func loadImage(_ urlString: String, indexPath: IndexPath) {
         let url = URL(string: urlString)
         let session = URLSession.shared
         let task = session.dataTask(with: url!, completionHandler: {

@@ -9,9 +9,9 @@
 import UIKit
 
 class CoursesTableViewController: UITableViewController, NavigationDelegate,CourseProviderDelegate {
-    fileprivate let CourseCellId = "courseCellId"
-    fileprivate let courseProvider = ProvidersProviderImpl.sharedInstance.provideCourseProvider()
-    fileprivate var courseWrappers = Array<CoursesWrapper>()
+    private let CourseCellId = "courseCellId"
+    private let courseProvider = ProvidersProviderImpl.sharedInstance.provideCourseProvider()
+    private var courseWrappers = Array<CoursesWrapper>()
     weak var delegate: NavigationMenuProtocol! = nil
 
     override func viewDidLoad() {
@@ -72,7 +72,7 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
     }
 
     @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let course = self.courseWrappers[(indexPath as NSIndexPath).section].courses[(indexPath as NSIndexPath).row]  as Course
+        let course = self.courseWrappers[indexPath.section].courses[indexPath.row]  as Course
         let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: Bundle.main)
         courseDetails.course = course
         self.navigationController?.pushViewController(courseDetails, animated: true)
@@ -81,7 +81,7 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CourseCellId, for: indexPath) as! CourseTableViewCell
-        let course = self.courseWrappers[(indexPath as NSIndexPath).section].courses[(indexPath as NSIndexPath).row]  as Course
+        let course = self.courseWrappers[indexPath.section].courses[indexPath.row]  as Course
 
         cell.courseNameLabel.text = course.courseName
         cell.selectionStyle = UITableViewCellSelectionStyle.none

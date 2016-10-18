@@ -39,7 +39,7 @@ class TeacherHeaderTableViewCell: UITableViewCell {
         }
     }
 
-    fileprivate func updateButtonState() {
+    private func updateButtonState() {
         checkEmailURLButton.isEnabled = teacherEmailURL != nil
     }
 

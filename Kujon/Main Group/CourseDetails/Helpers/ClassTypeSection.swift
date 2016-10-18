@@ -10,7 +10,7 @@ class ClassTypeSection:SectionHelperProtocol {
     let classTypeCellId = "classTypeCellId"
 
 
-    fileprivate var description: String! = nil
+    private var description: String! = nil
     func fillUpWithData(_ courseDetails: CourseDetails) {
         description = ""
         if(courseDetails.groups != nil){

@@ -7,7 +7,7 @@ import Foundation
 
 class UserSearchElement : SearchViewProtocol {
 
-    fileprivate let myCellId = "afsasfafasf"
+    private let myCellId = "afsasfafasf"
 
 
     func registerView(_ tableView: UITableView) {

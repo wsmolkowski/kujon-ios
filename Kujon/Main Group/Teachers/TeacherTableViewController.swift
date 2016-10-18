@@ -9,10 +9,10 @@
 import UIKit
 
 class TeacherTableViewController: UITableViewController, NavigationDelegate, LecturerProviderDelegate {
-    fileprivate let TeachCellId = "teacherCellId"
+    private let TeachCellId = "teacherCellId"
     weak var delegate: NavigationMenuProtocol! = nil
     let lecturerProvider = ProvidersProviderImpl.sharedInstance.provideLecturerProvider()
-    fileprivate var lecturers: Array<SimpleUser>! = nil
+    private var lecturers: Array<SimpleUser>! = nil
 
     func setNavigationProtocol(_ delegate: NavigationMenuProtocol) {
         self.delegate = delegate
@@ -82,7 +82,7 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: GoFurtherViewCellTableViewCell = tableView.dequeueReusableCell(withIdentifier: TeachCellId, for: indexPath) as! GoFurtherViewCellTableViewCell
-        let myUser: SimpleUser = self.lecturers[(indexPath as NSIndexPath).row]
+        let myUser: SimpleUser = self.lecturers[indexPath.row]
         cell.plainLabel.text = myUser.lastName + " " + myUser.firstName
         cell.selectionStyle = UITableViewCellSelectionStyle.none
 

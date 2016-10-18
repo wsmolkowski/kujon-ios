@@ -46,8 +46,8 @@ class SearchTableViewController: UITableViewController,NavigationDelegate, Searc
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = array[(indexPath as NSIndexPath).row].provideUITableViewCell(tableView, cellForRowAtIndexPath: indexPath)
-        cell.index = (indexPath as NSIndexPath).row
+        let cell = array[indexPath.row].provideUITableViewCell(tableView, cellForRowAtIndexPath: indexPath)
+        cell.index = indexPath.row
         cell.delegate = self
         return cell
     }

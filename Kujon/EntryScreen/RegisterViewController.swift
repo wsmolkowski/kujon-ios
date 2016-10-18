@@ -14,11 +14,11 @@ class RegisterViewController: UIViewController, RegistrationProviderDelegate {
     @IBOutlet weak var seconPasswordTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    fileprivate let checker = Checker()
-    fileprivate let registerProvider = ProvidersProviderImpl.sharedInstance.provideRegistrationProvider()
+    private let checker = Checker()
+    private let registerProvider = ProvidersProviderImpl.sharedInstance.provideRegistrationProvider()
 
     weak var delegate: OpenLoginScreenProtocol! = nil
-    fileprivate var emailText=""
+    private var emailText=""
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -90,7 +90,7 @@ class RegisterViewController: UIViewController, RegistrationProviderDelegate {
     }
 
 
-    fileprivate func showAlert(_ text: String) {
+    private func showAlert(_ text: String) {
         let alertController = UIAlertController(title: "Błąd rejestracji ", message: text, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {
             (action: UIAlertAction!) in

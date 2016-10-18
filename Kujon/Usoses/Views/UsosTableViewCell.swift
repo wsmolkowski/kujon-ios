@@ -27,7 +27,7 @@ class UsosTableViewCell: UITableViewCell {
 
     }
 
-    fileprivate func updateCellState() {
+    private func updateCellState() {
         label.alpha = enabled ? 1.0 : 0.4
         usosImageView.alpha = enabled ? 1.0 : 0.4
     }

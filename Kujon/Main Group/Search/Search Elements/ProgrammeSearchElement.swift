@@ -7,7 +7,7 @@ import Foundation
 
 class ProgrammeSearchElement: SearchViewProtocol {
 
-    fileprivate let myCellId = "asfafasfafasf"
+    private let myCellId = "asfafasfafasf"
 
     func provideSearchProtocol() -> SearchProviderProtocol {
         return ProgrammeSearchProvider()

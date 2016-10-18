@@ -44,10 +44,10 @@ class LectureCellHandler: CellHandlerProtocol {
         }
     }
 
-    fileprivate func count(_ text:String)->Int{
+    private func count(_ text:String)->Int{
         return text.characters.count
     }
-    fileprivate func setTime()->NSAttributedString{
+    private func setTime()->NSAttributedString{
         let text  = wrapper.startTime + " \n" + wrapper.endTime + " \n" + "s. " + wrapper.lecture.roomNumber
         let atrText = NSMutableAttributedString(string: text)
         var lenght = 0

@@ -7,11 +7,11 @@ import Foundation
 
 class HeaderManager {
 
-    fileprivate var userDataHolder = UserDataHolder.sharedInstance
+    private var userDataHolder = UserDataHolder.sharedInstance
 
-    fileprivate let EMAIL_HEADER = "X-Kujonmobiemail"
-    fileprivate let TOKEN_HEADER = "X-Kujonmobitoken"
-    fileprivate let REFRESH_TOKEN = "X-Kujonrefresh"
+    private let EMAIL_HEADER = "X-Kujonmobiemail"
+    private let TOKEN_HEADER = "X-Kujonmobitoken"
+    private let REFRESH_TOKEN = "X-Kujonrefresh"
     func isAuthenticated()->Bool{
         return (userDataHolder.userEmail != nil) && (userDataHolder.userToken != nil)
     }

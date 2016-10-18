@@ -10,9 +10,9 @@ import UIKit
 
 class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
 
-    fileprivate let UsosCellIdentifier = "reusableUsosCell"
-    fileprivate let usosProvider = ProvidersProviderImpl.sharedInstance.provideUsosesProvider()
-    fileprivate var usosList: Array<Usos> = Array()
+    private let UsosCellIdentifier = "reusableUsosCell"
+    private let usosProvider = ProvidersProviderImpl.sharedInstance.provideUsosesProvider()
+    private var usosList: Array<Usos> = Array()
     let userDataHolder = UserDataHolder.sharedInstance
     var showDemoUniversity = false
 
@@ -69,7 +69,7 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
 
     }
 
-    fileprivate func getShowDemo() -> Array<Usos> {
+    private func getShowDemo() -> Array<Usos> {
         if (showDemoUniversity) {
             return self.usosList
         } else {
@@ -82,7 +82,7 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
 
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UsosTableViewCell = tableView.dequeueReusableCell(withIdentifier: UsosCellIdentifier, for: indexPath) as! UsosTableViewCell
-        let usos = getShowDemo()[(indexPath as NSIndexPath).row] as Usos
+        let usos = getShowDemo()[indexPath.row] as Usos
 
         let cellEnabled = usos.enable != nil && usos.enable == true
         cell.enabled = cellEnabled
@@ -97,7 +97,7 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
 
      override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? UsosTableViewCell {
-            let usos = getShowDemo()[(indexPath as NSIndexPath).row] as Usos
+            let usos = getShowDemo()[indexPath.row] as Usos
             if cell.enabled {
                 showAlert(usos)
                 return
@@ -147,7 +147,7 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
 
     }
 
-    fileprivate func loadImage(_ urlString: String, indexPath: IndexPath) {
+    private func loadImage(_ urlString: String, indexPath: IndexPath) {
         let url = URL(string: urlString)
         let session = URLSession.shared
         let task = session.dataTask(with: url!, completionHandler: {

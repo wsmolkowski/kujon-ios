@@ -45,7 +45,7 @@ class SettingsViewController: UIViewController,
 
     }
 
-    fileprivate func goBackToEntryScreen() {
+    private func goBackToEntryScreen() {
         loginMenager.logout(self)
 
     }

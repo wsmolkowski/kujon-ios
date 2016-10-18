@@ -7,7 +7,7 @@
 //
 
 import UIKit
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+private func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
     return l < r
@@ -18,7 +18,7 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+private func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
     return l > r
@@ -38,16 +38,16 @@ class UserTableViewController: UITableViewController
         , ProgrammeProviderDelegate {
 
     weak var delegate: NavigationMenuProtocol! = nil
-    fileprivate let usedDetailCellId = "userDetailViewId"
-    fileprivate let StudentProgrammeCellId = "cellIdForStudentProgramme"
-    fileprivate let FacultieProgrammeCellId = "cellIdForStudentFacultie"
-    fileprivate let termsCellId = "termsCellId"
+    private let usedDetailCellId = "userDetailViewId"
+    private let StudentProgrammeCellId = "cellIdForStudentProgramme"
+    private let FacultieProgrammeCellId = "cellIdForStudentFacultie"
+    private let termsCellId = "termsCellId"
     let userDetailsProvider: UserDetailsProvider! = ProvidersProviderImpl.sharedInstance.provideUserDetailsProvider()
     let facultieProvider: FacultiesProvider! = ProvidersProviderImpl.sharedInstance.providerFacultiesProvider()
     let termsProvider: TermsProvider! = ProvidersProviderImpl.sharedInstance.provideTermsProvider()
     let programmeProvider: ProgrammeProvider! = ProvidersProviderImpl.sharedInstance.provideProgrammeProvider()
     let restImageProvider = RestImageProvider.sharedInstance
-    fileprivate let userDataHolder = UserDataHolder.sharedInstance
+    private let userDataHolder = UserDataHolder.sharedInstance
 
     var userDetail: UserDetail! = nil
     var userFaculties: Array<Facultie>! = nil
@@ -85,7 +85,7 @@ class UserTableViewController: UITableViewController
         loadData()
     }
 
-    fileprivate func addNavigationSeparator() {
+    private func addNavigationSeparator() {
         guard let navigationController = self.navigationController else {
             return
         }
@@ -114,7 +114,7 @@ class UserTableViewController: UITableViewController
     func openDrawer() {
         delegate?.toggleLeftPanel()
     }
-    fileprivate func loadData(){
+    private func loadData(){
         userDetailsProvider.loadUserDetail()
         facultieProvider.loadFaculties()
         termsProvider.loadTerms()
@@ -174,7 +174,7 @@ class UserTableViewController: UITableViewController
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell!
-        switch ((indexPath as NSIndexPath).section) {
+        switch (indexPath.section) {
         case 0: cell = self.configureUserDetails(indexPath)
         case 1: cell = self.configureStudentProgrammeCell(indexPath)
         case 2: cell = self.configureFacultieCell(indexPath)
@@ -186,7 +186,7 @@ class UserTableViewController: UITableViewController
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cellPosition: (section: Int, row: Int) = (section:(indexPath as NSIndexPath).section, row:(indexPath as NSIndexPath).row)
+        let cellPosition: (section: Int, row: Int) = (section:indexPath.section, row:indexPath.row)
         switch (cellPosition) {
         case (section:1, row: _):
             clicked(indexPath)
@@ -202,7 +202,7 @@ class UserTableViewController: UITableViewController
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch ((indexPath as NSIndexPath).section) {
+        switch (indexPath.section) {
         case 0: return 196
         case 1: return 51
         case 2: return 51;
@@ -232,7 +232,7 @@ class UserTableViewController: UITableViewController
     }
 
 
-    fileprivate func configureUserDetails(_ indexPath: IndexPath) -> UITableViewCell {
+    private func configureUserDetails(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: usedDetailCellId, for: indexPath) as! UserDetailsTableViewCell
         cell.nameSurnameLabel.text = userDetail.firstName + " " + userDetail.lastName
         cell.studentStatusLabel.text = userDetail.studentStatus
@@ -267,7 +267,7 @@ class UserTableViewController: UITableViewController
             ToastView.showInParent(self.navigationController?.view, withText: StringHolder.noPicture, forDuration: 2.0)
         }
     }
-    fileprivate var isThereImage = false;
+    private var isThereImage = false;
 
     func imageLoaded(_ tag: String, image: UIImage) {
         let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! UserDetailsTableViewCell
@@ -276,21 +276,21 @@ class UserTableViewController: UITableViewController
         isThereImage = true
     }
 
-    fileprivate func configureStudentProgrammeCell(_ indexPath: IndexPath) -> UITableViewCell {
+    private func configureStudentProgrammeCell(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StudentProgrammeCellId, for: indexPath) as! GoFurtherViewCellTableViewCell
-        let myProgramme: StudentProgramme = self.programmes[(indexPath as NSIndexPath).row]
+        let myProgramme: StudentProgramme = self.programmes[indexPath.row]
         cell.plainLabel.text = myProgramme.programme.description
         return cell
     }
 
-    fileprivate func configureFacultieCell(_ indexPath: IndexPath) -> UITableViewCell {
+    private func configureFacultieCell(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FacultieProgrammeCellId, for: indexPath) as! GoFurtherViewCellTableViewCell
-        let myFac: Facultie = self.userFaculties[(indexPath as NSIndexPath).row]
+        let myFac: Facultie = self.userFaculties[indexPath.row]
         cell.plainLabel.text = myFac.name
         return cell
     }
 
-    fileprivate func configureStatsCellForIndexPath(_ indexPath: IndexPath) -> UITableViewCell {
+    private func configureStatsCellForIndexPath(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FacultieProgrammeCellId, for: indexPath) as! GoFurtherViewCellTableViewCell
 
         let termsIndex: Int = 0
@@ -298,7 +298,7 @@ class UserTableViewController: UITableViewController
         var itemName: String = ""
         var itemsCount: Int = 0
 
-        switch (indexPath as NSIndexPath).row {
+        switch indexPath.row {
         case termsIndex:
             itemsCount = terms.count
             itemName = StringHolder.cycles
@@ -337,7 +337,7 @@ class UserTableViewController: UITableViewController
         self.navigationController?.pushViewController(faculiteController, animated: true)
     }
 
-    fileprivate func clickedTermsCell() {
+    private func clickedTermsCell() {
         if (terms.count != 0) {
             let termsController = TermsTableViewController()
             self.navigationController?.pushViewController(termsController, animated: true)
@@ -345,7 +345,7 @@ class UserTableViewController: UITableViewController
         }
     }
 
-    fileprivate func clickedThesesCell() {
+    private func clickedThesesCell() {
         if (userDetail.theses?.count > 0) {
             let thesesTableViewController = ThesesTableViewController()
             thesesTableViewController.theses = userDetail.theses
@@ -353,7 +353,7 @@ class UserTableViewController: UITableViewController
         }
     }
 
-    fileprivate func loadImageFromUrl(_ urlString: String?, indexPath: IndexPath) {
+    private func loadImageFromUrl(_ urlString: String?, indexPath: IndexPath) {
         guard
             let urlString = urlString,
             let url = URL(string: urlString) else {

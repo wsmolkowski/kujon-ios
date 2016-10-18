@@ -31,7 +31,7 @@ class SpinnerView : UIView {
         animate()
     }
 
-    fileprivate func setPath() {
+    private func setPath() {
         layer.path = UIBezierPath(ovalIn: bounds.insetBy(dx: layer.lineWidth / 2, dy: layer.lineWidth / 2)).cgPath
     }
 

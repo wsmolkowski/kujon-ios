@@ -49,7 +49,7 @@ class TermsTableViewController:UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: TermsTableViewCell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! TermsTableViewCell
-        let term: Term = self.terms[(indexPath as NSIndexPath).row]
+        let term: Term = self.terms[indexPath.row]
 
         cell.endDateLabel.text = term.endDate
         cell.endDateLabel.adjustsFontSizeToFitWidth = true

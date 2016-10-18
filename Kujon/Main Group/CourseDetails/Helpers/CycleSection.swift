@@ -9,8 +9,8 @@ class CycleSection: SectionHelperProtocol {
     let cycleId = "cycleCellId"
 
 
-    fileprivate var description: String! = nil
-    fileprivate var terms: Array<Term> = Array()
+    private var description: String! = nil
+    private var terms: Array<Term> = Array()
     func fillUpWithData(_ courseDetails: CourseDetails) {
         if(courseDetails.term != nil) {
 

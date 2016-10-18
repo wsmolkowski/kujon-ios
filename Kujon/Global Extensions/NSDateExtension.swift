@@ -7,15 +7,15 @@ import Foundation
 import Decodable
 
 extension Date {
-    fileprivate static let dateFormatter = DateFormatter()
-    fileprivate static let dateFormat = "yyyy-MM-dd"
-    fileprivate static let dateFormatSchedule = "EEEE d MMMM ,yyyy"
-    fileprivate static let dateFormatDayMonth = "dd \n MMM"
-    fileprivate static let dateFormatMonth = "MMMM"
-    fileprivate static let dateFormatYear = "yyyy"
-    fileprivate static let dateFormatDay = "EEEE"
-    fileprivate static let dateFormatWithClock = "yyyy-MM-dd HH:mm:ss"
-    fileprivate static let dateFormatOnlyTime = "HH:mm"
+    private static let dateFormatter = DateFormatter()
+    private static let dateFormat = "yyyy-MM-dd"
+    private static let dateFormatSchedule = "EEEE d MMMM ,yyyy"
+    private static let dateFormatDayMonth = "dd \n MMM"
+    private static let dateFormatMonth = "MMMM"
+    private static let dateFormatYear = "yyyy"
+    private static let dateFormatDay = "EEEE"
+    private static let dateFormatWithClock = "yyyy-MM-dd HH:mm:ss"
+    private static let dateFormatOnlyTime = "HH:mm"
 
 
     static func stringToDate(_ dateString: String) -> Date! {
@@ -69,7 +69,7 @@ extension Date {
     }
 
 
-    fileprivate static func getDateFormatter(_ format: String = dateFormat) -> DateFormatter {
+    private static func getDateFormatter(_ format: String = dateFormat) -> DateFormatter {
         dateFormatter.dateFormat = format
         return dateFormatter
     }

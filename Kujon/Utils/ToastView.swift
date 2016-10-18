@@ -54,7 +54,7 @@ class ToastView: UIView {
 
     }
 
-    static fileprivate func getDouble(_ toastsAlreadyInParent : Int) -> CGFloat {
+    static private func getDouble(_ toastsAlreadyInParent : Int) -> CGFloat {
         return (70.0 + toastHeight * CGFloat(toastsAlreadyInParent) + toastGap * CGFloat(toastsAlreadyInParent));
     }
 

@@ -13,7 +13,7 @@ protocol OnImageLoadedFromRest {
 class RestImageProvider {
 
     static let sharedInstance =  RestImageProvider()
-    fileprivate let headerManager = HeaderManager()
+    private let headerManager = HeaderManager()
 
     func loadImage(_ tag: String, urlString: String, onImageLoaded: OnImageLoadedFromRest) {
         var request = URLRequest(url: URL(string: urlString)!)

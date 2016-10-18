@@ -9,21 +9,21 @@ class UserDataHolder {
 
     static let sharedInstance = UserDataHolder()
 
-    fileprivate  let LOGGED_KEY = "is_logged_key"
-    fileprivate  let EMAIL_KEY = "email_key"
-    fileprivate  let TOKEN_KEY = "token_key"
-    fileprivate  let USOS_IMAGE_KEY = "usos_image_key"
-    fileprivate  let LOGIN_TYPE_KEY = "login_type_traalalal_key"
+    private  let LOGGED_KEY = "is_logged_key"
+    private  let EMAIL_KEY = "email_key"
+    private  let TOKEN_KEY = "token_key"
+    private  let USOS_IMAGE_KEY = "usos_image_key"
+    private  let LOGIN_TYPE_KEY = "login_type_traalalal_key"
     
-    fileprivate var loadedEmail: String! = nil
+    private var loadedEmail: String! = nil
 
-    fileprivate var loadedToken: String! = nil
-    fileprivate var usosImage: String! = nil
-    fileprivate var loginType: String! = nil
+    private var loadedToken: String! = nil
+    private var usosImage: String! = nil
+    private var loginType: String! = nil
     var usosId: String! = "DEMO"
     var usosName: String! = nil
 
-    fileprivate var defaultsManager: UserDefaultsManager
+    private var defaultsManager: UserDefaultsManager
 
 
     init() {
@@ -81,14 +81,14 @@ class UserDataHolder {
     var userImage:UIImage! = nil
     var userName: String!  = nil
 
-    fileprivate func standardGetter(_ value: inout String!, key: String) -> String! {
+    private func standardGetter(_ value: inout String!, key: String) -> String! {
         if (value == nil) {
             value = self.defaultsManager.readStringFromUserDefaults(key)
         }
         return value
     }
 
-    fileprivate func standardSetter(_ value: inout String!, newValue: String!, key: String) {
+    private func standardSetter(_ value: inout String!, newValue: String!, key: String) {
         self.defaultsManager.writeStringToUserDefaults(newValue,key: key)
         value = newValue
     }

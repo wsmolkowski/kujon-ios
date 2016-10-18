@@ -9,7 +9,7 @@ class DescriptionSection: SectionHelperProtocol {
     let descriptionCellId="descCellId"
 
 
-    fileprivate var description:String! = nil
+    private var description:String! = nil
     func fillUpWithData(_ courseDetails: CourseDetails) {
         description  = courseDetails.description
     }

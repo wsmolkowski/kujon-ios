@@ -18,7 +18,7 @@ class ScheduleTableViewController:
     static let LectureCellId = "lectureCellId"
     static let DayCellId = "dayCellId"
     static let textId = "simpleTextId"
-    fileprivate let floatingButtonDelegate = FloatingButtonDelegate()
+    private let floatingButtonDelegate = FloatingButtonDelegate()
     var isQuering = false
     var lastQueryDate: Date! = nil
     var firstDate: Date! = nil
@@ -85,7 +85,7 @@ class ScheduleTableViewController:
     }
 
 
-    fileprivate func askForData() {
+    private func askForData() {
         isQuering = true
         for n in 0 ... 6 {
             sectionsArray.append(ScheduleSectionImpl(withDate: lastQueryDate.addDays(n).dateToStringSchedule(), listOfLecture: Array()))
@@ -118,14 +118,14 @@ class ScheduleTableViewController:
         isQuering = false
     }
 
-    fileprivate func getPositionOfSection(_ text: String) -> Int! {
+    private func getPositionOfSection(_ text: String) -> Int! {
         return sectionsArray.index {
             $0.getSectionTitle() == text
         }
     }
 
 
-    fileprivate func getScheduleSectionAtPosition(_ pos: Int) -> ScheduleSection {
+    private func getScheduleSectionAtPosition(_ pos: Int) -> ScheduleSection {
 
         return sectionsArray[pos]
     }
@@ -183,7 +183,7 @@ class ScheduleTableViewController:
 
     }
 
-    fileprivate func createLabel(_ text: String) -> UIView {
+    private func createLabel(_ text: String) -> UIView {
         let view = HeaderViewTableViewCell.instanceFromNib()
         view.titleLabel.text = text
         return view
@@ -207,9 +207,9 @@ class ScheduleTableViewController:
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let sectionSch = getScheduleSectionAtPosition((indexPath as NSIndexPath).section)
+        let sectionSch = getScheduleSectionAtPosition(indexPath.section)
         if (sectionSch.getSectionSize() != 0) {
-            let cellStrategy = sectionSch.getElementAtPosition((indexPath as NSIndexPath).row)
+            let cellStrategy = sectionSch.getElementAtPosition(indexPath.row)
             var cell = cellStrategy.giveMeMyCell(tableView, cellForRowAtIndexPath: indexPath)
             let strategy = cellStrategy.giveMyStrategy()
             strategy.handleCell(&cell)
@@ -224,8 +224,8 @@ class ScheduleTableViewController:
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let sectionSch = getScheduleSectionAtPosition((indexPath as NSIndexPath).section)
-        let cellStrategy = sectionSch.getElementAtPosition((indexPath as NSIndexPath).row)
+        let sectionSch = getScheduleSectionAtPosition(indexPath.section)
+        let cellStrategy = sectionSch.getElementAtPosition(indexPath.row)
         cellStrategy.handleClick(self.navigationController)
     }
 

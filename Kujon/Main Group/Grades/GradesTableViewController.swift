@@ -14,10 +14,10 @@ class GradesTableViewController: UITableViewController
 
     weak var delegate: NavigationMenuProtocol! = nil
     let gradesProvider = ProvidersProviderImpl.sharedInstance.provideGradesProvider()
-    fileprivate let GradeCellIdentiefer = "GradeCellId"
+    private let GradeCellIdentiefer = "GradeCellId"
     let textId = "myTextSuperId"
-    fileprivate var myTermGrades  = Array<PreparedTermGrades>()
-    fileprivate var dataBack = false;
+    private var myTermGrades  = Array<PreparedTermGrades>()
+    private var dataBack = false;
 
     func setNavigationProtocol(_ delegate: NavigationMenuProtocol) {
         self.delegate = delegate
@@ -105,7 +105,7 @@ class GradesTableViewController: UITableViewController
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: GradeCellIdentiefer, for: indexPath) as! Grade2TableViewCell
-        let prepareGrade = self.myTermGrades[(indexPath as NSIndexPath).section].grades[(indexPath as NSIndexPath).row] 
+        let prepareGrade = self.myTermGrades[indexPath.section].grades[indexPath.row] 
 
         cell.textGradeLabel.text = prepareGrade.grades.valueDescription
         cell.gradeNumberLabel.text = prepareGrade.grades.valueSymbol
@@ -115,12 +115,12 @@ class GradesTableViewController: UITableViewController
         return cell
     }
 
-    fileprivate func noDataCondition()->Bool{
+    private func noDataCondition()->Bool{
         return self.myTermGrades.count == 0
     }
 
     @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let prepareGrade = self.myTermGrades[(indexPath as NSIndexPath).section].grades[(indexPath as NSIndexPath).row] 
+        let prepareGrade = self.myTermGrades[indexPath.section].grades[indexPath.row] 
 
         let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: Bundle.main)
         courseDetails.courseId = prepareGrade.courseId

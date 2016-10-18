@@ -20,7 +20,7 @@ class CalendarViewController: MGCDayPlannerViewController,
     var lastQueryDate: Date! = nil
     var veryFirstDate: Date! = nil
     var lectureProvider = ProvidersProviderImpl.sharedInstance.provideLectureProvider()
-    fileprivate let floatingButtonDelegate = FloatingButtonDelegate()
+    private let floatingButtonDelegate = FloatingButtonDelegate()
 
 
     func setNavigationProtocol(_ delegate: NavigationMenuProtocol) {
@@ -75,7 +75,7 @@ class CalendarViewController: MGCDayPlannerViewController,
     }
 
 
-    fileprivate func askForData(_ firstDate: Date! = nil) {
+    private func askForData(_ firstDate: Date! = nil) {
         if (firstDate != nil) {
 
             lectureProvider.loadLectures(firstDate.dateToString())
@@ -180,7 +180,7 @@ class CalendarViewController: MGCDayPlannerViewController,
         }
     }
 
-    fileprivate func getListOfLecturesWrappers(_ date: Date) -> Array<LectureWrapper>! {
+    private func getListOfLecturesWrappers(_ date: Date) -> Array<LectureWrapper>! {
         return onlyLectureDictionary[date.dateToStringSchedule()]
     }
 

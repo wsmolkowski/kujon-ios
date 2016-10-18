@@ -9,7 +9,7 @@ class PassCriteriaSection: SectionHelperProtocol {
     let criteriaCellId = "critertiaCellId"
 
 
-    fileprivate var description: String! = nil
+    private var description: String! = nil
     func fillUpWithData(_ courseDetails: CourseDetails) {
         description = courseDetails.assessmentCriteria
     }

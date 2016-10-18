@@ -22,9 +22,9 @@ internal class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet internal weak var textField: UITextField!
     internal weak var delegate: SearchTableViewCellDelegate?
     internal var index: Int = 0
-    fileprivate var searchQuery = String()
-    fileprivate let searchQueryMinimumLength: Int = 4
-    fileprivate var canTriggerQuery: Bool {
+    private var searchQuery = String()
+    private let searchQueryMinimumLength: Int = 4
+    private var canTriggerQuery: Bool {
         return searchQuery.characters.count >= searchQueryMinimumLength
     }
     // MARK: Initial section
@@ -43,7 +43,7 @@ internal class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     }
 
-    fileprivate func configureSearchButton() {
+    private func configureSearchButton() {
         let title = StringHolder.searchButtonLabel
 
         let titleForStateEnabled = title.toAttributedStringWithFont(UIFont.kjnFontLatoMedium(size:17)!, color: UIColor.color3FBAD9(alpha: 1.0))
@@ -76,7 +76,7 @@ internal class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
         }
     }
 
-    fileprivate func updateSeparatorColor() {
+    private func updateSeparatorColor() {
         separator.backgroundColor = isSelected ? .color3FBAD9() : .colorD8D8D8()
     }
 
@@ -110,7 +110,7 @@ internal class SearchTableViewCell: UITableViewCell, UITextFieldDelegate {
         }
     }
 
-    fileprivate func updateSearchButtonState() {
+    private func updateSearchButtonState() {
         button.isEnabled = canTriggerQuery
     }
 

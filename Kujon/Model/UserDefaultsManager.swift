@@ -6,7 +6,7 @@
 import Foundation
 
 class UserDefaultsManager {
-    fileprivate var userDefaults:UserDefaults
+    private var userDefaults:UserDefaults
 
     init(withNSUserDefaults defaults:UserDefaults){
         self.userDefaults = defaults

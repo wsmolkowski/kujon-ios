@@ -92,21 +92,21 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
     }
 
     @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch ((indexPath as NSIndexPath).section) {
+        switch (indexPath.section) {
         case 0: return 216
         default: return 50
         }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch ((indexPath as NSIndexPath).section) {
+        switch (indexPath.section) {
         case 0: return self.studentCellConfigure(indexPath)
         case 1: return self.configureStudentProgrammeCell(indexPath)
         default: return self.configureStudentProgrammeCell(indexPath)
         }
     }
 
-    fileprivate func studentCellConfigure(_ indexPath: IndexPath) -> UITableViewCell {
+    private func studentCellConfigure(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: headerCellId, for: indexPath) as! StudentHeaderTableViewCell
         cell.studentImageView.image = UIImage(named: "user-placeholder")
         if (self.userDetails.photoUrl != nil) {
@@ -125,9 +125,9 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
         return cell
     }
 
-    fileprivate func configureStudentProgrammeCell(_ indexPath: IndexPath) -> UITableViewCell {
+    private func configureStudentProgrammeCell(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: kierunekCellId, for: indexPath) as! GoFurtherViewCellTableViewCell
-        let myProgramme: StudentProgramme = self.studentProgrammes[(indexPath as NSIndexPath).row]
+        let myProgramme: StudentProgramme = self.studentProgrammes[indexPath.row]
         cell.plainLabel.text = myProgramme.programme.description
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         return cell
@@ -178,7 +178,7 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
     }
 
     @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch ((indexPath as NSIndexPath).section) {
+        switch (indexPath.section) {
         case 1:
             self.clicked(indexPath)
             break;

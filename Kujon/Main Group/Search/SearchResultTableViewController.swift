@@ -60,7 +60,7 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
     }
 
 
-    fileprivate func askForData() {
+    private func askForData() {
         if (isThereNext) {
             isQuering = true
             isThereNext = false
@@ -98,13 +98,13 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: myCellId, for: indexPath) as! SearchResultsCell
-        cell.title = array[(indexPath as NSIndexPath).row].getTitle()
+        cell.title = array[indexPath.row].getTitle()
         return cell
 
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        array[(indexPath as NSIndexPath).row].reactOnClick(self.navigationController!)
+        array[indexPath.row].reactOnClick(self.navigationController!)
     }
     var isQuering = false
 

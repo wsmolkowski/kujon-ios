@@ -7,7 +7,7 @@ import Foundation
 
 class CourseSearchElement : SearchViewProtocol {
 
-    fileprivate let myCellId = "student_udeseaflaskfm"
+    private let myCellId = "student_udeseaflaskfm"
 
     func provideSearchProtocol() -> SearchProviderProtocol {
         return CoursesSearchProvider()

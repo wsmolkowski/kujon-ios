@@ -29,7 +29,7 @@ class ThesisCell: UITableViewCell {
         self.selectionStyle = .none
     }
 
-    fileprivate func propagateContentForThesis(_ thesis: Thesis) {
+    private func propagateContentForThesis(_ thesis: Thesis) {
         titleLabel.text = thesis.title
         let authors: [String] = thesis.authors.map { $0.getNameWithTitles() }
         authorsLabel.text = authors.joined(separator: ", ")

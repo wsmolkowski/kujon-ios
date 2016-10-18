@@ -12,7 +12,7 @@ class RestApiManager {
 //    static let BASE_URL: String = "https://api-demo.kujon.mobi"
     static let BASE_URL: String = "https://api.kujon.mobi"
 
-    fileprivate var headerManager = HeaderManager()
+    private var headerManager = HeaderManager()
 
     var test = false
     let baseURL = BASE_URL
@@ -154,7 +154,7 @@ class RestApiManager {
 
     // TODO: update for swift 3
     /*
-    fileprivate func createCompletionHanlder(_ onCompletion: @escaping onSucces, onError: @escaping onErrorOccurs) -> (Data?, URLResponse?, NSError?) -> Void {
+    private func createCompletionHanlder(_ onCompletion: @escaping onSucces, onError: @escaping onErrorOccurs) -> (Data?, URLResponse?, NSError?) -> Void {
         return {
             data, response, error in
             NSlogManager.showLog(String(format: "Disk cache %i of %i", URLCache.shared.currentDiskUsage, URLCache.shared.diskCapacity))
@@ -172,7 +172,7 @@ class RestApiManager {
     }
  */
 
-    fileprivate func handelTestCase(_ onCompletion: onSucces) {
+    private func handelTestCase(_ onCompletion: onSucces) {
         var string: String
         switch (getMyUrl()) {
         case baseURL + "/usoses":

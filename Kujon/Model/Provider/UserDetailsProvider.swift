@@ -24,7 +24,7 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
 
     weak  var delegate: UserDetailsProviderDelegate!
 
-    fileprivate var endpoint: String = "/users"
+    private var endpoint: String = "/users"
     func loadUserDetail() {
         endpoint = "/users"
         self.makeHTTPAuthenticatedGetRequest({

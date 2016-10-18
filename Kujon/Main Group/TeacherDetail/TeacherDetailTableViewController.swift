@@ -9,13 +9,13 @@
 import UIKit
 
 class TeacherDetailTableViewController: UITableViewController, UserDetailsProviderDelegate, OnImageLoadedFromRest {
-    fileprivate let TeacherDetailViewId = "teacherDetailViewId"
-    fileprivate let programmesIdCell = "tralalaProgrammesCellId"
+    private let TeacherDetailViewId = "teacherDetailViewId"
+    private let programmesIdCell = "tralalaProgrammesCellId"
     var teacherId: String! = nil
     var simpleUser:SimpleUser! = nil
-    fileprivate let userDetailsProvider = ProvidersProviderImpl.sharedInstance.provideUserDetailsProvider()
-    fileprivate let restImageProvider = RestImageProvider.sharedInstance
-    fileprivate var userDetails: UserDetail! = nil
+    private let userDetailsProvider = ProvidersProviderImpl.sharedInstance.provideUserDetailsProvider()
+    private let restImageProvider = RestImageProvider.sharedInstance
+    private var userDetails: UserDetail! = nil
 
 
     override func viewDidLoad() {
@@ -57,7 +57,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         self.refreshControl?.endRefreshing()
     }
 
-    fileprivate func loadUser(){
+    private func loadUser(){
         if(simpleUser != nil){
             userDetailsProvider.loadUserDetail(simpleUser.id!)
         }else if(teacherId != nil){
@@ -76,7 +76,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
     }
 
     @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch ((indexPath as NSIndexPath).section) {
+        switch (indexPath.section) {
         case 0: return 576
         default: return 50
         }
@@ -97,16 +97,16 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
 
 
     @available(iOS 2.0, *) override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch ((indexPath as NSIndexPath).section) {
+        switch (indexPath.section) {
         case 1:
-            self.clicked((indexPath as NSIndexPath).row)
+            self.clicked(indexPath.row)
             break;
         default:
             break;
         }
     }
 
-    fileprivate func clicked(_ pos:Int){
+    private func clicked(_ pos:Int){
         let coursEdition = self.userDetails!.courseEditionsConducted?[pos]
         if(coursEdition != nil){
             let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: Bundle.main)
@@ -136,7 +136,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell!
-        switch ((indexPath as NSIndexPath).section) {
+        switch (indexPath.section) {
         case 0: cell = self.configureTeacherDetails(indexPath)
             break;
         case 1: cell = self.configureTeacherCourse(indexPath)
@@ -148,9 +148,9 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         return cell
     }
 
-    fileprivate var isThereImage = false
+    private var isThereImage = false
 
-    fileprivate func configureTeacherDetails(_ indexPath: IndexPath) -> UITableViewCell {
+    private func configureTeacherDetails(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TeacherDetailViewId, for: indexPath) as! TeacherHeaderTableViewCell
         cell.teacherNameLabel.text = getPrefix(self.userDetails.titles) + " " + self.userDetails.firstName + " " + self.userDetails.lastName + " " + getSuffix(self.userDetails.titles)
         cell.teacherStatusLabel.text = self.userDetails.staffStatus
@@ -184,7 +184,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
 
     func configureTeacherCourse(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: programmesIdCell, for: indexPath) as! GoFurtherViewCellTableViewCell
-        let courseEdition = self.userDetails?.courseEditionsConducted?[(indexPath as NSIndexPath).row]
+        let courseEdition = self.userDetails?.courseEditionsConducted?[indexPath.row]
         if (courseEdition != nil){
             cell.plainLabel.text = courseEdition!.courseName + "(" + courseEdition!.termId + ")"
         }
@@ -219,11 +219,11 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         isThereImage = true
     }
 
-    fileprivate func getPrefix(_ title: Title) -> String {
+    private func getPrefix(_ title: Title) -> String {
         return title.before != nil ? title.before : ""
     }
 
-    fileprivate func getSuffix(_ title: Title) -> String {
+    private func getSuffix(_ title: Title) -> String {
         return title.after != nil ? title.after : ""
     }
 

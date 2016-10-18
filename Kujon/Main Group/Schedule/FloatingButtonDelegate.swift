@@ -7,9 +7,9 @@ import Foundation
 
 class FloatingButtonDelegate {
 
-    fileprivate let floatingSize: CGFloat = 55.0
-    fileprivate let floatingMargin: CGFloat = 15.0
-    fileprivate var floatingButton: UIButton! = nil
+    private let floatingSize: CGFloat = 55.0
+    private let floatingMargin: CGFloat = 15.0
+    private var floatingButton: UIButton! = nil
 
     func viewWillAppear(_ controller:UIViewController,selector:Selector) {
         floatingButton = UIButton(type: .custom)

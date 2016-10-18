@@ -45,7 +45,7 @@ class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
     }
 
 
-    fileprivate func makeApiShot(){
+    private func makeApiShot(){
         self.makeHTTPAuthenticatedGetRequest({
             json in
             do {
