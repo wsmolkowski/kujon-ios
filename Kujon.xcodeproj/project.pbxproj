@@ -304,8 +304,6 @@
 		66D506491DA69CD300B5CE1B /* ThesesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D506481DA69CD300B5CE1B /* ThesesTableViewController.swift */; };
 		66D506551DA6BD9000B5CE1B /* ThesisCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D506531DA6BD9000B5CE1B /* ThesisCell.swift */; };
 		66D506561DA6BD9000B5CE1B /* ThesisCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66D506541DA6BD9000B5CE1B /* ThesisCell.xib */; };
-		66F402E61DB12E75001E28D1 /* KujonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F402E51DB12E75001E28D1 /* KujonUITests.swift */; };
-		66F402F41DB12E82001E28D1 /* KujonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F402F31DB12E82001E28D1 /* KujonTests.swift */; };
 		66F4BC6B1DB2597000425E39 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 66F4BC6A1DB2597000425E39 /* Podfile */; };
 		6B3D62D7E293975519BFF31C /* Pods_KujonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 576A3371E79EA9353F622036 /* Pods_KujonTests.framework */; };
 /* End PBXBuildFile section */
@@ -328,7 +326,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0A42914B1D409659006D6DAB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0A42914B1D409659006D6DAB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0AB192061D47B3A000834773 /* GoogleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleManager.swift; sourceTree = "<group>"; };
 		0AB1920F1D4AB8E800834773 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		0AB192101D4AB8E800834773 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
@@ -402,7 +400,7 @@
 		4C0D844C4BA870C5823E72AB /* TeachersMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeachersMenuItem.swift; sourceTree = "<group>"; };
 		4C0D844C7770A6375F3FFB11 /* ThesisSearchProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesisSearchProvider.swift; sourceTree = "<group>"; };
 		4C0D845EB7BFE3F61521F55C /* DescriptionSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionSection.swift; sourceTree = "<group>"; };
-		4C0D846A26BCB219C21E2DBA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		4C0D846A26BCB219C21E2DBA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		4C0D84747D175C76418230EA /* Courses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Courses.json; sourceTree = "<group>"; };
 		4C0D8480E989AF43B88CB60E /* UserDetailsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsProvider.swift; sourceTree = "<group>"; };
 		4C0D8483795CD8277CB4C113 /* EntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
@@ -417,7 +415,7 @@
 		4C0D8518E09D66DC4A9E9298 /* Title.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
 		4C0D8528C393CB23A978EB8A /* FacultiesDetail.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FacultiesDetail.json; sourceTree = "<group>"; };
 		4C0D856C38BE314D9CC0B20B /* CoordinatorsSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorsSection.swift; sourceTree = "<group>"; };
-		4C0D85C01CA62A3C89F09CDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4C0D85C01CA62A3C89F09CDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
 		4C0D85C3C43334F528850DDD /* ConfigResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigResponse.swift; sourceTree = "<group>"; };
 		4C0D8625E8E36B19AFACD20C /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		4C0D86280FB812D16C7BBB30 /* FacultieSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacultieSection.swift; sourceTree = "<group>"; };
@@ -602,7 +600,7 @@
 		529513641D196136009D6FF2 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		529C000B1D37CE0A004E1DF1 /* TermsPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsPopUpViewController.swift; sourceTree = "<group>"; };
 		529C000C1D37CE0A004E1DF1 /* TermsPopUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TermsPopUpViewController.xib; sourceTree = "<group>"; };
-		52A1D6141D5CCE96008A30C7 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		52A1D6141D5CCE96008A30C7 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "../Bridging-Header.h"; sourceTree = "<group>"; };
 		52AF779F1D09590B0058979A /* SecondLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondLoginViewController.swift; sourceTree = "<group>"; };
 		52AF77A01D09590B0058979A /* SecondLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondLoginViewController.xib; sourceTree = "<group>"; };
 		52AF77A31D095C390058979A /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -624,7 +622,7 @@
 		52FF972A1D23C9C400565763 /* CourseNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseNameTableViewCell.swift; sourceTree = "<group>"; };
 		52FF972B1D23C9C400565763 /* CourseNameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseNameTableViewCell.xib; sourceTree = "<group>"; };
 		576A3371E79EA9353F622036 /* Pods_KujonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KujonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		660C098E1DB4E3AB0009B5B5 /* Kujon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Kujon.entitlements; sourceTree = "<group>"; };
+		660C098E1DB4E3AB0009B5B5 /* Kujon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Kujon.entitlements; path = ../Kujon.entitlements; sourceTree = "<group>"; };
 		661D1C201DAD974500BA9EE9 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLParser.h; path = "../Global Extensions/HTMLParser.h"; sourceTree = "<group>"; };
 		661D1C211DAD974500BA9EE9 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLParser.m; path = "../Global Extensions/HTMLParser.m"; sourceTree = "<group>"; };
 		662DAFE61DAC0FCD0094867E /* SearchResultsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultsCell.swift; path = ../SearchResultsCell.swift; sourceTree = "<group>"; };
@@ -638,11 +636,7 @@
 		66D506531DA6BD9000B5CE1B /* ThesisCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesisCell.swift; sourceTree = "<group>"; };
 		66D506541DA6BD9000B5CE1B /* ThesisCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThesisCell.xib; sourceTree = "<group>"; };
 		66F402E31DB12E75001E28D1 /* KujonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KujonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		66F402E51DB12E75001E28D1 /* KujonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KujonUITests.swift; sourceTree = "<group>"; };
-		66F402E71DB12E75001E28D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66F402F11DB12E82001E28D1 /* KujonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KujonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		66F402F31DB12E82001E28D1 /* KujonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KujonTests.swift; sourceTree = "<group>"; };
-		66F402F51DB12E82001E28D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66F4BC6A1DB2597000425E39 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		71EE9BFC3F34701DCA4852FA /* Pods-Kujon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kujon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kujon/Pods-Kujon.debug.xcconfig"; sourceTree = "<group>"; };
 		738B26E893DA09D88D3AB47D /* Pods-KujonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KujonUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KujonUITests/Pods-KujonUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -691,6 +685,13 @@
 		4C0D80A307458D388D3B812C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				660C098E1DB4E3AB0009B5B5 /* Kujon.entitlements */,
+				66F4BC6A1DB2597000425E39 /* Podfile */,
+				52A1D6141D5CCE96008A30C7 /* Bridging-Header.h */,
+				0A42914B1D409659006D6DAB /* GoogleService-Info.plist */,
+				4C0D85C01CA62A3C89F09CDA /* AppDelegate.swift */,
+				4C0D839EDCC8F1A06ECE450B /* Main.storyboard */,
+				4C0D846A26BCB219C21E2DBA /* Info.plist */,
 				527B39B71D117B800028BCF9 /* Assets.xcassets */,
 				4C0D83B44B564B4E55F64BE8 /* LaunchScreen.storyboard */,
 				4C0D8E0F527E61260B21B59D /* Fonts */,
@@ -723,16 +724,9 @@
 		4C0D821C1CE25F0226742C8A /* Kujon */ = {
 			isa = PBXGroup;
 			children = (
-				660C098E1DB4E3AB0009B5B5 /* Kujon.entitlements */,
-				66F4BC6A1DB2597000425E39 /* Podfile */,
-				52A1D6141D5CCE96008A30C7 /* Bridging-Header.h */,
-				0A42914B1D409659006D6DAB /* GoogleService-Info.plist */,
-				4C0D85C01CA62A3C89F09CDA /* AppDelegate.swift */,
-				4C0D839EDCC8F1A06ECE450B /* Main.storyboard */,
 				4C0D80A307458D388D3B812C /* Supporting Files */,
 				4C0D83449C89A353F86CED95 /* Network */,
 				4C0D813B87BE55B5A638695E /* Model */,
-				4C0D846A26BCB219C21E2DBA /* Info.plist */,
 				4C0D8873DDE812269064F351 /* Usoses */,
 				4C0D83D8B40603DC0363E06E /* EntryScreen */,
 				4C0D8C683DC578BF5AA751F9 /* Second Login */,
@@ -934,12 +928,10 @@
 		4C0D84F08EDDF3A1E42644F8 = {
 			isa = PBXGroup;
 			children = (
-				66F402E41DB12E75001E28D1 /* KujonUITests */,
-				66F402F21DB12E82001E28D1 /* KujonTests */,
-				4C0D84DEDAAEAFE7AA9943F6 /* Products */,
 				4C0D821C1CE25F0226742C8A /* Kujon */,
 				4C0D83317C2734E363058FBB /* KujonTests */,
 				4C0D873FECAF1AD845C04B3E /* KujonUITests */,
+				4C0D84DEDAAEAFE7AA9943F6 /* Products */,
 				F5DFDD8C854E1A2802535D20 /* Pods */,
 				76619CA6A37CBF3A704E2BD4 /* Frameworks */,
 			);
@@ -1468,24 +1460,6 @@
 				66D506541DA6BD9000B5CE1B /* ThesisCell.xib */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		66F402E41DB12E75001E28D1 /* KujonUITests */ = {
-			isa = PBXGroup;
-			children = (
-				66F402E51DB12E75001E28D1 /* KujonUITests.swift */,
-				66F402E71DB12E75001E28D1 /* Info.plist */,
-			);
-			path = KujonUITests;
-			sourceTree = "<group>";
-		};
-		66F402F21DB12E82001E28D1 /* KujonTests */ = {
-			isa = PBXGroup;
-			children = (
-				66F402F31DB12E82001E28D1 /* KujonTests.swift */,
-				66F402F51DB12E82001E28D1 /* Info.plist */,
-			);
-			path = KujonTests;
 			sourceTree = "<group>";
 		};
 		76619CA6A37CBF3A704E2BD4 /* Frameworks */ = {
@@ -2217,7 +2191,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66F402E61DB12E75001E28D1 /* KujonUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2225,7 +2198,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66F402F41DB12E82001E28D1 /* KujonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2251,6 +2223,7 @@
 				4C0D8C68222EDFAECCF2DF11 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		4C0D83B44B564B4E55F64BE8 /* LaunchScreen.storyboard */ = {
