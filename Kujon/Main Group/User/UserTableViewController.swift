@@ -241,7 +241,7 @@ class UserTableViewController: UITableViewController
         cell.accountNumberLabel.text = userDetail.id
         cell.userImageView.makeMyselfCircleWithBorder()
         cell.userImageView.image = UIImage(named: "user-placeholder")
-        if (userDetail.hasPhoto) {
+        if (userDetail.hasPhoto && userDetail.photoUrl != nil) {
             self.restImageProvider.loadImage("", urlString: self.userDetail.photoUrl!, onImageLoaded: self)
 
         }
