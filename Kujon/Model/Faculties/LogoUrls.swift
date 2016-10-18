@@ -11,7 +11,7 @@ struct LogoUrls {
 
 
 extension LogoUrls:Decodable{
-    static func decode(j: AnyObject) throws -> LogoUrls {
+    static func decode(_ j: Any) throws -> LogoUrls {
         return try LogoUrls(
             p100x100: j => "100x100"
         )

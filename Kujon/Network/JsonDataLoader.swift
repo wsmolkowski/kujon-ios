@@ -7,8 +7,8 @@ import Foundation
 
 class JsonDataLoader {
 
-    static func loadJson(name: String) throws -> NSData! {
-        let txtFilePath = NSBundle.mainBundle().pathForResource(name, ofType: "json")
-        return try NSData(contentsOfFile: txtFilePath!, options: .DataReadingMappedIfSafe)
+    static func loadJson(_ name: String) throws -> Data! {
+        let txtFilePath = Bundle.main.path(forResource: name, ofType: "json")
+        return try Data(contentsOf: URL(fileURLWithPath: txtFilePath!), options: .mappedIfSafe)
     }
 }

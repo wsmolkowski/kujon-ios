@@ -2,163 +2,34 @@
 //  KujonTests.swift
 //  KujonTests
 //
-//  Created by Wojciech Maciejewski on 08/06/16.
-//  Copyright (c) 2016 Mobi. All rights reserved.
+//  Created by Adam on 14.10.2016.
+//  Copyright © 2016 Mobi. All rights reserved.
 //
 
 import XCTest
-@testable import Kujon
 
-class KujonTests: XCTestCase, UsosesProviderDelegate
-        , UserDetailsProviderDelegate
-        , LectureProviderDelegate
-        , GradesProviderDelegate
-        , LecturerProviderDelegate
-        , FacultiesProviderDelegate
-        , CourseProviderDelegate
-        , CourseDetailsProviderDelegate
-, TermsProviderDelegate {
-
+class KujonTests: XCTestCase {
+    
     override func setUp() {
-
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-
+    
     override func tearDown() {
-        loaded = false
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    var loaded = false
-    func testUsosesProvider() throws {
-        let provider = UsosesProvider()
-        provider.test = true
-        provider.delegate = self
-        provider.loadUsoses()
-        assert(loaded)
-
+    
+    func testExample() {
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-
-    func onUsosesLoaded(arrayOfUsoses: Array<Usos>) {
-        assert(arrayOfUsoses.count == 31)
-        loaded = true
+    
+    func testPerformanceExample() {
+        // This is an example of a performance test case.
+        self.measure {
+            // Put the code you want to measure the time of here.
+        }
     }
-
-    func onErrorOccurs() {
-    }
-
-
-    func testUserDetailsProvider() throws {
-        let provider = UserDetailsProvider()
-        provider.test = true
-        provider.delegate = self
-        provider.loadUserDetail()
-        assert(loaded)
-
-
-    }
-
-    func onUserDetailLoaded(userDetails: UserDetail) {
-        loaded = true
-    }
-
-
-    func testLectureProvider() throws {
-        let provider = LectureProvider()
-        provider.test = true
-        provider.delegate = self
-        provider.loadLectures("data")
-        assert(loaded)
-
-    }
-
-    func onLectureLoaded(lectures: Array<Lecture>) {
-        assert(lectures.count == 6)
-        loaded = true
-    }
-
-    func testGradesProvider() {
-        let provider = GradesProvider()
-        provider.delegate = self
-        provider.test = true
-        provider.loadGrades()
-        assert(loaded)
-
-    }
-
-
-    func onGradesLoaded(termGrades: Array<TermGrades>) {
-//        assert(lectures.count == 1)
-        loaded = true
-    }
-
-    func testLecturerProvider() {
-        let provider = LecturerProvider()
-        provider.test = true
-        provider.delegate = self
-        provider.loadLecturers()
-        assert(loaded)
-    }
-
-
-    func onLecturersLoaded(lecturers: Array<SimpleUser>) {
-        loaded = true
-    }
-
-    func testFacultieDetailsProvider() {
-        let provider = FacultiesProvider()
-        provider.test = true
-        provider.delegate = self
-        provider.loadFaculties()
-        assert(loaded)
-    }
-
-    func onFacultiesLoaded(list: Array<Facultie>) {
-        loaded = true
-    }
-
-    func testCourseProvider() {
-        let provider = CourseProvider()
-        provider.test = true
-        provider.delegate = self
-        provider.provideCourses()
-        assert(loaded)
-    }
-
-    func coursesProvided(courses: Array<CoursesWrapper>) {
-        loaded = true
-    }
-
-    func testCourseDetailsProvider() {
-        let provider = CourseDetailsProvider()
-        provider.test = true
-        provider.delegate = self
-        var course = Course(termId: "11",courseName: "aa",courseId: "1212")
-
-        provider.loadCourseDetails(course)
-        assert(loaded)
-    }
-
-
-    func onCourseDetailsLoaded(courseDetails: CourseDetails) {
-        loaded = true
-    }
-
-    func testTermsDetailsProvider() {
-        let provider = TermsProvider()
-        provider.test = true
-        provider.delegate = self
-
-        provider.loadTerms()
-        assert(loaded)
-    }
-    func onTermsLoaded(terms: Array<Term>) {
-        loaded = true
-    }
-
-    func onErrorOccurs(text: String) {
-    }
-
-
+    
 }

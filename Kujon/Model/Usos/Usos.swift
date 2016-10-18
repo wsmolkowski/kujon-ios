@@ -16,7 +16,7 @@ struct Usos {
 }
 
 extension Usos: Decodable {
-    static func decode(j: AnyObject) throws -> Usos {
+    static func decode(_ j: Any) throws -> Usos {
         return try Usos(
         name: j => "name",
                 usosId: j => "usos_id",

@@ -19,7 +19,7 @@ struct Course {
 
 extension Course:Decodable{
 
-    static func decode(j: AnyObject) throws -> Course {
+    static func decode(_ j: Any) throws -> Course {
         return try Course(
 //            lecturers: try? j => "lecturers",
 //                    groups: try? j => "groups",

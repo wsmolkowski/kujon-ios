@@ -12,7 +12,7 @@ struct TermsResponse {
 
 
 extension TermsResponse:Decodable{
-    static func decode(j: AnyObject) throws -> TermsResponse {
+    static func decode(_ j: Any) throws -> TermsResponse {
         return try TermsResponse(
         status: j => "status",
                 terms: j => "data"

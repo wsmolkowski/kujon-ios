@@ -36,7 +36,7 @@ struct UserDetail: Decodable {
     let google: Account?
 
 
-    static func decode(j: AnyObject) throws -> UserDetail {
+    static func decode(_ j: Any) throws -> UserDetail {
         return try UserDetail (
                 updateTime: try? j => "update_time",
                 createdTime: try? j => "user_created",

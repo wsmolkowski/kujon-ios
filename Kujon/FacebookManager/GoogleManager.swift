@@ -15,7 +15,7 @@ class GoogleManager: UserLogin {
     static let sharedInstance = GoogleManager()
 
 
-    func loadGoogleParams(listener: OnFacebookCredentailSaved) {
+    func loadGoogleParams(_ listener: OnFacebookCredentailSaved) {
 
         if (GIDSignIn.sharedInstance().currentUser != nil) {
             let accessToken = GIDSignIn.sharedInstance().currentUser.authentication.idToken
@@ -30,9 +30,9 @@ class GoogleManager: UserLogin {
 
     }
 
-    func isLoggedIn(logComplete:() ->Void,googleComplete:()->Void,noLogged:()->Void)  {
+    func isLoggedIn(_ logComplete:() ->Void,googleComplete:()->Void,noLogged:()->Void)  {
 
-        if (FBSDKAccessToken.currentAccessToken() != nil) {
+        if (FBSDKAccessToken.current() != nil) {
             logComplete()
             return
         }
@@ -54,11 +54,11 @@ class GoogleManager: UserLogin {
     }
 
     func getLoginType() -> UserLoginEnum {
-        return .GOOGLE
+        return .google
     }
 
 
-    func logout(succes: LogoutSucces) {
+    func logout(_ succes: LogoutSucces) {
         GIDSignIn.sharedInstance().signOut()
         GIDSignIn.sharedInstance().disconnect()
         SessionManager.clearCache()

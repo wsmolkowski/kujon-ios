@@ -12,7 +12,7 @@ protocol TermsProviderProtocol: JsonProviderProtocol {
 }
 
 protocol TermsProviderDelegate: ErrorResponseProtocol {
-    func onTermsLoaded(terms: Array<Term>)
+    func onTermsLoaded(_ terms: Array<Term>)
 
 }
 

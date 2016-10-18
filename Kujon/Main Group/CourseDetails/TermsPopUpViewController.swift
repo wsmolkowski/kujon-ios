@@ -18,11 +18,11 @@ class TermsPopUpViewController: PopUpViewController {
     @IBOutlet weak var termNumberLabel: UILabel!
     @IBOutlet weak var termNameLabel: UILabel!
 
-    @IBAction func closeButtonDidTap(sender: UIButton) {
-        dismissViewControllerAnimated(false, completion: nil)
+    @IBAction func closeButtonDidTap(_ sender: UIButton) {
+        dismiss(animated: false, completion: nil)
     }
 
-    func showInView(term:Term){
+    func showInView(_ term:Term){
         endDateLabel.text = term.endDate
         endindTimeLabel.text = term.finishDate
         startDateLabel.text = term.startDate

@@ -9,13 +9,13 @@ class DescriptionSection: SectionHelperProtocol {
     let descriptionCellId="descCellId"
 
 
-    private var description:String! = nil
-    func fillUpWithData(courseDetails: CourseDetails) {
+    fileprivate var description:String! = nil
+    func fillUpWithData(_ courseDetails: CourseDetails) {
         description  = courseDetails.description
     }
 
-    func registerView(tableView: UITableView) {
-        tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: descriptionCellId)
+    func registerView(_ tableView: UITableView) {
+        tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: descriptionCellId)
     }
 
     func getSectionTitle() -> String {
@@ -35,14 +35,14 @@ class DescriptionSection: SectionHelperProtocol {
         return StandartSection.sectionHeight
     }
 
-    func giveMeCellAtPosition(tableView: UITableView, onPosition position: NSIndexPath) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCellWithIdentifier(descriptionCellId, forIndexPath: position) as! GoFurtherViewCellTableViewCell
+    func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath) -> UITableViewCell! {
+        let cell = tableView.dequeueReusableCell(withIdentifier: descriptionCellId, for: position) as! GoFurtherViewCellTableViewCell
         cell.plainLabel.text = description
         return cell
     }
 
-    func reactOnSectionClick(position: Int, withController controller: UINavigationController?) {
-        let textController = TextViewController(nibName: "TextViewController", bundle: NSBundle.mainBundle())
+    func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?) {
+        let textController = TextViewController(nibName: "TextViewController", bundle: Bundle.main)
         textController.text = description
         textController.myTitle = getSectionTitle()
         controller?.pushViewController(textController, animated: true)

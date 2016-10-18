@@ -30,7 +30,7 @@ struct CourseDetails {
 }
 
 extension CourseDetails:Decodable{
-    static func decode(j: AnyObject) throws -> CourseDetails {
+    static func decode(_ j: Any) throws -> CourseDetails {
         return try CourseDetails(
             isConducted: j => "is_currently_conducted",
                     bibliography: j => "bibliography",

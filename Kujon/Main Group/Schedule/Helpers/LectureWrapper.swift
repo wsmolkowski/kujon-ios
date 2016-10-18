@@ -11,24 +11,24 @@ class LectureWrapper: CellHandlingStrategy,ShowCourseDetailsDelegate {
     let startDate: String
     let startTime: String
     let endTime: String
-    let startNSDate: NSDate
-    let endNSDate: NSDate
+    let startNSDate: Date
+    let endNSDate: Date
     let mothYearDate: String
     var myCellHandler: LectureCellHandler! = nil
-    let monthYearNSDate: NSDate
+    let monthYearNSDate: Date
     weak var controller:UINavigationController! = nil
 
     init(lecture: Lecture) {
         self.lecture = lecture
-        self.startNSDate = NSDate.stringToDateWithClock(lecture.startTime)
-        self.endNSDate = NSDate.stringToDateWithClock(lecture.endTime)
+        self.startNSDate = Date.stringToDateWithClock(lecture.startTime)
+        self.endNSDate = Date.stringToDateWithClock(lecture.endTime)
         self.startDate = startNSDate.dateToStringSchedule()
         self.startTime = startNSDate.dateHoursToString()
         self.endTime = endNSDate.dateHoursToString()
         self.mothYearDate = startNSDate.getMonthYearString()
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Month, .Year], fromDate: startNSDate)
-        self.monthYearNSDate = calendar.dateFromComponents(components)!
+        let calendar = Calendar.current
+        let components = (calendar as NSCalendar).components([.month, .year], from: startNSDate)
+        self.monthYearNSDate = calendar.date(from: components)!
     }
 
     func giveMyStrategy() -> CellHandlerProtocol {
@@ -40,8 +40,8 @@ class LectureWrapper: CellHandlingStrategy,ShowCourseDetailsDelegate {
 
     }
 
-    func giveMeMyCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCellWithIdentifier(ScheduleTableViewController.LectureCellId, forIndexPath: indexPath)
+    func giveMeMyCell(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
+        return tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewController.LectureCellId, for: indexPath)
     }
 
 
@@ -49,11 +49,11 @@ class LectureWrapper: CellHandlingStrategy,ShowCourseDetailsDelegate {
         return true
     }
 
-    func handleClick(controller: UINavigationController?) {
+    func handleClick(_ controller: UINavigationController?) {
         if (controller != nil) {
-            let popController = CoursePopUpViewController(nibName: "CoursePopUpViewController", bundle: NSBundle.mainBundle())
-            popController.modalPresentationStyle = .OverCurrentContext
-            controller?.presentViewController(popController, animated: false, completion: {
+            let popController = CoursePopUpViewController(nibName: "CoursePopUpViewController", bundle: Bundle.main)
+            popController.modalPresentationStyle = .overCurrentContext
+            controller?.present(popController, animated: false, completion: {
                 popController.showAnimate();
             })
             popController.delegate = self
@@ -64,11 +64,11 @@ class LectureWrapper: CellHandlingStrategy,ShowCourseDetailsDelegate {
 
 
     func showCourseDetails() {
-        let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: NSBundle.mainBundle())
+        let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: Bundle.main)
         courseDetails.courseId = lecture.courseId
-        let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
-        let components = calendar.components([.Month, .Year], fromDate: startNSDate)
-        courseDetails.termId = components.month > 9 ? String(components.year) : String(components.year - 1 )
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        let components = (calendar as NSCalendar).components([.month, .year], from: startNSDate)
+        courseDetails.termId = components.month! > 9 ? String(describing: components.year) : String(components.year! - 1 )
 
         self.controller?.pushViewController(courseDetails, animated: true)
     }

@@ -11,45 +11,45 @@ import Foundation
 protocol CourseDetailsProviderProtocol: JsonProviderProtocol {
     associatedtype T = CourseDetailsResponse
 
-    func loadCourseDetails(course: Course)
-    func loadCourseDetails(courseId : String, andTermId termId: String)
-    func loadCourseDetails(courseId : String)
+    func loadCourseDetails(_ course: Course)
+    func loadCourseDetails(_ courseId : String, andTermId termId: String)
+    func loadCourseDetails(_ courseId : String)
 }
 
 protocol CourseDetailsProviderDelegate: ErrorResponseProtocol {
-    func onCourseDetailsLoaded(courseDetails: CourseDetails)
+    func onCourseDetailsLoaded(_ courseDetails: CourseDetails)
 }
 
 class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
     var endpoint:String! = nil
    weak var delegate: CourseDetailsProviderDelegate! = nil
-    func loadCourseDetails(course: Course) {
-        let courseString = course.courseId.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
-        let termsString = course.termId.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
+    func loadCourseDetails(_ course: Course) {
+        let courseString = course.courseId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        let termsString = course.termId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         endpoint = "/courseseditions/" + courseString! + "/" + termsString!
         makeApiShot()
 
     }
 
-    func loadCourseDetails(courseId: String, andTermId termId: String) {
-        let courseString = courseId.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
-        let termsString = termId.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
+    func loadCourseDetails(_ courseId: String, andTermId termId: String) {
+        let courseString = courseId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        let termsString = termId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         endpoint = "/courseseditions/" + courseString! + "/" + termsString!
         makeApiShot()
     }
 
-    func loadCourseDetails(courseId: String) {
-        let courseString = courseId.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
+    func loadCourseDetails(_ courseId: String) {
+        let courseString = courseId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         endpoint = "/courses/" + courseString!
         makeApiShot()
     }
 
 
-    private func makeApiShot(){
+    fileprivate func makeApiShot(){
         self.makeHTTPAuthenticatedGetRequest({
             json in
             do {
-                if let courseResponse = try! self.changeJsonToResposne(json,errorR: self.delegate){
+                if let courseResponse = try self.changeJsonToResposne(json,errorR: self.delegate){
 
                     self.delegate?.onCourseDetailsLoaded(courseResponse.details)
                 }

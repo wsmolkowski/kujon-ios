@@ -13,7 +13,7 @@ struct ErrorClass {
 
 
 extension ErrorClass: Decodable {
-    static func decode(j: AnyObject) throws -> ErrorClass {
+    static func decode(_ j: Any) throws -> ErrorClass {
         return try ErrorClass(
                 status: j => "status",
                 message: j => "message",

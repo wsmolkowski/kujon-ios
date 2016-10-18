@@ -15,7 +15,7 @@ struct Title {
 }
 
 extension Title: Decodable {
-    static func decode(j: AnyObject) throws -> Title {
+    static func decode(_ j: Any) throws -> Title {
         return try Title(
                  after:j => "after",
                 before: j => "before"

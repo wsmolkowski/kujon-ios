@@ -6,12 +6,12 @@
 import Foundation
 
 protocol ErrorResponseProtocol: Unauthorized {
-    func onErrorOccurs(text:String)
+    func onErrorOccurs(_ text:String)
 }
 
 
 extension ErrorResponseProtocol{
-    func onErrorOccurs(text: String = "") {
+    func onErrorOccurs(_ text: String = "") {
     }
 
 }

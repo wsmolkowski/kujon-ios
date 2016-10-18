@@ -13,7 +13,7 @@ struct EmploymentPosition {
 
 
 extension EmploymentPosition:Decodable{
-    static func decode(j: AnyObject) throws -> EmploymentPosition {
+    static func decode(_ j: Any) throws -> EmploymentPosition {
         return try EmploymentPosition(
             position: j => "position",
                     faculty: j => "faculty"

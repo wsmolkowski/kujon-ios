@@ -14,7 +14,7 @@ protocol LecturerProviderProtocol: JsonProviderProtocol {
 
 
 protocol LecturerProviderDelegate: ErrorResponseProtocol {
-    func onLecturersLoaded(lecturers: Array<SimpleUser>)
+    func onLecturersLoaded(_ lecturers: Array<SimpleUser>)
 }
 
 class LecturerProvider: RestApiManager, LecturerProviderProtocol {

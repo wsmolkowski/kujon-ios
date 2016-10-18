@@ -8,7 +8,7 @@ import Foundation
 
 extension Array {
 
-    func groupBy<G: Hashable>(groupClosure: (Element) -> G) -> Dictionary<G,[Element]>{
+    func groupBy<G: Hashable>(_ groupClosure: (Element) -> G) -> Dictionary<G,[Element]>{
         var dictionary = [G: [Element]]()
 
         for element in self {

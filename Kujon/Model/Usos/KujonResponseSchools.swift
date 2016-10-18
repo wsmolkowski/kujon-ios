@@ -13,7 +13,7 @@ struct KujonResponseSchools {
 
 
 extension KujonResponseSchools: Decodable {
-    static func decode(j: AnyObject) throws -> KujonResponseSchools {
+    static func decode(_ j: Any) throws -> KujonResponseSchools {
         return try KujonResponseSchools(
         status: j => "status",
         data: j => "data"

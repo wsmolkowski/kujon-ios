@@ -13,7 +13,7 @@ struct CourseGroup {
 }
 
 extension CourseGroup: Decodable{
-    static func decode(j: AnyObject) throws -> CourseGroup {
+    static func decode(_ j: Any) throws -> CourseGroup {
         return try CourseGroup(
             classType: j => "class_type",
                     courseUnitId: j => "course_unit_id",

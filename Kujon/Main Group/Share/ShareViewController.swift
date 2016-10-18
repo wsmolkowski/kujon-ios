@@ -20,7 +20,7 @@ class ShareViewController: UIViewController {
     }
 
     func back(){
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     /*
     // MARK: - Navigation

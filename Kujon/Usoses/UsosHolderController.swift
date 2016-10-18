@@ -7,19 +7,16 @@ import Foundation
 
 class UsosHolderController:UIViewController {
 
-
     var centerNavigationController: UINavigationController!
 
-
-
-    override func viewDidLoad() {
+   override func viewDidLoad() {
         super.viewDidLoad()
-        UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
+        UIApplication.shared.statusBarStyle = .lightContent
         centerNavigationController = UINavigationController(rootViewController: UsosesTableViewController())
         view.addSubview(centerNavigationController.view)
         addChildViewController(centerNavigationController)
 
-        centerNavigationController.didMoveToParentViewController(self)
+        centerNavigationController.didMove(toParentViewController: self)
 
     }
 }

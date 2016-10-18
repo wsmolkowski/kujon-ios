@@ -8,17 +8,17 @@ import Foundation
 protocol LoginProviderProtocol:JsonProviderProtocol {
     associatedtype T = LoginResponse
 
-    func login(email: String, password:String)
+    func login(_ email: String, password:String)
 
 }
 protocol LoginProviderDelegate: ErrorResponseProtocol {
-    func onLoginResponse(token: String)
+    func onLoginResponse(_ token: String)
 }
 class LoginProvider:RestApiManager,LoginProviderProtocol {
     weak var delegate : LoginProviderDelegate! = nil
 
 
-    func login(email: String, password: String) {
+    func login(_ email: String, password: String) {
         let data = Register.createLoginJSON(email, password: password)
 
         self.makeHTTPPostRequest({

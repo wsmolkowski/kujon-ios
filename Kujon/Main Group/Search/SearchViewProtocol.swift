@@ -6,8 +6,8 @@
 import Foundation
 
 protocol SearchViewProtocol {
-    func registerView(tableView: UITableView)
+    func registerView(_ tableView: UITableView)
     func provideSearchProtocol()->SearchProviderProtocol
-    func provideUITableViewCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> SearchTableViewCell
+    func provideUITableViewCell(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> SearchTableViewCell
 
 }

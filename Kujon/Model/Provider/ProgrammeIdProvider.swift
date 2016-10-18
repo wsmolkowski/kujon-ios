@@ -9,11 +9,11 @@ import Foundation
 protocol ProgrammeIdProviderProtocol: JsonProviderProtocol {
     associatedtype T = ProgrameIdResponse
 
-    func loadProgramme(id: String)
+    func loadProgramme(_ id: String)
 }
 
 protocol ProgrammeIdProviderDelegate: ErrorResponseProtocol {
-    func onProgrammeLoaded(id:String, programme: StudentProgramme)
+    func onProgrammeLoaded(_ id:String, programme: StudentProgramme)
 
 }
 
@@ -21,7 +21,7 @@ class ProgrammeIdProvider: RestApiManager, ProgrammeIdProviderProtocol {
     weak var delegate: ProgrammeIdProviderDelegate! = nil
     var endpoint = "/programmes"
 
-    func loadProgramme(id: String) {
+    func loadProgramme(_ id: String) {
         endpoint = "/programmes/" + id
         self.makeHTTPAuthenticatedGetRequest({
             json in

@@ -12,7 +12,7 @@ protocol FacultiesProviderProtocol: JsonProviderProtocol {
 }
 
 protocol FacultiesProviderDelegate: ErrorResponseProtocol {
-    func onFacultiesLoaded(list: Array<Facultie>)
+    func onFacultiesLoaded(_ list: Array<Facultie>)
 }
 
 class FacultiesProvider: RestApiManager, FacultiesProviderProtocol {

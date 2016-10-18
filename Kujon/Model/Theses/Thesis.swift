@@ -15,7 +15,7 @@ struct Thesis : Decodable{
     let type: String
     let supervisors: Array<SimpleUser>
 
-    static func decode(j: AnyObject) throws -> Thesis {
+    static func decode(_ j: Any) throws -> Thesis {
         return try Thesis(authors: j => "authors",
                 faculty: j => "faculty",
                 id: j => "id",

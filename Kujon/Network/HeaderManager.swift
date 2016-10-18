@@ -7,15 +7,15 @@ import Foundation
 
 class HeaderManager {
 
-    private var userDataHolder = UserDataHolder.sharedInstance
+    fileprivate var userDataHolder = UserDataHolder.sharedInstance
 
-    private let EMAIL_HEADER = "X-Kujonmobiemail"
-    private let TOKEN_HEADER = "X-Kujonmobitoken"
-    private let REFRESH_TOKEN = "X-Kujonrefresh"
+    fileprivate let EMAIL_HEADER = "X-Kujonmobiemail"
+    fileprivate let TOKEN_HEADER = "X-Kujonmobitoken"
+    fileprivate let REFRESH_TOKEN = "X-Kujonrefresh"
     func isAuthenticated()->Bool{
         return (userDataHolder.userEmail != nil) && (userDataHolder.userToken != nil)
     }
-    func addHeadersToRequest(inout request: NSMutableURLRequest, refresh:Bool = false) {
+    func addHeadersToRequest(_ request: inout URLRequest, refresh:Bool = false) {
         request.addValue(userDataHolder.userEmail, forHTTPHeaderField: EMAIL_HEADER)
         request.addValue(userDataHolder.userToken, forHTTPHeaderField: TOKEN_HEADER)
         if(refresh){

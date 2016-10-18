@@ -10,29 +10,26 @@ import UIKit
 
 class ThesisDetailTableViewController: UITableViewController {
 
-    private enum SectionMap: Int {
-        case Header = 0
-        case Authors
-        case Supervisors
-        case Faculty
+    fileprivate enum SectionMap: Int {
+        case header = 0
+        case authors
+        case supervisors
+        case faculty
 
-        static func sectionForIndex(index:Int) -> SectionMap {
-            switch index {
-            case Header.rawValue: return Header
-            case Authors.rawValue: return Authors
-            case Supervisors.rawValue: return Supervisors
-            case Faculty.rawValue: return Faculty
-            default: fatalError("Invalid section index")
+        static func sectionForIndex(_ index:Int) -> SectionMap {
+            if let section = SectionMap(rawValue: index) {
+                return section
             }
+           fatalError("Invalid section index")
         }
     }
 
-    private let itemCellId: String = "itemCellId"
-    private let itemCellHeight: CGFloat = 50.0
-    private let itemHeaderHeight: CGFloat = 50.0
-    private let headerCellId: String = "headerCellId"
-    private let headerCellHeight: CGFloat = 200.0
-    private let sectionsCount: Int = 4
+    fileprivate let itemCellId: String = "itemCellId"
+    fileprivate let itemCellHeight: CGFloat = 50.0
+    fileprivate let itemHeaderHeight: CGFloat = 50.0
+    fileprivate let headerCellId: String = "headerCellId"
+    fileprivate let headerCellHeight: CGFloat = 200.0
+    fileprivate let sectionsCount: Int = 4
 
     var thesis: ThesisSearchInside?
     
@@ -44,10 +41,10 @@ class ThesisDetailTableViewController: UITableViewController {
         configureTableView()
     }
 
-    private func configureTableView() {
-        tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: itemCellId)
-        tableView.registerNib(UINib(nibName: "ThesisDetailHeaderCell", bundle: nil), forCellReuseIdentifier: headerCellId)
-        tableView.separatorStyle = .None
+    fileprivate func configureTableView() {
+        tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: itemCellId)
+        tableView.register(UINib(nibName: "ThesisDetailHeaderCell", bundle: nil), forCellReuseIdentifier: headerCellId)
+        tableView.separatorStyle = .none
         tableView.backgroundColor = .greyBackgroundColor()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50.0
@@ -55,64 +52,64 @@ class ThesisDetailTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return sectionsCount
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let section = SectionMap.sectionForIndex(section)
 
         switch section {
-        case .Header: return 1
-        case .Authors: return thesis?.authors?.count ?? 0
-        case .Supervisors: return thesis?.supervisors?.count ?? 0
-        case .Faculty: return 1
+        case .header: return 1
+        case .authors: return thesis?.authors?.count ?? 0
+        case .supervisors: return thesis?.supervisors?.count ?? 0
+        case .faculty: return 1
         }
     }
 
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let section = SectionMap.sectionForIndex(section)
 
         switch (section) {
-        case .Header: return nil
-        case .Authors: return createLabelForSectionTitle(StringHolder.authors)
-        case .Supervisors: return createLabelForSectionTitle(StringHolder.supervisors)
-        case .Faculty: return createLabelForSectionTitle(StringHolder.faculty)
+        case .header: return nil
+        case .authors: return createLabelForSectionTitle(StringHolder.authors)
+        case .supervisors: return createLabelForSectionTitle(StringHolder.supervisors)
+        case .faculty: return createLabelForSectionTitle(StringHolder.faculty)
         }
     }
 
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let section = SectionMap.sectionForIndex(section)
-        return section == .Header ? 0.0 : itemHeaderHeight
+        return section == .header ? 0.0 : itemHeaderHeight
     }
 
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let section = SectionMap.sectionForIndex(indexPath.section)
-        return section == .Header ? headerCellHeight : itemCellHeight
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let section = SectionMap.sectionForIndex((indexPath as NSIndexPath).section)
+        return section == .header ? headerCellHeight : itemCellHeight
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let section = SectionMap.sectionForIndex(indexPath.section)
-        return section == .Header ? headerCellForIndexPath(indexPath) : itemCellForIndexPath(indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let section = SectionMap.sectionForIndex((indexPath as NSIndexPath).section)
+        return section == .header ? headerCellForIndexPath(indexPath) : itemCellForIndexPath(indexPath)
     }
 
-    private func headerCellForIndexPath(indexPath: NSIndexPath) -> ThesisDetailHeaderCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(headerCellId, forIndexPath: indexPath) as! ThesisDetailHeaderCell
+    fileprivate func headerCellForIndexPath(_ indexPath: IndexPath) -> ThesisDetailHeaderCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: headerCellId, for: indexPath) as! ThesisDetailHeaderCell
         cell.thesisTitleLabel.text = thesis?.title
         cell.thesisTypeLabel.text = thesis?.type
         return cell
     }
 
-    private func itemCellForIndexPath(indexPath: NSIndexPath) -> GoFurtherViewCellTableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(itemCellId, forIndexPath: indexPath) as! GoFurtherViewCellTableViewCell
-        let section = SectionMap.sectionForIndex(indexPath.section)
+    fileprivate func itemCellForIndexPath(_ indexPath: IndexPath) -> GoFurtherViewCellTableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: itemCellId, for: indexPath) as! GoFurtherViewCellTableViewCell
+        let section = SectionMap.sectionForIndex((indexPath as NSIndexPath).section)
         let labelText: String?
 
         switch section {
-        case .Header: labelText = nil
-        case .Authors: labelText = thesis?.authors?[indexPath.row].getNameWithTitles()
-        case .Supervisors: labelText = thesis?.supervisors?[indexPath.row].getNameWithTitles()
-        case .Faculty: labelText = thesis?.faculty?.name
+        case .header: labelText = nil
+        case .authors: labelText = thesis?.authors?[(indexPath as NSIndexPath).row].getNameWithTitles()
+        case .supervisors: labelText = thesis?.supervisors?[(indexPath as NSIndexPath).row].getNameWithTitles()
+        case .faculty: labelText = thesis?.faculty?.name
         }
 
         cell.plainLabel.text = labelText
@@ -121,18 +118,18 @@ class ThesisDetailTableViewController: UITableViewController {
 
     // MARK: - Table view delegate
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let section = SectionMap.sectionForIndex(indexPath.section)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section = SectionMap.sectionForIndex((indexPath as NSIndexPath).section)
         switch section {
-        case .Authors:
-            if let user = thesis?.authors?[indexPath.row] {
+        case .authors:
+            if let user = thesis?.authors?[(indexPath as NSIndexPath).row] {
                 presentStudentDetailControllerWithSimpleUser(user)
             }
-        case .Supervisors:
-            if let user = thesis?.supervisors?[indexPath.row] {
+        case .supervisors:
+            if let user = thesis?.supervisors?[(indexPath as NSIndexPath).row] {
                 presentTeacherDetailControllerWithSimpleUser(user)
             }
-        case .Faculty:
+        case .faculty:
             if let faculty = thesis?.faculty {
                  presentFacultyDetailControllerWithFaculty(faculty)
             }
@@ -140,21 +137,21 @@ class ThesisDetailTableViewController: UITableViewController {
         }
     }
 
-    private func presentStudentDetailControllerWithSimpleUser(user: SimpleUser) {
+    fileprivate func presentStudentDetailControllerWithSimpleUser(_ user: SimpleUser) {
         let studentDetailController = StudentDetailsTableViewController(nibName: "StudentDetailsTableViewController", bundle: nil)
         studentDetailController.user = user
         studentDetailController.userId = user.id
         navigationController?.pushViewController(studentDetailController, animated: true)
     }
 
-    private func presentTeacherDetailControllerWithSimpleUser(user: SimpleUser) {
+    fileprivate func presentTeacherDetailControllerWithSimpleUser(_ user: SimpleUser) {
         let teacherDetailController = TeacherDetailTableViewController(nibName: "TeacherDetailTableViewController", bundle: nil)
         teacherDetailController.simpleUser = user
         teacherDetailController.teacherId = user.id
         navigationController?.pushViewController(teacherDetailController, animated: true)
     }
 
-    private func presentFacultyDetailControllerWithFaculty(faculty:FacultyShort) {
+    fileprivate func presentFacultyDetailControllerWithFaculty(_ faculty:FacultyShort) {
         let facultyDetailController = FacultieTableViewController(nibName: "FacultieTableViewController", bundle: nil)
         facultyDetailController.facultieId = faculty.id
         navigationController?.pushViewController(facultyDetailController, animated: true)
