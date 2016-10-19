@@ -8,12 +8,12 @@ import Foundation
 class FacultieSection: SectionHelperProtocol {
     let facultieCellId="facCellIde"
     private var facId :FacId! = nil
-    func fillUpWithData(courseDetails: CourseDetails) {
+    func fillUpWithData(_ courseDetails: CourseDetails) {
         facId = courseDetails.facId
     }
 
-    func registerView(tableView: UITableView) {
-        tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: facultieCellId)
+    func registerView(_ tableView: UITableView) {
+        tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: facultieCellId)
     }
 
     func getSectionTitle() -> String {
@@ -33,14 +33,14 @@ class FacultieSection: SectionHelperProtocol {
         return StandartSection.sectionHeight
     }
 
-    func giveMeCellAtPosition(tableView: UITableView, onPosition position: NSIndexPath) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCellWithIdentifier(facultieCellId, forIndexPath: position) as! GoFurtherViewCellTableViewCell
+    func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath) -> UITableViewCell! {
+        let cell = tableView.dequeueReusableCell(withIdentifier: facultieCellId, for: position) as! GoFurtherViewCellTableViewCell
         cell.plainLabel.text = facId.name
         return cell
     }
 
-    func reactOnSectionClick(position: Int, withController controller: UINavigationController?) {
-        let faculiteController = FacultieTableViewController(nibName: "FacultieTableViewController", bundle: NSBundle.mainBundle())
+    func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?) {
+        let faculiteController = FacultieTableViewController(nibName: "FacultieTableViewController", bundle: Bundle.main)
         faculiteController.facultieId = facId.id
         controller?.pushViewController(faculiteController, animated: true)
     }

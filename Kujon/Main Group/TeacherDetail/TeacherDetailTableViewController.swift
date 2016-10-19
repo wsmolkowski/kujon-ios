@@ -22,8 +22,8 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(TeacherDetailTableViewController.back), andTitle: StringHolder.lecturer)
         title = StringHolder.teacher
-        self.tableView.registerNib(UINib(nibName: "TeacherHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: TeacherDetailViewId)
-        self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: programmesIdCell)
+        self.tableView.register(UINib(nibName: "TeacherHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: TeacherDetailViewId)
+        self.tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: programmesIdCell)
         userDetailsProvider.delegate = self
         self.tableView.tableFooterView = UIView()
         self.tableView.showsVerticalScrollIndicator = false
@@ -34,24 +34,24 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
 
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: #selector(TeacherDetailTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(TeacherDetailTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         refreshControl?.beginRefreshingManually()
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
 
     }
 
     func back() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
 
 
-    func refresh(refreshControl: UIRefreshControl) {
+    func refresh(_ refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")
         userDetailsProvider.reload()
         loadUser()
     }
 
-    func onUserDetailLoaded(userDetails: UserDetail) {
+    func onUserDetailLoaded(_ userDetails: UserDetail) {
         self.userDetails = userDetails
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
@@ -69,24 +69,24 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         }
     }
 
-    func onErrorOccurs(text: String) {
+    func onErrorOccurs(_ text: String) {
         self.showAlertApi(StringHolder.attention, text: text, succes: {
             self.loadUser()
         }, cancel: {})
     }
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch (indexPath.section) {
         case 0: return 576
         default: return 50
         }
     }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return userDetails == nil ? 0 : 2
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch (section){
             case 0: return userDetails == nil ? 0 : 1
             case 1: return userDetails?.courseEditionsConducted == nil ? 0 : userDetails.courseEditionsConducted!.count
@@ -96,7 +96,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
     }
 
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section) {
         case 1:
             self.clicked(indexPath.row)
@@ -106,17 +106,17 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         }
     }
 
-    private func clicked(pos:Int){
+    private func clicked(_ pos:Int){
         let coursEdition = self.userDetails!.courseEditionsConducted?[pos]
         if(coursEdition != nil){
-            let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: NSBundle.mainBundle())
+            let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: Bundle.main)
             courseDetails.courseId = coursEdition!.courseId
             courseDetails.termId = coursEdition!.termId
             self.navigationController?.pushViewController(courseDetails, animated: true)
         }
     }
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch (section) {
         case 0: return 0
 
@@ -124,7 +124,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         }
     }
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch (section) {
         case 0: return nil
         case 1: return createLabelForSectionTitle(StringHolder.lecturesConducted)
@@ -134,7 +134,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
 
 
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell!
         switch (indexPath.section) {
         case 0: cell = self.configureTeacherDetails(indexPath)
@@ -143,15 +143,15 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
             break;
         default: cell = self.configureTeacherDetails(indexPath)
         }
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
 
         return cell
     }
 
     private var isThereImage = false
 
-    private func configureTeacherDetails(indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(TeacherDetailViewId, forIndexPath: indexPath) as! TeacherHeaderTableViewCell
+    private func configureTeacherDetails(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: TeacherDetailViewId, for: indexPath) as! TeacherHeaderTableViewCell
         cell.teacherNameLabel.text = getPrefix(self.userDetails.titles) + " " + self.userDetails.firstName + " " + self.userDetails.lastName + " " + getSuffix(self.userDetails.titles)
         cell.teacherStatusLabel.text = self.userDetails.staffStatus
         cell.teacherEmailURL = userDetails.emailUrl
@@ -160,7 +160,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
             let tapWWW = UITapGestureRecognizer(target: self, action: #selector(TeacherDetailTableViewController.wwwTaped))
             tapWWW.numberOfTapsRequired = 1
             cell.teacherHomepageLabel.addGestureRecognizer(tapWWW)
-            cell.teacherHomepageLabel.userInteractionEnabled = true
+            cell.teacherHomepageLabel.isUserInteractionEnabled = true
         }
         cell.teacherHomepageLabel.text = self.userDetails.homepage
         cell.teacherImageView.makeMyselfCircle()
@@ -170,20 +170,20 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
             cell.teacherRoomLabel.text = self.userDetails.room!.getRoomString()
         }
 
-        if (userDetails.hasPhoto && userDetails.photoUrl != nil) {
+        if (userDetails.photoUrl != nil) {
             restImageProvider.loadImage("", urlString: userDetails.photoUrl!, onImageLoaded: self)
         }
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TeacherDetailTableViewController.imageTapped))
         tapGestureRecognizer.numberOfTapsRequired = 1
         cell.teacherImageView.addGestureRecognizer(tapGestureRecognizer)
-        cell.teacherImageView.userInteractionEnabled = true
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.teacherImageView.isUserInteractionEnabled = true
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         return cell
     }
 
 
-    func configureTeacherCourse(indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(programmesIdCell, forIndexPath: indexPath) as! GoFurtherViewCellTableViewCell
+    func configureTeacherCourse(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: programmesIdCell, for: indexPath) as! GoFurtherViewCellTableViewCell
         let courseEdition = self.userDetails?.courseEditionsConducted?[indexPath.row]
         if (courseEdition != nil){
             cell.plainLabel.text = courseEdition!.courseName + "(" + courseEdition!.termId + ")"
@@ -192,11 +192,11 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
     }
 
 
-    func imageTapped(sender: UITapGestureRecognizer) {
+    func imageTapped(_ sender: UITapGestureRecognizer) {
         print(sender.view?.tag)
         if (isThereImage) {
-            let imageController = ImageViewController(nibName: "ImageViewController", bundle: NSBundle.mainBundle())
-            let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! TeacherHeaderTableViewCell
+            let imageController = ImageViewController(nibName: "ImageViewController", bundle: Bundle.main)
+            let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! TeacherHeaderTableViewCell
             imageController.image = cell.teacherImageView.image
             self.navigationController?.pushViewController(imageController, animated: true)
         } else {
@@ -206,24 +206,24 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         }
     }
 
-    func wwwTaped(sender: UITapGestureRecognizer) {
+    func wwwTaped(_ sender: UITapGestureRecognizer) {
         print(sender.view?.tag)
-        if let url = NSURL(string: self.userDetails.homepage != nil ? self.userDetails.homepage! : "") {
-            UIApplication.sharedApplication().openURL(url)
+        if let url = URL(string: self.userDetails.homepage != nil ? self.userDetails.homepage! : "") {
+            UIApplication.shared.openURL(url)
         }
     }
 
-    func imageLoaded(tag: String, image: UIImage) {
-        let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! TeacherHeaderTableViewCell
+    func imageLoaded(_ tag: String, image: UIImage) {
+        let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! TeacherHeaderTableViewCell
         cell.teacherImageView.image = image
         isThereImage = true
     }
 
-    private func getPrefix(title: Title) -> String {
+    private func getPrefix(_ title: Title) -> String {
         return title.before != nil ? title.before : ""
     }
 
-    private func getSuffix(title: Title) -> String {
+    private func getSuffix(_ title: Title) -> String {
         return title.after != nil ? title.after : ""
     }
 

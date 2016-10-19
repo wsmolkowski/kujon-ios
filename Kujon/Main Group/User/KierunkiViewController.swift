@@ -61,7 +61,7 @@ class KierunkiViewController: PopUpViewController {
             kierunekLabel.text = myProgramme.name!.characters.split {
                 $0 == ","
             }.map(String.init)[0]
-            self.view.userInteractionEnabled = true
+            self.view.isUserInteractionEnabled = true
             okButton.addTopBorder(UIColor.lightGray(), width: 1)
         }
 
@@ -69,7 +69,7 @@ class KierunkiViewController: PopUpViewController {
     }
 
 
-    @IBAction func dismissClick(sender: AnyObject) {
+    @IBAction func dismissClick(_ sender: AnyObject) {
         removeAnimate()
     }
 

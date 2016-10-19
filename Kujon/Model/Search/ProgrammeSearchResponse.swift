@@ -11,7 +11,7 @@ struct ProgrammeSearchResponse{
 }
 
 extension ProgrammeSearchResponse: Decodable, GetListOfSearchElements {
-    static func decode(j: AnyObject) throws -> ProgrammeSearchResponse {
+    static func decode(_ j: Any) throws -> ProgrammeSearchResponse {
         return try ProgrammeSearchResponse(
                 data: j => "data"
                 )
@@ -39,7 +39,7 @@ struct ProgrammeSearchData: Decodable {
 
     let items: Array<ProgrammeSearch>
     let nextPage: Bool
-    static func decode(j: AnyObject) throws -> ProgrammeSearchData {
+    static func decode(_ j: Any) throws -> ProgrammeSearchData {
         return try ProgrammeSearchData(
                 items: j => "items",
                 nextPage: j => "next_page"
@@ -52,7 +52,7 @@ struct ProgrammeSearch: Decodable, SearchElementProtocol{
     let match : String
     let programme: Programme
 
-    static func decode(json: AnyObject) throws -> ProgrammeSearch {
+    static func decode(_ json: Any) throws -> ProgrammeSearch {
         return try ProgrammeSearch(match: json => "match", programme: json => "programme")
     }
 
@@ -60,10 +60,10 @@ struct ProgrammeSearch: Decodable, SearchElementProtocol{
         return self.match
     }
 
-    func reactOnClick(mainController: UINavigationController) {
-        let popController = KierunkiViewController(nibName: "KierunkiViewController", bundle: NSBundle.mainBundle())
-        popController.modalPresentationStyle = .OverCurrentContext
-        mainController.presentViewController(popController, animated: false, completion: { popController.showAnimate(); })
+    func reactOnClick(_ mainController: UINavigationController) {
+        let popController = KierunkiViewController(nibName: "KierunkiViewController", bundle: Bundle.main)
+        popController.modalPresentationStyle = .overCurrentContext
+        mainController.present(popController, animated: false, completion: { popController.showAnimate(); })
         popController.showInView(withProgramme: self.programme)
     }
 }

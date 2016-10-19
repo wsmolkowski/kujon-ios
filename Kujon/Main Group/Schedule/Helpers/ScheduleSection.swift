@@ -10,7 +10,7 @@ protocol ScheduleSection {
 
     func getSectionSize() -> Int
 
-    func getElementAtPosition(position: Int) -> CellHandlingStrategy
+    func getElementAtPosition(_ position: Int) -> CellHandlingStrategy
     func getList() -> Array<CellHandlingStrategy>
-    func addToList(list:Array<CellHandlingStrategy>)
+    func addToList(_ list:Array<CellHandlingStrategy>)
 }

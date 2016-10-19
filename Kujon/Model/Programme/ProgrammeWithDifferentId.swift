@@ -18,7 +18,7 @@ struct ProgrammeWithDifferentId {
 
 
 extension ProgrammeWithDifferentId: Decodable {
-    static func decode(j: AnyObject) throws -> ProgrammeWithDifferentId {
+    static func decode(_ j: Any) throws -> ProgrammeWithDifferentId {
         return try ProgrammeWithDifferentId(
                 name: try? j => "name",
                 modeOfStudies: try? j => "mode_of_studies",

@@ -2,8 +2,8 @@
 //  KujonUITests.swift
 //  KujonUITests
 //
-//  Created by Wojciech Maciejewski on 08/06/16.
-//  Copyright (c) 2016 Mobi. All rights reserved.
+//  Created by Adam on 14.10.2016.
+//  Copyright © 2016 Mobi. All rights reserved.
 //
 
 import XCTest

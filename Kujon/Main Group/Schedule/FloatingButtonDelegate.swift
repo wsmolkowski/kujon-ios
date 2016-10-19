@@ -11,15 +11,15 @@ class FloatingButtonDelegate {
     private let floatingMargin: CGFloat = 15.0
     private var floatingButton: UIButton! = nil
 
-    func viewWillAppear(controller:UIViewController,selector:Selector) {
-        floatingButton = UIButton(type: .Custom)
+    func viewWillAppear(_ controller:UIViewController,selector:Selector) {
+        floatingButton = UIButton(type: .custom)
         let xPos = controller.view.frame.size.width - floatingSize - floatingMargin
         let yPos = controller.view.frame.origin.y + controller.view.frame.size.height - floatingSize - floatingMargin
-        floatingButton?.frame = CGRectMake(xPos, yPos, floatingSize, floatingSize)
+        floatingButton?.frame = CGRect(x: xPos, y: yPos, width: floatingSize, height: floatingSize)
         floatingButton?.titleLabel?.numberOfLines = 2
-        floatingButton?.titleLabel?.textAlignment = .Center
-        floatingButton?.setTitle(NSDate().getDayMonth(), forState: .Normal)
-        floatingButton?.addTarget(controller, action: selector, forControlEvents: UIControlEvents.TouchUpInside)
+        floatingButton?.titleLabel?.textAlignment = .center
+        floatingButton?.setTitle(Date().getDayMonth(), for: UIControlState())
+        floatingButton?.addTarget(controller, action: selector, for: UIControlEvents.touchUpInside)
         floatingButton?.titleLabel?.font = UIFont.kjnTextStyleFont()
         floatingButton?.backgroundColor = UIColor.kujonBlueColor()
         floatingButton?.makeMyselfCircle()

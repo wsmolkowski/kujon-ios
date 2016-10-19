@@ -21,11 +21,11 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(RegisterViewController.back), andTitle: StringHolder.loggin2)
-        self.edgesForExtendedLayout = UIRectEdge.None
+        self.edgesForExtendedLayout = UIRectEdge()
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterViewController.showTerms))
         tapGestureRecognizer.numberOfTapsRequired = 1
-        rejestrujacLabel.userInteractionEnabled = true
+        rejestrujacLabel.isUserInteractionEnabled = true
         rejestrujacLabel.addGestureRecognizer(tapGestureRecognizer)
         loginProvider.delegate = self
         emailLabel.text = email
@@ -37,30 +37,30 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
     }
 
 
-    func onLoginResponse(token: String) {
+    func onLoginResponse(_ token: String) {
         self.back()
         emailManager.login(email, token: token,listener: delegeta)
     }
 
 
-    func onErrorOccurs(text: String) {
+    func onErrorOccurs(_ text: String) {
         showAlert(text)
     }
 
 
-    func showTerms(sender: UITapGestureRecognizer){
+    func showTerms(_ sender: UITapGestureRecognizer){
         NSlogManager.showLog("showTermsAndConditions")
         var controller: UIViewController!
         controller = WebViewController()
         let navigationController = UINavigationController(rootViewController: controller)
-        self.presentViewController(navigationController, animated: true, completion: nil)
+        self.present(navigationController, animated: true, completion: nil)
 
     }
 
     func back() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
-    @IBAction func onLoginClick(sender: AnyObject) {
+    @IBAction func onLoginClick(_ sender: AnyObject) {
         email = emailLabel.text!
         if(!checker.isEmail(email)){
             showAlert(StringHolder.emailPasswordError)
@@ -76,13 +76,13 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
 
 
 
-    private func showAlert(text: String){
-        let alertController = UIAlertController(title: "Błąd Logowania ", message: text, preferredStyle: .Alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
+    private func showAlert(_ text: String){
+        let alertController = UIAlertController(title: "Błąd Logowania ", message: text, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {
             (action: UIAlertAction!) in
-            alertController.dismissViewControllerAnimated(true, completion: nil)
+            alertController.dismiss(animated: true, completion: nil)
 
         }))
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 }

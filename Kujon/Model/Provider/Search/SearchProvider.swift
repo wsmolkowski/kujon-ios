@@ -6,15 +6,15 @@
 import Foundation
 import Decodable
 protocol SearchProviderProtocol {
-    func search(text: String, more: Int)
-    func setDelegate(delegate: SearchProviderDelegate)
+    func search(_ text: String, more: Int)
+    func setDelegate(_ delegate: SearchProviderDelegate)
 }
 
 extension SearchProviderProtocol{
-    func getSearchElements(getList: GetListOfSearchElements)->Array<SearchElementProtocol>{
+    func getSearchElements(_ getList: GetListOfSearchElements)->Array<SearchElementProtocol>{
         return getList.getList()
     }
-    func isThereNext(getList: GetListOfSearchElements) -> Bool{
+    func isThereNext(_ getList: GetListOfSearchElements) -> Bool{
         return getList.isThereNext()
     }
 }
@@ -23,8 +23,8 @@ extension SearchProviderProtocol{
 
 
 protocol SearchProviderDelegate: ErrorResponseProtocol {
-    func searchedItems(array: Array<SearchElementProtocol>)
-    func isThereNextPage(isThere:Bool)
+    func searchedItems(_ array: Array<SearchElementProtocol>)
+    func isThereNextPage(_ isThere:Bool)
 
 }
 

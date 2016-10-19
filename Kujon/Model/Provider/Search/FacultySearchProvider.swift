@@ -14,7 +14,7 @@ protocol FacultySearchProviderProtocol: JsonProviderProtocol {
 class FacultySearchProvider: RestApiManager, FacultySearchProviderProtocol, SearchProviderProtocol {
 
     var delegate: SearchProviderDelegate!
-    func setDelegate(delegate: SearchProviderDelegate) {
+    func setDelegate(_ delegate: SearchProviderDelegate) {
         self.delegate = delegate
     }
 
@@ -23,12 +23,12 @@ class FacultySearchProvider: RestApiManager, FacultySearchProviderProtocol, Sear
     }
 
     var endpoint = ""
-    func search(text: String, more: Int) {
+    func search(_ text: String, more: Int) {
         endpoint = text + "?start=" + String(more)
         self.makeHTTPAuthenticatedGetRequest({
             json in
             let val = try! self.changeJsonToResposne(json, errorR: self.delegate)
-            if (val != nil) {
+            if let val = val {
                 self.delegate?.searchedItems(self.getSearchElements(val))
                 self.delegate?.isThereNextPage(self.isThereNext(val));
             }

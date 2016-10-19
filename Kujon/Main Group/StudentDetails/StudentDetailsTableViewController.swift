@@ -27,8 +27,8 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(StudentDetailsTableViewController.back))
         title = StringHolder.student
-        self.tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: kierunekCellId)
-        self.tableView.registerNib(UINib(nibName: "StudentHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: headerCellId)
+        self.tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: kierunekCellId)
+        self.tableView.register(UINib(nibName: "StudentHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: headerCellId)
         self.tableView.tableFooterView = UIView()
         if (userId == nil) {
             userId = user.userId
@@ -39,21 +39,22 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
 
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: #selector(StudentDetailsTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(StudentDetailsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         refreshControl?.beginRefreshingManually()
 
     }
 
     func back() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
-    func refresh(refreshControl: UIRefreshControl) {
+
+    func refresh(_ refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")
         provider.reload()
         provider.loadUserDetail(userId)
     }
 
-    func onUserDetailLoaded(userDetails: UserDetail) {
+    func onUserDetailLoaded(_ userDetails: UserDetail) {
         self.refreshControl?.endRefreshing()
         self.userDetails = userDetails;
         self.studentProgrammes = Array()
@@ -64,7 +65,7 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
     }
 
 
-    func onProgrammeLoaded(id: String, programme: StudentProgramme) {
+    func onProgrammeLoaded(_ id: String, programme: StudentProgramme) {
         self.studentProgrammes.append(programme)
         self.tableView.reloadData()
     }
@@ -77,11 +78,11 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return self.userDetails != nil ? 2 : 0
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch (section) {
         case 0: return self.userDetails != nil ? 1 : 0
         case 1: return studentProgrammes.count
@@ -90,14 +91,14 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
 
     }
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch (indexPath.section) {
         case 0: return 216
         default: return 50
         }
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch (indexPath.section) {
         case 0: return self.studentCellConfigure(indexPath)
         case 1: return self.configureStudentProgrammeCell(indexPath)
@@ -105,8 +106,8 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
         }
     }
 
-    private func studentCellConfigure(indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(headerCellId, forIndexPath: indexPath) as! StudentHeaderTableViewCell
+    private func studentCellConfigure(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: headerCellId, for: indexPath) as! StudentHeaderTableViewCell
         cell.studentImageView.image = UIImage(named: "user-placeholder")
         if (self.userDetails.photoUrl != nil) {
             self.restImageProvider.loadImage("", urlString: self.userDetails.photoUrl!, onImageLoaded: self)
@@ -115,26 +116,26 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(StudentDetailsTableViewController.imageTapped))
         tapGestureRecognizer.numberOfTapsRequired = 1
         cell.studentImageView.addGestureRecognizer(tapGestureRecognizer)
-        cell.studentImageView.userInteractionEnabled = true
+        cell.studentImageView.isUserInteractionEnabled = true
         cell.studentNameLabel.text = self.userDetails.firstName + " " + userDetails.lastName
         cell.studentStatusLabel.text = self.userDetails.studentStatus
         cell.studentAccountLabel.text = self.userDetails.id
         cell.studentIndexLabel.text = self.userDetails.studentNumber
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         return cell
     }
 
-    private func configureStudentProgrammeCell(indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(kierunekCellId, forIndexPath: indexPath) as! GoFurtherViewCellTableViewCell
+    private func configureStudentProgrammeCell(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: kierunekCellId, for: indexPath) as! GoFurtherViewCellTableViewCell
         let myProgramme: StudentProgramme = self.studentProgrammes[indexPath.row]
         cell.plainLabel.text = myProgramme.programme.description
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         return cell
     }
 
 
-    func imageLoaded(tag: String, image: UIImage) {
-        if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0)) {
+    func imageLoaded(_ tag: String, image: UIImage) {
+        if let cell = self.tableView.cellForRow(at: IndexPath(item: 0, section: 0)) {
             (cell as! StudentHeaderTableViewCell).studentImageView.image = image
             (cell as! StudentHeaderTableViewCell).studentImageView.makeMyselfCircle()
             isThereImage = true
@@ -142,11 +143,11 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
 
     }
 
-    func imageTapped(sender: UITapGestureRecognizer) {
+    func imageTapped(_ sender: UITapGestureRecognizer) {
         print(sender.view?.tag)
         if (isThereImage) {
-            if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0)) {
-                let imageController = ImageViewController(nibName: "ImageViewController", bundle: NSBundle.mainBundle())
+            if let cell = self.tableView.cellForRow(at: IndexPath(item: 0, section: 0)) {
+                let imageController = ImageViewController(nibName: "ImageViewController", bundle: Bundle.main)
                 imageController.image = (cell as! StudentHeaderTableViewCell).studentImageView.image
                 self.navigationController?.pushViewController(imageController, animated: true)
             }
@@ -159,7 +160,7 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
     }
 
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch (section) {
         case 0: return 0
 
@@ -168,7 +169,7 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
     }
 
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch (section) {
         case 0: return nil
         case 1: return createLabelForSectionTitle(StringHolder.kierunki)
@@ -176,7 +177,7 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
         }
     }
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section) {
         case 1:
             self.clicked(indexPath)
@@ -186,12 +187,12 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
         }
     }
 
-    func clicked(forIndexPath: NSIndexPath) {
-            let myProgramme: StudentProgramme = self.studentProgrammes[forIndexPath.row]
+    func clicked(_ forIndexPath: IndexPath) {
+            let myProgramme: StudentProgramme = self.studentProgrammes[(forIndexPath as NSIndexPath).row]
             if (myProgramme.programme.duration != nil && myProgramme.programme.name != nil && myProgramme.programme.levelOfStudies != nil) {
-                let popController = KierunkiViewController(nibName: "KierunkiViewController", bundle: NSBundle.mainBundle())
-                popController.modalPresentationStyle = .OverCurrentContext
-                self.navigationController?.presentViewController(popController, animated: false, completion: { popController.showAnimate(); })
+                let popController = KierunkiViewController(nibName: "KierunkiViewController", bundle: Bundle.main)
+                popController.modalPresentationStyle = .overCurrentContext
+                self.navigationController?.present(popController, animated: false, completion: { popController.showAnimate(); })
                 popController.showInView(withProgramme: myProgramme.programme)
 
         }

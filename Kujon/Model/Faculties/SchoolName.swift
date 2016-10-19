@@ -13,7 +13,7 @@ struct SchoolName {
     let en : String
 }
 extension SchoolName:Decodable{
-    static func decode(j: AnyObject) throws -> SchoolName {
+    static func decode(_ j: Any) throws -> SchoolName {
         return try SchoolName(
             pl : j => "pl",
             en : j => "en"

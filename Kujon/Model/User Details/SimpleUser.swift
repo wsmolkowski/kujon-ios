@@ -16,7 +16,7 @@ struct SimpleUser {
 
 
 extension SimpleUser: Decodable {
-    static func decode(j: AnyObject) throws -> SimpleUser {
+    static func decode(_ j: Any) throws -> SimpleUser {
         return try SimpleUser(
         firstName: j => "first_name",
                 lastName: j => "last_name",

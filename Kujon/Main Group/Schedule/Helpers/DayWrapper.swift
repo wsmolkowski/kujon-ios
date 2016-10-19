@@ -23,15 +23,15 @@ class DayWrapper:CellHandlingStrategy {
     }
 
 
-    func giveMeMyCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return  tableView.dequeueReusableCellWithIdentifier(ScheduleTableViewController.DayCellId, forIndexPath: indexPath)
+    func giveMeMyCell(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
+        return  tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewController.DayCellId, for: indexPath)
     }
 
     func amILectureWrapper() -> Bool {
         return false
     }
 
-    func handleClick(controller: UINavigationController?) {
+    func handleClick(_ controller: UINavigationController?) {
     }
 
 

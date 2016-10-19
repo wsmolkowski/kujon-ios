@@ -47,7 +47,7 @@ struct Facultie {
 
 
 extension Facultie: Decodable {
-    static func decode(j: AnyObject) throws -> Facultie {
+    static func decode(_ j: Any) throws -> Facultie {
         return try Facultie(
         logUrls: j => "logo_urls",
                 schoolStats: j => "stats",

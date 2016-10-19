@@ -25,7 +25,7 @@ struct Term {
 
 
 extension Term: Decodable {
-    static func decode(j: AnyObject) throws -> Term {
+    static func decode(_ j: Any) throws -> Term {
         return try Term(
         name: j => "name",
                 endDate: j => "end_date",

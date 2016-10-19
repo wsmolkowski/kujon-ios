@@ -19,7 +19,7 @@ struct PreparedTermGrades {
 
 
 extension TermGrades: Decodable {
-    static func decode(j: AnyObject) throws -> TermGrades {
+    static func decode(_ j: Any) throws -> TermGrades {
         return try TermGrades(
         termId: j => "term_id",
                 grades: j => "courses"

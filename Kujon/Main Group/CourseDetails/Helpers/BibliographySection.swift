@@ -10,12 +10,12 @@ class BibliographySection: SectionHelperProtocol {
 
 
     private var description: String! = nil
-    func fillUpWithData(courseDetails: CourseDetails) {
+    func fillUpWithData(_ courseDetails: CourseDetails) {
         description = courseDetails.bibliography
     }
 
-    func registerView(tableView: UITableView) {
-        tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: bibliographyCellId)
+    func registerView(_ tableView: UITableView) {
+        tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: bibliographyCellId)
     }
 
     func getSectionTitle() -> String {
@@ -35,14 +35,14 @@ class BibliographySection: SectionHelperProtocol {
         return StandartSection.sectionHeight
     }
 
-    func giveMeCellAtPosition(tableView: UITableView, onPosition position: NSIndexPath) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCellWithIdentifier(bibliographyCellId, forIndexPath: position) as! GoFurtherViewCellTableViewCell
+    func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath) -> UITableViewCell! {
+        let cell = tableView.dequeueReusableCell(withIdentifier: bibliographyCellId, for: position) as! GoFurtherViewCellTableViewCell
         cell.plainLabel.text = description
         return cell
     }
 
-    func reactOnSectionClick(position: Int, withController controller: UINavigationController?) {
-        let textController = TextViewController(nibName: "TextViewController", bundle: NSBundle.mainBundle())
+    func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?) {
+        let textController = TextViewController(nibName: "TextViewController", bundle: Bundle.main)
         textController.text = description
         textController.myTitle = getSectionTitle()
         controller?.pushViewController(textController, animated: true)

@@ -48,12 +48,12 @@ struct Grade{
 
     func getGrade() -> GradeEnum {
         switch (valueSymbol) {
-        case "2": return GradeEnum.NIEDOSTATECZNY
-        case "3": return GradeEnum.DOSTATECZNY
-        case "4": return GradeEnum.DOBRY
-        case "5": return GradeEnum.BARDZO_DOBRY
-        case "6": return GradeEnum.CELUJACY
-        default: return GradeEnum.NIEKLASYFIKOWANY
+        case "2": return GradeEnum.niedostateczny
+        case "3": return GradeEnum.dostateczny
+        case "4": return GradeEnum.dobry
+        case "5": return GradeEnum.bardzo_DOBRY
+        case "6": return GradeEnum.celujacy
+        default: return GradeEnum.nieklasyfikowany
         }
     }
 
@@ -68,11 +68,11 @@ struct Grade{
 }
 
 enum GradeEnum {
-    case NIEDOSTATECZNY, DOSTATECZNY, DOBRY, BARDZO_DOBRY, CELUJACY , NIEKLASYFIKOWANY
+    case niedostateczny, dostateczny, dobry, bardzo_DOBRY, celujacy , nieklasyfikowany
 }
 
 extension CourseGrade: Decodable {
-    static func decode(j: AnyObject) throws -> CourseGrade {
+    static func decode(_ j: Any) throws -> CourseGrade {
         return try CourseGrade(
 
                 courseName: j => "course_name",
@@ -87,7 +87,7 @@ extension CourseGrade: Decodable {
 
 
 extension Grade: Decodable {
-    static func decode(j: AnyObject) throws -> Grade {
+    static func decode(_ j: Any) throws -> Grade {
         return try Grade(
                 valueDescription: j => "value_description",
                 valueSymbol: j => "value_symbol",

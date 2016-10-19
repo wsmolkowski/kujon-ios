@@ -27,7 +27,7 @@ class UserDataHolder {
 
 
     init() {
-        defaultsManager = UserDefaultsManager(withNSUserDefaults: NSUserDefaults.standardUserDefaults())
+        defaultsManager = UserDefaultsManager(withNSUserDefaults: UserDefaults.standard)
     }
 
     var userEmail: String! {
@@ -81,14 +81,14 @@ class UserDataHolder {
     var userImage:UIImage! = nil
     var userName: String!  = nil
 
-    private func standardGetter(inout value: String!, key: String) -> String! {
+    private func standardGetter(_ value: inout String!, key: String) -> String! {
         if (value == nil) {
             value = self.defaultsManager.readStringFromUserDefaults(key)
         }
         return value
     }
 
-    private func standardSetter(inout value: String!, newValue: String!, key: String) {
+    private func standardSetter(_ value: inout String!, newValue: String!, key: String) {
         self.defaultsManager.writeStringToUserDefaults(newValue,key: key)
         value = newValue
     }

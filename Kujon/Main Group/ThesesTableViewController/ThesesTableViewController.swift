@@ -20,10 +20,10 @@ class ThesesTableViewController: UITableViewController {
     }
 
     private func setupTableView() {
-        tableView.registerNib(UINib(nibName: "ThesisCell", bundle: nil), forCellReuseIdentifier: cellId)
+        tableView.register(UINib(nibName: "ThesisCell", bundle: nil), forCellReuseIdentifier: cellId)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 400
-        tableView.separatorStyle = .None
+        tableView.separatorStyle = .none
         tableView.backgroundColor = .lightGray()
     }
 
@@ -34,17 +34,17 @@ class ThesesTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return theses?.count ?? 0
     }
 
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! ThesisCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ThesisCell
         cell.thesis = theses?[indexPath.row]
         return cell
     }

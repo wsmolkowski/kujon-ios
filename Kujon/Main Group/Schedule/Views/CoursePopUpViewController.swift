@@ -48,16 +48,16 @@ class CoursePopUpViewController: PopUpViewController {
 
     }
 
-    private func createNiceString(one:String, two:String)->String{
+    private func createNiceString(_ one:String, two:String)->String{
         return String(format: "%@: %@",one,two)
     }
 
     
-    @IBAction func seeLectureButtonAction(sender: AnyObject) {
+    @IBAction func seeLectureButtonAction(_ sender: AnyObject) {
         self.removeAnimate({self.delegate?.showCourseDetails()})
     }
 
-    @IBAction func okButtonAction(sender: AnyObject) {
+    @IBAction func okButtonAction(_ sender: AnyObject) {
         self.removeAnimate()
     }
     /*

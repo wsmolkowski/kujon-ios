@@ -7,33 +7,27 @@ import Foundation
 import UIKit
 
 protocol OnImageLoadedFromRest {
-    func imageLoaded(tag: String, image: UIImage)
+    func imageLoaded(_ tag: String, image: UIImage)
 }
 
 class RestImageProvider {
+
     static let sharedInstance =  RestImageProvider()
     private let headerManager = HeaderManager()
 
-
-     func loadImage(tag: String, urlString: String, onImageLoaded: OnImageLoadedFromRest) {
-        var request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
+    func loadImage(_ tag: String, urlString: String, onImageLoaded: OnImageLoadedFromRest) {
+        var request = URLRequest(url: URL(string: urlString)!)
         self.headerManager.addHeadersToRequest(&request)
         let session = SessionManager.provideSession()
-        let task = session.dataTaskWithRequest(request, completionHandler: {
+        let task = session.dataTask(with: request, completionHandler: {
             data, response, error -> Void in
-            if (data != nil) {
-
-                if let image = UIImage(data: data!,scale: 1.0) {
-                    dispatch_async(dispatch_get_main_queue()) {
-                        onImageLoaded.imageLoaded(tag,image: image)
-                    }
+            if let data = data,
+                let image = UIImage(data: data, scale: 1.0){
+                DispatchQueue.main.async {
+                    onImageLoaded.imageLoaded(tag, image:image)
                 }
-
-
             }
         })
         task.resume()
     }
-
-
 }

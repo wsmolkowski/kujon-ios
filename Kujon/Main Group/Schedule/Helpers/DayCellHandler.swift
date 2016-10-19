@@ -14,7 +14,7 @@ class DayCellHandler:CellHandlerProtocol {
         self.dayWrapper = dayWrapper
     }
 
-    func handleCell(inout cell: UITableViewCell) {
+    func handleCell(_ cell: inout UITableViewCell) {
         (cell as! DayTableViewCell).dayLabel.text = dayWrapper.dayTime
     }
 

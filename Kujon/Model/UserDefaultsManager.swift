@@ -6,32 +6,32 @@
 import Foundation
 
 class UserDefaultsManager {
-    private var userDefaults:NSUserDefaults
+    private var userDefaults:UserDefaults
 
-    init(withNSUserDefaults defaults:NSUserDefaults){
+    init(withNSUserDefaults defaults:UserDefaults){
         self.userDefaults = defaults
     }
 
 
 
-    func readStringFromUserDefaults(key:String)->String!{
-        return self.userDefaults.stringForKey(key)
+    func readStringFromUserDefaults(_ key:String)->String!{
+        return self.userDefaults.string(forKey: key)
     }
 
-    func writeStringToUserDefaults(value:String!,key:String){
+    func writeStringToUserDefaults(_ value:String!,key:String){
         if(value != nil){
-            self.userDefaults.setObject(value,forKey: key)
+            self.userDefaults.set(value,forKey: key)
         }else {
-            self.userDefaults.removeObjectForKey(key)
+            self.userDefaults.removeObject(forKey: key)
         }
 
     }
 
-    func readBooleanFromUserDefaults(key:String) ->Bool{
-        return self.userDefaults.boolForKey(key)
+    func readBooleanFromUserDefaults(_ key:String) ->Bool{
+        return self.userDefaults.bool(forKey: key)
     }
 
-    func writeBoolToUserDefaults(value:Bool,key:String){
-        self.userDefaults.setBool(value,forKey: key)
+    func writeBoolToUserDefaults(_ value:Bool,key:String){
+        self.userDefaults.set(value,forKey: key)
     }
 }

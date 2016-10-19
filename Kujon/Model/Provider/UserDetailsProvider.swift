@@ -10,12 +10,12 @@ protocol UserDetailsProviderProtocol: JsonProviderProtocol {
 
     func loadUserDetail()
 
-    func loadUserDetail(id: String)
-    func loadStudentDetails(id: String)
+    func loadUserDetail(_ id: String)
+    func loadStudentDetails(_ id: String)
 }
 
 protocol UserDetailsProviderDelegate: ErrorResponseProtocol {
-    func onUserDetailLoaded(userDetails: UserDetail)
+    func onUserDetailLoaded(_ userDetails: UserDetail)
 
 }
 
@@ -41,7 +41,7 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
         return baseURL + endpoint
     }
 
-    func loadUserDetail(id: String) {
+    func loadUserDetail(_ id: String) {
         endpoint = "/lecturers/" + id
         self.makeHTTPAuthenticatedGetRequest({
             json in
@@ -51,7 +51,7 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
         }, onError: {text in self.delegate?.onErrorOccurs() })
     }
 
-    func loadStudentDetails(id: String) {
+    func loadStudentDetails(_ id: String) {
         endpoint = "/users/" + id
         self.makeHTTPAuthenticatedGetRequest({
             json in

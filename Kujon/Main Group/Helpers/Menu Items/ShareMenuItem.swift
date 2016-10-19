@@ -31,7 +31,7 @@ class ShareMenuItem : MenuItemWithController {
         return true
     }
 
-    func returnURL() -> NSURL! {
+    func returnURL() -> URL! {
         return nil
     }
 

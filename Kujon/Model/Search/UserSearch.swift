@@ -26,7 +26,7 @@ struct UserSearchResponse: GetListOfSearchElements {
 }
 
 extension UserSearchResponse: Decodable {
-    static func decode(j: AnyObject) throws -> UserSearchResponse {
+    static func decode(_ j: Any) throws -> UserSearchResponse {
         return try UserSearchResponse(
                 data: j => "data"
                 )
@@ -37,7 +37,7 @@ struct UserSearchData: Decodable {
 
     let items: Array<UserSearch>
     let nextPage: Bool
-    static func decode(j: AnyObject) throws -> UserSearchData {
+    static func decode(_ j: Any) throws -> UserSearchData {
         return try UserSearchData(
                 items: j => "items",
                 nextPage: j => "next_page"
@@ -50,7 +50,7 @@ struct UserSearchSuper: Decodable {
     let userId: String
     let staffStatus: String
     let studentStatus: String
-    static func decode(j: AnyObject) throws -> UserSearchSuper {
+    static func decode(_ j: Any) throws -> UserSearchSuper {
         return try UserSearchSuper(
                 userId: j => "id",
                 staffStatus: j => "staff_status",
@@ -63,7 +63,7 @@ struct UserSearch: SearchElementProtocol, Decodable {
     let match: String
     let user: UserSearchSuper
 
-    static func decode(j: AnyObject) throws -> UserSearch {
+    static func decode(_ j: Any) throws -> UserSearch {
         return try UserSearch(
                 match: j => "match",
                 user: j => "user"
@@ -74,16 +74,16 @@ struct UserSearch: SearchElementProtocol, Decodable {
         return self.match
     }
 
-    func reactOnClick(mainController: UINavigationController) {
+    func reactOnClick(_ mainController: UINavigationController) {
         var controller: UIViewController;
-        if (self.user.staffStatus.lowercaseString == "pracownik" || self.user.staffStatus.lowercaseString == "nauczyciel akademicki") {
-            controller = TeacherDetailTableViewController(nibName: "TeacherDetailTableViewController", bundle: NSBundle.mainBundle())
+        if (self.user.staffStatus.lowercased() == "pracownik" || self.user.staffStatus.lowercased() == "nauczyciel akademicki") {
+            controller = TeacherDetailTableViewController(nibName: "TeacherDetailTableViewController", bundle: Bundle.main)
             (controller as! TeacherDetailTableViewController).teacherId = self.user.userId
-        } else if (self.user.studentStatus.lowercaseString == "aktywny student") {
-            controller = StudentDetailsTableViewController(nibName: "StudentDetailsTableViewController", bundle: NSBundle.mainBundle())
+        } else if (self.user.studentStatus.lowercased() == "aktywny student") {
+            controller = StudentDetailsTableViewController(nibName: "StudentDetailsTableViewController", bundle: Bundle.main)
             (controller as! StudentDetailsTableViewController).userId = self.user.userId
         } else {
-            controller = StudentDetailsTableViewController(nibName: "StudentDetailsTableViewController", bundle: NSBundle.mainBundle())
+            controller = StudentDetailsTableViewController(nibName: "StudentDetailsTableViewController", bundle: Bundle.main)
             (controller as! StudentDetailsTableViewController).userId = self.user.userId
         }
 

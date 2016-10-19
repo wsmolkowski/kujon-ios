@@ -8,7 +8,7 @@ import Decodable
 
 struct TheseSearchResponse: Decodable, GetListOfSearchElements {
     let data: TheseSearchData
-    static func decode(j: AnyObject) throws -> TheseSearchResponse {
+    static func decode(_ j: Any) throws -> TheseSearchResponse {
         return try TheseSearchResponse(
                 data: j => "data"
                 )
@@ -34,7 +34,7 @@ struct TheseSearchData: Decodable {
     let nextPage: Bool
 
 
-    static func decode(j: AnyObject) throws -> TheseSearchData {
+    static func decode(_ j: Any) throws -> TheseSearchData {
         return try TheseSearchData(
                 items: j => "items",
                 nextPage: j => "next_page"
@@ -46,7 +46,7 @@ struct TheseSearch: Decodable, SearchElementProtocol {
     let thesis: ThesisSearchInside
     let match: String
 
-    static func decode(json: AnyObject) throws -> TheseSearch {
+    static func decode(_ json: Any) throws -> TheseSearch {
         return try TheseSearch(
                 thesis: json => "thesis",
                 match: json => "match"
@@ -57,7 +57,7 @@ struct TheseSearch: Decodable, SearchElementProtocol {
         return self.match
     }
 
-    func reactOnClick(mainController: UINavigationController) {
+    func reactOnClick(_ mainController: UINavigationController) {
         let thesisDetailController = ThesisDetailTableViewController()
         thesisDetailController.thesis = thesis
         mainController.pushViewController(thesisDetailController, animated: true)
@@ -73,7 +73,7 @@ struct ThesisSearchInside: Decodable {
     let supervisors: Array<SimpleUser>?
     let faculty: FacultyShort?
 
-    static func decode(j: AnyObject) throws -> ThesisSearchInside {
+    static func decode(_ j: Any) throws -> ThesisSearchInside {
         return try ThesisSearchInside(
                 id: j => "id",
                 title: j => "title",

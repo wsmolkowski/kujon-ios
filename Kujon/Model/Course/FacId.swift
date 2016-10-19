@@ -13,7 +13,7 @@ struct FacId {
 
 
 extension FacId: Decodable {
-    static func decode(j: AnyObject) throws -> FacId {
+    static func decode(_ j: Any) throws -> FacId {
         return try FacId(
         id: j => "fac_id",
                 name: j => "name"

@@ -21,7 +21,7 @@ class UsosTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .None
+        selectionStyle = .none
         updateCellState()
         backgroundColor = UIColor.greyBackgroundColor()
 

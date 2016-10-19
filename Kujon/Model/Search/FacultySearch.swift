@@ -10,7 +10,7 @@ import Decodable
 
 struct FacultySearchResponse:Decodable, GetListOfSearchElements{
     let data: FacultySearchData
-    static func decode(j: AnyObject) throws -> FacultySearchResponse {
+    static func decode(_ j: Any) throws -> FacultySearchResponse {
         return try FacultySearchResponse(
                 data: j => "data"
                 )
@@ -36,7 +36,7 @@ struct FacultySearchData: Decodable {
 
     let items: Array<FacultySearch>
     let nextPage: Bool
-    static func decode(j: AnyObject) throws -> FacultySearchData {
+    static func decode(_ j: Any) throws -> FacultySearchData {
         return try FacultySearchData(
                 items: j => "items",
                 nextPage: j => "next_page"
@@ -48,7 +48,7 @@ struct FacultySearch:Decodable,SearchElementProtocol {
     let facId: String
     let match: String
 
-    static func decode(j: AnyObject) throws -> FacultySearch {
+    static func decode(_ j: Any) throws -> FacultySearch {
         return try FacultySearch(
                 facId: j => "id",
                 match: j => "match"
@@ -59,8 +59,8 @@ struct FacultySearch:Decodable,SearchElementProtocol {
         return self.match
     }
 
-    func reactOnClick(mainController: UINavigationController) {
-        let faculty = FacultieTableViewController(nibName: "FacultieTableViewController", bundle: NSBundle.mainBundle())
+    func reactOnClick(_ mainController: UINavigationController) {
+        let faculty = FacultieTableViewController(nibName: "FacultieTableViewController", bundle: Bundle.main)
         faculty.facultieId = self.facId
         mainController.pushViewController(faculty, animated: true)
     }

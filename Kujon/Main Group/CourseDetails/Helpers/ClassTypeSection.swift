@@ -11,17 +11,17 @@ class ClassTypeSection:SectionHelperProtocol {
 
 
     private var description: String! = nil
-    func fillUpWithData(courseDetails: CourseDetails) {
+    func fillUpWithData(_ courseDetails: CourseDetails) {
         description = ""
         if(courseDetails.groups != nil){
             for courseGroup in courseDetails.groups! {
-                description.appendContentsOf(courseGroup.classType +  "\n")
+                description.append(courseGroup.classType +  "\n")
             }
         }
     }
 
-    func registerView(tableView: UITableView) {
-        tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: classTypeCellId)
+    func registerView(_ tableView: UITableView) {
+        tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: classTypeCellId)
     }
 
     func getSectionTitle() -> String {
@@ -41,14 +41,14 @@ class ClassTypeSection:SectionHelperProtocol {
         return StandartSection.sectionHeight
     }
 
-    func giveMeCellAtPosition(tableView: UITableView, onPosition position: NSIndexPath) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCellWithIdentifier(classTypeCellId, forIndexPath: position) as! GoFurtherViewCellTableViewCell
+    func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath) -> UITableViewCell! {
+        let cell = tableView.dequeueReusableCell(withIdentifier: classTypeCellId, for: position) as! GoFurtherViewCellTableViewCell
         cell.plainLabel.text = description
-        cell.arrow.hidden = true
+        cell.arrow.isHidden = true
         return cell
     }
 
-    func reactOnSectionClick(position: Int, withController controller: UINavigationController?) {
+    func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?) {
 //        let textController = TextViewController(nibName: "TextViewController", bundle: NSBundle.mainBundle())
 //        textController.text = description
 //        textController.myTitle = getSectionTitle()

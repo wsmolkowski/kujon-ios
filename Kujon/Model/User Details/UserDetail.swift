@@ -31,12 +31,11 @@ struct UserDetail: Decodable {
     let employmentPosition: Array<EmploymentPosition>?
     let hasEmail: Bool
     let usosId: String?
-    let hasPhoto: Bool
     let email: String?
     let google: Account?
 
 
-    static func decode(j: AnyObject) throws -> UserDetail {
+    static func decode(_ j: Any) throws -> UserDetail {
         return try UserDetail (
                 updateTime: try? j => "update_time",
                 createdTime: try? j => "user_created",
@@ -62,7 +61,6 @@ struct UserDetail: Decodable {
                 employmentPosition: try? j => "employment_positions",
                 hasEmail: j => "has_email",
                 usosId: try? j => "usos_id",
-                hasPhoto: j => "has_photo",
                 email: try? j => "email",
                 google: try? j => "google")
 

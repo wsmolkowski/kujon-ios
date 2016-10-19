@@ -15,7 +15,7 @@ struct SchoolStats {
 }
 
 extension SchoolStats: Decodable {
-    static func decode(j: AnyObject) throws -> SchoolStats {
+    static func decode(_ j: Any) throws -> SchoolStats {
         return try SchoolStats(
         courseCount: j => "course_count",
                 programmeCount: j => "programme_count",

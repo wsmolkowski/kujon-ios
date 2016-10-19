@@ -9,7 +9,7 @@
 import UIKit
 
 protocol LeftMenuTableViewControllerDelegate {
-    func selectedMenuItem(menuController: LeftMenuTableViewController, menuItem: MenuItemWithController, withDelegate: Bool)
+    func selectedMenuItem(_ menuController: LeftMenuTableViewController, menuItem: MenuItemWithController, withDelegate: Bool)
 
 }
 
@@ -28,10 +28,10 @@ class LeftMenuTableViewController: UITableViewController {
 
         listOfUpperItems = MenuItemsHolder.sharedInstance.upperMenuItems;
         listOfLowerItems = MenuItemsHolder.sharedInstance.lowerMnuItems;
-        self.tableView.registerNib(UINib(nibName: "MenuItemTableViewCell", bundle: nil), forCellReuseIdentifier: MenuItemCellIdentiefier)
-        self.tableView.registerNib(UINib(nibName: "NavDrawerHeaderViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: MenuItemHeaderIdentiefier)
+        self.tableView.register(UINib(nibName: "MenuItemTableViewCell", bundle: nil), forCellReuseIdentifier: MenuItemCellIdentiefier)
+        self.tableView.register(UINib(nibName: "NavDrawerHeaderViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: MenuItemHeaderIdentiefier)
         self.tableView.tableFooterView = UIView()
-        self.tableView.separatorStyle = .None
+        self.tableView.separatorStyle = .none
         self.view.backgroundColor = UIColor.greyBackgroundColor()
 
     }
@@ -43,11 +43,11 @@ class LeftMenuTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch (section) {
         case 0: return 1
         case 1: return listOfUpperItems.count
@@ -57,9 +57,9 @@ class LeftMenuTableViewController: UITableViewController {
     }
 
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section == 0) {
-            let cell: NavDrawerHeaderViewCellTableViewCell = tableView.dequeueReusableCellWithIdentifier(MenuItemHeaderIdentiefier, forIndexPath: indexPath) as! NavDrawerHeaderViewCellTableViewCell
+            let cell: NavDrawerHeaderViewCellTableViewCell = tableView.dequeueReusableCell(withIdentifier: MenuItemHeaderIdentiefier, for: indexPath) as! NavDrawerHeaderViewCellTableViewCell
             cell.userEmailLabel.text = self.userDataHolder.userEmail
             cell.userNameLabel.text = self.userDataHolder.userName
             if (self.userDataHolder.userImage != nil) {
@@ -67,22 +67,22 @@ class LeftMenuTableViewController: UITableViewController {
                 cell.userImageView.image = self.userDataHolder.userImage
             }
             cell.userImageView.makeMyselfCircle()
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
             return cell
         } else {
 
-            let cell: MenuItemTableViewCell = tableView.dequeueReusableCellWithIdentifier(MenuItemCellIdentiefier, forIndexPath: indexPath) as! MenuItemTableViewCell
+            let cell: MenuItemTableViewCell = tableView.dequeueReusableCell(withIdentifier: MenuItemCellIdentiefier, for: indexPath) as! MenuItemTableViewCell
             let menuItem = self.getCurrentMenuItem(indexPath)
             cell.myImage?.image = menuItem.returnImage()
             cell.myText.text = menuItem.returnTitle()
             cell.myText.font = UIFont.kjnTextStyle5Font()
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
             return cell
         }
 
     }
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch (indexPath.section) {
         case 0: return 145
         case 1: return 48
@@ -92,7 +92,7 @@ class LeftMenuTableViewController: UITableViewController {
     }
 
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section > 0) {
 
             let menuItem = self.getCurrentMenuItem(indexPath)
@@ -101,26 +101,26 @@ class LeftMenuTableViewController: UITableViewController {
                 if let actv = controller.popoverPresentationController {
                     actv.sourceView = self.view;
                 }
-                self.presentViewController(controller, animated: true, completion: nil)
+                self.present(controller, animated: true, completion: nil)
             }
             if (menuItem.returnViewController()) {
                 self.delegate?.selectedMenuItem(self, menuItem: menuItem, withDelegate: indexPath.section == 1)
             } else {
                 if let url = (menuItem as! MenuItemWithURL).returnURL() {
 
-                    UIApplication.sharedApplication().openURL(url)
+                    UIApplication.shared.openURL(url as URL)
                 }
             }
         }
     }
 
-    private func getCurrentMenuItem(indexPath: NSIndexPath) -> MenuItemWithController {
+    private func getCurrentMenuItem(_ indexPath: IndexPath) -> MenuItemWithController {
         var list = indexPath.section - 1 == 0 ? listOfUpperItems : listOfLowerItems
-        return list[indexPath.row] as MenuItemWithController
+        return list![indexPath.row] as MenuItemWithController
     }
 
 
-    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if (section == 1) {
             return 1
 

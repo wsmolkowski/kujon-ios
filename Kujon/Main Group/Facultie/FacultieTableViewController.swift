@@ -9,6 +9,26 @@
 import UIKit
 import MapKit
 import CoreLocation
+private func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+private func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class FacultieTableViewController: UITableViewController, FacultieProviderDelegate, MKMapViewDelegate {
     var facultie: Facultie! = nil
@@ -21,15 +41,17 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(FacultieTableViewController.back), andTitle: StringHolder.faculty)
 
-        self.tableView.registerNib(UINib(nibName: "MapTableViewCell", bundle: nil), forCellReuseIdentifier: mapCellId)
-        self.tableView.registerNib(UINib(nibName: "FacultieHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: headerCellId)
-        self.tableView.registerNib(UINib(nibName: "TelephoneTableViewCell", bundle: nil), forCellReuseIdentifier: telephoneCellId)
-        self.tableView.registerNib(UINib(nibName: "WWWTableViewCell", bundle: nil), forCellReuseIdentifier: wwwCellId)
+        self.tableView.register(UINib(nibName: "MapTableViewCell", bundle: nil), forCellReuseIdentifier: mapCellId)
+        self.tableView.register(UINib(nibName: "FacultieHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: headerCellId)
+        self.tableView.register(UINib(nibName: "TelephoneTableViewCell", bundle: nil), forCellReuseIdentifier: telephoneCellId)
+        self.tableView.register(UINib(nibName: "WWWTableViewCell", bundle: nil), forCellReuseIdentifier: wwwCellId)
         self.tableView.tableFooterView = UIView()
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         self.tableView.allowsSelection = false
+
         if (facultie != nil) {
         } else if (facultieId != nil) {
             facultieProvider.delegate = self
@@ -37,24 +59,26 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         }
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if let cell = (self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! MapTableViewCell!) {
+        if let cell = (self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! MapTableViewCell!) {
             cell.mapView.delegate = self;
         }
 
     }
 
     func back() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
 
-    func onFacultieLoaded(fac: Facultie) {
+    func onFacultieLoaded(_ fac: Facultie) {
+
         self.facultie = fac
         self.tableView.reloadData()
     }
 
-    func onErrorOccurs(text: String) {
+    func onErrorOccurs(_ text: String) {
+
         self.showAlertApi(StringHolder.attention, text: text, succes: {
             self.facultieProvider.delegate = self
             self.facultieProvider.loadFacultie(self.facultieId)
@@ -64,12 +88,12 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
 
         return 4
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
         case 1: return self.facultie != nil ? 1 : 0
@@ -81,7 +105,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
     }
 
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         switch indexPath.section {
         case 0:
@@ -98,7 +122,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         }
     }
 
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
             return 120
@@ -115,7 +139,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
     }
 
 
-    @available(iOS 2.0, *) override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 2:
 
@@ -129,23 +153,23 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         }
     }
 
-    private func configureMapCell(indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(mapCellId, forIndexPath: indexPath) as! MapTableViewCell
+    private func configureMapCell(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: mapCellId, for: indexPath) as! MapTableViewCell
         cell.mapView.delegate = self
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(FacultieTableViewController.onMapClick))
         tapGestureRecognizer.numberOfTapsRequired = 1
         cell.mapView.addGestureRecognizer(tapGestureRecognizer)
-        cell.mapView.userInteractionEnabled = true
+        cell.mapView.isUserInteractionEnabled = true
 
         if (facultie != nil && facultie.postalAdress != nil) {
             let geocoder: CLGeocoder = CLGeocoder();
             geocoder.geocodeAddressString(facultie.postalAdress, completionHandler: {
-                (placemarks: [CLPlacemark]?, error: NSError?) -> Void in
+                placemarks, error in
                 if placemarks?.count > 0 {
                     let topResult: CLPlacemark = placemarks![0];
                     let placemark: MKPlacemark = MKPlacemark(placemark: topResult);
 
-                    if let cell = self.tableView.cellForRowAtIndexPath(indexPath) {
+                    if let cell = self.tableView.cellForRow(at: indexPath) {
                         let rgn = MKCoordinateRegionMakeWithDistance(
                                 placemark.location!.coordinate, 500, 500);
 
@@ -159,12 +183,12 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         return cell
     }
 
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
             return nil
         }
         let reuseId = String(stringInterpolationSegment: annotation.coordinate.longitude)
-        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as MKAnnotationView!
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as MKAnnotationView!
 
         if pinView == nil {
 
@@ -179,8 +203,8 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
     }
 
 
-    private func configureHeaderCell(indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(headerCellId, forIndexPath: indexPath) as! FacultieHeaderTableViewCell
+    private func configureHeaderCell(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: headerCellId, for: indexPath) as! FacultieHeaderTableViewCell
         cell.adressLabel.text = facultie.postalAdress
         cell.facultieNameLabel.text = facultie.name
         loadImage(facultie.logUrls.p100x100, indexPath: indexPath)
@@ -190,36 +214,36 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
     func onMapClick() {
         if(facultie.postalAdress != nil){
             let baseUrl: String = "http://maps.apple.com/?q="
-            let encodedName = facultie.postalAdress.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet()) ?? ""
+            let encodedName = facultie.postalAdress.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
             let finalUrl = baseUrl + encodedName
-            if let url = NSURL(string: finalUrl) {
-                UIApplication.sharedApplication().openURL(url)
+            if let url = URL(string: finalUrl) {
+                UIApplication.shared.openURL(url)
             }
         }
     }
 
-    private func configurePhoneCell(indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(telephoneCellId, forIndexPath: indexPath) as! TelephoneTableViewCell
+    private func configurePhoneCell(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: telephoneCellId, for: indexPath) as! TelephoneTableViewCell
         cell.telephoneNumberLabel.text = self.facultie.phoneNumber[indexPath.row]
         return cell
     }
 
-    private func configureWWWCell(indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(wwwCellId, forIndexPath: indexPath) as! WWWTableViewCell
+    private func configureWWWCell(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: wwwCellId, for: indexPath) as! WWWTableViewCell
         cell.wwwLabel.text = self.facultie.homePageUrl
         return cell
     }
 
 
-    private func loadImage(urlString: String, indexPath: NSIndexPath) {
-        let url = NSURL(string: urlString)
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithURL(url!, completionHandler: {
+    private func loadImage(_ urlString: String, indexPath: IndexPath) {
+        let url = URL(string: urlString)
+        let session = URLSession.shared
+        let task = session.dataTask(with: url!, completionHandler: {
             data, response, error -> Void in
             if (data != nil) {
                 let image = UIImage(data: data!)
-                dispatch_async(dispatch_get_main_queue()) {
-                    if let cell = self.tableView.cellForRowAtIndexPath(indexPath) {
+                DispatchQueue.main.async {
+                    if let cell = self.tableView.cellForRow(at: indexPath) {
                         (cell as! FacultieHeaderTableViewCell).facultieImageView.image = image
                     }
 

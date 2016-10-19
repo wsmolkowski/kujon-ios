@@ -16,7 +16,7 @@ extension UIView{
 
     func makeMyselfCircleWithBorder(){
         self.makeMyselfCircle()
-        self.layer.borderColor = UIColor.whiteColor().CGColor
+        self.layer.borderColor = UIColor.white.cgColor
         self.layer.borderWidth = 1
 
     }

@@ -15,14 +15,14 @@ class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let url = NSURL (string: "https://kujon.mobi/regulamin");
-        let requestObj = NSURLRequest(URL: url!);
+        let url = URL (string: "https://kujon.mobi/regulamin");
+        let requestObj = URLRequest(url: url!);
         webView.loadRequest(requestObj);
-         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Zamknij", style: UIBarButtonItemStyle.Done, target: self, action: #selector(WebViewController.done))
+         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Zamknij", style: UIBarButtonItemStyle.done, target: self, action: #selector(WebViewController.done))
     }
 
     func done() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 
 }

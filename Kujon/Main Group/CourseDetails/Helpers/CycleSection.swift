@@ -11,7 +11,7 @@ class CycleSection: SectionHelperProtocol {
 
     private var description: String! = nil
     private var terms: Array<Term> = Array()
-    func fillUpWithData(courseDetails: CourseDetails) {
+    func fillUpWithData(_ courseDetails: CourseDetails) {
         if(courseDetails.term != nil) {
 
 
@@ -22,8 +22,8 @@ class CycleSection: SectionHelperProtocol {
         }
     }
 
-    func registerView(tableView: UITableView) {
-        tableView.registerNib(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: cycleId)
+    func registerView(_ tableView: UITableView) {
+        tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: cycleId)
     }
 
     func getSectionTitle() -> String {
@@ -41,17 +41,17 @@ class CycleSection: SectionHelperProtocol {
     func getSectionHeaderHeight() -> CGFloat {
         return StandartSection.sectionHeight
     }
-    func giveMeCellAtPosition(tableView: UITableView, onPosition position: NSIndexPath) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cycleId, forIndexPath: position) as! GoFurtherViewCellTableViewCell
-        cell.plainLabel.text = terms[position.row].name
+    func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath) -> UITableViewCell! {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cycleId, for: position) as! GoFurtherViewCellTableViewCell
+        cell.plainLabel.text = terms[(position as NSIndexPath).row].name
         return cell
     }
 
-    func reactOnSectionClick(position: Int, withController controller: UINavigationController?) {
+    func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?) {
         let term = terms[position]
-        let popController = TermsPopUpViewController(nibName: "TermsPopUpViewController", bundle: NSBundle.mainBundle())
-        popController.modalPresentationStyle = .OverCurrentContext
-        controller?.presentViewController(popController, animated: false, completion: { popController.showAnimate(); })
+        let popController = TermsPopUpViewController(nibName: "TermsPopUpViewController", bundle: Bundle.main)
+        popController.modalPresentationStyle = .overCurrentContext
+        controller?.present(popController, animated: false, completion: { popController.showAnimate(); })
 
         popController.showInView(term)
     }

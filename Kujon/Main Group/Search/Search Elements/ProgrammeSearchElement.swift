@@ -12,13 +12,13 @@ class ProgrammeSearchElement: SearchViewProtocol {
     func provideSearchProtocol() -> SearchProviderProtocol {
         return ProgrammeSearchProvider()
     }
-    func registerView(tableView: UITableView) {
-        tableView.registerNib(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: myCellId)
+    func registerView(_ tableView: UITableView) {
+        tableView.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: myCellId)
     }
 
 
-    func provideUITableViewCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> SearchTableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(myCellId, forIndexPath: indexPath) as! SearchTableViewCell
+    func provideUITableViewCell(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> SearchTableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: myCellId, for: indexPath) as! SearchTableViewCell
         cell.configureCellWithTitle("Kierunek", textInputPlaceholder: "Nazwa kierunku")
         return cell
     }

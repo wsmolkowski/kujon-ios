@@ -9,12 +9,12 @@ import Foundation
 protocol LectureProviderProtocol: JsonProviderProtocol {
     associatedtype T = LectureResponse
 
-    func loadLectures(date: String)
+    func loadLectures(_ date: String)
 
 }
 
 protocol LectureProviderDelegate: ErrorResponseProtocol {
-    func onLectureLoaded(lectures: Array<Lecture>)
+    func onLectureLoaded(_ lectures: Array<Lecture>)
 
 }
 
@@ -24,7 +24,7 @@ weak var delegate: LectureProviderDelegate!
     var endpoint: String! = nil
     var endpointParameter: String = "?lecturers_info=False"
 
-    func loadLectures(date: String) {
+    func loadLectures(_ date: String) {
         endpoint = "/tt/" + date
         self.makeHTTPAuthenticatedGetRequest({
             json in

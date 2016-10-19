@@ -11,7 +11,8 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import Crashlytics
 
-class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
+class EntryViewController: UIViewController,
+        FBSDKLoginButtonDelegate,
         OnFacebookCredentailSaved,
         GIDSignInUIDelegate,
         GIDSignInDelegate,
@@ -38,13 +39,13 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
 
 
         super.viewDidLoad()
-        UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
+        UIApplication.shared.statusBarStyle = .lightContent
         navigationController?.navigationBar.barTintColor = UIColor.kujonBlueColor()
-        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navigationController?.navigationBar.tintColor = UIColor.white
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = titleDict as? [String:AnyObject]
 
-        self.edgesForExtendedLayout = UIRectEdge.None
+        self.edgesForExtendedLayout = UIRectEdge()
         self.title = "Kujon"
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         loginButton.delegate = self
@@ -57,34 +58,34 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
         },googleComplete: {
             GIDSignIn.sharedInstance().signInSilently()
         } , noLogged: {
-            self.spinnerView.hidden = true
+            self.spinnerView.isHidden = true
         })
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(EntryViewController.showTerms))
         tapGestureRecognizer.numberOfTapsRequired = 1
-        rejestrujacLabel.userInteractionEnabled = true
+        rejestrujacLabel.isUserInteractionEnabled = true
         rejestrujacLabel.addGestureRecognizer(tapGestureRecognizer)
 
-        loginButton.tooltipColorStyle = .NeutralGray
+        loginButton.tooltipColorStyle = .neutralGray
 
     }
 
 
-    func showTerms(sender: UITapGestureRecognizer){
+    func showTerms(_ sender: UITapGestureRecognizer){
         NSlogManager.showLog("showTermsAndConditions")
         var controller: UIViewController!
         controller = WebViewController()
         let navigationController = UINavigationController(rootViewController: controller)
-        self.presentViewController(navigationController, animated: true, completion: nil)
+        self.present(navigationController, animated: true, completion: nil)
 
     }
-    @IBAction func registerClick(sender: AnyObject) {
+    @IBAction func registerClick(_ sender: AnyObject) {
         let controller = RegisterViewController()
         controller.delegate = self
         self.navigationController?.pushViewController(controller, animated: true)
     }
 
-    @IBAction func onLoginClick(sender: AnyObject) {
+    @IBAction func onLoginClick(_ sender: AnyObject) {
         let controller = LoginViewController()
         controller.delegeta = self
         self.navigationController?.pushViewController(controller, animated: true)
@@ -94,96 +95,92 @@ class EntryViewController: UIViewController, FBSDKLoginButtonDelegate,
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if error == nil {
             if(result != nil && !result!.isCancelled){
                 print("Load FB params on login success")
                 facebookManager.loadFBParams(self)
             }
-
-
-//            self.openList(nil)
         } else {
+            presentAlertWithMessage("Wystąpił błąd podczas logowania przez serwis Facebook", title: "Błąd")
             print(error.localizedDescription)
+            
         }
     }
 
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("User Loged out...")
 //        facebookManager.logout(LogoutSucces())
     }
 
 
-    func onFacebookCredentailSaved(isLogged: Bool) {
+    func onFacebookCredentailSaved(_ isLogged: Bool) {
         socialLogin = true
-        spinnerView.hidden = false
+        spinnerView.isHidden = false
         self.configProvider.checkConfig()
 
     }
 
     func notLogged() {
-        spinnerView.hidden = true
+        spinnerView.isHidden = true
         if (socialLogin) {
             var controller: UIViewController!
 
             controller = UsosHolderController()
 
-            self.presentViewController(controller, animated: true, completion: nil)
+            self.present(controller, animated: true, completion: nil)
         }
     }
 
     func pairedWithUsos() {
-        spinnerView.hidden = true
-        self.presentViewController(ContainerViewController(), animated: true, completion: nil)
+        spinnerView.isHidden = true
+        self.present(ContainerViewController(), animated: true, completion: nil)
     }
 
     func notPairedWithUsos() {
-        spinnerView.hidden = true
-        self.presentViewController(UsosHolderController(), animated: true, completion: nil)
+        spinnerView.isHidden = true
+        self.present(UsosHolderController(), animated: true, completion: nil)
     }
 
     func usosDown() {
-        spinnerView.hidden = true
+        spinnerView.isHidden = true
         self.showAlertApi(StringHolder.attention, text: StringHolder.errorUsos, succes: {
-            self.spinnerView.hidden = false
+            self.spinnerView.isHidden = false
             self.configProvider.checkConfig()
         }, cancel: {})
     }
 
-    func onErrorOccurs(text: String) {
+    func onErrorOccurs(_ text: String) {
         self.showAlertApi(StringHolder.attention, text: text, succes: {
-            self.spinnerView.hidden = true
+            self.spinnerView.isHidden = true
         }, cancel: {
-            self.spinnerView.hidden = true
+            self.spinnerView.isHidden = true
         })
     }
 
 
-    override func unauthorized(text: String) {
+    override func unauthorized(_ text: String) {
         self.showAlertApi(StringHolder.attention, text: text, succes: {
-            self.spinnerView.hidden = false
+            self.spinnerView.isHidden = false
             self.configProvider.checkConfig()
         }, cancel: {
-            self.spinnerView.hidden = true
+            self.spinnerView.isHidden = true
         },show: false)
     }
 
-
-    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
-                withError error: NSError!) {
+    public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if (error == nil) {
             let googleManager = GoogleManager.sharedInstance
             googleManager.loadGoogleParams(self)
 
 
         } else {
-            self.spinnerView.hidden = true
+            self.spinnerView.isHidden = true
             print("\(error.localizedDescription)")
         }
     }
 
-    func openLoginScreenWithEmail(email: String) {
+    func openLoginScreenWithEmail(_ email: String) {
         let controller = LoginViewController()
         controller.delegeta = self
         controller.email = email

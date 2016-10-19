@@ -23,26 +23,26 @@ class RegisterViewController: UIViewController, RegistrationProviderDelegate {
 
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(RegisterViewController.back), andTitle: StringHolder.appName)
-        self.edgesForExtendedLayout = UIRectEdge.None
+        self.edgesForExtendedLayout = UIRectEdge()
         self.registerProvider.delegate = self;
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterViewController.showTerms))
         tapGestureRecognizer.numberOfTapsRequired = 1
-        rejestrujacLabel.userInteractionEnabled = true
+        rejestrujacLabel.isUserInteractionEnabled = true
         rejestrujacLabel.addGestureRecognizer(tapGestureRecognizer)
     }
 
-    func showTerms(sender: UITapGestureRecognizer) {
+    func showTerms(_ sender: UITapGestureRecognizer) {
         NSlogManager.showLog("showTermsAndConditions")
         var controller: UIViewController!
         controller = WebViewController()
         let navigationController = UINavigationController(rootViewController: controller)
-        self.presentViewController(navigationController, animated: true, completion: nil)
+        self.present(navigationController, animated: true, completion: nil)
 
     }
 
     func back() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,25 +51,25 @@ class RegisterViewController: UIViewController, RegistrationProviderDelegate {
     }
 
 
-    func onRegisterResponse(text: String) {
-        let alertController = UIAlertController(title: StringHolder.attention, message: text, preferredStyle: .Alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
+    func onRegisterResponse(_ text: String) {
+        let alertController = UIAlertController(title: StringHolder.attention, message: text, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {
             (action: UIAlertAction!) in
-            alertController.dismissViewControllerAnimated(true, completion: nil)
+            alertController.dismiss(animated: true, completion: nil)
             self.back()
             if(self.delegate != nil){
                 self.delegate.openLoginScreenWithEmail(self.emailText)
             }
 
         }))
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 
-    func onErrorOccurs(text: String) {
+    func onErrorOccurs(_ text: String) {
         showAlert(text)
     }
 
-    @IBAction func onRegisterClick(sender: AnyObject) {
+    @IBAction func onRegisterClick(_ sender: AnyObject) {
         let email = emailTextField.text!
         if (!checker.isEmail(email)) {
             showAlert(StringHolder.emailPasswordError)
@@ -90,13 +90,13 @@ class RegisterViewController: UIViewController, RegistrationProviderDelegate {
     }
 
 
-    private func showAlert(text: String) {
-        let alertController = UIAlertController(title: "Błąd rejestracji ", message: text, preferredStyle: .Alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
+    private func showAlert(_ text: String) {
+        let alertController = UIAlertController(title: "Błąd rejestracji ", message: text, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {
             (action: UIAlertAction!) in
-            alertController.dismissViewControllerAnimated(true, completion: nil)
+            alertController.dismiss(animated: true, completion: nil)
 
         }))
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 }
