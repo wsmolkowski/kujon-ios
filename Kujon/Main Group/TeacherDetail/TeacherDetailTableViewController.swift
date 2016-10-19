@@ -170,7 +170,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
             cell.teacherRoomLabel.text = self.userDetails.room!.getRoomString()
         }
 
-        if (userDetails.hasPhoto && userDetails.photoUrl != nil) {
+        if (userDetails.photoUrl != nil) {
             restImageProvider.loadImage("", urlString: userDetails.photoUrl!, onImageLoaded: self)
         }
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TeacherDetailTableViewController.imageTapped))

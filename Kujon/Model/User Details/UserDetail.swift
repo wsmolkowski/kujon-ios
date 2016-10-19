@@ -31,7 +31,6 @@ struct UserDetail: Decodable {
     let employmentPosition: Array<EmploymentPosition>?
     let hasEmail: Bool
     let usosId: String?
-    let hasPhoto: Bool
     let email: String?
     let google: Account?
 
@@ -62,7 +61,6 @@ struct UserDetail: Decodable {
                 employmentPosition: try? j => "employment_positions",
                 hasEmail: j => "has_email",
                 usosId: try? j => "usos_id",
-                hasPhoto: j => "has_photo",
                 email: try? j => "email",
                 google: try? j => "google")
 
