@@ -19,7 +19,7 @@ class FacultySearchElement: SearchViewProtocol {
 
     func provideUITableViewCell(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> SearchTableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: myCellId, for: indexPath) as! SearchTableViewCell
-        cell.configureCellWithTitle("Wydziały", textInputPlaceholder: "Nazwa wydziału")
+        cell.configureCellWithTitle(StringHolder.faculties, textInputPlaceholder: StringHolder.facultyName)
         return cell
     }
 
