@@ -30,6 +30,7 @@ class GradesTableViewController: UITableViewController
         self.tableView.register(UINib(nibName: "Grade2TableViewCell", bundle: nil), forCellReuseIdentifier: GradeCellIdentiefer)
         gradesProvider.loadGrades()
         self.tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(GradesTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
@@ -105,13 +106,9 @@ class GradesTableViewController: UITableViewController
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: GradeCellIdentiefer, for: indexPath) as! Grade2TableViewCell
-        let prepareGrade = self.myTermGrades[indexPath.section].grades[indexPath.row] 
-
-        cell.textGradeLabel.text = prepareGrade.grades.valueDescription
-        cell.gradeNumberLabel.text = prepareGrade.grades.valueSymbol
-        cell.descriptionLabel.text = prepareGrade.courseName
-        cell.secDescLabel.text = prepareGrade.grades.getClassType() + "  " + StringHolder.termin  + " " + String(prepareGrade.grades.examSessionNumber)
-        cell.layer.addBorder( UIRectEdge.top, color: UIColor.lightGray(), thickness: 1)
+        let prepareGrade = self.myTermGrades[indexPath.section].grades[indexPath.row]
+        cell.grade = prepareGrade.grades
+        cell.courseName = prepareGrade.courseName
         return cell
     }
 

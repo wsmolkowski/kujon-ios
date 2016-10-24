@@ -8,22 +8,38 @@
 
 import UIKit
 
-class Grade2TableViewCell: UITableViewCell {
-    
+class Grade2TableViewCell: GoFurtherViewCellTableViewCell {
+
     @IBOutlet weak var textGradeLabel: UILabel!
-    
     @IBOutlet weak var secDescLabel: UILabel!
     @IBOutlet weak var gradeNumberLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+
+    internal var grade: Grade? {
+        didSet {
+            if let grade = grade {
+                propagateGrade(grade)
+            }
+        }
+    }
+    internal var courseName: String? {
+        didSet {
+            if let courseName = courseName {
+                descriptionLabel.text = courseName
+            }
+        }
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    private func propagateGrade(_ grade:Grade) {
+        let gradeColor = grade.valueSymbol == "2" ? UIColor.red : UIColor.black
+        textGradeLabel.textColor = gradeColor
+        textGradeLabel.text = grade.valueDescription
+        gradeNumberLabel.textColor = gradeColor
+        gradeNumberLabel.text = grade.valueSymbol
+        secDescLabel.text = grade.getClassType() + "  " + StringHolder.termin  + " " + String(grade.examSessionNumber)
     }
-    
+
 }
+
+
+
