@@ -11,13 +11,11 @@ protocol SectionHelperProtocol {
 
     func registerView(_ tableView: UITableView)
 
-    func getSectionTitle() -> String
+    func getSectionTitle() -> String?
 
     func getSectionSize() -> Int
 
-    func getRowHeight() -> Int
-
-    func getSectionHeaderHeight() -> CGFloat
+    func sectionHeaderHeight() -> CGFloat
 
     func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath)->UITableViewCell!
 

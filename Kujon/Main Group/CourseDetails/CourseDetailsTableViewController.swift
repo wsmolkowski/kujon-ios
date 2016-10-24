@@ -15,6 +15,7 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
     var courseId:String! = nil;
     var termId:String! = nil;
     let courseDetailsProvider  = ProvidersProviderImpl.sharedInstance.provideCourseDetailsProvider()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(CourseDetailsTableViewController.back),andTitle: StringHolder.courseDetails)
@@ -27,7 +28,9 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
         for section in sectionHelpers{
             section.registerView(self.tableView)
         }
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 50
     }
 
     func refresh(_ refreshControl: UIRefreshControl) {
@@ -50,10 +53,18 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
             back()
         }
     }
+
     private func createSections()->Array<SectionHelperProtocol>{
-        return [NameSection(),FacultieSection(),DescriptionSection(),BibliographySection()
-                ,PassCriteriaSection(),CycleSection(),LecturersSection(),CoordinatorsSection(),ClassTypeSection(),ParticipantsSection()]
+        return [NameSection(),
+                FacultieSection(),
+                CourseMeritsSection(),
+                CycleSection(),
+                LecturersSection(),
+                CoordinatorsSection(),
+                ClassTypeSection(),
+                ParticipantsSection()]
     }
+
     func back(){
 
         self.navigationController?.popViewController(animated: true)
@@ -82,20 +93,18 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
     }
 
 
-
-
-
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section != 1 ? (sectionHelpers[section]).getSectionHeaderHeight() : 0
+        return  (sectionHelpers[section]).sectionHeaderHeight()
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return section != 1 ? createLabelForSectionTitle((sectionHelpers[section]).getSectionTitle()) : nil
+        if let sectionTitle = sectionHelpers[section].getSectionTitle() {
+            return createLabelForSectionTitle(sectionTitle)
+        }
+        return nil
     }
-
-
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -107,16 +116,11 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
         return (sectionHelpers[section]).getSectionSize()
     }
 
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let helper = (sectionHelpers[indexPath.section] )
+        let helper = (sectionHelpers[indexPath.section])
         let cell = helper.giveMeCellAtPosition(tableView,onPosition: indexPath)
         cell?.selectionStyle = UITableViewCellSelectionStyle.none
         return  cell!
-    }
-
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat((sectionHelpers[indexPath.section] ).getRowHeight())
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

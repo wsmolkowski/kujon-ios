@@ -26,21 +26,18 @@ class CycleSection: SectionHelperProtocol {
         tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: cycleId)
     }
 
-    func getSectionTitle() -> String {
+    func getSectionTitle() -> String? {
         return StringHolder.cycleLectures
     }
 
     func getSectionSize() -> Int {
         return terms.count
     }
-    func getRowHeight() -> Int {
-        return StandartSection.rowHeight
+
+    func sectionHeaderHeight() -> CGFloat {
+        return 48
     }
 
-
-    func getSectionHeaderHeight() -> CGFloat {
-        return StandartSection.sectionHeight
-    }
     func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath) -> UITableViewCell! {
         let cell = tableView.dequeueReusableCell(withIdentifier: cycleId, for: position) as! GoFurtherViewCellTableViewCell
         cell.plainLabel.text = terms[(position as NSIndexPath).row].name
