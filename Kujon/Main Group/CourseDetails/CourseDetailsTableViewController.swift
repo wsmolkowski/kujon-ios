@@ -88,11 +88,11 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return (sectionHelpers[section]).getSectionHeaderHeight()
+        return section != 1 ? (sectionHelpers[section]).getSectionHeaderHeight() : 0
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return createLabelForSectionTitle((sectionHelpers[section]).getSectionTitle())
+        return section != 1 ? createLabelForSectionTitle((sectionHelpers[section]).getSectionTitle()) : nil
     }
 
 
