@@ -22,6 +22,7 @@ class Grade2TableViewCell: GoFurtherViewCellTableViewCell {
             }
         }
     }
+
     internal var courseName: String? {
         didSet {
             if let courseName = courseName {
@@ -31,7 +32,7 @@ class Grade2TableViewCell: GoFurtherViewCellTableViewCell {
     }
 
     private func propagateGrade(_ grade:Grade) {
-        let gradeColor = grade.valueSymbol == "2" ? UIColor.red : UIColor.black
+        let gradeColor = grade.valueSymbol == "2" || grade.valueSymbol == "NZAL" ? UIColor.red : UIColor.black
         textGradeLabel.textColor = gradeColor
         textGradeLabel.text = grade.valueDescription
         gradeNumberLabel.textColor = gradeColor
