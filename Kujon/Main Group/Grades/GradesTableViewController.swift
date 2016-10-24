@@ -18,6 +18,7 @@ class GradesTableViewController: UITableViewController
     let textId = "myTextSuperId"
     private var myTermGrades  = Array<PreparedTermGrades>()
     private var dataBack = false;
+    let kSectionHeight: CGFloat = 30.0
 
     func setNavigationProtocol(_ delegate: NavigationMenuProtocol) {
         self.delegate = delegate
@@ -76,14 +77,14 @@ class GradesTableViewController: UITableViewController
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 80
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if(noDataCondition()){
             return 0
         }
-        return 50
+        return kSectionHeight
     }
 
 
@@ -91,7 +92,7 @@ class GradesTableViewController: UITableViewController
         if(noDataCondition()){
             return nil
         }
-        return self.createLabelForSectionTitle(self.myTermGrades[section].termId,middle: true)
+        return self.createLabelForSectionTitle(self.myTermGrades[section].termId,middle: true, height: kSectionHeight)
     }
 
 
