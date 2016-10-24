@@ -66,11 +66,10 @@ class LectureWrapper: CellHandlingStrategy,ShowCourseDetailsDelegate {
     func showCourseDetails() {
         let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: Bundle.main)
         courseDetails.courseId = lecture.courseId
-        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
-        let components = (calendar as NSCalendar).components([.month, .year], from: startNSDate)
-        courseDetails.termId = components.month! > 9 ? String(describing: components.year) : String(components.year! - 1 )
-
         self.controller?.pushViewController(courseDetails, animated: true)
+        
+
+        
     }
 
 
