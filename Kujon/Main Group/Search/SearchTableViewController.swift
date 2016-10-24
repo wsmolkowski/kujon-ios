@@ -11,8 +11,8 @@ import UIKit
 class SearchTableViewController: UITableViewController,NavigationDelegate, SearchTableViewCellDelegate {
 
     let array: Array<SearchViewProtocol> = [ UserSearchElement(),
-                                             CourseSearchElement(),
                                              FacultySearchElement(),
+                                             CourseSearchElement(),
                                              ProgrammeSearchElement(),
                                              ThesisSearchElement() ]
 

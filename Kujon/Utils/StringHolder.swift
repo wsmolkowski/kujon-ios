@@ -21,6 +21,7 @@ class StringHolder {
     static let cycleLectures = "Zajęcia w cyklu"
     static let description = "opis"
     static let faculties = "Jednostki"
+    static let facultyName = "Nazwa jednostki"
     static let faculty = "Jednostka"
     static let leadingLecturers = "Prowadzący"
     static let lecturesConducted = "Prowadzone przedmioty"
