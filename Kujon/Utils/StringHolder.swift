@@ -60,7 +60,7 @@ class StringHolder {
     static let tryb = "tryb"
     static let time_length = "czas trwania"
     static let level = "poziom"
-    static let refresh="Odswieżam"
+    static let refresh="Odświeżam"
     static let appName = "Kujon"
     static let errorOccures = "Wystąpił błąd podczas komunikacji z serwerem."
     static let no_data = "Brak zajęć w tym dniu"
