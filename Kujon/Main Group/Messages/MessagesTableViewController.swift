@@ -18,13 +18,14 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
     private let messageCellId: String = "messageCellId"
     private var backgroundLabel: UILabel = UILabel()
     private var spinner = SpinnerView()
-
+    private let kCellSeparatorHeight: CGFloat = 5
 
     // MARK: Initial section
 
     override func viewDidLoad() {
         super.viewDidLoad()
         addBackgroundLabel(message: StringHolder.noMessages)
+        backgroundLabel.isHidden = true
         addSpinner()
         messageProvider.delegate = self
         messageProvider.loadMessage()
@@ -58,8 +59,6 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
         backgroundLabel.attributedText = message.toAttributedStringWithFont(UIFont.kjnFontLatoRegular(size: 17)!, color: UIColor.white)
         backgroundLabel.text = message
         view.addSubview(backgroundLabel)
-        backgroundLabel.isHidden = true
-
     }
 
     private func addSpinner() {
@@ -117,13 +116,11 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 5
+        return kCellSeparatorHeight
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = UIColor.clear
-        return headerView
+        return UIView()
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
