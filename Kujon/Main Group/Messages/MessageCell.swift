@@ -28,7 +28,7 @@ class MessageCell: UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .none
         layer.cornerRadius = 10
-        layer.masksToBounds = true
+
     }
 
 }

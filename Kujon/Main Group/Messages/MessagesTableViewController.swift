@@ -18,7 +18,7 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
     private let messageCellId: String = "messageCellId"
     private var backgroundLabel: UILabel = UILabel()
     private var spinner = SpinnerView()
-    private let kCellSeparatorHeight: CGFloat = 10
+    private let kCellSeparatorHeight: CGFloat = 15
 
     // MARK: Initial section
 
@@ -96,7 +96,17 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
         refreshControl?.endRefreshing()
         tableView.reloadData()
     }
-
+/*
+    func onMessageLoaded(_ message: Array<Message>) {
+        spinner.isHidden = true
+        messages = message
+        messages.append(Message(createdTime: "6 listopada", from: "John Johnson", message: "This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message.", type: "email"))
+        messages.append(Message(createdTime: "6 listopada", from: "John Johnson", message: "This is some message. This is some message. This is some message. This is some message. This is some message. This is some message.", type: "email"))
+        backgroundLabel.isHidden = !messages.isEmpty
+        refreshControl?.endRefreshing()
+        tableView.reloadData()
+    }
+*/
     func onErrorOccurs(_ text: String) {
         spinner.isHidden = true
         refreshControl?.endRefreshing()
