@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2553a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </array>
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="165" id="KGk-i7-Jjw" customClass="MessageCell" customModule="Kujon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="501" height="165"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="501" height="164"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="senderLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K9n-jp-Ejh">
+                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="dateLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ks-4Y-HiN">
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="messageLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="al7-hN-O8e">
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Data:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQy-Ts-7ao">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Z0Q-wr-qcp"/>
+                            <constraint firstAttribute="width" constant="42" id="hUR-2E-bhZ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Od:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEi-uJ-6dq">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="bcS-ck-SnP"/>
+                            <constraint firstAttribute="height" constant="20" id="fQo-Wb-0wq"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SGh-SK-7ta" userLabel="separator">
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="quK-sN-U9k"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="3ks-4Y-HiN" firstAttribute="height" secondItem="RQy-Ts-7ao" secondAttribute="height" id="3Hd-hC-Tt6"/>
+                    <constraint firstItem="K9n-jp-Ejh" firstAttribute="height" secondItem="lEi-uJ-6dq" secondAttribute="height" id="4Pn-PP-FRy"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="al7-hN-O8e" secondAttribute="bottom" constant="12" id="CV2-mR-YS3"/>
+                    <constraint firstAttribute="trailing" secondItem="SGh-SK-7ta" secondAttribute="trailing" id="FcL-GD-0ma"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="3ks-4Y-HiN" secondAttribute="trailing" id="GIY-HZ-2EQ"/>
+                    <constraint firstItem="K9n-jp-Ejh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Gad-uD-rvf"/>
+                    <constraint firstItem="lEi-uJ-6dq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Ich-eD-xJc"/>
+                    <constraint firstItem="SGh-SK-7ta" firstAttribute="top" secondItem="3ks-4Y-HiN" secondAttribute="bottom" constant="8" id="LMl-iH-MkR"/>
+                    <constraint firstItem="RQy-Ts-7ao" firstAttribute="top" secondItem="lEi-uJ-6dq" secondAttribute="bottom" constant="8" id="Nt4-0t-CyK"/>
+                    <constraint firstItem="SGh-SK-7ta" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Nuh-IJ-mnC"/>
+                    <constraint firstItem="RQy-Ts-7ao" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Sh4-73-jeo"/>
+                    <constraint firstItem="3ks-4Y-HiN" firstAttribute="leading" secondItem="RQy-Ts-7ao" secondAttribute="trailing" constant="8" id="dQh-nA-6nf"/>
+                    <constraint firstItem="al7-hN-O8e" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="eOO-d6-ia2"/>
+                    <constraint firstItem="al7-hN-O8e" firstAttribute="top" secondItem="SGh-SK-7ta" secondAttribute="bottom" constant="12" id="kUH-cf-jFb"/>
+                    <constraint firstItem="lEi-uJ-6dq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="nNV-V5-VIw"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="K9n-jp-Ejh" secondAttribute="trailing" id="qJo-y8-jJJ"/>
+                    <constraint firstItem="K9n-jp-Ejh" firstAttribute="leading" secondItem="lEi-uJ-6dq" secondAttribute="trailing" constant="8" id="r5J-Nd-yGK"/>
+                    <constraint firstItem="3ks-4Y-HiN" firstAttribute="top" secondItem="K9n-jp-Ejh" secondAttribute="bottom" constant="8" id="ued-N8-fPd"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="al7-hN-O8e" secondAttribute="trailing" id="xRG-dg-kIk"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="dateLabel" destination="3ks-4Y-HiN" id="X5m-7T-rmh"/>
+                <outlet property="messageLabel" destination="al7-hN-O8e" id="5dG-nT-edc"/>
+                <outlet property="senderLabel" destination="K9n-jp-Ejh" id="U0P-Lo-JuK"/>
+            </connections>
+            <point key="canvasLocation" x="35.5" y="-22.5"/>
+        </tableViewCell>
+    </objects>
+</document>
