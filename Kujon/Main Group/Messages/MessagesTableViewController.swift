@@ -44,7 +44,7 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
         tableView.separatorStyle = .none
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
-        tableView.backgroundColor = UIColor.lightGray
+        tableView.backgroundColor = UIColor.greyBackgroundColor()
     }
 
     internal func refresh() {
@@ -54,10 +54,11 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
     }
 
     private func addBackgroundLabel(message:String) {
-        backgroundLabel = UILabel(frame: view.bounds)
+        var frame = view.bounds
+        frame.origin.y -= 100
+        backgroundLabel = UILabel(frame: frame)
         backgroundLabel.textAlignment = .center
-        backgroundLabel.attributedText = message.toAttributedStringWithFont(UIFont.kjnFontLatoRegular(size: 17)!, color: UIColor.white)
-        backgroundLabel.text = message
+        backgroundLabel.attributedText = message.toAttributedStringWithFont(UIFont.kjnFontLatoRegular(size: 17)!, color: UIColor.kujonDarkTextColor())
         view.addSubview(backgroundLabel)
     }
 

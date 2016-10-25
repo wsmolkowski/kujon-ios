@@ -92,7 +92,7 @@ class StringHolder {
     static let teacher = "Wykładowca"
     static let none = "Brak"
     static let messages = "Wiadomości"
-    static let noMessages = "Nie masz wiadomości do wyświetlenia"
+    static let noMessages = "Brak wiadomości"
     static let refreshControlUniversalMessage = "Przesuń, żeby odświeżyć"
     static let errorRetrievingMessages = "Wystąpił problem podczas pobierania wiadomości"
     static let errorAlertTitle = "Błąd"
