@@ -16,21 +16,16 @@ class FacultieSection: SectionHelperProtocol {
         tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: facultieCellId)
     }
 
-    func getSectionTitle() -> String {
-        return StringHolder.faculties
+    func getSectionTitle() -> String? {
+        return nil
     }
 
     func getSectionSize() -> Int {
         return 1
     }
 
-    func getRowHeight() -> Int {
-        return StandartSection.rowHeight
-    }
-
-
-    func getSectionHeaderHeight() -> CGFloat {
-        return StandartSection.sectionHeight
+    func sectionHeaderHeight() -> CGFloat {
+        return 0
     }
 
     func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath) -> UITableViewCell! {

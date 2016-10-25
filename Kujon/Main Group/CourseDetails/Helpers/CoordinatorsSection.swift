@@ -24,5 +24,7 @@ class CoordinatorsSection: LecturersSection {
         return "coordinatorsId"
     }
 
+    
+
 
 }

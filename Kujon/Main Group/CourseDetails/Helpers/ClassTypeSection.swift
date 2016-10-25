@@ -10,13 +10,17 @@ class ClassTypeSection:SectionHelperProtocol {
     let classTypeCellId = "classTypeCellId"
 
 
-    private var description: String! = nil
+    private var typesAsString: String?
+
     func fillUpWithData(_ courseDetails: CourseDetails) {
-        description = ""
-        if(courseDetails.groups != nil){
-            for courseGroup in courseDetails.groups! {
-                description.append(courseGroup.classType +  "\n")
+        var types: [String] = []
+        if let groups = courseDetails.groups {
+            for courseGroup in groups {
+                types.append(courseGroup.classType)
             }
+        }
+        if types.count > 0 {
+            typesAsString = types.joined(separator: ",")
         }
     }
 
@@ -24,26 +28,23 @@ class ClassTypeSection:SectionHelperProtocol {
         tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: classTypeCellId)
     }
 
-    func getSectionTitle() -> String {
+    func getSectionTitle() -> String? {
         return StringHolder.classType
     }
 
     func getSectionSize() -> Int {
-        return 1
+        return typesAsString == nil ? 0 : 1
     }
 
-    func getRowHeight() -> Int {
-        return StandartSection.rowHeight
-    }
-
-
-    func getSectionHeaderHeight() -> CGFloat {
-        return StandartSection.sectionHeight
+    func sectionHeaderHeight() -> CGFloat {
+        return 48
     }
 
     func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath) -> UITableViewCell! {
         let cell = tableView.dequeueReusableCell(withIdentifier: classTypeCellId, for: position) as! GoFurtherViewCellTableViewCell
-        cell.plainLabel.text = description
+        if let typesAsString = typesAsString {
+            cell.plainLabel.text = typesAsString
+        }
         cell.arrow.isHidden = true
         return cell
     }

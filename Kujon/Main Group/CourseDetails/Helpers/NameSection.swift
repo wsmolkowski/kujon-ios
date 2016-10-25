@@ -30,7 +30,7 @@ class NameSection: SectionHelperProtocol {
         tableView.register(UINib(nibName: "CourseNameTableViewCell", bundle: nil), forCellReuseIdentifier: NameCellId)
     }
 
-    func getSectionTitle() -> String {
+    func getSectionTitle() -> String? {
         return ""
     }
 
@@ -38,13 +38,8 @@ class NameSection: SectionHelperProtocol {
         return 1
     }
 
-    func getSectionHeaderHeight() -> CGFloat {
+    func sectionHeaderHeight() -> CGFloat {
         return 0
-    }
-
-
-    func getRowHeight() -> Int {
-        return 90
     }
 
     func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath) -> UITableViewCell! {
