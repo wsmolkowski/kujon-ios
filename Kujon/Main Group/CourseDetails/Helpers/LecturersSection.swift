@@ -17,7 +17,7 @@ class LecturersSection: SectionHelperProtocol {
         tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: getMyCellId())
     }
 
-    func getSectionTitle() -> String {
+    func getSectionTitle() -> String? {
         return StringHolder.leadingLecturers
     }
 
@@ -25,13 +25,8 @@ class LecturersSection: SectionHelperProtocol {
         return list.count
     }
 
-    func getRowHeight() -> Int {
-        return StandartSection.rowHeight
-    }
-
-
-    func getSectionHeaderHeight() -> CGFloat {
-        return StandartSection.sectionHeight
+    func sectionHeaderHeight() -> CGFloat {
+        return 48
     }
 
     func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath) -> UITableViewCell! {

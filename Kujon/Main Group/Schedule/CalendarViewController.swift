@@ -31,6 +31,8 @@ class CalendarViewController: MGCDayPlannerViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(CalendarViewController.openDrawer), andTitle: StringHolder.schedule)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "settings-icon"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(CalendarViewController.reload))
+
 //        let openCalendarButton = UIBarButtonItem(image: UIImage(named: "calendar-list"), style: UIBarButtonItemStyle.Plain, target: self,
 //                action: #selector(CalendarViewController.openList))
 //        self.navigationItem.rightBarButtonItem = openCalendarButton
@@ -74,6 +76,10 @@ class CalendarViewController: MGCDayPlannerViewController,
 
     }
 
+    func reload() {
+        onlyLectureDictionary = [:]
+        askForData(Date())
+    }
 
     private func askForData(_ firstDate: Date! = nil) {
         if (firstDate != nil) {
