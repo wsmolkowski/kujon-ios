@@ -18,7 +18,7 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
     private let messageCellId: String = "messageCellId"
     private var backgroundLabel: UILabel = UILabel()
     private var spinner = SpinnerView()
-    private let kCellSeparatorHeight: CGFloat = 5
+    private let kCellSeparatorHeight: CGFloat = 10
 
     // MARK: Initial section
 
@@ -44,7 +44,7 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
         tableView.separatorStyle = .none
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
-        tableView.backgroundColor = UIColor.greyBackgroundColor()
+        tableView.backgroundColor = UIColor.lightGray()
     }
 
     internal func refresh() {
@@ -74,8 +74,6 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refreshControlUniversalMessage)
         refreshControl?.addTarget(self, action: #selector(MessagesTableViewController.refresh), for: .valueChanged)
     }
-
-
 
     // MARK: Hamburger button
 
@@ -126,7 +124,7 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: messageCellId, for: indexPath) as! MessageCell
-        cell.message = messages[indexPath.row]
+        cell.message = messages[indexPath.section]
         return cell
     }
 
