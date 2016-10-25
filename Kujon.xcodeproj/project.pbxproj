@@ -135,6 +135,7 @@
 		4C0D88E3FFF806ADAB7E9661 /* Terms.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D80EC76A04398849A03F0 /* Terms.json */; };
 		4C0D88F06593FBB4943652B8 /* LectureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8D8E712204A4BC76B7A9 /* LectureProvider.swift */; };
 		4C0D8910C3D7307032A67057 /* LecturerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D818C198D3E8ECD02EE91 /* LecturerProvider.swift */; };
+		4C0D89479913D1C7C7B963F6 /* Message.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D822D32A84DD9B61EC485 /* Message.json */; };
 		4C0D895F871560BA2D9035FA /* ProgrammeSearchElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D838C7EF305B91631F49D /* ProgrammeSearchElement.swift */; };
 		4C0D89623E9B561730C53F9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D839EDCC8F1A06ECE450B /* Main.storyboard */; };
 		4C0D89849E353B98BC33FCEF /* CoursesSearchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8A0961137C0C9128A88D /* CoursesSearchProvider.swift */; };
@@ -286,6 +287,9 @@
 		52AF77D81D0AD83A0058979A /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77D61D0AD83A0058979A /* ShareViewController.xib */; };
 		52AF77DF1D0EB4420058979A /* TeacherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF77DD1D0EB4420058979A /* TeacherTableViewController.swift */; };
 		52AF77E01D0EB4420058979A /* TeacherTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AF77DE1D0EB4420058979A /* TeacherTableViewController.xib */; };
+		52B3F9AD1DBF40C300B0CC55 /* MessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3F9AC1DBF40C300B0CC55 /* MessageResponse.swift */; };
+		52B3F9AF1DBF40F500B0CC55 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3F9AE1DBF40F500B0CC55 /* Message.swift */; };
+		52B3F9B11DBF421C00B0CC55 /* MessageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3F9B01DBF421C00B0CC55 /* MessageProvider.swift */; };
 		52C627591D1BFA0100A9BBA0 /* DayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C627571D1BFA0100A9BBA0 /* DayTableViewCell.swift */; };
 		52C6275A1D1BFA0100A9BBA0 /* DayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C627581D1BFA0100A9BBA0 /* DayTableViewCell.xib */; };
 		52F69F831D101A9000025C55 /* UserDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52F69F821D101A9000025C55 /* UserDetailView.xib */; };
@@ -364,6 +368,7 @@
 		4C0D81CA0A7AD4A8E6032090 /* PassCriteriaSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassCriteriaSection.swift; sourceTree = "<group>"; };
 		4C0D8202EC00EB52392FC17B /* GradeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeResponse.swift; sourceTree = "<group>"; };
 		4C0D82139749CD2A15E5F19D /* ProgrammeSearchProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammeSearchProvider.swift; sourceTree = "<group>"; };
+		4C0D822D32A84DD9B61EC485 /* Message.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Message.json; sourceTree = "<group>"; };
 		4C0D8246857CCDCA5F17A17A /* ProviderProvidersImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderProvidersImpl.swift; sourceTree = "<group>"; };
 		4C0D8269192F611DE27E5FF6 /* LectureWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureWrapper.swift; sourceTree = "<group>"; };
 		4C0D8278747AC3A60847DBBD /* FacultySearchProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacultySearchProvider.swift; sourceTree = "<group>"; };
@@ -613,6 +618,9 @@
 		52AF77D61D0AD83A0058979A /* ShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareViewController.xib; sourceTree = "<group>"; };
 		52AF77DD1D0EB4420058979A /* TeacherTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherTableViewController.swift; sourceTree = "<group>"; };
 		52AF77DE1D0EB4420058979A /* TeacherTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeacherTableViewController.xib; sourceTree = "<group>"; };
+		52B3F9AC1DBF40C300B0CC55 /* MessageResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageResponse.swift; sourceTree = "<group>"; };
+		52B3F9AE1DBF40F500B0CC55 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		52B3F9B01DBF421C00B0CC55 /* MessageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageProvider.swift; sourceTree = "<group>"; };
 		52C627571D1BFA0100A9BBA0 /* DayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayTableViewCell.swift; sourceTree = "<group>"; };
 		52C627581D1BFA0100A9BBA0 /* DayTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayTableViewCell.xib; sourceTree = "<group>"; };
 		52F69F821D101A9000025C55 /* UserDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserDetailView.xib; sourceTree = "<group>"; };
@@ -702,6 +710,7 @@
 		4C0D813B87BE55B5A638695E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				52B3F9AB1DBF40AC00B0CC55 /* Message */,
 				4C0D87FBB08D0EE524630F2E /* Provider */,
 				4C0D8BF1DA729CB66D152D70 /* User Details */,
 				4C0D8B41A54D038836A90A38 /* Programme */,
@@ -1087,6 +1096,7 @@
 				4C0D897908D608D65BB44DA4 /* LoginProvider.swift */,
 				4C0D82E193F971F9CCCC0806 /* LogoutProvider.swift */,
 				4C0D82E83E696E77685C83B5 /* Search */,
+				52B3F9B01DBF421C00B0CC55 /* MessageProvider.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -1299,6 +1309,7 @@
 				4C0D8BA734C2D9C931F706C4 /* ProgrammeSearchResult.json */,
 				4C0D8BC64B0C48E7CB3616DF /* StudentSearchResult.json */,
 				4C0D8AAB5984F986E4A269EC /* ThesesSearchResult.json */,
+				4C0D822D32A84DD9B61EC485 /* Message.json */,
 			);
 			path = JSONS;
 			sourceTree = "<group>";
@@ -1432,6 +1443,15 @@
 				4C0D8514FD7564BC2F323E2F /* CurrentTeacherHolder.swift */,
 			);
 			path = Teachers;
+			sourceTree = "<group>";
+		};
+		52B3F9AB1DBF40AC00B0CC55 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				52B3F9AC1DBF40C300B0CC55 /* MessageResponse.swift */,
+				52B3F9AE1DBF40F500B0CC55 /* Message.swift */,
+			);
+			name = Message;
 			sourceTree = "<group>";
 		};
 		663159391DAE61AA00B0789B /* ThesisDetail */ = {
@@ -1710,6 +1730,7 @@
 				527A0EB71DA41BE3003A251A /* SearchTableViewController.xib in Resources */,
 				4C0D81542B84D3E7A66C0D28 /* ThesesSearchResult.json in Resources */,
 				4C0D8F195716CF245E6A2361 /* SearchTableViewCell.xib in Resources */,
+				4C0D89479913D1C7C7B963F6 /* Message.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2011,6 +2032,7 @@
 				4C0D869D18F5884265AD7390 /* MenuItemsHolder.swift in Sources */,
 				661D1C221DAD974500BA9EE9 /* HTMLParser.m in Sources */,
 				4C0D81C6128C12946244195F /* NavigationDelegate.swift in Sources */,
+				52B3F9AF1DBF40F500B0CC55 /* Message.swift in Sources */,
 				4C0D87E638ACCDF0858CD694 /* NavigationMenuProtocol.swift in Sources */,
 				526750411D214A7B004AD243 /* CoursePopUpViewController.swift in Sources */,
 				4C0D881C4D3885EDE2AFBD61 /* NavigationMenuCreator.swift in Sources */,
@@ -2086,11 +2108,13 @@
 				4C0D8D638B4D5A845F1F0A32 /* RestImageProvider.swift in Sources */,
 				4C0D8A5C9CCCA95A2FD4629A /* HeaderManager.swift in Sources */,
 				4C0D84DCF5F4EDC332B23A08 /* CurrentTeacherHolder.swift in Sources */,
+				52B3F9AD1DBF40C300B0CC55 /* MessageResponse.swift in Sources */,
 				4C0D8DD1DC491DC007F98692 /* SessionManager.swift in Sources */,
 				5267503D1D21391F004AD243 /* CourseTableViewCell.swift in Sources */,
 				528BCAC11D5DF0BC00A9E49C /* TelephoneTableViewCell.swift in Sources */,
 				4C0D8E8FDA4A6ABE3B6829A8 /* NSlogManager.swift in Sources */,
 				4C0D8BD54E52DB2C8D674422 /* NSDateExtension.swift in Sources */,
+				52B3F9B11DBF421C00B0CC55 /* MessageProvider.swift in Sources */,
 				4C0D82CB5DB526778BD1E777 /* ScheduleSection.swift in Sources */,
 				4C0D80FE5955F53AE94D7556 /* ScheduleSectionImpl.swift in Sources */,
 				4C0D8EE0854E8A315B37467E /* LectureWrapper.swift in Sources */,
