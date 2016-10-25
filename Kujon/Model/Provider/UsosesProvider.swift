@@ -21,12 +21,17 @@ class UsosesProvider: RestApiManager, UsosProviderProtocol {
     weak var delegate: UsosesProviderDelegate!
 
     func loadUsoses() {
-        self.makeHTTPGetRequest({ json in
-                if let usoses = try! self.changeJsonToResposne(json,errorR: self.delegate) {
-                    self.delegate?.onUsosesLoaded(usoses.data)
+        self.makeHTTPGetRequest({ [weak self] json in
+            if let mySelf  = self{
+                if let usoses = try! mySelf.changeJsonToResposne(json,errorR: mySelf.delegate) {
+                    mySelf.delegate?.onUsosesLoaded(usoses.data)
                 }
-        }, onError: { text in
-            self.delegate?.onErrorOccurs(text)})
+            }
+        }, onError: {[weak self] text in
+            if let mySelf = self{
+                mySelf.delegate?.onErrorOccurs(text)
+            }
+        })
     }
 
     override func getMyUrl() -> String {

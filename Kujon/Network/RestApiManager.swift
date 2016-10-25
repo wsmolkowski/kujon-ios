@@ -6,7 +6,7 @@
 import Foundation
 import Decodable
 typealias onSucces = (Data!) -> Void
-typealias onErrorOccurs = (_ text:String) -> Void
+typealias onErrorOccurs = (String) -> Void
 
 class RestApiManager {
 //    static let BASE_URL: String = "https://api-demo.kujon.mobi"

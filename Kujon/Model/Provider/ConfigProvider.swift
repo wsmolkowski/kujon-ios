@@ -28,6 +28,8 @@ class ConfigProvider: RestApiManager, ConfigProviderProtocol {
     func checkConfig() {
         self.makeHTTPAuthenticatedGetRequest({
             json in
+
+
             if let configRes = try! self.changeJsonToResposne(json,errorR: self.delegate) {
                 let config = configRes.data
                 if (!config.userLogged) {
