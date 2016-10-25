@@ -77,6 +77,7 @@ class CalendarViewController: MGCDayPlannerViewController,
     }
 
     func reload() {
+        onlyLectureDictionary = [:]
         askForData(Date())
     }
 
