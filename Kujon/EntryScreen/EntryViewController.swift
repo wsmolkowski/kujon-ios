@@ -205,7 +205,7 @@ class EntryViewController: UIViewController,
     //MARK: LogoutProviderDelegate
 
     func onSuccesfullLogout() {
-        view.setNeedsDisplay()
+        // do nothing
     }
 
 }
