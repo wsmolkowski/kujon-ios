@@ -14,7 +14,7 @@ class MessageCell: UITableViewCell {
         didSet {
             if let message = message {
                 senderLabel.text = message.from
-                dateLabel.text = message.createdTime
+                dateLabel.text = Date.formattedPolishStringFromDateFormatWithClockString(message.createdTime)
                 messageLabel.text = message.message
             }
         }

@@ -138,5 +138,15 @@ extension Date {
         let difference = calendar.dateComponents([.day], from: fromDate, to: toDate)
         return difference.day!
     }
+
+    static func formattedPolishStringFromDateFormatWithClockString(_ dateString:String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = Date.dateFormatWithClock
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        let date = dateFormatter.date(from:dateString)
+        dateFormatter.locale = Locale(identifier: "pl_PL")
+        dateFormatter.dateFormat = "d MMMM YYYY, HH:MM"
+        return dateFormatter.string(from:date!)
+    }
 }
 

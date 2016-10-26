@@ -88,7 +88,7 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
     }
 
     // MARK: MessageProviderDelegate
-
+/*
     func onMessageLoaded(_ message: Array<Message>) {
         spinner.isHidden = true
         messages = message
@@ -96,17 +96,18 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
         refreshControl?.endRefreshing()
         tableView.reloadData()
     }
-/*
+
+ */
     func onMessageLoaded(_ message: Array<Message>) {
         spinner.isHidden = true
         messages = message
-        messages.append(Message(createdTime: "6 listopada", from: "John Johnson", message: "This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message.", type: "email"))
-        messages.append(Message(createdTime: "6 listopada", from: "John Johnson", message: "This is some message. This is some message. This is some message. This is some message. This is some message. This is some message.", type: "email"))
+        messages.append(Message(createdTime: "2016-10-18 23:01:11", from: "John Johnson", message: "This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message.", type: "email"))
+        messages.append(Message(createdTime: "2016-10-18 23:01:11", from: "John Johnson", message: "This is some message. This is some message. This is some message. This is some message. This is some message. This is some message.", type: "email"))
         backgroundLabel.isHidden = !messages.isEmpty
         refreshControl?.endRefreshing()
         tableView.reloadData()
     }
-*/
+
     func onErrorOccurs(_ text: String) {
         spinner.isHidden = true
         refreshControl?.endRefreshing()
