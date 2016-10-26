@@ -7,49 +7,44 @@
 //
 
 import UIKit
-private func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
+
+private func <<T:Comparable>(lhs: T?, rhs: T?) -> Bool {
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l < r
+    case (nil, _?):
+        return true
+    default:
+        return false
+    }
 }
 
-private func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
+private func ><T:Comparable>(lhs: T?, rhs: T?) -> Bool {
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l > r
+    default:
+        return rhs < lhs
+    }
 }
-
 
 
 class UserTableViewController: UITableViewController
         , NavigationDelegate
-        , UserDetailsProviderDelegate
-        , FacultiesProviderDelegate
-        , OnImageLoadedFromRest
-        , TermsProviderDelegate
-        , ProgrammeProviderDelegate {
+        , SuperUserDetailsProviderDelegate
+
+        , OnImageLoadedFromRest {
 
     weak var delegate: NavigationMenuProtocol! = nil
     private let usedDetailCellId = "userDetailViewId"
     private let StudentProgrammeCellId = "cellIdForStudentProgramme"
     private let FacultieProgrammeCellId = "cellIdForStudentFacultie"
     private let termsCellId = "termsCellId"
-    let userDetailsProvider: UserDetailsProvider! = ProvidersProviderImpl.sharedInstance.provideUserDetailsProvider()
-    let facultieProvider: FacultiesProvider! = ProvidersProviderImpl.sharedInstance.providerFacultiesProvider()
-    let termsProvider: TermsProvider! = ProvidersProviderImpl.sharedInstance.provideTermsProvider()
-    let programmeProvider: ProgrammeProvider! = ProvidersProviderImpl.sharedInstance.provideProgrammeProvider()
+    let superUserProvider: SuperUserProvider! = ProvidersProviderImpl.sharedInstance.provideSuperUserProvider()
     let restImageProvider = RestImageProvider.sharedInstance
     private let userDataHolder = UserDataHolder.sharedInstance
 
-    var userDetail: UserDetail! = nil
+    var userDetail: SuperUserDetails! = nil
     var userFaculties: Array<Facultie>! = nil
     var terms: Array<Term> = Array()
     var programmes: Array<StudentProgramme> = Array()
@@ -63,13 +58,10 @@ class UserTableViewController: UITableViewController
         super.viewDidLoad()
 
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(UserTableViewController.openDrawer), andTitle: StringHolder.appName)
-        userDetailsProvider.delegate = self
-        facultieProvider.delegate = self
-        termsProvider.delegate = self
-        programmeProvider.delegate = self;
+        superUserProvider.delegate = self
         addNavigationSeparator()
         view.backgroundColor = UIColor.white
-        self.tableView.tableFooterView =  UIView()
+        self.tableView.tableFooterView = UIView()
         self.tableView.register(UINib(nibName: "UserDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: usedDetailCellId)
         self.tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: StudentProgrammeCellId)
         self.tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: FacultieProgrammeCellId)
@@ -85,6 +77,7 @@ class UserTableViewController: UITableViewController
         loadData()
     }
 
+
     private func addNavigationSeparator() {
         guard let navigationController = self.navigationController else {
             return
@@ -95,18 +88,16 @@ class UserTableViewController: UITableViewController
         navigationSeparator.isOpaque = true
         navigationController.navigationBar.addSubview(navigationSeparator)
         let constraints: [NSLayoutConstraint] = [
-            navigationSeparator.leadingAnchor.constraint(equalTo: navigationBar.leadingAnchor),
-            navigationSeparator.trailingAnchor.constraint(equalTo: navigationBar.trailingAnchor),
+                navigationSeparator.leadingAnchor.constraint(equalTo: navigationBar.leadingAnchor),
+                navigationSeparator.trailingAnchor.constraint(equalTo: navigationBar.trailingAnchor),
         ]
-            NSLayoutConstraint.activate(constraints)
+        NSLayoutConstraint.activate(constraints)
     }
 
     func refresh(_ refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")
-        userDetailsProvider.reload()
-        facultieProvider.reload()
-        termsProvider.reload()
-        programmeProvider.reload()
+        superUserProvider.reload()
+
         loadData()
 
     }
@@ -114,52 +105,35 @@ class UserTableViewController: UITableViewController
     func openDrawer() {
         delegate?.toggleLeftPanel()
     }
-    private func loadData(){
-        userDetailsProvider.loadUserDetail()
-        facultieProvider.loadFaculties()
-        termsProvider.loadTerms()
-        programmeProvider.loadProgramme()
+
+    private func loadData() {
+        superUserProvider.loadUserDetail()
+
     }
 
-    func onUserDetailLoaded(_ userDetail: UserDetail) {
-        self.userDetail = userDetail;
-        self.programmes = userDetail.studentProgrammes
+    func onUserDetailLoaded(_ userDetails: SuperUserDetails) {
+        self.userDetail = userDetails;
+        self.programmes = userDetails.programmes
+        programmeLoaded = true
+        self.terms = userDetails.terms
+        self.userFaculties = userDetails.faculties
         self.tableView.reloadData()
-        self.userDataHolder.userName  = userDetail.firstName + " " + userDetail.lastName
-        refreshControl?.endRefreshing()
-    }
-
-    func onFacultiesLoaded(_ list: Array<Facultie>) {
-        self.userFaculties = list
-        self.tableView.reloadData()
-        refreshControl?.endRefreshing()
-    }
-
-    func onProgrammeLoaded(_ terms: Array<StudentProgramme>) {
-        self.programmes = terms;
-        programmeLoaded = true;
-        refreshControl?.endRefreshing()
-    }
-
-
-    func onTermsLoaded(_ terms: Array<Term>) {
-        self.terms = terms
-        self.tableView.reloadData()
+        self.userDataHolder.userName = userDetail.firstName + " " + userDetail.lastName
         refreshControl?.endRefreshing()
     }
 
 
     func onErrorOccurs(_ text: String) {
         self.showAlertApi(StringHolder.attention, text: text, succes: {
-            self.userDetailsProvider.loadUserDetail()
-            self.facultieProvider.loadFaculties()
+            [unowned self] in
+            self.loadData()
         }, cancel: {})
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-       return userDetail == nil ? 0 : 5
+        return userDetail == nil ? 0 : 5
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -186,15 +160,15 @@ class UserTableViewController: UITableViewController
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cellPosition: (section: Int, row: Int) = (section:indexPath.section, row:indexPath.row)
+        let cellPosition: (section: Int, row: Int) = (section: indexPath.section, row: indexPath.row)
         switch (cellPosition) {
-        case (section:1, row: _):
+        case (section:1, row:_):
             clicked(indexPath)
-        case (section:2, row: _):
+        case (section:2, row:_):
             clickedFacultie(indexPath)
-        case (section:3, row: 0):
+        case (section:3, row:0):
             clickedTermsCell()
-        case (section:3, row: 1):
+        case (section:3, row:1):
             clickedThesesCell()
         default:
             break;
@@ -272,7 +246,7 @@ class UserTableViewController: UITableViewController
     func imageLoaded(_ tag: String, image: UIImage) {
         let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! UserDetailsTableViewCell
         cell.userImageView.image = image
-        self.userDataHolder.userImage  = image
+        self.userDataHolder.userImage = image
         isThereImage = true
     }
 
@@ -322,9 +296,6 @@ class UserTableViewController: UITableViewController
                 self.navigationController?.present(popController, animated: false, completion: { popController.showAnimate(); })
 
                 popController.showInView(withProgramme: myProgramme.programme)
-            }else {
-                programmeLoaded = false
-                programmeProvider.loadProgramme()
             }
         }
 
@@ -355,15 +326,16 @@ class UserTableViewController: UITableViewController
 
     private func loadImageFromUrl(_ urlString: String?, indexPath: IndexPath) {
         guard
-            let urlString = urlString,
-            let url = URL(string: urlString) else {
+        let urlString = urlString,
+        let url = URL(string: urlString) else {
             return
         }
         let session = URLSession.shared
-        let task = session.dataTask(with: url, completionHandler: { [weak self] data, response, error in
+        let task = session.dataTask(with: url, completionHandler: {
+            [weak self] data, response, error in
             guard
-                let data = data,
-                let image = UIImage(data: data) else {
+            let data = data,
+            let image = UIImage(data: data) else {
                 return
             }
             DispatchQueue.main.async {
