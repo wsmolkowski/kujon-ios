@@ -8,11 +8,13 @@
 
 import UIKit
 
-class CoursesTableViewController: UITableViewController, NavigationDelegate,CourseProviderDelegate {
+class CoursesTableViewController: UITableViewController, NavigationDelegate,CourseProviderDelegate, TermsProviderDelegate {
     private let CourseCellId = "courseCellId"
     private let courseProvider = ProvidersProviderImpl.sharedInstance.provideCourseProvider()
+    private let termsProvider = ProvidersProviderImpl.sharedInstance.provideTermsProvider()
     private var courseWrappers = Array<CoursesWrapper>()
     weak var delegate: NavigationMenuProtocol! = nil
+    private var selectedTermId: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,7 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
         self.tableView.register(UINib(nibName: "CourseTableViewCell", bundle: nil), forCellReuseIdentifier: CourseCellId)
         courseProvider.delegate = self
         courseProvider.provideCourses()
+        termsProvider.delegate = self
         self.tableView.tableFooterView = UIView()
 
         refreshControl = UIRefreshControl()
@@ -97,9 +100,46 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return self.createLabelForSectionTitle(self.courseWrappers[section].title,middle: true)
+        let header = createLabelForSectionTitle(courseWrappers[section].title, middle: true)
+        let tapRecognizer = IdentifiedTapGestureRecognizer(target: self, action: #selector(CoursesTableViewController.headerDidTap(with:)))
+        tapRecognizer.id = section
+        tapRecognizer.numberOfTapsRequired = 1
+        tapRecognizer.numberOfTouchesRequired = 1
+        header.addGestureRecognizer(tapRecognizer)
+        return header
     }
 
+    // MARK: Term Detail Popup
 
-    
+    func headerDidTap(with tapGestureRecognizer: IdentifiedTapGestureRecognizer) {
+        let section = tapGestureRecognizer.id
+        selectedTermId = courseWrappers[section].courses[0].termId
+        termsProvider.loadTerms()
+
+    }
+
+    private func presentPopUpWithTerm(_ term:Term) {
+        let termPopUp = TermsPopUpViewController(nibName: "TermsPopUpViewController", bundle: nil)
+        termPopUp.modalPresentationStyle = .overCurrentContext
+        present(termPopUp, animated: false) { [unowned termPopUp] in
+            termPopUp.showAnimate();
+        }
+        termPopUp.showInView(term)
+    }
+
+    // MARK: TermsProviderDelegate
+
+    func onTermsLoaded(_ terms: Array<Term>) {
+        guard let termId = selectedTermId else {
+            return
+        }
+        for term in terms {
+            if term.termId == termId {
+                presentPopUpWithTerm(term)
+                break
+            }
+        }
+        selectedTermId = nil
+    }
+
 }

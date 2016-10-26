@@ -125,6 +125,7 @@ class GradesTableViewController: UITableViewController
         courseDetails.termId = prepareGrade.termId
         self.navigationController?.pushViewController(courseDetails, animated: true)
     }
+    
 
 
 }
