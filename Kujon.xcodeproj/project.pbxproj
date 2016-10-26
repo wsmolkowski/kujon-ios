@@ -192,6 +192,7 @@
 		4C0D8E7C2F8E9C4975AA3606 /* Lato-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8885E2586C07FE1D9A79 /* Lato-HeavyItalic.ttf */; };
 		4C0D8E84B66279CE377A8D78 /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8BDD61A989037FA8DB35 /* Lecture.swift */; };
 		4C0D8E8FDA4A6ABE3B6829A8 /* NSlogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8D8D2ED0C70726C86E66 /* NSlogManager.swift */; };
+		4C0D8E9B030C0D202F84877C /* UserDetailsSectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D83B200089D891D2E5385 /* UserDetailsSectionHeaderTableViewCell.swift */; };
 		4C0D8EC9CEA6FB50DB270DA9 /* UserSearchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D84409F0430EFEA5F7E11 /* UserSearchProvider.swift */; };
 		4C0D8ED110096C87164A0C66 /* Lato-HairlineItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8409BD33BD6E63358884 /* Lato-HairlineItalic.ttf */; };
 		4C0D8ED3CCCAA0AC19016A2D /* UserDetailsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8480E989AF43B88CB60E /* UserDetailsProvider.swift */; };
@@ -399,6 +400,7 @@
 		4C0D838C7EF305B91631F49D /* ProgrammeSearchElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammeSearchElement.swift; sourceTree = "<group>"; };
 		4C0D83A67C7877F9C7E770ED /* Lato-Hairline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = "Lato-Hairline.ttf"; sourceTree = "<group>"; };
 		4C0D83A869F2202BBD42EC4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Kujon/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
+		4C0D83B200089D891D2E5385 /* UserDetailsSectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsSectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		4C0D83FFD6EDC0C0A0B9ADEE /* ClassTypeSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTypeSection.swift; sourceTree = "<group>"; };
 		4C0D8409BD33BD6E63358884 /* Lato-HairlineItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = "Lato-HairlineItalic.ttf"; sourceTree = "<group>"; };
 		4C0D841A2FE4461ECB9F5859 /* CourseEdition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseEdition.swift; sourceTree = "<group>"; };
@@ -973,6 +975,7 @@
 				52F69F841D101F0C00025C55 /* UserTableViewController.swift */,
 				52590A841D1D3E5A00C285A0 /* KierunkiViewController.swift */,
 				52590A851D1D3E5A00C285A0 /* KierunkiViewController.xib */,
+				4C0D83B200089D891D2E5385 /* UserDetailsSectionHeaderTableViewCell.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -2261,6 +2264,7 @@
 				4C0D8DBC24FC6FE141F38B9C /* ThesisSearchProvider.swift in Sources */,
 				4C0D81E3D2881A457538D27E /* GetListOfSearchElements.swift in Sources */,
 				4C0D82FE64696C30655A58A3 /* ThesisSearchElement.swift in Sources */,
+				4C0D8E9B030C0D202F84877C /* UserDetailsSectionHeaderTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
