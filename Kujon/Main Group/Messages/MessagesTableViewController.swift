@@ -17,7 +17,7 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
     private var messages: [Message] = []
     private let messageCellId: String = "messageCellId"
     private var backgroundImage: UIImageView?
-    private var backgroundLabel: UILabel = UILabel()
+    private var backgroundLabel: UILabel?
     private var spinner = SpinnerView()
     private let cellHeight: CGFloat = 50
 
@@ -26,7 +26,7 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
     override func viewDidLoad() {
         super.viewDidLoad()
         addBackgroundLabel(message: StringHolder.noMessages)
-        backgroundLabel.isHidden = true
+        backgroundLabel?.isHidden = true
         addBackgroundImage(imageName: "mailbox")
         backgroundImage?.isHidden = true
         addSpinner()
@@ -51,7 +51,7 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
     internal func refresh() {
         messageProvider.loadMessage()
         spinner.isHidden = true
-        backgroundLabel.isHidden = true
+        backgroundLabel?.isHidden = true
         backgroundImage?.isHidden = true
     }
 
@@ -72,9 +72,9 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
         var frame = view.bounds
         frame.origin.y -= 70
         backgroundLabel = UILabel(frame: frame)
-        backgroundLabel.textAlignment = .center
-        backgroundLabel.attributedText = message.toAttributedStringWithFont(UIFont.kjnFontLatoRegular(size: 17)!, color: UIColor.kujonDarkTextColor())
-        view.addSubview(backgroundLabel)
+        backgroundLabel!.textAlignment = .center
+        backgroundLabel!.attributedText = message.toAttributedStringWithFont(UIFont.kjnFontLatoRegular(size: 17)!, color: UIColor.kujonDarkTextColor())
+        view.addSubview(backgroundLabel!)
     }
 
     private func addSpinner() {
@@ -107,8 +107,8 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
     func onMessageLoaded(_ message: Array<Message>) {
         spinner.isHidden = true
         messages = message
-        backgroundLabel.isHidden = !message.isEmpty
-        backgroundImage?.isHidden = backgroundLabel.isHidden
+        backgroundLabel?.isHidden = !message.isEmpty
+        backgroundImage?.isHidden = !message.isEmpty
         refreshControl?.endRefreshing()
         tableView.reloadData()
     }
@@ -120,7 +120,8 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
         messages = message
         messages.append(Message(createdTime: "2016-10-18 23:01:11", from: "John Johnson", message: "This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message.", type: "email"))
         messages.append(Message(createdTime: "2015-12-03 23:01:11", from: "Jane Johnson", message: "This is some message. This is some message. This is some message. This is some message. This is some message. This is some message.", type: "email"))
-        backgroundLabel.isHidden = !messages.isEmpty
+        backgroundLabel?.isHidden = !messages.isEmpty
+        backgroundImage?.isHidden = !messages.isEmpty
         refreshControl?.endRefreshing()
         tableView.reloadData()
     }
