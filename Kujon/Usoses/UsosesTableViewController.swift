@@ -8,14 +8,18 @@
 
 import UIKit
 
-class UsosesTableViewController: UITableViewController, UsosesProviderDelegate, LogoutProviderDelegate {
+protocol UsosesTableViewControllerDelegate: class {
+    func usosesTableViewControllerDidTriggerLogout()
+}
+
+class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
 
     private let UsosCellIdentifier = "reusableUsosCell"
     private let usosProvider = ProvidersProviderImpl.sharedInstance.provideUsosesProvider()
-    private let logoutProvider = LogoutProvider()
     private var usosList: Array<Usos> = Array()
     let userDataHolder = UserDataHolder.sharedInstance
     var showDemoUniversity = false
+    weak var delegate: UsosesTableViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +47,6 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate, 
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(UsosesTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
 
-        logoutProvider.delegate = self
     }
 
     func refresh(_ refreshControl: UIRefreshControl) {
@@ -181,15 +184,11 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate, 
 
     }
 
-    // force logout on back button tap
+    // trigger logout after back button tap
     override func willMove(toParentViewController parent: UIViewController?) {
         if parent == nil {
-            logoutProvider.logout()
+            delegate?.usosesTableViewControllerDidTriggerLogout()
         }
-    }
-
-    func onSuccesfullLogout() {
-        // do nothing
     }
 
 }

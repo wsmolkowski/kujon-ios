@@ -17,27 +17,22 @@ class EntryViewController: UIViewController,
         GIDSignInUIDelegate,
         GIDSignInDelegate,
         ConfigProviderDelegate,
-        OpenLoginScreenProtocol{
+        OpenLoginScreenProtocol,
+        UsosesTableViewControllerDelegate,
+        LogoutProviderDelegate{
 
     let googleSignInManager = GIDSignIn.sharedInstance()
-
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var googleLogInButton: GIDSignInButton!
     @IBOutlet weak var spinnerView: SpinnerView!
-
     let facebookManager = FacebookManager.sharedInstance
     @IBOutlet weak var loginButton: FBSDKLoginButton!
-
-
     var configProvider = ProvidersProviderImpl.sharedInstance.provideConfigProvider()
     var socialLogin = true
-
-
     @IBOutlet weak var rejestrujacLabel: UILabel!
+    private let logoutProvider = LogoutProvider()
 
     override func viewDidLoad() {
-
-
         super.viewDidLoad()
         UIApplication.shared.statusBarStyle = .lightContent
         navigationController?.navigationBar.barTintColor = UIColor.kujonBlueColor()
@@ -67,6 +62,8 @@ class EntryViewController: UIViewController,
         rejestrujacLabel.addGestureRecognizer(tapGestureRecognizer)
 
         loginButton.tooltipColorStyle = .neutralGray
+
+        logoutProvider.delegate = self
 
     }
 
@@ -135,7 +132,9 @@ class EntryViewController: UIViewController,
 
     func notPairedWithUsos() {
         spinnerView.isHidden = true
-        navigationController?.pushViewController(UsosesTableViewController(), animated: true)
+        let controller = UsosesTableViewController()
+        controller.delegate = self
+        navigationController?.pushViewController(controller, animated: true)
     }
 
     func usosDown() {
@@ -184,4 +183,41 @@ class EntryViewController: UIViewController,
     }
 
 
+    //MARK: UsosesTableViewControllerDelegate
+
+    func usosesTableViewControllerDidTriggerLogout() {
+
+        if GoogleManager.sharedInstance.getLoginType() == .google {
+            GoogleManager.sharedInstance.logout(self)
+        }
+
+        if FacebookManager.sharedInstance.getLoginType() == .facebook {
+            FacebookManager.sharedInstance.logout(self)
+        }
+
+        if EmailManager.sharedInstance.getLoginType() == .email {
+            EmailManager.sharedInstance.logout(self)
+        }
+
+    }
+
+
+    //MARK: LogoutProviderDelegate
+
+    func onSuccesfullLogout() {
+        view.setNeedsDisplay()
+    }
+
+}
+
+extension EntryViewController: LogoutSucces {
+
+    func succes() {
+        // do nothing
+    }
+
+    func failed(_ text: String) {
+        // do nothing
+    }
+    
 }
