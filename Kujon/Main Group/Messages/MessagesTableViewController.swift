@@ -45,7 +45,7 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
     private func configureTableView() {
         tableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: messageCellId)
         tableView.separatorStyle = .none
-        tableView.backgroundColor = UIColor.lightGray()
+        tableView.backgroundColor = UIColor.greyBackgroundColor()
     }
 
     internal func refresh() {
