@@ -14,7 +14,7 @@ class MessagesMenuItem: MenuItemWithController {
     }
 
     func returnImage() -> UIImage! {
-        return UIImage(named: "opinion-icon")
+        return UIImage(named: "wiadomosci-icon")
     }
 
     func returnViewControllerFunction() -> () -> UIViewController! {
