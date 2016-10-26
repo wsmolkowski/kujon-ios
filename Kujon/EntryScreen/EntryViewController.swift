@@ -124,11 +124,7 @@ class EntryViewController: UIViewController,
     func notLogged() {
         spinnerView.isHidden = true
         if (socialLogin) {
-            var controller: UIViewController!
-
-            controller = UsosHolderController()
-
-            self.present(controller, animated: true, completion: nil)
+            navigationController?.pushViewController(UsosesTableViewController(), animated: true)
         }
     }
 
@@ -139,7 +135,7 @@ class EntryViewController: UIViewController,
 
     func notPairedWithUsos() {
         spinnerView.isHidden = true
-        self.present(UsosHolderController(), animated: true, completion: nil)
+        navigationController?.pushViewController(UsosesTableViewController(), animated: true)
     }
 
     func usosDown() {

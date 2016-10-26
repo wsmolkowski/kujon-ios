@@ -8,24 +8,30 @@
 
 import UIKit
 
-class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
+class UsosesTableViewController: UITableViewController, UsosesProviderDelegate, LogoutProviderDelegate {
 
     private let UsosCellIdentifier = "reusableUsosCell"
     private let usosProvider = ProvidersProviderImpl.sharedInstance.provideUsosesProvider()
+    private let logoutProvider = LogoutProvider()
     private var usosList: Array<Usos> = Array()
     let userDataHolder = UserDataHolder.sharedInstance
     var showDemoUniversity = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.navigationItem.title = StringHolder.chooseUsos
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName: UIColor.white ]
+
+        //TODO: update icon
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "grades-icon"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(UsosesTableViewController.presentInfo))
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UsosesTableViewController.barTapped))
         tapGestureRecognizer.numberOfTapsRequired = 3
         self.navigationController?.navigationBar.addGestureRecognizer(tapGestureRecognizer)
         self.navigationController?.navigationBar.isUserInteractionEnabled = true
         self.navigationController?.navigationBar.barTintColor = UIColor.kujonBlueColor()
+
 
         self.tableView.register(UINib(nibName: "UsosTableViewCell", bundle: nil), forCellReuseIdentifier: UsosCellIdentifier)
         self.usosProvider.delegate = self
@@ -36,6 +42,8 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(UsosesTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
+
+        logoutProvider.delegate = self
     }
 
     func refresh(_ refreshControl: UIRefreshControl) {
@@ -167,4 +175,21 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
         })
         task.resume()
     }
+
+    internal func presentInfo() {
+        presentAlertWithMessage(StringHolder.usosesGeneralInfo, title: "Informacja")
+
+    }
+
+    // force logout on back button tap
+    override func willMove(toParentViewController parent: UIViewController?) {
+        if parent == nil {
+            logoutProvider.logout()
+        }
+    }
+
+    func onSuccesfullLogout() {
+        // do nothing
+    }
+
 }

@@ -97,6 +97,7 @@ class StringHolder {
     static let errorRetrievingMessages = "Wystąpił problem podczas pobierania wiadomości"
     static let errorAlertTitle = "Błąd"
     static let details = "Szczegóły"
+    static let usosesGeneralInfo = "Jeżeli Twojej uczelni nie ma na liście, oznacza to, że nie korzysta ona ze wspieranego przez Kujona systemu USOS."
 
 
 }

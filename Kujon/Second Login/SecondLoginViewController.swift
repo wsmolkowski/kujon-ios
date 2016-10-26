@@ -40,7 +40,7 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
     
 
     func back(){
-        let controller = UsosHolderController()
+        let controller = UsosesTableViewController()
 
         self.present(controller, animated: true, completion: nil)
     }
