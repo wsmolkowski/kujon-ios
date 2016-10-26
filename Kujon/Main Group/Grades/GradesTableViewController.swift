@@ -10,7 +10,8 @@ import UIKit
 
 class GradesTableViewController: UITableViewController
         , NavigationDelegate
-        ,GradesProviderDelegate{
+        ,GradesProviderDelegate,
+        TermsProviderDelegate {
 
     weak var delegate: NavigationMenuProtocol! = nil
     let gradesProvider = ProvidersProviderImpl.sharedInstance.provideGradesProvider()
@@ -18,7 +19,9 @@ class GradesTableViewController: UITableViewController
     let textId = "myTextSuperId"
     private var myTermGrades  = Array<PreparedTermGrades>()
     private var dataBack = false;
-    let kSectionHeight: CGFloat = 30.0
+    private let kSectionHeight: CGFloat = 30.0
+    private let termsProvider = ProvidersProviderImpl.sharedInstance.provideTermsProvider()
+    private var selectedTermId: String?
 
     func setNavigationProtocol(_ delegate: NavigationMenuProtocol) {
         self.delegate = delegate
@@ -30,6 +33,7 @@ class GradesTableViewController: UITableViewController
         gradesProvider.delegate = self
         self.tableView.register(UINib(nibName: "Grade2TableViewCell", bundle: nil), forCellReuseIdentifier: GradeCellIdentiefer)
         gradesProvider.loadGrades()
+        termsProvider.delegate = self
         self.tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         refreshControl = UIRefreshControl()
@@ -92,7 +96,13 @@ class GradesTableViewController: UITableViewController
         if(noDataCondition()){
             return nil
         }
-        return self.createLabelForSectionTitle(self.myTermGrades[section].termId,middle: true, height: kSectionHeight)
+        let header = createLabelForSectionTitle(myTermGrades[section].termId, middle: true, height: kSectionHeight)
+        let tapRecognizer = IdentifiedTapGestureRecognizer(target: self, action: #selector(CoursesTableViewController.headerDidTap(with:)))
+        tapRecognizer.id = section
+        tapRecognizer.numberOfTapsRequired = 1
+        tapRecognizer.numberOfTouchesRequired = 1
+        header.addGestureRecognizer(tapRecognizer)
+        return header
     }
 
 
@@ -125,7 +135,38 @@ class GradesTableViewController: UITableViewController
         courseDetails.termId = prepareGrade.termId
         self.navigationController?.pushViewController(courseDetails, animated: true)
     }
-    
+
+    // MARK: Term Detail Popup
+
+    func headerDidTap(with tapGestureRecognizer: IdentifiedTapGestureRecognizer) {
+        let section = tapGestureRecognizer.id
+        selectedTermId = myTermGrades[section].termId
+        termsProvider.loadTerms()
+    }
+
+    private func presentPopUpWithTerm(_ term:Term) {
+        let termPopUp = TermsPopUpViewController(nibName: "TermsPopUpViewController", bundle: nil)
+        termPopUp.modalPresentationStyle = .overCurrentContext
+        present(termPopUp, animated: false) { [unowned termPopUp] in
+            termPopUp.showAnimate();
+        }
+        termPopUp.showInView(term)
+    }
+
+    // MARK: TermsProviderDelegate
+
+    func onTermsLoaded(_ terms: Array<Term>) {
+        guard let termId = selectedTermId else {
+            return
+        }
+        for term in terms {
+            if term.termId == termId {
+                presentPopUpWithTerm(term)
+                break
+            }
+        }
+        selectedTermId = nil
+    }
 
 
 }
