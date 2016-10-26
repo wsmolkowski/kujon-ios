@@ -8,26 +8,22 @@
 
 import UIKit
 
-class MessageCell: UITableViewCell {
+class MessageCell: GoFurtherViewCellTableViewCell {
 
     var message: Message? {
         didSet {
             if let message = message {
                 senderLabel.text = message.from
                 dateLabel.text = Date.formattedPolishStringFromDateFormatWithClockString(message.createdTime)
-                messageLabel.text = message.message
             }
         }
     }
 
     @IBOutlet weak var senderLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var messageLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .none
-        layer.cornerRadius = 10
 
     }
 

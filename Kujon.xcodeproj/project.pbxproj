@@ -296,7 +296,6 @@
 		52FF972D1D23C9C400565763 /* CourseNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FF972B1D23C9C400565763 /* CourseNameTableViewCell.xib */; };
 		661CA6731DBF7CFB0002AF79 /* MessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661CA6721DBF7CFB0002AF79 /* MessagesTableViewController.swift */; };
 		661CA6781DBF7D4E0002AF79 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661CA6761DBF7D4E0002AF79 /* MessageCell.swift */; };
-		661CA6791DBF7D4E0002AF79 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 661CA6771DBF7D4E0002AF79 /* MessageCell.xib */; };
 		661CA67B1DBF7DB80002AF79 /* MessagesMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661CA67A1DBF7DB80002AF79 /* MessagesMenuItem.swift */; };
 		661D1C221DAD974500BA9EE9 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 661D1C211DAD974500BA9EE9 /* HTMLParser.m */; };
 		662DAFE71DAC0FCD0094867E /* SearchResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662DAFE61DAC0FCD0094867E /* SearchResultsCell.swift */; };
@@ -305,6 +304,9 @@
 		6631593E1DAE623600B0789B /* ThesisDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6631593D1DAE623600B0789B /* ThesisDetailTableViewController.swift */; };
 		663159411DAE6D7D00B0789B /* ThesisDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6631593F1DAE6D7D00B0789B /* ThesisDetailHeaderCell.swift */; };
 		663159421DAE6D7D00B0789B /* ThesisDetailHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 663159401DAE6D7D00B0789B /* ThesisDetailHeaderCell.xib */; };
+		66645F3F1DC0D9E3000ACE62 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66645F3E1DC0D9E3000ACE62 /* MessageCell.xib */; };
+		66645F421DC0DD6C000ACE62 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66645F401DC0DD6C000ACE62 /* MessageDetailViewController.swift */; };
+		66645F431DC0DD6C000ACE62 /* MessageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66645F411DC0DD6C000ACE62 /* MessageDetailViewController.xib */; };
 		669B2F591DBE093E000AE02C /* CourseMeritsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B2F571DBE093E000AE02C /* CourseMeritsTableViewCell.swift */; };
 		669B2F5A1DBE093E000AE02C /* CourseMeritsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 669B2F581DBE093E000AE02C /* CourseMeritsTableViewCell.xib */; };
 		669B2F5C1DBE0973000AE02C /* CourseMeritsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B2F5B1DBE0973000AE02C /* CourseMeritsSection.swift */; };
@@ -632,7 +634,6 @@
 		660C098E1DB4E3AB0009B5B5 /* Kujon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Kujon.entitlements; path = ../Kujon.entitlements; sourceTree = "<group>"; };
 		661CA6721DBF7CFB0002AF79 /* MessagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewController.swift; sourceTree = "<group>"; };
 		661CA6761DBF7D4E0002AF79 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
-		661CA6771DBF7D4E0002AF79 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		661CA67A1DBF7DB80002AF79 /* MessagesMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesMenuItem.swift; sourceTree = "<group>"; };
 		661D1C201DAD974500BA9EE9 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLParser.h; path = "../Global Extensions/HTMLParser.h"; sourceTree = "<group>"; };
 		661D1C211DAD974500BA9EE9 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLParser.m; path = "../Global Extensions/HTMLParser.m"; sourceTree = "<group>"; };
@@ -642,6 +643,9 @@
 		6631593D1DAE623600B0789B /* ThesisDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesisDetailTableViewController.swift; sourceTree = "<group>"; };
 		6631593F1DAE6D7D00B0789B /* ThesisDetailHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesisDetailHeaderCell.swift; sourceTree = "<group>"; };
 		663159401DAE6D7D00B0789B /* ThesisDetailHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThesisDetailHeaderCell.xib; sourceTree = "<group>"; };
+		66645F3E1DC0D9E3000ACE62 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
+		66645F401DC0DD6C000ACE62 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageDetailViewController.swift; path = ../Messages/MessageDetailViewController.swift; sourceTree = "<group>"; };
+		66645F411DC0DD6C000ACE62 /* MessageDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageDetailViewController.xib; path = ../Messages/MessageDetailViewController.xib; sourceTree = "<group>"; };
 		669B2F571DBE093E000AE02C /* CourseMeritsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseMeritsTableViewCell.swift; sourceTree = "<group>"; };
 		669B2F581DBE093E000AE02C /* CourseMeritsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseMeritsTableViewCell.xib; sourceTree = "<group>"; };
 		669B2F5B1DBE0973000AE02C /* CourseMeritsSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseMeritsSection.swift; sourceTree = "<group>"; };
@@ -1182,7 +1186,8 @@
 		4C0D8AC64D4ECAED91008202 /* Main Group */ = {
 			isa = PBXGroup;
 			children = (
-				661CA6711DBF7CA20002AF79 /* Messages */,
+				66645F441DC0DDA2000ACE62 /* MessageDetail */,
+				661CA6711DBF7CA20002AF79 /* MessagesList */,
 				663159391DAE61AA00B0789B /* ThesisDetail */,
 				66D506471DA69CB800B5CE1B /* ThesesTableViewController */,
 				0AB1920E1D4AB84900834773 /* WebViewPresentation */,
@@ -1461,13 +1466,14 @@
 			name = Message;
 			sourceTree = "<group>";
 		};
-		661CA6711DBF7CA20002AF79 /* Messages */ = {
+		661CA6711DBF7CA20002AF79 /* MessagesList */ = {
 			isa = PBXGroup;
 			children = (
 				661CA6721DBF7CFB0002AF79 /* MessagesTableViewController.swift */,
 				661CA6761DBF7D4E0002AF79 /* MessageCell.swift */,
-				661CA6771DBF7D4E0002AF79 /* MessageCell.xib */,
+				66645F3E1DC0D9E3000ACE62 /* MessageCell.xib */,
 			);
+			name = MessagesList;
 			path = Messages;
 			sourceTree = "<group>";
 		};
@@ -1479,6 +1485,15 @@
 				663159401DAE6D7D00B0789B /* ThesisDetailHeaderCell.xib */,
 			);
 			path = ThesisDetail;
+			sourceTree = "<group>";
+		};
+		66645F441DC0DDA2000ACE62 /* MessageDetail */ = {
+			isa = PBXGroup;
+			children = (
+				66645F401DC0DD6C000ACE62 /* MessageDetailViewController.swift */,
+				66645F411DC0DD6C000ACE62 /* MessageDetailViewController.xib */,
+			);
+			path = MessageDetail;
 			sourceTree = "<group>";
 		};
 		66D506471DA69CB800B5CE1B /* ThesesTableViewController */ = {
@@ -1707,10 +1722,10 @@
 				4C0D87FF3ADA197F8655E408 /* Programmes.json in Resources */,
 				662DAFE91DAC0FD20094867E /* SearchResultsCell.xib in Resources */,
 				4C0D85BA322F0D6699947ECE /* CourseEditions.json in Resources */,
-				661CA6791DBF7D4E0002AF79 /* MessageCell.xib in Resources */,
 				5267503A1D213902004AD243 /* CoursesTableTableViewController.xib in Resources */,
 				52AF77C01D0984FC0058979A /* MenuItemTableViewCell.xib in Resources */,
 				52F69F831D101A9000025C55 /* UserDetailView.xib in Resources */,
+				66645F431DC0DD6C000ACE62 /* MessageDetailViewController.xib in Resources */,
 				4C0D8D445517BAD9C52B3DF0 /* Usoses.json in Resources */,
 				52001CEF1D64521F00DB074B /* StudentHeaderTableViewCell.xib in Resources */,
 				4C0D810FF3D931149777D70D /* EntryViewController.xib in Resources */,
@@ -1746,6 +1761,7 @@
 				4C0D880F1C5C7C10B24F68ED /* FacultiesSearchResult.json in Resources */,
 				4C0D8FB99127F45E713038A1 /* ProgrammeSearchResult.json in Resources */,
 				4C0D84C2D2CAA3C8644E2D29 /* StudentSearchResult.json in Resources */,
+				66645F3F1DC0D9E3000ACE62 /* MessageCell.xib in Resources */,
 				527A0EB71DA41BE3003A251A /* SearchTableViewController.xib in Resources */,
 				4C0D81542B84D3E7A66C0D28 /* ThesesSearchResult.json in Resources */,
 				4C0D8F195716CF245E6A2361 /* SearchTableViewCell.xib in Resources */,
@@ -2202,6 +2218,7 @@
 				4C0D831E6FE91FD824774043 /* UserLogin.swift in Sources */,
 				4C0D86610EB3A7F8698DCC56 /* CALayerExtensions.swift in Sources */,
 				4C0D8E79EF248F656D747BE4 /* ConfigResponse.swift in Sources */,
+				66645F421DC0DD6C000ACE62 /* MessageDetailViewController.swift in Sources */,
 				4C0D89CAC447E567DA0D2EB3 /* ConfigProvider.swift in Sources */,
 				4C0D8C2760C9F3EC7CC1E8AD /* SpinnerView.swift in Sources */,
 				528BCAC71D5DF42100A9E49C /* WWWTableViewCell.swift in Sources */,

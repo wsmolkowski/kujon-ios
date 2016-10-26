@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </array>
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MessageDetailViewController" customModule="Kujon" customModuleProvider="target">
+            <connections>
+                <outlet property="dateLabel" destination="NAI-P1-O7p" id="Abg-ll-Luu"/>
+                <outlet property="messageLabel" destination="tNt-GX-RcM" id="AV3-Jq-Mle"/>
+                <outlet property="senderLabel" destination="LXA-1O-Onm" id="juR-rx-9SK"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="5Fb-0Z-gaI"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Od:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5e-dv-bce">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="37" id="37B-cj-aYh"/>
+                        <constraint firstAttribute="height" constant="18" id="vYk-RU-LRh"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVo-Zb-MBL">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="41" id="2u4-xj-lRc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="senderLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXA-1O-Onm">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="sob-JU-XQD"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dateLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NAI-P1-O7p">
+                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b4p-7x-vW8" userLabel="separator">
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="Cbm-iF-IOj"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="messageLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNt-GX-RcM">
+                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="NAI-P1-O7p" firstAttribute="leading" secondItem="UVo-Zb-MBL" secondAttribute="trailing" constant="10" id="3gE-Eq-day"/>
+                <constraint firstItem="b4p-7x-vW8" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" id="CP5-6E-jYc"/>
+                <constraint firstItem="b5e-dv-bce" firstAttribute="leadingMargin" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="23" id="IDu-Yj-w5E"/>
+                <constraint firstAttribute="trailingMargin" secondItem="LXA-1O-Onm" secondAttribute="trailing" id="Mrm-2E-JkH"/>
+                <constraint firstAttribute="trailingMargin" secondItem="NAI-P1-O7p" secondAttribute="trailing" id="NH4-YA-PaY"/>
+                <constraint firstItem="b4p-7x-vW8" firstAttribute="top" secondItem="NAI-P1-O7p" secondAttribute="bottom" constant="13" id="QDg-AJ-3EX"/>
+                <constraint firstItem="NAI-P1-O7p" firstAttribute="top" secondItem="LXA-1O-Onm" secondAttribute="bottom" constant="8" id="QnM-rE-8xj"/>
+                <constraint firstItem="tNt-GX-RcM" firstAttribute="top" secondItem="b4p-7x-vW8" secondAttribute="bottom" constant="15" id="S7G-3h-ndV"/>
+                <constraint firstAttribute="trailingMargin" secondItem="tNt-GX-RcM" secondAttribute="trailing" id="T6S-hV-N0s"/>
+                <constraint firstItem="UVo-Zb-MBL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="Uuq-Dh-uBD"/>
+                <constraint firstItem="b4p-7x-vW8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="dxf-lA-wed"/>
+                <constraint firstItem="LXA-1O-Onm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="topMargin" constant="15" id="gAy-hF-s6P"/>
+                <constraint firstItem="b5e-dv-bce" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="topMargin" constant="15" id="iO2-WJ-Isl"/>
+                <constraint firstItem="UVo-Zb-MBL" firstAttribute="top" secondItem="b5e-dv-bce" secondAttribute="bottom" constant="8" id="kK9-ND-3YP"/>
+                <constraint firstItem="LXA-1O-Onm" firstAttribute="leading" secondItem="b5e-dv-bce" secondAttribute="trailing" constant="10" id="pRb-Sq-c9S"/>
+                <constraint firstItem="tNt-GX-RcM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="sWT-UO-918"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+    </objects>
+</document>
