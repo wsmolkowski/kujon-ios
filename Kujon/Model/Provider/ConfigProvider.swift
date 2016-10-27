@@ -27,7 +27,7 @@ class ConfigProvider: RestApiManager, ConfigProviderProtocol {
 
     func checkConfig() {
         self.makeHTTPAuthenticatedGetRequest({
-            json in
+            [unowned self] json in
 
 
             if let configRes = try! self.changeJsonToResposne(json,errorR: self.delegate) {
@@ -51,7 +51,7 @@ class ConfigProvider: RestApiManager, ConfigProviderProtocol {
 
             }
         }, onError: {
-            text in
+            [unowned self] text in
             self.delegate?.onErrorOccurs(text)
         })
 

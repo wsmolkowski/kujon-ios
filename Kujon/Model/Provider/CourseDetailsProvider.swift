@@ -47,7 +47,7 @@ class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
 
     private func makeApiShot(){
         self.makeHTTPAuthenticatedGetRequest({
-            json in
+            [unowned self] json in
             do {
                 if let courseResponse = try self.changeJsonToResposne(json,errorR: self.delegate){
 
@@ -57,7 +57,7 @@ class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
                 NSlogManager.showLog("JSON serialization failed:  \(error)")
                 self.delegate?.onErrorOccurs()
             }
-        }, onError: { text in self.delegate?.onErrorOccurs() })
+        }, onError: {[unowned self] text in self.delegate?.onErrorOccurs() })
     }
 
 

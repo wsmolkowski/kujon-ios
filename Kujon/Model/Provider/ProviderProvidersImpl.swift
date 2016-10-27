@@ -38,6 +38,8 @@ class ProvidersProviderImpl: ProvidersProvider {
 
     lazy var configProvider = ConfigProvider()
 
+    lazy var superUserProvider  = SuperUserProvider()
+
     func providerFacultiesProvider() -> FacultiesProvider {
         return self.facultiesProvider
     }
@@ -111,6 +113,10 @@ class ProvidersProviderImpl: ProvidersProvider {
 
     func provideLogoutProvider() -> LogoutProvider {
         return logoutProvider
+    }
+
+    func provideSuperUserProvider() -> SuperUserProvider {
+        return superUserProvider
     }
 
 
