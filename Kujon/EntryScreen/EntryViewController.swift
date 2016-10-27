@@ -22,7 +22,8 @@ class EntryViewController: UIViewController,
         LogoutProviderDelegate{
 
     let googleSignInManager = GIDSignIn.sharedInstance()
-    @IBOutlet weak var iconView: UIImageView!
+
+    @IBOutlet weak var logoView: UIImageView!
     @IBOutlet weak var googleLogInButton: GIDSignInButton!
     @IBOutlet weak var spinnerView: SpinnerView!
     let facebookManager = FacebookManager.sharedInstance
@@ -56,6 +57,10 @@ class EntryViewController: UIViewController,
             self.spinnerView.isHidden = true
         })
 
+        let fiveTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(EntryViewController.toggleAPIMode))
+        fiveTapGestureRecognizer.numberOfTapsRequired = 5
+        logoView.addGestureRecognizer(fiveTapGestureRecognizer)
+
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(EntryViewController.showTerms))
         tapGestureRecognizer.numberOfTapsRequired = 1
         rejestrujacLabel.isUserInteractionEnabled = true
@@ -65,6 +70,12 @@ class EntryViewController: UIViewController,
 
         logoutProvider.delegate = self
 
+    }
+
+    func toggleAPIMode(_ sender: UITapGestureRecognizer) {
+        RestApiManager.toggleAPIMode()
+        let message: String  = RestApiManager.APIMode == .production ? StringHolder.productionMode : StringHolder.demoMode
+        ToastView.showInParent(self.navigationController?.view, withText: message, forDuration: 2.0)
     }
 
 

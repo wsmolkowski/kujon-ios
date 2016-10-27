@@ -13,15 +13,16 @@ class NavDrawerHeaderViewCellTableViewCell: UITableViewCell {
     @IBOutlet weak var userEmailLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var demoModeLabel: UILabel!
+
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        updateDemoModeLabel()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    private func updateDemoModeLabel() {
+        demoModeLabel.isHidden = RestApiManager.APIMode == .production
     }
     
 }

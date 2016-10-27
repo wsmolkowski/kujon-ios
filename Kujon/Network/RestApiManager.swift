@@ -5,18 +5,27 @@
 
 import Foundation
 import Decodable
+
 typealias onSucces = (Data!) -> Void
 typealias onErrorOccurs = (String) -> Void
 
-class RestApiManager {
-    static let BASE_URL: String = "https://api-demo.kujon.mobi"
-//    static let BASE_URL: String = "https://api.kujon.mobi"
-//
-    private var headerManager = HeaderManager()
+enum APIMode: String {
+    case demo = "https://api-demo.kujon.mobi"
+    case production = "https://api.kujon.mobi"
+}
 
+class RestApiManager {
+
+    static var APIMode: APIMode = .production
+    static var BASE_URL: String { return APIMode.rawValue }
+    var baseURL: String { return RestApiManager.APIMode.rawValue  }
+    private var headerManager = HeaderManager()
     var test = false
-    let baseURL = BASE_URL
     var refresh = false
+
+    static func toggleAPIMode() {
+        APIMode = APIMode == .production ? .demo : .production
+    }
 
     func makeHTTPGetRequest(_ onCompletion: @escaping onSucces, onError: @escaping onErrorOccurs) {
         if (test) {
