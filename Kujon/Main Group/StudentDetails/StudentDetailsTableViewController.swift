@@ -40,9 +40,12 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(StudentDetailsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
-        refreshControl?.beginRefreshingManually()
-
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        refreshControl?.beginRefreshingManually()
+    }
+
 
     func back() {
         self.navigationController?.popViewController(animated: true)

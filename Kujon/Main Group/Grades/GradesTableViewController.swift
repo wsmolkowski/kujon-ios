@@ -39,9 +39,13 @@ class GradesTableViewController: UITableViewController
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(GradesTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
-        refreshControl?.beginRefreshingManually()
         dataBack = false;
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        refreshControl?.beginRefreshingManually()
+    }
+
     func refresh(_ refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")
         gradesProvider.reload()

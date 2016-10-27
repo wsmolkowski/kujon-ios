@@ -29,8 +29,11 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(TeacherTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
-        refreshControl?.beginRefreshingManually()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        refreshControl?.beginRefreshingManually()
     }
 
     func refresh(_ refreshControl: UIRefreshControl) {

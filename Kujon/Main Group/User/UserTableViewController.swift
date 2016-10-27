@@ -72,11 +72,13 @@ class UserTableViewController: UITableViewController
         refreshControl?.backgroundColor = UIColor.kujonBlueColor()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(UserTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
-        refreshControl?.beginRefreshingManually()
         self.navigationController?.navigationBar.barTintColor = UIColor.kujonBlueColor()
         loadData()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        refreshControl?.beginRefreshingManually()
+    }
 
     private func addNavigationSeparator() {
         guard let navigationController = self.navigationController else {

@@ -29,11 +29,16 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(CoursesTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
-        refreshControl?.beginRefreshingManually()
+
+
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140
-
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+         refreshControl?.beginRefreshingManually()
+    }
+
 
     func refresh(_ refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")
