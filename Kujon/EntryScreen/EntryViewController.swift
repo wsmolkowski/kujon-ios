@@ -121,7 +121,9 @@ class EntryViewController: UIViewController,
     func notLogged() {
         spinnerView.isHidden = true
         if (socialLogin) {
-            navigationController?.pushViewController(UsosesTableViewController(), animated: true)
+            let controller = UsosesTableViewController()
+            controller.delegate = self
+            navigationController?.pushViewController(controller, animated: true)
         }
     }
 
