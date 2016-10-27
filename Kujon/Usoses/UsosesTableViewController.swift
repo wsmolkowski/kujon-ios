@@ -27,8 +27,7 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
         self.navigationItem.title = StringHolder.chooseUsos
         self.navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName: UIColor.white ]
 
-        //TODO: update icon
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "grades-icon"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(UsosesTableViewController.presentInfo))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "hint-icon"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(UsosesTableViewController.presentInfo))
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UsosesTableViewController.barTapped))
         tapGestureRecognizer.numberOfTapsRequired = 3
