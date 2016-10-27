@@ -29,12 +29,12 @@ class MessageProvider: RestApiManager,MessageProviderProtocol  {
     
     internal func loadMessage() {
         self.makeHTTPAuthenticatedGetRequest({
-            json in
+            [unowned self] json in
             if let messageResponse = try! self.changeJsonToResposne(json,errorR: self.delegate){
                 
                 self.delegate?.onMessageLoaded(messageResponse.data)
             }
-        }) { text in self.delegate?.onErrorOccurs()}
+        }) {[unowned self] text in self.delegate?.onErrorOccurs()}
     }
 
     

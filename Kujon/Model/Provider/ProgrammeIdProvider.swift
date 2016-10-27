@@ -24,12 +24,12 @@ class ProgrammeIdProvider: RestApiManager, ProgrammeIdProviderProtocol {
     func loadProgramme(_ id: String) {
         endpoint = "/programmes/" + id
         self.makeHTTPAuthenticatedGetRequest({
-            json in
+            [unowned self] json in
             if let programeResponse = try! self.changeJsonToResposne(json,errorR: self.delegate) {
                 let programmeEnd = programeResponse.singleProgramme.getProgramme()
                 self.delegate?.onProgrammeLoaded(id,programme: StudentProgramme(id: id,programme: programmeEnd))
             }
-        }, onError: { text in self.delegate?.onErrorOccurs() })
+        }, onError: {[unowned self] text in self.delegate?.onErrorOccurs() })
     }
 
     override func getMyUrl() -> String {

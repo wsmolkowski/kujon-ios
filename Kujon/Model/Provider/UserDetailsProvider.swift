@@ -28,13 +28,13 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
     func loadUserDetail() {
         endpoint = "/users"
         self.makeHTTPAuthenticatedGetRequest({
-            json in
+            [unowned self] json in
 
             if let user = try! self.changeJsonToResposne(json,errorR: self.delegate) {
 
                 self.delegate?.onUserDetailLoaded(user.data)
             }
-        }, onError: {text in  self.delegate?.onErrorOccurs() })
+        }, onError: {[unowned self] text in  self.delegate?.onErrorOccurs() })
     }
 
     override func getMyUrl() -> String {
@@ -44,21 +44,21 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
     func loadUserDetail(_ id: String) {
         endpoint = "/lecturers/" + id
         self.makeHTTPAuthenticatedGetRequest({
-            json in
+            [unowned self] json in
            if let user = try! self.changeJsonToResposne(json,errorR: self.delegate){
                self.delegate?.onUserDetailLoaded(user.data)
            }
-        }, onError: {text in self.delegate?.onErrorOccurs() })
+        }, onError: {[unowned self] text in self.delegate?.onErrorOccurs() })
     }
 
     func loadStudentDetails(_ id: String) {
         endpoint = "/users/" + id
         self.makeHTTPAuthenticatedGetRequest({
-            json in
+            [unowned self] json in
             if let user = try! self.changeJsonToResposne(json,errorR: self.delegate){
                 self.delegate?.onUserDetailLoaded(user.data)
             }
-        }, onError: {text in self.delegate?.onErrorOccurs() })
+        }, onError: {[unowned self] text in self.delegate?.onErrorOccurs() })
     }
 }
 

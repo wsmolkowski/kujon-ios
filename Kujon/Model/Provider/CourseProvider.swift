@@ -16,7 +16,7 @@ class CourseProvider: RestApiManager {
 
     func provideCourses() {
         self.makeHTTPAuthenticatedGetRequest({
-            data in
+            [unowned self] data in
             
             if (data != nil) {
                 do {
@@ -48,7 +48,7 @@ class CourseProvider: RestApiManager {
 
             }
 
-        }, onError: { text in self.delegate?.onErrorOccurs() })
+        }, onError: {[unowned self] text in self.delegate?.onErrorOccurs() })
     }
 
     override func getMyUrl() -> String {

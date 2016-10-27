@@ -21,11 +21,11 @@ class LogoutProvider: RestApiManager, LogoutProviderProtocol {
     func logout() {
 
         self.makeHTTPAuthenticatedGetRequest({
-            json in
+            [unowned self] json in
 
             self.delegate?.onSuccesfullLogout()
 
-        }, onError: { text in self.delegate?.onErrorOccurs() })
+        }, onError: {[unowned self] text in self.delegate?.onErrorOccurs() })
     }
 
 

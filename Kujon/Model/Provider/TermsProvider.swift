@@ -20,12 +20,12 @@ class TermsProvider: RestApiManager, TermsProviderProtocol {
     weak   var delegate: TermsProviderDelegate! = nil
     func loadTerms() {
         self.makeHTTPAuthenticatedGetRequest({
-            json in
+            [unowned self] json in
             if let termsResponse = try! self.changeJsonToResposne(json,errorR: self.delegate) {
 
                 self.delegate?.onTermsLoaded(termsResponse.terms)
             }
-        }, onError: { text in self.delegate?.onErrorOccurs() })
+        }, onError: { [unowned self] text in self.delegate?.onErrorOccurs() })
     }
 
     override func getMyUrl() -> String {
