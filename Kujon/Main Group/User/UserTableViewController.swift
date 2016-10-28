@@ -32,8 +32,8 @@ private func ><T:Comparable>(lhs: T?, rhs: T?) -> Bool {
 class UserTableViewController: UITableViewController
         , NavigationDelegate
         , SuperUserDetailsProviderDelegate
-
-        , OnImageLoadedFromRest {
+        , OnImageLoadedFromRest,
+        UsosesProviderDelegate {
 
     weak var delegate: NavigationMenuProtocol! = nil
     private let usedDetailCellId = "userDetailViewId"
@@ -43,7 +43,8 @@ class UserTableViewController: UITableViewController
     let superUserProvider: SuperUserProvider! = ProvidersProviderImpl.sharedInstance.provideSuperUserProvider()
     let restImageProvider = RestImageProvider.sharedInstance
     private let userDataHolder = UserDataHolder.sharedInstance
-
+    private let usosesProvider = ProvidersProviderImpl.sharedInstance.provideUsosesProvider()
+    
     var userDetail: SuperUserDetails! = nil
     var userFaculties: Array<Facultie>! = nil
     var terms: Array<Term> = Array()
@@ -122,6 +123,7 @@ class UserTableViewController: UITableViewController
         self.tableView.reloadData()
         self.userDataHolder.userName = userDetail.firstName + " " + userDetail.lastName
         refreshControl?.endRefreshing()
+        loadUSOSImageIfNeeded()
     }
 
 
@@ -130,6 +132,22 @@ class UserTableViewController: UITableViewController
             [unowned self] in
             self.loadData()
         }, cancel: {})
+    }
+
+    func loadUSOSImageIfNeeded() {
+        if userDataHolder.userUsosImage == nil {
+            usosesProvider.loadUsoses()
+        }
+    }
+
+    func onUsosesLoaded(_ arrayOfUsoses: Array<Usos>) {
+        for usos in arrayOfUsoses {
+            if usos.usosId == userDetail.usosId {
+                UserDataHolder.sharedInstance.userUsosImage = usos.image
+                tableView.reloadData()
+                return
+            }
+        }
     }
 
     // MARK: - Table view data source

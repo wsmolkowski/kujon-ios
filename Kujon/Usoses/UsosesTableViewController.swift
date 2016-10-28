@@ -128,7 +128,6 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
 
             self.userDataHolder.usosId = usos.usosId
             self.userDataHolder.usosName = usos.name
-            self.userDataHolder.userUsosImage = usos.image
             self.present(navigationController, animated: true, completion: nil)
         }))
         alertController.addAction(UIAlertAction(title: StringHolder.cancel, style: .cancel, handler: {
