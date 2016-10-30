@@ -23,7 +23,7 @@ class TextViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     func back() {
-        self.navigationController?.popViewController(animated: true)
+        let _ = self.navigationController?.popViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {

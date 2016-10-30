@@ -68,7 +68,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
     }
 
     func back() {
-        self.navigationController?.popViewController(animated: true)
+        let _ = self.navigationController?.popViewController(animated: true)
     }
 
     func onFacultieLoaded(_ fac: Facultie) {

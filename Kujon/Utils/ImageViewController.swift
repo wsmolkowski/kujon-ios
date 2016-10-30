@@ -23,7 +23,7 @@ class ImageViewController: UIViewController {
     }
 
     func back() {
-        self.navigationController?.popViewController(animated: true)
+        let _ = self.navigationController?.popViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {

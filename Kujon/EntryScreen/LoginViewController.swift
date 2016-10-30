@@ -58,7 +58,7 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
     }
 
     func back() {
-        self.navigationController?.popViewController(animated: true)
+        let _ = self.navigationController?.popViewController(animated: true)
     }
     @IBAction func onLoginClick(_ sender: AnyObject) {
         email = emailLabel.text!

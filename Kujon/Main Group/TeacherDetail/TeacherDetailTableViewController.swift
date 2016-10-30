@@ -46,7 +46,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
     }
 
     func back() {
-        self.navigationController?.popViewController(animated: true)
+        let _ = self.navigationController?.popViewController(animated: true)
     }
 
 
@@ -198,7 +198,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
 
 
     func imageTapped(_ sender: UITapGestureRecognizer) {
-        print(sender.view?.tag)
+        print(sender.view?.tag as Any)
         if (isThereImage) {
             let imageController = ImageViewController(nibName: "ImageViewController", bundle: Bundle.main)
             let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! TeacherHeaderTableViewCell
@@ -212,7 +212,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
     }
 
     func wwwTaped(_ sender: UITapGestureRecognizer) {
-        print(sender.view?.tag)
+        print(sender.view?.tag as Any)
         if let url = URL(string: self.userDetails.homepage != nil ? self.userDetails.homepage! : "") {
             UIApplication.shared.openURL(url)
         }

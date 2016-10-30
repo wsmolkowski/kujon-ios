@@ -131,7 +131,7 @@ class CalendarViewController: MGCDayPlannerViewController,
     }
 
     func openList() {
-        self.navigationController?.popViewController(animated: true)
+        let _ = self.navigationController?.popViewController(animated: true)
     }
 
 

@@ -63,7 +63,7 @@ class SettingsViewController: UIViewController,
 
 
     func back() {
-        self.navigationController?.popViewController(animated: true)
+        let _ = self.navigationController?.popViewController(animated: true)
     }
 
     @IBAction func deleteAccount(_ sender: AnyObject) {

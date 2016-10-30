@@ -85,7 +85,7 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
 
 
     func back() {
-        self.navigationController?.popViewController(animated: true)
+        let _ = self.navigationController?.popViewController(animated: true)
     }
 
 

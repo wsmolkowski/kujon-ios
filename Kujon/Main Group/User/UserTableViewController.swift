@@ -254,7 +254,7 @@ class UserTableViewController: UITableViewController
     }
 
     func imageTapped(_ sender: UITapGestureRecognizer) {
-        print(sender.view?.tag)
+        print(sender.view?.tag as Any)
         if (isThereImage) {
             let imageController = ImageViewController(nibName: "ImageViewController", bundle: Bundle.main)
             let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! UserDetailsTableViewCell

@@ -50,7 +50,7 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
 
 
     func back() {
-        self.navigationController?.popViewController(animated: true)
+        let _ = self.navigationController?.popViewController(animated: true)
     }
 
     func refresh(_ refreshControl: UIRefreshControl) {
@@ -149,7 +149,7 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
     }
 
     func imageTapped(_ sender: UITapGestureRecognizer) {
-        print(sender.view?.tag)
+        print(sender.view?.tag as Any)
         if (isThereImage) {
             if let cell = self.tableView.cellForRow(at: IndexPath(item: 0, section: 0)) {
                 let imageController = ImageViewController(nibName: "ImageViewController", bundle: Bundle.main)

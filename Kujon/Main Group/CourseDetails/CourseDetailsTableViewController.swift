@@ -73,8 +73,7 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
     }
 
     func back(){
-
-        self.navigationController?.popViewController(animated: true)
+        let _ = self.navigationController?.popViewController(animated: true)
     }
 
     func onCourseDetailsLoaded(_ courseDetails: CourseDetails) {
