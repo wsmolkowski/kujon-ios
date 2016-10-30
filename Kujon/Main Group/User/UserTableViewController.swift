@@ -73,11 +73,14 @@ class UserTableViewController: UITableViewController
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(UserTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         self.navigationController?.navigationBar.barTintColor = UIColor.kujonBlueColor()
+
         loadData()
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        refreshControl?.beginRefreshingManually()
+        if self.isBeingPresented || self.isMovingToParentViewController {
+            refreshControl?.beginRefreshingManually()
+        }
     }
 
     private func addNavigationSeparator() {
@@ -99,7 +102,6 @@ class UserTableViewController: UITableViewController
     func refresh(_ refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")
         superUserProvider.reload()
-
         loadData()
 
     }
@@ -129,7 +131,10 @@ class UserTableViewController: UITableViewController
         self.showAlertApi(StringHolder.attention, text: text, succes: {
             [unowned self] in
             self.loadData()
-        }, cancel: {})
+        }, cancel: {
+            [unowned self] in
+                self.refreshControl?.endRefreshing()
+        })
     }
 
     // MARK: - Table view data source

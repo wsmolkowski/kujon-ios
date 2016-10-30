@@ -32,7 +32,10 @@ class SuperUserProvider:RestApiManager,SuperUserProviderProtocol {
 
                 self.delegate?.onUserDetailLoaded(user.data)
             }
-        }, onError: {[unowned self]  text in  self.delegate?.onErrorOccurs(text) })
+        }, onError: {[unowned self]
+            text in
+            self.delegate?.onErrorOccurs(text)
+        })
     }
 
     override func getMyUrl() -> String {

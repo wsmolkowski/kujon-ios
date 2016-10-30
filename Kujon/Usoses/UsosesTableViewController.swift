@@ -46,7 +46,9 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(UsosesTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
 
+
     }
+
 
     func refresh(_ refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")

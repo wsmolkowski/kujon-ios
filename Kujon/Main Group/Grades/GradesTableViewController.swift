@@ -43,7 +43,9 @@ class GradesTableViewController: UITableViewController
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        refreshControl?.beginRefreshingManually()
+        if self.isBeingPresented || self.isMovingToParentViewController {
+            refreshControl?.beginRefreshingManually()
+        }
     }
 
     func refresh(_ refreshControl: UIRefreshControl) {

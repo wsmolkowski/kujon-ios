@@ -40,7 +40,9 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        refreshControl?.beginRefreshingManually()
+        if self.isBeingPresented || self.isMovingToParentViewController {
+            refreshControl?.beginRefreshingManually()
+        }
     }
 
     func back() {

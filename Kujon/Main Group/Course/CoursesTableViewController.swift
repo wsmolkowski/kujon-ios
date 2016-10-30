@@ -33,10 +33,14 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
 
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140
+        courseProvider.provideCourses()
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
-         refreshControl?.beginRefreshingManually()
+        if self.isBeingPresented || self.isMovingToParentViewController {
+            refreshControl?.beginRefreshingManually()
+        }
     }
 
 
@@ -54,10 +58,13 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
         self.refreshControl?.endRefreshing()
 
     }
-
-    func onErrorOccurs() {
-
+    func onErrorOccurs(_ text: String) {
+        self.showAlertApi(StringHolder.attention, text: text, succes: {
+            [unowned self] in
+            self.courseProvider.provideCourses()
+        }, cancel: {})
     }
+
 
     func setNavigationProtocol(_ delegate: NavigationMenuProtocol) {
         self.delegate = delegate

@@ -12,7 +12,6 @@ import FBSDKLoginKit
 class SettingsViewController: UIViewController,
         FBSDKLoginButtonDelegate,
         DeleteAccountProviderDelegate,
-        LogoutSucces,
         GIDSignInUIDelegate {
 
     var loginMenager: UserLogin! = nil
@@ -50,13 +49,13 @@ class SettingsViewController: UIViewController,
 
     }
 
-    func succes() {
+    override func succes() {
         let controller = EntryViewController()
         let  navigationController = UINavigationController(rootViewController: controller)
         self.present(navigationController, animated: true, completion: nil)
     }
 
-    func failed(_ text: String) {
+    override func failed(_ text: String) {
         self.showAlertApiError({
             self.goBackToEntryScreen()
         }, cancelFucnt: {})

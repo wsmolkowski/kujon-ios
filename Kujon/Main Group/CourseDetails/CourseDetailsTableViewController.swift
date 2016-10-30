@@ -30,10 +30,13 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        refreshControl?.beginRefreshingManually()
+        if self.isBeingPresented || self.isMovingToParentViewController {
+            refreshControl?.beginRefreshingManually()
+        }
     }
 
 

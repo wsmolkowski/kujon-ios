@@ -141,6 +141,7 @@ class EntryViewController: UIViewController,
     func pairedWithUsos() {
         spinnerView.isHidden = true
         self.present(ContainerViewController(), animated: true, completion: nil)
+    
     }
 
     func notPairedWithUsos() {
@@ -223,13 +224,13 @@ class EntryViewController: UIViewController,
 
 }
 
-extension EntryViewController: LogoutSucces {
+extension EntryViewController {
 
-    func succes() {
+    override func succes() {
         // do nothing
     }
 
-    func failed(_ text: String) {
+    override func failed(_ text: String) {
         // do nothing
     }
     
