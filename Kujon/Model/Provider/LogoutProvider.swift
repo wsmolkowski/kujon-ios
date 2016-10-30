@@ -19,6 +19,7 @@ class LogoutProvider: RestApiManager, LogoutProviderProtocol {
 
 
     func logout() {
+        UserDataHolder.sharedInstance.userUsosImage = nil
 
         self.makeHTTPAuthenticatedGetRequest({
             [unowned self] json in
