@@ -8,9 +8,11 @@
 
 import UIKit
 
+
 class RefreshingTableViewController: UITableViewController  {
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         refreshControl = KujonRefreshControl()
         refreshControl?.backgroundColor = UIColor.kujonBlueColor()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
