@@ -35,18 +35,17 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
         }
         programmeProvider.delegate = self
         provider.delegate = self
-        provider.loadStudentDetails(userId)
 
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(StudentDetailsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
     }
 
-//    override func viewDidAppear(_ animated: Bool) {
-//        if self.isBeingPresented || self.isMovingToParentViewController {
-//            refreshControl?.beginRefreshingManually()
-//        }
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        if self.isBeingPresented || self.isMovingToParentViewController {
+            refreshControl?.beginRefreshingManually()
+        }
+    }
 
 
     func back() {
@@ -54,7 +53,7 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
     }
 
     func refresh(_ refreshControl: UIRefreshControl) {
-        NSlogManager.showLog("Refresh was called")
+        NSlogManager.showLog("REFRESH DATA: STUDENT DETAILS")
         provider.reload()
         provider.loadUserDetail(userId)
     }

@@ -23,7 +23,6 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(TeacherTableViewController.openDrawer),andTitle: StringHolder.lecturers)
         self.tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: TeachCellId)
         lecturerProvider.delegate = self
-        lecturerProvider.loadLecturers()
         self.tableView.tableFooterView = UIView()
 
         refreshControl = UIRefreshControl()
@@ -32,14 +31,14 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
 
-//    override func viewDidAppear(_ animated: Bool) {
-//        if self.isBeingPresented || self.isMovingToParentViewController {
-//            refreshControl?.beginRefreshingManually()
-//        }
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        if self.isBeingPresented || self.isMovingToParentViewController {
+            refreshControl?.beginRefreshingManually()
+       }
+    }
 
     func refresh(_ refreshControl: UIRefreshControl) {
-        NSlogManager.showLog("Refresh was called")
+        NSlogManager.showLog("REFRESH DATA: TEACHERS")
         lecturerProvider.reload()
         lecturerProvider.loadLecturers()
 

@@ -25,7 +25,6 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
         courseProvider.provideCourses()
         termsProvider.delegate = self
         self.tableView.tableFooterView = UIView()
-
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(CoursesTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
@@ -33,22 +32,20 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
 
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140
-        NSlogManager.showLog("LOAD COURSES *****************")
-        courseProvider.provideCourses()
 
     }
 
-//    override func viewDidAppear(_ animated: Bool) {
-//        if self.isBeingPresented || self.isMovingToParentViewController {
-//            refreshControl?.beginRefreshingManually()
-//        }
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        if self.isBeingPresented || self.isMovingToParentViewController {
+            NSlogManager.showLog("REFRESH DATA: PRZEDMIOTY")
+            refreshControl?.beginRefreshingManually()
+        }
+    }
 
 
     func refresh(_ refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")
         courseProvider.reload()
-        NSlogManager.showLog("LOAD COURSES *****************")
         courseProvider.provideCourses()
 
     }

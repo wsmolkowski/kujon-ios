@@ -32,7 +32,6 @@ class GradesTableViewController: UITableViewController
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(GradesTableViewController.openDrawer),andTitle: StringHolder.grades)
         gradesProvider.delegate = self
         self.tableView.register(UINib(nibName: "Grade2TableViewCell", bundle: nil), forCellReuseIdentifier: GradeCellIdentiefer)
-        gradesProvider.loadGrades()
         termsProvider.delegate = self
         self.tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
@@ -41,15 +40,15 @@ class GradesTableViewController: UITableViewController
         refreshControl?.addTarget(self, action: #selector(GradesTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         dataBack = false;
     }
-//
-//    override func viewDidAppear(_ animated: Bool) {
-//        if self.isBeingPresented || self.isMovingToParentViewController {
-//            refreshControl?.beginRefreshingManually()
-//        }
-//    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        if self.isBeingPresented || self.isMovingToParentViewController {
+            refreshControl?.beginRefreshingManually()
+        }
+    }
 
     func refresh(_ refreshControl: UIRefreshControl) {
-        NSlogManager.showLog("Refresh was called")
+        NSlogManager.showLog("REFRESH DATA: GRADES")
         gradesProvider.reload()
         gradesProvider.loadGrades()
 

@@ -23,7 +23,6 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(CourseDetailsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
-        load()
         for section in sectionHelpers{
             section.registerView(self.tableView)
         }
@@ -33,15 +32,15 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
 
     }
 
-//    override func viewDidAppear(_ animated: Bool) {
-//        if self.isBeingPresented || self.isMovingToParentViewController {
-//            refreshControl?.beginRefreshingManually()
-//        }
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        if self.isBeingPresented || self.isMovingToParentViewController {
+            refreshControl?.beginRefreshingManually()
+        }
+    }
 
 
     func refresh(_ refreshControl: UIRefreshControl) {
-        NSlogManager.showLog("Refresh was called")
+        NSlogManager.showLog("REFRESH DATA: COURSE DETAILS")
         courseDetailsProvider.reload()
         load()
 

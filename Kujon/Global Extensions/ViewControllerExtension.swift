@@ -83,10 +83,10 @@ extension UIRefreshControl {
     func beginRefreshingManually() {
         if let scrollView = superview as? UIScrollView {
             scrollView.setContentOffset(CGPoint(x: 0, y: scrollView.contentOffset.y - frame.height * 1.2), animated: true)
-            self.beginRefreshing()
-//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: { [unowned self] in
-//                
-//            })
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: { [unowned self] in
+                self.sendActions(for: .valueChanged)
+                self.beginRefreshing()
+            })
         }
 
     }

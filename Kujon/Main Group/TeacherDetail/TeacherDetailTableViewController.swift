@@ -27,8 +27,6 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         userDetailsProvider.delegate = self
         self.tableView.tableFooterView = UIView()
         self.tableView.showsVerticalScrollIndicator = false
-        loadUser()
-
         self.tableView.estimatedRowHeight = 6000
 
 
@@ -38,12 +36,12 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
 
     }
-//
-//    override func viewDidAppear(_ animated: Bool) {
-//        if self.isBeingPresented || self.isMovingToParentViewController {
-//            refreshControl?.beginRefreshingManually()
-//        }
-//    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        if self.isBeingPresented || self.isMovingToParentViewController {
+            refreshControl?.beginRefreshingManually()
+        }
+    }
 
     func back() {
         let _ = self.navigationController?.popViewController(animated: true)
@@ -51,7 +49,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
 
 
     func refresh(_ refreshControl: UIRefreshControl) {
-        NSlogManager.showLog("Refresh was called")
+        NSlogManager.showLog("REFRESH DATA: TEACHER DETAILS")
         userDetailsProvider.reload()
         loadUser()
     }
