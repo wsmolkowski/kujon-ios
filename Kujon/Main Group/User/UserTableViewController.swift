@@ -69,7 +69,7 @@ class UserTableViewController: UITableViewController
         self.tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: termsCellId)
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor.greyBackgroundColor()
-        refreshControl = UIRefreshControl()
+        refreshControl = KujonRefreshControl()
         refreshControl?.backgroundColor = UIColor.kujonBlueColor()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(UserTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
@@ -77,8 +77,9 @@ class UserTableViewController: UITableViewController
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if self.isBeingPresented || self.isMovingToParentViewController {
-            refreshControl?.beginRefreshingManually()
+            (refreshControl as? KujonRefreshControl)?.beginRefreshingManually()
         }
     }
 
@@ -98,20 +99,18 @@ class UserTableViewController: UITableViewController
         NSLayoutConstraint.activate(constraints)
     }
 
-    func refresh(_ refreshControl: UIRefreshControl) {
+    func refresh(_ refreshControl: KujonRefreshControl) {
         NSlogManager.showLog("REFRESH DATA: USER")
-        superUserProvider.reload()
-        loadData()
+        if refreshControl.refreshType == .userInitiated {
+            print("CLEAR CACHE")
+            superUserProvider.reload()
+        }
+        superUserProvider.loadUserDetail()
 
     }
 
     func openDrawer() {
         delegate?.toggleLeftPanel()
-    }
-
-    private func loadData() {
-        superUserProvider.loadUserDetail()
-
     }
 
     func onUserDetailLoaded(_ userDetails: SuperUserDetails) {
@@ -130,7 +129,7 @@ class UserTableViewController: UITableViewController
     func onErrorOccurs(_ text: String) {
         self.showAlertApi(StringHolder.attention, text: text, succes: {
             [unowned self] in
-            self.loadData()
+            self.superUserProvider.loadUserDetail()
         }, cancel: {
             [unowned self] in
                 self.refreshControl?.endRefreshing()

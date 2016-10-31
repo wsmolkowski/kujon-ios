@@ -29,19 +29,20 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
             provider.setDelegate(self)
 
         }
-        refreshControl = UIRefreshControl()
+        refreshControl = KujonRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(SearchResultTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if self.isBeingPresented || self.isMovingToParentViewController {
-            refreshControl?.beginRefreshingManually()
+            (refreshControl as? KujonRefreshControl)?.beginRefreshingManually()
         }
     }
 
 
-    func refresh(_ refreshControl: UIRefreshControl) {
+    func refresh(_ refreshControl: KujonRefreshControl) {
         NSlogManager.showLog("REFRESH DATA: SEARCH RESULTS")
         self.array = Array()
         self.tableView.reloadData();

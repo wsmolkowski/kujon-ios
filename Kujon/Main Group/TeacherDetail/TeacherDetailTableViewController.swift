@@ -30,7 +30,7 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         self.tableView.estimatedRowHeight = 6000
 
 
-        refreshControl = UIRefreshControl()
+        refreshControl = KujonRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(TeacherDetailTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
@@ -38,8 +38,9 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if self.isBeingPresented || self.isMovingToParentViewController {
-            refreshControl?.beginRefreshingManually()
+            (refreshControl as? KujonRefreshControl)?.beginRefreshingManually()
         }
     }
 
@@ -48,9 +49,12 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
     }
 
 
-    func refresh(_ refreshControl: UIRefreshControl) {
+    func refresh(_ refreshControl: KujonRefreshControl) {
         NSlogManager.showLog("REFRESH DATA: TEACHER DETAILS")
-        userDetailsProvider.reload()
+        if refreshControl.refreshType == .userInitiated {
+            print("CLEAR CACHE")
+            userDetailsProvider.reload()
+        }
         loadUser()
     }
 

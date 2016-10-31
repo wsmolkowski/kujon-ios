@@ -35,21 +35,25 @@ class GradesTableViewController: UITableViewController
         termsProvider.delegate = self
         self.tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
-        refreshControl = UIRefreshControl()
+        refreshControl = KujonRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(GradesTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         dataBack = false;
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if self.isBeingPresented || self.isMovingToParentViewController {
-            refreshControl?.beginRefreshingManually()
+            (refreshControl as? KujonRefreshControl)?.beginRefreshingManually()
         }
     }
 
-    func refresh(_ refreshControl: UIRefreshControl) {
+    func refresh(_ refreshControl: KujonRefreshControl) {
         NSlogManager.showLog("REFRESH DATA: GRADES")
-        gradesProvider.reload()
+        if refreshControl.refreshType == .userInitiated {
+            print("CLEAR CACHE")
+            gradesProvider.reload()
+        }
         gradesProvider.loadGrades()
 
     }

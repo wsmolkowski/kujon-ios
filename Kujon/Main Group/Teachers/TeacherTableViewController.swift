@@ -25,21 +25,25 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
         lecturerProvider.delegate = self
         self.tableView.tableFooterView = UIView()
 
-        refreshControl = UIRefreshControl()
+        refreshControl = KujonRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(TeacherTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if self.isBeingPresented || self.isMovingToParentViewController {
-            refreshControl?.beginRefreshingManually()
+            (refreshControl as? KujonRefreshControl)?.beginRefreshingManually()
        }
     }
 
-    func refresh(_ refreshControl: UIRefreshControl) {
+    func refresh(_ refreshControl: KujonRefreshControl) {
         NSlogManager.showLog("REFRESH DATA: TEACHERS")
-        lecturerProvider.reload()
+        if refreshControl.refreshType == .userInitiated {
+            print("CLEAR CACHE")
+            lecturerProvider.reload()
+        }
         lecturerProvider.loadLecturers()
 
     }

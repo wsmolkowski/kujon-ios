@@ -36,14 +36,15 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
         programmeProvider.delegate = self
         provider.delegate = self
 
-        refreshControl = UIRefreshControl()
+        refreshControl = KujonRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(StudentDetailsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if self.isBeingPresented || self.isMovingToParentViewController {
-            refreshControl?.beginRefreshingManually()
+            (refreshControl as? KujonRefreshControl)?.beginRefreshingManually()
         }
     }
 
@@ -52,9 +53,12 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
         let _ = self.navigationController?.popViewController(animated: true)
     }
 
-    func refresh(_ refreshControl: UIRefreshControl) {
+    func refresh(_ refreshControl: KujonRefreshControl) {
         NSlogManager.showLog("REFRESH DATA: STUDENT DETAILS")
-        provider.reload()
+        if refreshControl.refreshType == .userInitiated {
+            print("CLEAR CACHE")
+            provider.reload()
+        }
         provider.loadUserDetail(userId)
     }
 

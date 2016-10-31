@@ -20,7 +20,7 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(CourseDetailsTableViewController.back),andTitle: StringHolder.courseDetails)
         courseDetailsProvider.delegate = self;
-        refreshControl = UIRefreshControl()
+        refreshControl = KujonRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(CourseDetailsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         for section in sectionHelpers{
@@ -33,15 +33,19 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if self.isBeingPresented || self.isMovingToParentViewController {
-            refreshControl?.beginRefreshingManually()
+            (refreshControl as? KujonRefreshControl)?.beginRefreshingManually()
         }
     }
 
 
-    func refresh(_ refreshControl: UIRefreshControl) {
+    func refresh(_ refreshControl: KujonRefreshControl) {
         NSlogManager.showLog("REFRESH DATA: COURSE DETAILS")
-        courseDetailsProvider.reload()
+        if refreshControl.refreshType == .userInitiated {
+            print("CLEAR CACHE")
+            courseDetailsProvider.reload()
+        }
         load()
 
     }
