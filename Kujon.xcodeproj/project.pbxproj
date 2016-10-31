@@ -315,6 +315,7 @@
 		669B2F5A1DBE093E000AE02C /* CourseMeritsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 669B2F581DBE093E000AE02C /* CourseMeritsTableViewCell.xib */; };
 		669B2F5C1DBE0973000AE02C /* CourseMeritsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B2F5B1DBE0973000AE02C /* CourseMeritsSection.swift */; };
 		66A2CBC91DC76C280049217C /* KujonRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A2CBC81DC76C280049217C /* KujonRefreshControl.swift */; };
+		66A2CBCB1DC77B440049217C /* RefreshingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A2CBCA1DC77B440049217C /* RefreshingTableViewController.swift */; };
 		66D506491DA69CD300B5CE1B /* ThesesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D506481DA69CD300B5CE1B /* ThesesTableViewController.swift */; };
 		66D506551DA6BD9000B5CE1B /* ThesisCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D506531DA6BD9000B5CE1B /* ThesisCell.swift */; };
 		66D506561DA6BD9000B5CE1B /* ThesisCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66D506541DA6BD9000B5CE1B /* ThesisCell.xib */; };
@@ -659,6 +660,7 @@
 		669B2F581DBE093E000AE02C /* CourseMeritsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseMeritsTableViewCell.xib; sourceTree = "<group>"; };
 		669B2F5B1DBE0973000AE02C /* CourseMeritsSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseMeritsSection.swift; sourceTree = "<group>"; };
 		66A2CBC81DC76C280049217C /* KujonRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KujonRefreshControl.swift; sourceTree = "<group>"; };
+		66A2CBCA1DC77B440049217C /* RefreshingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RefreshingTableViewController.swift; path = "../Global Extensions/RefreshingTableViewController.swift"; sourceTree = "<group>"; };
 		66D506481DA69CD300B5CE1B /* ThesesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesesTableViewController.swift; sourceTree = "<group>"; };
 		66D506531DA6BD9000B5CE1B /* ThesisCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesisCell.swift; sourceTree = "<group>"; };
 		66D506541DA6BD9000B5CE1B /* ThesisCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThesisCell.xib; sourceTree = "<group>"; };
@@ -783,6 +785,7 @@
 				4C0D8A574E4B52995D53647A /* SpinnerView.swift */,
 				660E28901DC0A6F0008CD5A9 /* IdentifiedTapGestureRecogniezer.swift */,
 				66A2CBC81DC76C280049217C /* KujonRefreshControl.swift */,
+				66A2CBCA1DC77B440049217C /* RefreshingTableViewController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1993,6 +1996,7 @@
 				4C0D8E35546E06FE6E50627E /* Usos.swift in Sources */,
 				4C0D81815EB0AFFE7A3E0346 /* Title.swift in Sources */,
 				4C0D8B1CC0F1F04A0031EFD4 /* UserDetail.swift in Sources */,
+				66A2CBCB1DC77B440049217C /* RefreshingTableViewController.swift in Sources */,
 				4C0D850BF68640550F269D74 /* Account.swift in Sources */,
 				4C0D8ED3CCCAA0AC19016A2D /* UserDetailsProvider.swift in Sources */,
 				4C0D8DF43CBEECAE734FFDF2 /* ErrorResponseProtocol.swift in Sources */,

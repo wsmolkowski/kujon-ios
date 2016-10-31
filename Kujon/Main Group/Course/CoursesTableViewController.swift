@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CoursesTableViewController: UITableViewController, NavigationDelegate,CourseProviderDelegate, TermsProviderDelegate {
+class CoursesTableViewController: RefreshingTableViewController, NavigationDelegate,CourseProviderDelegate, TermsProviderDelegate {
     private let CourseCellId = "courseCellId"
     private let courseProvider = ProvidersProviderImpl.sharedInstance.provideCourseProvider()
     private let termsProvider = ProvidersProviderImpl.sharedInstance.provideTermsProvider()
@@ -24,31 +24,18 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
         courseProvider.provideCourses()
         termsProvider.delegate = self
         self.tableView.tableFooterView = UIView()
-        refreshControl = KujonRefreshControl()
-        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: #selector(CoursesTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140
-
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if self.isBeingPresented || self.isMovingToParentViewController {
-            (refreshControl as? KujonRefreshControl)?.beginRefreshingManually()
-        }
-    }
-
-
-    func refresh(_ refreshControl: KujonRefreshControl) {
-        NSlogManager.showLog("REFRESH DATA: PRZEDMIOTY")
-        if refreshControl.refreshType == .userInitiated {
-            print("CLEAR CACHE")
-            courseProvider.reload()
-        }
+    override func loadData() {
         courseProvider.provideCourses()
-
     }
+
+    override func clearCachedResponse() {
+        courseProvider.reload()
+    }
+
 
     func coursesProvided(_ courses: Array<CoursesWrapper>) {
 

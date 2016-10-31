@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TeacherDetailTableViewController: UITableViewController, UserDetailsProviderDelegate, OnImageLoadedFromRest {
+class TeacherDetailTableViewController: RefreshingTableViewController, UserDetailsProviderDelegate, OnImageLoadedFromRest {
     private let TeacherDetailViewId = "teacherDetailViewId"
     private let programmesIdCell = "tralalaProgrammesCellId"
     var teacherId: String! = nil
@@ -28,43 +28,15 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         self.tableView.tableFooterView = UIView()
         self.tableView.showsVerticalScrollIndicator = false
         self.tableView.estimatedRowHeight = 6000
-
-
-        refreshControl = KujonRefreshControl()
-        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: #selector(TeacherDetailTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
 
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if self.isBeingPresented || self.isMovingToParentViewController {
-            (refreshControl as? KujonRefreshControl)?.beginRefreshingManually()
-        }
     }
 
     func back() {
         let _ = self.navigationController?.popViewController(animated: true)
     }
 
-
-    func refresh(_ refreshControl: KujonRefreshControl) {
-        NSlogManager.showLog("REFRESH DATA: TEACHER DETAILS")
-        if refreshControl.refreshType == .userInitiated {
-            print("CLEAR CACHE")
-            userDetailsProvider.reload()
-        }
-        loadUser()
-    }
-
-    func onUserDetailLoaded(_ userDetails: UserDetail) {
-        self.userDetails = userDetails
-        self.tableView.reloadData()
-        self.refreshControl?.endRefreshing()
-    }
-
-    private func loadUser(){
+    override func loadData() {
         if(simpleUser != nil){
             userDetailsProvider.loadUserDetail(simpleUser.id!)
         }else if(teacherId != nil){
@@ -76,9 +48,19 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         }
     }
 
+    override func clearCachedResponse() {
+        userDetailsProvider.reload()
+    }
+
+    func onUserDetailLoaded(_ userDetails: UserDetail) {
+        self.userDetails = userDetails
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
+    }
+
     func onErrorOccurs(_ text: String) {
         self.showAlertApi(StringHolder.attention, text: text, succes: {
-            self.loadUser()
+            self.loadData()
         }, cancel: {})
     }
 

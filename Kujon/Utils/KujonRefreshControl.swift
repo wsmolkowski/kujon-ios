@@ -17,7 +17,7 @@ class KujonRefreshControl: UIRefreshControl {
 
     var refreshType: RefreshType = .userInitiated
 
-    func beginRefreshingManually() {
+    func beginRefreshingProgrammatically() {
         refreshType = .programmatic
         if let scrollView = superview as? UIScrollView {
             print("PROGRAMMATIC REFRESH")

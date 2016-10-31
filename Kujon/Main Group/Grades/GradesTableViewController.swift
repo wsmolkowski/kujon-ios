@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GradesTableViewController: UITableViewController
+class GradesTableViewController: RefreshingTableViewController
         , NavigationDelegate
         ,GradesProviderDelegate,
         TermsProviderDelegate {
@@ -35,27 +35,15 @@ class GradesTableViewController: UITableViewController
         termsProvider.delegate = self
         self.tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
-        refreshControl = KujonRefreshControl()
-        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: #selector(GradesTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         dataBack = false;
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if self.isBeingPresented || self.isMovingToParentViewController {
-            (refreshControl as? KujonRefreshControl)?.beginRefreshingManually()
-        }
+    override func loadData() {
+        gradesProvider.loadGrades()
     }
 
-    func refresh(_ refreshControl: KujonRefreshControl) {
-        NSlogManager.showLog("REFRESH DATA: GRADES")
-        if refreshControl.refreshType == .userInitiated {
-            print("CLEAR CACHE")
-            gradesProvider.reload()
-        }
-        gradesProvider.loadGrades()
-
+    override func clearCachedResponse() {
+        gradesProvider.reload()
     }
 
     func openDrawer() {

@@ -29,7 +29,7 @@ private func ><T:Comparable>(lhs: T?, rhs: T?) -> Bool {
 }
 
 
-class UserTableViewController: UITableViewController
+class UserTableViewController: RefreshingTableViewController
         , NavigationDelegate
         , SuperUserDetailsProviderDelegate
         , OnImageLoadedFromRest,
@@ -69,18 +69,8 @@ class UserTableViewController: UITableViewController
         self.tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: termsCellId)
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor.greyBackgroundColor()
-        refreshControl = KujonRefreshControl()
-        refreshControl?.backgroundColor = UIColor.kujonBlueColor()
-        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: #selector(UserTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         self.navigationController?.navigationBar.barTintColor = UIColor.kujonBlueColor()
-    }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if self.isBeingPresented || self.isMovingToParentViewController {
-            (refreshControl as? KujonRefreshControl)?.beginRefreshingManually()
-        }
     }
 
     private func addNavigationSeparator() {
@@ -99,14 +89,12 @@ class UserTableViewController: UITableViewController
         NSLayoutConstraint.activate(constraints)
     }
 
-    func refresh(_ refreshControl: KujonRefreshControl) {
-        NSlogManager.showLog("REFRESH DATA: USER")
-        if refreshControl.refreshType == .userInitiated {
-            print("CLEAR CACHE")
-            superUserProvider.reload()
-        }
+    override func loadData() {
         superUserProvider.loadUserDetail()
+    }
 
+    override func clearCachedResponse() {
+        superUserProvider.reload()
     }
 
     func openDrawer() {
