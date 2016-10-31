@@ -74,15 +74,15 @@ class UserTableViewController: UITableViewController
         refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
         refreshControl?.addTarget(self, action: #selector(UserTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         self.navigationController?.navigationBar.barTintColor = UIColor.kujonBlueColor()
-
+        
         loadData()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        if self.isBeingPresented || self.isMovingToParentViewController {
-            refreshControl?.beginRefreshingManually()
-        }
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        if self.isBeingPresented || self.isMovingToParentViewController {
+//            refreshControl?.beginRefreshingManually()
+//        }
+//    }
 
     private func addNavigationSeparator() {
         guard let navigationController = self.navigationController else {
@@ -112,6 +112,7 @@ class UserTableViewController: UITableViewController
     }
 
     private func loadData() {
+        NSlogManager.showLog("LOAD DATA USER")
         superUserProvider.loadUserDetail()
 
     }
@@ -141,6 +142,7 @@ class UserTableViewController: UITableViewController
 
     func loadUSOSImageIfNeeded() {
         if userDataHolder.userUsosImage == nil {
+            usosesProvider.delegate = self
             usosesProvider.loadUsoses()
         }
     }

@@ -42,11 +42,11 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
         refreshControl?.addTarget(self, action: #selector(StudentDetailsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        if self.isBeingPresented || self.isMovingToParentViewController {
-            refreshControl?.beginRefreshingManually()
-        }
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        if self.isBeingPresented || self.isMovingToParentViewController {
+//            refreshControl?.beginRefreshingManually()
+//        }
+//    }
 
 
     func back() {

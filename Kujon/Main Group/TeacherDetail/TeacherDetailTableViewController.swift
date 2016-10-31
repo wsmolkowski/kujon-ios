@@ -38,12 +38,12 @@ class TeacherDetailTableViewController: UITableViewController, UserDetailsProvid
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
 
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        if self.isBeingPresented || self.isMovingToParentViewController {
-            refreshControl?.beginRefreshingManually()
-        }
-    }
+//
+//    override func viewDidAppear(_ animated: Bool) {
+//        if self.isBeingPresented || self.isMovingToParentViewController {
+//            refreshControl?.beginRefreshingManually()
+//        }
+//    }
 
     func back() {
         let _ = self.navigationController?.popViewController(animated: true)
