@@ -32,11 +32,11 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        if self.isBeingPresented || self.isMovingToParentViewController {
-            refreshControl?.beginRefreshingManually()
-        }
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        if self.isBeingPresented || self.isMovingToParentViewController {
+//            refreshControl?.beginRefreshingManually()
+//        }
+//    }
 
     func refresh(_ refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")

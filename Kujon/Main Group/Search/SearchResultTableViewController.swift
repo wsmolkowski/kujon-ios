@@ -35,11 +35,11 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
         askForData()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        if self.isBeingPresented || self.isMovingToParentViewController {
-            refreshControl?.beginRefreshingManually()
-        }
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        if self.isBeingPresented || self.isMovingToParentViewController {
+//            refreshControl?.beginRefreshingManually()
+//        }
+//    }
 
 
     func refresh(_ refreshControl: UIRefreshControl) {

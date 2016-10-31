@@ -41,12 +41,12 @@ class GradesTableViewController: UITableViewController
         refreshControl?.addTarget(self, action: #selector(GradesTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         dataBack = false;
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        if self.isBeingPresented || self.isMovingToParentViewController {
-            refreshControl?.beginRefreshingManually()
-        }
-    }
+//
+//    override func viewDidAppear(_ animated: Bool) {
+//        if self.isBeingPresented || self.isMovingToParentViewController {
+//            refreshControl?.beginRefreshingManually()
+//        }
+//    }
 
     func refresh(_ refreshControl: UIRefreshControl) {
         NSlogManager.showLog("Refresh was called")
