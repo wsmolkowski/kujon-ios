@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessagesTableViewController: UITableViewController, NavigationDelegate, MessageProviderDelegate {
+class MessagesTableViewController: RefreshingTableViewController, NavigationDelegate, MessageProviderDelegate {
 
     // MARK: Properties
 
@@ -18,7 +18,6 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
     private let messageCellId: String = "messageCellId"
     private var backgroundImage: UIImageView?
     private var backgroundLabel: UILabel?
-    private var spinner = SpinnerView()
     private let cellHeight: CGFloat = 50
 
     // MARK: Initial section
@@ -29,12 +28,10 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
         backgroundLabel?.isHidden = true
         addBackgroundImage(imageName: "mailbox")
         backgroundImage?.isHidden = true
-        addSpinner()
         messageProvider.delegate = self
         messageProvider.loadMessage()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(UserTableViewController.openDrawer), andTitle: StringHolder.messages)
         configureTableView()
-        addRefreshControl()
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,11 +45,12 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
         tableView.backgroundColor = UIColor.greyBackgroundColor()
     }
 
-    internal func refresh() {
+    override func loadData() {
         messageProvider.loadMessage()
-        spinner.isHidden = true
-        backgroundLabel?.isHidden = true
-        backgroundImage?.isHidden = true
+    }
+
+    override func clearCachedResponse() {
+        messageProvider.reload()
     }
 
     private func addBackgroundImage(imageName:String) {
@@ -77,19 +75,6 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
         view.addSubview(backgroundLabel!)
     }
 
-    private func addSpinner() {
-        let width: CGFloat = 30
-        let height: CGFloat = 30
-        spinner = SpinnerView(frame: CGRect(origin: CGPoint(x: view.bounds.midX-width/2, y: view.bounds.midY-height/2), size: CGSize(width:width, height:height)))
-        view.addSubview(spinner)
-    }
-
-    private func addRefreshControl() {
-        refreshControl = UIRefreshControl()
-        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refreshControlUniversalMessage)
-        refreshControl?.addTarget(self, action: #selector(MessagesTableViewController.refresh), for: .valueChanged)
-    }
-
     // MARK: Hamburger button
 
     func openDrawer() {
@@ -105,7 +90,6 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
     // MARK: MessageProviderDelegate
 
     func onMessageLoaded(_ message: Array<Message>) {
-        spinner.isHidden = true
         messages = message
         backgroundLabel?.isHidden = !message.isEmpty
         backgroundImage?.isHidden = !message.isEmpty
@@ -116,7 +100,6 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
     //TODO: delete (only for UI testing purposes)
 /*
     func onMessageLoaded(_ message: Array<Message>) {
-        spinner.isHidden = true
         messages = message
         messages.append(Message(createdTime: "2016-10-18 23:01:11", from: "John Johnson", message: "This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message.", type: "email"))
         messages.append(Message(createdTime: "2015-12-03 23:01:11", from: "Jane Johnson", message: "This is some message. This is some message. This is some message. This is some message. This is some message. This is some message.", type: "email"))
@@ -128,7 +111,6 @@ class MessagesTableViewController: UITableViewController, NavigationDelegate, Me
  */
 
     func onErrorOccurs(_ text: String) {
-        spinner.isHidden = true
         refreshControl?.endRefreshing()
         presentAlertWithMessage(StringHolder.errorRetrievingMessages, title: StringHolder.errorAlertTitle)
 
