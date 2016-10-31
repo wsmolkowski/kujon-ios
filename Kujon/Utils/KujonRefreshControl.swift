@@ -20,7 +20,6 @@ class KujonRefreshControl: UIRefreshControl {
     func beginRefreshingProgrammatically() {
         refreshType = .programmatic
         if let scrollView = superview as? UIScrollView {
-            print("PROGRAMMATIC REFRESH")
             scrollView.setContentOffset(CGPoint(x: 0, y: scrollView.contentOffset.y - frame.height * 1.2), animated: true)
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: { [unowned self] in
                 self.sendActions(for: .valueChanged)

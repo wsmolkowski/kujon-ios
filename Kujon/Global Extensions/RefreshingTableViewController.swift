@@ -26,9 +26,7 @@ class RefreshingTableViewController: UITableViewController  {
     }
 
     func refresh(_ refreshControl: KujonRefreshControl) {
-        NSlogManager.showLog("REFRESH DATA:")
         if refreshControl.refreshType == .userInitiated {
-            print("CLEAR CACHE")
             clearCachedResponse()
         }
         loadData()
