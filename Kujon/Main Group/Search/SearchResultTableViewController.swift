@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchResultTableViewController: UITableViewController, SearchProviderDelegate {
+class SearchResultTableViewController: RefreshingTableViewController, SearchProviderDelegate {
 
 
     var array: Array<SearchElementProtocol> = Array()
@@ -29,24 +29,15 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
             provider.setDelegate(self)
 
         }
-        refreshControl = UIRefreshControl()
-        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: #selector(SearchResultTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        if self.isBeingPresented || self.isMovingToParentViewController {
-            refreshControl?.beginRefreshingManually()
+    override func loadData() {
+        if (isThereNext) {
+            isQuering = true
+            isThereNext = false
+            provider.search(searchQuery, more: number)
+            number = number + 20
         }
-    }
-
-
-    func refresh(_ refreshControl: UIRefreshControl) {
-        NSlogManager.showLog("REFRESH DATA: SEARCH RESULTS")
-        self.array = Array()
-        self.tableView.reloadData();
-        number = 0
-        askForData()
     }
 
     func isThereNextPage(_ isThere: Bool) {
@@ -58,20 +49,10 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
             self.isQuering = false
             self.isThereNext = true
             self.number = self.number - 20;
-            self.askForData()
+            self.loadData()
         },cancel: {
             self.back()
         })
-    }
-
-
-    private func askForData() {
-        if (isThereNext) {
-            isQuering = true
-            isThereNext = false
-            provider.search(searchQuery, more: number)
-            number = number + 20
-        }
     }
 
     func searchedItems(_ array: Array<SearchElementProtocol>) {
@@ -120,7 +101,7 @@ class SearchResultTableViewController: UITableViewController, SearchProviderDele
         if (distanceFromBottom <= height) {
             NSlogManager.showLog("End of list, load more")
             if (!isQuering) {
-                askForData()
+                loadData()
             }
         }
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CourseDetailsTableViewController: UITableViewController,CourseDetailsProviderDelegate {
+class CourseDetailsTableViewController: RefreshingTableViewController,CourseDetailsProviderDelegate {
 
     var sectionHelpers:Array<SectionHelperProtocol> = []
     var course:Course! = nil;
@@ -19,10 +19,7 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(CourseDetailsTableViewController.back),andTitle: StringHolder.courseDetails)
-        courseDetailsProvider.delegate = self;
-        refreshControl = UIRefreshControl()
-        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: #selector(CourseDetailsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
+        courseDetailsProvider.delegate = self
         for section in sectionHelpers{
             section.registerView(self.tableView)
         }
@@ -32,30 +29,20 @@ class CourseDetailsTableViewController: UITableViewController,CourseDetailsProvi
 
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        if self.isBeingPresented || self.isMovingToParentViewController {
-            refreshControl?.beginRefreshingManually()
-        }
-    }
-
-
-    func refresh(_ refreshControl: UIRefreshControl) {
-        NSlogManager.showLog("REFRESH DATA: COURSE DETAILS")
+    override func clearCachedResponse() {
         courseDetailsProvider.reload()
-        load()
-
     }
 
-    private func load(){
+    override func loadData() {
         if(course != nil ) {
             courseDetailsProvider.loadCourseDetails(course)
-        }else if( courseId != nil && termId != nil){
+        } else if( courseId != nil && termId != nil){
             courseDetailsProvider.loadCourseDetails(courseId,andTermId: termId)
 
-        }else if (courseId != nil && termId == nil){
+        } else if (courseId != nil && termId == nil){
             courseDetailsProvider.loadCourseDetails(courseId)
-
-        }else{
+            
+        } else {
             back()
         }
     }

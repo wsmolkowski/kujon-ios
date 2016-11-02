@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CoursesTableViewController: UITableViewController, NavigationDelegate,CourseProviderDelegate, TermsProviderDelegate {
+class CoursesTableViewController: RefreshingTableViewController, NavigationDelegate,CourseProviderDelegate, TermsProviderDelegate {
     private let CourseCellId = "courseCellId"
     private let courseProvider = ProvidersProviderImpl.sharedInstance.provideCourseProvider()
     private let termsProvider = ProvidersProviderImpl.sharedInstance.provideTermsProvider()
@@ -18,37 +18,24 @@ class CoursesTableViewController: UITableViewController, NavigationDelegate,Cour
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(CoursesTableViewController.openDrawer),andTitle: StringHolder.courses)
         self.tableView.register(UINib(nibName: "CourseTableViewCell", bundle: nil), forCellReuseIdentifier: CourseCellId)
         courseProvider.delegate = self
         courseProvider.provideCourses()
         termsProvider.delegate = self
         self.tableView.tableFooterView = UIView()
-        refreshControl = UIRefreshControl()
-        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: #selector(CoursesTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
-
-
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140
-
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        if self.isBeingPresented || self.isMovingToParentViewController {
-            NSlogManager.showLog("REFRESH DATA: PRZEDMIOTY")
-            refreshControl?.beginRefreshingManually()
-        }
-    }
-
-
-    func refresh(_ refreshControl: UIRefreshControl) {
-        NSlogManager.showLog("Refresh was called")
-        courseProvider.reload()
+    override func loadData() {
         courseProvider.provideCourses()
-
     }
+
+    override func clearCachedResponse() {
+        courseProvider.reload()
+    }
+
 
     func coursesProvided(_ courses: Array<CoursesWrapper>) {
 

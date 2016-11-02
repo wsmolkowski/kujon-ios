@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StudentDetailsTableViewController: UITableViewController, UserDetailsProviderDelegate, OnImageLoadedFromRest, ProgrammeIdProviderDelegate {
+class StudentDetailsTableViewController: RefreshingTableViewController, UserDetailsProviderDelegate, OnImageLoadedFromRest, ProgrammeIdProviderDelegate {
 
     let kierunekCellId = "kierunekCellId"
     let headerCellId = "studentHeaderCellId"
@@ -35,27 +35,18 @@ class StudentDetailsTableViewController: UITableViewController, UserDetailsProvi
         }
         programmeProvider.delegate = self
         provider.delegate = self
-
-        refreshControl = UIRefreshControl()
-        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: #selector(StudentDetailsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        if self.isBeingPresented || self.isMovingToParentViewController {
-            refreshControl?.beginRefreshingManually()
-        }
-    }
-
+      }
 
     func back() {
         let _ = self.navigationController?.popViewController(animated: true)
     }
 
-    func refresh(_ refreshControl: UIRefreshControl) {
-        NSlogManager.showLog("REFRESH DATA: STUDENT DETAILS")
-        provider.reload()
+    override func loadData() {
         provider.loadUserDetail(userId)
+    }
+
+    override func clearCachedResponse() {
+        provider.reload()
     }
 
     func onUserDetailLoaded(_ userDetails: UserDetail) {

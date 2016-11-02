@@ -29,7 +29,7 @@ private func ><T:Comparable>(lhs: T?, rhs: T?) -> Bool {
 }
 
 
-class UserTableViewController: UITableViewController
+class UserTableViewController: RefreshingTableViewController
         , NavigationDelegate
         , SuperUserDetailsProviderDelegate
         , OnImageLoadedFromRest,
@@ -69,17 +69,8 @@ class UserTableViewController: UITableViewController
         self.tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: termsCellId)
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor.greyBackgroundColor()
-        refreshControl = UIRefreshControl()
-        refreshControl?.backgroundColor = UIColor.kujonBlueColor()
-        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: #selector(UserTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         self.navigationController?.navigationBar.barTintColor = UIColor.kujonBlueColor()
-    }
 
-    override func viewDidAppear(_ animated: Bool) {
-        if self.isBeingPresented || self.isMovingToParentViewController {
-            refreshControl?.beginRefreshingManually()
-        }
     }
 
     private func addNavigationSeparator() {
@@ -98,20 +89,16 @@ class UserTableViewController: UITableViewController
         NSLayoutConstraint.activate(constraints)
     }
 
-    func refresh(_ refreshControl: UIRefreshControl) {
-        NSlogManager.showLog("REFRESH DATA: USER")
-        superUserProvider.reload()
-        loadData()
+    override func loadData() {
+        superUserProvider.loadUserDetail()
+    }
 
+    override func clearCachedResponse() {
+        superUserProvider.reload()
     }
 
     func openDrawer() {
         delegate?.toggleLeftPanel()
-    }
-
-    private func loadData() {
-        superUserProvider.loadUserDetail()
-
     }
 
     func onUserDetailLoaded(_ userDetails: SuperUserDetails) {
@@ -130,7 +117,7 @@ class UserTableViewController: UITableViewController
     func onErrorOccurs(_ text: String) {
         self.showAlertApi(StringHolder.attention, text: text, succes: {
             [unowned self] in
-            self.loadData()
+            self.superUserProvider.loadUserDetail()
         }, cancel: {
             [unowned self] in
                 self.refreshControl?.endRefreshing()

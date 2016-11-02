@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TeacherTableViewController: UITableViewController, NavigationDelegate, LecturerProviderDelegate {
+class TeacherTableViewController: RefreshingTableViewController, NavigationDelegate, LecturerProviderDelegate {
     private let TeachCellId = "teacherCellId"
     weak var delegate: NavigationMenuProtocol! = nil
     let lecturerProvider = ProvidersProviderImpl.sharedInstance.provideLecturerProvider()
@@ -24,24 +24,15 @@ class TeacherTableViewController: UITableViewController, NavigationDelegate, Lec
         self.tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: TeachCellId)
         lecturerProvider.delegate = self
         self.tableView.tableFooterView = UIView()
-
-        refreshControl = UIRefreshControl()
-        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
-        refreshControl?.addTarget(self, action: #selector(TeacherTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        if self.isBeingPresented || self.isMovingToParentViewController {
-            refreshControl?.beginRefreshingManually()
-       }
+    override func loadData() {
+        lecturerProvider.loadLecturers()
     }
 
-    func refresh(_ refreshControl: UIRefreshControl) {
-        NSlogManager.showLog("REFRESH DATA: TEACHERS")
+    override func clearCachedResponse() {
         lecturerProvider.reload()
-        lecturerProvider.loadLecturers()
-
     }
 
     override func didReceiveMemoryWarning() {
