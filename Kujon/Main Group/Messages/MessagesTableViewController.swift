@@ -29,7 +29,6 @@ class MessagesTableViewController: RefreshingTableViewController, NavigationDele
         addBackgroundImage(imageName: "mailbox")
         backgroundImage?.isHidden = true
         messageProvider.delegate = self
-        messageProvider.loadMessage()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(UserTableViewController.openDrawer), andTitle: StringHolder.messages)
         configureTableView()
     }

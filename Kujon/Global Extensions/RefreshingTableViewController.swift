@@ -30,6 +30,7 @@ class RefreshingTableViewController: UITableViewController  {
     func refresh(_ refreshControl: KujonRefreshControl) {
         if refreshControl.refreshType == .userInitiated {
             clearCachedResponse()
+            print("CLEAR CACHE")
         }
         loadData()
     }
