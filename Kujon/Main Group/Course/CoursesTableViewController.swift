@@ -33,7 +33,7 @@ class CoursesTableViewController: RefreshingTableViewController, NavigationDeleg
     }
 
     override func clearCachedResponse() {
-        courseProvider.reload()
+        self.reload(courseProvider)
     }
 
 

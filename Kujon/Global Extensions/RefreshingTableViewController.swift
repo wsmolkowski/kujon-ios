@@ -42,5 +42,8 @@ class RefreshingTableViewController: UITableViewController  {
     func clearCachedResponse() {
         // method can be overridden
     }
+    func reload(provider: RestApiManager){
+        provider.reload()
+    }
 
 }
