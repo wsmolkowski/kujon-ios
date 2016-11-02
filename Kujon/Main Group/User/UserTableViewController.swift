@@ -60,6 +60,7 @@ class UserTableViewController: RefreshingTableViewController
 
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(UserTableViewController.openDrawer), andTitle: StringHolder.appName)
         superUserProvider.delegate = self
+        addToProvidersList(provider: superUserProvider)
         addNavigationSeparator()
         view.backgroundColor = UIColor.white
         self.tableView.tableFooterView = UIView()
@@ -91,10 +92,6 @@ class UserTableViewController: RefreshingTableViewController
 
     override func loadData() {
         superUserProvider.loadUserDetail()
-    }
-
-    override func clearCachedResponse() {
-        reload(provider:superUserProvider)
     }
 
     func openDrawer() {

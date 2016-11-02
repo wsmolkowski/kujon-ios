@@ -33,6 +33,7 @@ class GradesTableViewController: RefreshingTableViewController
         gradesProvider.delegate = self
         self.tableView.register(UINib(nibName: "Grade2TableViewCell", bundle: nil), forCellReuseIdentifier: GradeCellIdentiefer)
         termsProvider.delegate = self
+        addToProvidersList(provider: termsProvider)
         self.tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         dataBack = false;
@@ -40,10 +41,6 @@ class GradesTableViewController: RefreshingTableViewController
 
     override func loadData() {
         gradesProvider.loadGrades()
-    }
-
-    override func clearCachedResponse() {
-        reload(provider: gradesProvider)
     }
 
     func openDrawer() {

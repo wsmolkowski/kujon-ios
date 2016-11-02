@@ -20,12 +20,12 @@ class CoursesTableViewController: RefreshingTableViewController, NavigationDeleg
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(CoursesTableViewController.openDrawer),andTitle: StringHolder.courses)
         self.tableView.register(UINib(nibName: "CourseTableViewCell", bundle: nil), forCellReuseIdentifier: CourseCellId)
-        courseProvider.delegate = self
-        termsProvider.delegate = self
         self.tableView.tableFooterView = UIView()
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140
-        self.addToProvidersList(courseProvider)
+        courseProvider.delegate = self
+        addToProvidersList(provider:courseProvider)
+        termsProvider.delegate = self
     }
 
     override func loadData() {

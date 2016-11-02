@@ -35,6 +35,7 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
         }
         programmeProvider.delegate = self
         provider.delegate = self
+        addToProvidersList(provider: provider)
       }
 
     func back() {
@@ -43,10 +44,6 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
 
     override func loadData() {
         provider.loadUserDetail(userId)
-    }
-
-    override func clearCachedResponse() {
-        reload(provider:provider)
     }
 
     func onUserDetailLoaded(_ userDetails: UserDetail) {

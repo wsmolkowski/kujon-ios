@@ -25,6 +25,7 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
         self.tableView.register(UINib(nibName: "TeacherHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: TeacherDetailViewId)
         self.tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: programmesIdCell)
         userDetailsProvider.delegate = self
+        addToProvidersList(provider: userDetailsProvider)
         self.tableView.tableFooterView = UIView()
         self.tableView.showsVerticalScrollIndicator = false
         self.tableView.estimatedRowHeight = 6000
@@ -46,10 +47,6 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
             let currentTeacher = CurrentTeacherHolder.sharedInstance
             userDetailsProvider.loadUserDetail(currentTeacher.currentTeacher.id!)
         }
-    }
-
-    override func clearCachedResponse() {
-        reload(provider:userDetailsProvider)
     }
 
     func onUserDetailLoaded(_ userDetails: UserDetail) {

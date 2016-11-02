@@ -20,6 +20,7 @@ class CourseDetailsTableViewController: RefreshingTableViewController,CourseDeta
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self,selector: #selector(CourseDetailsTableViewController.back),andTitle: StringHolder.courseDetails)
         courseDetailsProvider.delegate = self
+        addToProvidersList(provider:courseDetailsProvider)
         for section in sectionHelpers{
             section.registerView(self.tableView)
         }
@@ -27,10 +28,6 @@ class CourseDetailsTableViewController: RefreshingTableViewController,CourseDeta
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50
 
-    }
-
-    override func clearCachedResponse() {
-        reload(provider: courseDetailsProvider)
     }
 
     override func loadData() {

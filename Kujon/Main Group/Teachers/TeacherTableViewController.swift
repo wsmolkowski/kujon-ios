@@ -23,16 +23,13 @@ class TeacherTableViewController: RefreshingTableViewController, NavigationDeleg
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(TeacherTableViewController.openDrawer),andTitle: StringHolder.lecturers)
         self.tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: TeachCellId)
         lecturerProvider.delegate = self
+        addToProvidersList(provider: lecturerProvider)
         self.tableView.tableFooterView = UIView()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
 
     override func loadData() {
         lecturerProvider.loadLecturers()
-    }
-
-    override func clearCachedResponse() {
-        reload(provider:lecturerProvider)
     }
 
     override func didReceiveMemoryWarning() {

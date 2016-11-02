@@ -29,6 +29,7 @@ class MessagesTableViewController: RefreshingTableViewController, NavigationDele
         addBackgroundImage(imageName: "mailbox")
         backgroundImage?.isHidden = true
         messageProvider.delegate = self
+        addToProvidersList(provider: messageProvider)
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(UserTableViewController.openDrawer), andTitle: StringHolder.messages)
         configureTableView()
     }
@@ -46,10 +47,6 @@ class MessagesTableViewController: RefreshingTableViewController, NavigationDele
 
     override func loadData() {
         messageProvider.loadMessage()
-    }
-
-    override func clearCachedResponse() {
-        reload(provider:messageProvider)
     }
 
     private func addBackgroundImage(imageName:String) {
