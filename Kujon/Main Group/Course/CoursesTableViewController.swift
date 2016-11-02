@@ -21,19 +21,15 @@ class CoursesTableViewController: RefreshingTableViewController, NavigationDeleg
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(CoursesTableViewController.openDrawer),andTitle: StringHolder.courses)
         self.tableView.register(UINib(nibName: "CourseTableViewCell", bundle: nil), forCellReuseIdentifier: CourseCellId)
         courseProvider.delegate = self
-        courseProvider.provideCourses()
         termsProvider.delegate = self
         self.tableView.tableFooterView = UIView()
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140
+        self.addToProvidersList(courseProvider)
     }
 
     override func loadData() {
         courseProvider.provideCourses()
-    }
-
-    override func clearCachedResponse() {
-        reload(provider: courseProvider)
     }
 
 

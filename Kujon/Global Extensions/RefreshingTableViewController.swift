@@ -11,6 +11,8 @@ import UIKit
 
 class RefreshingTableViewController: UITableViewController  {
 
+    private var providers : Array<RestApiManager> = Array()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshControl = KujonRefreshControl()
@@ -40,10 +42,16 @@ class RefreshingTableViewController: UITableViewController  {
     }
 
     func clearCachedResponse() {
-        // method can be overridden
+        for provider in providers{
+            provider.reload()
+        }
     }
     func reload(provider: RestApiManager){
         provider.reload()
+    }
+
+    func addToProvidersList(provider: RestApiManager){
+        providers.append(provider)
     }
 
 }
