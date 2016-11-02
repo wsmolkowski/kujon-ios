@@ -43,7 +43,7 @@ class GradesTableViewController: RefreshingTableViewController
     }
 
     override func clearCachedResponse() {
-        gradesProvider.reload()
+        reload(provider: gradesProvider)
     }
 
     func openDrawer() {

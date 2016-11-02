@@ -49,7 +49,7 @@ class MessagesTableViewController: RefreshingTableViewController, NavigationDele
     }
 
     override func clearCachedResponse() {
-        messageProvider.reload()
+        reload(provider:messageProvider)
     }
 
     private func addBackgroundImage(imageName:String) {

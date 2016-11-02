@@ -49,7 +49,7 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
     }
 
     override func clearCachedResponse() {
-        userDetailsProvider.reload()
+        reload(provider:userDetailsProvider)
     }
 
     func onUserDetailLoaded(_ userDetails: UserDetail) {

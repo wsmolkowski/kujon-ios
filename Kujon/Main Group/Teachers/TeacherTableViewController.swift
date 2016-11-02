@@ -32,7 +32,7 @@ class TeacherTableViewController: RefreshingTableViewController, NavigationDeleg
     }
 
     override func clearCachedResponse() {
-        lecturerProvider.reload()
+        reload(provider:lecturerProvider)
     }
 
     override func didReceiveMemoryWarning() {

@@ -30,7 +30,7 @@ class CourseDetailsTableViewController: RefreshingTableViewController,CourseDeta
     }
 
     override func clearCachedResponse() {
-        courseDetailsProvider.reload()
+        reload(provider: courseDetailsProvider)
     }
 
     override func loadData() {

@@ -94,7 +94,7 @@ class UserTableViewController: RefreshingTableViewController
     }
 
     override func clearCachedResponse() {
-        superUserProvider.reload()
+        reload(provider:superUserProvider)
     }
 
     func openDrawer() {
