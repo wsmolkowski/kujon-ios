@@ -201,18 +201,7 @@ class EntryViewController: UIViewController,
 
     func usosesTableViewControllerDidTriggerLogout() {
 
-        if GoogleManager.sharedInstance.getLoginType() == .google {
-            GoogleManager.sharedInstance.logout(self)
-        }
-
-        if FacebookManager.sharedInstance.getLoginType() == .facebook {
-            FacebookManager.sharedInstance.logout(self)
-        }
-
-        if EmailManager.sharedInstance.getLoginType() == .email {
-            EmailManager.sharedInstance.logout(self)
-        }
-
+        UserLoginEnum.getUserLogin().logout(self)
     }
 
 

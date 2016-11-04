@@ -9,6 +9,8 @@ class EmailManager: UserLogin, LogoutProviderDelegate {
     let userDataHolder = UserDataHolder.sharedInstance
     var logoutProvider = ProvidersProviderImpl.sharedInstance.provideLogoutProvider()
     static let sharedInstance = EmailManager()
+    var logoutResult: LogoutSucces! = nil
+
 
     func login(_ email: String, token: String, listener: OnFacebookCredentailSaved) {
         self.userDataHolder.userLoginType = StringHolder.emailType
@@ -17,35 +19,30 @@ class EmailManager: UserLogin, LogoutProviderDelegate {
         listener.onFacebookCredentailSaved(self.userDataHolder.loggedToUsosForCurrentEmail)
     }
 
-    var suc: LogoutSucces! = nil
-    func logout(_ succes: LogoutSucces) {
-        suc = succes;
-        logoutProvider.delegate = self
 
+    func logout(_ succes: LogoutSucces) {
+        logoutResult = succes;
+        logoutProvider.delegate = self
         logoutProvider.logout()
     }
 
-
-
     func onSuccesfullLogout() {
-        logoutProvider.delegate = nil
         SessionManager.clearCache()
         self.logoutUserData(userDataHolder)
-        suc.succes()
-        suc = nil
+        logoutResult.succes()
+        logoutResult = nil
     }
 
     func onErrorOccurs(_ text: String) {
-        suc.failed(text)
-        suc = nil
+        logoutResult.failed(text)
+        logoutResult = nil
     }
 
     func unauthorized(_ text: String){
-        suc.failed(text)
-        suc = nil
+        logoutResult.failed(text)
+        logoutResult = nil
     }
     
-
 
     func getLoginType() -> UserLoginEnum {
         return .email

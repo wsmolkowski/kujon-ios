@@ -9,11 +9,12 @@
 import Foundation
 import FBSDKCoreKit
 
-class GoogleManager: UserLogin {
+class GoogleManager: UserLogin, LogoutProviderDelegate {
     let userDataHolder = UserDataHolder.sharedInstance
 
     static let sharedInstance = GoogleManager()
-
+    var logoutProvider = ProvidersProviderImpl.sharedInstance.provideLogoutProvider()
+    var logoutResult: LogoutSucces!
 
     func loadGoogleParams(_ listener: OnFacebookCredentailSaved) {
 
@@ -61,9 +62,26 @@ class GoogleManager: UserLogin {
     func logout(_ succes: LogoutSucces) {
         GIDSignIn.sharedInstance().signOut()
         GIDSignIn.sharedInstance().disconnect()
+        logoutResult = succes;
+        logoutProvider.delegate = self
+        logoutProvider.logout()
+    }
+
+    func onSuccesfullLogout() {
         SessionManager.clearCache()
         self.logoutUserData(userDataHolder)
-        succes.succes()
+        logoutResult.succes()
+        logoutResult = nil
+    }
+
+    func onErrorOccurs(_ text: String) {
+        logoutResult.failed(text)
+        logoutResult = nil
+    }
+
+    func unauthorized(_ text: String){
+        logoutResult.failed(text)
+        logoutResult = nil
     }
 
 }
