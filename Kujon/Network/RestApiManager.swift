@@ -49,6 +49,7 @@ class RestApiManager {
                 }
             }
             task.resume()
+            print("REQUEST: ",request)
         }
         refresh = false
     }
@@ -79,6 +80,7 @@ class RestApiManager {
             }
 
             task.resume()
+            print("REQUEST: ",request)
 
         }
         refresh = false
@@ -109,6 +111,7 @@ class RestApiManager {
             }
 
             task.resume()
+            print("REQUEST: ",request)
 
         }
         refresh = false
@@ -138,6 +141,7 @@ class RestApiManager {
                     }
                 }
                 task.resume()
+                print("REQUEST: ",request)
             } else {
                 onError(StringHolder.not_auth)
             }
