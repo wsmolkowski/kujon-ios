@@ -40,9 +40,7 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
     
 
     func back(){
-        let controller = UsosesTableViewController()
-
-        self.present(controller, animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
 
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
@@ -59,6 +57,7 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
 
 
             let session = SessionManager.provideSession()
+            
             let task = session.dataTask(with: requestC as URLRequest, completionHandler: {
                 [unowned self]   data, response, error in
                 if let error = error {
@@ -67,18 +66,30 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
                     }
                 } else {
                     DispatchQueue.main.async {
-                        let json = try JSONSerialization.jsonObject(with: data, options: [])
-                        let response = try ErrorClass.decode(json)
-                        if(response.code == 200){
-                            self.successs()
-                        }else {
-                            let alertController = UIAlertController(title: "Błąd logowania ", message: response.message , preferredStyle: .alert)
+
+                        do {
+                            let json = try JSONSerialization.jsonObject(with: data!, options: [])
+                            let response = try ErrorClass.decode(json)
+                            if (response.code == 200) {
+                                self.successs()
+                            } else {
+                                let alertController = UIAlertController(title: "Błąd logowania ", message: response.message, preferredStyle: .alert)
+                                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                                    (action: UIAlertAction!) in
+                                    alertController.dismiss(animated: true, completion: nil)
+                                    self.dismiss(animated: true)
+                                }))
+                                self.present(alertController, animated: true, completion: nil)
+                            }
+                        }catch{
+                            let alertController = UIAlertController(title: "Błąd logowania ", message: "Nieznany błąd", preferredStyle: .alert)
                             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                                 (action: UIAlertAction!) in
                                 alertController.dismiss(animated: true, completion: nil)
-                                
+                                self.dismiss(animated: true)
+
                             }))
-                            present(alertController, animated: true, completion: nil)
+                            self.present(alertController, animated: true, completion: nil)
                         }
                     } 
                 }
