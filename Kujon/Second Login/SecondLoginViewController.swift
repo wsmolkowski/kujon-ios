@@ -56,6 +56,38 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
             }
             requestC.setValue(myMutableString,forHTTPHeaderField: "Cookie")
             _ = NSURLConnection(request: requestC as URLRequest,delegate:self)
+
+
+
+            let task = session.dataTask(with: requestC) {
+                data, response, error in
+
+
+                if let error = error {
+                    DispatchQueue.main.async {
+
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        let json = try JSONSerialization.jsonObject(with: data, options: [])
+                        let response = try ErrorClass.decode(json)
+                        if(response.code == 200){
+                            self.succes()
+                        }else {
+                            let alertController = UIAlertController(title: "Błąd logowania ", message: response.message , preferredStyle: .alert)
+                            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                                (action: UIAlertAction!) in
+                                alertController.dismiss(animated: true, completion: nil)
+
+                            }))
+                            present(alertController, animated: true, completion: nil)
+                        }
+                    }
+                }
+            }
+            task.resume()
+
+            return false
         }
         return true
     }
@@ -79,11 +111,14 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
 
     func connection(_ connection: NSURLConnection, didReceive data: Data) {
         print("Logged Succesfully")
+        self.succes()
+    }
+
+    private func succes(){
         userDataHolder.loggedToUsosForCurrentEmail = true
         let controller  = ContainerViewController()
         controller.loadedToUsos = true
         self.present(controller,animated:true,completion:nil)
     }
-
 
 }
