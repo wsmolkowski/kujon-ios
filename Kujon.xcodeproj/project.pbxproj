@@ -289,6 +289,7 @@
 		52B3F9AD1DBF40C300B0CC55 /* MessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3F9AC1DBF40C300B0CC55 /* MessageResponse.swift */; };
 		52B3F9AF1DBF40F500B0CC55 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3F9AE1DBF40F500B0CC55 /* Message.swift */; };
 		52B3F9B11DBF421C00B0CC55 /* MessageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3F9B01DBF421C00B0CC55 /* MessageProvider.swift */; };
+		52C4A3DF1DDA16FB00BBBA3A /* UsosPairResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C4A3DE1DDA16FB00BBBA3A /* UsosPairResponse.swift */; };
 		52C627591D1BFA0100A9BBA0 /* DayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C627571D1BFA0100A9BBA0 /* DayTableViewCell.swift */; };
 		52C6275A1D1BFA0100A9BBA0 /* DayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C627581D1BFA0100A9BBA0 /* DayTableViewCell.xib */; };
 		52F69F831D101A9000025C55 /* UserDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52F69F821D101A9000025C55 /* UserDetailView.xib */; };
@@ -630,6 +631,7 @@
 		52B3F9AC1DBF40C300B0CC55 /* MessageResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageResponse.swift; sourceTree = "<group>"; };
 		52B3F9AE1DBF40F500B0CC55 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		52B3F9B01DBF421C00B0CC55 /* MessageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageProvider.swift; sourceTree = "<group>"; };
+		52C4A3DE1DDA16FB00BBBA3A /* UsosPairResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsosPairResponse.swift; sourceTree = "<group>"; };
 		52C627571D1BFA0100A9BBA0 /* DayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayTableViewCell.swift; sourceTree = "<group>"; };
 		52C627581D1BFA0100A9BBA0 /* DayTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayTableViewCell.xib; sourceTree = "<group>"; };
 		52F69F821D101A9000025C55 /* UserDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserDetailView.xib; sourceTree = "<group>"; };
@@ -1069,6 +1071,7 @@
 			children = (
 				4C0D8322F7C59F7DA152C337 /* KujonResponseSchools.swift */,
 				4C0D800DE50A86489C4C7E74 /* Usos.swift */,
+				52C4A3DE1DDA16FB00BBBA3A /* UsosPairResponse.swift */,
 			);
 			path = Usos;
 			sourceTree = "<group>";
@@ -2077,6 +2080,7 @@
 				4C0D8D56E21EC6D3DA19FB01 /* CourseProvider.swift in Sources */,
 				4C0D89A149A07C2183D5E1B4 /* Course.swift in Sources */,
 				4C0D81D02A26767DB7C49C52 /* CourseGroup.swift in Sources */,
+				52C4A3DF1DDA16FB00BBBA3A /* UsosPairResponse.swift in Sources */,
 				4C0D85E772027B77B2D540BD /* CoursesWrapper.swift in Sources */,
 				526750391D213902004AD243 /* CoursesTableViewController.swift in Sources */,
 				4C0D8BCEA9F6DF85809A280A /* PopUpViewController.swift in Sources */,
