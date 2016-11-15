@@ -16,12 +16,13 @@ enum APIMode: String {
 
 class RestApiManager {
 
-    static var APIMode: APIMode = .production
+    static var APIMode: APIMode = .demo
     static var BASE_URL: String { return APIMode.rawValue }
     var baseURL: String { return RestApiManager.BASE_URL  }
     private var headerManager = HeaderManager()
     var test = false
     var refresh = false
+    var addStoredCookies = false
 
     static func toggleAPIMode() {
         APIMode = APIMode == .production ? .demo : .production
@@ -53,6 +54,7 @@ class RestApiManager {
             print("HEADERS: ",request.allHTTPHeaderFields ?? "None")
         }
         refresh = false
+        addStoredCookies = false
     }
 
     func makeHTTPPostRequest(_ onCompletion: @escaping onSucces, onError: @escaping onErrorOccurs,json:Data) {
@@ -85,6 +87,7 @@ class RestApiManager {
 
         }
         refresh = false
+        addStoredCookies = false
     }
 
     func makeHTTPAuthenticatedPostRequest(_ onCompletion: @escaping onSucces, onError: @escaping onErrorOccurs) {
@@ -94,7 +97,7 @@ class RestApiManager {
             var request = URLRequest(url: URL(string: getMyUrl())!)
             let session = SessionManager.provideSession()
             request.httpMethod = "POST"
-            self.headerManager.addHeadersToRequest(&request,refresh:refresh)
+            self.headerManager.addHeadersToRequest(&request, refresh:refresh, addStoredCookies: addStoredCookies)
             let task = session.dataTask(with: request) {
                 data, response, error in
 
@@ -116,6 +119,7 @@ class RestApiManager {
 
         }
         refresh = false
+        addStoredCookies = false
     }
 
     func makeHTTPAuthenticatedGetRequest(_ onCompletion: @escaping onSucces, onError: @escaping onErrorOccurs) {
@@ -125,7 +129,7 @@ class RestApiManager {
             if (headerManager.isAuthenticated()) {
                 var request = URLRequest(url: URL(string: getMyUrl())!)
                 let session = SessionManager.provideSession()
-                self.headerManager.addHeadersToRequest(&request,refresh:refresh)
+                self.headerManager.addHeadersToRequest(&request, refresh:refresh, addStoredCookies: addStoredCookies)
                 let task = session.dataTask(with: request) {
                     data, response, error in
 
@@ -148,6 +152,7 @@ class RestApiManager {
             }
         }
         refresh = false
+        addStoredCookies = false
     }
 
     func reload(){
@@ -155,6 +160,7 @@ class RestApiManager {
         self.headerManager.addHeadersToRequest(&request)
         SessionManager.clearCacheForRequest(request as URLRequest)
         refresh = true
+        addStoredCookies = false
     }
 
 

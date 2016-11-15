@@ -12,14 +12,35 @@ class HeaderManager {
     private let EMAIL_HEADER = "X-Kujonmobiemail"
     private let TOKEN_HEADER = "X-Kujonmobitoken"
     private let REFRESH_TOKEN = "X-Kujonrefresh"
+    private let COOKIE_HEADER = "Cookie"
+
     func isAuthenticated()->Bool{
         return (userDataHolder.userEmail != nil) && (userDataHolder.userToken != nil)
     }
-    func addHeadersToRequest(_ request: inout URLRequest, refresh:Bool = false) {
+
+    func addHeadersToRequest(_ request: inout URLRequest, refresh:Bool = false, addStoredCookies:Bool = false) {
         request.addValue(userDataHolder.userEmail, forHTTPHeaderField: EMAIL_HEADER)
         request.addValue(userDataHolder.userToken, forHTTPHeaderField: TOKEN_HEADER)
+
         if(refresh){
             request.addValue("true", forHTTPHeaderField: REFRESH_TOKEN)
         }
+
+        if addStoredCookies {
+            let cookies = retieveCookies()
+            request.addValue(cookies, forHTTPHeaderField: COOKIE_HEADER)
+        }
     }
+
+    private func retieveCookies() -> String {
+        var result: String = ""
+        guard let cookies = HTTPCookieStorage.shared.cookies(for: URL(string: RestApiManager.BASE_URL)!) else {
+            return ""
+        }
+        cookies.forEach {
+            result = result + ($0 as HTTPCookie).name + "=" + ($0 as HTTPCookie).value + ";"
+        }
+        return result
+    }
+
 }

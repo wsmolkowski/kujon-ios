@@ -43,9 +43,10 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
     // MARK: UIWebViewDelegate
 
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-
         let toCatch = String(format: "%@/authentication/verify", RestApiManager.BASE_URL)
-        if let URLString = request.url?.absoluteString, URLString.contains(toCatch) {
+        //TODO: Revert to:
+        // if let URLString = request.url?.absoluteString, URLString.contains(toCatch) {
+        if let URLString = request.url?.absoluteString, !URLString.contains(toCatch) {
             verificationProvider.verify(URLString: URLString)
             return false
         }
@@ -92,8 +93,8 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
         }
     }
 
-    func onVerificationFailure(_ error: Error) {
-        DispatchQueue.main.async {
+    func onErrorOccurs(_ text: String) {
+         DispatchQueue.main.async {
             self.presentAlertWithMessage(StringHolder.unknownErrorMessage, title: StringHolder.loginError) { [weak self] in
                 self?.dismiss(animated: true)
             }
