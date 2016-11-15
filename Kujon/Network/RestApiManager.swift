@@ -49,7 +49,8 @@ class RestApiManager {
                 }
             }
             task.resume()
-            print("REQUEST: ",request)
+            print("GET REQUEST: ",request)
+            print("HEADERS: ",request.allHTTPHeaderFields ?? "None")
         }
         refresh = false
     }

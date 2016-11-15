@@ -8,13 +8,12 @@
 
 import UIKit
 
-class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConnectionDataDelegate {
+class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConnectionDataDelegate, VerificationProviderDelegate {
 
     @IBOutlet weak var webView: UIWebView!
 
     let userDataHolder = UserDataHolder.sharedInstance
-    private var headerManager = HeaderManager()
-
+    let verificationProvider = VerificationProvider()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +25,9 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
 
         self.edgesForExtendedLayout = UIRectEdge()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SecondLoginViewController.back), andTitle: "Logowanie do USOS")
+
+        verificationProvider.delegate = self
+
         webView.delegate = self
         webView.scalesPageToFit = true;
         let url = String(format: "%@/authentication/register?email=%@&token=%@&usos_id=%@&type=%@", RestApiManager.BASE_URL, userDataHolder.userEmail, userDataHolder.userToken, userDataHolder.usosId, userDataHolder.userLoginType)
@@ -34,79 +36,17 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
     func back() {
         self.dismiss(animated: true)
     }
 
+    // MARK: UIWebViewDelegate
+
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+
         let toCatch = String(format: "%@/authentication/verify", RestApiManager.BASE_URL)
-        if let URL = request.url?.absoluteString, URL.contains(toCatch) {
-            var requestC = URLRequest(url: Foundation.URL(string: URL)!)
-            let cookies = HTTPCookieStorage.shared.cookies(for: Foundation.URL(string: RestApiManager.BASE_URL)!)
-            var myMutableString = ""
-            for cookie in cookies! {
-                myMutableString = myMutableString + (cookie as HTTPCookie).name + "=" + (cookie as HTTPCookie).value + ";"
-            }
-            requestC.setValue(myMutableString, forHTTPHeaderField: "Cookie")
-//            _ = NSURLConnection(request: requestC as URLRequest,delegate:self)
-
-            self.headerManager.addHeadersToRequest(&requestC)
-            let session = SessionManager.provideSession()
-
-            let task = session.dataTask(with: requestC as URLRequest, completionHandler: {
-                [unowned self]   data, response, error in
-                if error == nil {
-                 
-                    DispatchQueue.main.async {
-                           
-                        do {
-                            let json = try JSONSerialization.jsonObject(with: data!, options: [])
-                            let response = try UsosPaired.decode(json)
-                            self.successs()
-                        } catch {
-                            do{
-                                 let json = try JSONSerialization.jsonObject(with: data!, options: [])
-                                 let error = try ErrorClass.decode(json)
-                                 let alertController = UIAlertController(title: "Błąd logowania ", message: error.message, preferredStyle: .alert)
-                                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                                    (action: UIAlertAction!) in
-                                    alertController.dismiss(animated: true, completion: nil)
-                                    self.dismiss(animated: true)
-                                }))
-                                self.present(alertController, animated: true, completion: nil)
-
-                            }catch{
-                                let alertController = UIAlertController(title: "Błąd logowania ", message: "Nieznany błąd", preferredStyle: .alert)
-                                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                                    (action: UIAlertAction!) in
-                                    alertController.dismiss(animated: true, completion: nil)
-                                    self.dismiss(animated: true)
-
-                                }))
-                                self.present(alertController, animated: true, completion: nil)
-                            }
-                        }
-                    }
-                }else{
-                    let alertController = UIAlertController(title: "Błąd logowania ", message: "Nieznany błąd", preferredStyle: .alert)
-                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                        (action: UIAlertAction!) in
-                        alertController.dismiss(animated: true, completion: nil)
-                        self.dismiss(animated: true)
-                        
-                    }))
-                    self.present(alertController, animated: true, completion: nil)
-                }
-                }
-            )
-            task.resume()
-
+        if let URLString = request.url?.absoluteString, URLString.contains(toCatch) {
+            verificationProvider.verify(URLString: URLString)
             return false
         }
         return true
@@ -118,12 +58,49 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
     func webViewDidFinishLoad(_ webView: UIWebView) {
 
         self.webView.stringByEvaluatingJavaScript(from: "javascript:window.HtmlViewer.showHTML" +
-                "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');")
+            "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');")
     }
 
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
         print("Logged error")
     }
+
+    // MARK: VerificationProviderDelegate
+
+    func onVerificationSuccess(_ data: Data) {
+        DispatchQueue.main.async {
+
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                let _ = try UsosPaired.decode(json)
+                self.successs()
+            } catch {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    let error = try ErrorClass.decode(json)
+
+                    self.presentAlertWithMessage(error.message, title: StringHolder.loginError) { [weak self] in
+                        self?.dismiss(animated: true)
+                    }
+
+                } catch {
+                    self.presentAlertWithMessage(StringHolder.unknownErrorMessage, title: StringHolder.loginError) { [weak self] in
+                        self?.dismiss(animated: true)
+                    }
+                }
+            }
+        }
+    }
+
+    func onVerificationFailure(_ error: Error) {
+        DispatchQueue.main.async {
+            self.presentAlertWithMessage(StringHolder.unknownErrorMessage, title: StringHolder.loginError) { [weak self] in
+                self?.dismiss(animated: true)
+            }
+        }
+    }
+
+    // MARK: NSURLConnectionDataDelegate
 
     func connection(_ connection: NSURLConnection, didReceive response: URLResponse) {
 
@@ -140,5 +117,5 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
         controller.loadedToUsos = true
         self.present(controller, animated: true, completion: nil)
     }
-
+    
 }

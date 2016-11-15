@@ -8,9 +8,14 @@ import UIKit
 
 extension UIViewController {
 
-    func presentAlertWithMessage(_ message: String, title: String) {
+    func presentAlertWithMessage(_ message: String, title: String, completion: (() -> Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+            (action: UIAlertAction!) in
+            if let completion = completion {
+                completion()
+            }
+        }))
         parent?.present(alert, animated: true, completion: nil)
     }
 
