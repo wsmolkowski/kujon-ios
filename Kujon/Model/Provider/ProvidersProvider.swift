@@ -25,4 +25,5 @@ protocol ProvidersProvider {
     func provideLoginProvider() -> LoginProvider
     func provideLogoutProvider() -> LogoutProvider
     func provideSuperUserProvider() ->SuperUserProvider
+    func provideVerificationProvider() ->VerificationProvider
 }

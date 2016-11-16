@@ -13,7 +13,7 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
     @IBOutlet weak var webView: UIWebView!
 
     let userDataHolder = UserDataHolder.sharedInstance
-    let verificationProvider = VerificationProvider()
+    private let verificationProvider = ProvidersProviderImpl.sharedInstance.provideVerificationProvider()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,18 +22,15 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
         navigationController?.navigationBar.tintColor = UIColor.white
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = titleDict as? [String: AnyObject]
-
         self.edgesForExtendedLayout = UIRectEdge()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SecondLoginViewController.back), andTitle: "Logowanie do USOS")
 
         verificationProvider.delegate = self
-
         webView.delegate = self
         webView.scalesPageToFit = true;
-        let url = String(format: "%@/authentication/register?email=%@&token=%@&usos_id=%@&type=%@", RestApiManager.BASE_URL, userDataHolder.userEmail, userDataHolder.userToken, userDataHolder.usosId, userDataHolder.userLoginType)
+        let url = verificationProvider.getMyUrl()
         let request = URLRequest(url: URL(string: url)!)
         webView.loadRequest(request)
-        // Do any additional setup after loading the view.
     }
 
     func back() {
@@ -43,10 +40,8 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
     // MARK: UIWebViewDelegate
 
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        let toCatch = String(format: "%@/authentication/verify", RestApiManager.BASE_URL)
-        //TODO: Revert to:
-        // if let URLString = request.url?.absoluteString, URLString.contains(toCatch) {
-        if let URLString = request.url?.absoluteString, !URLString.contains(toCatch) {
+        let verificationRequirement = verificationProvider.verificationRequirement
+        if let URLString = request.url?.absoluteString, URLString.contains(verificationRequirement) {
             verificationProvider.verify(URLString: URLString)
             return false
         }
@@ -63,31 +58,25 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
     }
 
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
-        print("Logged error")
+        self.presentAlertWithMessage(error.localizedDescription, title: StringHolder.errorAlertTitle) { [weak self] in
+            self?.dismiss(animated: true)
+        }
     }
 
     // MARK: VerificationProviderDelegate
 
-    func onVerificationSuccess(_ data: Data) {
+    func onVerificationResponse(result: VerificationResult) {
         DispatchQueue.main.async {
-
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                let _ = try UsosPaired.decode(json)
+            switch result {
+            case .success:
                 self.successs()
-            } catch {
-                do {
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
-                    let error = try ErrorClass.decode(json)
-
-                    self.presentAlertWithMessage(error.message, title: StringHolder.loginError) { [weak self] in
-                        self?.dismiss(animated: true)
-                    }
-
-                } catch {
-                    self.presentAlertWithMessage(StringHolder.unknownErrorMessage, title: StringHolder.loginError) { [weak self] in
-                        self?.dismiss(animated: true)
-                    }
+            case .error(let message):
+                self.presentAlertWithMessage(message, title: StringHolder.loginError) { [weak self] in
+                    self?.dismiss(animated: true)
+                }
+            default:
+                self.presentAlertWithMessage(StringHolder.unknownErrorMessage, title: StringHolder.loginError) { [weak self] in
+                    self?.dismiss(animated: true)
                 }
             }
         }
@@ -95,7 +84,7 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
 
     func onErrorOccurs(_ text: String) {
          DispatchQueue.main.async {
-            self.presentAlertWithMessage(StringHolder.unknownErrorMessage, title: StringHolder.loginError) { [weak self] in
+            self.presentAlertWithMessage(text, title: StringHolder.loginError) { [weak self] in
                 self?.dismiss(animated: true)
             }
         }

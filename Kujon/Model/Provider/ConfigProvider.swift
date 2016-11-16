@@ -42,9 +42,8 @@ class ConfigProvider: RestApiManager, ConfigProviderProtocol {
                         self.delegate?.usosDown()
                         return
                     }
-                    //TODO: REVERT
-                    self.delegate?.notPairedWithUsos()
-                    //self.delegate?.pairedWithUsos()
+
+                    self.delegate?.pairedWithUsos()
                     return
                 } else {
                     self.delegate?.notPairedWithUsos()

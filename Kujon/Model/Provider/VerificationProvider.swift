@@ -12,25 +12,57 @@ protocol VerificationProviderProtocol {
     func verify(URLString: String)
 }
 
+
 protocol VerificationProviderDelegate: ErrorResponseProtocol {
-    func onVerificationSuccess(_ data: Data)
+    func onVerificationResponse(result: VerificationResult)
 }
+
+
+enum VerificationResult {
+    case success
+    case error(String)
+    case unidentifiedResponseError
+    case serializationError
+}
+
 
 class VerificationProvider: RestApiManager, VerificationProviderProtocol {
 
-    weak var delegate: VerificationProviderDelegate?
-    private var headerManager = HeaderManager()
+    internal weak var delegate: VerificationProviderDelegate?
 
-    func verify(URLString: String) {
+    internal var verificationRequirement: String {
+        return String(format: "%@/authentication/verify", RestApiManager.BASE_URL)
+    }
 
+    internal func verify(URLString: String) {
         addStoredCookies = true
-
         makeHTTPAuthenticatedGetRequest({ [weak self] (data) in
-            self?.delegate?.onVerificationSuccess(data)
+
+            guard let json = try? JSONSerialization.jsonObject(with: data, options: []) else {
+                self?.delegate?.onVerificationResponse(result:.serializationError)
+                return
+            }
+
+            if let _ = try? UsosPaired.decode(json) {
+                self?.delegate?.onVerificationResponse(result:.success)
+                return
+            }
+
+            if let error = try? ErrorClass.decode(json) {
+                self?.delegate?.onVerificationResponse(result:.error(error.message))
+                return
+            }
+
+            self?.delegate?.onVerificationResponse(result:.unidentifiedResponseError)
+
         }, onError: {[weak self] text in
             self?.delegate?.onErrorOccurs(text)
         })
+    }
 
+    override func getMyUrl() -> String {
+        let userDataHolder = UserDataHolder.sharedInstance
+        return String(format: "%@/authentication/register?email=%@&token=%@&usos_id=%@&type=%@", RestApiManager.BASE_URL, userDataHolder.userEmail, userDataHolder.userToken, userDataHolder.usosId, userDataHolder.userLoginType)
     }
 
 }

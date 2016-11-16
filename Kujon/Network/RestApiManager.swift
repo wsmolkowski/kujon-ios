@@ -16,7 +16,7 @@ enum APIMode: String {
 
 class RestApiManager {
 
-    static var APIMode: APIMode = .demo
+    static var APIMode: APIMode = .production
     static var BASE_URL: String { return APIMode.rawValue }
     var baseURL: String { return RestApiManager.BASE_URL  }
     private var headerManager = HeaderManager()
@@ -50,8 +50,6 @@ class RestApiManager {
                 }
             }
             task.resume()
-            print("GET REQUEST: ",request)
-            print("HEADERS: ",request.allHTTPHeaderFields ?? "None")
         }
         refresh = false
         addStoredCookies = false
@@ -83,8 +81,6 @@ class RestApiManager {
             }
 
             task.resume()
-            print("REQUEST: ",request)
-
         }
         refresh = false
         addStoredCookies = false
@@ -115,8 +111,6 @@ class RestApiManager {
             }
 
             task.resume()
-            print("REQUEST: ",request)
-
         }
         refresh = false
         addStoredCookies = false
@@ -130,6 +124,7 @@ class RestApiManager {
                 var request = URLRequest(url: URL(string: getMyUrl())!)
                 let session = SessionManager.provideSession()
                 self.headerManager.addHeadersToRequest(&request, refresh:refresh, addStoredCookies: addStoredCookies)
+                
                 let task = session.dataTask(with: request) {
                     data, response, error in
 
@@ -146,7 +141,6 @@ class RestApiManager {
                     }
                 }
                 task.resume()
-                print("REQUEST: ",request)
             } else {
                 onError(StringHolder.not_auth)
             }
