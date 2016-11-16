@@ -100,6 +100,8 @@ class StringHolder {
     static let usosesGeneralInfo = "Jeżeli Twojej uczelni nie ma na liście, oznacza to, że nie korzysta ona ze wspieranego przez Kujona systemu USOS."
     static let demoMode = "Tryb demo"
     static let productionMode = "Tryb produkcyjny"
+    static let loginError = "Błąd logowania"
+    static let unknownErrorMessage = "Wystąpił nieznany błąd"
 
 
 }

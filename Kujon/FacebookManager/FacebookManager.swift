@@ -12,10 +12,12 @@ protocol OnFacebookCredentailSaved: class{
     func onFacebookCredentailSaved(_ isLogged:Bool)
 }
 
-class FacebookManager : UserLogin {
+class FacebookManager : UserLogin, LogoutProviderDelegate {
 
     let userDataHolder = UserDataHolder.sharedInstance
     static let sharedInstance = FacebookManager()
+    var logoutProvider = ProvidersProviderImpl.sharedInstance.provideLogoutProvider()
+    var logoutResult: LogoutSucces!
 
     func loadFBParams(_ listener: OnFacebookCredentailSaved) {
 
@@ -23,7 +25,6 @@ class FacebookManager : UserLogin {
             let token: String = FBSDKAccessToken.current().tokenString;
             print("Token : \(token) ")
             self.userDataHolder.userToken = token
-
         }
 
         FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields": "first_name, last_name, email"]).start {
@@ -47,9 +48,29 @@ class FacebookManager : UserLogin {
         let fbManager = FBSDKLoginManager()
         fbManager.logOut()
         FBSDKAccessToken.setCurrent(nil)
+        logoutResult = succes;
+        logoutProvider.delegate = self
+        logoutProvider.logout()
+
+    }
+
+
+    func onSuccesfullLogout() {
+        logoutProvider.delegate = nil
         SessionManager.clearCache()
         self.logoutUserData(userDataHolder)
-        succes.succes()
+        logoutResult.succes()
+        logoutResult = nil
+    }
+
+    func onErrorOccurs(_ text: String) {
+        logoutResult.failed(text)
+        logoutResult = nil
+    }
+
+    func unauthorized(_ text: String){
+        logoutResult.failed(text)
+        logoutResult = nil
     }
 
 }

@@ -289,6 +289,7 @@
 		52B3F9AD1DBF40C300B0CC55 /* MessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3F9AC1DBF40C300B0CC55 /* MessageResponse.swift */; };
 		52B3F9AF1DBF40F500B0CC55 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3F9AE1DBF40F500B0CC55 /* Message.swift */; };
 		52B3F9B11DBF421C00B0CC55 /* MessageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3F9B01DBF421C00B0CC55 /* MessageProvider.swift */; };
+		52C4A3DF1DDA16FB00BBBA3A /* UsosPairResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C4A3DE1DDA16FB00BBBA3A /* UsosPairResponse.swift */; };
 		52C627591D1BFA0100A9BBA0 /* DayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C627571D1BFA0100A9BBA0 /* DayTableViewCell.swift */; };
 		52C6275A1D1BFA0100A9BBA0 /* DayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C627581D1BFA0100A9BBA0 /* DayTableViewCell.xib */; };
 		52F69F831D101A9000025C55 /* UserDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52F69F821D101A9000025C55 /* UserDetailView.xib */; };
@@ -320,6 +321,7 @@
 		66D506551DA6BD9000B5CE1B /* ThesisCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D506531DA6BD9000B5CE1B /* ThesisCell.swift */; };
 		66D506561DA6BD9000B5CE1B /* ThesisCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66D506541DA6BD9000B5CE1B /* ThesisCell.xib */; };
 		66F4BC6B1DB2597000425E39 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 66F4BC6A1DB2597000425E39 /* Podfile */; };
+		66FE87E81DDB9270007ADDC0 /* VerificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FE87E71DDB9270007ADDC0 /* VerificationProvider.swift */; };
 		F3250B4E98E962A7F43FAB99 /* Pods_KujonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5316E5147694B909E555C5B9 /* Pods_KujonTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -630,6 +632,7 @@
 		52B3F9AC1DBF40C300B0CC55 /* MessageResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageResponse.swift; sourceTree = "<group>"; };
 		52B3F9AE1DBF40F500B0CC55 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		52B3F9B01DBF421C00B0CC55 /* MessageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageProvider.swift; sourceTree = "<group>"; };
+		52C4A3DE1DDA16FB00BBBA3A /* UsosPairResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsosPairResponse.swift; sourceTree = "<group>"; };
 		52C627571D1BFA0100A9BBA0 /* DayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayTableViewCell.swift; sourceTree = "<group>"; };
 		52C627581D1BFA0100A9BBA0 /* DayTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayTableViewCell.xib; sourceTree = "<group>"; };
 		52F69F821D101A9000025C55 /* UserDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserDetailView.xib; sourceTree = "<group>"; };
@@ -667,6 +670,7 @@
 		66F402E31DB12E75001E28D1 /* KujonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KujonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		66F402F11DB12E82001E28D1 /* KujonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KujonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		66F4BC6A1DB2597000425E39 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		66FE87E71DDB9270007ADDC0 /* VerificationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificationProvider.swift; sourceTree = "<group>"; };
 		80C857832F8A992BB348100A /* Pods-KujonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KujonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KujonTests/Pods-KujonTests.release.xcconfig"; sourceTree = "<group>"; };
 		8EDDF16194B7EF54AECE7AFC /* Pods-KujonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KujonUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KujonUITests/Pods-KujonUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		91F235224F6252E6A8A69AEC /* Pods_KujonUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KujonUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1069,6 +1073,7 @@
 			children = (
 				4C0D8322F7C59F7DA152C337 /* KujonResponseSchools.swift */,
 				4C0D800DE50A86489C4C7E74 /* Usos.swift */,
+				52C4A3DE1DDA16FB00BBBA3A /* UsosPairResponse.swift */,
 			);
 			path = Usos;
 			sourceTree = "<group>";
@@ -1126,6 +1131,7 @@
 				4C0D82E83E696E77685C83B5 /* Search */,
 				52B3F9B01DBF421C00B0CC55 /* MessageProvider.swift */,
 				4C0D89F5486C1B39355B8C1C /* SuperUserProvider.swift */,
+				66FE87E71DDB9270007ADDC0 /* VerificationProvider.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -2074,9 +2080,11 @@
 				528BCAAF1D5DE70C00A9E49C /* FacultieTableViewController.swift in Sources */,
 				4C0D8D786F5B737CA79A068E /* ProviderProvidersImpl.swift in Sources */,
 				4C0D84E41A0C35CD9C3A52B5 /* ProvidersProvider.swift in Sources */,
+				66FE87E81DDB9270007ADDC0 /* VerificationProvider.swift in Sources */,
 				4C0D8D56E21EC6D3DA19FB01 /* CourseProvider.swift in Sources */,
 				4C0D89A149A07C2183D5E1B4 /* Course.swift in Sources */,
 				4C0D81D02A26767DB7C49C52 /* CourseGroup.swift in Sources */,
+				52C4A3DF1DDA16FB00BBBA3A /* UsosPairResponse.swift in Sources */,
 				4C0D85E772027B77B2D540BD /* CoursesWrapper.swift in Sources */,
 				526750391D213902004AD243 /* CoursesTableViewController.swift in Sources */,
 				4C0D8BCEA9F6DF85809A280A /* PopUpViewController.swift in Sources */,

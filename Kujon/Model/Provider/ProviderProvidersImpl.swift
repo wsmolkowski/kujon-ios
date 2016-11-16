@@ -40,6 +40,8 @@ class ProvidersProviderImpl: ProvidersProvider {
 
     lazy var superUserProvider  = SuperUserProvider()
 
+    lazy var verificationProvider  = VerificationProvider()
+
     func providerFacultiesProvider() -> FacultiesProvider {
         return self.facultiesProvider
     }
@@ -119,5 +121,8 @@ class ProvidersProviderImpl: ProvidersProvider {
         return superUserProvider
     }
 
+    func provideVerificationProvider() -> VerificationProvider {
+        return verificationProvider
+    }
 
 }

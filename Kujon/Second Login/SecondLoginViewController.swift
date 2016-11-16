@@ -8,12 +8,12 @@
 
 import UIKit
 
-class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnectionDataDelegate {
+class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConnectionDataDelegate, VerificationProviderDelegate {
 
     @IBOutlet weak var webView: UIWebView!
 
     let userDataHolder = UserDataHolder.sharedInstance
-
+    private let verificationProvider = ProvidersProviderImpl.sharedInstance.provideVerificationProvider()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,41 +21,29 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
         navigationController?.navigationBar.barTintColor = UIColor.kujonBlueColor()
         navigationController?.navigationBar.tintColor = UIColor.white
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
-        navigationController?.navigationBar.titleTextAttributes = titleDict as? [String:AnyObject]
-
+        navigationController?.navigationBar.titleTextAttributes = titleDict as? [String: AnyObject]
         self.edgesForExtendedLayout = UIRectEdge()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SecondLoginViewController.back), andTitle: "Logowanie do USOS")
+
+        verificationProvider.delegate = self
         webView.delegate = self
         webView.scalesPageToFit = true;
-        let url = String(format: "%@/authentication/register?email=%@&token=%@&usos_id=%@&type=%@",RestApiManager.BASE_URL, userDataHolder.userEmail, userDataHolder.userToken, userDataHolder.usosId, userDataHolder.userLoginType)
+        let url = verificationProvider.getRequestUrl()
         let request = URLRequest(url: URL(string: url)!)
         webView.loadRequest(request)
-        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func back() {
+        self.dismiss(animated: true)
     }
-    
 
-    func back(){
-        let controller = UsosesTableViewController()
-
-        self.present(controller, animated: true, completion: nil)
-    }
+    // MARK: UIWebViewDelegate
 
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        let toCatch = String(format:"%@/authentication/verify",RestApiManager.BASE_URL)
-        if let URL = request.url?.absoluteString , URL.contains(toCatch) {
-            let requestC = NSMutableURLRequest(url: Foundation.URL(string: URL)!)
-            let cookies = HTTPCookieStorage.shared.cookies(for: Foundation.URL(string: RestApiManager.BASE_URL)!)
-            var myMutableString = ""
-            for cookie in cookies!{
-                myMutableString=myMutableString+(cookie as HTTPCookie).name + "=" + (cookie as HTTPCookie).value + ";"
-            }
-            requestC.setValue(myMutableString,forHTTPHeaderField: "Cookie")
-            _ = NSURLConnection(request: requestC as URLRequest,delegate:self)
+        let verificationRequirement = verificationProvider.verificationRequirement
+        if let URLString = request.url?.absoluteString, URLString.contains(verificationRequirement) {
+            verificationProvider.verify(URLString: URLString)
+            return false
         }
         return true
     }
@@ -66,24 +54,45 @@ class SecondLoginViewController: UIViewController,UIWebViewDelegate,NSURLConnect
     func webViewDidFinishLoad(_ webView: UIWebView) {
 
         self.webView.stringByEvaluatingJavaScript(from: "javascript:window.HtmlViewer.showHTML" +
-                "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');")
+            "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');")
     }
 
+
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
-        print("Logged error")
+        NSlogManager.showLog("Load error:  \(error)")
     }
+
+    // MARK: VerificationProviderDelegate
+
+    func onVerificationSuccess() {
+            self.successs()
+    }
+
+    func onErrorOccurs(_ text: String) {
+    
+            self.presentAlertWithMessage(text, title: StringHolder.loginError) { [weak self] in
+                self?.dismiss(animated: true)
+     
+        }
+    }
+
+    // MARK: NSURLConnectionDataDelegate
 
     func connection(_ connection: NSURLConnection, didReceive response: URLResponse) {
 
     }
 
     func connection(_ connection: NSURLConnection, didReceive data: Data) {
-        print("Logged Succesfully")
-        userDataHolder.loggedToUsosForCurrentEmail = true
-        let controller  = ContainerViewController()
-        controller.loadedToUsos = true
-        self.present(controller,animated:true,completion:nil)
+        self.successs()
     }
 
+    internal func successs() {
 
+            self.userDataHolder.loggedToUsosForCurrentEmail = true
+            let controller = ContainerViewController()
+            controller.loadedToUsos = true
+            self.present(controller, animated: true, completion: nil)
+        
+    }
+    
 }
