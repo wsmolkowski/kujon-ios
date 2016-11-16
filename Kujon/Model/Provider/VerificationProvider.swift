@@ -8,21 +8,14 @@
 
 import Foundation
 
-protocol VerificationProviderProtocol {
+protocol VerificationProviderProtocol: JsonProviderProtocol {
+    associatedtype T = UsosPaired
     func verify(URLString: String)
 }
 
 
 protocol VerificationProviderDelegate: ErrorResponseProtocol {
-    func onVerificationResponse(result: VerificationResult)
-}
-
-
-enum VerificationResult {
-    case success
-    case error(String)
-    case unidentifiedResponseError
-    case serializationError
+    func onVerificationSuccess()
 }
 
 
@@ -36,24 +29,11 @@ class VerificationProvider: RestApiManager, VerificationProviderProtocol {
 
     internal func verify(URLString: String) {
         addStoredCookies = true
-        makeHTTPAuthenticatedGetRequest({ [weak self] (data) in
+        makeHTTPAuthenticatedGetRequest({ [unowned self] data in
 
-            guard let json = try? JSONSerialization.jsonObject(with: data, options: []) else {
-                self?.delegate?.onVerificationResponse(result:.serializationError)
-                return
+            if let _ = try? self.changeJsonToResposne(data, errorR: self.delegate){
+                self.delegate?.onVerificationSuccess()
             }
-
-            if let _ = try? UsosPaired.decode(json) {
-                self?.delegate?.onVerificationResponse(result:.success)
-                return
-            }
-
-            if let error = try? ErrorClass.decode(json) {
-                self?.delegate?.onVerificationResponse(result:.error(error.message))
-                return
-            }
-
-            self?.delegate?.onVerificationResponse(result:.unidentifiedResponseError)
 
         }, onError: {[weak self] text in
             self?.delegate?.onErrorOccurs(text)

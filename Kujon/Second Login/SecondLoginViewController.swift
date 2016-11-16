@@ -65,21 +65,8 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
 
     // MARK: VerificationProviderDelegate
 
-    func onVerificationResponse(result: VerificationResult) {
-        DispatchQueue.main.async {
-            switch result {
-            case .success:
-                self.successs()
-            case .error(let message):
-                self.presentAlertWithMessage(message, title: StringHolder.loginError) { [weak self] in
-                    self?.dismiss(animated: true)
-                }
-            default:
-                self.presentAlertWithMessage(StringHolder.unknownErrorMessage, title: StringHolder.loginError) { [weak self] in
-                    self?.dismiss(animated: true)
-                }
-            }
-        }
+    func onVerificationSuccess() {
+            self.successs()
     }
 
     func onErrorOccurs(_ text: String) {
@@ -97,15 +84,16 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
     }
 
     func connection(_ connection: NSURLConnection, didReceive data: Data) {
-        print("Logged Succesfully")
         self.successs()
     }
 
     internal func successs() {
-        userDataHolder.loggedToUsosForCurrentEmail = true
-        let controller = ContainerViewController()
-        controller.loadedToUsos = true
-        self.present(controller, animated: true, completion: nil)
+        DispatchQueue.main.async { [unowned self] in
+            self.userDataHolder.loggedToUsosForCurrentEmail = true
+            let controller = ContainerViewController()
+            controller.loadedToUsos = true
+            self.present(controller, animated: true, completion: nil)
+        }
     }
     
 }
