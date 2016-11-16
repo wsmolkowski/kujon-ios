@@ -27,18 +27,18 @@ class HeaderManager {
         }
 
         if addStoredCookies {
-            let cookies = retieveCookies()
+            let cookies = retrieveCookies()
             request.addValue(cookies, forHTTPHeaderField: COOKIE_HEADER)
         }
     }
 
-    private func retieveCookies() -> String {
+    private func retrieveCookies() -> String {
         var result: String = ""
         guard let cookies = HTTPCookieStorage.shared.cookies(for: URL(string: RestApiManager.BASE_URL)!) else {
-            return ""
+            return result
         }
         cookies.forEach {
-            result = result + ($0 as HTTPCookie).name + "=" + ($0 as HTTPCookie).value + ";"
+            result += ($0 as HTTPCookie).name + "=" + ($0 as HTTPCookie).value + ";"
         }
         return result
     }
