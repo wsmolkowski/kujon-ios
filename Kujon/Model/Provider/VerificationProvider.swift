@@ -11,6 +11,7 @@ import Foundation
 protocol VerificationProviderProtocol: JsonProviderProtocol {
     associatedtype T = UsosPaired
     func verify(URLString: String)
+    func getRequestUrl()->String
 }
 
 
@@ -27,7 +28,10 @@ class VerificationProvider: RestApiManager, VerificationProviderProtocol {
         return String(format: "%@/authentication/verify", RestApiManager.BASE_URL)
     }
 
+    private var  endpoint:String! = ""
+
     internal func verify(URLString: String) {
+        endpoint = URLString
         addStoredCookies = true
         makeHTTPAuthenticatedGetRequest({ [unowned self] data in
 
@@ -40,9 +44,13 @@ class VerificationProvider: RestApiManager, VerificationProviderProtocol {
         })
     }
 
-    override func getMyUrl() -> String {
+    func getRequestUrl() -> String {
         let userDataHolder = UserDataHolder.sharedInstance
         return String(format: "%@/authentication/register?email=%@&token=%@&usos_id=%@&type=%@", RestApiManager.BASE_URL, userDataHolder.userEmail, userDataHolder.userToken, userDataHolder.usosId, userDataHolder.userLoginType)
+    }
+
+    override func getMyUrl() -> String {
+        return endpoint
     }
 
 }

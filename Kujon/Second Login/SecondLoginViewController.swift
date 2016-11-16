@@ -28,7 +28,7 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
         verificationProvider.delegate = self
         webView.delegate = self
         webView.scalesPageToFit = true;
-        let url = verificationProvider.getMyUrl()
+        let url = verificationProvider.getRequestUrl()
         let request = URLRequest(url: URL(string: url)!)
         webView.loadRequest(request)
     }
@@ -57,10 +57,9 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
             "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');")
     }
 
+
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
-        self.presentAlertWithMessage(error.localizedDescription, title: StringHolder.errorAlertTitle) { [weak self] in
-            self?.dismiss(animated: true)
-        }
+        NSlogManager.showLog("Load error:  \(error)")
     }
 
     // MARK: VerificationProviderDelegate
@@ -70,10 +69,10 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
     }
 
     func onErrorOccurs(_ text: String) {
-         DispatchQueue.main.async {
+    
             self.presentAlertWithMessage(text, title: StringHolder.loginError) { [weak self] in
                 self?.dismiss(animated: true)
-            }
+     
         }
     }
 
@@ -88,12 +87,12 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
     }
 
     internal func successs() {
-        DispatchQueue.main.async { [unowned self] in
+
             self.userDataHolder.loggedToUsosForCurrentEmail = true
             let controller = ContainerViewController()
             controller.loadedToUsos = true
             self.present(controller, animated: true, completion: nil)
-        }
+        
     }
     
 }
