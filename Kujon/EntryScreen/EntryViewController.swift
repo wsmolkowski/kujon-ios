@@ -169,12 +169,12 @@ class EntryViewController: UIViewController,
 
 
     override func unauthorized(_ text: String) {
-        self.showAlertApi(StringHolder.attention, text: text, succes: {
+        self.showAlertApi(StringHolder.attention, text: text, show: false, succes: {
             self.spinnerView.isHidden = false
             self.configProvider.checkConfig()
         }, cancel: {
             self.spinnerView.isHidden = true
-        },show: false)
+        })
     }
 
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {

@@ -25,7 +25,7 @@ extension UIViewController {
     }
 
 
-    func showAlertApi(_ title: String, text: String, succes: @escaping () -> Void, cancel: @escaping () -> Void, show: Bool = true) {
+    func showAlertApi(_ title: String, text: String, show: Bool = true, succes: @escaping () -> Void, cancel: @escaping () -> Void ) {
         let text2 = show ? text + " Czy chcesz spróbować ponownie ?" : text;
         let alertController = UIAlertController(title: title, message: text2, preferredStyle: .alert)
         if (show) {
