@@ -32,11 +32,12 @@ class RestApiManager {
         if (test) {
             self.handelTestCase(onCompletion)
         } else {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             let request = URLRequest(url: URL(string: getMyUrl())!)
             let session = URLSession.shared
             let task = session.dataTask(with: request) {
                 data, response, error in
-
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 NSlogManager.showLog(String(format: "Disk cache %i of %i", URLCache.shared.currentDiskUsage, URLCache.shared.diskCapacity))
                 NSlogManager.showLog(String(format: "Memory Cache %i of %i", URLCache.shared.currentMemoryUsage, URLCache.shared.memoryCapacity))
                 if let error = error {
@@ -59,6 +60,7 @@ class RestApiManager {
         if (test) {
             self.handelTestCase(onCompletion)
         } else {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             var request = URLRequest(url: URL(string: getMyUrl())!)
             let session = SessionManager.provideSession()
             request.httpMethod = "POST"
@@ -66,7 +68,7 @@ class RestApiManager {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             let task = session.dataTask(with: request) {
                 data, response, error in
-
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 NSlogManager.showLog(String(format: "Disk cache %i of %i", URLCache.shared.currentDiskUsage, URLCache.shared.diskCapacity))
                 NSlogManager.showLog(String(format: "Memory Cache %i of %i", URLCache.shared.currentMemoryUsage, URLCache.shared.memoryCapacity))
                 if let error = error {
@@ -90,13 +92,14 @@ class RestApiManager {
         if (test) {
             self.handelTestCase(onCompletion)
         } else {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             var request = URLRequest(url: URL(string: getMyUrl())!)
             let session = SessionManager.provideSession()
             request.httpMethod = "POST"
             self.headerManager.addHeadersToRequest(&request, refresh:refresh, addStoredCookies: addStoredCookies)
             let task = session.dataTask(with: request) {
                 data, response, error in
-
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 NSlogManager.showLog(String(format: "Disk cache %i of %i", URLCache.shared.currentDiskUsage, URLCache.shared.diskCapacity))
                 NSlogManager.showLog(String(format: "Memory Cache %i of %i", URLCache.shared.currentMemoryUsage, URLCache.shared.memoryCapacity))
                 if let error = error {
@@ -121,13 +124,14 @@ class RestApiManager {
             self.handelTestCase(onCompletion)
         } else {
             if (headerManager.isAuthenticated()) {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true
                 var request = URLRequest(url: URL(string: getMyUrl())!)
                 let session = SessionManager.provideSession()
                 self.headerManager.addHeadersToRequest(&request, refresh:refresh, addStoredCookies: addStoredCookies)
-                
+
                 let task = session.dataTask(with: request) {
                     data, response, error in
-
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     NSlogManager.showLog(String(format: "Disk cache %i of %i", URLCache.shared.currentDiskUsage, URLCache.shared.diskCapacity))
                     NSlogManager.showLog(String(format: "Memory Cache %i of %i", URLCache.shared.currentMemoryUsage, URLCache.shared.memoryCapacity))
                     if let error = error {
