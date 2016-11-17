@@ -21,9 +21,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
         Fabric.with([Crashlytics.self])
         SessionManager.setCache()
         window = UIWindow(frame: UIScreen.main.bounds)
+
+        // FB deferred deep linking
+        if launchOptions?[UIApplicationLaunchOptionsKey.url] == nil {
+            FBSDKAppLinkUtility.fetchDeferredAppLink({ (url, error) in
+                if let error = error {
+                    NSlogManager.showLog("Received error while fetching deferred app link \(error)")
+                }
+                if let url = url {
+                    UIApplication.shared.openURL(url)
+                }
+            })
+        }
 
         // Initialize sign-in
         var configureError: NSError?
@@ -39,7 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //TODO setup proper OneSignal app Id
         _ = OneSignal(launchOptions: launchOptions, appId: "f01a20f9-bbe7-4c89-a017-bf8930c61cf4", handleNotification: nil)
-
         OneSignal.defaultClient().enable(inAppAlertNotification: true)
 
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
