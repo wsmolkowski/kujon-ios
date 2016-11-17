@@ -125,8 +125,8 @@ class EntryViewController: UIViewController,
     func onFacebookCredentailSaved(_ isLogged: Bool) {
         socialLogin = true
         spinnerView.isHidden = false
+        OneSignal.defaultClient().sendTag(Constants.OneSignal.userEmailTag,  value: UserDataHolder.sharedInstance.userEmail)
         self.configProvider.checkConfig()
-
     }
 
     func notLogged() {
@@ -181,8 +181,6 @@ class EntryViewController: UIViewController,
         if (error == nil) {
             let googleManager = GoogleManager.sharedInstance
             googleManager.loadGoogleParams(self)
-
-
         } else {
             self.spinnerView.isHidden = true
             print("\(error.localizedDescription)")
