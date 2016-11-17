@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,12 +33,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CZ2-Eu-BAD" userLabel="FBLogin Button" customClass="FBSDKLoginButton">
+                    <rect key="frame" x="76" y="270" width="223" height="36"/>
                     <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="K9D-fS-Hnq"/>
                         <constraint firstAttribute="width" constant="240" id="aas-Sc-3Zz"/>
-                        <constraint firstAttribute="height" constant="30" id="hci-bx-Z9c"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="lm0-Bt-1fI"/>
+                        <constraint firstAttribute="height" constant="36" id="ufB-nJ-wsp"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
@@ -45,10 +49,10 @@
                         </mask>
                     </variation>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="49K-dA-dFD" userLabel="Google Sign In Button" customClass="GIDSignInButton">
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="230" placeholderIntrinsicHeight="36" translatesAutoresizingMaskIntoConstraints="NO" id="49K-dA-dFD" userLabel="Google Sign In Button" customClass="GIDSignInButton">
+                    <rect key="frame" x="72.5" y="224" width="230" height="36"/>
                     <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="6xo-e8-4Rf"/>
                         <constraint firstAttribute="width" constant="240" id="HbW-nM-cHy"/>
                         <constraint firstAttribute="width" constant="230" id="IIc-x3-cun"/>
                     </constraints>
@@ -59,22 +63,26 @@
                     </variation>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zaloguj się" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mY1-at-Y1Z">
+                    <rect key="frame" x="136.5" y="152" width="103" height="26"/>
                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                     <color key="textColor" red="0.16470588743686676" green="0.20000000298023224" blue="0.24313725531101227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="w Kujon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7SU-Cg-8cS">
+                    <rect key="frame" x="142.5" y="178" width="90.5" height="30"/>
                     <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="25"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="owl" translatesAutoresizingMaskIntoConstraints="NO" id="AUd-TK-qW5">
+                    <rect key="frame" x="139.5" y="12" width="96" height="124"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="96" id="C2i-8a-hdg"/>
                         <constraint firstAttribute="height" constant="124" id="cMk-r0-tGc"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pi5-mO-0sB">
+                    <rect key="frame" x="72.5" y="340" width="230" height="36"/>
                     <color key="backgroundColor" red="0.24705882370000001" green="0.72941178080000002" blue="0.85098040100000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="iLA-in-JZI"/>
@@ -88,6 +96,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxJ-ZU-fTQ">
+                    <rect key="frame" x="72.5" y="384" width="230" height="36"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="rOK-LG-NOR"/>
                     </constraints>
@@ -100,17 +109,20 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- lub -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3v4-pU-hof">
+                    <rect key="frame" x="168" y="314" width="39.5" height="18"/>
                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vv-VQ-Avk" customClass="SpinnerView" customModule="Kujon" customModuleProvider="target">
+                    <rect key="frame" x="162.5" y="308.5" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="Ui7-RF-jcZ"/>
                         <constraint firstAttribute="height" constant="50" id="feY-4g-hLe"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rejestrując się wyrażasz zgodę  na następujące warunki" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miO-Ux-yaG">
+                    <rect key="frame" x="77.5" y="450" width="220" height="36"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="220" id="dlg-rQ-55G"/>
                         <constraint firstAttribute="width" constant="180" id="vZV-u6-wHc"/>
