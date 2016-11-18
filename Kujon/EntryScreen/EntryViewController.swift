@@ -125,8 +125,8 @@ class EntryViewController: UIViewController,
     func onFacebookCredentailSaved(_ isLogged: Bool) {
         socialLogin = true
         spinnerView.isHidden = false
+        OneSignal.defaultClient().sendTag(Constants.OneSignal.userEmailTag,  value: UserDataHolder.sharedInstance.userEmail)
         self.configProvider.checkConfig()
-
     }
 
     func notLogged() {
@@ -169,20 +169,18 @@ class EntryViewController: UIViewController,
 
 
     override func unauthorized(_ text: String) {
-        self.showAlertApi(StringHolder.attention, text: text, succes: {
+        self.showAlertApi(StringHolder.attention, text: text, show: false, succes: {
             self.spinnerView.isHidden = false
             self.configProvider.checkConfig()
         }, cancel: {
             self.spinnerView.isHidden = true
-        },show: false)
+        })
     }
 
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if (error == nil) {
             let googleManager = GoogleManager.sharedInstance
             googleManager.loadGoogleParams(self)
-
-
         } else {
             self.spinnerView.isHidden = true
             print("\(error.localizedDescription)")

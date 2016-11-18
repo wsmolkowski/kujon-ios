@@ -15,12 +15,15 @@ class SettingsViewController: UIViewController,
         GIDSignInUIDelegate {
 
     var loginMenager: UserLogin! = nil
-
-    @IBOutlet weak var googleLogOutButton: UIButton!
     var deleteAccountProvider = ProvidersProviderImpl.sharedInstance.provideDeleteAccount()
 
+    @IBOutlet weak var googleLogOutButton: UIButton!
     @IBOutlet weak var logoutIcon: UIImageView!
     @IBOutlet weak var logOutButton: FBSDKLoginButton!
+    @IBOutlet weak var spinner: SpinnerView!
+
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SettingsViewController.back), andTitle: StringHolder.settings)
@@ -30,8 +33,7 @@ class SettingsViewController: UIViewController,
         deleteAccountProvider.delegate = self
         loginMenager = UserLoginEnum.getUserLogin()
         logOutButton.isHidden = true
-
-
+        spinner.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +42,7 @@ class SettingsViewController: UIViewController,
     }
 
     @IBAction func googleLogOutAction(_ sender: AnyObject) {
+        self.spinner.isHidden = false
         goBackToEntryScreen();
 
     }
@@ -68,13 +71,15 @@ class SettingsViewController: UIViewController,
 
     @IBAction func deleteAccount(_ sender: AnyObject) {
         showAlertApi(StringHolder.attention, text: StringHolder.deleteAccount, succes: {
+            self.spinner.isHidden = false
             self.deleteAccountProvider.deleteAccount()
+
         }, cancel: {})
     }
 
     func accountDeleted() {
         UserDataHolder.sharedInstance.loggedToUsosForCurrentEmail = false
-
+        self.spinner.isHidden = true
         goBackToEntryScreen();
     }
 
@@ -95,9 +100,11 @@ class SettingsViewController: UIViewController,
     }
 
     func onSuccesfullLogout() {
+        self.spinner.isHidden = true
     }
 
     func onErrorOccurs(_ text: String) {
+        self.spinner.isHidden = true
     }
 
 

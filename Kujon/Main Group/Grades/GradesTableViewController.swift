@@ -17,9 +17,10 @@ class GradesTableViewController: RefreshingTableViewController
     let gradesProvider = ProvidersProviderImpl.sharedInstance.provideGradesProvider()
     private let GradeCellIdentiefer = "GradeCellId"
     let textId = "myTextSuperId"
-    private var myTermGrades  = Array<PreparedTermGrades>()
+    private var preparedTermGrades  = Array<PreparedTermGrades>()
+    private var termGrades: [TermGrades]?
     private var dataBack = false;
-    private let kSectionHeight: CGFloat = 30.0
+    private let kSectionHeight: CGFloat = 40.0
     private let termsProvider = ProvidersProviderImpl.sharedInstance.provideTermsProvider()
     private var selectedTermId: String?
 
@@ -47,12 +48,14 @@ class GradesTableViewController: RefreshingTableViewController
         delegate?.toggleLeftPanel()
     }
 
-    func onGradesLoaded(_ termGrades: Array<PreparedTermGrades>) {
+    func onGradesLoaded(termGrades: [TermGrades], preparedTermGrades: Array<PreparedTermGrades>) {
         dataBack = true
-        self.myTermGrades = termGrades
+        self.termGrades = termGrades
+        self.preparedTermGrades = preparedTermGrades
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
     }
+
     func onErrorOccurs(_ text: String) {
         self.showAlertApi(StringHolder.attention, text: text, succes: {
             self.gradesProvider.reload()
@@ -64,14 +67,14 @@ class GradesTableViewController: RefreshingTableViewController
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return noDataCondition() ? 1:self.myTermGrades.count
+        return noDataCondition() ? 1:self.preparedTermGrades.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(noDataCondition()){
             return 1
         }
-        return self.myTermGrades[section].grades.count
+        return self.preparedTermGrades[section].grades.count
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -86,11 +89,13 @@ class GradesTableViewController: RefreshingTableViewController
     }
 
 
+
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if(noDataCondition()){
+        if(noDataCondition()) {
             return nil
         }
-        let header = createLabelForSectionTitle(myTermGrades[section].termId, middle: true, height: kSectionHeight)
+        let headerTitle: String = String(format: "%@,  średnia ocena: %@", preparedTermGrades[section].termId, termGrades![section].averageGradeDescriptive)
+        let header = createLabelForSectionTitle(headerTitle, middle: true, height: kSectionHeight)
         let tapRecognizer = IdentifiedTapGestureRecognizer(target: self, action: #selector(CoursesTableViewController.headerDidTap(with:)))
         tapRecognizer.id = section
         tapRecognizer.numberOfTapsRequired = 1
@@ -98,8 +103,6 @@ class GradesTableViewController: RefreshingTableViewController
         header.addGestureRecognizer(tapRecognizer)
         return header
     }
-
-
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(noDataCondition()){
@@ -111,18 +114,18 @@ class GradesTableViewController: RefreshingTableViewController
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: GradeCellIdentiefer, for: indexPath) as! Grade2TableViewCell
-        let prepareGrade = self.myTermGrades[indexPath.section].grades[indexPath.row]
+        let prepareGrade = self.preparedTermGrades[indexPath.section].grades[indexPath.row]
         cell.grade = prepareGrade.grades
         cell.courseName = prepareGrade.courseName
         return cell
     }
 
     private func noDataCondition()->Bool{
-        return self.myTermGrades.count == 0
+        return self.preparedTermGrades.count == 0
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let prepareGrade = self.myTermGrades[indexPath.section].grades[indexPath.row] 
+        let prepareGrade = self.preparedTermGrades[indexPath.section].grades[indexPath.row] 
 
         let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: Bundle.main)
         courseDetails.courseId = prepareGrade.courseId
@@ -134,7 +137,7 @@ class GradesTableViewController: RefreshingTableViewController
 
     func headerDidTap(with tapGestureRecognizer: IdentifiedTapGestureRecognizer) {
         let section = tapGestureRecognizer.id
-        selectedTermId = myTermGrades[section].termId
+        selectedTermId = preparedTermGrades[section].termId
         termsProvider.loadTerms()
     }
 

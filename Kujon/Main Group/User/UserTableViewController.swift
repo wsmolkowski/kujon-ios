@@ -221,6 +221,7 @@ class UserTableViewController: RefreshingTableViewController
 //        cell.schoolNameLabel.text = userDetails.usosName
         cell.indexNumberLabel.text = userDetail.studentNumber
         cell.accountNumberLabel.text = userDetail.id
+        cell.averageGradeLabel.text = userDetail.averageGradeDescriptive
         cell.userImageView.makeMyselfCircleWithBorder()
         cell.userImageView.image = UIImage(named: "user-placeholder")
         if (userDetail.photoUrl != nil) {

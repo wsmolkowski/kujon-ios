@@ -23,6 +23,6 @@ extension Message:Decodable{
         return try Message(createdTime: j => "created_time",
                            from: j => "from",
                            message: j => "message",
-                           type: j => "type")
+                           type: j => "typ")
     }
 }
