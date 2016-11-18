@@ -12,7 +12,7 @@ protocol GradesProviderProtocol: JsonProviderProtocol {
 }
 
 protocol GradesProviderDelegate: ErrorResponseProtocol {
-    func onGradesLoaded(_ termGrades: Array<PreparedTermGrades>)
+    func onGradesLoaded(termGrades: [TermGrades], preparedTermGrades: Array<PreparedTermGrades>)
 
 }
 
@@ -24,8 +24,10 @@ weak var delegate: GradesProviderDelegate!
 
         self.makeHTTPAuthenticatedGetRequest({
             [unowned self] json in
+
             do {
                 if let grades = try self.changeJsonToResposne(json,errorR: self.delegate){
+
                     var preparedTermGrades = Array<PreparedTermGrades>()
                     if grades.data.count > 0 {
                         for i in  0...grades.data.count - 1 {
@@ -49,7 +51,7 @@ weak var delegate: GradesProviderDelegate!
                             preparedTermGrades.append(PreparedTermGrades(termId: termGrade.termId,grades: preparedGrade))
                         }
                     }
-                    self.delegate?.onGradesLoaded(preparedTermGrades)
+                    self.delegate?.onGradesLoaded(termGrades:grades.data, preparedTermGrades:preparedTermGrades)
                 }
             } catch {
                 NSlogManager.showLog("JSON serialization failed:  \(error)")

@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="16B2338c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Lato-Regular.ttf">
+        <array key="Lato-Regular.ttf">
             <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -22,14 +20,14 @@
             <rect key="frame" x="0.0" y="0.0" width="640" height="195"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="640" height="194.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="640" height="194"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iPT-L2-bli">
-                        <rect key="frame" x="0.0" y="0.0" width="640" height="194.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="640" height="195"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6EP-yc-c7l" customClass="UserDetailView" customModule="Kujon" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="640" height="194.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="640" height="195"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVj-Ff-Hf2">
                                 <rect key="frame" x="8" y="98" width="624" height="21"/>
@@ -39,7 +37,7 @@
                                     <constraint firstAttribute="height" constant="47" id="tkH-EI-ClY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -73,16 +71,16 @@
                                     <constraint firstAttribute="height" constant="21" id="JhO-b5-FuF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8n3-Wk-Tkn">
-                                <rect key="frame" x="200" y="172" width="100" height="21"/>
+                                <rect key="frame" x="150" y="172" width="100" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="jml-kl-qMF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qq0-R3-oFf">
@@ -108,37 +106,37 @@
                                     <constraint firstAttribute="height" constant="21" id="Nsj-A1-Xue"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Numer indeksu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4R-TL-zDl">
-                                <rect key="frame" x="200" y="151" width="100" height="13"/>
+                                <rect key="frame" x="150" y="151" width="100" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="ZFY-Sh-cch"/>
                                     <constraint firstAttribute="height" constant="13" id="jkZ-4V-OcP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="11"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Numer konta" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygZ-0y-5aO">
-                                <rect key="frame" x="340" y="151" width="80" height="13"/>
+                                <rect key="frame" x="280" y="151" width="80" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="13" id="8H7-2P-Pfd"/>
                                     <constraint firstAttribute="width" constant="80" id="yqd-U9-O7I"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="11"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="85T-aW-uae">
-                                <rect key="frame" x="340" y="172" width="80" height="21"/>
+                                <rect key="frame" x="280" y="172" width="80" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="92" id="JSb-5l-osp"/>
                                     <constraint firstAttribute="height" constant="21" id="NIw-NP-YdB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -146,8 +144,28 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185802" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Średnia ocen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOb-7X-JfU">
+                                <rect key="frame" x="396" y="151" width="93" height="13"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="93" id="Of8-Vu-kXd"/>
+                                    <constraint firstAttribute="height" constant="13" id="Ton-iv-mpB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="11"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brak" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLX-jp-jcM">
+                                <rect key="frame" x="386" y="172" width="111" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="111" id="HYC-wl-unp"/>
+                                    <constraint firstAttribute="height" constant="21" id="PpC-5E-ZRr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.24705882370000001" green="0.72941178080000002" blue="0.85098040100000005" alpha="0.89959590519999999" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.24705882370000001" green="0.72941178080000002" blue="0.85098040100000005" alpha="0.89959590519999999" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="qq0-R3-oFf" firstAttribute="trailing" secondItem="NJe-bs-MtL" secondAttribute="trailing" id="6cD-lU-jm6"/>
                             <constraint firstItem="RvO-Mc-V5X" firstAttribute="centerY" secondItem="qq0-R3-oFf" secondAttribute="centerY" id="7wt-zb-rcr"/>
@@ -162,8 +180,10 @@
                             <constraint firstItem="d4R-TL-zDl" firstAttribute="bottom" secondItem="KKs-xd-yxa" secondAttribute="bottom" constant="24" id="FGb-qt-EJf"/>
                             <constraint firstItem="85T-aW-uae" firstAttribute="baseline" secondItem="8n3-Wk-Tkn" secondAttribute="baseline" id="FsE-hu-aWG"/>
                             <constraint firstItem="YVj-Ff-Hf2" firstAttribute="top" secondItem="NJe-bs-MtL" secondAttribute="bottom" constant="10" id="Gp2-Em-veP"/>
+                            <constraint firstItem="wOb-7X-JfU" firstAttribute="top" secondItem="ygZ-0y-5aO" secondAttribute="top" id="LFg-0U-ogr"/>
+                            <constraint firstItem="LLX-jp-jcM" firstAttribute="leading" secondItem="wOb-7X-JfU" secondAttribute="leading" constant="-10" id="Lp2-Sd-ZO2"/>
                             <constraint firstItem="85T-aW-uae" firstAttribute="leading" secondItem="ygZ-0y-5aO" secondAttribute="leading" id="MBo-xC-Sic"/>
-                            <constraint firstItem="ygZ-0y-5aO" firstAttribute="leading" secondItem="NJe-bs-MtL" secondAttribute="trailing" constant="-20" id="MTF-6j-bWh"/>
+                            <constraint firstItem="ygZ-0y-5aO" firstAttribute="leading" secondItem="NJe-bs-MtL" secondAttribute="trailing" constant="-80" id="MTF-6j-bWh"/>
                             <constraint firstItem="8n3-Wk-Tkn" firstAttribute="leading" secondItem="d4R-TL-zDl" secondAttribute="leading" id="Nzg-2b-5qm"/>
                             <constraint firstAttribute="trailing" secondItem="KKs-xd-yxa" secondAttribute="trailing" constant="8" id="Oqq-1P-A2b"/>
                             <constraint firstItem="85T-aW-uae" firstAttribute="trailing" secondItem="ygZ-0y-5aO" secondAttribute="trailing" id="PzA-F9-XPg"/>
@@ -177,11 +197,13 @@
                             <constraint firstItem="qq0-R3-oFf" firstAttribute="bottom" secondItem="NJe-bs-MtL" secondAttribute="bottom" id="cFO-R9-JWD"/>
                             <constraint firstItem="YVj-Ff-Hf2" firstAttribute="leading" secondItem="6EP-yc-c7l" secondAttribute="leading" constant="8" id="cgv-Cj-1MG"/>
                             <constraint firstItem="NJe-bs-MtL" firstAttribute="centerX" secondItem="RvO-Mc-V5X" secondAttribute="centerX" id="eXh-p9-n1H"/>
+                            <constraint firstItem="wOb-7X-JfU" firstAttribute="leading" secondItem="ygZ-0y-5aO" secondAttribute="trailing" constant="36" id="fPE-fQ-Q1z"/>
                             <constraint firstItem="KKs-xd-yxa" firstAttribute="top" secondItem="d4R-TL-zDl" secondAttribute="bottom" constant="120" id="gAg-UI-PQC"/>
                             <constraint firstItem="RvO-Mc-V5X" firstAttribute="leading" secondItem="6EP-yc-c7l" secondAttribute="leading" constant="8" id="gNB-6t-pkW"/>
                             <constraint firstItem="KKs-xd-yxa" firstAttribute="top" secondItem="YVj-Ff-Hf2" secondAttribute="bottom" id="gZf-Rb-UFP"/>
+                            <constraint firstItem="LLX-jp-jcM" firstAttribute="top" secondItem="wOb-7X-JfU" secondAttribute="bottom" constant="8" id="iPR-U3-T0D"/>
                             <constraint firstItem="NJe-bs-MtL" firstAttribute="top" secondItem="6EP-yc-c7l" secondAttribute="top" constant="8" id="j49-UI-7uh"/>
-                            <constraint firstItem="d4R-TL-zDl" firstAttribute="leading" secondItem="NJe-bs-MtL" secondAttribute="leading" constant="-80" id="nDv-h2-Knl"/>
+                            <constraint firstItem="d4R-TL-zDl" firstAttribute="leading" secondItem="NJe-bs-MtL" secondAttribute="leading" constant="-130" id="nDv-h2-Knl"/>
                             <constraint firstItem="YVj-Ff-Hf2" firstAttribute="top" secondItem="KKs-xd-yxa" secondAttribute="bottom" constant="8" id="v8h-Si-aUC"/>
                             <constraint firstItem="8n3-Wk-Tkn" firstAttribute="top" secondItem="d4R-TL-zDl" secondAttribute="bottom" constant="8" id="veW-hS-2gp"/>
                             <constraint firstItem="8n3-Wk-Tkn" firstAttribute="trailing" secondItem="d4R-TL-zDl" secondAttribute="trailing" id="weA-0K-AOh"/>
@@ -201,12 +223,12 @@
                                 <exclude reference="bvS-75-ihw"/>
                                 <exclude reference="eXh-p9-n1H"/>
                                 <exclude reference="wmd-Vt-RDm"/>
-                                <exclude reference="6cD-lU-jm6"/>
-                                <exclude reference="9GT-01-0Lm"/>
-                                <exclude reference="YRQ-Z0-E4m"/>
                                 <exclude reference="Eqc-72-KK1"/>
                                 <exclude reference="FsE-hu-aWG"/>
                                 <exclude reference="XLE-x4-ZTr"/>
+                                <exclude reference="6cD-lU-jm6"/>
+                                <exclude reference="9GT-01-0Lm"/>
+                                <exclude reference="YRQ-Z0-E4m"/>
                             </mask>
                         </variation>
                         <connections>
@@ -235,9 +257,10 @@
                     <constraint firstAttribute="bottom" secondItem="6EP-yc-c7l" secondAttribute="bottom" id="z5j-RX-CFa"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.2470588235" green="0.72941176470000002" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.2470588235" green="0.72941176470000002" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
                 <outlet property="accountNumberLabel" destination="85T-aW-uae" id="WsZ-T5-gcf"/>
+                <outlet property="averageGradeLabel" destination="LLX-jp-jcM" id="QRi-UC-Y7F"/>
                 <outlet property="bigUsosImage" destination="iPT-L2-bli" id="26T-eT-hYk"/>
                 <outlet property="indexNumberLabel" destination="8n3-Wk-Tkn" id="GcT-Ol-Tof"/>
                 <outlet property="nameSurnameLabel" destination="YVj-Ff-Hf2" id="qd2-2c-kS3"/>
@@ -246,7 +269,7 @@
                 <outlet property="studentStatusLabel" destination="KKs-xd-yxa" id="iEU-j7-ieD"/>
                 <outlet property="userImageView" destination="NJe-bs-MtL" id="qw3-es-Tbf"/>
             </connections>
-            <point key="canvasLocation" x="212" y="435"/>
+            <point key="canvasLocation" x="212" y="434.5"/>
         </tableViewCell>
     </objects>
 </document>

@@ -91,6 +91,7 @@ class StringHolder {
     static let supervisors = "Pod kierunkiem"
     static let teacher = "Wykładowca"
     static let none = "Brak"
+    static let none_lowercase = "brak"
     static let messages = "Wiadomości"
     static let noMessages = "Uff, nie masz żadnych wiadomości"
     static let refreshControlUniversalMessage = "Przesuń, żeby odświeżyć"

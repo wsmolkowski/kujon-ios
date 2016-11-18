@@ -35,6 +35,14 @@ struct SuperUserDetails {
     let programmes:Array<StudentProgramme>
     let terms: Array<Term>
     let faculties:Array<Facultie>
+    let averageGrade:Double?
+
+    var averageGradeDescriptive: String {
+        if let averageGrade = averageGrade {
+            return String(format: "%.\(2)f", averageGrade)
+        }
+        return StringHolder.none
+    }
 }
 
 extension SuperUserDetails:Decodable{
@@ -68,7 +76,8 @@ extension SuperUserDetails:Decodable{
                 google: try? j => "google",
                 programmes: j => "programmes",
                 terms: j => "terms",
-                faculties: j => "faculties")
+                faculties: j => "faculties",
+                averageGrade: try? j => "avr_grades")
     }
 
 }
