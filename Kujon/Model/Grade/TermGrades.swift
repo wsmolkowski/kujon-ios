@@ -31,7 +31,7 @@ extension TermGrades: Decodable {
         return try TermGrades(
         termId: j => "term_id",
         grades: j => "courses",
-        averageGrade: j => "avr_grades")
+        averageGrade: try? j => "avr_grades")
     }
 
 }
