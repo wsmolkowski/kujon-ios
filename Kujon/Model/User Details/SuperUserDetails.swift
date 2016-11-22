@@ -39,12 +39,7 @@ struct SuperUserDetails {
 
     var averageGradeDescriptive: String {
         if let averageGrade = averageGrade {
-            if let double  = Double(averageGrade){
-
-                return String(format: "%.\(2)f", double)
-            }else {
-                return StringHolder.none_lowercase
-            }
+            return averageGrade
 
         }
         return StringHolder.none_lowercase
