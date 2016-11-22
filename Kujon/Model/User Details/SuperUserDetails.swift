@@ -35,13 +35,19 @@ struct SuperUserDetails {
     let programmes:Array<StudentProgramme>
     let terms: Array<Term>
     let faculties:Array<Facultie>
-    let averageGrade:Double?
+    let averageGrade:String?
 
     var averageGradeDescriptive: String {
         if let averageGrade = averageGrade {
-            return String(format: "%.\(2)f", averageGrade)
+            if let double  = Double(averageGrade){
+
+                return String(format: "%.\(2)f", double)
+            }else {
+                return StringHolder.none_lowercase
+            }
+
         }
-        return StringHolder.none
+        return StringHolder.none_lowercase
     }
 }
 

@@ -10,11 +10,17 @@ import Decodable
 struct TermGrades {
     let termId: String
     let grades: Array<CourseGrade>
-    let averageGrade: Double?
+    let averageGrade: String?
 
     var averageGradeDescriptive: String {
         if let averageGrade = averageGrade {
-            return String(format: "%.\(2)f", averageGrade)
+            if let double  = Double(averageGrade){
+
+                return String(format: "%.\(2)f", double)
+            }else {
+                return StringHolder.none_lowercase
+            }
+
         }
         return StringHolder.none_lowercase
     }
