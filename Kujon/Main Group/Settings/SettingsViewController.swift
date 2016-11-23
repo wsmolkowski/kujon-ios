@@ -10,45 +10,30 @@ import UIKit
 import FBSDKLoginKit
 
 class SettingsViewController: UIViewController,
-        FBSDKLoginButtonDelegate,
-        DeleteAccountProviderDelegate,
-        GIDSignInUIDelegate {
+        DeleteAccountProviderDelegate {
 
     var loginMenager: UserLogin! = nil
     var deleteAccountProvider = ProvidersProviderImpl.sharedInstance.provideDeleteAccount()
-
-    @IBOutlet weak var logoutIcon: UIImageView!
-    @IBOutlet weak var logOutButton: FBSDKLoginButton!
     @IBOutlet weak var spinner: SpinnerView!
-
-
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SettingsViewController.back), andTitle: StringHolder.settings)
         self.edgesForExtendedLayout = UIRectEdge()
-        logOutButton.delegate = self
-        GIDSignIn.sharedInstance().uiDelegate = self
         deleteAccountProvider.delegate = self
-        loginMenager = UserLoginEnum.getUserLogin()
-        logOutButton.isHidden = true
         spinner.isHidden = true
         view.backgroundColor = UIColor.greyBackgroundColor()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
 
-    }
-
-    @IBAction func googleLogOutAction(_ sender: AnyObject) {
+    @IBAction func logoutButtonDidTap(_ sender: AnyObject) {
         self.spinner.isHidden = false
-        goBackToEntryScreen();
+        logout();
 
     }
 
-    private func goBackToEntryScreen() {
+    private func logout() {
+        loginMenager = UserLoginEnum.getUserLogin()
         loginMenager.logout(self)
 
     }
@@ -60,8 +45,8 @@ class SettingsViewController: UIViewController,
     }
 
     override func failed(_ text: String) {
-        self.showAlertApiError({
-            self.goBackToEntryScreen()
+        self.showAlertApiError({ [weak self] in
+            self?.logout()
         }, cancelFucnt: {})
     }
 
@@ -70,10 +55,10 @@ class SettingsViewController: UIViewController,
         let _ = self.navigationController?.popViewController(animated: true)
     }
 
-    @IBAction func deleteAccount(_ sender: AnyObject) {
-        showAlertApi(StringHolder.attention, text: StringHolder.deleteAccount, succes: {
-            self.spinner.isHidden = false
-            self.deleteAccountProvider.deleteAccount()
+    @IBAction func deleteAccountButtonDidTap(_ sender: AnyObject) {
+        showAlertApi(StringHolder.attention, text: StringHolder.deleteAccount, succes: { [weak self] in
+            self?.spinner.isHidden = false
+            self?.deleteAccountProvider.deleteAccount()
 
         }, cancel: {})
     }
@@ -81,23 +66,13 @@ class SettingsViewController: UIViewController,
     func accountDeleted() {
         UserDataHolder.sharedInstance.loggedToUsosForCurrentEmail = false
         self.spinner.isHidden = true
-        goBackToEntryScreen();
+        logout();
     }
 
-
-
-
-    @IBAction func regulaminAction(_ sender: AnyObject) {
+    @IBAction func regulaminButtonDidTap(_ sender: AnyObject) {
         if let url = URL(string: StringHolder.kujonRegulaminUrl) {
             UIApplication.shared.openURL(url)
         }
-    }
-
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-    }
-
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        goBackToEntryScreen();
     }
 
     func onSuccesfullLogout() {

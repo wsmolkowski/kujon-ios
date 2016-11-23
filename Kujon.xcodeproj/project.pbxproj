@@ -309,7 +309,6 @@
 		6631593E1DAE623600B0789B /* ThesisDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6631593D1DAE623600B0789B /* ThesisDetailTableViewController.swift */; };
 		663159411DAE6D7D00B0789B /* ThesisDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6631593F1DAE6D7D00B0789B /* ThesisDetailHeaderCell.swift */; };
 		663159421DAE6D7D00B0789B /* ThesisDetailHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 663159401DAE6D7D00B0789B /* ThesisDetailHeaderCell.xib */; };
-		663E1EAB1DE5DB9E0091CC31 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 663E1EAA1DE5DB9E0091CC31 /* SettingsViewController.xib */; };
 		66645F3F1DC0D9E3000ACE62 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66645F3E1DC0D9E3000ACE62 /* MessageCell.xib */; };
 		66645F421DC0DD6C000ACE62 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66645F401DC0DD6C000ACE62 /* MessageDetailViewController.swift */; };
 		66645F431DC0DD6C000ACE62 /* MessageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66645F411DC0DD6C000ACE62 /* MessageDetailViewController.xib */; };
@@ -318,6 +317,7 @@
 		669B2F5C1DBE0973000AE02C /* CourseMeritsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B2F5B1DBE0973000AE02C /* CourseMeritsSection.swift */; };
 		66A2CBC91DC76C280049217C /* KujonRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A2CBC81DC76C280049217C /* KujonRefreshControl.swift */; };
 		66A2CBCB1DC77B440049217C /* RefreshingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A2CBCA1DC77B440049217C /* RefreshingTableViewController.swift */; };
+		66D46B161DE60F30003701D2 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66D46B151DE60F30003701D2 /* SettingsViewController.xib */; };
 		66D506491DA69CD300B5CE1B /* ThesesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D506481DA69CD300B5CE1B /* ThesesTableViewController.swift */; };
 		66D506551DA6BD9000B5CE1B /* ThesisCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D506531DA6BD9000B5CE1B /* ThesisCell.swift */; };
 		66D506561DA6BD9000B5CE1B /* ThesisCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66D506541DA6BD9000B5CE1B /* ThesisCell.xib */; };
@@ -657,7 +657,6 @@
 		6631593D1DAE623600B0789B /* ThesisDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesisDetailTableViewController.swift; sourceTree = "<group>"; };
 		6631593F1DAE6D7D00B0789B /* ThesisDetailHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesisDetailHeaderCell.swift; sourceTree = "<group>"; };
 		663159401DAE6D7D00B0789B /* ThesisDetailHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThesisDetailHeaderCell.xib; sourceTree = "<group>"; };
-		663E1EAA1DE5DB9E0091CC31 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = ../../../../Desktop/SettingsViewController.xib; sourceTree = "<group>"; };
 		66645F3E1DC0D9E3000ACE62 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		66645F401DC0DD6C000ACE62 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageDetailViewController.swift; path = ../Messages/MessageDetailViewController.swift; sourceTree = "<group>"; };
 		66645F411DC0DD6C000ACE62 /* MessageDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageDetailViewController.xib; path = ../Messages/MessageDetailViewController.xib; sourceTree = "<group>"; };
@@ -666,6 +665,7 @@
 		669B2F5B1DBE0973000AE02C /* CourseMeritsSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseMeritsSection.swift; sourceTree = "<group>"; };
 		66A2CBC81DC76C280049217C /* KujonRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KujonRefreshControl.swift; sourceTree = "<group>"; };
 		66A2CBCA1DC77B440049217C /* RefreshingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RefreshingTableViewController.swift; path = "../Global Extensions/RefreshingTableViewController.swift"; sourceTree = "<group>"; };
+		66D46B151DE60F30003701D2 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		66D506481DA69CD300B5CE1B /* ThesesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesesTableViewController.swift; sourceTree = "<group>"; };
 		66D506531DA6BD9000B5CE1B /* ThesisCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesisCell.swift; sourceTree = "<group>"; };
 		66D506541DA6BD9000B5CE1B /* ThesisCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThesisCell.xib; sourceTree = "<group>"; };
@@ -982,7 +982,7 @@
 			isa = PBXGroup;
 			children = (
 				52AF77CD1D0AD5C50058979A /* SettingsViewController.swift */,
-				663E1EAA1DE5DB9E0091CC31 /* SettingsViewController.xib */,
+				66D46B151DE60F30003701D2 /* SettingsViewController.xib */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1716,7 +1716,7 @@
 				528BCAB01D5DE70C00A9E49C /* FacultieTableViewController.xib in Resources */,
 				5295135F1D192F29009D6FF2 /* LectureTableViewCell.xib in Resources */,
 				4C0D8D641FD73F7E585E72B6 /* User.json in Resources */,
-				663E1EAB1DE5DB9E0091CC31 /* SettingsViewController.xib in Resources */,
+				66D46B161DE60F30003701D2 /* SettingsViewController.xib in Resources */,
 				529513631D1931C6009D6FF2 /* HeaderViewTableViewCell.xib in Resources */,
 				4C0D8EE504A6F04F1B414751 /* Schedule.json in Resources */,
 				52AF77D81D0AD83A0058979A /* ShareViewController.xib in Resources */,
