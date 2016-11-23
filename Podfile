@@ -11,7 +11,7 @@ target 'Kujon' do
   pod 'FBSDKLoginKit'
   pod 'Fabric'
   pod 'Crashlytics'
-  pod "CalendarLib"
+  pod 'CalendarLib'
   pod 'Google/SignIn'
   pod 'OneSignal', '~> 1.13.3'
 
