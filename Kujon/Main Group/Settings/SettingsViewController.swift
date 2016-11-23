@@ -17,10 +17,10 @@ class SettingsViewController: UIViewController,
     var loginMenager: UserLogin! = nil
     var deleteAccountProvider = ProvidersProviderImpl.sharedInstance.provideDeleteAccount()
 
-    @IBOutlet weak var googleLogOutButton: UIButton!
     @IBOutlet weak var logoutIcon: UIImageView!
     @IBOutlet weak var logOutButton: FBSDKLoginButton!
     @IBOutlet weak var spinner: SpinnerView!
+
 
 
 
@@ -34,6 +34,7 @@ class SettingsViewController: UIViewController,
         loginMenager = UserLoginEnum.getUserLogin()
         logOutButton.isHidden = true
         spinner.isHidden = true
+        view.backgroundColor = UIColor.greyBackgroundColor()
     }
 
     override func didReceiveMemoryWarning() {
