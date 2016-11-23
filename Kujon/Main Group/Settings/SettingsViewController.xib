@@ -47,7 +47,7 @@
                                     </state>
                                 </button>
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5uV-88-Sd5">
-                                    <rect key="frame" x="310" y="7" width="51" height="31"/>
+                                    <rect key="frame" x="310" y="8.5" width="51" height="31"/>
                                 </switch>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ty-jt-RO9" userLabel="top_separator">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -72,9 +72,9 @@
                                 <constraint firstAttribute="trailing" secondItem="GUH-nb-zMr" secondAttribute="trailing" id="CWg-Ci-1Ma"/>
                                 <constraint firstItem="qgD-Vd-UHs" firstAttribute="leading" secondItem="DsQ-9c-FL4" secondAttribute="leading" constant="10" id="Cs2-1v-9uZ"/>
                                 <constraint firstAttribute="height" constant="48" id="JWm-hL-kby"/>
-                                <constraint firstItem="5uV-88-Sd5" firstAttribute="top" secondItem="1ty-jt-RO9" secondAttribute="bottom" constant="6" id="UiY-tB-GAn"/>
                                 <constraint firstItem="5uV-88-Sd5" firstAttribute="leading" secondItem="qgD-Vd-UHs" secondAttribute="trailing" id="UpZ-mM-6kd"/>
                                 <constraint firstItem="GUH-nb-zMr" firstAttribute="top" secondItem="DsQ-9c-FL4" secondAttribute="top" id="Zda-SX-vyM"/>
+                                <constraint firstItem="5uV-88-Sd5" firstAttribute="centerY" secondItem="DsQ-9c-FL4" secondAttribute="centerY" id="c0c-YZ-EeT"/>
                                 <constraint firstItem="GUH-nb-zMr" firstAttribute="leading" secondItem="DsQ-9c-FL4" secondAttribute="leading" id="dCA-Q0-cLV"/>
                                 <constraint firstAttribute="bottom" secondItem="qgD-Vd-UHs" secondAttribute="bottom" id="elw-oB-Hst"/>
                                 <constraint firstItem="qgD-Vd-UHs" firstAttribute="top" secondItem="1ty-jt-RO9" secondAttribute="bottom" id="kRx-wR-DwQ"/>
