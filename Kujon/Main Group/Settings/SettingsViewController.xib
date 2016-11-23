@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="Kujon" customModuleProvider="target">
             <connections>
+                <outlet property="notificationSwitch" destination="5uV-88-Sd5" id="ej2-co-Tsq"/>
                 <outlet property="spinner" destination="mic-wh-eEW" id="tsm-N3-UG9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -45,7 +46,7 @@
                                         <color key="titleColor" red="0.16470588743686676" green="0.20000000298023224" blue="0.24313725531101227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                 </button>
-                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5uV-88-Sd5">
+                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5uV-88-Sd5">
                                     <rect key="frame" x="310" y="7" width="51" height="31"/>
                                 </switch>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ty-jt-RO9" userLabel="top_separator">
@@ -56,19 +57,29 @@
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="qOi-nC-1Ut"/>
                                     </constraints>
                                 </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUH-nb-zMr" userLabel="hiddenButton">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+                                    <connections>
+                                        <action selector="notificationsButtonDidTap:" destination="-1" eventType="touchUpInside" id="drO-DY-6sq"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="1ty-jt-RO9" firstAttribute="top" secondItem="DsQ-9c-FL4" secondAttribute="top" id="03w-uf-yXZ"/>
                                 <constraint firstAttribute="trailing" secondItem="5uV-88-Sd5" secondAttribute="trailing" constant="16" id="5iZ-f8-MVH"/>
                                 <constraint firstAttribute="trailing" secondItem="1ty-jt-RO9" secondAttribute="trailing" id="8dY-SQ-bkS"/>
+                                <constraint firstAttribute="trailing" secondItem="GUH-nb-zMr" secondAttribute="trailing" id="CWg-Ci-1Ma"/>
                                 <constraint firstItem="qgD-Vd-UHs" firstAttribute="leading" secondItem="DsQ-9c-FL4" secondAttribute="leading" constant="10" id="Cs2-1v-9uZ"/>
                                 <constraint firstAttribute="height" constant="48" id="JWm-hL-kby"/>
                                 <constraint firstItem="5uV-88-Sd5" firstAttribute="top" secondItem="1ty-jt-RO9" secondAttribute="bottom" constant="6" id="UiY-tB-GAn"/>
                                 <constraint firstItem="5uV-88-Sd5" firstAttribute="leading" secondItem="qgD-Vd-UHs" secondAttribute="trailing" id="UpZ-mM-6kd"/>
+                                <constraint firstItem="GUH-nb-zMr" firstAttribute="top" secondItem="DsQ-9c-FL4" secondAttribute="top" id="Zda-SX-vyM"/>
+                                <constraint firstItem="GUH-nb-zMr" firstAttribute="leading" secondItem="DsQ-9c-FL4" secondAttribute="leading" id="dCA-Q0-cLV"/>
                                 <constraint firstAttribute="bottom" secondItem="qgD-Vd-UHs" secondAttribute="bottom" id="elw-oB-Hst"/>
                                 <constraint firstItem="qgD-Vd-UHs" firstAttribute="top" secondItem="1ty-jt-RO9" secondAttribute="bottom" id="kRx-wR-DwQ"/>
                                 <constraint firstItem="1ty-jt-RO9" firstAttribute="leading" secondItem="DsQ-9c-FL4" secondAttribute="leading" id="lky-lT-6ze"/>
+                                <constraint firstAttribute="bottom" secondItem="GUH-nb-zMr" secondAttribute="bottom" id="qaw-QE-lUH"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X3I-hl-Sm2" userLabel="separator view">

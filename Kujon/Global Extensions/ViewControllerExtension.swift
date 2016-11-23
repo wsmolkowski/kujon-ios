@@ -8,7 +8,7 @@ import UIKit
 
 extension UIViewController {
 
-    func presentAlertWithMessage(_ message: String, title: String, completion: (() -> Void)? = nil) {
+    func presentAlertWithMessage(_ message: String, title: String, addCancelAction: Bool = false, completion: (() -> Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
             (action: UIAlertAction!) in
@@ -16,6 +16,9 @@ extension UIViewController {
                 completion()
             }
         }))
+        if addCancelAction {
+            alert.addAction(UIAlertAction(title: "Anuluj", style: .cancel, handler: nil))
+        }
         parent?.present(alert, animated: true, completion: nil)
     }
 

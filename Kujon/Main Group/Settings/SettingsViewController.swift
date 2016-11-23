@@ -15,6 +15,7 @@ class SettingsViewController: UIViewController,
     var loginMenager: UserLogin! = nil
     var deleteAccountProvider = ProvidersProviderImpl.sharedInstance.provideDeleteAccount()
     @IBOutlet weak var spinner: SpinnerView!
+    @IBOutlet weak var notificationSwitch: UISwitch!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +24,13 @@ class SettingsViewController: UIViewController,
         deleteAccountProvider.delegate = self
         spinner.isHidden = true
         view.backgroundColor = UIColor.greyBackgroundColor()
+        updateNotificationsState()
+        NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.updateNotificationsState), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 
     @IBAction func logoutButtonDidTap(_ sender: AnyObject) {
         self.spinner.isHidden = false
@@ -81,6 +87,19 @@ class SettingsViewController: UIViewController,
 
     func onErrorOccurs(_ text: String) {
         self.spinner.isHidden = true
+    }
+
+    // MARK: push notifications
+
+    internal func updateNotificationsState() {
+        let notificationsEnabled = NotificationsManager.pushNotificationsEnabled()
+        notificationSwitch.setOn(notificationsEnabled, animated: true)
+    }
+
+    @IBAction func notificationsButtonDidTap(_ sender: UIButton) {
+        presentAlertWithMessage(StringHolder.shouldOpenAppSettingsForNotifications, title: StringHolder.attention, addCancelAction: true) {
+            NotificationsManager.openAppSettings()
+        }
     }
 
 
