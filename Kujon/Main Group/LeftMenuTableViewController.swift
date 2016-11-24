@@ -96,13 +96,6 @@ class LeftMenuTableViewController: UITableViewController {
         if (indexPath.section > 0) {
 
             let menuItem = self.getCurrentMenuItem(indexPath)
-            if (menuItem.returnTitle() == StringHolder.shareApp) {
-                let controller = UIActivityViewController(activityItems: [StringHolder.appItunesLink], applicationActivities: nil)
-                if let actv = controller.popoverPresentationController {
-                    actv.sourceView = self.view;
-                }
-                self.present(controller, animated: true, completion: nil)
-            }
             if (menuItem.returnViewController()) {
                 self.delegate?.selectedMenuItem(self, menuItem: menuItem, withDelegate: indexPath.section == 1)
             } else {

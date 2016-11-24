@@ -89,8 +89,6 @@ class SettingsViewController: UIViewController,
         self.spinner.isHidden = true
     }
 
-    // MARK: push notifications
-
     internal func updateNotificationsState() {
         let notificationsEnabled = NotificationsManager.pushNotificationsEnabled()
         notificationSwitch.setOn(notificationsEnabled, animated: true)
@@ -100,6 +98,21 @@ class SettingsViewController: UIViewController,
         presentAlertWithMessage(StringHolder.shouldOpenAppSettingsForNotifications, title: StringHolder.attention, addCancelAction: true) {
             NotificationsManager.openAppSettings()
         }
+    }
+
+    @IBAction func shareButtonDidTap(_ sender: UIButton) {
+        let controller = UIActivityViewController(activityItems: [StringHolder.appItunesLink], applicationActivities: nil)
+        if let actv = controller.popoverPresentationController {
+            actv.sourceView = self.view;
+        }
+        self.present(controller, animated: true, completion: nil)
+    }
+
+
+    @IBAction func sendOpinionButtonDidTap(_ sender: UIButton) {
+        let URLCharactersSet = NSCharacterSet.urlQueryAllowed
+        let mailToURL = URL(string: "mailto:kujon@kujon.mobi?subject=Uwaga do Kujona".addingPercentEncoding(withAllowedCharacters: URLCharactersSet)!)!
+        UIApplication.shared.openURL(mailToURL)
     }
 
 

@@ -27,7 +27,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="si3-Mz-eSa" userLabel="Settings Stack">
-                    <rect key="frame" x="0.0" y="8" width="375" height="276"/>
+                    <rect key="frame" x="0.0" y="8" width="375" height="372"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ak5-KQ-hCq" userLabel="separator view">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
@@ -232,8 +232,97 @@
                                 <constraint firstAttribute="trailing" secondItem="F3E-cG-bTn" secondAttribute="trailing" id="xTJ-Ph-aa4"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YoN-bz-y9l" userLabel="container sharing">
+                            <rect key="frame" x="0.0" y="275" width="375" height="48"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tyv-ce-SSe" userLabel="top_separator">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                                    <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="BaJ-Dm-VMt"/>
+                                        <constraint firstAttribute="height" constant="1" id="QVS-Bh-6IG"/>
+                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="1" id="uwf-jH-qNM"/>
+                                    </constraints>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ZG-f6-sRv">
+                                    <rect key="frame" x="55" y="1" width="320" height="47"/>
+                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                    <state key="normal" title="Poleć aplikację znajomemu">
+                                        <color key="titleColor" red="0.1647058874" green="0.20000000300000001" blue="0.24313725529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="shareButtonDidTap:" destination="-1" eventType="touchUpInside" id="vIn-MV-cvX"/>
+                                    </connections>
+                                </button>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share-icon" translatesAutoresizingMaskIntoConstraints="NO" id="mRi-5B-WZN">
+                                    <rect key="frame" x="10" y="15" width="18" height="18"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="18" id="Nl6-ve-lPJ"/>
+                                        <constraint firstAttribute="width" constant="18" id="ZDV-Nf-Coe"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="Tyv-ce-SSe" firstAttribute="top" secondItem="YoN-bz-y9l" secondAttribute="top" id="FL5-zQ-jQr"/>
+                                <constraint firstItem="8ZG-f6-sRv" firstAttribute="top" secondItem="Tyv-ce-SSe" secondAttribute="bottom" id="FvR-Dd-6C8"/>
+                                <constraint firstItem="8ZG-f6-sRv" firstAttribute="leading" secondItem="YoN-bz-y9l" secondAttribute="leading" constant="55" id="KHz-j8-nm0"/>
+                                <constraint firstItem="mRi-5B-WZN" firstAttribute="leading" secondItem="YoN-bz-y9l" secondAttribute="leading" constant="10" id="Lyj-0t-W0d"/>
+                                <constraint firstItem="mRi-5B-WZN" firstAttribute="centerY" secondItem="YoN-bz-y9l" secondAttribute="centerY" id="TGg-dW-9XK"/>
+                                <constraint firstAttribute="trailing" secondItem="8ZG-f6-sRv" secondAttribute="trailing" id="W88-oS-MW4"/>
+                                <constraint firstAttribute="bottom" secondItem="8ZG-f6-sRv" secondAttribute="bottom" id="WzV-3d-Pod"/>
+                                <constraint firstItem="Tyv-ce-SSe" firstAttribute="leading" secondItem="YoN-bz-y9l" secondAttribute="leading" id="eif-bK-MJA"/>
+                                <constraint firstAttribute="height" constant="48" id="kQF-Bn-iJU"/>
+                                <constraint firstAttribute="trailing" secondItem="Tyv-ce-SSe" secondAttribute="trailing" id="vcy-mK-cnx"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3uj-GF-NSQ" userLabel="container message">
+                            <rect key="frame" x="0.0" y="323" width="375" height="48"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n6K-7I-yhN" userLabel="top_separator">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                                    <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="1" id="OkF-8a-TB4"/>
+                                        <constraint firstAttribute="height" constant="1" id="bUC-jg-egT"/>
+                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="1" id="gNT-Yb-TVD"/>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="rCq-Q5-M1D"/>
+                                    </constraints>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wlg-dg-DGu">
+                                    <rect key="frame" x="55" y="1" width="320" height="47"/>
+                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                    <state key="normal" title="Prześlij opinię">
+                                        <color key="titleColor" red="0.1647058874" green="0.20000000300000001" blue="0.24313725529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="sendOpinionButtonDidTap:" destination="-1" eventType="touchUpInside" id="N3U-3q-Vdl"/>
+                                    </connections>
+                                </button>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="opinion-icon" translatesAutoresizingMaskIntoConstraints="NO" id="M5D-U5-zIy">
+                                    <rect key="frame" x="10" y="15" width="18" height="18"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="18" id="jOX-fd-S1n"/>
+                                        <constraint firstAttribute="width" constant="18" id="uRa-WL-SnF"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="n6K-7I-yhN" secondAttribute="trailing" id="3Ke-Wd-ELb"/>
+                                <constraint firstItem="M5D-U5-zIy" firstAttribute="leading" secondItem="3uj-GF-NSQ" secondAttribute="leading" constant="10" id="Big-IB-ALb"/>
+                                <constraint firstItem="wlg-dg-DGu" firstAttribute="leading" secondItem="3uj-GF-NSQ" secondAttribute="leading" constant="55" id="F6f-2l-zyI"/>
+                                <constraint firstItem="n6K-7I-yhN" firstAttribute="leading" secondItem="3uj-GF-NSQ" secondAttribute="leading" id="Imj-H1-58W"/>
+                                <constraint firstItem="M5D-U5-zIy" firstAttribute="centerY" secondItem="3uj-GF-NSQ" secondAttribute="centerY" id="QcQ-nB-nyq"/>
+                                <constraint firstAttribute="trailing" secondItem="wlg-dg-DGu" secondAttribute="trailing" id="bnV-zd-BKF"/>
+                                <constraint firstAttribute="bottom" secondItem="wlg-dg-DGu" secondAttribute="bottom" id="hG9-jv-0Dx"/>
+                                <constraint firstItem="wlg-dg-DGu" firstAttribute="top" secondItem="n6K-7I-yhN" secondAttribute="bottom" id="st3-TN-l5K"/>
+                                <constraint firstAttribute="height" constant="48" id="t1D-jC-UZ4"/>
+                                <constraint firstItem="n6K-7I-yhN" firstAttribute="top" secondItem="3uj-GF-NSQ" secondAttribute="top" id="yz6-sB-ecc"/>
+                            </constraints>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogp-1R-uc5" userLabel="top_separator">
-                            <rect key="frame" x="0.0" y="275" width="375" height="1"/>
+                            <rect key="frame" x="0.0" y="371" width="375" height="1"/>
                             <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="9Zi-6m-AHD"/>
@@ -265,6 +354,8 @@
     <resources>
         <image name="delete-icon" width="18" height="19"/>
         <image name="logout-icon" width="18" height="18"/>
+        <image name="opinion-icon" width="18" height="18"/>
         <image name="regulamin-icon" width="18" height="18"/>
+        <image name="share-icon" width="18" height="18"/>
     </resources>
 </document>
