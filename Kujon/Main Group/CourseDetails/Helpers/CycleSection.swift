@@ -46,11 +46,12 @@ class CycleSection: SectionHelperProtocol {
 
     func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?) {
         let term = terms[position]
-        let popController = TermsPopUpViewController(nibName: "TermsPopUpViewController", bundle: Bundle.main)
-        popController.modalPresentationStyle = .overCurrentContext
-        controller?.present(popController, animated: false, completion: { popController.showAnimate(); })
-
-        popController.showInView(term)
+        DispatchQueue.main.async {
+            let popController = TermsPopUpViewController(nibName: "TermsPopUpViewController", bundle: Bundle.main)
+            popController.modalPresentationStyle = .overCurrentContext
+            controller?.present(popController, animated: false, completion: { popController.showAnimate(); })
+            popController.showInView(term)
+        }
     }
 
 }
