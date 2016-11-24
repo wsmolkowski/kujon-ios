@@ -136,7 +136,6 @@
 		4C0D8910C3D7307032A67057 /* LecturerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D818C198D3E8ECD02EE91 /* LecturerProvider.swift */; };
 		4C0D89479913D1C7C7B963F6 /* Message.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D822D32A84DD9B61EC485 /* Message.json */; };
 		4C0D895F871560BA2D9035FA /* ProgrammeSearchElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D838C7EF305B91631F49D /* ProgrammeSearchElement.swift */; };
-		4C0D89623E9B561730C53F9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D839EDCC8F1A06ECE450B /* Main.storyboard */; };
 		4C0D89849E353B98BC33FCEF /* CoursesSearchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8A0961137C0C9128A88D /* CoursesSearchProvider.swift */; };
 		4C0D8996D0987D3F6C88F611 /* GradesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8FBDE18C4279900F73A1 /* GradesProvider.swift */; };
 		4C0D89A149A07C2183D5E1B4 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8C220D5FABC7BDB1FE59 /* Course.swift */; };
@@ -511,7 +510,6 @@
 		4C0D8C187B6E373F3877BF63 /* GoFurtherViewCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoFurtherViewCellTableViewCell.xib; sourceTree = "<group>"; };
 		4C0D8C220D5FABC7BDB1FE59 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		4C0D8C53E202FBABA7E39CED /* CoursersSearchResult.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CoursersSearchResult.json; sourceTree = "<group>"; };
-		4C0D8C68222EDFAECCF2DF11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C0D8C7D184AC2BE4CD6E3EA /* UserDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		4C0D8D151A44935DE4CA6DB2 /* FacultyShort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacultyShort.swift; sourceTree = "<group>"; };
 		4C0D8D2FBB03884373B9168A /* UserSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearch.swift; sourceTree = "<group>"; };
@@ -728,7 +726,6 @@
 				52A1D6141D5CCE96008A30C7 /* Bridging-Header.h */,
 				0A42914B1D409659006D6DAB /* GoogleService-Info.plist */,
 				4C0D85C01CA62A3C89F09CDA /* AppDelegate.swift */,
-				4C0D839EDCC8F1A06ECE450B /* Main.storyboard */,
 				4C0D846A26BCB219C21E2DBA /* Info.plist */,
 				527B39B71D117B800028BCF9 /* Assets.xcassets */,
 				4C0D83B44B564B4E55F64BE8 /* LaunchScreen.storyboard */,
@@ -1705,7 +1702,6 @@
 				0A42914C1D409659006D6DAB /* GoogleService-Info.plist in Resources */,
 				669B2F5A1DBE093E000AE02C /* CourseMeritsTableViewCell.xib in Resources */,
 				527A0EC31DA426A7003A251A /* SearchResultTableViewController.xib in Resources */,
-				4C0D89623E9B561730C53F9A /* Main.storyboard in Resources */,
 				0AB192141D4AB8E800834773 /* WebViewController.xib in Resources */,
 				526750421D214A7B004AD243 /* CoursePopUpViewController.xib in Resources */,
 				52AF77A21D09590B0058979A /* SecondLoginViewController.xib in Resources */,
@@ -2223,15 +2219,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4C0D839EDCC8F1A06ECE450B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4C0D8C68222EDFAECCF2DF11 /* Base */,
-			);
-			name = Main.storyboard;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		4C0D83B44B564B4E55F64BE8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
