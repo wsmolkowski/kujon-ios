@@ -10,22 +10,31 @@ import UIKit
 import FBSDKLoginKit
 
 class SettingsViewController: UIViewController,
-        DeleteAccountProviderDelegate {
+        DeleteAccountProviderDelegate, SettingsProviderDelegate {
 
     var loginMenager: UserLogin! = nil
     var deleteAccountProvider = ProvidersProviderImpl.sharedInstance.provideDeleteAccount()
     @IBOutlet weak var spinner: SpinnerView!
     @IBOutlet weak var notificationSwitch: UISwitch!
+    @IBOutlet weak var calendarSyncSwitch: UISwitch!
+    let settingsProvider: SettingsProvider = SettingsProvider()
+    let userData = UserDataHolder.sharedInstance
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SettingsViewController.back), andTitle: StringHolder.settings)
+        settingsProvider.delegate = self
+        if userData.shouldSyncCalendar {
+            settingsProvider.loadSettings()
+        }
         self.edgesForExtendedLayout = UIRectEdge()
         deleteAccountProvider.delegate = self
         spinner.isHidden = true
         view.backgroundColor = UIColor.greyBackgroundColor()
         updateNotificationsState()
         NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.updateNotificationsState), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        updateCalendarSyncSwitch()
     }
 
     deinit {
@@ -85,10 +94,6 @@ class SettingsViewController: UIViewController,
         self.spinner.isHidden = true
     }
 
-    func onErrorOccurs(_ text: String) {
-        self.spinner.isHidden = true
-    }
-
     internal func updateNotificationsState() {
         let notificationsEnabled = NotificationsManager.pushNotificationsEnabled()
         notificationSwitch.setOn(notificationsEnabled, animated: true)
@@ -115,5 +120,30 @@ class SettingsViewController: UIViewController,
         UIApplication.shared.openURL(mailToURL)
     }
 
+    // MARK: Calendar Sync
+
+    @IBAction func calendarSyncSwitchDidChange(_ sender: UISwitch) {
+        spinner.isHidden = false
+        settingsProvider.setCalendarSyncronization(enabled: sender.isOn)
+    }
+
+    func settingsDidLoad(_ settings: Settings) {
+        updateCalendarSyncSwitch()
+    }
+
+    func calendarSyncronizationSettingDidSucceed() {
+        spinner.isHidden = true
+    }
+
+    func onErrorOccurs(_ text: String) {
+        self.spinner.isHidden = true
+        updateCalendarSyncSwitch()
+        presentAlertWithMessage(text, title: StringHolder.errorAlertTitle)
+    }
+
+    func updateCalendarSyncSwitch() {
+        calendarSyncSwitch.isEnabled = UserLoginEnum.getLoginType() == .google
+        calendarSyncSwitch.setOn(userData.shouldSyncCalendar, animated: true)
+    }
 
 }

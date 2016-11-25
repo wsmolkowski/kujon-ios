@@ -311,6 +311,8 @@
 		66645F3F1DC0D9E3000ACE62 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66645F3E1DC0D9E3000ACE62 /* MessageCell.xib */; };
 		66645F421DC0DD6C000ACE62 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66645F401DC0DD6C000ACE62 /* MessageDetailViewController.swift */; };
 		66645F431DC0DD6C000ACE62 /* MessageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66645F411DC0DD6C000ACE62 /* MessageDetailViewController.xib */; };
+		66852C191DE8639B009234C9 /* SettingsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66852C181DE8639B009234C9 /* SettingsResponse.swift */; };
+		66852C1B1DE864F8009234C9 /* SettingsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66852C1A1DE864F8009234C9 /* SettingsProvider.swift */; };
 		669B2F591DBE093E000AE02C /* CourseMeritsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B2F571DBE093E000AE02C /* CourseMeritsTableViewCell.swift */; };
 		669B2F5A1DBE093E000AE02C /* CourseMeritsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 669B2F581DBE093E000AE02C /* CourseMeritsTableViewCell.xib */; };
 		669B2F5C1DBE0973000AE02C /* CourseMeritsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B2F5B1DBE0973000AE02C /* CourseMeritsSection.swift */; };
@@ -659,6 +661,8 @@
 		66645F3E1DC0D9E3000ACE62 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		66645F401DC0DD6C000ACE62 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageDetailViewController.swift; path = ../Messages/MessageDetailViewController.swift; sourceTree = "<group>"; };
 		66645F411DC0DD6C000ACE62 /* MessageDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageDetailViewController.xib; path = ../Messages/MessageDetailViewController.xib; sourceTree = "<group>"; };
+		66852C181DE8639B009234C9 /* SettingsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsResponse.swift; sourceTree = "<group>"; };
+		66852C1A1DE864F8009234C9 /* SettingsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsProvider.swift; sourceTree = "<group>"; };
 		669B2F571DBE093E000AE02C /* CourseMeritsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseMeritsTableViewCell.swift; sourceTree = "<group>"; };
 		669B2F581DBE093E000AE02C /* CourseMeritsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseMeritsTableViewCell.xib; sourceTree = "<group>"; };
 		669B2F5B1DBE0973000AE02C /* CourseMeritsSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseMeritsSection.swift; sourceTree = "<group>"; };
@@ -750,6 +754,7 @@
 				4C0D88235B779A6ADA001B55 /* Course */,
 				4C0D800C832CA7D7CEF0D4AB /* ErrorClass.swift */,
 				4C0D85C3C43334F528850DDD /* ConfigResponse.swift */,
+				66852C181DE8639B009234C9 /* SettingsResponse.swift */,
 				4C0D88412A231BD822156857 /* Authenticate */,
 				4C0D8484752A5FC50D229FF2 /* Search */,
 				4C0D83E72FF9CB3AE2F0BF0A /* Thesis */,
@@ -1135,6 +1140,7 @@
 				52B3F9B01DBF421C00B0CC55 /* MessageProvider.swift */,
 				4C0D89F5486C1B39355B8C1C /* SuperUserProvider.swift */,
 				66FE87E71DDB9270007ADDC0 /* VerificationProvider.swift */,
+				66852C1A1DE864F8009234C9 /* SettingsProvider.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -2089,7 +2095,9 @@
 				4C0D89A149A07C2183D5E1B4 /* Course.swift in Sources */,
 				4C0D81D02A26767DB7C49C52 /* CourseGroup.swift in Sources */,
 				52C4A3DF1DDA16FB00BBBA3A /* UsosPairResponse.swift in Sources */,
+				66852C1B1DE864F8009234C9 /* SettingsProvider.swift in Sources */,
 				4C0D85E772027B77B2D540BD /* CoursesWrapper.swift in Sources */,
+				66852C191DE8639B009234C9 /* SettingsResponse.swift in Sources */,
 				526750391D213902004AD243 /* CoursesTableViewController.swift in Sources */,
 				4C0D8BCEA9F6DF85809A280A /* PopUpViewController.swift in Sources */,
 				0AB192111D4AB8E800834773 /* WebViewController.swift in Sources */,

@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="Kujon" customModuleProvider="target">
             <connections>
+                <outlet property="calendarSyncSwitch" destination="2gI-kf-DdS" id="5yY-5J-OdV"/>
                 <outlet property="notificationSwitch" destination="5uV-88-Sd5" id="ej2-co-Tsq"/>
                 <outlet property="spinner" destination="mic-wh-eEW" id="tsm-N3-UG9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -27,7 +28,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="si3-Mz-eSa" userLabel="Settings Stack">
-                    <rect key="frame" x="0.0" y="8" width="375" height="372"/>
+                    <rect key="frame" x="0.0" y="8" width="375" height="432"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ak5-KQ-hCq" userLabel="separator view">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
@@ -39,6 +40,14 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DsQ-9c-FL4" userLabel="container notyfikacje">
                             <rect key="frame" x="0.0" y="35" width="375" height="48"/>
                             <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ty-jt-RO9" userLabel="top_separator">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                                    <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="SHD-ox-38f"/>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="qOi-nC-1Ut"/>
+                                    </constraints>
+                                </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgD-Vd-UHs">
                                     <rect key="frame" x="10" y="1" width="300" height="47"/>
                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
@@ -49,14 +58,6 @@
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5uV-88-Sd5">
                                     <rect key="frame" x="310" y="8.5" width="51" height="31"/>
                                 </switch>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ty-jt-RO9" userLabel="top_separator">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
-                                    <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="1" id="SHD-ox-38f"/>
-                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="qOi-nC-1Ut"/>
-                                    </constraints>
-                                </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUH-nb-zMr" userLabel="hiddenButton">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
                                     <connections>
@@ -82,8 +83,58 @@
                                 <constraint firstAttribute="bottom" secondItem="GUH-nb-zMr" secondAttribute="bottom" id="qaw-QE-lUH"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWq-PG-mtp" userLabel="container calendar sync">
+                            <rect key="frame" x="0.0" y="83" width="375" height="60"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBn-Tb-91v" userLabel="top_separator">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                                    <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="4Zk-ZN-vhU"/>
+                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="1" id="fk9-fa-4Tr"/>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="k62-fO-guC"/>
+                                    </constraints>
+                                </view>
+                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2gI-kf-DdS">
+                                    <rect key="frame" x="310" y="14" width="51" height="31"/>
+                                    <connections>
+                                        <action selector="calendarSyncSwitchDidChange:" destination="-1" eventType="valueChanged" id="eGS-tc-Bdo"/>
+                                    </connections>
+                                </switch>
+                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReN-U3-xNZ">
+                                    <rect key="frame" x="10" y="1" width="300" height="45"/>
+                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                    <state key="normal" title="Synchronizuj z kalendarzem Google">
+                                        <color key="titleColor" red="0.1647058874" green="0.20000000300000001" blue="0.24313725529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opcja dostępna tylko dla użytkowników konta Google" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yr-qa-gAx" userLabel="wymaganie">
+                                    <rect key="frame" x="10" y="35" width="262" height="21"/>
+                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="11"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="8yr-qa-gAx" firstAttribute="top" secondItem="ZBn-Tb-91v" secondAttribute="bottom" constant="34" id="2sE-Wx-VH0"/>
+                                <constraint firstItem="ZBn-Tb-91v" firstAttribute="leading" secondItem="nWq-PG-mtp" secondAttribute="leading" id="EpQ-7Z-Q7h"/>
+                                <constraint firstItem="2gI-kf-DdS" firstAttribute="leading" secondItem="ReN-U3-xNZ" secondAttribute="trailing" id="S81-JE-q9n"/>
+                                <constraint firstAttribute="trailing" secondItem="ZBn-Tb-91v" secondAttribute="trailing" id="S9B-Ad-ZuM"/>
+                                <constraint firstItem="ReN-U3-xNZ" firstAttribute="leading" secondItem="nWq-PG-mtp" secondAttribute="leading" constant="10" id="Yql-Nc-W5G"/>
+                                <constraint firstItem="2gI-kf-DdS" firstAttribute="centerY" secondItem="nWq-PG-mtp" secondAttribute="centerY" id="a7Q-MD-twx"/>
+                                <constraint firstAttribute="trailing" secondItem="2gI-kf-DdS" secondAttribute="trailing" constant="16" id="fax-4S-EN3"/>
+                                <constraint firstAttribute="bottom" secondItem="8yr-qa-gAx" secondAttribute="bottom" constant="4" id="kRj-01-g3w"/>
+                                <constraint firstAttribute="height" constant="60" id="nwM-Xp-4JG"/>
+                                <constraint firstItem="ZBn-Tb-91v" firstAttribute="top" secondItem="nWq-PG-mtp" secondAttribute="top" id="rNx-9k-s7I"/>
+                                <constraint firstAttribute="trailing" secondItem="8yr-qa-gAx" secondAttribute="trailing" constant="103" id="srV-XQ-IqW"/>
+                                <constraint firstAttribute="bottom" secondItem="ReN-U3-xNZ" secondAttribute="bottom" constant="14" id="u6C-a8-q2h"/>
+                                <constraint firstItem="8yr-qa-gAx" firstAttribute="leading" secondItem="nWq-PG-mtp" secondAttribute="leading" constant="10" id="wao-gS-557"/>
+                                <constraint firstItem="ReN-U3-xNZ" firstAttribute="top" secondItem="ZBn-Tb-91v" secondAttribute="bottom" id="zuH-r4-5ba"/>
+                            </constraints>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X3I-hl-Sm2" userLabel="separator view">
-                            <rect key="frame" x="0.0" y="83" width="375" height="48"/>
+                            <rect key="frame" x="0.0" y="143" width="375" height="48"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HGf-Gq-OnT" userLabel="top_separator">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -103,7 +154,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MC6-th-e2q" userLabel="container logout">
-                            <rect key="frame" x="0.0" y="131" width="375" height="48"/>
+                            <rect key="frame" x="0.0" y="191" width="375" height="48"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gzg-c2-bGV" userLabel="top_separator">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -145,7 +196,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="En1-M8-frT" userLabel="container delete">
-                            <rect key="frame" x="0.0" y="179" width="375" height="48"/>
+                            <rect key="frame" x="0.0" y="239" width="375" height="48"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hNo-Kq-v9A" userLabel="top_separator">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -190,7 +241,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owO-Fi-cFf" userLabel="container regulamin">
-                            <rect key="frame" x="0.0" y="227" width="375" height="48"/>
+                            <rect key="frame" x="0.0" y="287" width="375" height="48"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZjH-E5-KM3" userLabel="top_separator">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -233,7 +284,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YoN-bz-y9l" userLabel="container sharing">
-                            <rect key="frame" x="0.0" y="275" width="375" height="48"/>
+                            <rect key="frame" x="0.0" y="335" width="375" height="48"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tyv-ce-SSe" userLabel="top_separator">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -277,7 +328,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3uj-GF-NSQ" userLabel="container message">
-                            <rect key="frame" x="0.0" y="323" width="375" height="48"/>
+                            <rect key="frame" x="0.0" y="383" width="375" height="48"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n6K-7I-yhN" userLabel="top_separator">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -322,7 +373,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogp-1R-uc5" userLabel="top_separator">
-                            <rect key="frame" x="0.0" y="371" width="375" height="1"/>
+                            <rect key="frame" x="0.0" y="431" width="375" height="1"/>
                             <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="9Zi-6m-AHD"/>
