@@ -12,7 +12,7 @@ import Foundation
 class NotificationsManager {
 
     static func pushNotificationsEnabled() -> Bool {
-        return UIApplication.shared.isRegisteredForRemoteNotifications
+        return UIApplication.shared.currentUserNotificationSettings?.types.contains(UIUserNotificationType.alert) ?? false
     }
 
     static func openAppSettings() {
