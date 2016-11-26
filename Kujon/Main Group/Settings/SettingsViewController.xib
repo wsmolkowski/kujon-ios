@@ -51,12 +51,12 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgD-Vd-UHs">
                                     <rect key="frame" x="10" y="1" width="300" height="47"/>
                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
-                                    <state key="normal" title="Włącz notyfikacje">
+                                    <state key="normal" title="Powiadomienia">
                                         <color key="titleColor" red="0.16470588743686676" green="0.20000000298023224" blue="0.24313725531101227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                 </button>
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5uV-88-Sd5">
-                                    <rect key="frame" x="310" y="8.5" width="51" height="31"/>
+                                    <rect key="frame" x="310" y="9" width="51" height="31"/>
                                 </switch>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUH-nb-zMr" userLabel="hiddenButton">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
@@ -104,7 +104,7 @@
                                 <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReN-U3-xNZ">
                                     <rect key="frame" x="10" y="1" width="300" height="45"/>
                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
-                                    <state key="normal" title="Synchronizuj z kalendarzem Google">
+                                    <state key="normal" title="Synchronizuj kalendarz Google">
                                         <color key="titleColor" red="0.1647058874" green="0.20000000300000001" blue="0.24313725529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                 </button>
@@ -207,7 +207,7 @@
                                     </constraints>
                                 </view>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delete-icon" translatesAutoresizingMaskIntoConstraints="NO" id="Q3O-fz-RIz">
-                                    <rect key="frame" x="10" y="15.5" width="18" height="18"/>
+                                    <rect key="frame" x="10" y="16" width="18" height="18"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="18" id="KDs-kk-6dJ"/>
                                         <constraint firstAttribute="width" constant="18" id="KsA-0P-Azd"/>

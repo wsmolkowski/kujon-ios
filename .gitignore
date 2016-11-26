@@ -5,7 +5,7 @@
 ## Build generated
 build/
 DerivedData/
-
+Kujon.xcworkspace/
 ## Various settings
 *.pbxuser
 !default.pbxuser
