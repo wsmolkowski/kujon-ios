@@ -111,10 +111,14 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
         if let cell = tableView.cellForRow(at: indexPath) as? UsosTableViewCell {
             let usos = getShowDemo()[indexPath.row] as Usos
             if cell.enabled {
-                showAlert(usos)
+                DispatchQueue.main.async { [weak self] in
+                    self?.showAlert(usos)
+                }
                 return
             }
-            presentAlertWithMessage(usos.comment, title: "Informacja")
+            DispatchQueue.main.async { [weak self] in
+                self?.presentAlertWithMessage(usos.comment, title: "Informacja")
+            }
         }
     }
 

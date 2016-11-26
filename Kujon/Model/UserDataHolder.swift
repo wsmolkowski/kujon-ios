@@ -14,12 +14,15 @@ class UserDataHolder {
     private  let TOKEN_KEY = "token_key"
     private  let USOS_IMAGE_KEY = "usos_image_key"
     private  let LOGIN_TYPE_KEY = "login_type_traalalal_key"
+    private  let CALENDAR_SYNC_KEY = "calendar_sync_key"
     
     private var loadedEmail: String! = nil
 
     private var loadedToken: String! = nil
     private var usosImage: String! = nil
     private var loginType: String! = nil
+    private var calendarSync: Bool = false
+
     var usosId: String! = "DEMO"
     var usosName: String! = nil
 
@@ -76,6 +79,22 @@ class UserDataHolder {
         set(value) {
             defaultsManager.writeBoolToUserDefaults(value,key: LOGGED_KEY+userEmail)
         }
+    }
+
+    var isCalendarSyncEnabled: Bool {
+        get {
+            if (userEmail == nil) {
+                return false
+            }
+            return defaultsManager.readBooleanFromUserDefaults(CALENDAR_SYNC_KEY)
+        }
+        set(value) {
+            defaultsManager.writeBoolToUserDefaults(value,key:CALENDAR_SYNC_KEY)
+        }
+    }
+
+    var shouldSyncCalendar: Bool {
+            return isCalendarSyncEnabled && UserLoginEnum.getLoginType() == .google
     }
 
     var userImage:UIImage! = nil

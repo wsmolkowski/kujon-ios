@@ -103,6 +103,7 @@ class StringHolder {
     static let productionMode = "Tryb produkcyjny"
     static let loginError = "Błąd logowania"
     static let unknownErrorMessage = "Wystąpił nieznany błąd"
+    static let shouldOpenAppSettingsForNotifications = "Opcję powiadomień Kujona możesz zmienić w ustawieniach systemowych iOS. Czy chcesz otworzyć ustawienia systemowe?"
 
 
 }

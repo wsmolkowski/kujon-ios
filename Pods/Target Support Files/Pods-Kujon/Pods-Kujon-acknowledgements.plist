@@ -44,8 +44,6 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
 ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</string>
-			<key>License</key>
-			<string>BSD</string>
 			<key>Title</key>
 			<string>Bolts</string>
 			<key>Type</key>
@@ -74,8 +72,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.</string>
-			<key>License</key>
-			<string>MIT</string>
 			<key>Title</key>
 			<string>CalendarLib</string>
 			<key>Type</key>
@@ -84,8 +80,6 @@ SOFTWARE.</string>
 		<dict>
 			<key>FooterText</key>
 			<string>Fabric: Copyright 2016 Twitter, Inc. All Rights Reserved. Use of this software is subject to the terms and conditions of the Fabric Software and Services Agreement located at https://fabric.io/terms. Crashlytics Kit: Copyright 2016 Crashlytics, Inc. All Rights Reserved. Use of this software is subject to the terms and conditions of the Crashlytics Terms of Service located at http://try.crashlytics.com/terms/terms-of-service.pdf and the Crashlytics Privacy Policy located at http://try.crashlytics.com/terms/privacy-policy.pdf. OSS: http://get.fabric.io/terms/opensource.txt</string>
-			<key>License</key>
-			<string>Commercial</string>
 			<key>Title</key>
 			<string>Crashlytics</string>
 			<key>Type</key>
@@ -116,8 +110,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 </string>
-			<key>License</key>
-			<string>MIT</string>
 			<key>Title</key>
 			<string>Decodable</string>
 			<key>Type</key>
@@ -143,8 +135,6 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </string>
-			<key>License</key>
-			<string>Facebook Platform License</string>
 			<key>Title</key>
 			<string>FBSDKCoreKit</string>
 			<key>Type</key>
@@ -170,8 +160,6 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </string>
-			<key>License</key>
-			<string>Facebook Platform License</string>
 			<key>Title</key>
 			<string>FBSDKLoginKit</string>
 			<key>Type</key>
@@ -197,8 +185,6 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </string>
-			<key>License</key>
-			<string>Facebook Platform License</string>
 			<key>Title</key>
 			<string>FBSDKShareKit</string>
 			<key>Type</key>
@@ -207,8 +193,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		<dict>
 			<key>FooterText</key>
 			<string>Fabric: Copyright 2016 Twitter, Inc. All Rights Reserved. Use of this software is subject to the terms and conditions of the Fabric Software and Services Agreement located at https://fabric.io/terms. OSS: http://get.fabric.io/terms/opensource.txt</string>
-			<key>License</key>
-			<string>Commercial</string>
 			<key>Title</key>
 			<string>Fabric</string>
 			<key>Type</key>
@@ -217,8 +201,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		<dict>
 			<key>FooterText</key>
 			<string>Copyright 2016 Google</string>
-			<key>License</key>
-			<string>Copyright</string>
 			<key>Title</key>
 			<string>FirebaseAnalytics</string>
 			<key>Type</key>
@@ -227,8 +209,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		<dict>
 			<key>FooterText</key>
 			<string>Copyright 2016 Google</string>
-			<key>License</key>
-			<string>Copyright</string>
 			<key>Title</key>
 			<string>FirebaseCore</string>
 			<key>Type</key>
@@ -237,8 +217,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		<dict>
 			<key>FooterText</key>
 			<string>Copyright 2016 Google</string>
-			<key>License</key>
-			<string>Copyright</string>
 			<key>Title</key>
 			<string>FirebaseInstanceID</string>
 			<key>Type</key>
@@ -449,8 +427,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 </string>
-			<key>License</key>
-			<string>Apache</string>
 			<key>Title</key>
 			<string>GTMOAuth2</string>
 			<key>Type</key>
@@ -661,8 +637,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 </string>
-			<key>License</key>
-			<string>Apache</string>
 			<key>Title</key>
 			<string>GTMSessionFetcher</string>
 			<key>Type</key>
@@ -671,8 +645,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		<dict>
 			<key>FooterText</key>
 			<string>Copyright 2016 Google Inc.</string>
-			<key>License</key>
-			<string>Copyright</string>
 			<key>Title</key>
 			<string>Google</string>
 			<key>Type</key>
@@ -681,8 +653,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		<dict>
 			<key>FooterText</key>
 			<string>Copyright 2016 Google</string>
-			<key>License</key>
-			<string>Copyright</string>
 			<key>Title</key>
 			<string>GoogleAppUtilities</string>
 			<key>Type</key>
@@ -691,8 +661,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		<dict>
 			<key>FooterText</key>
 			<string>Copyright 2016 Google</string>
-			<key>License</key>
-			<string>Copyright</string>
 			<key>Title</key>
 			<string>GoogleInterchangeUtilities</string>
 			<key>Type</key>
@@ -701,8 +669,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		<dict>
 			<key>FooterText</key>
 			<string>Copyright 2016 Google</string>
-			<key>License</key>
-			<string>Copyright</string>
 			<key>Title</key>
 			<string>GoogleSignIn</string>
 			<key>Type</key>
@@ -711,8 +677,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		<dict>
 			<key>FooterText</key>
 			<string>Copyright 2016 Google</string>
-			<key>License</key>
-			<string>Copyright</string>
 			<key>Title</key>
 			<string>GoogleSymbolUtilities</string>
 			<key>Type</key>
@@ -923,8 +887,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 </string>
-			<key>License</key>
-			<string>Apache</string>
 			<key>Title</key>
 			<string>GoogleToolboxForMac</string>
 			<key>Type</key>
@@ -952,8 +914,6 @@ freely, subject to the following restrictions:
 2. Altered source versions must be plainly marked as such, and must not be
    misrepresented as being the original software.
 3. This notice may not be removed or altered from any source distribution.</string>
-			<key>License</key>
-			<string>zlib</string>
 			<key>Title</key>
 			<string>OSCache</string>
 			<key>Type</key>
@@ -1036,8 +996,6 @@ Includes portions from BSMobileProvision:
     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 </string>
-			<key>License</key>
-			<string>MIT</string>
 			<key>Title</key>
 			<string>OneSignal</string>
 			<key>Type</key>
@@ -1066,8 +1024,6 @@ freely, subject to the following restrictions:
 2. Altered source versions must be plainly marked as such, and must not be
    misrepresented as being the original software.
 3. This notice may not be removed or altered from any source distribution.</string>
-			<key>License</key>
-			<string>zlib</string>
 			<key>Title</key>
 			<string>OrderedDictionary</string>
 			<key>Type</key>

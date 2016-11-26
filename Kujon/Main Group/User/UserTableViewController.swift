@@ -300,11 +300,13 @@ class UserTableViewController: RefreshingTableViewController
         if (programmeLoaded) {
             let myProgramme: StudentProgramme = self.programmes[(forIndexPath as NSIndexPath).row]
             if (myProgramme.programme.duration != nil && myProgramme.programme.name != nil && myProgramme.programme.levelOfStudies != nil) {
-                let popController = KierunkiViewController(nibName: "KierunkiViewController", bundle: Bundle.main)
-                popController.modalPresentationStyle = .overCurrentContext
-                self.navigationController?.present(popController, animated: false, completion: { popController.showAnimate(); })
-
-                popController.showInView(withProgramme: myProgramme.programme)
+                DispatchQueue.main.async { [weak self] in
+                    let popController = KierunkiViewController(nibName: "KierunkiViewController", bundle: Bundle.main)
+                    popController.modalPresentationStyle = .overCurrentContext
+                    self?.navigationController?.present(popController, animated: false, completion: { [weak popController] in
+                        popController?.showAnimate(); })
+                    popController.showInView(withProgramme: myProgramme.programme)
+                }
             }
         }
 
@@ -312,24 +314,32 @@ class UserTableViewController: RefreshingTableViewController
 
     func clickedFacultie(_ forIndexPath: IndexPath) {
         let myFac: Facultie = self.userFaculties[(forIndexPath as NSIndexPath).row]
-        let faculiteController = FacultieTableViewController(nibName: "FacultieTableViewController", bundle: Bundle.main)
-        faculiteController.facultie = myFac
-        self.navigationController?.pushViewController(faculiteController, animated: true)
+        DispatchQueue.main.async { [weak self] in
+            let faculiteController = FacultieTableViewController(nibName: "FacultieTableViewController", bundle: Bundle.main)
+            faculiteController.facultie = myFac
+            self?.navigationController?.pushViewController(faculiteController, animated: true)
+        }
     }
 
     private func clickedTermsCell() {
         if (terms.count != 0) {
-            let termsController = TermsTableViewController()
-            self.navigationController?.pushViewController(termsController, animated: true)
-            termsController.setUpTerms(self.terms)
+            DispatchQueue.main.async { [weak self] in
+                let termsController = TermsTableViewController()
+                self?.navigationController?.pushViewController(termsController, animated: true)
+                if let terms = self?.terms {
+                    termsController.setUpTerms(terms)
+                }
+            }
         }
     }
 
     private func clickedThesesCell() {
         if (userDetail.theses?.count > 0) {
-            let thesesTableViewController = ThesesTableViewController()
-            thesesTableViewController.theses = userDetail.theses
-            self.navigationController?.pushViewController(thesesTableViewController, animated: true)
+            DispatchQueue.main.async { [weak self] in
+                let thesesTableViewController = ThesesTableViewController()
+                thesesTableViewController.theses = self?.userDetail.theses
+                self?.navigationController?.pushViewController(thesesTableViewController, animated: true)
+            }
         }
     }
 
