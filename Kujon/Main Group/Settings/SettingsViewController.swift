@@ -32,9 +32,9 @@ class SettingsViewController: UIViewController,
         deleteAccountProvider.delegate = self
         spinner.isHidden = true
         view.backgroundColor = UIColor.greyBackgroundColor()
-        updateNotificationsState()
-        NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.updateNotificationsState), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
-        updateCalendarSyncSwitch()
+        updateNotificationsSwitchState()
+        NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.updateNotificationsSwitchState), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        updateCalendarSyncSwitchState()
     }
 
     deinit {
@@ -94,7 +94,7 @@ class SettingsViewController: UIViewController,
         self.spinner.isHidden = true
     }
 
-    internal func updateNotificationsState() {
+    internal func updateNotificationsSwitchState() {
         let notificationsEnabled = NotificationsManager.pushNotificationsEnabled()
         notificationSwitch.setOn(notificationsEnabled, animated: true)
     }
@@ -128,7 +128,7 @@ class SettingsViewController: UIViewController,
     }
 
     func settingsDidLoad(_ settings: Settings) {
-        updateCalendarSyncSwitch()
+        updateCalendarSyncSwitchState()
     }
 
     func calendarSyncronizationSettingDidSucceed() {
@@ -137,11 +137,11 @@ class SettingsViewController: UIViewController,
 
     func onErrorOccurs(_ text: String) {
         self.spinner.isHidden = true
-        updateCalendarSyncSwitch()
+        updateCalendarSyncSwitchState()
         presentAlertWithMessage(text, title: StringHolder.errorAlertTitle)
     }
 
-    func updateCalendarSyncSwitch() {
+    func updateCalendarSyncSwitchState() {
         calendarSyncSwitch.isEnabled = UserLoginEnum.getLoginType() == .google
         calendarSyncSwitch.setOn(userData.shouldSyncCalendar, animated: true)
     }

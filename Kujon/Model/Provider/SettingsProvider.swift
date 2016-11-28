@@ -42,12 +42,14 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
     func loadSettings() {
         endpointURL = SettingsEndpoint.getSettings.rawValue
         makeHTTPAuthenticatedGetRequest({ data in
-            if let response = try! self.changeJsonToResposne(data, errorR:self.delegate) {
-                let settings: Settings = response.data
-                UserDataHolder.sharedInstance.isCalendarSyncEnabled = settings.calendarSyncEnabled
+            if let response = try! self.changeJsonToResposne(data, errorR:self.delegate),
+                let settings: Settings = response.data,
+                let calendarSyncEnabled: Bool = settings.calendarSyncEnabled {
+                UserDataHolder.sharedInstance.isCalendarSyncEnabled = calendarSyncEnabled
                 self.delegate?.settingsDidLoad(settings)
+            } else {
+                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
             }
-
         }, onError: { text in
             self.delegate?.onErrorOccurs(text)
         })
@@ -66,7 +68,6 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
             } else {
                 self.delegate?.onErrorOccurs(StringHolder.errorOccures)
             }
-
         }, onError: { text in
             self.delegate?.onErrorOccurs(text)
         })

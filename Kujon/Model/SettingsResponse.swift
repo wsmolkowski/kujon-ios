@@ -10,28 +10,28 @@ import Foundation
 import Decodable
 
 struct Settings {
-    let eventsEnabled: Bool
-    let calendarSyncEnabled: Bool
+    let eventsEnabled: Bool?
+    let calendarSyncEnabled: Bool?
 }
 
 extension Settings: Decodable {
     static func decode(_ j: Any) throws -> Settings {
-        return try Settings(
-            eventsEnabled: j => "event_enable",
-            calendarSyncEnabled: j => "google_callendar_enable"
+        return Settings(
+            eventsEnabled: try? j => "event_enable",
+            calendarSyncEnabled: try? j => "google_callendar_enable"
         )
     }
 
 }
 
 struct SettingsResponse {
-    let data: Settings
+    let data: Settings?
 }
 
 extension SettingsResponse: Decodable {
     static func decode(_ j: Any) throws -> SettingsResponse {
-        return try SettingsResponse (
-            data: j => "data"
+        return SettingsResponse (
+            data: try? j => "data"
         )
     }
 
