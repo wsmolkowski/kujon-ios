@@ -9,8 +9,7 @@
 import UIKit
 import FBSDKLoginKit
 
-class SettingsViewController: UIViewController,
-        DeleteAccountProviderDelegate, SettingsProviderDelegate {
+class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, SettingsProviderDelegate {
 
     var loginMenager: UserLogin! = nil
     var deleteAccountProvider = ProvidersProviderImpl.sharedInstance.provideDeleteAccount()
@@ -25,15 +24,12 @@ class SettingsViewController: UIViewController,
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SettingsViewController.back), andTitle: StringHolder.settings)
         settingsProvider.delegate = self
-        if userData.shouldSyncCalendar {
-            settingsProvider.loadSettings()
-        }
         self.edgesForExtendedLayout = UIRectEdge()
         deleteAccountProvider.delegate = self
         spinner.isHidden = true
         view.backgroundColor = UIColor.greyBackgroundColor()
         updateNotificationsSwitchState()
-        NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.updateNotificationsSwitchState), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.appDidBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         updateCalendarSyncSwitchState()
     }
 
@@ -94,15 +90,30 @@ class SettingsViewController: UIViewController,
         self.spinner.isHidden = true
     }
 
-    internal func updateNotificationsSwitchState() {
+
+    internal func appDidBecomeActive() {
         let notificationsEnabled = NotificationsManager.pushNotificationsEnabled()
-        notificationSwitch.setOn(notificationsEnabled, animated: true)
+        updateNotificationsSwitchState()
+        if userData.pushNotificationsEnabled != notificationsEnabled {
+            userData.pushNotificationsEnabled = notificationsEnabled
+            settingsProvider.setPushNotifications(enabled: notificationsEnabled)
+            spinner.isHidden = false
+        }
+    }
+
+    internal func pushNotificationsSettingDidSucceed() {
+        spinner.isHidden = true
     }
 
     @IBAction func notificationsButtonDidTap(_ sender: UIButton) {
         presentAlertWithMessage(StringHolder.shouldOpenAppSettingsForNotifications, title: StringHolder.attention, addCancelAction: true) {
             NotificationsManager.openAppSettings()
         }
+    }
+
+    internal func updateNotificationsSwitchState() {
+        let notificationsEnabled = NotificationsManager.pushNotificationsEnabled()
+        notificationSwitch.setOn(notificationsEnabled, animated: true)
     }
 
     @IBAction func shareButtonDidTap(_ sender: UIButton) {
@@ -138,6 +149,7 @@ class SettingsViewController: UIViewController,
     func onErrorOccurs(_ text: String) {
         self.spinner.isHidden = true
         updateCalendarSyncSwitchState()
+        updateNotificationsSwitchState()
         presentAlertWithMessage(text, title: StringHolder.errorAlertTitle)
     }
 

@@ -19,7 +19,8 @@ class EntryViewController: UIViewController,
         ConfigProviderDelegate,
         OpenLoginScreenProtocol,
         UsosesTableViewControllerDelegate,
-        LogoutProviderDelegate{
+        LogoutProviderDelegate,
+        SettingsProviderDelegate {
 
     let googleSignInManager = GIDSignIn.sharedInstance()
 
@@ -32,6 +33,7 @@ class EntryViewController: UIViewController,
     var socialLogin = true
     @IBOutlet weak var rejestrujacLabel: UILabel!
     private let logoutProvider = LogoutProvider()
+    private let settingsProvider: SettingsProvider = SettingsProvider()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +71,7 @@ class EntryViewController: UIViewController,
         loginButton.tooltipColorStyle = .neutralGray
 
         logoutProvider.delegate = self
+        settingsProvider.delegate = self
 
     }
 
@@ -126,6 +129,7 @@ class EntryViewController: UIViewController,
         socialLogin = true
         spinnerView.isHidden = false
         OneSignal.defaultClient().sendTag(Constants.OneSignal.userEmailTag,  value: UserDataHolder.sharedInstance.userEmail)
+        settingsProvider.loadSettings()
         self.configProvider.checkConfig()
     }
 
@@ -194,6 +198,21 @@ class EntryViewController: UIViewController,
         self.navigationController?.pushViewController(controller, animated: true)
     }
 
+    func settingsDidLoad(_ settings: Settings) {
+        self.spinnerView.isHidden = true
+        if UserDataHolder.sharedInstance.pushNotificationsEnabled != NotificationsManager.pushNotificationsEnabled() {
+            self.spinnerView.isHidden = false
+            settingsProvider.setPushNotifications(enabled: NotificationsManager.pushNotificationsEnabled())
+        }
+    }
+
+    func pushNotificationsSettingDidSucceed() {
+        self.spinnerView.isHidden = true
+    }
+
+    func calendarSyncronizationSettingDidSucceed() {
+        self.spinnerView.isHidden = true
+    }
 
     //MARK: UsosesTableViewControllerDelegate
 

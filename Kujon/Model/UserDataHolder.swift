@@ -15,6 +15,7 @@ class UserDataHolder {
     private  let USOS_IMAGE_KEY = "usos_image_key"
     private  let LOGIN_TYPE_KEY = "login_type_traalalal_key"
     private  let CALENDAR_SYNC_KEY = "calendar_sync_key"
+    private let PUSH_NOTIFIACTIONS_KEY = "push_notifications_key"
     
     private var loadedEmail: String! = nil
 
@@ -96,6 +97,22 @@ class UserDataHolder {
     var shouldSyncCalendar: Bool {
             return isCalendarSyncEnabled && UserLoginEnum.getLoginType() == .google
     }
+
+    var pushNotificationsEnabled: Bool {
+        get {
+            if (userEmail == nil) {
+                return false
+            }
+            return defaultsManager.readBooleanFromUserDefaults(PUSH_NOTIFIACTIONS_KEY)
+        }
+        set(value) {
+            defaultsManager.writeBoolToUserDefaults(value,key:PUSH_NOTIFIACTIONS_KEY)
+        }
+    }
+
+
+
+
 
     var userImage:UIImage! = nil
     var userName: String!  = nil

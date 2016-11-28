@@ -12,6 +12,8 @@ protocol SettingsProviderProtocol: JsonProviderProtocol {
 
     associatedtype T = SettingsResponse
     func loadSettings()
+    func setCalendarSyncronization(enabled: Bool)
+    func setPushNotifications(enabled: Bool)
 }
 
 
@@ -19,6 +21,7 @@ protocol SettingsProviderDelegate: ErrorResponseProtocol {
 
     func settingsDidLoad(_ settings: Settings)
     func calendarSyncronizationSettingDidSucceed()
+    func pushNotificationsSettingDidSucceed()
 }
 
 
@@ -26,7 +29,7 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
 
     enum SettingsEndpoint: String {
         case getSettings = "/settings"
-        case postSettingsEvent = "/settings/event"
+        case postPushNotificationsState = "/settings/event"
         case postCalendarSync = "/settings/googlecalendar"
     }
 
@@ -43,9 +46,9 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
         endpointURL = SettingsEndpoint.getSettings.rawValue
         makeHTTPAuthenticatedGetRequest({ data in
             if let response = try! self.changeJsonToResposne(data, errorR:self.delegate),
-                let settings: Settings = response.data,
-                let calendarSyncEnabled: Bool = settings.calendarSyncEnabled {
-                UserDataHolder.sharedInstance.isCalendarSyncEnabled = calendarSyncEnabled
+                let settings: Settings = response.data {
+                UserDataHolder.sharedInstance.isCalendarSyncEnabled = settings.calendarSyncEnabled ?? false
+                UserDataHolder.sharedInstance.pushNotificationsEnabled = settings.pushNotificationsEnabled ?? false
                 self.delegate?.settingsDidLoad(settings)
             } else {
                 self.delegate?.onErrorOccurs(StringHolder.errorOccures)
@@ -53,9 +56,7 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
         }, onError: { text in
             self.delegate?.onErrorOccurs(text)
         })
-
     }
-
 
     func setCalendarSyncronization(enabled: Bool) {
         let state: State = enabled ? .enabled : .disabled
@@ -71,7 +72,22 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
         }, onError: { text in
             self.delegate?.onErrorOccurs(text)
         })
+    }
 
+    func setPushNotifications(enabled: Bool) {
+        let state: State = enabled ? .enabled : .disabled
+        endpointURL = SettingsEndpoint.postPushNotificationsState.rawValue + state.rawValue
+        makeHTTPAuthenticatedPostRequest({ data in
+            if let responseJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:String],
+                responseJSON?["status"] == "success" {
+                UserDataHolder.sharedInstance.pushNotificationsEnabled = enabled
+                self.delegate?.pushNotificationsSettingDidSucceed()
+            } else {
+                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+            }
+        }, onError: { text in
+            self.delegate?.onErrorOccurs(text)
+        })
     }
 
     override func getMyUrl() -> String {
