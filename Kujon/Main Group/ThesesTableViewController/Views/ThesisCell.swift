@@ -59,7 +59,7 @@ class ThesisCell: UITableViewCell {
             tapRecognizer.numberOfTouchesRequired = 1
             label.addGestureRecognizer(tapRecognizer)
         }
-        self.teachersStackView.addSubview(label)
+        self.teachersStackView.addArrangedSubview(label)
     }
 
     private func createLabel(name: String) -> UILabel {
