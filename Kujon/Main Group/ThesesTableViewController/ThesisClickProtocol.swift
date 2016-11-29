@@ -8,5 +8,5 @@ import Foundation
  protocol  ThesisClickProtocol :class {
 
     func onFacultyClick(id:String);
-    func onTheacherClick(id:String);
+    func onTeacherClick(id:String);
 }

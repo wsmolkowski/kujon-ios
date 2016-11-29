@@ -11,5 +11,5 @@ import UIKit
 class IdentifiedTapGestureRecognizer: UITapGestureRecognizer {
 
     var id: Int = 0
-
+    var stringId: String = ""
 }

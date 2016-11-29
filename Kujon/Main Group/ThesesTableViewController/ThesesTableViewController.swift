@@ -56,7 +56,10 @@ class ThesesTableViewController: UITableViewController,ThesisClickProtocol {
         self.navigationController?.pushViewController(faculiteController, animated: true)
     }
 
-    func onTheacherClick(id: String) {
+    func onTeacherClick(id: String) {
+        let controller = TeacherDetailTableViewController(nibName: "TeacherDetailTableViewController", bundle: Bundle.main)
+        controller.teacherId = id
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 
 

@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2553a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Unknown constraint types" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -20,63 +24,72 @@
             <rect key="frame" x="0.0" y="0.0" width="420" height="410"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Int-iL-vlb" id="fua-4Y-sMv">
-                <frame key="frameInset" width="420" height="409"/>
+                <rect key="frame" x="0.0" y="0.0" width="420" height="409.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CSe-h6-9hm" userLabel="separator">
+                        <rect key="frame" x="0.0" y="408.5" width="420" height="2"/>
                         <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="2" id="GmQ-u8-CBz"/>
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="6oc-YJ-aYd">
+                        <rect key="frame" x="8" y="23" width="404" height="360.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tytuł" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0F-TP-1vd">
+                                <rect key="frame" x="0.0" y="0.0" width="404" height="25.5"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titleLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tam-yx-YGd">
+                                <rect key="frame" x="0.0" y="37.5" width="404" height="25"/>
                                 <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Autorzy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Izk-QO-36B">
+                                <rect key="frame" x="0.0" y="74.5" width="404" height="25.5"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="authorsLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RfV-G9-qib">
+                                <rect key="frame" x="0.0" y="112" width="404" height="25"/>
                                 <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recenzenci" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brQ-Uo-Jft">
+                                <rect key="frame" x="0.0" y="149" width="404" height="25.5"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="reviewersLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GCy-Lj-T3y">
-                                <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="13"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N3U-Rq-Fm1">
+                                <rect key="frame" x="0.0" y="186.5" width="200" height="25"/>
+                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Typ pracy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyW-gE-34G">
+                                <rect key="frame" x="0.0" y="223.5" width="404" height="25.5"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="thesisTypeLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HyW-es-rZg">
+                                <rect key="frame" x="0.0" y="261" width="404" height="25"/>
                                 <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wydział" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRQ-2W-yYl">
+                                <rect key="frame" x="0.0" y="298" width="404" height="25.5"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="facultyLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Op1-Cb-Rpv">
+                                <rect key="frame" x="0.0" y="335.5" width="404" height="25"/>
                                 <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -87,7 +100,6 @@
                             <constraint firstItem="brQ-Uo-Jft" firstAttribute="leading" secondItem="6oc-YJ-aYd" secondAttribute="leading" id="8Vc-mB-llw"/>
                             <constraint firstItem="RfV-G9-qib" firstAttribute="leading" secondItem="6oc-YJ-aYd" secondAttribute="leading" id="8is-PS-slL"/>
                             <constraint firstAttribute="trailing" secondItem="cyW-gE-34G" secondAttribute="trailing" id="8k5-xY-RIF"/>
-                            <constraint firstAttribute="trailing" secondItem="GCy-Lj-T3y" secondAttribute="trailing" id="8kO-mr-YtM"/>
                             <constraint firstAttribute="trailing" secondItem="SRQ-2W-yYl" secondAttribute="trailing" id="GUQ-7I-Rxk"/>
                             <constraint firstAttribute="trailing" secondItem="brQ-Uo-Jft" secondAttribute="trailing" id="JBd-MP-33u"/>
                             <constraint firstItem="SRQ-2W-yYl" firstAttribute="leading" secondItem="6oc-YJ-aYd" secondAttribute="leading" id="LOQ-d8-4qr"/>
@@ -100,7 +112,7 @@
                             <constraint firstItem="HyW-es-rZg" firstAttribute="leading" secondItem="6oc-YJ-aYd" secondAttribute="leading" id="ehP-xH-Ejn"/>
                             <constraint firstAttribute="trailing" secondItem="Tam-yx-YGd" secondAttribute="trailing" id="gep-rR-vnH"/>
                             <constraint firstItem="Izk-QO-36B" firstAttribute="leading" secondItem="6oc-YJ-aYd" secondAttribute="leading" id="lOJ-yi-fUz"/>
-                            <constraint firstItem="GCy-Lj-T3y" firstAttribute="leading" secondItem="6oc-YJ-aYd" secondAttribute="leading" id="mA0-ON-qfk"/>
+                            <constraint firstAttribute="leading" secondItem="6oc-YJ-aYd" secondAttribute="leading" id="mA0-ON-qfk"/>
                             <constraint firstAttribute="trailing" secondItem="a0F-TP-1vd" secondAttribute="trailing" id="xdR-K5-Rgg"/>
                             <constraint firstItem="Tam-yx-YGd" firstAttribute="leading" secondItem="6oc-YJ-aYd" secondAttribute="leading" id="zMF-rX-bIX"/>
                         </constraints>
@@ -119,7 +131,7 @@
             <connections>
                 <outlet property="authorsLabel" destination="RfV-G9-qib" id="9fD-EZ-nLb"/>
                 <outlet property="facultyLabel" destination="Op1-Cb-Rpv" id="IMB-Rl-gVD"/>
-                <outlet property="reviewersLabel" destination="GCy-Lj-T3y" id="UWB-oq-UCA"/>
+                <outlet property="teachersStackView" destination="N3U-Rq-Fm1" id="449-Nj-vmp"/>
                 <outlet property="thesisTypeLabel" destination="HyW-es-rZg" id="daP-ha-xiH"/>
                 <outlet property="titleLabel" destination="Tam-yx-YGd" id="fhA-ES-Wqw"/>
             </connections>
