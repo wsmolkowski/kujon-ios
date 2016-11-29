@@ -47,6 +47,7 @@
 		4C0D81EAB6447F9ABA3B7AD5 /* CourseDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8AA6C79613D718788CD7 /* CourseDetails.swift */; };
 		4C0D82084D092C855DB2FB09 /* RestApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D82F54FFBE7F27B43632A /* RestApiManager.swift */; };
 		4C0D822A221FC02A3C2BD33E /* FacebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D86B6033E7743D91C115B /* FacebookManager.swift */; };
+		4C0D82315B5B0DC9C9E29542 /* ThesisClickProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D806244F3929CBDAA1404 /* ThesisClickProtocol.swift */; };
 		4C0D8247D1BF8BC9FBE086A2 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D884D5353B1F81B22B87B /* Lato-BoldItalic.ttf */; };
 		4C0D8272DA00131511B32AF8 /* CourseMenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D887AB4B1D38E360F5C55 /* CourseMenuItems.swift */; };
 		4C0D8276D4657EED0BD1B0C2 /* LecturersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8B67C9D01072853AF4B5 /* LecturersResponse.swift */; };
@@ -355,6 +356,7 @@
 		4C0D800DE50A86489C4C7E74 /* Usos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usos.swift; sourceTree = "<group>"; };
 		4C0D8036A89B827020917722 /* LecturersSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturersSection.swift; sourceTree = "<group>"; };
 		4C0D80602A034144DDC1A379 /* ProgrammeProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammeProvider.swift; sourceTree = "<group>"; };
+		4C0D806244F3929CBDAA1404 /* ThesisClickProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesisClickProtocol.swift; sourceTree = "<group>"; };
 		4C0D806D09BD6C9327949956 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		4C0D80883A4507BB621D8A2F /* Unauthorized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unauthorized.swift; sourceTree = "<group>"; };
 		4C0D809A2804B4D3E100904E /* SingleProgramme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleProgramme.swift; sourceTree = "<group>"; };
@@ -1534,6 +1536,7 @@
 			children = (
 				66D506521DA6BD7300B5CE1B /* Views */,
 				66D506481DA69CD300B5CE1B /* ThesesTableViewController.swift */,
+				4C0D806244F3929CBDAA1404 /* ThesisClickProtocol.swift */,
 			);
 			path = ThesesTableViewController;
 			sourceTree = "<group>";
@@ -1824,7 +1827,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		0A99C62C1D13258800FBD24E /* ShellScript */ = {
@@ -1852,7 +1855,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		214C28AD2BEA8F456201525D /* [CP] Check Pods Manifest.lock */ = {
@@ -1867,7 +1870,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		446CA6FBF57D58F2C85376E0 /* [CP] Copy Pods Resources */ = {
@@ -2194,6 +2197,7 @@
 				4C0D87A318BE65E36EAF2762 /* SuperUserProvider.swift in Sources */,
 				4C0D82F9F37B3007827AE2EC /* SuperUserDetails.swift in Sources */,
 				4C0D8D30C74046B707A38B99 /* SuperUserResponse.swift in Sources */,
+				4C0D82315B5B0DC9C9E29542 /* ThesisClickProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
