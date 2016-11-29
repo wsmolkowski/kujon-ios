@@ -68,6 +68,7 @@ class ThesisCell: UITableViewCell {
         yourLabel.textColor = UIColor.black
         yourLabel.text = name
         yourLabel.sizeToFit()
+        yourLabel.isUserInteractionEnabled = true
 
         return yourLabel
     }
