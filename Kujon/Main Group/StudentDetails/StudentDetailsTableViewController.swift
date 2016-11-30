@@ -179,16 +179,15 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
         }
     }
 
-    func clicked(_ forIndexPath: IndexPath) {
-            let myProgramme: StudentProgramme = self.studentProgrammes[(forIndexPath as NSIndexPath).row]
-            if (myProgramme.programme.duration != nil && myProgramme.programme.name != nil && myProgramme.programme.levelOfStudies != nil) {
-                let popController = KierunkiViewController(nibName: "KierunkiViewController", bundle: Bundle.main)
-                popController.modalPresentationStyle = .overCurrentContext
-                self.navigationController?.present(popController, animated: false, completion: { popController.showAnimate(); })
-                popController.showInView(withProgramme: myProgramme.programme)
-
+    func clicked(_ indexPath: IndexPath) {
+        DispatchQueue.main.async { [weak self] in
+            guard let programme: Programme = self?.studentProgrammes[indexPath.row].programme else {
+                return
+            }
+            let kierunekDetailController = KierunekDetailViewController()
+            kierunekDetailController.programme = programme
+            self?.navigationController?.pushViewController(kierunekDetailController, animated: true)
         }
-
     }
 
 }

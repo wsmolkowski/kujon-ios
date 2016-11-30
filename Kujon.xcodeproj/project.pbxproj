@@ -319,6 +319,9 @@
 		669B2F5C1DBE0973000AE02C /* CourseMeritsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B2F5B1DBE0973000AE02C /* CourseMeritsSection.swift */; };
 		66A2CBC91DC76C280049217C /* KujonRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A2CBC81DC76C280049217C /* KujonRefreshControl.swift */; };
 		66A2CBCB1DC77B440049217C /* RefreshingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A2CBCA1DC77B440049217C /* RefreshingTableViewController.swift */; };
+		66D12E0D1DEE2E2000235320 /* KierunekDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D12E0C1DEE2E2000235320 /* KierunekDetailViewController.swift */; };
+		66D12E101DEE42E500235320 /* KierunekHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D12E0E1DEE42E500235320 /* KierunekHeaderCell.swift */; };
+		66D12E111DEE42E500235320 /* KierunekHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66D12E0F1DEE42E500235320 /* KierunekHeaderCell.xib */; };
 		66D46B161DE60F30003701D2 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66D46B151DE60F30003701D2 /* SettingsViewController.xib */; };
 		66D46B181DE617EA003701D2 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D46B171DE617EA003701D2 /* NotificationsManager.swift */; };
 		66D506491DA69CD300B5CE1B /* ThesesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D506481DA69CD300B5CE1B /* ThesesTableViewController.swift */; };
@@ -670,6 +673,9 @@
 		669B2F5B1DBE0973000AE02C /* CourseMeritsSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseMeritsSection.swift; sourceTree = "<group>"; };
 		66A2CBC81DC76C280049217C /* KujonRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KujonRefreshControl.swift; sourceTree = "<group>"; };
 		66A2CBCA1DC77B440049217C /* RefreshingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RefreshingTableViewController.swift; path = "../Global Extensions/RefreshingTableViewController.swift"; sourceTree = "<group>"; };
+		66D12E0C1DEE2E2000235320 /* KierunekDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KierunekDetailViewController.swift; sourceTree = "<group>"; };
+		66D12E0E1DEE42E500235320 /* KierunekHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KierunekHeaderCell.swift; sourceTree = "<group>"; };
+		66D12E0F1DEE42E500235320 /* KierunekHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KierunekHeaderCell.xib; sourceTree = "<group>"; };
 		66D46B151DE60F30003701D2 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		66D46B171DE617EA003701D2 /* NotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		66D506481DA69CD300B5CE1B /* ThesesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesesTableViewController.swift; sourceTree = "<group>"; };
@@ -1219,6 +1225,7 @@
 		4C0D8AC64D4ECAED91008202 /* Main Group */ = {
 			isa = PBXGroup;
 			children = (
+				66D12E0B1DEE2D8700235320 /* KierunekDetail */,
 				66645F441DC0DDA2000ACE62 /* MessageDetail */,
 				661CA6711DBF7CA20002AF79 /* MessagesList */,
 				663159391DAE61AA00B0789B /* ThesisDetail */,
@@ -1531,6 +1538,16 @@
 			path = MessageDetail;
 			sourceTree = "<group>";
 		};
+		66D12E0B1DEE2D8700235320 /* KierunekDetail */ = {
+			isa = PBXGroup;
+			children = (
+				66D12E0C1DEE2E2000235320 /* KierunekDetailViewController.swift */,
+				66D12E0E1DEE42E500235320 /* KierunekHeaderCell.swift */,
+				66D12E0F1DEE42E500235320 /* KierunekHeaderCell.xib */,
+			);
+			path = KierunekDetail;
+			sourceTree = "<group>";
+		};
 		66D506471DA69CB800B5CE1B /* ThesesTableViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1736,6 +1753,7 @@
 				52FF972D1D23C9C400565763 /* CourseNameTableViewCell.xib in Resources */,
 				4C0D87058EAE5B71945F1AD8 /* Lecturers.json in Resources */,
 				520660E81D65BDCA004B92B3 /* IntroScreenViewController.xib in Resources */,
+				66D12E111DEE42E500235320 /* KierunekHeaderCell.xib in Resources */,
 				5295135B1D17C76E009D6FF2 /* ScheduleTableViewController.xib in Resources */,
 				528BCABA1D5DE79500A9E49C /* MapTableViewCell.xib in Resources */,
 				529C000E1D37CE0A004E1DF1 /* TermsPopUpViewController.xib in Resources */,
@@ -2076,6 +2094,7 @@
 				52B3F9AD1DBF40C300B0CC55 /* MessageResponse.swift in Sources */,
 				4C0D8DD1DC491DC007F98692 /* SessionManager.swift in Sources */,
 				5267503D1D21391F004AD243 /* CourseTableViewCell.swift in Sources */,
+				66D12E101DEE42E500235320 /* KierunekHeaderCell.swift in Sources */,
 				528BCAC11D5DF0BC00A9E49C /* TelephoneTableViewCell.swift in Sources */,
 				4C0D8E8FDA4A6ABE3B6829A8 /* NSlogManager.swift in Sources */,
 				4C0D8BD54E52DB2C8D674422 /* NSDateExtension.swift in Sources */,
@@ -2174,6 +2193,7 @@
 				4C0D843CCE476A98F5AF9D81 /* UserSearch.swift in Sources */,
 				4C0D8EC9CEA6FB50DB270DA9 /* UserSearchProvider.swift in Sources */,
 				527A0EB61DA41BE3003A251A /* SearchTableViewController.swift in Sources */,
+				66D12E0D1DEE2E2000235320 /* KierunekDetailViewController.swift in Sources */,
 				4C0D8136944E9A29A28A10E8 /* FacultySearch.swift in Sources */,
 				4C0D854C4728717BF7083F31 /* FacultySearchProvider.swift in Sources */,
 				4C0D8B1306F3CCFB0EBDFD81 /* SearchViewProtocol.swift in Sources */,

@@ -296,18 +296,17 @@ class UserTableViewController: RefreshingTableViewController
         return cell
     }
 
-    func clicked(_ forIndexPath: IndexPath) {
-        if (programmeLoaded) {
-            let myProgramme: StudentProgramme = self.programmes[(forIndexPath as NSIndexPath).row]
-            if (myProgramme.programme.duration != nil && myProgramme.programme.name != nil && myProgramme.programme.levelOfStudies != nil) {
-                DispatchQueue.main.async { [weak self] in
-                    let popController = KierunkiViewController(nibName: "KierunkiViewController", bundle: Bundle.main)
-                    popController.modalPresentationStyle = .overCurrentContext
-                    self?.navigationController?.present(popController, animated: false, completion: { [weak popController] in
-                        popController?.showAnimate(); })
-                    popController.showInView(withProgramme: myProgramme.programme)
-                }
+    func clicked(_ indexPath: IndexPath) {
+        guard programmeLoaded else {
+            return
+        }
+        DispatchQueue.main.async { [weak self] in
+            guard let programme: Programme = self?.programmes[indexPath.row].programme else {
+                return
             }
+            let kierunekDetailController = KierunekDetailViewController()
+            kierunekDetailController.programme = programme
+            self?.navigationController?.pushViewController(kierunekDetailController, animated: true)
         }
 
     }

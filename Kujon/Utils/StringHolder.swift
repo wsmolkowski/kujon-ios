@@ -57,10 +57,10 @@ class StringHolder {
     static let terms = "Cykle"
     static let yes = "TAK"
     static let no = "NIE"
-    static let identificator = "identyfikator"
-    static let tryb = "tryb"
-    static let time_length = "czas trwania"
-    static let level = "poziom"
+    static let identificator = "Identyfikator"
+    static let tryb = "Tryb studiów"
+    static let time_length = "Czas trwania"
+    static let level = "Poziom studiów"
     static let refresh="Odświeżam"
     static let appName = "Kujon"
     static let errorOccures = "Wystąpił błąd podczas komunikacji z serwerem."
@@ -80,7 +80,7 @@ class StringHolder {
     static let emailPasswordError = "Proszę podać poprawny email"
     static let passwordPasswordError = "Hasło musi mieć co najmniej jedną cyfrę i jedną litere"
     static let identicalPasswordError = "Hasła muszą być identyczne"
-    static let ectsPoints =  "suma punktów ECTS"
+    static let ectsPoints =  "Suma punktów ECTS"
     static let autorizationError = "Błąd autoryzacji"
     static let search = "Szukaj"
     static let searchResults = "Wyniki wyszukiwania"
@@ -104,6 +104,7 @@ class StringHolder {
     static let loginError = "Błąd logowania"
     static let unknownErrorMessage = "Wystąpił nieznany błąd"
     static let shouldOpenAppSettingsForNotifications = "Opcję powiadomień Kujona możesz zmienić w ustawieniach systemowych iOS. Czy chcesz otworzyć ustawienia systemowe?"
+    static let kierunekTitle = "Kierunek"
 
 
 }
