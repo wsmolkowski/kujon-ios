@@ -110,6 +110,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func applicationDidBecomeActive(_ application: UIApplication) {
+        if UserLoginEnum.getLoginType() == .google {
+            GIDSignIn.sharedInstance().signInSilently()
+        }
         FBSDKAppEvents.activateApp()
     }
 
