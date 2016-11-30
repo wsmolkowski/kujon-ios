@@ -19,8 +19,8 @@ class HeaderManager {
     }
 
     func addHeadersToRequest(_ request: inout URLRequest, refresh:Bool = false, addStoredCookies:Bool = false) {
-        request.addValue(userDataHolder.userEmail, forHTTPHeaderField: EMAIL_HEADER)
-        request.addValue(userDataHolder.userToken, forHTTPHeaderField: TOKEN_HEADER)
+        request.addValue(userDataHolder.userEmail ?? "", forHTTPHeaderField: EMAIL_HEADER)
+        request.addValue(userDataHolder.userToken ?? "", forHTTPHeaderField: TOKEN_HEADER)
 
         if(refresh){
             request.addValue("true", forHTTPHeaderField: REFRESH_TOKEN)
