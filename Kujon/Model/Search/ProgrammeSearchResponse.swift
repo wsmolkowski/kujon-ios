@@ -61,10 +61,11 @@ struct ProgrammeSearch: Decodable, SearchElementProtocol{
     }
 
     func reactOnClick(_ mainController: UINavigationController) {
-        let popController = KierunkiViewController(nibName: "KierunkiViewController", bundle: Bundle.main)
-        popController.modalPresentationStyle = .overCurrentContext
-        mainController.present(popController, animated: false, completion: { popController.showAnimate(); })
-        popController.showInView(withProgramme: self.programme)
+        DispatchQueue.main.async { [weak mainController] in
+            let kierunekDetailController = KierunekDetailViewController()
+            kierunekDetailController.programme = self.programme
+            mainController?.pushViewController(kierunekDetailController, animated: true)
+        }
     }
 }
 
