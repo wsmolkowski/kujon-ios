@@ -44,7 +44,9 @@ class CoursesTableViewController: RefreshingTableViewController, NavigationDeleg
         self.showAlertApi(StringHolder.attention, text: text, succes: {
             [unowned self] in
             self.courseProvider.provideCourses()
-        }, cancel: {})
+        }, cancel: { [unowned self] in
+            self.refreshControl?.endRefreshing()
+        })
     }
 
 
