@@ -128,9 +128,12 @@ class EntryViewController: UIViewController,
     func onFacebookCredentailSaved(_ isLogged: Bool) {
         socialLogin = true
         spinnerView.isHidden = false
-        OneSignal.defaultClient().sendTag(Constants.OneSignal.userEmailTag,  value: UserDataHolder.sharedInstance.userEmail)
-        settingsProvider.loadSettings()
-        self.configProvider.checkConfig()
+        if !UserDataHolder.sharedInstance.didSetUpInitialConfiguration {
+            self.configProvider.checkConfig()
+            settingsProvider.loadSettings()
+            OneSignal.defaultClient().sendTag(Constants.OneSignal.userEmailTag,  value: UserDataHolder.sharedInstance.userEmail)
+            UserDataHolder.sharedInstance.didSetUpInitialConfiguration = true
+        }
     }
 
     func notLogged() {

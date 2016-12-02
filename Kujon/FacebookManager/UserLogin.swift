@@ -12,6 +12,7 @@ enum UserLoginEnum {
 }
 
 extension UserLoginEnum {
+
     static func getLoginType() -> UserLoginEnum {
         let userHolder = UserDataHolder.sharedInstance
         if let type = userHolder.userLoginType {
@@ -55,10 +56,12 @@ protocol UserLogin {
 }
 
 extension UserLogin{
+
     func logoutUserData(_ userData: UserDataHolder){
         userData.userEmail = nil
         userData.userToken = nil
         userData.userImage = nil
         userData.userName = nil
+        UserDataHolder.sharedInstance.didSetUpInitialConfiguration = false
     }
 }
