@@ -317,6 +317,10 @@
 		669B2F591DBE093E000AE02C /* CourseMeritsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B2F571DBE093E000AE02C /* CourseMeritsTableViewCell.swift */; };
 		669B2F5A1DBE093E000AE02C /* CourseMeritsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 669B2F581DBE093E000AE02C /* CourseMeritsTableViewCell.xib */; };
 		669B2F5C1DBE0973000AE02C /* CourseMeritsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B2F5B1DBE0973000AE02C /* CourseMeritsSection.swift */; };
+		669B89961DF99FB700492554 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B89941DF99FB700492554 /* ItemCell.swift */; };
+		669B89971DF99FB700492554 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 669B89951DF99FB700492554 /* ItemCell.xib */; };
+		669B899F1DF9A4D000492554 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 669B899E1DF9A4D000492554 /* SectionHeaderView.xib */; };
+		669B89A11DF9A51A00492554 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B89A01DF9A51A00492554 /* SectionHeaderView.swift */; };
 		66A2CBC91DC76C280049217C /* KujonRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A2CBC81DC76C280049217C /* KujonRefreshControl.swift */; };
 		66A2CBCB1DC77B440049217C /* RefreshingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A2CBCA1DC77B440049217C /* RefreshingTableViewController.swift */; };
 		66D12E0D1DEE2E2000235320 /* KierunekDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D12E0C1DEE2E2000235320 /* KierunekDetailViewController.swift */; };
@@ -671,6 +675,10 @@
 		669B2F571DBE093E000AE02C /* CourseMeritsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseMeritsTableViewCell.swift; sourceTree = "<group>"; };
 		669B2F581DBE093E000AE02C /* CourseMeritsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseMeritsTableViewCell.xib; sourceTree = "<group>"; };
 		669B2F5B1DBE0973000AE02C /* CourseMeritsSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseMeritsSection.swift; sourceTree = "<group>"; };
+		669B89941DF99FB700492554 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		669B89951DF99FB700492554 /* ItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
+		669B899E1DF9A4D000492554 /* SectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
+		669B89A01DF9A51A00492554 /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		66A2CBC81DC76C280049217C /* KujonRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KujonRefreshControl.swift; sourceTree = "<group>"; };
 		66A2CBCA1DC77B440049217C /* RefreshingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RefreshingTableViewController.swift; path = "../Global Extensions/RefreshingTableViewController.swift"; sourceTree = "<group>"; };
 		66D12E0C1DEE2E2000235320 /* KierunekDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KierunekDetailViewController.swift; sourceTree = "<group>"; };
@@ -1544,6 +1552,10 @@
 				66D12E0C1DEE2E2000235320 /* KierunekDetailViewController.swift */,
 				66D12E0E1DEE42E500235320 /* KierunekHeaderCell.swift */,
 				66D12E0F1DEE42E500235320 /* KierunekHeaderCell.xib */,
+				669B89941DF99FB700492554 /* ItemCell.swift */,
+				669B89951DF99FB700492554 /* ItemCell.xib */,
+				669B899E1DF9A4D000492554 /* SectionHeaderView.xib */,
+				669B89A01DF9A51A00492554 /* SectionHeaderView.swift */,
 			);
 			path = KierunekDetail;
 			sourceTree = "<group>";
@@ -1724,9 +1736,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				66F4BC6B1DB2597000425E39 /* Podfile in Resources */,
+				669B899F1DF9A4D000492554 /* SectionHeaderView.xib in Resources */,
 				527B39BC1D12A0260028BCF9 /* TeacherDetailTableViewController.xib in Resources */,
 				0A42914C1D409659006D6DAB /* GoogleService-Info.plist in Resources */,
 				669B2F5A1DBE093E000AE02C /* CourseMeritsTableViewCell.xib in Resources */,
+				669B89971DF99FB700492554 /* ItemCell.xib in Resources */,
 				527A0EC31DA426A7003A251A /* SearchResultTableViewController.xib in Resources */,
 				0AB192141D4AB8E800834773 /* WebViewController.xib in Resources */,
 				526750421D214A7B004AD243 /* CoursePopUpViewController.xib in Resources */,
@@ -2022,6 +2036,7 @@
 				4C0D83DD9146C96D43851C5D /* ScheduleMenuItem.swift in Sources */,
 				4C0D8272DA00131511B32AF8 /* CourseMenuItems.swift in Sources */,
 				4C0D8B852BE5B63017986E90 /* GradesMenuItem.swift in Sources */,
+				669B89A11DF9A51A00492554 /* SectionHeaderView.swift in Sources */,
 				4C0D86B48ECAE549129243B8 /* TeachersMenuItem.swift in Sources */,
 				4C0D8DCC00FFDDF5F59B16A7 /* SettingsMenuItem.swift in Sources */,
 				4C0D8CAF7182C850446EEF26 /* ShareMenuItem.swift in Sources */,
@@ -2167,6 +2182,7 @@
 				4C0D8F3F7FF39000760EEB08 /* ErrorClass.swift in Sources */,
 				669B2F5C1DBE0973000AE02C /* CourseMeritsSection.swift in Sources */,
 				4C0D831E6FE91FD824774043 /* UserLogin.swift in Sources */,
+				669B89961DF99FB700492554 /* ItemCell.swift in Sources */,
 				4C0D86610EB3A7F8698DCC56 /* CALayerExtensions.swift in Sources */,
 				4C0D8E79EF248F656D747BE4 /* ConfigResponse.swift in Sources */,
 				66645F421DC0DD6C000ACE62 /* MessageDetailViewController.swift in Sources */,

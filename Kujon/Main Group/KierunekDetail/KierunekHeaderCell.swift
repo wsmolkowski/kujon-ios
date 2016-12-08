@@ -15,8 +15,18 @@ class KierunekHeaderCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
-        backgroundColor = UIColor.kujonBlueColor()
-        kierunekLabel.textColor = .white
+        backgroundColor = .white
+        kierunekLabel.textColor = .black
+    }
+
+    override var frame: CGRect {
+        didSet {
+            self.layer.addBorder(UIRectEdge.bottom, color:UIColor.lightGray(), thickness: 1)
+        }
+    }
+
+    override var layer: CALayer {
+        return super.layer
     }
     
 }

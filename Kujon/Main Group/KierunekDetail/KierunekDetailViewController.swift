@@ -28,11 +28,14 @@ class KierunekDetailViewController: UITableViewController {
         }
     }
 
-    private let itemCellId: String = "itemCellId"
-    private let itemCellHeight: CGFloat = 50.0
-    private let itemHeaderHeight: CGFloat = 48.0
+    private let itemCellId: String = "ItemCell"
+    private let itemCellHeight: CGFloat = 30.0
+
+    private let itemHeaderHeight : CGFloat = 35.0
+
     private let headerCellId: String = "headerCellId"
-    private let headerCellHeight: CGFloat = 110.0
+    private let headerCellHeight: CGFloat = 80.0
+
     private let sectionsCount: Int = 6
 
     var programme: Programme?
@@ -40,12 +43,15 @@ class KierunekDetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = StringHolder.kierunekTitle
+        configureTableView()
+    }
+
+    private func configureTableView() {
         tableView.separatorStyle = .none
-        tableView.backgroundColor = UIColor.greyBackgroundColor()
+        tableView.backgroundColor = UIColor.white
 
-        tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: itemCellId)
+        tableView.register(UINib(nibName: "ItemCell", bundle: nil), forCellReuseIdentifier: itemCellId)
         tableView.register(UINib(nibName: "KierunekHeaderCell", bundle: nil), forCellReuseIdentifier: headerCellId)
-
     }
 
     // MARK: - Table view data source
@@ -60,14 +66,23 @@ class KierunekDetailViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let section = SectionMap.sectionForIndex(section)
+
+        guard let header = Bundle.main.loadNibNamed("SectionHeaderView", owner: self, options: nil)?.first as? SectionHeaderView else {
+            return nil
+        }
+
+        var labelText = String()
         switch (section) {
         case .header: return nil
-        case .level: return createLabelForSectionTitle(StringHolder.level)
-        case .duration: return createLabelForSectionTitle(StringHolder.time_length)
-        case .id: return createLabelForSectionTitle(StringHolder.identificator)
-        case .mode: return createLabelForSectionTitle(StringHolder.tryb)
-        case .ectsUsedSum: return createLabelForSectionTitle(StringHolder.ectsPoints)
+        case .level: labelText = StringHolder.level
+        case .duration: labelText = StringHolder.time_length
+        case .id: labelText = StringHolder.identificator
+        case .mode: labelText = StringHolder.tryb
+        case .ectsUsedSum: labelText = StringHolder.ectsPoints
         }
+
+        header.headerLabel.text = labelText
+        return header
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,8 +96,8 @@ class KierunekDetailViewController: UITableViewController {
         return cell
     }
 
-    private func itemCellForIndexPath(_ indexPath: IndexPath) -> GoFurtherViewCellTableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: itemCellId, for: indexPath) as! GoFurtherViewCellTableViewCell
+    private func itemCellForIndexPath(_ indexPath: IndexPath) -> ItemCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: itemCellId, for: indexPath) as! ItemCell
         let section = SectionMap.sectionForIndex(indexPath.section)
         let labelText: String?
 
@@ -95,8 +110,7 @@ class KierunekDetailViewController: UITableViewController {
         default: fatalError("Invalid indexpath")
         }
 
-        cell.plainLabel.text = labelText ?? StringHolder.none
-        cell.arrow.isHidden = true
+        cell.itemLabel.text = labelText ?? StringHolder.none
         return cell
     }
 
