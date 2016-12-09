@@ -28,7 +28,7 @@ class ThesisDetailTableViewController: UITableViewController {
     private let itemCellHeight: CGFloat = 50.0
     private let itemHeaderHeight: CGFloat = 50.0
     private let headerCellId: String = "headerCellId"
-    private let headerCellHeight: CGFloat = 200.0
+    private let headerCellHeight: CGFloat = 150.0
     private let sectionsCount: Int = 4
 
     var thesis: ThesisSearchInside?

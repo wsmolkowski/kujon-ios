@@ -8,81 +8,193 @@
 
 import UIKit
 
-class ThesisCell: UITableViewCell {
+protocol ThesisCellDelegate :class {
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var authorsLabel: UILabel!
-    @IBOutlet weak var thesisTypeLabel: UILabel!
-    @IBOutlet weak var facultyLabel: UILabel!
-    @IBOutlet weak var teachersStackView: UIStackView!
-    
+    func thesisCell(_ cell:ThesisCell, didTapFacultyWithId id: String)
+    func thesisCell(_ cell:ThesisCell, didTapSupervisorWithId id: String)
+    func thesisCell(_ cell:ThesisCell, didTapAuthorWithId id: String)
+}
 
-    weak var delegate: ThesisClickProtocol!
+
+class ThesisCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource {
+
+    @IBOutlet weak var tableView: UITableView!
+    weak var delegate: ThesisCellDelegate?
 
     var thesis: Thesis? {
         didSet {
-            if let thesis = thesis {
-                propagateContentForThesis(thesis)
+            if let _ = thesis {
+                tableView.reloadData()
             }
         }
     }
 
+    private enum SectionMap: Int {
+        case header = 0
+        case authors
+        case supervisors
+        case faculty
+        case sectionSeparator
+
+        static func sectionForIndex(_ index:Int) -> SectionMap {
+            if let section = SectionMap(rawValue: index) {
+                return section
+            }
+            fatalError("Invalid section index")
+        }
+    }
+
+    private let itemCellId: String = "itemCellId"
+    private let headerCellId: String = "headerCellId"
+    private let sectionSeparatorCellId: String = "separatorCellId"
+
+    static let itemCellHeight: CGFloat = 40.0
+    static let itemHeaderHeight: CGFloat = 30.0
+    static let headerCellHeight: CGFloat = 120.0
+    static let sectionSeparatorHeight: CGFloat = 50
+    static let sectionsCount: Int = 5
+
+    static func calculateCellHeightForThesis(_ thesis: Thesis) -> CGFloat {
+        let authorsCount = CGFloat(thesis.authors.count)
+        let supervisorsCount = CGFloat(thesis.supervisors.count)
+        let authorCellsHeight = (authorsCount * itemCellHeight) + itemHeaderHeight
+        let supervisorCellsHeight = (supervisorsCount * itemCellHeight) + itemHeaderHeight
+        let facultyCellsHeight = itemCellHeight + itemHeaderHeight
+        return headerCellHeight + sectionSeparatorHeight + authorCellsHeight + supervisorCellsHeight + facultyCellsHeight
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.selectionStyle = .none
+        selectionStyle = .none
+        configureTbleView()
     }
 
-    private func propagateContentForThesis(_ thesis: Thesis) {
-        titleLabel.text = thesis.title
-        let authors: [String] = thesis.authors.map {
-            $0.getNameWithTitles()
-        }
-        authorsLabel.text = authors.joined(separator: ", ")
-        for user in thesis.supervisors{
-            addReviewLabel(user:user)
-        }
-        thesisTypeLabel.text = thesis.type
-        facultyLabel.text = thesis.faculty.name
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ThesisCell.facultyTapped))
-        tapGestureRecognizer.numberOfTapsRequired = 1
-        facultyLabel.addGestureRecognizer(tapGestureRecognizer)
-        facultyLabel.isUserInteractionEnabled = true
-
+    func configureTbleView() {
+        tableView.bounces = false
+        tableView.isScrollEnabled = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName:"ArrowedItemCell", bundle:nil), forCellReuseIdentifier: itemCellId)
+        tableView.register(UINib(nibName:"ThesisDetailHeaderCell", bundle:nil), forCellReuseIdentifier: headerCellId)
+        tableView.register(UINib(nibName:"SeparatorCell", bundle:nil), forCellReuseIdentifier: sectionSeparatorCellId)
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 50.0
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = UIColor.greyBackgroundColor()
     }
 
-    private func addReviewLabel(user: SimpleUser) {
-        let label = createLabel(name:user.getNameWithTitles())
-        let tapRecognizer = IdentifiedTapGestureRecognizer(target: self, action: #selector(ThesisCell.headerDidTap))
-        if(user.id != nil){
-            tapRecognizer.stringId = user.id!
-            tapRecognizer.numberOfTapsRequired = 1
-            tapRecognizer.numberOfTouchesRequired = 1
-            label.addGestureRecognizer(tapRecognizer)
-        }
-        self.teachersStackView.addArrangedSubview(label)
+    // MARK: - Table view data source
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return ThesisCell.sectionsCount
     }
 
-    private func createLabel(name: String) -> UILabel {
-        let yourLabel =  UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
-        yourLabel.font = UIFont.kjnFontLatoMedium(size: 13.0)
-        yourLabel.textColor = UIColor.black
-        yourLabel.text = name
-        yourLabel.sizeToFit()
-        yourLabel.isUserInteractionEnabled = true
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let section = SectionMap.sectionForIndex(section)
 
-        return yourLabel
-    }
-
-
-    @objc private func headerDidTap(_ tapGestureRecognizer: IdentifiedTapGestureRecognizer) {
-        if (thesis != nil  && delegate != nil) {
-            delegate!.onTeacherClick(id: tapGestureRecognizer.stringId)
+        switch section {
+        case .header: return 1
+        case .authors: return thesis?.authors.count ?? 0
+        case .supervisors: return thesis?.supervisors.count ?? 0
+        case .faculty: return 1
+        case .sectionSeparator: return 1
         }
     }
 
-    @objc private func facultyTapped(_ sender: UITapGestureRecognizer) {
-        if (thesis != nil) {
-            delegate!.onFacultyClick(id: thesis!.faculty.id)
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let section = SectionMap.sectionForIndex(section)
+
+        switch (section) {
+        case .header: return nil
+        case .authors: return sectionForTitle(StringHolder.authors)
+        case .supervisors: return sectionForTitle(StringHolder.supervisors)
+        case .faculty: return sectionForTitle(StringHolder.faculty)
+        case .sectionSeparator: return nil
         }
     }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let section = SectionMap.sectionForIndex(section)
+        switch section {
+        case .header: return 0.0
+        case .sectionSeparator: return 0.0
+        default: return ThesisCell.itemHeaderHeight
+        }
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let section = SectionMap.sectionForIndex(indexPath.section)
+        switch section {
+        case .header: return ThesisCell.headerCellHeight
+        case .sectionSeparator: return ThesisCell.sectionSeparatorHeight
+        default: return ThesisCell.itemCellHeight
+        }
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let section = SectionMap.sectionForIndex(indexPath.section)
+        switch section {
+        case .header: return headerCellForIndexPath(indexPath)
+        case .sectionSeparator : return sectionSeparatorForIndexPath(indexPath)
+        default: return itemCellForIndexPath(indexPath)
+        }
+    }
+
+    private func headerCellForIndexPath(_ indexPath: IndexPath) -> ThesisDetailHeaderCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: headerCellId, for: indexPath) as! ThesisDetailHeaderCell
+        cell.thesisTitleLabel.text = thesis?.title
+        cell.thesisTypeLabel.text = thesis?.type
+        return cell
+    }
+
+    private func itemCellForIndexPath(_ indexPath: IndexPath) -> ArrowedItemCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: itemCellId, for: indexPath) as! ArrowedItemCell
+        let section = SectionMap.sectionForIndex(indexPath.section)
+        let labelText: String?
+
+        switch section {
+        case .header: labelText = nil
+        case .authors: labelText = thesis?.authors[indexPath.row].getNameWithTitles()
+        case .supervisors: labelText = thesis?.supervisors[indexPath.row].getNameWithTitles()
+        case .faculty: labelText = thesis?.faculty.name
+        case .sectionSeparator: labelText = nil
+        }
+
+        cell.titleLabel.text = labelText
+        return cell
+    }
+
+    func sectionSeparatorForIndexPath(_ indexPath: IndexPath) -> SeparatorCell {
+        return tableView.dequeueReusableCell(withIdentifier: sectionSeparatorCellId, for: indexPath) as! SeparatorCell
+    }
+
+    func sectionForTitle(_ text: String) -> UIView {
+        let sectionView: SectionHeader = Bundle.main.loadNibNamed("SectionHeader", owner: nil, options: nil)?.first as! SectionHeader
+        sectionView.titleLabel.text = text
+        return sectionView
+    }
+
+    // MARK: - Table view delegate
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section = SectionMap.sectionForIndex(indexPath.section)
+        switch section {
+        case .authors:
+            if let authorId = thesis?.authors[indexPath.row].id {
+                delegate?.thesisCell(self, didTapAuthorWithId: authorId)
+            }
+        case .supervisors:
+            if let supervisorId = thesis?.supervisors[indexPath.row].id {
+                delegate?.thesisCell(self, didTapSupervisorWithId: supervisorId)
+            }
+        case .faculty:
+            if let facultyId = thesis?.faculty.id {
+                delegate?.thesisCell(self, didTapFacultyWithId: facultyId)
+            }
+        default: return
+        }
+    }
+
 }
+
+

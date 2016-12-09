@@ -47,7 +47,6 @@
 		4C0D81EAB6447F9ABA3B7AD5 /* CourseDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8AA6C79613D718788CD7 /* CourseDetails.swift */; };
 		4C0D82084D092C855DB2FB09 /* RestApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D82F54FFBE7F27B43632A /* RestApiManager.swift */; };
 		4C0D822A221FC02A3C2BD33E /* FacebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D86B6033E7743D91C115B /* FacebookManager.swift */; };
-		4C0D82315B5B0DC9C9E29542 /* ThesisClickProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D806244F3929CBDAA1404 /* ThesisClickProtocol.swift */; };
 		4C0D8247D1BF8BC9FBE086A2 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D884D5353B1F81B22B87B /* Lato-BoldItalic.ttf */; };
 		4C0D8272DA00131511B32AF8 /* CourseMenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D887AB4B1D38E360F5C55 /* CourseMenuItems.swift */; };
 		4C0D8276D4657EED0BD1B0C2 /* LecturersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8B67C9D01072853AF4B5 /* LecturersResponse.swift */; };
@@ -309,6 +308,14 @@
 		6631593E1DAE623600B0789B /* ThesisDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6631593D1DAE623600B0789B /* ThesisDetailTableViewController.swift */; };
 		663159411DAE6D7D00B0789B /* ThesisDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6631593F1DAE6D7D00B0789B /* ThesisDetailHeaderCell.swift */; };
 		663159421DAE6D7D00B0789B /* ThesisDetailHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 663159401DAE6D7D00B0789B /* ThesisDetailHeaderCell.xib */; };
+		665A2FEC1DFAC325000A1A9C /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665A2FEB1DFAC325000A1A9C /* SectionHeader.swift */; };
+		665A2FEE1DFAC338000A1A9C /* SectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 665A2FED1DFAC338000A1A9C /* SectionHeader.xib */; };
+		665A2FF91DFAC7A8000A1A9C /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665A2FF71DFAC7A8000A1A9C /* ItemCell.swift */; };
+		665A2FFA1DFAC7A8000A1A9C /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 665A2FF81DFAC7A8000A1A9C /* ItemCell.xib */; };
+		665A2FFD1DFAC87C000A1A9C /* ArrowedItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665A2FFB1DFAC87C000A1A9C /* ArrowedItemCell.swift */; };
+		665A2FFE1DFAC87C000A1A9C /* ArrowedItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 665A2FFC1DFAC87C000A1A9C /* ArrowedItemCell.xib */; };
+		665A30011DFACF5D000A1A9C /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665A2FFF1DFACF5D000A1A9C /* SeparatorCell.swift */; };
+		665A30021DFACF5D000A1A9C /* SeparatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 665A30001DFACF5D000A1A9C /* SeparatorCell.xib */; };
 		66645F3F1DC0D9E3000ACE62 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66645F3E1DC0D9E3000ACE62 /* MessageCell.xib */; };
 		66645F421DC0DD6C000ACE62 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66645F401DC0DD6C000ACE62 /* MessageDetailViewController.swift */; };
 		66645F431DC0DD6C000ACE62 /* MessageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66645F411DC0DD6C000ACE62 /* MessageDetailViewController.xib */; };
@@ -317,8 +324,6 @@
 		669B2F591DBE093E000AE02C /* CourseMeritsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B2F571DBE093E000AE02C /* CourseMeritsTableViewCell.swift */; };
 		669B2F5A1DBE093E000AE02C /* CourseMeritsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 669B2F581DBE093E000AE02C /* CourseMeritsTableViewCell.xib */; };
 		669B2F5C1DBE0973000AE02C /* CourseMeritsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B2F5B1DBE0973000AE02C /* CourseMeritsSection.swift */; };
-		669B89961DF99FB700492554 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B89941DF99FB700492554 /* ItemCell.swift */; };
-		669B89971DF99FB700492554 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 669B89951DF99FB700492554 /* ItemCell.xib */; };
 		669B899F1DF9A4D000492554 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 669B899E1DF9A4D000492554 /* SectionHeaderView.xib */; };
 		669B89A11DF9A51A00492554 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B89A01DF9A51A00492554 /* SectionHeaderView.swift */; };
 		66A2CBC91DC76C280049217C /* KujonRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A2CBC81DC76C280049217C /* KujonRefreshControl.swift */; };
@@ -363,7 +368,6 @@
 		4C0D800DE50A86489C4C7E74 /* Usos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usos.swift; sourceTree = "<group>"; };
 		4C0D8036A89B827020917722 /* LecturersSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturersSection.swift; sourceTree = "<group>"; };
 		4C0D80602A034144DDC1A379 /* ProgrammeProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammeProvider.swift; sourceTree = "<group>"; };
-		4C0D806244F3929CBDAA1404 /* ThesisClickProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesisClickProtocol.swift; sourceTree = "<group>"; };
 		4C0D806D09BD6C9327949956 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		4C0D80883A4507BB621D8A2F /* Unauthorized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unauthorized.swift; sourceTree = "<group>"; };
 		4C0D809A2804B4D3E100904E /* SingleProgramme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleProgramme.swift; sourceTree = "<group>"; };
@@ -667,6 +671,14 @@
 		6631593D1DAE623600B0789B /* ThesisDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesisDetailTableViewController.swift; sourceTree = "<group>"; };
 		6631593F1DAE6D7D00B0789B /* ThesisDetailHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesisDetailHeaderCell.swift; sourceTree = "<group>"; };
 		663159401DAE6D7D00B0789B /* ThesisDetailHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThesisDetailHeaderCell.xib; sourceTree = "<group>"; };
+		665A2FEB1DFAC325000A1A9C /* SectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SectionHeader.swift; path = ../ThesesTableViewController/Views/SectionHeader.swift; sourceTree = "<group>"; };
+		665A2FED1DFAC338000A1A9C /* SectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SectionHeader.xib; path = ../ThesesTableViewController/Views/SectionHeader.xib; sourceTree = "<group>"; };
+		665A2FF71DFAC7A8000A1A9C /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		665A2FF81DFAC7A8000A1A9C /* ItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
+		665A2FFB1DFAC87C000A1A9C /* ArrowedItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrowedItemCell.swift; path = ../ThesesTableViewController/Views/ArrowedItemCell.swift; sourceTree = "<group>"; };
+		665A2FFC1DFAC87C000A1A9C /* ArrowedItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ArrowedItemCell.xib; path = ../ThesesTableViewController/Views/ArrowedItemCell.xib; sourceTree = "<group>"; };
+		665A2FFF1DFACF5D000A1A9C /* SeparatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SeparatorCell.swift; path = ../ThesesTableViewController/Views/SeparatorCell.swift; sourceTree = "<group>"; };
+		665A30001DFACF5D000A1A9C /* SeparatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SeparatorCell.xib; path = ../ThesesTableViewController/Views/SeparatorCell.xib; sourceTree = "<group>"; };
 		66645F3E1DC0D9E3000ACE62 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		66645F401DC0DD6C000ACE62 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageDetailViewController.swift; path = ../Messages/MessageDetailViewController.swift; sourceTree = "<group>"; };
 		66645F411DC0DD6C000ACE62 /* MessageDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageDetailViewController.xib; path = ../Messages/MessageDetailViewController.xib; sourceTree = "<group>"; };
@@ -675,8 +687,6 @@
 		669B2F571DBE093E000AE02C /* CourseMeritsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseMeritsTableViewCell.swift; sourceTree = "<group>"; };
 		669B2F581DBE093E000AE02C /* CourseMeritsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseMeritsTableViewCell.xib; sourceTree = "<group>"; };
 		669B2F5B1DBE0973000AE02C /* CourseMeritsSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseMeritsSection.swift; sourceTree = "<group>"; };
-		669B89941DF99FB700492554 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
-		669B89951DF99FB700492554 /* ItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 		669B899E1DF9A4D000492554 /* SectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		669B89A01DF9A51A00492554 /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		66A2CBC81DC76C280049217C /* KujonRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KujonRefreshControl.swift; sourceTree = "<group>"; };
@@ -1237,7 +1247,7 @@
 				66645F441DC0DDA2000ACE62 /* MessageDetail */,
 				661CA6711DBF7CA20002AF79 /* MessagesList */,
 				663159391DAE61AA00B0789B /* ThesisDetail */,
-				66D506471DA69CB800B5CE1B /* ThesesTableViewController */,
+				66D506471DA69CB800B5CE1B /* ThesesDetailedList */,
 				0AB1920E1D4AB84900834773 /* WebViewPresentation */,
 				52AF77A31D095C390058979A /* ContainerViewController.swift */,
 				52AF77A71D095CBF0058979A /* LeftMenuTableViewController.swift */,
@@ -1400,6 +1410,12 @@
 		4C0D8CFE9097F39B6001CF67 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				665A2FFF1DFACF5D000A1A9C /* SeparatorCell.swift */,
+				665A30001DFACF5D000A1A9C /* SeparatorCell.xib */,
+				665A2FEB1DFAC325000A1A9C /* SectionHeader.swift */,
+				665A2FED1DFAC338000A1A9C /* SectionHeader.xib */,
+				665A2FFB1DFAC87C000A1A9C /* ArrowedItemCell.swift */,
+				665A2FFC1DFAC87C000A1A9C /* ArrowedItemCell.xib */,
 				52AF77BD1D0984FC0058979A /* MenuItemTableViewCell.swift */,
 				52AF77BE1D0984FC0058979A /* MenuItemTableViewCell.xib */,
 				4C0D8C187B6E373F3877BF63 /* GoFurtherViewCellTableViewCell.xib */,
@@ -1549,24 +1565,24 @@
 		66D12E0B1DEE2D8700235320 /* KierunekDetail */ = {
 			isa = PBXGroup;
 			children = (
+				665A2FF71DFAC7A8000A1A9C /* ItemCell.swift */,
+				665A2FF81DFAC7A8000A1A9C /* ItemCell.xib */,
 				66D12E0C1DEE2E2000235320 /* KierunekDetailViewController.swift */,
 				66D12E0E1DEE42E500235320 /* KierunekHeaderCell.swift */,
 				66D12E0F1DEE42E500235320 /* KierunekHeaderCell.xib */,
-				669B89941DF99FB700492554 /* ItemCell.swift */,
-				669B89951DF99FB700492554 /* ItemCell.xib */,
 				669B899E1DF9A4D000492554 /* SectionHeaderView.xib */,
 				669B89A01DF9A51A00492554 /* SectionHeaderView.swift */,
 			);
 			path = KierunekDetail;
 			sourceTree = "<group>";
 		};
-		66D506471DA69CB800B5CE1B /* ThesesTableViewController */ = {
+		66D506471DA69CB800B5CE1B /* ThesesDetailedList */ = {
 			isa = PBXGroup;
 			children = (
 				66D506521DA6BD7300B5CE1B /* Views */,
 				66D506481DA69CD300B5CE1B /* ThesesTableViewController.swift */,
-				4C0D806244F3929CBDAA1404 /* ThesisClickProtocol.swift */,
 			);
+			name = ThesesDetailedList;
 			path = ThesesTableViewController;
 			sourceTree = "<group>";
 		};
@@ -1680,7 +1696,6 @@
 				ORGANIZATIONNAME = Mobi;
 				TargetAttributes = {
 					4C0D876E78B6409220622356 = {
-						DevelopmentTeam = KBHT45SF63;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1736,11 +1751,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				66F4BC6B1DB2597000425E39 /* Podfile in Resources */,
+				665A2FFE1DFAC87C000A1A9C /* ArrowedItemCell.xib in Resources */,
 				669B899F1DF9A4D000492554 /* SectionHeaderView.xib in Resources */,
 				527B39BC1D12A0260028BCF9 /* TeacherDetailTableViewController.xib in Resources */,
 				0A42914C1D409659006D6DAB /* GoogleService-Info.plist in Resources */,
+				665A2FFA1DFAC7A8000A1A9C /* ItemCell.xib in Resources */,
 				669B2F5A1DBE093E000AE02C /* CourseMeritsTableViewCell.xib in Resources */,
-				669B89971DF99FB700492554 /* ItemCell.xib in Resources */,
 				527A0EC31DA426A7003A251A /* SearchResultTableViewController.xib in Resources */,
 				0AB192141D4AB8E800834773 /* WebViewController.xib in Resources */,
 				526750421D214A7B004AD243 /* CoursePopUpViewController.xib in Resources */,
@@ -1760,6 +1776,7 @@
 				4C0D8EE504A6F04F1B414751 /* Schedule.json in Resources */,
 				52AF77D81D0AD83A0058979A /* ShareViewController.xib in Resources */,
 				523B4FDE1D2BD090005FA79F /* TextViewController.xib in Resources */,
+				665A30021DFACF5D000A1A9C /* SeparatorCell.xib in Resources */,
 				52590A7F1D1D1F0C00C285A0 /* GradesTableViewController.xib in Resources */,
 				4C0D8665D94A08D7002946B8 /* Courses.json in Resources */,
 				4C0D85F69F40F41D39640CFD /* Grades.json in Resources */,
@@ -1806,6 +1823,7 @@
 				4C0D8E7C2F8E9C4975AA3606 /* Lato-HeavyItalic.ttf in Resources */,
 				4C0D8C6232B539463B9C44FF /* Lato-Italic.ttf in Resources */,
 				4C0D82983500855989BA22B8 /* Lato-Light.ttf in Resources */,
+				665A2FEE1DFAC338000A1A9C /* SectionHeader.xib in Resources */,
 				4C0D851B8EF18E75A2D6E5C2 /* Lato-LightItalic.ttf in Resources */,
 				4C0D81232D2C18BCBF411F54 /* Lato-Medium.ttf in Resources */,
 				5246F67D1D902276007AEC0A /* LoginViewController.xib in Resources */,
@@ -2071,6 +2089,7 @@
 				66D506551DA6BD9000B5CE1B /* ThesisCell.swift in Sources */,
 				669B2F591DBE093E000AE02C /* CourseMeritsTableViewCell.swift in Sources */,
 				4C0D8276D4657EED0BD1B0C2 /* LecturersResponse.swift in Sources */,
+				665A30011DFACF5D000A1A9C /* SeparatorCell.swift in Sources */,
 				4C0D853633AEE49F996B454C /* CourseEdition.swift in Sources */,
 				662DAFED1DAC14150094867E /* String+.swift in Sources */,
 				4C0D8A432E3EC531C1FE79D7 /* UIColorExtensions.swift in Sources */,
@@ -2093,6 +2112,7 @@
 				527B39BB1D12A0260028BCF9 /* TeacherDetailTableViewController.swift in Sources */,
 				4C0D8BDDC17EAD30A73324A2 /* FacultiesProvider.swift in Sources */,
 				4C0D81849DAA7ACD6F8A1D47 /* JsonDataLoader.swift in Sources */,
+				665A2FFD1DFAC87C000A1A9C /* ArrowedItemCell.swift in Sources */,
 				4C0D8436123E61F0F64C9F9C /* UserDataHolder.swift in Sources */,
 				662DAFE71DAC0FCD0094867E /* SearchResultsCell.swift in Sources */,
 				52574A6D1D59DA9F009B8D08 /* NavDrawerHeaderViewCellTableViewCell.swift in Sources */,
@@ -2149,6 +2169,7 @@
 				4C0D88792066D89E9F575D88 /* CourseDetailsResponse.swift in Sources */,
 				520660E71D65BDCA004B92B3 /* IntroScreenViewController.swift in Sources */,
 				4C0D8865A1374C99A2108524 /* CourseDetailsProvider.swift in Sources */,
+				665A2FF91DFAC7A8000A1A9C /* ItemCell.swift in Sources */,
 				4C0D8084FED3B93B5DD390BF /* SectionHelperProtocol.swift in Sources */,
 				66A2CBC91DC76C280049217C /* KujonRefreshControl.swift in Sources */,
 				4C0D862153C6686FBD53CC28 /* NameSection.swift in Sources */,
@@ -2158,6 +2179,7 @@
 				4C0D856CA1862322B3D1912C /* ToastView.swift in Sources */,
 				528BCAB91D5DE79500A9E49C /* MapTableViewCell.swift in Sources */,
 				4C0D828E1DD05D4C0DC9B2C5 /* ViewControllerExtension.swift in Sources */,
+				665A2FEC1DFAC325000A1A9C /* SectionHeader.swift in Sources */,
 				4C0D849FA2451A132AA4F744 /* UserDetailsTableViewCell.swift in Sources */,
 				4C0D8AFBB3E6BD77C90E41D9 /* CycleSection.swift in Sources */,
 				661CA6781DBF7D4E0002AF79 /* MessageCell.swift in Sources */,
@@ -2182,7 +2204,6 @@
 				4C0D8F3F7FF39000760EEB08 /* ErrorClass.swift in Sources */,
 				669B2F5C1DBE0973000AE02C /* CourseMeritsSection.swift in Sources */,
 				4C0D831E6FE91FD824774043 /* UserLogin.swift in Sources */,
-				669B89961DF99FB700492554 /* ItemCell.swift in Sources */,
 				4C0D86610EB3A7F8698DCC56 /* CALayerExtensions.swift in Sources */,
 				4C0D8E79EF248F656D747BE4 /* ConfigResponse.swift in Sources */,
 				66645F421DC0DD6C000ACE62 /* MessageDetailViewController.swift in Sources */,
@@ -2233,7 +2254,6 @@
 				4C0D87A318BE65E36EAF2762 /* SuperUserProvider.swift in Sources */,
 				4C0D82F9F37B3007827AE2EC /* SuperUserDetails.swift in Sources */,
 				4C0D8D30C74046B707A38B99 /* SuperUserResponse.swift in Sources */,
-				4C0D82315B5B0DC9C9E29542 /* ThesisClickProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2288,7 +2308,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Wojciech Smolkowski (KBHT45SF63)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = KBHT45SF63;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2411,7 +2431,7 @@
 				CODE_SIGN_ENTITLEMENTS = Kujon/Kujon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Wojciech Smolkowski (KBHT45SF63)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = KBHT45SF63;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

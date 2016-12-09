@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThesesTableViewController: UITableViewController,ThesisClickProtocol {
+class ThesesTableViewController: UITableViewController, ThesisCellDelegate {
 
     var theses: [Thesis]?
     private let cellId = "ThesisCell"
@@ -24,7 +24,7 @@ class ThesesTableViewController: UITableViewController,ThesisClickProtocol {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 400
         tableView.separatorStyle = .none
-        tableView.backgroundColor = .lightGray()
+        tableView.backgroundColor = UIColor.greyBackgroundColor()
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,6 +42,10 @@ class ThesesTableViewController: UITableViewController,ThesisClickProtocol {
         return theses?.count ?? 0
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let thesis = theses?[indexPath.row]
+        return ThesisCell.calculateCellHeightForThesis(thesis!)
+    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ThesisCell
@@ -50,15 +54,23 @@ class ThesesTableViewController: UITableViewController,ThesisClickProtocol {
         return cell
     }
 
-    func onFacultyClick(id: String) {
+    // MARK: ThesisCellDelegate
+
+    func thesisCell(_ cell: ThesisCell, didTapFacultyWithId id: String) {
         let faculiteController = FacultieTableViewController(nibName: "FacultieTableViewController", bundle: Bundle.main)
         faculiteController.facultieId = id
         self.navigationController?.pushViewController(faculiteController, animated: true)
     }
 
-    func onTeacherClick(id: String) {
+    func thesisCell(_ cell: ThesisCell, didTapSupervisorWithId id: String) {
         let controller = TeacherDetailTableViewController(nibName: "TeacherDetailTableViewController", bundle: Bundle.main)
         controller.teacherId = id
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+
+    func thesisCell(_ cell: ThesisCell, didTapAuthorWithId id: String) {
+        let controller = StudentDetailsTableViewController(nibName: "StudentDetailsTableViewController", bundle: Bundle.main)
+        controller.userId = id
         self.navigationController?.pushViewController(controller, animated: true)
     }
 
