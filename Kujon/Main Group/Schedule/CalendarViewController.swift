@@ -21,6 +21,7 @@ class CalendarViewController: MGCDayPlannerViewController,
     var veryFirstDate: Date! = nil
     var lectureProvider = ProvidersProviderImpl.sharedInstance.provideLectureProvider()
     private let floatingButtonDelegate = FloatingButtonDelegate()
+    var spinner: SpinnerView!
 
 
     func setNavigationProtocol(_ delegate: NavigationMenuProtocol) {
@@ -33,9 +34,7 @@ class CalendarViewController: MGCDayPlannerViewController,
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(CalendarViewController.openDrawer), andTitle: StringHolder.schedule)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "reload-icon"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(CalendarViewController.reload))
 
-//        let openCalendarButton = UIBarButtonItem(image: UIImage(named: "calendar-list"), style: UIBarButtonItemStyle.Plain, target: self,
-//                action: #selector(CalendarViewController.openList))
-//        self.navigationItem.rightBarButtonItem = openCalendarButton
+
         self.edgesForExtendedLayout = UIRectEdge()
         self.dayPlannerView.numberOfVisibleDays = 3
         self.dayPlannerView.daySeparatorsColor = UIColor.calendarSeparatorColor()
@@ -43,14 +42,14 @@ class CalendarViewController: MGCDayPlannerViewController,
         self.dayPlannerView.dateFormat = calendarDateFormant
         self.dayPlannerView.showsAllDayEvents = false
         (self.dayPlannerView as MGCDayPlannerView).hourRange = NSRange(location: 6, length: 16)
-
         if (lastQueryDate == nil) {
             lastQueryDate = Date.getCurrentStartOfWeek()
         }
-//        lastQueryDate = NSDate.stringToDate("2015-05-05")
+        lectureProvider.loadLectures(lastQueryDate.dateToString())
         veryFirstDate = lastQueryDate
         dateFormatter.dateFormat = calendarDateFormant
         lectureProvider.delegate = self
+
         self.dayPlannerView.scroll(to: lastQueryDate, options: MGCDayPlannerScrollType.date, animated: false)
         _ = EKEventStore()
     }
@@ -64,6 +63,7 @@ class CalendarViewController: MGCDayPlannerViewController,
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.floatingButtonDelegate.viewWillAppear(self, selector: #selector(CalendarViewController.onTodayClick))
+        addSpinnerView(hidden: true)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -78,12 +78,21 @@ class CalendarViewController: MGCDayPlannerViewController,
 
     func reload() {
         onlyLectureDictionary = [:]
+        dayPlannerView.reloadAllEvents()
         askForData(Date())
     }
 
-    private func askForData(_ firstDate: Date! = nil) {
-        if (firstDate != nil) {
+    private func addSpinnerView(hidden:Bool) {
+        spinner = SpinnerView()
+        spinner.frame.origin = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
+        spinner.frame.size = CGSize(width: 50.0, height: 50.0)
+        spinner.isHidden = hidden
+        view.insertSubview(spinner, aboveSubview: dayPlannerView)
+    }
 
+    private func askForData(_ firstDate: Date! = nil) {
+        spinner.isHidden = false
+        if (firstDate != nil) {
             lectureProvider.loadLectures(firstDate.dateToString())
         } else {
             lectureProvider.loadLectures(self.lastQueryDate.dateToString())
@@ -109,15 +118,18 @@ class CalendarViewController: MGCDayPlannerViewController,
                 onlyLectureDictionary[day] = dict[day]
             }
         }
-
+        spinner.isHidden = true
+        dayPlannerView.reloadAllEvents()
     }
 
     func onErrorOccurs() {
+        spinner.isHidden = true
         ToastView.showInParent(self.navigationController?.view, withText: StringHolder.errorOccures, forDuration: 2.0)
     }
 
 
     func onErrorOccurs(_ text: String) {
+        spinner.isHidden = true
         ToastView.showInParent(self.navigationController?.view, withText: text, forDuration: 2.0)
     }
 
