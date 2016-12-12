@@ -41,6 +41,7 @@ class CalendarViewController: MGCDayPlannerViewController,
         self.dayPlannerView.timeSeparatorsColor = UIColor.calendarSeparatorColor()
         self.dayPlannerView.dateFormat = calendarDateFormant
         self.dayPlannerView.showsAllDayEvents = false
+        dayPlannerView.hourSlotHeight = 50.0
         (self.dayPlannerView as MGCDayPlannerView).hourRange = NSRange(location: 6, length: 16)
         if (lastQueryDate == nil) {
             lastQueryDate = Date.getCurrentStartOfWeek()
