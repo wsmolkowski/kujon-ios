@@ -120,6 +120,7 @@ class CalendarViewController: MGCDayPlannerViewController,
         }
         spinner.isHidden = true
         dayPlannerView.reloadAllEvents()
+        self.dayPlannerView.scroll(to: Date(), options: MGCDayPlannerScrollType.date, animated: false)
     }
 
     func onErrorOccurs() {
