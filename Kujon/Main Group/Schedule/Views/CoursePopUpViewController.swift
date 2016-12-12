@@ -38,7 +38,7 @@ class CoursePopUpViewController: PopUpViewController {
         okButton.addTopBorder( UIColor.lightGray(), width: 1)
         showCourseButton.addTopBorder( UIColor.lightGray(), width: 1)
         let lecture = lectureWrap.lecture
-        let string = lectureWrap.startTime + ":" + lectureWrap.endTime + "\n " + createNiceString(StringHolder.classRoom,two: lecture.roomNumber) +
+        let string = lectureWrap.startTime + " - " + lectureWrap.endTime + "\n " + createNiceString(StringHolder.classRoom,two: lecture.roomNumber) +
                  " \n " + createNiceString(StringHolder.bulding,two: lecture.buldingName) + " \n " +
                 createNiceString(StringHolder.group,two: String(lecture.groupNumber)) + " \n " +
                 createNiceString(StringHolder.type,two: lecture.type)
