@@ -51,7 +51,7 @@ class CalendarViewController: MGCDayPlannerViewController,
         dateFormatter.dateFormat = calendarDateFormant
         lectureProvider.delegate = self
 
-        self.dayPlannerView.scroll(to: lastQueryDate, options: MGCDayPlannerScrollType.date, animated: false)
+        self.dayPlannerView.scroll(to: lastQueryDate, options: MGCDayPlannerScrollType.dateTime, animated: false)
         _ = EKEventStore()
     }
 
@@ -121,7 +121,7 @@ class CalendarViewController: MGCDayPlannerViewController,
         }
         spinner.isHidden = true
         dayPlannerView.reloadAllEvents()
-        self.dayPlannerView.scroll(to: Date(), options: MGCDayPlannerScrollType.date, animated: false)
+        self.dayPlannerView.scroll(to: Date(), options: MGCDayPlannerScrollType.dateTime, animated: false)
     }
 
     func onErrorOccurs() {
