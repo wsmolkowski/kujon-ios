@@ -22,6 +22,7 @@ class CalendarViewController: MGCDayPlannerViewController,
     var lectureProvider = ProvidersProviderImpl.sharedInstance.provideLectureProvider()
     private let floatingButtonDelegate = FloatingButtonDelegate()
     var spinner: SpinnerView!
+    private var isReload: Bool = false
 
 
     func setNavigationProtocol(_ delegate: NavigationMenuProtocol) {
@@ -80,6 +81,7 @@ class CalendarViewController: MGCDayPlannerViewController,
     func reload() {
         onlyLectureDictionary = [:]
         dayPlannerView.reloadAllEvents()
+        isReload = true
         askForData(Date())
     }
 
@@ -121,7 +123,11 @@ class CalendarViewController: MGCDayPlannerViewController,
         }
         spinner.isHidden = true
         dayPlannerView.reloadAllEvents()
-        self.dayPlannerView.scroll(to: Date(), options: MGCDayPlannerScrollType.dateTime, animated: false)
+        if isReload {
+            self.dayPlannerView.scroll(to: Date(), options: MGCDayPlannerScrollType.dateTime, animated: false)
+            lastQueryDate = Date.getCurrentStartOfWeek()
+            isReload = false
+        }
     }
 
     func onErrorOccurs() {
