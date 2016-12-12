@@ -31,6 +31,10 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
         updateNotificationsSwitchState()
         NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.appDidBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         updateCalendarSyncSwitchState()
+        if !userData.areSettingsLoaded {
+            settingsProvider.loadSettings()
+            self.spinner.isHidden = false
+        }
     }
 
     deinit {
@@ -140,6 +144,7 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
 
     func settingsDidLoad(_ settings: Settings) {
         updateCalendarSyncSwitchState()
+        self.spinner.isHidden = true
     }
 
     func calendarSyncronizationSettingDidSucceed() {

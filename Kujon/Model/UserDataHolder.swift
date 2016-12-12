@@ -110,7 +110,8 @@ class UserDataHolder {
         }
     }
 
-    var didSetUpInitialConfiguration: Bool = false
+    var isConfigLoaded: Bool = false
+    var areSettingsLoaded: Bool = false
 
 
     var userImage:UIImage! = nil

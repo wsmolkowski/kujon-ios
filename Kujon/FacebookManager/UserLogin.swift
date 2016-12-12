@@ -62,6 +62,7 @@ extension UserLogin{
         userData.userToken = nil
         userData.userImage = nil
         userData.userName = nil
-        UserDataHolder.sharedInstance.didSetUpInitialConfiguration = false
+        UserDataHolder.sharedInstance.isConfigLoaded = false
+        UserDataHolder.sharedInstance.areSettingsLoaded = false
     }
 }

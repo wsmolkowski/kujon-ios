@@ -39,22 +39,26 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
     }
 
     var endpointURL: String = SettingsEndpoint.getSettings.rawValue
-
     weak var delegate: SettingsProviderDelegate?
+    let userData = UserDataHolder.sharedInstance
 
     func loadSettings() {
         endpointURL = SettingsEndpoint.getSettings.rawValue
-        makeHTTPAuthenticatedGetRequest({ data in
-            if let response = try! self.changeJsonToResposne(data, errorR:self.delegate),
+        makeHTTPAuthenticatedGetRequest({ [weak self] data in
+            if let response = try! self?.changeJsonToResposne(data, errorR: self?.delegate),
                 let settings: Settings = response.data {
-                UserDataHolder.sharedInstance.isCalendarSyncEnabled = settings.calendarSyncEnabled ?? false
-                UserDataHolder.sharedInstance.pushNotificationsEnabled = settings.pushNotificationsEnabled ?? false
-                self.delegate?.settingsDidLoad(settings)
+                self?.userData.isCalendarSyncEnabled = settings.calendarSyncEnabled ?? false
+                self?.userData.pushNotificationsEnabled = settings.pushNotificationsEnabled ?? false
+                self?.userData.areSettingsLoaded = true
+                if self?.userData.pushNotificationsEnabled != NotificationsManager.pushNotificationsEnabled() {
+                    self?.setPushNotifications(enabled: NotificationsManager.pushNotificationsEnabled())
+                }
+                self?.delegate?.settingsDidLoad(settings)
             } else {
-                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
             }
-        }, onError: { text in
-            self.delegate?.onErrorOccurs(text)
+        }, onError: { [weak self] text in
+            self?.delegate?.onErrorOccurs(text)
         })
     }
 

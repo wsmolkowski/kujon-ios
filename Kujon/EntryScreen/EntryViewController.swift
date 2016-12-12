@@ -19,8 +19,7 @@ class EntryViewController: UIViewController,
         ConfigProviderDelegate,
         OpenLoginScreenProtocol,
         UsosesTableViewControllerDelegate,
-        LogoutProviderDelegate,
-        SettingsProviderDelegate {
+        LogoutProviderDelegate {
 
     let googleSignInManager = GIDSignIn.sharedInstance()
 
@@ -71,7 +70,7 @@ class EntryViewController: UIViewController,
         loginButton.tooltipColorStyle = .neutralGray
 
         logoutProvider.delegate = self
-        settingsProvider.delegate = self
+        settingsProvider.delegate = nil
 
     }
 
@@ -128,11 +127,10 @@ class EntryViewController: UIViewController,
     func onFacebookCredentailSaved(_ isLogged: Bool) {
         socialLogin = true
         spinnerView.isHidden = false
-        if !UserDataHolder.sharedInstance.didSetUpInitialConfiguration {
+        if !UserDataHolder.sharedInstance.isConfigLoaded {
             self.configProvider.checkConfig()
-            settingsProvider.loadSettings()
             OneSignal.defaultClient().sendTag(Constants.OneSignal.userEmailTag,  value: UserDataHolder.sharedInstance.userEmail)
-            UserDataHolder.sharedInstance.didSetUpInitialConfiguration = true
+            UserDataHolder.sharedInstance.isConfigLoaded = true
         }
     }
 
@@ -146,6 +144,9 @@ class EntryViewController: UIViewController,
     }
 
     func pairedWithUsos() {
+        if !UserDataHolder.sharedInstance.areSettingsLoaded {
+            settingsProvider.loadSettings()
+        }
         spinnerView.isHidden = true
         self.present(ContainerViewController(), animated: true, completion: nil)
     
@@ -201,21 +202,6 @@ class EntryViewController: UIViewController,
         self.navigationController?.pushViewController(controller, animated: true)
     }
 
-    func settingsDidLoad(_ settings: Settings) {
-        self.spinnerView.isHidden = true
-        if UserDataHolder.sharedInstance.pushNotificationsEnabled != NotificationsManager.pushNotificationsEnabled() {
-            self.spinnerView.isHidden = false
-            settingsProvider.setPushNotifications(enabled: NotificationsManager.pushNotificationsEnabled())
-        }
-    }
-
-    func pushNotificationsSettingDidSucceed() {
-        self.spinnerView.isHidden = true
-    }
-
-    func calendarSyncronizationSettingDidSucceed() {
-        self.spinnerView.isHidden = true
-    }
 
     //MARK: UsosesTableViewControllerDelegate
 
