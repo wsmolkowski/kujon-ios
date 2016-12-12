@@ -52,7 +52,6 @@ class CalendarViewController: MGCDayPlannerViewController,
         dateFormatter.dateFormat = calendarDateFormant
         lectureProvider.delegate = self
 
-        self.dayPlannerView.scroll(to: lastQueryDate, options: MGCDayPlannerScrollType.dateTime, animated: false)
         _ = EKEventStore()
     }
 
@@ -66,6 +65,7 @@ class CalendarViewController: MGCDayPlannerViewController,
         super.viewDidAppear(animated)
         self.floatingButtonDelegate.viewWillAppear(self, selector: #selector(CalendarViewController.onTodayClick))
         addSpinnerView(hidden: true)
+        self.dayPlannerView.scroll(to: Date(), options: MGCDayPlannerScrollType.dateTime, animated: true)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -74,7 +74,7 @@ class CalendarViewController: MGCDayPlannerViewController,
     }
 
     func onTodayClick() {
-        self.dayPlannerView.scroll(to: Date(), options: MGCDayPlannerScrollType.date, animated: false)
+        self.dayPlannerView.scroll(to: Date(), options: MGCDayPlannerScrollType.dateTime, animated: true)
 
     }
 
@@ -124,7 +124,7 @@ class CalendarViewController: MGCDayPlannerViewController,
         spinner.isHidden = true
         dayPlannerView.reloadAllEvents()
         if isReload {
-            self.dayPlannerView.scroll(to: Date(), options: MGCDayPlannerScrollType.dateTime, animated: false)
+            self.dayPlannerView.scroll(to: Date(), options: MGCDayPlannerScrollType.dateTime, animated: true)
             lastQueryDate = Date.getCurrentStartOfWeek()
             isReload = false
         }
