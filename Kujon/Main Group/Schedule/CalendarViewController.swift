@@ -90,7 +90,7 @@ class CalendarViewController: MGCDayPlannerViewController,
         spinner.frame.origin = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
         spinner.frame.size = CGSize(width: 50.0, height: 50.0)
         spinner.isHidden = hidden
-        view.insertSubview(spinner, aboveSubview: dayPlannerView)
+        view.addSubview(spinner)
     }
 
     private func askForData(_ firstDate: Date! = nil) {
