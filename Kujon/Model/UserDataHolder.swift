@@ -11,6 +11,7 @@ class UserDataHolder {
 
     private  let LOGGED_KEY = "is_logged_key"
     private  let EMAIL_KEY = "email_key"
+    private  let EMAIL_REMEMBERED_KEY = "email_remembered_key"
     private  let TOKEN_KEY = "token_key"
     private  let USOS_IMAGE_KEY = "usos_image_key"
     private  let LOGIN_TYPE_KEY = "login_type_traalalal_key"
@@ -40,6 +41,15 @@ class UserDataHolder {
         }
         set(newEmail) {
             self.standardSetter(&loadedEmail, newValue: newEmail,key: EMAIL_KEY)
+        }
+    }
+
+    var userEmailRemembered: String! {
+        get {
+            return standardGetter(&loadedEmail,key: EMAIL_REMEMBERED_KEY)
+        }
+        set(newEmail) {
+            self.standardSetter(&loadedEmail, newValue: newEmail,key: EMAIL_REMEMBERED_KEY)
         }
     }
 

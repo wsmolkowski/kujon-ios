@@ -42,11 +42,13 @@ extension JsonProviderProtocol {
     private func switchOverCodes(_ code: Int, text: String, errorR: ErrorResponseProtocol) {
         switch code {
         case 401:
-            errorR.unauthorized(text)
-            break;
+            if errorR is LoginProviderDelegate {
+                errorR.onErrorOccurs(text)
+            } else {
+                errorR.unauthorized(text)
+            }
         default:
             errorR.onErrorOccurs(text)
-            break;
         }
     }
 }

@@ -16,8 +16,9 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
     weak var delegeta: OnFacebookCredentailSaved! = nil
     var loginProvider = ProvidersProviderImpl.sharedInstance.provideLoginProvider()
     let emailManager = EmailManager.sharedInstance
-    var email:String = ""
+    var email:String = UserDataHolder.sharedInstance.userEmailRemembered ?? ""
     private let checker = Checker()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(RegisterViewController.back), andTitle: StringHolder.loggin2)
@@ -38,7 +39,8 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
 
 
     func onLoginResponse(_ token: String) {
-        self.back()
+        let _ = navigationController?.popViewController(animated: true)
+        UserDataHolder.sharedInstance.userEmailRemembered = email
         emailManager.login(email, token: token,listener: delegeta)
     }
 
