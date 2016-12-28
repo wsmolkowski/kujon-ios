@@ -19,6 +19,7 @@ class KierunekDetailViewController: UITableViewController {
         case id
         case mode
         case ectsUsedSum
+        case description
 
         static func sectionForIndex(_ index:Int) -> SectionMap {
             if let section = SectionMap(rawValue: index) {
@@ -36,7 +37,7 @@ class KierunekDetailViewController: UITableViewController {
     private let headerCellId: String = "headerCellId"
     private let headerCellHeight: CGFloat = 80.0
 
-    private let sectionsCount: Int = 6
+    private let sectionsCount: Int = 7
 
     var programme: Programme?
 
@@ -52,6 +53,9 @@ class KierunekDetailViewController: UITableViewController {
 
         tableView.register(UINib(nibName: "ItemCell", bundle: nil), forCellReuseIdentifier: itemCellId)
         tableView.register(UINib(nibName: "KierunekHeaderCell", bundle: nil), forCellReuseIdentifier: headerCellId)
+
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 50
     }
 
     // MARK: - Table view data source
@@ -79,6 +83,7 @@ class KierunekDetailViewController: UITableViewController {
         case .id: labelText = StringHolder.identificator
         case .mode: labelText = StringHolder.tryb
         case .ectsUsedSum: labelText = StringHolder.ectsPoints
+        case .description: labelText = StringHolder.description
         }
 
         header.headerLabel.text = labelText
@@ -107,6 +112,7 @@ class KierunekDetailViewController: UITableViewController {
         case .id: labelText = programme?.id
         case .mode: labelText = programme?.modeOfStudies
         case .ectsUsedSum: labelText = programme?.ectsUsedSum == nil ? nil : "\(programme!.ectsUsedSum!)"
+        case .description: labelText = programme?.description
         default: fatalError("Invalid indexpath")
         }
 
@@ -118,11 +124,11 @@ class KierunekDetailViewController: UITableViewController {
         let section = SectionMap.sectionForIndex(section)
         return section == .header ? 0.0 : itemHeaderHeight
     }
-
+/*
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let section = SectionMap.sectionForIndex(indexPath.section)
         return section == .header ? headerCellHeight : itemCellHeight
     }
-
+*/
 
  }
