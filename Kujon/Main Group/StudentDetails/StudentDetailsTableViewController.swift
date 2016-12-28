@@ -114,7 +114,6 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
         cell.studentNameLabel.text = self.userDetails.firstName + " " + userDetails.lastName
         cell.studentStatusLabel.text = self.userDetails.studentStatus
         cell.studentAccountLabel.text = self.userDetails.id
-        cell.studentIndexLabel.text = self.userDetails.studentNumber
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         return cell
     }
