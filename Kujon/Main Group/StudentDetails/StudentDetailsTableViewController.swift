@@ -20,7 +20,8 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
     var studentProgrammes: Array<StudentProgramme> = Array()
     var userDetails: UserDetail! = nil
     var userId: String! = nil
-    var isThereImage = false
+    var isImageLoaded = false
+    var isImageRequested: Bool = false
 
 
     override func viewDidLoad() {
@@ -101,8 +102,9 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
     private func studentCellConfigure(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: headerCellId, for: indexPath) as! StudentHeaderTableViewCell
         cell.studentImageView.image = UIImage(named: "user-placeholder")
-        if (self.userDetails.photoUrl != nil) {
+        if self.userDetails.photoUrl != nil && isImageRequested == false{
             self.restImageProvider.loadImage("", urlString: self.userDetails.photoUrl!, onImageLoaded: self)
+            isImageRequested = true
 
         }
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(StudentDetailsTableViewController.imageTapped))
@@ -130,14 +132,14 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
         if let cell = self.tableView.cellForRow(at: IndexPath(item: 0, section: 0)) {
             (cell as! StudentHeaderTableViewCell).studentImageView.image = image
             (cell as! StudentHeaderTableViewCell).studentImageView.makeMyselfCircle()
-            isThereImage = true
+            isImageLoaded = true
         }
 
     }
 
     func imageTapped(_ sender: UITapGestureRecognizer) {
         print(sender.view?.tag as Any)
-        if (isThereImage) {
+        if (isImageLoaded) {
             if let cell = self.tableView.cellForRow(at: IndexPath(item: 0, section: 0)) {
                 let imageController = ImageViewController(nibName: "ImageViewController", bundle: Bundle.main)
                 imageController.image = (cell as! StudentHeaderTableViewCell).studentImageView.image
