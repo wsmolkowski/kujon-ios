@@ -28,11 +28,12 @@ extension UIViewController {
     }
 
 
-    func showAlertApi(_ title: String, text: String, show: Bool = true, succes: @escaping () -> Void, cancel: @escaping () -> Void ) {
-        let text2 = show ? text + " Czy chcesz spróbować ponownie ?" : text;
+    func showAlertApi(_ title: String, text: String, show: Bool = true, addRetryQuestion:Bool = true, actionButtonStyle:UIAlertActionStyle = .default, succes: @escaping () -> Void, cancel: @escaping () -> Void ) {
+        let actionQuestion:String = addRetryQuestion ? " Czy chcesz spróbować ponownie ?" : ""
+        let text2 = show ? text + actionQuestion : text;
         let alertController = UIAlertController(title: title, message: text2, preferredStyle: .alert)
         if (show) {
-            alertController.addAction(UIAlertAction(title: "Tak", style: .default, handler: {
+            alertController.addAction(UIAlertAction(title: "Tak", style: actionButtonStyle, handler: {
                 (action: UIAlertAction!) in
                 alertController.dismiss(animated: true, completion: nil)
                 succes()

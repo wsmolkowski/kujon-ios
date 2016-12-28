@@ -71,7 +71,7 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
     }
 
     @IBAction func deleteAccountButtonDidTap(_ sender: AnyObject) {
-        showAlertApi(StringHolder.attention, text: StringHolder.deleteAccount, succes: { [weak self] in
+        showAlertApi(StringHolder.attention, text: StringHolder.deleteAccount, addRetryQuestion:false, actionButtonStyle: .destructive, succes: { [weak self] in
             self?.spinner.isHidden = false
             self?.deleteAccountProvider.deleteAccount()
 
