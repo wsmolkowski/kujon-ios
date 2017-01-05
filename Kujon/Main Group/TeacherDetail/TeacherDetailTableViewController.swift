@@ -141,7 +141,8 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
         cell.teacherNameLabel.text = getPrefix(self.userDetails.titles) + " " + self.userDetails.firstName + " " + self.userDetails.lastName + " " + getSuffix(self.userDetails.titles)
         cell.teacherStatusLabel.text = self.userDetails.staffStatus
         cell.teacherEmailURL = userDetails.emailUrl
-        cell.teacherConsultationLabel.text = self.userDetails.officeHours
+        cell.teacherConsultationLabel.text = String.stripHTMLFromString(self.userDetails.officeHours ?? "")
+
         if(self.userDetails.homepage != nil){
             let tapWWW = UITapGestureRecognizer(target: self, action: #selector(TeacherDetailTableViewController.wwwTaped))
             tapWWW.numberOfTapsRequired = 1
