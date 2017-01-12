@@ -20,8 +20,8 @@ extension SimpleUser: Decodable {
         return try SimpleUser(
         firstName: j => "first_name",
                 lastName: j => "last_name",
-                userId: try? j => "userId",
-                id: j => "id",
+                userId: try? j => "user_id",
+                id: try? j => "user_id",         // TODO: remove
                 titles: try? j => "titles"
 
 
