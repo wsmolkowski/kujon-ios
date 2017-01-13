@@ -11,11 +11,11 @@ import UIKit
 class WebViewController: UIViewController {
 
     @IBOutlet weak var webView: UIWebView!
-    
+
+    var url: URL? = URL(string: "https://kujon.mobi/regulamin")
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let url = URL (string: "https://kujon.mobi/regulamin");
         let requestObj = URLRequest(url: url!);
         webView.loadRequest(requestObj);
          self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Zamknij", style: UIBarButtonItemStyle.done, target: self, action: #selector(WebViewController.done))

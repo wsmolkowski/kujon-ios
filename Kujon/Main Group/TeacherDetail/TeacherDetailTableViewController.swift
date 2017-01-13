@@ -191,7 +191,11 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
     }
 
     func teacherHeaderCell(_ cell: TeacherHeaderTableViewCell, didDidSelectOpenExternalURL url: URL) {
-        UIApplication.shared.openURL(url)
+        NSlogManager.showLog("Open URL: \(url.absoluteString)")
+        let controller = WebViewController()
+        controller.url = url
+        let navigationController = UINavigationController(rootViewController: controller)
+        self.present(navigationController, animated: true, completion: nil)
     }
 
 

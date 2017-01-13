@@ -54,7 +54,7 @@ class TeacherHeaderTableViewCell: UITableViewCell {
                 return
             }
             if consultation.contains(htmlLinkMark) && consultation.contains(htmlURLMark){
-                guard let consultationURL = retieveURL(from: consultation) else {
+                guard let consultationURL = retrieveURL(from: consultation) else {
                     return
                 }
                 setupConsultationButton(with: consultationURL)
@@ -102,7 +102,7 @@ class TeacherHeaderTableViewCell: UITableViewCell {
         checkEmailURLButton.isEnabled = teacherEmailURL != nil
     }
 
-    private func retieveURL(from html: String) -> URL? {
+    private func retrieveURL(from html: String) -> URL? {
         let urlMatches = html.findAllMatches(pattern: .url)
         if urlMatches.isEmpty {
             return nil
@@ -111,10 +111,9 @@ class TeacherHeaderTableViewCell: UITableViewCell {
     }
 
     private func setupConsultationButton(with url: URL) {
-        teacherConsultationLabel.text = ""
+        teacherConsultationLabel.text = " "
         openLinkURL = url
         openLinkButton.isHidden = false
-
     }
 
 
