@@ -29,7 +29,8 @@ class TeacherHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var openLinkButton: UIButton!
     private var openLinkURL: URL?
     internal weak var delegate: TeacherHeaderCellDelegate?
-    private let htmlLinkMark = "<a href=\""
+    private let htmlLinkMark = "<a"
+    private let htmlURLMark = "href"
 
     internal var teacherEmailURL: String? {
         didSet {
@@ -52,7 +53,7 @@ class TeacherHeaderTableViewCell: UITableViewCell {
             guard let consultation = teacherConsultation else {
                 return
             }
-            if consultation.contains(htmlLinkMark) {
+            if consultation.contains(htmlLinkMark) && consultation.contains(htmlURLMark){
                 guard let consultationURL = retieveURL(from: consultation) else {
                     return
                 }
