@@ -18,4 +18,14 @@ class ArrowedItemCell: UITableViewCell {
         selectionStyle = .none
     }
 
+    override var frame: CGRect {
+        didSet {
+            self.layer.addBorder(UIRectEdge.top,color:UIColor.lightGray(),thickness: 1)
+        }
+    }
+
+    override var layer: CALayer {
+        return super.layer
+    }
+    
 }

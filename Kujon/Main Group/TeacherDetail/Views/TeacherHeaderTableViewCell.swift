@@ -26,6 +26,8 @@ class TeacherHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var teacherRoomLabel: UILabel!
     @IBOutlet weak var checkEmailURLButton: UIButton!
     @IBOutlet weak var employmentStack: UIStackView!
+    @IBOutlet weak var openLinkButton: UIButton!
+    private var openLinkURL: URL?
     internal weak var delegate: TeacherHeaderCellDelegate?
     private let htmlLinkMark = "<a href=\""
 
@@ -64,6 +66,7 @@ class TeacherHeaderTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         updateButtonState()
+        openLinkButton.isHidden = true
     }
 
     private func setupPositions(_ positions: [EmploymentPosition]) {
@@ -107,24 +110,23 @@ class TeacherHeaderTableViewCell: UITableViewCell {
     }
 
     private func setupConsultationButton(with url: URL) {
-        teacherConsultationLabel.text = StringHolder.openLink
-        teacherConsultationLabel.textColor = UIColor.kujonBlueColor(alpha: 1)
-        let tapRecognizer = IdentifiedTapGestureRecognizer(target: self, action: #selector(TeacherHeaderTableViewCell.consultationButtonDidTap(_:)))
-        tapRecognizer.numberOfTapsRequired = 1
-        tapRecognizer.urlId = url
-        teacherConsultationLabel.addGestureRecognizer(tapRecognizer)
+        teacherConsultationLabel.text = ""
+        openLinkURL = url
+        openLinkButton.isHidden = false
+
     }
 
-    internal func consultationButtonDidTap(_ tapRecognizer:IdentifiedTapGestureRecognizer) {
-        guard let url = tapRecognizer.urlId else {
-            return
-        }
-        delegate?.teacherHeaderCell(self, didDidSelectOpenExternalURL: url)
-    }
 
     private func setupConsultationLabel(with description: String) {
         teacherConsultationLabel.text = description
     }
+
+    @IBAction func openLinkButtonDidTap(_ sender: UIButton) {
+        if let url = openLinkURL {
+            delegate?.teacherHeaderCell(self, didDidSelectOpenExternalURL: url)
+        }
+    }
+
     
 }
 

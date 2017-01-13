@@ -24,7 +24,7 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(TeacherDetailTableViewController.back), andTitle: StringHolder.lecturer)
         title = StringHolder.teacher
         self.tableView.register(UINib(nibName: "TeacherHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: TeacherDetailViewId)
-        self.tableView.register(UINib(nibName: "AccessoryItemCell", bundle: nil), forCellReuseIdentifier: programmesIdCell)
+        self.tableView.register(UINib(nibName: "ArrowedItemCell", bundle: nil), forCellReuseIdentifier: programmesIdCell)
         userDetailsProvider.delegate = self
         addToProvidersList(provider: userDetailsProvider)
         self.tableView.showsVerticalScrollIndicator = false
@@ -145,8 +145,7 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
         cell.teacherNameLabel.text = getPrefix(self.userDetails.titles) + " " + self.userDetails.firstName + " " + self.userDetails.lastName + " " + getSuffix(self.userDetails.titles)
         cell.teacherStatusLabel.text = self.userDetails.staffStatus
         cell.teacherEmailURL = userDetails.emailUrl
-        //cell.teacherConsultation = self.userDetails.officeHours
-        cell.teacherConsultation = "<a href=\"http://www.sklepbiegacza.pl/odziez/meska/rekawiczki\">sdaddgfgddgfdggfgfasda</a>"
+        cell.teacherConsultation = self.userDetails.officeHours
         cell.positions = self.userDetails.employmentPosition
 
         if(self.userDetails.homepage != nil){
@@ -177,12 +176,11 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
 
 
     func configureTeacherCourse(_ indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: programmesIdCell, for: indexPath) as! AccessoryItemCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: programmesIdCell, for: indexPath) as! ArrowedItemCell
         let courseEdition = self.userDetails?.courseEditionsConducted?[indexPath.row]
         if (courseEdition != nil){
             cell.titleLabel.text = courseEdition!.courseName + "(" + courseEdition!.termId + ")"
         }
-        cell.setStyle(.arrowRight, separatorPosition: .top)
         return cell
     }
 
