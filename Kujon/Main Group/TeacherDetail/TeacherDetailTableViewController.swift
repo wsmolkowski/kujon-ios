@@ -142,7 +142,7 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
 
     private func configureTeacherDetails(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TeacherDetailViewId, for: indexPath) as! TeacherHeaderTableViewCell
-        cell.teacherNameLabel.text = getPrefix(self.userDetails.titles) + " " + self.userDetails.firstName + " " + self.userDetails.lastName + " " + getSuffix(self.userDetails.titles)
+        cell.teacherNameLabel.text = getPrefix(self.userDetails.titles) + " " + self.userDetails.firstName + " " + self.userDetails.lastName + getSuffix(self.userDetails.titles)
         cell.teacherStatusLabel.text = self.userDetails.staffStatus
         cell.teacherEmailURL = userDetails.emailUrl
         cell.teacherConsultation = self.userDetails.officeHours
@@ -227,7 +227,11 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
     }
 
     private func getSuffix(_ title: Title) -> String {
-        return title.after != nil ? title.after : ""
+        var suffix = String()
+        if let after = title.after {
+            suffix = ", " + after
+        }
+        return suffix
     }
 
 }
