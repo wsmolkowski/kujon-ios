@@ -30,3 +30,26 @@ extension String {
     }
 
 }
+
+extension String {
+
+    enum RegExPattern: String {
+        case url = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
+    }
+
+    func findAllMatches(pattern: RegExPattern) -> [String] {
+        var matches = [String]()
+        do {
+            let regex = try NSRegularExpression(pattern: pattern.rawValue, options: NSRegularExpression.Options(rawValue: 0))
+            let nsstr = self as NSString
+            let all = NSRange(location: 0, length: nsstr.length)
+            regex.enumerateMatches(in: self, options: NSRegularExpression.MatchingOptions.init(rawValue: 0), range: all, using: { (result, flags, _) in
+                matches.append(nsstr.substring(with: result!.range))
+            })
+        } catch {
+            return matches
+        }
+        return matches
+    }
+    
+}

@@ -8,6 +8,8 @@
 
 import UIKit
 
+// this cell does not support autoresizing; if needed, use ArrowedItemCell instead
+
 class GoFurtherViewCellTableViewCell: UITableViewCell {
 
     

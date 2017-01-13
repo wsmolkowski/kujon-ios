@@ -105,6 +105,7 @@ class StringHolder {
     static let unknownErrorMessage = "Wystąpił nieznany błąd"
     static let shouldOpenAppSettingsForNotifications = "Opcję powiadomień Kujona możesz zmienić w ustawieniach systemowych iOS. Czy chcesz otworzyć ustawienia systemowe?"
     static let kierunekTitle = "Kierunek"
+    static let openLink = "Otwórz link"
 
 
 }

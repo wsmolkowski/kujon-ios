@@ -8,7 +8,8 @@
 
 import UIKit
 
-class TeacherDetailTableViewController: RefreshingTableViewController, UserDetailsProviderDelegate, OnImageLoadedFromRest {
+class TeacherDetailTableViewController: RefreshingTableViewController, UserDetailsProviderDelegate, OnImageLoadedFromRest, TeacherHeaderCellDelegate {
+
     private let TeacherDetailViewId = "teacherDetailViewId"
     private let programmesIdCell = "tralalaProgrammesCellId"
     var teacherId: String! = nil
@@ -23,14 +24,13 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(TeacherDetailTableViewController.back), andTitle: StringHolder.lecturer)
         title = StringHolder.teacher
         self.tableView.register(UINib(nibName: "TeacherHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: TeacherDetailViewId)
-        self.tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: programmesIdCell)
+        self.tableView.register(UINib(nibName: "AccessoryItemCell", bundle: nil), forCellReuseIdentifier: programmesIdCell)
         userDetailsProvider.delegate = self
         addToProvidersList(provider: userDetailsProvider)
-        self.tableView.tableFooterView = UIView()
         self.tableView.showsVerticalScrollIndicator = false
-        self.tableView.estimatedRowHeight = 6000
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 500
     }
 
     func back() {
@@ -59,13 +59,6 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
         self.showAlertApi(StringHolder.attention, text: text, succes: {
             self.loadData()
         }, cancel: {})
-    }
-
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch (indexPath.section) {
-        case 0: return 576
-        default: return 50
-        }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -113,11 +106,22 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch (section) {
         case 0: return nil
-        case 1: return createLabelForSectionTitle(StringHolder.lecturesConducted)
+        case 1: return sectionView(title: StringHolder.lecturesConducted)
         default: return nil
         }
     }
 
+
+    private func sectionView(title: String) -> UIView? {
+        guard let header = Bundle.main.loadNibNamed("SectionHeaderView", owner: self, options: nil)?.first as? SectionHeaderView else {
+            return nil
+        }
+        header.headerLabel.text = title
+        header.backgroundColor = UIColor.greyBackgroundColor()
+        header.headerLabel.textColor = UIColor.blackWithAlpha()
+        header.heightAnchor.constraint(equalToConstant: 51).isActive = true
+        return header
+    }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -141,7 +145,9 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
         cell.teacherNameLabel.text = getPrefix(self.userDetails.titles) + " " + self.userDetails.firstName + " " + self.userDetails.lastName + " " + getSuffix(self.userDetails.titles)
         cell.teacherStatusLabel.text = self.userDetails.staffStatus
         cell.teacherEmailURL = userDetails.emailUrl
-        cell.teacherConsultationLabel.text = String.stripHTMLFromString(self.userDetails.officeHours ?? "")
+        //cell.teacherConsultation = self.userDetails.officeHours
+        cell.teacherConsultation = "<a href=\"http://www.sklepbiegacza.pl/odziez/meska/rekawiczki\">sdaddgfgddgfdggfgfasda</a>"
+        cell.positions = self.userDetails.employmentPosition
 
         if(self.userDetails.homepage != nil){
             let tapWWW = UITapGestureRecognizer(target: self, action: #selector(TeacherDetailTableViewController.wwwTaped))
@@ -165,17 +171,29 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
         cell.teacherImageView.addGestureRecognizer(tapGestureRecognizer)
         cell.teacherImageView.isUserInteractionEnabled = true
         cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.delegate = self
         return cell
     }
 
 
     func configureTeacherCourse(_ indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: programmesIdCell, for: indexPath) as! GoFurtherViewCellTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: programmesIdCell, for: indexPath) as! AccessoryItemCell
         let courseEdition = self.userDetails?.courseEditionsConducted?[indexPath.row]
         if (courseEdition != nil){
-            cell.plainLabel.text = courseEdition!.courseName + "(" + courseEdition!.termId + ")"
+            cell.titleLabel.text = courseEdition!.courseName + "(" + courseEdition!.termId + ")"
         }
+        cell.setStyle(.arrowRight, separatorPosition: .top)
         return cell
+    }
+
+    func teacherHeaderCell(_ cell: TeacherHeaderTableViewCell, didSelectEmploymentPosition position: EmploymentPosition) {
+        let facultyController = FacultieTableViewController(nibName: "FacultieTableViewController", bundle:nil)
+        facultyController.facultieId = position.faculty.id
+        navigationController?.pushViewController(facultyController, animated:true)
+    }
+
+    func teacherHeaderCell(_ cell: TeacherHeaderTableViewCell, didDidSelectOpenExternalURL url: URL) {
+        UIApplication.shared.openURL(url)
     }
 
 

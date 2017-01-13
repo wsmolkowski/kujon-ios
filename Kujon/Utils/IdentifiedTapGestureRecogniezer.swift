@@ -12,4 +12,5 @@ class IdentifiedTapGestureRecognizer: UITapGestureRecognizer {
 
     var id: Int = 0
     var stringId: String = ""
+    var urlId: URL?
 }
