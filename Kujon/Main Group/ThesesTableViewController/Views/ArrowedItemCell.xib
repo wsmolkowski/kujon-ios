@@ -24,13 +24,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qaa-1k-1tM">
-                        <rect key="frame" x="8" y="15" width="288" height="13.5"/>
+                        <rect key="frame" x="8" y="15" width="280" height="13.5"/>
                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow-right" translatesAutoresizingMaskIntoConstraints="NO" id="lXQ-rr-Ei3">
-                        <rect key="frame" x="304" y="16" width="8" height="12"/>
+                        <rect key="frame" x="296" y="16" width="8" height="12"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="8" id="WtJ-Tc-1hA"/>
                             <constraint firstAttribute="height" constant="12" id="jUF-OK-kEp"/>
@@ -42,7 +42,7 @@
                     <constraint firstItem="Qaa-1k-1tM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="HEN-NR-dix"/>
                     <constraint firstAttribute="bottom" secondItem="Qaa-1k-1tM" secondAttribute="bottom" constant="15" id="JM9-6d-cbT"/>
                     <constraint firstItem="lXQ-rr-Ei3" firstAttribute="leading" secondItem="Qaa-1k-1tM" secondAttribute="trailing" constant="8" id="Oqz-rD-Pxb"/>
-                    <constraint firstItem="lXQ-rr-Ei3" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Tau-Bg-cIc"/>
+                    <constraint firstItem="lXQ-rr-Ei3" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-8" id="Tau-Bg-cIc"/>
                     <constraint firstItem="Qaa-1k-1tM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="jQa-Xb-Uk9"/>
                 </constraints>
             </tableViewCellContentView>
