@@ -30,7 +30,7 @@ private func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 }
 
 
-class FacultieTableViewController: UITableViewController, FacultieProviderDelegate, MKMapViewDelegate, FacultyHeaderTableViewCellDelegate {
+class FacultieTableViewController: UITableViewController, FacultieProviderDelegate, MKMapViewDelegate, FacultyHeaderTableViewCellDelegate, SupervisingUnitCellDelegate {
 
     var facultie: Facultie! = nil
     var facultieId: String! = nil
@@ -39,6 +39,8 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
     let headerCellId = "headerCellId";
     let telephoneCellId = "telephoneCellId";
     let wwwCellId = "wwwCellId";
+    let statsCellId = "StatisticsCell"
+    let superUnitCellId = "SupervisingUnitCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,9 +51,14 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         self.tableView.register(UINib(nibName: "FacultieHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: headerCellId)
         self.tableView.register(UINib(nibName: "TelephoneTableViewCell", bundle: nil), forCellReuseIdentifier: telephoneCellId)
         self.tableView.register(UINib(nibName: "WWWTableViewCell", bundle: nil), forCellReuseIdentifier: wwwCellId)
+        self.tableView.register(UINib(nibName: "StatisticsCell", bundle: nil), forCellReuseIdentifier: statsCellId)
+        self.tableView.register(UINib(nibName: "SupervisingUnitCell", bundle: nil), forCellReuseIdentifier: superUnitCellId)
+
         self.tableView.tableFooterView = UIView()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         self.tableView.allowsSelection = false
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 200
 
         if (facultie != nil) {
         } else if (facultieId != nil) {
@@ -91,7 +98,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
 
     override func numberOfSections(in tableView: UITableView) -> Int {
 
-        return 4
+        return 6
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -100,11 +107,19 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         case 1: return self.facultie != nil ? 1 : 0
         case 2: return self.facultie != nil ? self.facultie.phoneNumber.count : 0
         case 3: return self.facultie?.homePageUrl != nil ? 1 : 0
+        case 4: return self.facultie != nil ? 1 : 0
+        case 5: return isSupervisingUnitAvailable() ? 1 : 0
         default:
             return 0
         }
     }
 
+    private func isSupervisingUnitAvailable() -> Bool {
+        if let facultie = facultie, !facultie.schoolPath.isEmpty {
+            return true
+        }
+        return false
+    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
@@ -117,28 +132,15 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
             return configurePhoneCell(indexPath)
         case 3:
             return configureWWWCell(indexPath)
+        case 4:
+            return configureStatsCell(indexPath)
+        case 5:
+            return configureSuperUnitCell(indexPath)
         default:
             return configureWWWCell(indexPath)
 
         }
     }
-
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0:
-            return 120
-        case 1:
-            return 152
-        case 2:
-            return 60
-        case 3:
-            return 60
-        default:
-            return 60
-
-        }
-    }
-
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
@@ -240,6 +242,20 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         return cell
     }
 
+    private func configureStatsCell(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: statsCellId, for: indexPath) as! StatisticsCell
+        cell.stats = self.facultie.schoolStats
+        return cell
+    }
+
+    private func configureSuperUnitCell(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: superUnitCellId, for: indexPath) as! SupervisingUnitCell
+        if let unit = facultie?.schoolPath.first {
+            cell.supervisingUnit = unit
+            cell.delegate = self
+        }
+        return cell
+    }
 
     private func loadImage(_ urlString: String, indexPath: IndexPath) {
         let url = URL(string: urlString)
@@ -266,5 +282,13 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         openMapView()
     }
 
+
+    // MARK: SupervisingUnitCellDelegate
+
+    func supervisingUnitCell(_ cell: SupervisingUnitCell, didTapSupervisingUnitWithId id: String) {
+        let faculiteController = FacultieTableViewController(nibName: "FacultieTableViewController", bundle: Bundle.main)
+        faculiteController.facultieId = id
+        self.navigationController?.pushViewController(faculiteController, animated: true)
+    }
 
 }
