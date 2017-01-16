@@ -30,7 +30,8 @@ private func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 }
 
 
-class FacultieTableViewController: UITableViewController, FacultieProviderDelegate, MKMapViewDelegate {
+class FacultieTableViewController: UITableViewController, FacultieProviderDelegate, MKMapViewDelegate, FacultyHeaderTableViewCellDelegate {
+
     var facultie: Facultie! = nil
     var facultieId: String! = nil
     var facultieProvider = ProvidersProviderImpl.sharedInstance.proivdeFacultieProvider()
@@ -207,11 +208,16 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: headerCellId, for: indexPath) as! FacultieHeaderTableViewCell
         cell.adressLabel.text = facultie.postalAdress
         cell.facultieNameLabel.text = facultie.name
+        cell.delegate = self
         loadImage(facultie.logUrls.p100x100, indexPath: indexPath)
         return cell
     }
 
     func onMapClick() {
+        openMapView()
+    }
+
+    private func openMapView() {
         if(facultie.postalAdress != nil){
             let baseUrl: String = "http://maps.apple.com/?q="
             let encodedName = facultie.postalAdress.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
@@ -252,6 +258,12 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
             }
         })
         task.resume()
+    }
+
+    // MARK: FacultyHeaderTableViewCellDelegate
+
+    func facultyHeaderCell(_ cell: FacultieHeaderTableViewCell, didTapPinButton button: UIButton) {
+        openMapView()
     }
 
 
