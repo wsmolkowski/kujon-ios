@@ -66,10 +66,10 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
         let state: State = enabled ? .enabled : .disabled
         endpointURL = SettingsEndpoint.postCalendarSync.rawValue + state.rawValue
         makeHTTPAuthenticatedPostRequest({ data in
-            if let responseJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:String],
-                responseJSON?["status"] == "success" {
-                UserDataHolder.sharedInstance.isCalendarSyncEnabled = enabled
-                self.delegate?.calendarSyncronizationSettingDidSucceed()
+            if let responseJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:Any],
+                let status = responseJSON?["status"], status as? String == "success" {
+                    UserDataHolder.sharedInstance.isCalendarSyncEnabled = enabled
+                    self.delegate?.calendarSyncronizationSettingDidSucceed()
             } else {
                 self.delegate?.onErrorOccurs(StringHolder.errorOccures)
             }
@@ -82,8 +82,8 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
         let state: State = enabled ? .enabled : .disabled
         endpointURL = SettingsEndpoint.postPushNotificationsState.rawValue + state.rawValue
         makeHTTPAuthenticatedPostRequest({ data in
-            if let responseJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:String],
-                responseJSON?["status"] == "success" {
+            if let responseJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:Any],
+                let status = responseJSON?["status"], status as? String == "success" {
                 UserDataHolder.sharedInstance.pushNotificationsEnabled = enabled
                 self.delegate?.pushNotificationsSettingDidSucceed()
             } else {
