@@ -250,7 +250,7 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
 
     private func configureSuperUnitCell(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: superUnitCellId, for: indexPath) as! SupervisingUnitCell
-        if let unit = facultie?.schoolPath.first {
+        if let unit = facultie?.schoolPath.last {
             cell.supervisingUnit = unit
             cell.delegate = self
         }
