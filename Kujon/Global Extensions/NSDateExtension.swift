@@ -139,14 +139,16 @@ extension Date {
         return difference.day!
     }
 
-    static func formattedPolishStringFromDateFormatWithClockString(_ dateString:String) -> String {
+    static func stringFromFormatWithClockString(_ dateString:String) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = Date.dateFormatWithClock
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        let date = dateFormatter.date(from:dateString)
-        dateFormatter.locale = Locale(identifier: "pl_PL")
-        dateFormatter.dateFormat = "d MMMM YYYY, HH:MM"
-        return dateFormatter.string(from:date!)
+        if let date = dateFormatter.date(from:dateString) {
+            dateFormatter.locale = Locale(identifier: "pl_PL")
+            dateFormatter.dateFormat = "d MMMM YYYY, HH:MM"
+            return dateFormatter.string(from:date)
+        }
+        return nil
     }
 }
 

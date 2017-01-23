@@ -14,7 +14,9 @@ class MessageCell: GoFurtherViewCellTableViewCell {
         didSet {
             if let message = message {
                 senderLabel.text = message.from
-                dateLabel.text = Date.formattedPolishStringFromDateFormatWithClockString(message.createdTime)
+                if let dateString = Date.stringFromFormatWithClockString(message.createdTime) {
+                    dateLabel.text = dateString
+                }
             }
         }
     }
