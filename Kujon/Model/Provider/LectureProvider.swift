@@ -27,12 +27,13 @@ weak var delegate: LectureProviderDelegate!
     func loadLectures(_ date: String) {
         endpoint = "/tt/" + date
         self.makeHTTPAuthenticatedGetRequest({
-            [unowned self] json in
-                if let lectureResponse = try! self.changeJsonToResposne(json,errorR: self.delegate){
-                    self.delegate?.onLectureLoaded(lectureResponse.data)
+            [weak self] json in
+                if  let strongSelf = self,
+                    let lectureResponse = try! strongSelf.changeJsonToResposne(json,errorR: strongSelf.delegate){
+                    strongSelf.delegate?.onLectureLoaded(lectureResponse.data)
                 }
-        }, onError: {[unowned self] text in
-            self.delegate?.onErrorOccurs()
+        }, onError: {[weak self] text in
+            self?.delegate?.onErrorOccurs()
         })
     }
 
