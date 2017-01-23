@@ -21,7 +21,7 @@ class TeacherTableViewController: RefreshingTableViewController, NavigationDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(TeacherTableViewController.openDrawer),andTitle: StringHolder.lecturers)
-        self.tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: TeachCellId)
+        self.tableView.register(UINib(nibName: "ArrowedItemCell", bundle: nil), forCellReuseIdentifier: TeachCellId)
         lecturerProvider.delegate = self
         addToProvidersList(provider: lecturerProvider)
         self.tableView.tableFooterView = UIView()
@@ -73,11 +73,10 @@ class TeacherTableViewController: RefreshingTableViewController, NavigationDeleg
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: GoFurtherViewCellTableViewCell = tableView.dequeueReusableCell(withIdentifier: TeachCellId, for: indexPath) as! GoFurtherViewCellTableViewCell
+        let cell: ArrowedItemCell = tableView.dequeueReusableCell(withIdentifier: TeachCellId, for: indexPath) as! ArrowedItemCell
         let myUser: SimpleUser = self.lecturers[indexPath.row]
-        cell.plainLabel.text = myUser.lastName + " " + myUser.firstName
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
-
+        cell.titleLabel.text = myUser.lastName + " " + myUser.firstName
+        cell.addTopSeparator()
         return cell
     }
 
