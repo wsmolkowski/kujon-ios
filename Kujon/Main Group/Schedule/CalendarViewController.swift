@@ -23,6 +23,8 @@ class CalendarViewController: MGCDayPlannerViewController,
     private let floatingButtonDelegate = FloatingButtonDelegate()
     var spinner: SpinnerView! = SpinnerView()
     private var isReload: Bool = false
+    var lecturerId: String? = nil
+
 
 
     func setNavigationProtocol(_ delegate: NavigationMenuProtocol) {
@@ -47,6 +49,7 @@ class CalendarViewController: MGCDayPlannerViewController,
         if lastQueryDate == nil {
             lastQueryDate = Date.getCurrentStartOfWeek()
         }
+        lectureProvider.setLecturer(lecturerId: lecturerId)
         lectureProvider.loadLectures(lastQueryDate!.dateToString())
         veryFirstDate = lastQueryDate
         dateFormatter.dateFormat = calendarDateFormant
@@ -85,7 +88,7 @@ class CalendarViewController: MGCDayPlannerViewController,
         askForData(Date())
     }
 
-    private func addSpinnerView(hidden:Bool) {
+    private func addSpinnerView(hidden: Bool) {
         spinner.frame.origin = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
         spinner.frame.size = CGSize(width: 50.0, height: 50.0)
         spinner.isHidden = hidden
@@ -105,7 +108,8 @@ class CalendarViewController: MGCDayPlannerViewController,
 
     func onLectureLoaded(_ lectures: Array<Lecture>) {
         let wrappers = lectures.map {
-            lecture in LectureWrapper(lecture: lecture)
+            lecture in
+            LectureWrapper(lecture: lecture)
         }
         let dicMonthYear = wrappers.groupBy {
             $0.monthYearNSDate
@@ -157,15 +161,17 @@ class CalendarViewController: MGCDayPlannerViewController,
 
 
     override func dayPlannerView(_ view: MGCDayPlannerView!, numberOfEventsOf type: MGCEventType, at date: Date!) -> Int {
+
         if  let lastQueryDate = lastQueryDate,
-            let date = date, date.isGreaterThanDate(lastQueryDate.addingTimeInterval(60 * 60 * 24 * 7)) {
-            self.lastQueryDate = date.getStartOfTheWeek()
+            let date = date,lastQueryDate.compareMonth(date) > 0 {
+            self.lastQueryDate = lastQueryDate.addMonth(number: 1)
             askForData()
         }
-        if var veryFirstDate = veryFirstDate, date.isLessThanDate(veryFirstDate) {
-            veryFirstDate = veryFirstDate.addingTimeInterval(60 * 60 * 24 * 7 * -1)
-            self.veryFirstDate = veryFirstDate
-            askForData(veryFirstDate)
+        if var veryFirstDate = veryFirstDate, veryFirstDate.compareMonth(date)<0 {
+            if var newVeryFirstDate = veryFirstDate.addMonth(number: -1) {
+                self.veryFirstDate = newVeryFirstDate
+                askForData(self.veryFirstDate)
+            }
         }
         switch (type) {
         case MGCEventType.timedEventType:
@@ -203,7 +209,7 @@ class CalendarViewController: MGCDayPlannerViewController,
     }
 
     override func dayPlannerView(_ view: MGCDayPlannerView!, didSelectEventOf type: MGCEventType, at index: UInt, date: Date!) {
-        if  let date = date, let list = getListOfLecturesWrappers(date) {
+        if let date = date, let list = getListOfLecturesWrappers(date) {
             let lecture = list[Int(index)];
             lecture.handleClick(self.navigationController)
         }

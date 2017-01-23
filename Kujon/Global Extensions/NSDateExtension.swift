@@ -49,6 +49,8 @@ extension Date {
         return Date.getDateFormatter(Date.dateFormatDayMonth).string(from: self)
     }
 
+
+
     static func getCurrentStartOfWeek() -> Date {
         let today = Date()
         var gregorian = Calendar.current
@@ -74,7 +76,31 @@ extension Date {
         return dateFormatter
     }
 
+    func compareMonth(_ dateToCompare: Date)->Int{
+        let calendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
+        let year1 = calendar!.component(NSCalendar.Unit.year, from: self)
+        let year2 = calendar!.component(NSCalendar.Unit.year, from: dateToCompare)
+        if(year1>year2){
+            return -1;
+        }else if(year1<year2){
+            return 1;
+        }else {
+            let monthOfYear1 = calendar!.component(NSCalendar.Unit.month, from: self)
+            let monthOfYear2 = calendar!.component(NSCalendar.Unit.month, from: dateToCompare)
+            if(monthOfYear2==monthOfYear1){
+                return 0;
+            }else if(monthOfYear1>monthOfYear2){
+                return -1;
+            }else {
+                return 1;
+            }
+        }
+    }
 
+    func addMonth(number: Int)->Date?{
+        let result:Date? = Calendar.current.date(byAdding: .month, value: number, to: self)
+        return result
+    }
 
 
     func isGreaterThanDate(_ dateToCompare: Date) -> Bool {
