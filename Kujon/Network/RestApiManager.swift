@@ -33,8 +33,9 @@ class RestApiManager {
             self.handelTestCase(onCompletion)
         } else {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            let request = URLRequest(url: URL(string: getMyUrl())!)
+            var request = URLRequest(url: URL(string: getMyUrl())!)
             let session = URLSession.shared
+            self.headerManager.addRefreshToken(&request, refresh: refresh)
             let task = session.dataTask(with: request) {
                 data, response, error in
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
