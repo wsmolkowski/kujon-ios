@@ -31,8 +31,9 @@ class FacebookManager : UserLogin, LogoutProviderDelegate {
             (connection, result, error) -> Void in
             if let resultDictionary = result as? [String: AnyObject] {
                 //let strFirstName: String = (resultDictionary["first_name"] as? String)!
-                let email: String = resultDictionary["email"] as! String
-                self.userDataHolder.userEmail = email
+                if let email = resultDictionary["email"] as? String {
+                    self.userDataHolder.userEmail = email
+                }
                 self.userDataHolder.userLoginType = StringHolder.fbType
                 listener.onFacebookCredentailSaved(self.userDataHolder.loggedToUsosForCurrentEmail)
             }
