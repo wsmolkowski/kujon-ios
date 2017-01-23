@@ -20,14 +20,14 @@ class LectureWrapper: CellHandlingStrategy,ShowCourseDetailsDelegate {
 
     init(lecture: Lecture) {
         self.lecture = lecture
-        self.startNSDate = Date.stringToDateWithClock(lecture.startTime)
-        self.endNSDate = Date.stringToDateWithClock(lecture.endTime)
+        self.startNSDate = Date.stringToDateWithClock(lecture.startTime) ?? Date()
+        self.endNSDate = Date.stringToDateWithClock(lecture.endTime) ?? Date()
         self.startDate = startNSDate.dateToStringSchedule()
         self.startTime = startNSDate.dateHoursToString()
         self.endTime = endNSDate.dateHoursToString()
         self.mothYearDate = startNSDate.getMonthYearString()
         let calendar = Calendar.current
-        let components = (calendar as NSCalendar).components([.month, .year], from: startNSDate)
+        let components = calendar.dateComponents([.month, .year], from: startNSDate)
         self.monthYearNSDate = calendar.date(from: components)!
     }
 
