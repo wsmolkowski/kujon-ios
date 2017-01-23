@@ -167,8 +167,8 @@ class CalendarViewController: MGCDayPlannerViewController,
             self.lastQueryDate = lastQueryDate.addMonth(number: 1)
             askForData()
         }
-        if var veryFirstDate = veryFirstDate, veryFirstDate.compareMonth(date)<0 {
-            if var newVeryFirstDate = veryFirstDate.addMonth(number: -1) {
+        if let veryFirstDate = veryFirstDate, veryFirstDate.compareMonth(date)<0 {
+            if let newVeryFirstDate = veryFirstDate.addMonth(number: -1) {
                 self.veryFirstDate = newVeryFirstDate
                 askForData(self.veryFirstDate)
             }
