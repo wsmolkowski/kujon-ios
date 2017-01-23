@@ -179,8 +179,9 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
         let cell = tableView.dequeueReusableCell(withIdentifier: programmesIdCell, for: indexPath) as! ArrowedItemCell
         let courseEdition = self.userDetails?.courseEditionsConducted?[indexPath.row]
         if (courseEdition != nil){
-            cell.titleLabel.text = courseEdition!.courseName + "(" + courseEdition!.termId + ")"
+            cell.titleLabel.text = courseEdition!.courseName + " (" + courseEdition!.termId + ")"
         }
+        cell.addTopSeparator()
         return cell
     }
 
