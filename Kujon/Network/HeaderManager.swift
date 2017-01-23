@@ -32,6 +32,12 @@ class HeaderManager {
         }
     }
 
+    func addRefreshToken(_ request: inout URLRequest, refresh:Bool = false){
+        if(refresh){
+            request.addValue("true", forHTTPHeaderField: REFRESH_TOKEN)
+        }
+    }
+
     private func retrieveCookies() -> String {
         var result: String = ""
         guard let cookies = HTTPCookieStorage.shared.cookies(for: URL(string: RestApiManager.BASE_URL)!) else {
