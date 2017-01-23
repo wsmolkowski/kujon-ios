@@ -23,9 +23,9 @@ class LectureProvider: RestApiManager, LectureProviderProtocol {
 weak var delegate: LectureProviderDelegate!
     var endpoint: String! = nil
     var endpointParameter: String = "?lecturers_info=False"
-
+    private var firstPart = "/ttusers/"
     func loadLectures(_ date: String) {
-        endpoint = "/tt/" + date
+        endpoint = firstPart + date
         self.makeHTTPAuthenticatedGetRequest({
             [weak self] json in
                 if  let strongSelf = self,
@@ -37,6 +37,13 @@ weak var delegate: LectureProviderDelegate!
         })
     }
 
+    func setLecturer(lecturerId:String! = nil){
+       if(lecturerId == nil){
+           self.firstPart =  "/ttusers/"
+       }else {
+           self.firstPart =  "/ttlecturers/" + lecturerId
+       }
+    }
     override func getMyUrl() -> String {
         return baseURL + endpoint + endpointParameter
     }
