@@ -35,6 +35,7 @@ class GradesTableViewController: RefreshingTableViewController
         self.tableView.register(UINib(nibName: "Grade2TableViewCell", bundle: nil), forCellReuseIdentifier: GradeCellIdentiefer)
         termsProvider.delegate = self
         addToProvidersList(provider: termsProvider)
+        addToProvidersList(provider: gradesProvider)
         self.tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         dataBack = false;
