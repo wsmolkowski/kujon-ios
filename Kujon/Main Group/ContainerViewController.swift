@@ -157,25 +157,27 @@ extension ContainerViewController: NavigationMenuProtocol {
 
 
     func animateLeftPanel(_ shouldExpand: Bool) {
+        guard let centerNavigationController = centerNavigationController else {
+            return
+        }
         if (shouldExpand) {
             currentState = .leftPanelExpanded
             if (centerNavigationController.view.frame.width - centerPanelExpandedOffset >= 0) {
                 animateCenterPanelXPosition(centerNavigationController.view.frame.width - centerPanelExpandedOffset)
             }
         } else {
-            animateCenterPanelXPosition(0) {
-                finished in
-                self.currentState = .collapsed
-
-                self.leftViewController!.view.removeFromSuperview()
-                self.leftViewController = nil;
+            animateCenterPanelXPosition(0) { [weak self]
+                _ in
+                self?.currentState = .collapsed
+                self?.leftViewController?.view?.removeFromSuperview()
+                self?.leftViewController = nil;
             }
         }
     }
 
     func animateCenterPanelXPosition(_ targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil) {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions(), animations: {
-            self.centerNavigationController.view.frame.origin.x = targetPosition
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions(), animations: { [weak self] in
+            self?.centerNavigationController.view.frame.origin.x = targetPosition
         }, completion: completion)
     }
 
