@@ -126,12 +126,15 @@ class GradesTableViewController: RefreshingTableViewController
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let prepareGrade = self.preparedTermGrades[indexPath.section].grades[indexPath.row] 
+        if  !noDataCondition() {
+            let prepareGrade = self.preparedTermGrades[indexPath.section].grades[indexPath.row]
 
-        let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: Bundle.main)
-        courseDetails.courseId = prepareGrade.courseId
-        courseDetails.termId = prepareGrade.termId
-        self.navigationController?.pushViewController(courseDetails, animated: true)
+            let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: Bundle.main)
+            courseDetails.courseId = prepareGrade.courseId
+            courseDetails.termId = prepareGrade.termId
+            self.navigationController?.pushViewController(courseDetails, animated: true)
+        }
+
     }
 
     // MARK: Term Detail Popup
