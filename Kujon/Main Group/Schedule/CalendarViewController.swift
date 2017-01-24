@@ -24,6 +24,7 @@ class CalendarViewController: MGCDayPlannerViewController,
     var spinner: SpinnerView! = SpinnerView()
     private var isReload: Bool = false
     var lecturerId: String? = nil
+    var lecturerName: String? = nil
 
 
     func setNavigationProtocol(_ delegate: NavigationMenuProtocol) {
@@ -33,7 +34,14 @@ class CalendarViewController: MGCDayPlannerViewController,
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(CalendarViewController.openDrawer), andTitle: StringHolder.schedule)
+        if(lecturerId == nil){
+            NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(CalendarViewController.openDrawer), andTitle: StringHolder.schedule)
+        }else {
+            if let name  = lecturerName{
+
+                NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(CalendarViewController.back), andTitle: StringHolder.schedule + " " + name)
+            }
+        }
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "reload-icon"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(CalendarViewController.reload))
 
 
@@ -75,6 +83,10 @@ class CalendarViewController: MGCDayPlannerViewController,
     override func viewWillDisappear(_ animated: Bool) {
         floatingButtonDelegate.viewWillDisappear()
         super.viewWillDisappear(animated)
+    }
+
+    func back() {
+        let _ = self.navigationController?.popViewController(animated: true)
     }
 
     func onTodayClick() {

@@ -57,7 +57,7 @@ weak var delegate: LectureProviderDelegate!
        if(lecturerId == nil){
            self.firstPart =  "/ttusers/"
        }else {
-           self.firstPart =  "/ttlecturers/" + lecturerId
+           self.firstPart =  "/ttlecturers/" + lecturerId + "/"
        }
     }
     override func getMyUrl() -> String {

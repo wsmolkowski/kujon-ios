@@ -23,6 +23,7 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(TeacherDetailTableViewController.back), andTitle: StringHolder.lecturer)
         title = StringHolder.teacher
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "teacher-cal-icon"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(TeacherDetailTableViewController.teacherPlan))
         self.tableView.register(UINib(nibName: "TeacherHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: TeacherDetailViewId)
         self.tableView.register(UINib(nibName: "ArrowedItemCell", bundle: nil), forCellReuseIdentifier: programmesIdCell)
         userDetailsProvider.delegate = self
@@ -35,6 +36,16 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
 
     func back() {
         let _ = self.navigationController?.popViewController(animated: true)
+    }
+
+    func teacherPlan(){
+        if(userDetails != nil){
+            let controller = CalendarViewController()
+            controller.lecturerName = getUserNameWithTitles()
+            controller.lecturerId = userDetails.id
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+
     }
 
     override func loadData() {
@@ -142,7 +153,7 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
 
     private func configureTeacherDetails(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TeacherDetailViewId, for: indexPath) as! TeacherHeaderTableViewCell
-        cell.teacherNameLabel.text = getPrefix(self.userDetails.titles) + " " + self.userDetails.firstName + " " + self.userDetails.lastName + getSuffix(self.userDetails.titles)
+        cell.teacherNameLabel.text = getUserNameWithTitles()
         cell.teacherStatusLabel.text = self.userDetails.staffStatus
         cell.teacherEmailURL = userDetails.emailUrl
         cell.teacherConsultation = self.userDetails.officeHours
@@ -175,6 +186,9 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
     }
 
 
+    private func getUserNameWithTitles()->String{
+        return getPrefix(self.userDetails.titles) + " " + self.userDetails.firstName + " " + self.userDetails.lastName + getSuffix(self.userDetails.titles)
+    }
     func configureTeacherCourse(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: programmesIdCell, for: indexPath) as! ArrowedItemCell
         let courseEdition = self.userDetails?.courseEditionsConducted?[indexPath.row]
