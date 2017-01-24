@@ -12,6 +12,7 @@ extension Date {
     private static let dateFormatSchedule = "EEEE d MMMM ,yyyy"
     private static let dateFormatDayMonth = "dd \n MMM"
     private static let dateFormatMonth = "MMMM"
+    private static let dateFormatMonth2 = "LLLL"
     private static let dateFormatYear = "yyyy"
     private static let dateFormatDay = "EEEE"
     private static let dateFormatWithClock = "yyyy-MM-dd HH:mm:ss"
@@ -50,7 +51,7 @@ extension Date {
     }
 
     func  getMonth()->String{
-        return Date.getDateFormatter(Date.dateFormatMonth).string(from: self)
+        return Date.getDateFormatter(Date.dateFormatMonth2).string(from: self)
     }
 
 
