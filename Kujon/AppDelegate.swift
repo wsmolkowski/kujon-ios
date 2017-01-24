@@ -49,13 +49,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
    
         googleSignIn?.signInSilently()
 
-        openControllerDependingOnLoginState()
-
         //TODO setup proper OneSignal app Id
         _ = OneSignal(launchOptions: launchOptions, appId: "f01a20f9-bbe7-4c89-a017-bf8930c61cf4", handleNotification: { _ in
             UserDataHolder.sharedInstance.isNotificationPending = true
         })
         OneSignal.defaultClient().enable(inAppAlertNotification: true)
+
+        openControllerDependingOnLoginState()
 
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
@@ -143,10 +143,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if application.applicationState == .inactive {
             UserDataHolder.sharedInstance.isNotificationPending = true
-            let controller = ContainerViewController()
-            let navController = UINavigationController(rootViewController: controller)
-            window!.rootViewController = navController
-            window!.makeKeyAndVisible()
+            openControllerDependingOnLoginState()
         }
     }
 
