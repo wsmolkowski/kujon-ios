@@ -21,8 +21,6 @@ enum SlideOutState {
 
 class ContainerViewController: UIViewController, LeftMenuTableViewControllerDelegate {
     var centerNavigationController: UINavigationController!
-
-    var centerViewController: UserTableViewController = UserTableViewController()
     var loadedToUsos = false
     var currentState: SlideOutState = .collapsed {
         didSet {
@@ -39,7 +37,9 @@ class ContainerViewController: UIViewController, LeftMenuTableViewControllerDele
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.kujonBlueColor()
         UIApplication.shared.statusBarStyle = .lightContent
-        centerViewController.setNavigationProtocol(self)
+
+        let centerViewController = initialController()
+        (centerViewController as! NavigationDelegate).setNavigationProtocol(self)
         centerNavigationController = UINavigationController(rootViewController: centerViewController)
         centerNavigationController.navigationBar.barTintColor = UIColor.kujonBlueColor()
         centerNavigationController.navigationBar.tintColor = UIColor.white
@@ -58,6 +58,13 @@ class ContainerViewController: UIViewController, LeftMenuTableViewControllerDele
             loadedToUsos = false
             self.centerNavigationController.pushViewController(IntroScreenViewController(nibName: "IntroScreenViewController", bundle:  Bundle.main), animated: true)
         }
+    }
+
+    private func initialController() -> UIViewController {
+        if UserDataHolder.sharedInstance.isNotificationPending {
+            return MessagesTableViewController()
+        }
+        return UserTableViewController()
     }
 
     func selectedMenuItem(_ menuController: LeftMenuTableViewController, menuItem: MenuItemWithController, withDelegate: Bool) {

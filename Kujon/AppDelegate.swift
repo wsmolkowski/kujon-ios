@@ -52,7 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         openControllerDependingOnLoginState()
 
         //TODO setup proper OneSignal app Id
-        _ = OneSignal(launchOptions: launchOptions, appId: "f01a20f9-bbe7-4c89-a017-bf8930c61cf4", handleNotification: nil)
+        _ = OneSignal(launchOptions: launchOptions, appId: "f01a20f9-bbe7-4c89-a017-bf8930c61cf4", handleNotification: { _ in
+            UserDataHolder.sharedInstance.isNotificationPending = true
+        })
         OneSignal.defaultClient().enable(inAppAlertNotification: true)
 
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -135,6 +137,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 withError error: NSError!) {
         // Perform any operations when the user disconnects from app here.
         // ...
+    }
+
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+
+        if application.applicationState == .inactive {
+            UserDataHolder.sharedInstance.isNotificationPending = true
+            let controller = ContainerViewController()
+            let navController = UINavigationController(rootViewController: controller)
+            window!.rootViewController = navController
+            window!.makeKeyAndVisible()
+        }
     }
 
 }

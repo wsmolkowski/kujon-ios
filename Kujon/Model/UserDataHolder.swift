@@ -122,6 +122,7 @@ class UserDataHolder {
 
     var isConfigLoaded: Bool = false
     var areSettingsLoaded: Bool = false
+    var isNotificationPending: Bool = false
 
 
     var userImage:UIImage! = nil
