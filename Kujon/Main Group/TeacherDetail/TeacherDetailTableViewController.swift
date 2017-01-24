@@ -72,6 +72,11 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
         }, cancel: {})
     }
 
+    func onUsosDown() {
+        self.refreshControl?.endRefreshing()
+        EmptyStateView.showUsosDownAlert(inParent: view)
+    }
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return userDetails == nil ? 0 : 2
     }

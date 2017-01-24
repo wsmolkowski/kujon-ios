@@ -58,6 +58,7 @@ class MessagesTableViewController: RefreshingTableViewController, NavigationDele
             let originY = view.bounds.midY - backgroundImage.frame.height/2 - 150
             frame.origin = CGPoint(x: originX, y: originY)
             backgroundImage.frame = frame
+            backgroundImage.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin]
             view.addSubview(backgroundImage)
         }
     }
@@ -66,6 +67,7 @@ class MessagesTableViewController: RefreshingTableViewController, NavigationDele
         var frame = view.bounds
         frame.origin.y -= 70
         backgroundLabel = UILabel(frame: frame)
+        backgroundLabel?.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin]
         backgroundLabel!.textAlignment = .center
         backgroundLabel!.attributedText = message.toAttributedStringWithFont(UIFont.kjnFontLatoRegular(size: 17)!, color: UIColor.kujonDarkTextColor())
         view.addSubview(backgroundLabel!)
@@ -93,23 +95,16 @@ class MessagesTableViewController: RefreshingTableViewController, NavigationDele
         tableView.reloadData()
     }
 
-    //TODO: delete (only for UI testing purposes)
-/*
-    func onMessageLoaded(_ message: Array<Message>) {
-        messages = message
-        messages.append(Message(createdTime: "2016-10-18 23:01:11", from: "John Johnson", message: "This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message. This is some message.", type: "email"))
-        messages.append(Message(createdTime: "2015-12-03 23:01:11", from: "Jane Johnson", message: "This is some message. This is some message. This is some message. This is some message. This is some message. This is some message.", type: "email"))
-        backgroundLabel?.isHidden = !messages.isEmpty
-        backgroundImage?.isHidden = !messages.isEmpty
-        refreshControl?.endRefreshing()
-        tableView.reloadData()
-    }
- */
 
     func onErrorOccurs(_ text: String) {
         refreshControl?.endRefreshing()
         presentAlertWithMessage(StringHolder.errorRetrievingMessages, title: StringHolder.errorAlertTitle)
 
+    }
+
+    func onUsosDown() {
+        self.refreshControl?.endRefreshing()
+        EmptyStateView.showUsosDownAlert(inParent: view)
     }
 
     // MARK: - Table view data source

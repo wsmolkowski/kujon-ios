@@ -121,6 +121,13 @@ class UserTableViewController: RefreshingTableViewController
         })
     }
 
+
+    func onUsosDown() {
+        self.refreshControl?.endRefreshing()
+        EmptyStateView.showUsosDownAlert(inParent: view)
+    }
+
+    
     func loadUSOSImageIfNeeded() {
         if userDataHolder.userUsosImage == nil {
             usosesProvider.delegate = self

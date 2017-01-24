@@ -158,6 +158,11 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
         presentAlertWithMessage(text, title: StringHolder.errorAlertTitle)
     }
 
+    func onUsosDown() {
+        self.spinner.isHidden = true
+        EmptyStateView.showUsosDownAlert(inParent: view)
+    }
+
     func updateCalendarSyncSwitchState() {
         calendarSyncSwitch.isEnabled = UserLoginEnum.getLoginType() == .google
         calendarSyncSwitch.setOn(userData.shouldSyncCalendar, animated: true)

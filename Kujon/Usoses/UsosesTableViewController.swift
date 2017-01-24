@@ -162,6 +162,11 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
 
     }
 
+    func onUsosDown() {
+        self.refreshControl?.endRefreshing()
+        EmptyStateView.showUsosDownAlert(inParent: view)
+    }
+
     private func loadImage(_ urlString: String, indexPath: IndexPath) {
         let url = URL(string: urlString)
         let session = URLSession.shared

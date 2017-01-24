@@ -63,6 +63,11 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
         self.tableView.reloadData()
     }
 
+    func onUsosDown() {
+        self.refreshControl?.endRefreshing()
+        EmptyStateView.showUsosDownAlert(inParent: view)
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

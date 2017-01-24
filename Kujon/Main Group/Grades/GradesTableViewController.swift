@@ -169,5 +169,10 @@ class GradesTableViewController: RefreshingTableViewController
         selectedTermId = nil
     }
 
+    func onUsosDown() {
+        self.refreshControl?.endRefreshing()
+        EmptyStateView.showUsosDownAlert(inParent: view)
+    }
+
 
 }

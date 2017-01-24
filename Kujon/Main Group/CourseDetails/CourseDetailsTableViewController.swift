@@ -81,6 +81,11 @@ class CourseDetailsTableViewController: RefreshingTableViewController,CourseDeta
         })
     }
 
+    func onUsosDown() {
+        self.refreshControl?.endRefreshing()
+        EmptyStateView.showUsosDownAlert(inParent: view)
+    }
+
 
     // MARK: - Table view data source
 
