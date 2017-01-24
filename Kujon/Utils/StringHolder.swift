@@ -106,6 +106,7 @@ class StringHolder {
     static let shouldOpenAppSettingsForNotifications = "Opcję powiadomień Kujona możesz zmienić w ustawieniach systemowych iOS. Czy chcesz otworzyć ustawienia systemowe?"
     static let kierunekTitle = "Kierunek"
     static let openLink = "Otwórz link"
+    static let noLecturesIn = "- brak zajęć"
 
 
 }

@@ -26,7 +26,6 @@ class CalendarViewController: MGCDayPlannerViewController,
     var lecturerId: String? = nil
 
 
-
     func setNavigationProtocol(_ delegate: NavigationMenuProtocol) {
         self.delegate = delegate
     }
@@ -46,11 +45,13 @@ class CalendarViewController: MGCDayPlannerViewController,
         self.dayPlannerView.showsAllDayEvents = false
         dayPlannerView.hourSlotHeight = 50.0
         (self.dayPlannerView as MGCDayPlannerView).hourRange = NSRange(location: 6, length: 16)
+        lectureProvider.setLecturer(lecturerId: lecturerId)
         if lastQueryDate == nil {
             lastQueryDate = Date.getCurrentStartOfWeek()
         }
-        lectureProvider.setLecturer(lecturerId: lecturerId)
-        lectureProvider.loadLectures(lastQueryDate!.dateToString())
+        if let lastQueryDate = lastQueryDate {
+            lectureProvider.loadLectures(lastQueryDate)
+        }
         veryFirstDate = lastQueryDate
         dateFormatter.dateFormat = calendarDateFormant
         lectureProvider.delegate = self
@@ -83,6 +84,7 @@ class CalendarViewController: MGCDayPlannerViewController,
 
     func reload() {
         onlyLectureDictionary = [:]
+        lectureProvider.reload()
         dayPlannerView.reloadAllEvents()
         isReload = true
         askForData(Date())
@@ -98,15 +100,28 @@ class CalendarViewController: MGCDayPlannerViewController,
     private func askForData(_ firstDate: Date! = nil) {
         spinner.isHidden = false
         if let firstDate = firstDate {
-            lectureProvider.loadLectures(firstDate.dateToString())
+            lectureProvider.loadLectures(firstDate)
             return
         }
         if let lastQueryDate = lastQueryDate {
-            lectureProvider.loadLectures(lastQueryDate.dateToString())
+            lectureProvider.loadLectures(lastQueryDate)
         }
     }
 
-    func onLectureLoaded(_ lectures: Array<Lecture>) {
+
+    func onLectureLoaded(_ lectures: Array<Lecture>, date: Date) {
+        if let loadedDate = (self.dayPlannerView as MGCDayPlannerView).visibleDays.start {
+            if (date.compareMonth(loadedDate) == 0 && lectures.count == 0) {
+                spinner.isHidden = true
+                ToastView.showInParent(self.navigationController?.view, withText: date.getMonth() + StringHolder.noLecturesIn, forDuration: 2.0)
+            } else {
+                self.handleIncomingLectures(lectures)
+            }
+        }
+    }
+
+
+    private func handleIncomingLectures(_ lectures: Array<Lecture>) {
         let wrappers = lectures.map {
             lecture in
             LectureWrapper(lecture: lecture)
@@ -135,6 +150,7 @@ class CalendarViewController: MGCDayPlannerViewController,
         }
     }
 
+
     func onErrorOccurs() {
         spinner.isHidden = true
         ToastView.showInParent(self.navigationController?.view, withText: StringHolder.errorOccures, forDuration: 2.0)
@@ -162,12 +178,12 @@ class CalendarViewController: MGCDayPlannerViewController,
 
     override func dayPlannerView(_ view: MGCDayPlannerView!, numberOfEventsOf type: MGCEventType, at date: Date!) -> Int {
 
-        if  let lastQueryDate = lastQueryDate,
-            let date = date,lastQueryDate.compareMonth(date) > 0 {
+        if let lastQueryDate = lastQueryDate,
+           let date = date, lastQueryDate.compareMonth(date) > 0 {
             self.lastQueryDate = lastQueryDate.addMonth(number: 1)
             askForData()
         }
-        if let veryFirstDate = veryFirstDate, veryFirstDate.compareMonth(date)<0 {
+        if let veryFirstDate = veryFirstDate, veryFirstDate.compareMonth(date) < 0 {
             if let newVeryFirstDate = veryFirstDate.addMonth(number: -1) {
                 self.veryFirstDate = newVeryFirstDate
                 askForData(self.veryFirstDate)

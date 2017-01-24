@@ -49,6 +49,9 @@ extension Date {
         return Date.getDateFormatter(Date.dateFormatDayMonth).string(from: self)
     }
 
+    func  getMonth()->String{
+        return Date.getDateFormatter(Date.dateFormatMonth).string(from: self)
+    }
 
 
     static func getCurrentStartOfWeek() -> Date {

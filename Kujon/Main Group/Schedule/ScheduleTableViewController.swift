@@ -118,6 +118,10 @@ class ScheduleTableViewController:
         isQuering = false
     }
 
+    func onLectureLoaded(_ lectures: Array<Lecture>, date: Date) {
+    }
+
+
     private func getPositionOfSection(_ text: String) -> Int! {
         return sectionsArray.index {
             $0.getSectionTitle() == text
