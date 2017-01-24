@@ -47,6 +47,8 @@ extension JsonProviderProtocol {
             } else {
                 errorR.unauthorized(text)
             }
+        case 504:
+            errorR.onUsosDown()
         default:
             errorR.onErrorOccurs(text)
         }

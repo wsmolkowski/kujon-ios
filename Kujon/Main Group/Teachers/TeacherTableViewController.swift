@@ -52,6 +52,10 @@ class TeacherTableViewController: RefreshingTableViewController, NavigationDeleg
             }, cancel: {})
     }
 
+    func onUsosDown() {
+        self.refreshControl?.endRefreshing()
+        EmptyStateView.showUsosDownAlert(inParent: view)
+    }
 
     func openDrawer() {
         delegate?.toggleLeftPanel()

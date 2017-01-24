@@ -49,6 +49,11 @@ class CoursesTableViewController: RefreshingTableViewController, NavigationDeleg
         })
     }
 
+    func onUsosDown() {
+        self.refreshControl?.endRefreshing()
+        EmptyStateView.showUsosDownAlert(inParent: view)
+    }
+
 
     func setNavigationProtocol(_ delegate: NavigationMenuProtocol) {
         self.delegate = delegate

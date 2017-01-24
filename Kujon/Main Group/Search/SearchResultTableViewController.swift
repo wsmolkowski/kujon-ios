@@ -55,6 +55,11 @@ class SearchResultTableViewController: RefreshingTableViewController, SearchProv
         })
     }
 
+    func onUsosDown() {
+        self.refreshControl?.endRefreshing()
+        EmptyStateView.showUsosDownAlert(inParent: view)
+    }
+
     func searchedItems(_ array: Array<SearchElementProtocol>) {
         self.refreshControl?.endRefreshing()
         isQuering = false

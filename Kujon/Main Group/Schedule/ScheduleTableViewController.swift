@@ -121,6 +121,10 @@ class ScheduleTableViewController:
     func onLectureLoaded(_ lectures: Array<Lecture>, date: Date) {
     }
 
+    func onUsosDown() {
+        self.refreshControl?.endRefreshing()
+        EmptyStateView.showUsosDownAlert(inParent: view)
+    }
 
     private func getPositionOfSection(_ text: String) -> Int! {
         return sectionsArray.index {
