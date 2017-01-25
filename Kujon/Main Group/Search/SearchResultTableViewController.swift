@@ -65,6 +65,9 @@ class SearchResultTableViewController: RefreshingTableViewController, SearchProv
         isQuering = false
         self.array = self.array + array
         self.tableView.reloadData();
+        if array.isEmpty {
+            EmptyStateView.showNoResultsAlert(inParent: view)
+        }
     }
 
 
