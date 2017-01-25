@@ -330,6 +330,7 @@
 		66852C1B1DE864F8009234C9 /* SettingsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66852C1A1DE864F8009234C9 /* SettingsProvider.swift */; };
 		66989CC91E38CB9700B659F6 /* KujonAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66989CC81E38CB9700B659F6 /* KujonAppearance.swift */; };
 		66989CCB1E38CE8200B659F6 /* SortKeyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66989CCA1E38CE8200B659F6 /* SortKeyProviding.swift */; };
+		66989CCD1E38DB9D00B659F6 /* SortedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66989CCC1E38DB9D00B659F6 /* SortedDictionary.swift */; };
 		669B2F591DBE093E000AE02C /* CourseMeritsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B2F571DBE093E000AE02C /* CourseMeritsTableViewCell.swift */; };
 		669B2F5A1DBE093E000AE02C /* CourseMeritsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 669B2F581DBE093E000AE02C /* CourseMeritsTableViewCell.xib */; };
 		669B2F5C1DBE0973000AE02C /* CourseMeritsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B2F5B1DBE0973000AE02C /* CourseMeritsSection.swift */; };
@@ -702,6 +703,7 @@
 		66852C1A1DE864F8009234C9 /* SettingsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsProvider.swift; sourceTree = "<group>"; };
 		66989CC81E38CB9700B659F6 /* KujonAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KujonAppearance.swift; sourceTree = "<group>"; };
 		66989CCA1E38CE8200B659F6 /* SortKeyProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortKeyProviding.swift; sourceTree = "<group>"; };
+		66989CCC1E38DB9D00B659F6 /* SortedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortedDictionary.swift; sourceTree = "<group>"; };
 		669B2F571DBE093E000AE02C /* CourseMeritsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseMeritsTableViewCell.swift; sourceTree = "<group>"; };
 		669B2F581DBE093E000AE02C /* CourseMeritsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseMeritsTableViewCell.xib; sourceTree = "<group>"; };
 		669B2F5B1DBE0973000AE02C /* CourseMeritsSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseMeritsSection.swift; sourceTree = "<group>"; };
@@ -845,6 +847,7 @@
 				66D46B171DE617EA003701D2 /* NotificationsManager.swift */,
 				662D0FA01E376DEC00003E7F /* EmptyStateView.swift */,
 				66989CCA1E38CE8200B659F6 /* SortKeyProviding.swift */,
+				66989CCC1E38DB9D00B659F6 /* SortedDictionary.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -920,7 +923,7 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		4C0D839BF212A83AA9960179 /* Course */ = {
+		4C0D839BF212A83AA9960179 /* CoursesList */ = {
 			isa = PBXGroup;
 			children = (
 				526750371D213902004AD243 /* CoursesTableViewController.swift */,
@@ -928,6 +931,7 @@
 				5267503B1D21391F004AD243 /* CourseTableViewCell.swift */,
 				5267503C1D21391F004AD243 /* CourseTableViewCell.xib */,
 			);
+			name = CoursesList;
 			path = Course;
 			sourceTree = "<group>";
 		};
@@ -1280,7 +1284,7 @@
 				4C0D87F53BF87425FE5BF375 /* Schedule */,
 				4C0D8D975AF27A419B8CC0B1 /* Helpers */,
 				4C0D8CFE9097F39B6001CF67 /* View */,
-				4C0D839BF212A83AA9960179 /* Course */,
+				4C0D839BF212A83AA9960179 /* CoursesList */,
 				4C0D8C2CCF13E560C8D36D1C /* Grades */,
 				4C0D8E9FE0544625CD42B9F0 /* Teachers */,
 				4C0D854E52E691438A34E0B1 /* Settings */,
@@ -2084,6 +2088,7 @@
 				0AB192071D47B3A000834773 /* GoogleManager.swift in Sources */,
 				52AF77CF1D0AD5C50058979A /* SettingsViewController.swift in Sources */,
 				4C0D83DD9146C96D43851C5D /* ScheduleMenuItem.swift in Sources */,
+				66989CCD1E38DB9D00B659F6 /* SortedDictionary.swift in Sources */,
 				4C0D8272DA00131511B32AF8 /* CourseMenuItems.swift in Sources */,
 				4C0D8B852BE5B63017986E90 /* GradesMenuItem.swift in Sources */,
 				669B89A11DF9A51A00492554 /* SectionHeaderView.swift in Sources */,

@@ -32,3 +32,10 @@ extension Course:Decodable{
     }
 
 }
+
+extension Course: SortKeyProviding {
+
+    var sortKey: String {
+        return courseName
+    }
+}
