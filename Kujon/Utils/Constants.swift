@@ -10,6 +10,8 @@ import Foundation
 
 struct Constants {
 
+    static let appVersion: String = "2.4"
+
     struct OneSignal {
 
         static let userEmailTag = "user_email"
