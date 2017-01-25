@@ -24,6 +24,9 @@ class MessagesTableViewController: RefreshingTableViewController, NavigationDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if UserDataHolder.sharedInstance.isNotificationPending {
+            UserDataHolder.sharedInstance.isNotificationPending = false
+        }
         addBackgroundLabel(message: StringHolder.noMessages)
         backgroundLabel?.isHidden = true
         addBackgroundImage(imageName: "mailbox")

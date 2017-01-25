@@ -15,10 +15,8 @@ import Crashlytics
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
     var window: UIWindow?
     var userDataHolder = UserDataHolder.sharedInstance
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
@@ -143,7 +141,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if application.applicationState == .inactive {
             UserDataHolder.sharedInstance.isNotificationPending = true
-            openControllerDependingOnLoginState()
+            let container = ContainerViewController()
+            window!.rootViewController = container
+            window!.makeKeyAndVisible()
         }
     }
 
