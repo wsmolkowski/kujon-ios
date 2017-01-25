@@ -53,8 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         OneSignal.defaultClient().enable(inAppAlertNotification: true)
 
+        KujonAppearance.setSearchBarAppearance()
         openControllerDependingOnLoginState()
-
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 
@@ -146,5 +146,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window!.makeKeyAndVisible()
         }
     }
+
 
 }

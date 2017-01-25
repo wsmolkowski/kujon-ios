@@ -8,11 +8,15 @@
 
 import UIKit
 
-class TeacherTableViewController: RefreshingTableViewController, NavigationDelegate, LecturerProviderDelegate {
+class TeacherTableViewController: RefreshingTableViewController, NavigationDelegate, LecturerProviderDelegate, UISearchResultsUpdating {
+
     private let TeachCellId = "teacherCellId"
     weak var delegate: NavigationMenuProtocol! = nil
     let lecturerProvider = ProvidersProviderImpl.sharedInstance.provideLecturerProvider()
-    private var lecturers: Array<SimpleUser>! = nil
+    private var allLecturers: Array<SimpleUser>! = nil
+    private var filteredLecturers: [SimpleUser] = []
+    private let searchController = UISearchController(searchResultsController: nil)
+
 
     func setNavigationProtocol(_ delegate: NavigationMenuProtocol) {
         self.delegate = delegate
@@ -26,21 +30,35 @@ class TeacherTableViewController: RefreshingTableViewController, NavigationDeleg
         addToProvidersList(provider: lecturerProvider)
         self.tableView.tableFooterView = UIView()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        addSearchController()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        if searchController.isActive {
+            searchController.dismiss(animated: false, completion: nil)
+        }
+        super.viewWillDisappear(animated)
+    }
+
+    private func addSearchController() {
+        searchController.searchBar.barTintColor = UIColor.greyBackgroundColor()
+        searchController.searchBar.tintColor = UIColor.kujonBlueColor()
+        searchController.searchBar.placeholder = "Szukaj"
+
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
     }
 
     override func loadData() {
         lecturerProvider.loadLecturers()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        self.tableView.reloadData()
-        // Dispose of any resources that can be recreated.
-    }
-
-
     func onLecturersLoaded(_ lecturers: Array<SimpleUser>) {
-        self.lecturers = lecturers
+        self.allLecturers = lecturers
+        self.filteredLecturers = lecturers
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
     }
@@ -58,27 +76,24 @@ class TeacherTableViewController: RefreshingTableViewController, NavigationDeleg
     }
 
     func openDrawer() {
+        if searchController.isActive {
+            searchController.searchBar.resignFirstResponder()
+        }
         delegate?.toggleLeftPanel()
     }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (self.lecturers != nil) {
-            return self.lecturers.count
-        } else {
-            return 0
-        }
+       return filteredLecturers.count
     }
-
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: ArrowedItemCell = tableView.dequeueReusableCell(withIdentifier: TeachCellId, for: indexPath) as! ArrowedItemCell
-        let myUser: SimpleUser = self.lecturers[indexPath.row]
+        let myUser: SimpleUser = self.filteredLecturers[indexPath.row]
         cell.titleLabel.text = myUser.lastName + " " + myUser.firstName
         cell.addTopSeparator()
         return cell
@@ -90,10 +105,10 @@ class TeacherTableViewController: RefreshingTableViewController, NavigationDeleg
 
 
     func connected(_ indexPath: IndexPath) {
-        guard indexPath.row < lecturers.count else {
+        guard indexPath.row < filteredLecturers.count else {
             return
         }
-        let myUser: SimpleUser = self.lecturers[indexPath.row]
+        let myUser: SimpleUser = self.filteredLecturers[indexPath.row]
         let currentTeacher  = CurrentTeacherHolder.sharedInstance
         currentTeacher.currentTeacher = myUser
         let controller = TeacherDetailTableViewController()
@@ -101,5 +116,15 @@ class TeacherTableViewController: RefreshingTableViewController, NavigationDeleg
         self.navigationController?.pushViewController(controller, animated: true)
         
     }
-    
+
+    // MARK - UISearchResultsUpdating
+
+    func updateSearchResults(for searchController: UISearchController) {
+        let filterKey: String = searchController.searchBar.text!
+        print("KEY: ", filterKey)
+        filteredLecturers = allLecturers.filterWithKey(filterKey) as! [SimpleUser]
+        tableView.reloadData()
+    }
+
+
 }
