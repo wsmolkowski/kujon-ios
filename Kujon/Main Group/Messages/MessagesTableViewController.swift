@@ -8,17 +8,19 @@
 
 import UIKit
 
-class MessagesTableViewController: RefreshingTableViewController, NavigationDelegate, MessageProviderDelegate {
+class MessagesTableViewController: RefreshingTableViewController, NavigationDelegate, MessageProviderDelegate, UISearchResultsUpdating {
 
     // MARK: Properties
 
     private weak var delegate: NavigationMenuProtocol?
     private let messageProvider: MessageProvider = MessageProvider()
-    private var messages: [Message] = []
+    private var allMessages: [Message] = []
+    private var filteredMessages: [Message] = []
     private let messageCellId: String = "messageCellId"
     private var backgroundImage: UIImageView?
     private var backgroundLabel: UILabel?
     private let cellHeight: CGFloat = 50
+    private let searchController = UISearchController(searchResultsController: nil)
 
     // MARK: Initial section
 
@@ -35,17 +37,38 @@ class MessagesTableViewController: RefreshingTableViewController, NavigationDele
         addToProvidersList(provider: messageProvider)
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(UserTableViewController.openDrawer), andTitle: StringHolder.messages)
         configureTableView()
+        addSearchController()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        if searchController.isActive {
+            searchController.dismiss(animated: false, completion: nil)
+        }
+        super.viewWillDisappear(animated)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        messages = []
+        allMessages = []
+        filteredMessages = []
     }
 
     private func configureTableView() {
         tableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: messageCellId)
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor.greyBackgroundColor()
+    }
+
+    private func addSearchController() {
+        searchController.searchBar.barTintColor = UIColor.greyBackgroundColor()
+        searchController.searchBar.tintColor = UIColor.kujonBlueColor()
+        searchController.searchBar.placeholder = "Szukaj"
+
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
     }
 
     override func loadData() {
@@ -79,6 +102,9 @@ class MessagesTableViewController: RefreshingTableViewController, NavigationDele
     // MARK: Hamburger button
 
     func openDrawer() {
+        if searchController.isActive {
+            searchController.searchBar.resignFirstResponder()
+        }
         delegate?.toggleLeftPanel()
     }
 
@@ -91,7 +117,8 @@ class MessagesTableViewController: RefreshingTableViewController, NavigationDele
     // MARK: MessageProviderDelegate
 
     func onMessageLoaded(_ message: Array<Message>) {
-        messages = message
+        allMessages = message
+        filteredMessages = message
         backgroundLabel?.isHidden = !message.isEmpty
         backgroundImage?.isHidden = !message.isEmpty
         refreshControl?.endRefreshing()
@@ -117,7 +144,7 @@ class MessagesTableViewController: RefreshingTableViewController, NavigationDele
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        return filteredMessages.count
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -127,7 +154,7 @@ class MessagesTableViewController: RefreshingTableViewController, NavigationDele
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: messageCellId, for: indexPath) as! MessageCell
-        cell.message = messages[indexPath.row]
+        cell.message = filteredMessages[indexPath.row]
         return cell
     }
 
@@ -135,10 +162,17 @@ class MessagesTableViewController: RefreshingTableViewController, NavigationDele
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let messageDetailController = MessageDetailViewController(nibName: "MessageDetailViewController", bundle: nil)
-        messageDetailController.message = messages[indexPath.row]
+        messageDetailController.message = filteredMessages[indexPath.row]
         navigationController?.pushViewController(messageDetailController, animated: true)
 
     }
 
+    // MARK - UISearchResultsUpdating
+
+    func updateSearchResults(for searchController: UISearchController) {
+        let filterKey: String = searchController.searchBar.text!
+        filteredMessages = allMessages.filterWithKey(filterKey) as! [Message]
+        tableView.reloadData()
+    }
 
 }

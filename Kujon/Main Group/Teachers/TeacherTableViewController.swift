@@ -121,7 +121,6 @@ class TeacherTableViewController: RefreshingTableViewController, NavigationDeleg
 
     func updateSearchResults(for searchController: UISearchController) {
         let filterKey: String = searchController.searchBar.text!
-        print("KEY: ", filterKey)
         filteredLecturers = allLecturers.filterWithKey(filterKey) as! [SimpleUser]
         tableView.reloadData()
     }
