@@ -39,5 +39,12 @@ struct PreparedTermGrades {
     }
 }
 
+extension PreparedTermGrades: SortKeyProviding {
+
+    var sortKey: String {
+        return termId
+    }
+
+}
 
 

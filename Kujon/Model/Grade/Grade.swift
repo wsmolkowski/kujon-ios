@@ -34,8 +34,13 @@ struct PreparedGrades {
     let grades: Grade
     let termId:String
 
+}
 
+extension PreparedGrades: SortKeyProviding {
 
+    var sortKey: String {
+        return courseName
+    }
 }
 
 

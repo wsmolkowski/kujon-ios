@@ -14,6 +14,7 @@ struct SortedDictionary<T: SortKeyProviding> {
 
     fileprivate var sortedDictionary: SortedDictionaryType = [:]
     fileprivate (set) var sections: [String] = []
+    fileprivate (set) var descriptions: [String] = []
 
     init() { }
 
@@ -40,6 +41,7 @@ struct SortedDictionary<T: SortKeyProviding> {
         }
         self.sortedDictionary = sortedDictionary
         self.sections = [String](sectionKeys).sorted(by: <)
+        self.descriptions = sections
     }
 
     init(coursesWrappers: [CoursesWrapper]) {
@@ -48,6 +50,7 @@ struct SortedDictionary<T: SortKeyProviding> {
         for wrapper in coursesWrappers {
             if let sectionKey = wrapper.title {
                 sections.append(sectionKey)
+                descriptions.append(String())
                 var courses: [T] = []
                 wrapper.courses.forEach { courses.append($0 as! T) }
                 dictionary[sectionKey] = courses
@@ -56,16 +59,29 @@ struct SortedDictionary<T: SortKeyProviding> {
         sortedDictionary = dictionary
     }
 
+    init(preparedTermGrades: [PreparedTermGrades]) {
+        var dictionary: SortedDictionaryType = [:]
+        for termGrade in preparedTermGrades {
+            let sectionKey = termGrade.termId
+            sections.append(sectionKey)
+            descriptions.append(termGrade.averageGradeDescriptive)
+            var grades: [T] = []
+            termGrade.grades.forEach { grades.append($0 as! T) }
+            dictionary[sectionKey] = grades
+        }
+        sortedDictionary = dictionary
+    }
 
     internal func copyFilteredWithKey(_ filterKey: String) -> SortedDictionary<T> {
         var copy = SortedDictionary<T>()
 
-        for sectionKey in sections {
+        for (index, sectionKey) in sections.enumerated() {
             let sectionItems = itemsInSection(name: sectionKey)
             let copySectionItems: [T] = filter(items: sectionItems, with: filterKey)
             if !copySectionItems.isEmpty {
                 copy.sortedDictionary[sectionKey] = copySectionItems
                 copy.sections.append(sectionKey)
+                copy.descriptions.append(descriptions[index])
             }
         }
         return copy

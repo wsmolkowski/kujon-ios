@@ -8,21 +8,20 @@
 
 import UIKit
 
-class GradesTableViewController: RefreshingTableViewController
-        , NavigationDelegate
-        ,GradesProviderDelegate,
-        TermsProviderDelegate {
+class GradesTableViewController: RefreshingTableViewController, NavigationDelegate, GradesProviderDelegate, TermsProviderDelegate, UISearchResultsUpdating {
 
     weak var delegate: NavigationMenuProtocol! = nil
     let gradesProvider = ProvidersProviderImpl.sharedInstance.provideGradesProvider()
     private let GradeCellIdentiefer = "GradeCellId"
     let textId = "myTextSuperId"
-    private var preparedTermGrades  = Array<PreparedTermGrades>()
-    private var termGrades: [TermGrades]?
-    private var dataBack = false;
+    private var allTermGrades  = SortedDictionary<PreparedGrades>()
+    private var filteredTermGrades = SortedDictionary<PreparedGrades>()
+    private var didLoadData = false;
     private let kSectionHeight: CGFloat = 40.0
     private let termsProvider = ProvidersProviderImpl.sharedInstance.provideTermsProvider()
     private var selectedTermId: String?
+    private let searchController = UISearchController(searchResultsController: nil)
+
 
     func setNavigationProtocol(_ delegate: NavigationMenuProtocol) {
         self.delegate = delegate
@@ -38,7 +37,27 @@ class GradesTableViewController: RefreshingTableViewController
         addToProvidersList(provider: gradesProvider)
         self.tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
-        dataBack = false;
+        didLoadData = false;
+        addSearchController()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        if searchController.isActive {
+            searchController.dismiss(animated: false, completion: nil)
+        }
+        super.viewWillDisappear(animated)
+    }
+
+    private func addSearchController() {
+        searchController.searchBar.barTintColor = UIColor.greyBackgroundColor()
+        searchController.searchBar.tintColor = UIColor.kujonBlueColor()
+        searchController.searchBar.placeholder = "Szukaj"
+
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
     }
 
     override func loadData() {
@@ -46,13 +65,16 @@ class GradesTableViewController: RefreshingTableViewController
     }
 
     func openDrawer() {
+        if searchController.isActive {
+            searchController.searchBar.resignFirstResponder()
+        }
         delegate?.toggleLeftPanel()
     }
 
-    func onGradesLoaded(termGrades: [TermGrades], preparedTermGrades: Array<PreparedTermGrades>) {
-        dataBack = true
-        self.termGrades = termGrades
-        self.preparedTermGrades = preparedTermGrades
+    func onGradesLoaded(preparedTermGrades: Array<PreparedTermGrades>) {
+        didLoadData = true
+        self.allTermGrades = SortedDictionary<PreparedGrades>(preparedTermGrades: preparedTermGrades)
+        self.filteredTermGrades = allTermGrades
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
     }
@@ -68,14 +90,14 @@ class GradesTableViewController: RefreshingTableViewController
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return noDataCondition() ? 1:self.preparedTermGrades.count
+        return noDataCondition() ? 1 : filteredTermGrades.sections.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(noDataCondition()){
-            return 1
+            return 0
         }
-        return self.preparedTermGrades[section].grades.count
+        return filteredTermGrades.itemsCountInSection(index: section)
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -89,13 +111,13 @@ class GradesTableViewController: RefreshingTableViewController
         return kSectionHeight
     }
 
-
-
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if(noDataCondition()) {
             return nil
         }
-        let headerTitle: String = String(format: "%@,  średnia ocena: %@", preparedTermGrades[section].termId, termGrades![section].averageGradeDescriptive)
+        let termId = filteredTermGrades.sections[section]
+        let gradeDescriptive = filteredTermGrades.descriptions[section]
+        let headerTitle: String = String(format: "%@,  średnia ocena: %@", termId, gradeDescriptive)
         let header = createLabelForSectionTitle(headerTitle, middle: true, height: kSectionHeight)
         let tapRecognizer = IdentifiedTapGestureRecognizer(target: self, action: #selector(CoursesTableViewController.headerDidTap(with:)))
         tapRecognizer.id = section
@@ -109,29 +131,28 @@ class GradesTableViewController: RefreshingTableViewController
         if(noDataCondition()){
             let cell = UITableViewCell(style: .default, reuseIdentifier: textId)
             cell.textLabel?.font = UIFont.kjnTextStyle2Font()
-            if(dataBack){
+            if(didLoadData){
                 cell.textLabel?.text = StringHolder.no_grades
             }
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: GradeCellIdentiefer, for: indexPath) as! Grade2TableViewCell
-        let prepareGrade = self.preparedTermGrades[indexPath.section].grades[indexPath.row]
-        cell.grade = prepareGrade.grades
-        cell.courseName = prepareGrade.courseName
+        let preparedGrade = filteredTermGrades.itemForIndexPath(indexPath)
+        cell.grade = preparedGrade.grades
+        cell.courseName = preparedGrade.courseName
         return cell
     }
 
     private func noDataCondition()->Bool{
-        return self.preparedTermGrades.count == 0
+        return filteredTermGrades.sections.count == 0
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if  !noDataCondition() {
-            let prepareGrade = self.preparedTermGrades[indexPath.section].grades[indexPath.row]
-
+            let preparedGrade = filteredTermGrades.itemForIndexPath(indexPath)
             let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: Bundle.main)
-            courseDetails.courseId = prepareGrade.courseId
-            courseDetails.termId = prepareGrade.termId
+            courseDetails.courseId = preparedGrade.courseId
+            courseDetails.termId = preparedGrade.termId
             self.navigationController?.pushViewController(courseDetails, animated: true)
         }
 
@@ -141,7 +162,7 @@ class GradesTableViewController: RefreshingTableViewController
 
     func headerDidTap(with tapGestureRecognizer: IdentifiedTapGestureRecognizer) {
         let section = tapGestureRecognizer.id
-        selectedTermId = preparedTermGrades[section].termId
+        selectedTermId = filteredTermGrades.sections[section]
         termsProvider.loadTerms()
     }
 
@@ -172,6 +193,14 @@ class GradesTableViewController: RefreshingTableViewController
     func onUsosDown() {
         self.refreshControl?.endRefreshing()
         EmptyStateView.showUsosDownAlert(inParent: view)
+    }
+
+    // MARK - UISearchResultsUpdating
+
+    func updateSearchResults(for searchController: UISearchController) {
+        let filterKey: String = searchController.searchBar.text!
+        filteredTermGrades = allTermGrades.copyFilteredWithKey(filterKey)
+        tableView.reloadData()
     }
 
 
