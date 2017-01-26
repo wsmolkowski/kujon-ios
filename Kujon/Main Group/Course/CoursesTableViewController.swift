@@ -35,7 +35,7 @@ class CoursesTableViewController: RefreshingTableViewController, NavigationDeleg
 
     override func viewWillDisappear(_ animated: Bool) {
         if searchController.isActive {
-            searchController.dismiss(animated: false, completion: nil)
+            searchController.isActive = false
         }
         super.viewWillDisappear(animated)
     }
