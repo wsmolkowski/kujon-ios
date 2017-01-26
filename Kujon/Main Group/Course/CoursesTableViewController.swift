@@ -145,7 +145,7 @@ class CoursesTableViewController: RefreshingTableViewController, NavigationDeleg
     private func presentPopUpWithTerm(_ term:Term) {
         let termPopUp = TermsPopUpViewController(nibName: "TermsPopUpViewController", bundle: nil)
         termPopUp.modalPresentationStyle = .overCurrentContext
-        present(termPopUp, animated: false) { [unowned termPopUp] in
+        parent?.present(termPopUp, animated: false) { [unowned termPopUp] in
             termPopUp.showAnimate();
         }
         termPopUp.showInView(term)
