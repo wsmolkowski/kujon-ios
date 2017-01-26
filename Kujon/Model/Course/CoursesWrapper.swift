@@ -11,3 +11,10 @@ class CoursesWrapper {
 
     var courses = Array<Course>()
 }
+
+extension CoursesWrapper: SortKeyProviding {
+
+    var sortKey: String {
+        return title
+    }
+}

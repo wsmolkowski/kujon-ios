@@ -35,9 +35,9 @@ class ContainerViewController: UIViewController, LeftMenuTableViewControllerDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.view.backgroundColor = UIColor.kujonBlueColor()
         UIApplication.shared.statusBarStyle = .lightContent
-
         let centerViewController = initialController()
         (centerViewController as! NavigationDelegate).setNavigationProtocol(self)
         centerNavigationController = UINavigationController(rootViewController: centerViewController)

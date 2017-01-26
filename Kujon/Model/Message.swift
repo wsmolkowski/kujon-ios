@@ -26,3 +26,10 @@ extension Message:Decodable{
                            type: j => "typ")
     }
 }
+
+extension Message: SortKeyProviding {
+
+    var sortKey: String {
+        return from
+    }
+}

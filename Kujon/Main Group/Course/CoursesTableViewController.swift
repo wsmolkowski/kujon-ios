@@ -8,13 +8,17 @@
 
 import UIKit
 
-class CoursesTableViewController: RefreshingTableViewController, NavigationDelegate,CourseProviderDelegate, TermsProviderDelegate {
+class CoursesTableViewController: RefreshingTableViewController, NavigationDelegate,CourseProviderDelegate, TermsProviderDelegate, UISearchResultsUpdating {
+
     private let CourseCellId = "courseCellId"
     private let courseProvider = ProvidersProviderImpl.sharedInstance.provideCourseProvider()
     private let termsProvider = ProvidersProviderImpl.sharedInstance.provideTermsProvider()
-    private var courseWrappers = Array<CoursesWrapper>()
+    private var allSections: SortedDictionary<Course> = SortedDictionary(coursesWrappers: [])
+    private var filteredSections: SortedDictionary<Course> = SortedDictionary(coursesWrappers: [])
     weak var delegate: NavigationMenuProtocol! = nil
     private var selectedTermId: String?
+    private let searchController = UISearchController(searchResultsController: nil)
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,20 +30,40 @@ class CoursesTableViewController: RefreshingTableViewController, NavigationDeleg
         courseProvider.delegate = self
         addToProvidersList(provider:courseProvider)
         termsProvider.delegate = self
+        addSearchController()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        if searchController.isActive {
+            searchController.dismiss(animated: false, completion: nil)
+        }
+        super.viewWillDisappear(animated)
+    }
+
+    private func addSearchController() {
+        searchController.searchBar.barTintColor = UIColor.greyBackgroundColor()
+        searchController.searchBar.tintColor = UIColor.kujonBlueColor()
+        searchController.searchBar.placeholder = "Szukaj"
+
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
     }
 
     override func loadData() {
         courseProvider.provideCourses()
     }
 
-
     func coursesProvided(_ courses: Array<CoursesWrapper>) {
 
-        self.courseWrappers = courses;
+        self.allSections = SortedDictionary(coursesWrappers: courses)
+        self.filteredSections = allSections
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
-
     }
+
     func onErrorOccurs(_ text: String) {
         self.showAlertApi(StringHolder.attention, text: text, succes: {
             [unowned self] in
@@ -60,23 +84,24 @@ class CoursesTableViewController: RefreshingTableViewController, NavigationDeleg
     }
 
     func openDrawer() {
+        if searchController.isActive {
+            searchController.searchBar.resignFirstResponder()
+        }
         delegate?.toggleLeftPanel()
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return courseWrappers.count
+        return filteredSections.sections.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return courseWrappers[section].courses.count
+        return filteredSections.itemsCountInSection(index: section)
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let course = self.courseWrappers[indexPath.section].courses[indexPath.row]  as Course
+        let course = filteredSections.itemForIndexPath(indexPath)
         let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: Bundle.main)
         courseDetails.course = course
         self.navigationController?.pushViewController(courseDetails, animated: true)
@@ -85,12 +110,9 @@ class CoursesTableViewController: RefreshingTableViewController, NavigationDeleg
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CourseCellId, for: indexPath) as! CourseTableViewCell
-        let course = self.courseWrappers[indexPath.section].courses[indexPath.row]  as Course
-
+        let course = filteredSections.itemForIndexPath(indexPath)
         cell.courseNameLabel.text = course.courseName
         cell.selectionStyle = UITableViewCellSelectionStyle.none
-
-
         return cell
     }
 
@@ -101,7 +123,7 @@ class CoursesTableViewController: RefreshingTableViewController, NavigationDeleg
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = createLabelForSectionTitle(courseWrappers[section].title, middle: true)
+        let header = createLabelForSectionTitle(filteredSections.sections[section], middle: true)
         let tapRecognizer = IdentifiedTapGestureRecognizer(target: self, action: #selector(CoursesTableViewController.headerDidTap(with:)))
         tapRecognizer.id = section
         tapRecognizer.numberOfTapsRequired = 1
@@ -113,8 +135,9 @@ class CoursesTableViewController: RefreshingTableViewController, NavigationDeleg
     // MARK: Term Detail Popup
 
     func headerDidTap(with tapGestureRecognizer: IdentifiedTapGestureRecognizer) {
-        let section = tapGestureRecognizer.id
-        selectedTermId = courseWrappers[section].courses[0].termId
+        let sectionIndex = tapGestureRecognizer.id
+        let sectionCourses = filteredSections.itemsInSection(index: sectionIndex)
+        selectedTermId = sectionCourses[0].termId
         termsProvider.loadTerms()
 
     }
@@ -143,4 +166,13 @@ class CoursesTableViewController: RefreshingTableViewController, NavigationDeleg
         selectedTermId = nil
     }
 
+    // MARK - UISearchResultsUpdating
+
+    func updateSearchResults(for searchController: UISearchController) {
+        let filterKey: String = searchController.searchBar.text!
+        filteredSections = allSections.copyFilteredWithKey(filterKey)
+        tableView.reloadData()
+    }
+
 }
+

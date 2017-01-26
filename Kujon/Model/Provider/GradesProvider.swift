@@ -12,7 +12,7 @@ protocol GradesProviderProtocol: JsonProviderProtocol {
 }
 
 protocol GradesProviderDelegate: ErrorResponseProtocol {
-    func onGradesLoaded(termGrades: [TermGrades], preparedTermGrades: Array<PreparedTermGrades>)
+    func onGradesLoaded(preparedTermGrades: Array<PreparedTermGrades>)
 
 }
 
@@ -33,7 +33,8 @@ weak var delegate: GradesProviderDelegate!
                         for i in  0...grades.data.count - 1 {
 
                             let termGrade = grades.data[i]
-                            var preparedGrade  = Array<PreparedGrades>()
+                            let termAverageGrade = termGrade.averageGrade
+                            var preparedGrades  = Array<PreparedGrades>()
                             for j in 0...termGrade.grades.count - 1 {
 
                                 let courseGrade = termGrade.grades[j]
@@ -41,17 +42,17 @@ weak var delegate: GradesProviderDelegate!
                                 for k in 0...courseGrade.grades.count - 1{
 
                                     let grade = courseGrade.grades[k]
-                                    preparedGrade.append(PreparedGrades(
+                                    preparedGrades.append(PreparedGrades(
                                             courseName: courseGrade.courseName ,
                                             courseId: courseGrade.courseId ,
                                             grades: grade ,
                                             termId:courseGrade.termId))
                                 }
                             }
-                            preparedTermGrades.append(PreparedTermGrades(termId: termGrade.termId,grades: preparedGrade))
+                            preparedTermGrades.append(PreparedTermGrades(termId: termGrade.termId, grades: preparedGrades, averageGrade: termAverageGrade))
                         }
                     }
-                    self.delegate?.onGradesLoaded(termGrades:grades.data, preparedTermGrades:preparedTermGrades)
+                    self.delegate?.onGradesLoaded(preparedTermGrades:preparedTermGrades)
                 }
             } catch {
                 NSlogManager.showLog("JSON serialization failed:  \(error)")

@@ -16,6 +16,8 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
     @IBOutlet weak var spinner: SpinnerView!
     @IBOutlet weak var notificationSwitch: UISwitch!
     @IBOutlet weak var calendarSyncSwitch: UISwitch!
+    @IBOutlet weak var appVersionLabel: UILabel!
+
     let settingsProvider: SettingsProvider = SettingsProvider()
     let userData = UserDataHolder.sharedInstance
 
@@ -28,7 +30,10 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
         deleteAccountProvider.delegate = self
         spinner.isHidden = true
         view.backgroundColor = UIColor.greyBackgroundColor()
+        notificationSwitch.onTintColor = UIColor.kujonBlueColor()
+        calendarSyncSwitch.onTintColor = UIColor.kujonBlueColor()
         updateNotificationsSwitchState()
+        appVersionLabel.text = Constants.appVersion
         NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.appDidBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         updateCalendarSyncSwitchState()
         if !userData.areSettingsLoaded {

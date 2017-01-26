@@ -12,7 +12,15 @@ import Foundation
 class EmptyStateView: UIView {
 
     internal static func showUsosDownAlert(inParent view: UIView) {
+        EmptyStateView.showAlert(inParent: view, imageName: "empty-state-sunbath", title: "Przerwa w dostępie do USOS", description: "Spróbuj ponownie za jakiś czas :)", descriptionLabelHeight: 30.0)
+    }
 
+    internal static func showNoResultsAlert(inParent view: UIView) {
+        EmptyStateView.showAlert(inParent: view, imageName: "empty-state-cactus", title: "Brak wyników wyszukiwania")
+    }
+
+
+    internal static func showAlert(inParent view: UIView, imageName: String, title: String, description: String? = nil, descriptionLabelHeight: CGFloat = 30.0) {
         let width: CGFloat = view.bounds.size.width - 20
         let height: CGFloat = 300
         let originX: CGFloat  = view.bounds.midX - width / 2
@@ -24,16 +32,17 @@ class EmptyStateView: UIView {
         container.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin]
         container.backgroundColor = .white
 
-        let image = EmptyStateView.emptyStateImageInParentView(container, imageName: "empty-state-sunbath")
+        let image = EmptyStateView.imageInParentView(container, imageName: imageName)
         container.addSubview(image)
 
-        let titleLabel = EmptyStateView.titleLabelInParentView(container, title: "Przerwa w dostępie do USOS")
+        let titleLabel = EmptyStateView.titleLabelInParentView(container, title: title)
         container.addSubview(titleLabel)
 
 
-        let descriptionLabel = EmptyStateView.descriptionLabelInParentView(container, description: "Spróbuj ponownie za jakiś czas :)", labelHeight: 30.0)
-        container.addSubview(descriptionLabel)
-
+        if let description = description,
+            let descriptionLabel = EmptyStateView.descriptionLabelInParentView(container, description: description, labelHeight: descriptionLabelHeight) {
+            container.addSubview(descriptionLabel)
+        }
         container.alpha = 0.0;
         view.addSubview(container)
         UIView.animate(withDuration: 0.4, animations: {
@@ -44,7 +53,7 @@ class EmptyStateView: UIView {
     }
 
 
-    private static func emptyStateImageInParentView(_ view: UIView, imageName: String) -> UIView {
+    private static func imageInParentView(_ view: UIView, imageName: String) -> UIView {
         let image = UIImage(named: imageName)
         let imageView = UIImageView(image: image)
         var imageViewFrame = imageView.frame
@@ -71,7 +80,10 @@ class EmptyStateView: UIView {
         return label
     }
 
-    private static func descriptionLabelInParentView(_ view: UIView, description: String, labelHeight: CGFloat) -> UIView {
+    private static func descriptionLabelInParentView(_ view: UIView, description: String? = nil, labelHeight: CGFloat = 30.0) -> UIView? {
+        guard let description = description else {
+            return nil
+        }
         var labelFrame = view.bounds
         labelFrame.origin.x = 20
         labelFrame.origin.y = 130

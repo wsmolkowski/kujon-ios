@@ -39,4 +39,18 @@ extension SimpleUser: Decodable {
     func getNameWithTitles() -> String{
         return getPrefix() + firstName + " " + lastName + getSuffix()
     }
+
+    func fullName() -> String {
+        return firstName + " " + lastName
+    }
+
+
+}
+
+
+extension SimpleUser: SortKeyProviding {
+
+        internal var sortKey: String {
+            return lastName + " " + firstName
+        }
 }
