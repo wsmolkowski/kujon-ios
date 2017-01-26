@@ -811,16 +811,13 @@
 		4C0D821C1CE25F0226742C8A /* Kujon */ = {
 			isa = PBXGroup;
 			children = (
-				4C0D80A307458D388D3B812C /* Supporting Files */,
 				4C0D83449C89A353F86CED95 /* Network */,
 				4C0D813B87BE55B5A638695E /* Model */,
-				4C0D8873DDE812269064F351 /* Usoses */,
-				4C0D83D8B40603DC0363E06E /* EntryScreen */,
-				4C0D8C683DC578BF5AA751F9 /* Second Login */,
-				4C0D8AC64D4ECAED91008202 /* Main Group */,
+				4C0D85D49CF5C8365506B7EE /* LoginManager */,
+				4C0D8AC64D4ECAED91008202 /* View Controllers */,
 				4C0D8B22EBFA522F154A82EF /* Global Extensions */,
-				4C0D85D49CF5C8365506B7EE /* FacebookManager */,
 				4C0D82489E8A720F1EED7B19 /* Utils */,
+				4C0D80A307458D388D3B812C /* Supporting Files */,
 			);
 			path = Kujon;
 			sourceTree = "<group>";
@@ -947,7 +944,8 @@
 				5246F67B1D902276007AEC0A /* LoginViewController.xib */,
 				4C0D8A8156B95E39738E705B /* OpenLoginScreenProtocol.swift */,
 			);
-			path = EntryScreen;
+			name = EntryScreen;
+			path = ../EntryScreen;
 			sourceTree = "<group>";
 		};
 		4C0D83E72FF9CB3AE2F0BF0A /* Thesis */ = {
@@ -1065,7 +1063,7 @@
 			path = Terms;
 			sourceTree = "<group>";
 		};
-		4C0D85D49CF5C8365506B7EE /* FacebookManager */ = {
+		4C0D85D49CF5C8365506B7EE /* LoginManager */ = {
 			isa = PBXGroup;
 			children = (
 				4C0D86B6033E7743D91C115B /* FacebookManager.swift */,
@@ -1073,6 +1071,7 @@
 				4C0D8A7B09C45724433D49FA /* UserLogin.swift */,
 				4C0D832E54AC26D10D34A52D /* EmailManager.swift */,
 			);
+			name = LoginManager;
 			path = FacebookManager;
 			sourceTree = "<group>";
 		};
@@ -1226,13 +1225,14 @@
 			path = Authenticate;
 			sourceTree = "<group>";
 		};
-		4C0D8873DDE812269064F351 /* Usoses */ = {
+		4C0D8873DDE812269064F351 /* UsosesList */ = {
 			isa = PBXGroup;
 			children = (
 				528284091D08499000A602B4 /* UsosesTableViewController.swift */,
 				4C0D8E93AF3D07DC32FE7F30 /* Views */,
 			);
-			path = Usoses;
+			name = UsosesList;
+			path = ../Usoses;
 			sourceTree = "<group>";
 		};
 		4C0D894ECCF8686ED62F6BAD /* Share */ = {
@@ -1269,35 +1269,39 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		4C0D8AC64D4ECAED91008202 /* Main Group */ = {
+		4C0D8AC64D4ECAED91008202 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				66D12E0B1DEE2D8700235320 /* KierunekDetail */,
-				66645F441DC0DDA2000ACE62 /* MessageDetail */,
-				661CA6711DBF7CA20002AF79 /* MessagesList */,
-				663159391DAE61AA00B0789B /* ThesisDetail */,
-				66D506471DA69CB800B5CE1B /* ThesesDetailedList */,
-				0AB1920E1D4AB84900834773 /* WebViewPresentation */,
 				52AF77A31D095C390058979A /* ContainerViewController.swift */,
-				52AF77A71D095CBF0058979A /* LeftMenuTableViewController.swift */,
-				4C0D85A734050E1AF280B388 /* User */,
-				4C0D87F53BF87425FE5BF375 /* Schedule */,
-				4C0D8D975AF27A419B8CC0B1 /* Helpers */,
-				4C0D8CFE9097F39B6001CF67 /* View */,
-				4C0D839BF212A83AA9960179 /* CoursesList */,
-				4C0D8C2CCF13E560C8D36D1C /* Grades */,
-				4C0D8E9FE0544625CD42B9F0 /* Teachers */,
-				4C0D854E52E691438A34E0B1 /* Settings */,
-				4C0D894ECCF8686ED62F6BAD /* Share */,
-				4C0D82C7795D7EB1A1FA4279 /* TeacherDetail */,
-				4C0D83437388037019156C43 /* Facultie */,
 				4C0D8CAAEFA500387C0BF406 /* CourseDetails */,
-				4C0D8D0267D518484AE98832 /* StudentDetails */,
-				4C0D85B39CD65AC3B19DF7E4 /* Terms */,
+				4C0D839BF212A83AA9960179 /* CoursesList */,
+				4C0D83D8B40603DC0363E06E /* EntryScreen */,
+				4C0D83437388037019156C43 /* Facultie */,
+				4C0D8C2CCF13E560C8D36D1C /* Grades */,
+				4C0D8D975AF27A419B8CC0B1 /* Helpers */,
 				520660E51D65BDCA004B92B3 /* IntroScreenViewController.swift */,
 				520660E61D65BDCA004B92B3 /* IntroScreenViewController.xib */,
+				66D12E0B1DEE2D8700235320 /* KierunekDetail */,
+				52AF77A71D095CBF0058979A /* LeftMenuTableViewController.swift */,
+				66645F441DC0DDA2000ACE62 /* MessageDetail */,
+				661CA6711DBF7CA20002AF79 /* MessagesList */,
+				4C0D87F53BF87425FE5BF375 /* Schedule */,
 				4C0D8434E73D9FF303BBADC3 /* Search */,
+				4C0D8C683DC578BF5AA751F9 /* Second Login */,
+				4C0D854E52E691438A34E0B1 /* Settings */,
+				4C0D894ECCF8686ED62F6BAD /* Share */,
+				4C0D8D0267D518484AE98832 /* StudentDetails */,
+				4C0D82C7795D7EB1A1FA4279 /* TeacherDetail */,
+				4C0D8E9FE0544625CD42B9F0 /* Teachers */,
+				4C0D85B39CD65AC3B19DF7E4 /* Terms */,
+				66D506471DA69CB800B5CE1B /* ThesesDetailedList */,
+				663159391DAE61AA00B0789B /* ThesisDetail */,
+				4C0D85A734050E1AF280B388 /* User */,
+				4C0D8873DDE812269064F351 /* UsosesList */,
+				4C0D8CFE9097F39B6001CF67 /* View */,
+				0AB1920E1D4AB84900834773 /* WebViewPresentation */,
 			);
+			name = "View Controllers";
 			path = "Main Group";
 			sourceTree = "<group>";
 		};
@@ -1420,7 +1424,8 @@
 				52AF779F1D09590B0058979A /* SecondLoginViewController.swift */,
 				52AF77A01D09590B0058979A /* SecondLoginViewController.xib */,
 			);
-			path = "Second Login";
+			name = "Second Login";
+			path = "../Second Login";
 			sourceTree = "<group>";
 		};
 		4C0D8CAAEFA500387C0BF406 /* CourseDetails */ = {
