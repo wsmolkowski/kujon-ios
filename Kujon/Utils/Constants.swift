@@ -10,7 +10,7 @@ import Foundation
 
 struct Constants {
 
-    static let appVersion: String = "2.4"
+    static let appVersion: String = "2.4.2"
 
     struct OneSignal {
 
