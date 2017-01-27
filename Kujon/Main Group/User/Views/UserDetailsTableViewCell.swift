@@ -20,7 +20,6 @@ class UserDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var schoolImageVirw: UIImageView!
     @IBOutlet weak var studentStatusLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var averageGradeLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

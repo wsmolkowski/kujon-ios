@@ -225,10 +225,8 @@ class UserTableViewController: RefreshingTableViewController
         let cell = tableView.dequeueReusableCell(withIdentifier: usedDetailCellId, for: indexPath) as! UserDetailsTableViewCell
         cell.nameSurnameLabel.text = userDetail.firstName + " " + userDetail.lastName
         cell.studentStatusLabel.text = userDetail.studentStatus
-//        cell.schoolNameLabel.text = userDetails.usosName
         cell.indexNumberLabel.text = userDetail.studentNumber
         cell.accountNumberLabel.text = userDetail.id
-        cell.averageGradeLabel.text = userDetail.averageGradeDescriptive
         cell.userImageView.makeMyselfCircleWithBorder()
         cell.userImageView.image = UIImage(named: "user-placeholder")
         if (userDetail.photoUrl != nil) {
