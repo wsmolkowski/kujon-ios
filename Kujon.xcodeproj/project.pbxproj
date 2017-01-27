@@ -57,7 +57,6 @@
 		4C0D8526C5650D6AABCDF39A /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8E122D49E9F1EAC590CA /* ArrayExtension.swift */; };
 		4C0D853633AEE49F996B454C /* CourseEdition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D841A2FE4461ECB9F5859 /* CourseEdition.swift */; };
 		4C0D855782A3BEF578B52348 /* FacultyShort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8D151A44935DE4CA6DB2 /* FacultyShort.swift */; };
-		4C0D856CA1862322B3D1912C /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8625E8E36B19AFACD20C /* ToastView.swift */; };
 		4C0D85B76A95117FB20F3FEA /* EmploymentPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8B4F1A4C021698123994 /* EmploymentPosition.swift */; };
 		4C0D85BA322F0D6699947ECE /* CourseEditions.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8EB8BABCEEB707B6E298 /* CourseEditions.json */; };
 		4C0D85E06E058E1938ECB52A /* TheseSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8F82B32C566CF62C6C04 /* TheseSearch.swift */; };
@@ -92,9 +91,7 @@
 		4C0D8B0ECFC83EB343FC15A1 /* LectureResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8EC533BB73C186B4A0D1 /* LectureResponse.swift */; };
 		4C0D8B1CC0F1F04A0031EFD4 /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8199588435043DF62A80 /* UserDetail.swift */; };
 		4C0D8B6C5E8FE7BE04EB425A /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8909680977D511CFAFB3 /* Lato-Semibold.ttf */; };
-		4C0D8BCEA9F6DF85809A280A /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D87B65211FF5F8990C420 /* PopUpViewController.swift */; };
 		4C0D8BD54E52DB2C8D674422 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8E619AE4BB2F7B24C207 /* NSDateExtension.swift */; };
-		4C0D8C2760C9F3EC7CC1E8AD /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8A574E4B52995D53647A /* SpinnerView.swift */; };
 		4C0D8C6232B539463B9C44FF /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D836250046CEA7DB038DB /* Lato-Italic.ttf */; };
 		4C0D8C7BDA7E9A064DC853E9 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D89861FB35F6F743A1990 /* Lato-BlackItalic.ttf */; };
 		4C0D8D1041B61DE7CCC02962 /* SimpleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8689AC8770C24958D39B /* SimpleUser.swift */; };
@@ -121,10 +118,6 @@
 		4C0D8FAE3D9478F5CCC1BE75 /* Unauthorized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D80883A4507BB621D8A2F /* Unauthorized.swift */; };
 		4C0D8FB99127F45E713038A1 /* ProgrammeSearchResult.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8BA734C2D9C931F706C4 /* ProgrammeSearchResult.json */; };
 		4C0D8FF519F4291DEB02B9B3 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8BAB77F828B3EFA9CED3 /* Lato-Thin.ttf */; };
-		523B4FDD1D2BD090005FA79F /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B4FDB1D2BD090005FA79F /* TextViewController.swift */; };
-		523B4FDE1D2BD090005FA79F /* TextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 523B4FDC1D2BD090005FA79F /* TextViewController.xib */; };
-		5257C3311D267D670068FA56 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257C32F1D267D670068FA56 /* ImageViewController.swift */; };
-		5257C3321D267D670068FA56 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5257C3301D267D670068FA56 /* ImageViewController.xib */; };
 		527B39B81D117B800028BCF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527B39B71D117B800028BCF9 /* Assets.xcassets */; };
 		52B3F9AD1DBF40C300B0CC55 /* MessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3F9AC1DBF40C300B0CC55 /* MessageResponse.swift */; };
 		52B3F9AF1DBF40F500B0CC55 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3F9AE1DBF40F500B0CC55 /* Message.swift */; };
@@ -180,6 +173,24 @@
 		66A016FA1E3BB5550011BFD9 /* UsosesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A016DA1E3BB5550011BFD9 /* UsosesProvider.swift */; };
 		66A016FB1E3BB5550011BFD9 /* VerificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A016DB1E3BB5550011BFD9 /* VerificationProvider.swift */; };
 		66A016FD1E3BB5BB0011BFD9 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A016FC1E3BB5BB0011BFD9 /* UserDefaultsManager.swift */; };
+		66A017041E3BBD580011BFD9 /* MenuItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A016FF1E3BBD580011BFD9 /* MenuItem.xib */; };
+		66A017051E3BBD580011BFD9 /* MenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A017001E3BBD580011BFD9 /* MenuItemTableViewCell.swift */; };
+		66A017061E3BBD580011BFD9 /* MenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A017011E3BBD580011BFD9 /* MenuItemTableViewCell.xib */; };
+		66A017071E3BBD580011BFD9 /* NavDrawerHeaderViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A017021E3BBD580011BFD9 /* NavDrawerHeaderViewCellTableViewCell.swift */; };
+		66A017081E3BBD580011BFD9 /* NavDrawerHeaderViewCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A017031E3BBD580011BFD9 /* NavDrawerHeaderViewCellTableViewCell.xib */; };
+		66A017131E3BBE580011BFD9 /* TermsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A017111E3BBE580011BFD9 /* TermsTableViewCell.swift */; };
+		66A017141E3BBE580011BFD9 /* TermsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A017121E3BBE580011BFD9 /* TermsTableViewCell.xib */; };
+		66A0171B1E3BBF960011BFD9 /* TermsPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A017161E3BBF960011BFD9 /* TermsPopUpViewController.swift */; };
+		66A0171C1E3BBF960011BFD9 /* TermsPopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A017171E3BBF960011BFD9 /* TermsPopUpViewController.xib */; };
+		66A0171D1E3BBF960011BFD9 /* TermView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A017191E3BBF960011BFD9 /* TermView.swift */; };
+		66A0171E1E3BBF960011BFD9 /* TermView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A0171A1E3BBF960011BFD9 /* TermView.xib */; };
+		66A017211E3BC0680011BFD9 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A0171F1E3BC0680011BFD9 /* SpinnerView.swift */; };
+		66A017221E3BC0680011BFD9 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A017201E3BC0680011BFD9 /* ToastView.swift */; };
+		66A017251E3BC0D20011BFD9 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A017241E3BC0D20011BFD9 /* PopUpViewController.swift */; };
+		66A017291E3BC0DC0011BFD9 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A017271E3BC0DC0011BFD9 /* TextViewController.swift */; };
+		66A0172A1E3BC0DC0011BFD9 /* TextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A017281E3BC0DC0011BFD9 /* TextViewController.xib */; };
+		66A0172E1E3BC0E40011BFD9 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A0172C1E3BC0E40011BFD9 /* ImageViewController.swift */; };
+		66A0172F1E3BC0E40011BFD9 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A0172D1E3BC0E40011BFD9 /* ImageViewController.xib */; };
 		66A2CBC91DC76C280049217C /* KujonRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A2CBC81DC76C280049217C /* KujonRefreshControl.swift */; };
 		66A2CBCB1DC77B440049217C /* RefreshingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A2CBCA1DC77B440049217C /* RefreshingTableViewController.swift */; };
 		66D46B181DE617EA003701D2 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D46B171DE617EA003701D2 /* NotificationsManager.swift */; };
@@ -188,13 +199,6 @@
 		66FD63D61E3BAC6C007066E6 /* ArrowedLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66FD63CB1E3BAC6C007066E6 /* ArrowedLabelView.xib */; };
 		66FD63D71E3BAC6C007066E6 /* GoFurtherViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD63CC1E3BAC6C007066E6 /* GoFurtherViewCellTableViewCell.swift */; };
 		66FD63D81E3BAC6C007066E6 /* GoFurtherViewCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66FD63CD1E3BAC6C007066E6 /* GoFurtherViewCellTableViewCell.xib */; };
-		66FD63D91E3BAC6C007066E6 /* MenuItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66FD63CE1E3BAC6C007066E6 /* MenuItem.xib */; };
-		66FD63DA1E3BAC6C007066E6 /* MenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD63CF1E3BAC6C007066E6 /* MenuItemTableViewCell.swift */; };
-		66FD63DB1E3BAC6C007066E6 /* MenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66FD63D01E3BAC6C007066E6 /* MenuItemTableViewCell.xib */; };
-		66FD63DC1E3BAC6C007066E6 /* NavDrawerHeaderViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD63D11E3BAC6C007066E6 /* NavDrawerHeaderViewCellTableViewCell.swift */; };
-		66FD63DD1E3BAC6C007066E6 /* NavDrawerHeaderViewCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66FD63D21E3BAC6C007066E6 /* NavDrawerHeaderViewCellTableViewCell.xib */; };
-		66FD63DE1E3BAC6C007066E6 /* TermView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD63D31E3BAC6C007066E6 /* TermView.swift */; };
-		66FD63DF1E3BAC6C007066E6 /* TermView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66FD63D41E3BAC6C007066E6 /* TermView.xib */; };
 		66FD66171E3BAD9E007066E6 /* CourseDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD654F1E3BAD9E007066E6 /* CourseDetailsTableViewController.swift */; };
 		66FD66181E3BAD9E007066E6 /* CourseDetailsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66FD65501E3BAD9E007066E6 /* CourseDetailsTableViewController.xib */; };
 		66FD66191E3BAD9E007066E6 /* ClassTypeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD65521E3BAD9E007066E6 /* ClassTypeSection.swift */; };
@@ -206,8 +210,6 @@
 		66FD661F1E3BAD9E007066E6 /* NameSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD65581E3BAD9E007066E6 /* NameSection.swift */; };
 		66FD66201E3BAD9E007066E6 /* ParticipantsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD65591E3BAD9E007066E6 /* ParticipantsSection.swift */; };
 		66FD66211E3BAD9E007066E6 /* SectionHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD655A1E3BAD9E007066E6 /* SectionHelperProtocol.swift */; };
-		66FD66221E3BAD9E007066E6 /* TermsPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD655B1E3BAD9E007066E6 /* TermsPopUpViewController.swift */; };
-		66FD66231E3BAD9E007066E6 /* TermsPopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66FD655C1E3BAD9E007066E6 /* TermsPopUpViewController.xib */; };
 		66FD66241E3BAD9E007066E6 /* CourseMeritsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD655E1E3BAD9E007066E6 /* CourseMeritsTableViewCell.swift */; };
 		66FD66251E3BAD9E007066E6 /* CourseMeritsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66FD655F1E3BAD9E007066E6 /* CourseMeritsTableViewCell.xib */; };
 		66FD66261E3BAD9E007066E6 /* CourseNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD65601E3BAD9E007066E6 /* CourseNameTableViewCell.swift */; };
@@ -325,8 +327,6 @@
 		66FD669B1E3BAD9E007066E6 /* TeacherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD65EF1E3BAD9E007066E6 /* TeacherTableViewCell.swift */; };
 		66FD669C1E3BAD9E007066E6 /* TeacherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD65F01E3BAD9E007066E6 /* TeacherTableViewController.swift */; };
 		66FD669D1E3BAD9E007066E6 /* TeacherTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66FD65F11E3BAD9E007066E6 /* TeacherTableViewController.xib */; };
-		66FD669E1E3BAD9E007066E6 /* TermsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD65F31E3BAD9E007066E6 /* TermsTableViewCell.swift */; };
-		66FD669F1E3BAD9E007066E6 /* TermsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66FD65F41E3BAD9E007066E6 /* TermsTableViewCell.xib */; };
 		66FD66A01E3BAD9E007066E6 /* TermsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD65F51E3BAD9E007066E6 /* TermsTableViewController.swift */; };
 		66FD66A11E3BAD9E007066E6 /* ThesesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD65F71E3BAD9E007066E6 /* ThesesTableViewController.swift */; };
 		66FD66A21E3BAD9E007066E6 /* ArrowedItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD65F91E3BAD9E007066E6 /* ArrowedItemCell.swift */; };
@@ -421,7 +421,6 @@
 		4C0D8528C393CB23A978EB8A /* FacultiesDetail.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FacultiesDetail.json; sourceTree = "<group>"; };
 		4C0D85C01CA62A3C89F09CDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
 		4C0D85C3C43334F528850DDD /* ConfigResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigResponse.swift; sourceTree = "<group>"; };
-		4C0D8625E8E36B19AFACD20C /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		4C0D8652FF3FDA7161FFDB41 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
 		4C0D8689AC8770C24958D39B /* SimpleUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleUser.swift; sourceTree = "<group>"; };
 		4C0D86C2D62E7D8979799853 /* KujonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KujonUITests.swift; sourceTree = "<group>"; };
@@ -430,7 +429,6 @@
 		4C0D86DFD2B023A1924F1128 /* CourseDetailsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailsResponse.swift; sourceTree = "<group>"; };
 		4C0D872F4C23E2D0541565EC /* ProgrammeSearchResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammeSearchResponse.swift; sourceTree = "<group>"; };
 		4C0D874C6EEF998B53B77D46 /* LecturerDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturerDetail.swift; sourceTree = "<group>"; };
-		4C0D87B65211FF5F8990C420 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		4C0D87B91E867F8AF940EC80 /* Lato-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = "Lato-MediumItalic.ttf"; sourceTree = "<group>"; };
 		4C0D8846285A2881A5787110 /* SearchElementProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchElementProtocol.swift; sourceTree = "<group>"; };
 		4C0D884D5353B1F81B22B87B /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -445,7 +443,6 @@
 		4C0D89ABC6BC21973F643DE7 /* ClassType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassType.swift; sourceTree = "<group>"; };
 		4C0D89D0F7779184FE36A760 /* ProgrammeWithDifferentId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammeWithDifferentId.swift; sourceTree = "<group>"; };
 		4C0D8A53D4F9C21CACEEE68A /* StudentProgramme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentProgramme.swift; sourceTree = "<group>"; };
-		4C0D8A574E4B52995D53647A /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		4C0D8A64FF1DBA82355146B3 /* Programme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Programme.swift; sourceTree = "<group>"; };
 		4C0D8AA6C79613D718788CD7 /* CourseDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetails.swift; sourceTree = "<group>"; };
 		4C0D8AAB5984F986E4A269EC /* ThesesSearchResult.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ThesesSearchResult.json; sourceTree = "<group>"; };
@@ -493,10 +490,6 @@
 		4C0D8FB3130DB8375F4BB1E0 /* SuperUserResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperUserResponse.swift; sourceTree = "<group>"; };
 		4C0D8FD2A35FC381A99E4C99 /* FacultieResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacultieResponse.swift; sourceTree = "<group>"; };
 		4C0D8FDD772870E1BD0EF952 /* Facultie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facultie.swift; sourceTree = "<group>"; };
-		523B4FDB1D2BD090005FA79F /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
-		523B4FDC1D2BD090005FA79F /* TextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewController.xib; sourceTree = "<group>"; };
-		5257C32F1D267D670068FA56 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
-		5257C3301D267D670068FA56 /* ImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
 		527B39B71D117B800028BCF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52A1D6141D5CCE96008A30C7 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "../Bridging-Header.h"; sourceTree = "<group>"; };
 		52B3F9AC1DBF40C300B0CC55 /* MessageResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageResponse.swift; sourceTree = "<group>"; };
@@ -557,6 +550,24 @@
 		66A016DA1E3BB5550011BFD9 /* UsosesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsosesProvider.swift; sourceTree = "<group>"; };
 		66A016DB1E3BB5550011BFD9 /* VerificationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificationProvider.swift; sourceTree = "<group>"; };
 		66A016FC1E3BB5BB0011BFD9 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsManager.swift; path = Kujon/Model/UserDefaultsManager.swift; sourceTree = SOURCE_ROOT; };
+		66A016FF1E3BBD580011BFD9 /* MenuItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuItem.xib; sourceTree = "<group>"; };
+		66A017001E3BBD580011BFD9 /* MenuItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemTableViewCell.swift; sourceTree = "<group>"; };
+		66A017011E3BBD580011BFD9 /* MenuItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuItemTableViewCell.xib; sourceTree = "<group>"; };
+		66A017021E3BBD580011BFD9 /* NavDrawerHeaderViewCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavDrawerHeaderViewCellTableViewCell.swift; sourceTree = "<group>"; };
+		66A017031E3BBD580011BFD9 /* NavDrawerHeaderViewCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavDrawerHeaderViewCellTableViewCell.xib; sourceTree = "<group>"; };
+		66A017111E3BBE580011BFD9 /* TermsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsTableViewCell.swift; sourceTree = "<group>"; };
+		66A017121E3BBE580011BFD9 /* TermsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TermsTableViewCell.xib; sourceTree = "<group>"; };
+		66A017161E3BBF960011BFD9 /* TermsPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsPopUpViewController.swift; sourceTree = "<group>"; };
+		66A017171E3BBF960011BFD9 /* TermsPopUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TermsPopUpViewController.xib; sourceTree = "<group>"; };
+		66A017191E3BBF960011BFD9 /* TermView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermView.swift; sourceTree = "<group>"; };
+		66A0171A1E3BBF960011BFD9 /* TermView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TermView.xib; sourceTree = "<group>"; };
+		66A0171F1E3BC0680011BFD9 /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
+		66A017201E3BC0680011BFD9 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		66A017241E3BC0D20011BFD9 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		66A017271E3BC0DC0011BFD9 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
+		66A017281E3BC0DC0011BFD9 /* TextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewController.xib; sourceTree = "<group>"; };
+		66A0172C1E3BC0E40011BFD9 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		66A0172D1E3BC0E40011BFD9 /* ImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
 		66A2CBC81DC76C280049217C /* KujonRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KujonRefreshControl.swift; sourceTree = "<group>"; };
 		66A2CBCA1DC77B440049217C /* RefreshingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RefreshingTableViewController.swift; path = "../Global Extensions/RefreshingTableViewController.swift"; sourceTree = "<group>"; };
 		66D46B171DE617EA003701D2 /* NotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
@@ -567,13 +578,6 @@
 		66FD63CB1E3BAC6C007066E6 /* ArrowedLabelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArrowedLabelView.xib; sourceTree = "<group>"; };
 		66FD63CC1E3BAC6C007066E6 /* GoFurtherViewCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoFurtherViewCellTableViewCell.swift; sourceTree = "<group>"; };
 		66FD63CD1E3BAC6C007066E6 /* GoFurtherViewCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoFurtherViewCellTableViewCell.xib; sourceTree = "<group>"; };
-		66FD63CE1E3BAC6C007066E6 /* MenuItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuItem.xib; sourceTree = "<group>"; };
-		66FD63CF1E3BAC6C007066E6 /* MenuItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemTableViewCell.swift; sourceTree = "<group>"; };
-		66FD63D01E3BAC6C007066E6 /* MenuItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuItemTableViewCell.xib; sourceTree = "<group>"; };
-		66FD63D11E3BAC6C007066E6 /* NavDrawerHeaderViewCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavDrawerHeaderViewCellTableViewCell.swift; sourceTree = "<group>"; };
-		66FD63D21E3BAC6C007066E6 /* NavDrawerHeaderViewCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavDrawerHeaderViewCellTableViewCell.xib; sourceTree = "<group>"; };
-		66FD63D31E3BAC6C007066E6 /* TermView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermView.swift; sourceTree = "<group>"; };
-		66FD63D41E3BAC6C007066E6 /* TermView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TermView.xib; sourceTree = "<group>"; };
 		66FD654F1E3BAD9E007066E6 /* CourseDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailsTableViewController.swift; sourceTree = "<group>"; };
 		66FD65501E3BAD9E007066E6 /* CourseDetailsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseDetailsTableViewController.xib; sourceTree = "<group>"; };
 		66FD65521E3BAD9E007066E6 /* ClassTypeSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTypeSection.swift; sourceTree = "<group>"; };
@@ -585,8 +589,6 @@
 		66FD65581E3BAD9E007066E6 /* NameSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameSection.swift; sourceTree = "<group>"; };
 		66FD65591E3BAD9E007066E6 /* ParticipantsSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantsSection.swift; sourceTree = "<group>"; };
 		66FD655A1E3BAD9E007066E6 /* SectionHelperProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHelperProtocol.swift; sourceTree = "<group>"; };
-		66FD655B1E3BAD9E007066E6 /* TermsPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsPopUpViewController.swift; sourceTree = "<group>"; };
-		66FD655C1E3BAD9E007066E6 /* TermsPopUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TermsPopUpViewController.xib; sourceTree = "<group>"; };
 		66FD655E1E3BAD9E007066E6 /* CourseMeritsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseMeritsTableViewCell.swift; sourceTree = "<group>"; };
 		66FD655F1E3BAD9E007066E6 /* CourseMeritsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseMeritsTableViewCell.xib; sourceTree = "<group>"; };
 		66FD65601E3BAD9E007066E6 /* CourseNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseNameTableViewCell.swift; sourceTree = "<group>"; };
@@ -705,8 +707,6 @@
 		66FD65EF1E3BAD9E007066E6 /* TeacherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherTableViewCell.swift; sourceTree = "<group>"; };
 		66FD65F01E3BAD9E007066E6 /* TeacherTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherTableViewController.swift; sourceTree = "<group>"; };
 		66FD65F11E3BAD9E007066E6 /* TeacherTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeacherTableViewController.xib; sourceTree = "<group>"; };
-		66FD65F31E3BAD9E007066E6 /* TermsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsTableViewCell.swift; sourceTree = "<group>"; };
-		66FD65F41E3BAD9E007066E6 /* TermsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TermsTableViewCell.xib; sourceTree = "<group>"; };
 		66FD65F51E3BAD9E007066E6 /* TermsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsTableViewController.swift; sourceTree = "<group>"; };
 		66FD65F71E3BAD9E007066E6 /* ThesesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesesTableViewController.swift; sourceTree = "<group>"; };
 		66FD65F91E3BAD9E007066E6 /* ArrowedItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowedItemCell.swift; sourceTree = "<group>"; };
@@ -830,21 +830,14 @@
 				661D1C201DAD974500BA9EE9 /* HTMLParser.h */,
 				661D1C211DAD974500BA9EE9 /* HTMLParser.m */,
 				660E28901DC0A6F0008CD5A9 /* IdentifiedTapGestureRecogniezer.swift */,
-				5257C32F1D267D670068FA56 /* ImageViewController.swift */,
-				5257C3301D267D670068FA56 /* ImageViewController.xib */,
 				66989CC81E38CB9700B659F6 /* KujonAppearance.swift */,
 				66A2CBC81DC76C280049217C /* KujonRefreshControl.swift */,
 				66D46B171DE617EA003701D2 /* NotificationsManager.swift */,
 				4C0D8D8D2ED0C70726C86E66 /* NSlogManager.swift */,
-				4C0D87B65211FF5F8990C420 /* PopUpViewController.swift */,
 				66A2CBCA1DC77B440049217C /* RefreshingTableViewController.swift */,
 				66989CCC1E38DB9D00B659F6 /* SortedDictionary.swift */,
 				66989CCA1E38CE8200B659F6 /* SortKeyProviding.swift */,
-				4C0D8A574E4B52995D53647A /* SpinnerView.swift */,
 				4C0D8ACEDEE9F84A27992B79 /* StringHolder.swift */,
-				523B4FDB1D2BD090005FA79F /* TextViewController.swift */,
-				523B4FDC1D2BD090005FA79F /* TextViewController.xib */,
-				4C0D8625E8E36B19AFACD20C /* ToastView.swift */,
 				66A016FC1E3BB5BB0011BFD9 /* UserDefaultsManager.swift */,
 			);
 			path = Utils;
@@ -1180,6 +1173,72 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		66A016FE1E3BBCD60011BFD9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				66A016FF1E3BBD580011BFD9 /* MenuItem.xib */,
+				66A017001E3BBD580011BFD9 /* MenuItemTableViewCell.swift */,
+				66A017011E3BBD580011BFD9 /* MenuItemTableViewCell.xib */,
+				66A017021E3BBD580011BFD9 /* NavDrawerHeaderViewCellTableViewCell.swift */,
+				66A017031E3BBD580011BFD9 /* NavDrawerHeaderViewCellTableViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		66A017101E3BBE170011BFD9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				66A017111E3BBE580011BFD9 /* TermsTableViewCell.swift */,
+				66A017121E3BBE580011BFD9 /* TermsTableViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		66A017151E3BBF960011BFD9 /* TermsPopUpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				66A017161E3BBF960011BFD9 /* TermsPopUpViewController.swift */,
+				66A017171E3BBF960011BFD9 /* TermsPopUpViewController.xib */,
+				66A017181E3BBF960011BFD9 /* Views */,
+			);
+			path = TermsPopUpViewController;
+			sourceTree = "<group>";
+		};
+		66A017181E3BBF960011BFD9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				66A017191E3BBF960011BFD9 /* TermView.swift */,
+				66A0171A1E3BBF960011BFD9 /* TermView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		66A017231E3BC0D20011BFD9 /* PopUpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				66A017241E3BC0D20011BFD9 /* PopUpViewController.swift */,
+			);
+			path = PopUpViewController;
+			sourceTree = "<group>";
+		};
+		66A017261E3BC0DC0011BFD9 /* TextViewController */ = {
+			isa = PBXGroup;
+			children = (
+				66A017271E3BC0DC0011BFD9 /* TextViewController.swift */,
+				66A017281E3BC0DC0011BFD9 /* TextViewController.xib */,
+			);
+			path = TextViewController;
+			sourceTree = "<group>";
+		};
+		66A0172B1E3BC0E40011BFD9 /* ImageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				66A0172C1E3BC0E40011BFD9 /* ImageViewController.swift */,
+				66A0172D1E3BC0E40011BFD9 /* ImageViewController.xib */,
+			);
+			path = ImageViewController;
+			sourceTree = "<group>";
+		};
 		66FD63A81E3BAA9D007066E6 /* Common Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1187,13 +1246,8 @@
 				66FD63CB1E3BAC6C007066E6 /* ArrowedLabelView.xib */,
 				66FD63CC1E3BAC6C007066E6 /* GoFurtherViewCellTableViewCell.swift */,
 				66FD63CD1E3BAC6C007066E6 /* GoFurtherViewCellTableViewCell.xib */,
-				66FD63CE1E3BAC6C007066E6 /* MenuItem.xib */,
-				66FD63CF1E3BAC6C007066E6 /* MenuItemTableViewCell.swift */,
-				66FD63D01E3BAC6C007066E6 /* MenuItemTableViewCell.xib */,
-				66FD63D11E3BAC6C007066E6 /* NavDrawerHeaderViewCellTableViewCell.swift */,
-				66FD63D21E3BAC6C007066E6 /* NavDrawerHeaderViewCellTableViewCell.xib */,
-				66FD63D31E3BAC6C007066E6 /* TermView.swift */,
-				66FD63D41E3BAC6C007066E6 /* TermView.xib */,
+				66A0171F1E3BC0680011BFD9 /* SpinnerView.swift */,
+				66A017201E3BC0680011BFD9 /* ToastView.swift */,
 			);
 			path = "Common Views";
 			sourceTree = "<group>";
@@ -1206,11 +1260,13 @@
 				66FD65671E3BAD9E007066E6 /* EntryScreen */,
 				66FD65701E3BAD9E007066E6 /* FacultyDetails */,
 				66FD65801E3BAD9E007066E6 /* GradesList */,
+				66A0172B1E3BC0E40011BFD9 /* ImageViewController */,
 				66FD65851E3BAD9E007066E6 /* Intro */,
 				66FD65881E3BAD9E007066E6 /* KierunekDetails */,
 				66A016A51E3BB1420011BFD9 /* MessageDetails */,
 				66A016A81E3BB1420011BFD9 /* MessagesList */,
 				66FD65961E3BAD9E007066E6 /* Navigation */,
+				66A017231E3BC0D20011BFD9 /* PopUpViewController */,
 				66FD65AB1E3BAD9E007066E6 /* Schedule */,
 				66FD65C61E3BAD9E007066E6 /* Search */,
 				66FD65D71E3BAD9E007066E6 /* Second Login */,
@@ -1220,6 +1276,8 @@
 				66FD65E71E3BAD9E007066E6 /* TeacherDetails */,
 				66FD65ED1E3BAD9E007066E6 /* TeachersList */,
 				66FD65F21E3BAD9E007066E6 /* Terms */,
+				66A017151E3BBF960011BFD9 /* TermsPopUpViewController */,
+				66A017261E3BC0DC0011BFD9 /* TextViewController */,
 				66FD65F61E3BAD9E007066E6 /* ThesesList */,
 				66FD66011E3BAD9E007066E6 /* ThesisDetail */,
 				66FD66051E3BAD9E007066E6 /* UserDetails */,
@@ -1235,8 +1293,6 @@
 				66FD654F1E3BAD9E007066E6 /* CourseDetailsTableViewController.swift */,
 				66FD65501E3BAD9E007066E6 /* CourseDetailsTableViewController.xib */,
 				66FD65511E3BAD9E007066E6 /* Helpers */,
-				66FD655B1E3BAD9E007066E6 /* TermsPopUpViewController.swift */,
-				66FD655C1E3BAD9E007066E6 /* TermsPopUpViewController.xib */,
 				66FD655D1E3BAD9E007066E6 /* Views */,
 			);
 			path = CourseDetails;
@@ -1364,6 +1420,7 @@
 				66FD65971E3BAD9E007066E6 /* ContainerViewController.swift */,
 				66FD65981E3BAD9E007066E6 /* Helpers */,
 				66FD65AA1E3BAD9E007066E6 /* LeftMenuTableViewController.swift */,
+				66A016FE1E3BBCD60011BFD9 /* Views */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -1563,8 +1620,7 @@
 		66FD65F21E3BAD9E007066E6 /* Terms */ = {
 			isa = PBXGroup;
 			children = (
-				66FD65F31E3BAD9E007066E6 /* TermsTableViewCell.swift */,
-				66FD65F41E3BAD9E007066E6 /* TermsTableViewCell.xib */,
+				66A017101E3BBE170011BFD9 /* Views */,
 				66FD65F51E3BAD9E007066E6 /* TermsTableViewController.swift */,
 			);
 			path = Terms;
@@ -1811,8 +1867,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				66F4BC6B1DB2597000425E39 /* Podfile in Resources */,
-				66FD66231E3BAD9E007066E6 /* TermsPopUpViewController.xib in Resources */,
+				66A017081E3BBD580011BFD9 /* NavDrawerHeaderViewCellTableViewCell.xib in Resources */,
 				66FD664C1E3BAD9E007066E6 /* KierunekHeaderCell.xib in Resources */,
+				66A0171C1E3BBF960011BFD9 /* TermsPopUpViewController.xib in Resources */,
 				0A42914C1D409659006D6DAB /* GoogleService-Info.plist in Resources */,
 				66FD66A51E3BAD9E007066E6 /* SectionHeader.xib in Resources */,
 				66FD66A91E3BAD9E007066E6 /* ThesisCell.xib in Resources */,
@@ -1824,8 +1881,8 @@
 				66FD66181E3BAD9E007066E6 /* CourseDetailsTableViewController.xib in Resources */,
 				4C0D8D641FD73F7E585E72B6 /* User.json in Resources */,
 				4C0D8EE504A6F04F1B414751 /* Schedule.json in Resources */,
-				523B4FDE1D2BD090005FA79F /* TextViewController.xib in Resources */,
 				4C0D8665D94A08D7002946B8 /* Courses.json in Resources */,
+				66A017141E3BBE580011BFD9 /* TermsTableViewCell.xib in Resources */,
 				66FD66991E3BAD9E007066E6 /* TeacherHeaderTableViewCell.xib in Resources */,
 				66FD66771E3BAD9E007066E6 /* DayTableViewCell.xib in Resources */,
 				66FD669D1E3BAD9E007066E6 /* TeacherTableViewController.xib in Resources */,
@@ -1838,19 +1895,16 @@
 				4C0D8792155EDB3BF227067C /* FacultiesDetail.json in Resources */,
 				66FD668A1E3BAD9E007066E6 /* SearchTableViewCell.xib in Resources */,
 				66FD66911E3BAD9E007066E6 /* ShareViewController.xib in Resources */,
-				66FD63D91E3BAC6C007066E6 /* MenuItem.xib in Resources */,
-				66FD669F1E3BAD9E007066E6 /* TermsTableViewCell.xib in Resources */,
 				527B39B81D117B800028BCF9 /* Assets.xcassets in Resources */,
 				66FD66371E3BAD9E007066E6 /* FacultieHeaderTableViewCell.xib in Resources */,
 				4C0D87FF3ADA197F8655E408 /* Programmes.json in Resources */,
 				4C0D85BA322F0D6699947ECE /* CourseEditions.json in Resources */,
-				66FD63DF1E3BAC6C007066E6 /* TermView.xib in Resources */,
 				4C0D8D445517BAD9C52B3DF0 /* Usoses.json in Resources */,
 				66FD663B1E3BAD9E007066E6 /* StatisticsCell.xib in Resources */,
-				5257C3321D267D670068FA56 /* ImageViewController.xib in Resources */,
 				66FD66B41E3BAD9E007066E6 /* UserDetailView.xib in Resources */,
 				4C0D8ACB7F16326767AF48FD /* LecturerDetails.json in Resources */,
 				4C0D88E3FFF806ADAB7E9661 /* Terms.json in Resources */,
+				66A0171E1E3BBF960011BFD9 /* TermView.xib in Resources */,
 				66FD66331E3BAD9E007066E6 /* RegisterViewController.xib in Resources */,
 				66FD66A71E3BAD9E007066E6 /* SeparatorCell.xib in Resources */,
 				66FD66B21E3BAD9E007066E6 /* UserDetailsTableViewCell.xib in Resources */,
@@ -1862,6 +1916,8 @@
 				4C0D8D321D204EEBF3D52C12 /* Lato-Bold.ttf in Resources */,
 				66FD66791E3BAD9E007066E6 /* HeaderViewTableViewCell.xib in Resources */,
 				66FD66731E3BAD9E007066E6 /* ScheduleTableViewController.xib in Resources */,
+				66A0172F1E3BC0E40011BFD9 /* ImageViewController.xib in Resources */,
+				66A017041E3BBD580011BFD9 /* MenuItem.xib in Resources */,
 				66FD663D1E3BAD9E007066E6 /* SupervisingUnitCell.xib in Resources */,
 				4C0D8247D1BF8BC9FBE086A2 /* Lato-BoldItalic.ttf in Resources */,
 				66FD66851E3BAD9E007066E6 /* SearchResultTableViewController.xib in Resources */,
@@ -1878,11 +1934,9 @@
 				66A016AD1E3BB1420011BFD9 /* MessageDetailViewController.xib in Resources */,
 				4C0D82983500855989BA22B8 /* Lato-Light.ttf in Resources */,
 				66FD66971E3BAD9E007066E6 /* TeacherDetailTableViewController.xib in Resources */,
-				66FD63DB1E3BAC6C007066E6 /* MenuItemTableViewCell.xib in Resources */,
 				66FD66301E3BAD9E007066E6 /* LoginViewController.xib in Resources */,
 				4C0D851B8EF18E75A2D6E5C2 /* Lato-LightItalic.ttf in Resources */,
 				4C0D81232D2C18BCBF411F54 /* Lato-Medium.ttf in Resources */,
-				66FD63DD1E3BAC6C007066E6 /* NavDrawerHeaderViewCellTableViewCell.xib in Resources */,
 				66FD63D61E3BAC6C007066E6 /* ArrowedLabelView.xib in Resources */,
 				66FD66411E3BAD9E007066E6 /* WWWTableViewCell.xib in Resources */,
 				66FD66391E3BAD9E007066E6 /* MapTableViewCell.xib in Resources */,
@@ -1903,11 +1957,13 @@
 				66FD66B71E3BAD9E007066E6 /* UsosTableViewCell.xib in Resources */,
 				4C0D880F1C5C7C10B24F68ED /* FacultiesSearchResult.json in Resources */,
 				4C0D8FB99127F45E713038A1 /* ProgrammeSearchResult.json in Resources */,
+				66A0172A1E3BC0DC0011BFD9 /* TextViewController.xib in Resources */,
 				66FD66451E3BAD9E007066E6 /* GradesTableViewController.xib in Resources */,
 				66FD66871E3BAD9E007066E6 /* SearchTableViewController.xib in Resources */,
 				4C0D84C2D2CAA3C8644E2D29 /* StudentSearchResult.json in Resources */,
 				4C0D81542B84D3E7A66C0D28 /* ThesesSearchResult.json in Resources */,
 				4C0D89479913D1C7C7B963F6 /* Message.json in Resources */,
+				66A017061E3BBD580011BFD9 /* MenuItemTableViewCell.xib in Resources */,
 				66FD662E1E3BAD9E007066E6 /* EntryViewController.xib in Resources */,
 				66FD66A31E3BAD9E007066E6 /* ArrowedItemCell.xib in Resources */,
 			);
@@ -2088,7 +2144,6 @@
 				66FD66291E3BAD9E007066E6 /* CoursesTableViewController.swift in Sources */,
 				4C0D86EDDF1F15B819DBF358 /* AppDelegate.swift in Sources */,
 				66FD669B1E3BAD9E007066E6 /* TeacherTableViewCell.swift in Sources */,
-				66FD66221E3BAD9E007066E6 /* TermsPopUpViewController.swift in Sources */,
 				66989CCB1E38CE8200B659F6 /* SortKeyProviding.swift in Sources */,
 				66FD662F1E3BAD9E007066E6 /* LoginViewController.swift in Sources */,
 				66FD663C1E3BAD9E007066E6 /* SupervisingUnitCell.swift in Sources */,
@@ -2123,6 +2178,7 @@
 				66FD66321E3BAD9E007066E6 /* RegisterViewController.swift in Sources */,
 				66989CC91E38CB9700B659F6 /* KujonAppearance.swift in Sources */,
 				66FD66171E3BAD9E007066E6 /* CourseDetailsTableViewController.swift in Sources */,
+				66A017071E3BBD580011BFD9 /* NavDrawerHeaderViewCellTableViewCell.swift in Sources */,
 				66FD661E1E3BAD9E007066E6 /* LecturersSection.swift in Sources */,
 				66FD66AC1E3BAD9E007066E6 /* ThesisDetailTableViewController.swift in Sources */,
 				66FD63D71E3BAC6C007066E6 /* GoFurtherViewCellTableViewCell.swift in Sources */,
@@ -2137,12 +2193,15 @@
 				66FD66591E3BAD9E007066E6 /* SearchMenuItem.swift in Sources */,
 				66FD66A11E3BAD9E007066E6 /* ThesesTableViewController.swift in Sources */,
 				4C0D8D1041B61DE7CCC02962 /* SimpleUser.swift in Sources */,
+				66A0171D1E3BBF960011BFD9 /* TermView.swift in Sources */,
 				4C0D84713F8CA8059672D225 /* Grade.swift in Sources */,
 				4C0D827CF48397DB7AD364B3 /* TermGrades.swift in Sources */,
 				4C0D88190EFAA340F1D2D178 /* GradeResponse.swift in Sources */,
 				66FD666F1E3BAD9E007066E6 /* ScheduleSectionImpl.swift in Sources */,
 				66FD66701E3BAD9E007066E6 /* LectureViewTableViewCell.swift in Sources */,
+				66A017051E3BBD580011BFD9 /* MenuItemTableViewCell.swift in Sources */,
 				66FD66541E3BAD9E007066E6 /* ContainerViewController.swift in Sources */,
+				66A017221E3BC0680011BFD9 /* ToastView.swift in Sources */,
 				4C0D8125E905FFA9FF65765F /* LecturerDetail.swift in Sources */,
 				4C0D8276D4657EED0BD1B0C2 /* LecturersResponse.swift in Sources */,
 				4C0D853633AEE49F996B454C /* CourseEdition.swift in Sources */,
@@ -2151,11 +2210,11 @@
 				66FD665D1E3BAD9E007066E6 /* TeachersMenuItem.swift in Sources */,
 				66FD669C1E3BAD9E007066E6 /* TeacherTableViewController.swift in Sources */,
 				4C0D8A432E3EC531C1FE79D7 /* UIColorExtensions.swift in Sources */,
+				66A017251E3BC0D20011BFD9 /* PopUpViewController.swift in Sources */,
 				4C0D82084D092C855DB2FB09 /* RestApiManager.swift in Sources */,
 				4C0D886897D95F586FB998CF /* Facultie.swift in Sources */,
 				66FD66641E3BAD9E007066E6 /* NavigationMenuProtocol.swift in Sources */,
 				4C0D863F610BFD74A4C029CC /* SchoolName.swift in Sources */,
-				5257C3311D267D670068FA56 /* ImageViewController.swift in Sources */,
 				4C0D807A59B2A7B85B701839 /* SchoolPath.swift in Sources */,
 				66D46B181DE617EA003701D2 /* NotificationsManager.swift in Sources */,
 				66A016F11E3BB5550011BFD9 /* ProgrammeSearchProvider.swift in Sources */,
@@ -2164,6 +2223,7 @@
 				66FD66681E3BAD9E007066E6 /* CellHandlerProtocol.swift in Sources */,
 				66FD667D1E3BAD9E007066E6 /* CourseSearchElement.swift in Sources */,
 				4C0D818BA0EBA18711EA841E /* LogoUrls.swift in Sources */,
+				66A017131E3BBE580011BFD9 /* TermsTableViewCell.swift in Sources */,
 				66FD66461E3BAD9E007066E6 /* IntroScreenViewController.swift in Sources */,
 				66FD664A1E3BAD9E007066E6 /* KierunekDetailViewController.swift in Sources */,
 				66FD66AD1E3BAD9E007066E6 /* KierunkiViewController.swift in Sources */,
@@ -2201,7 +2261,6 @@
 				66A016FD1E3BB5BB0011BFD9 /* UserDefaultsManager.swift in Sources */,
 				66FD667F1E3BAD9E007066E6 /* ProgrammeSearchElement.swift in Sources */,
 				66FD66311E3BAD9E007066E6 /* OpenLoginScreenProtocol.swift in Sources */,
-				66FD63DC1E3BAC6C007066E6 /* NavDrawerHeaderViewCellTableViewCell.swift in Sources */,
 				66A016E11E3BB5550011BFD9 /* FacultieProvider.swift in Sources */,
 				66FD66761E3BAD9E007066E6 /* DayTableViewCell.swift in Sources */,
 				66FD661A1E3BAD9E007066E6 /* CoordinatorsSection.swift in Sources */,
@@ -2222,15 +2281,14 @@
 				4C0D85E772027B77B2D540BD /* CoursesWrapper.swift in Sources */,
 				66FD66B81E3BAD9E007066E6 /* WebViewController.swift in Sources */,
 				66FD66381E3BAD9E007066E6 /* MapTableViewCell.swift in Sources */,
+				66A017291E3BC0DC0011BFD9 /* TextViewController.swift in Sources */,
 				66A016DE1E3BB5550011BFD9 /* CourseProvider.swift in Sources */,
 				66FD667E1E3BAD9E007066E6 /* FacultySearchElement.swift in Sources */,
 				66A016EB1E3BB5550011BFD9 /* ProgrammeProvider.swift in Sources */,
 				66A016E61E3BB5550011BFD9 /* LecturerProvider.swift in Sources */,
 				66FD66981E3BAD9E007066E6 /* TeacherHeaderTableViewCell.swift in Sources */,
 				66852C191DE8639B009234C9 /* SettingsResponse.swift in Sources */,
-				4C0D8BCEA9F6DF85809A280A /* PopUpViewController.swift in Sources */,
 				4C0D8E02015B88F38F0F59F4 /* FacultieResponse.swift in Sources */,
-				523B4FDD1D2BD090005FA79F /* TextViewController.swift in Sources */,
 				66FD66921E3BAD9E007066E6 /* StudentDetailsTableViewController.swift in Sources */,
 				4C0D81EAB6447F9ABA3B7AD5 /* CourseDetails.swift in Sources */,
 				4C0D865D9B6FEF3BD55EA8C4 /* FacId.swift in Sources */,
@@ -2241,18 +2299,19 @@
 				4C0D88792066D89E9F575D88 /* CourseDetailsResponse.swift in Sources */,
 				66FD66361E3BAD9E007066E6 /* FacultieHeaderTableViewCell.swift in Sources */,
 				66FD668C1E3BAD9E007066E6 /* SecondLoginViewController.swift in Sources */,
+				66A0172E1E3BC0E40011BFD9 /* ImageViewController.swift in Sources */,
 				66FD66821E3BAD9E007066E6 /* SearchResultsCell.swift in Sources */,
 				66A2CBC91DC76C280049217C /* KujonRefreshControl.swift in Sources */,
 				66A016EC1E3BB5550011BFD9 /* ProviderProvidersImpl.swift in Sources */,
 				66FD66A41E3BAD9E007066E6 /* SectionHeader.swift in Sources */,
 				4C0D87F683AA5AB29468001F /* UIViewExtension.swift in Sources */,
 				66FD66B01E3BAD9E007066E6 /* UserTableViewController.swift in Sources */,
-				4C0D856CA1862322B3D1912C /* ToastView.swift in Sources */,
 				66FD66AF1E3BAD9E007066E6 /* UserDetailsSectionHeaderTableViewCell.swift in Sources */,
 				4C0D828E1DD05D4C0DC9B2C5 /* ViewControllerExtension.swift in Sources */,
 				66A016E21E3BB5550011BFD9 /* FacultiesProvider.swift in Sources */,
 				66FD66941E3BAD9E007066E6 /* StudentHeaderTableViewCell.swift in Sources */,
 				66A016F21E3BB5550011BFD9 /* SearchProvider.swift in Sources */,
+				66A017211E3BC0680011BFD9 /* SpinnerView.swift in Sources */,
 				66A016AC1E3BB1420011BFD9 /* MessageDetailViewController.swift in Sources */,
 				66FD667A1E3BAD9E007066E6 /* LectureTableViewCell.swift in Sources */,
 				4C0D8613E9AAE6706DD0D2B2 /* StringHolder.swift in Sources */,
@@ -2265,7 +2324,6 @@
 				66A016E51E3BB5550011BFD9 /* LectureProvider.swift in Sources */,
 				66FD666E1E3BAD9E007066E6 /* ScheduleSection.swift in Sources */,
 				4C0D8114A3AD4971E2BB867E /* ProgrameIdResponse.swift in Sources */,
-				66FD63DE1E3BAC6C007066E6 /* TermView.swift in Sources */,
 				66A016E91E3BB5550011BFD9 /* MessageProvider.swift in Sources */,
 				66A016F61E3BB5550011BFD9 /* SettingsProvider.swift in Sources */,
 				4C0D845DFC2CE73D1C66A3CC /* SingleProgramme.swift in Sources */,
@@ -2278,7 +2336,6 @@
 				66FD66241E3BAD9E007066E6 /* CourseMeritsTableViewCell.swift in Sources */,
 				66FD66961E3BAD9E007066E6 /* TeacherDetailTableViewController.swift in Sources */,
 				4C0D8E79EF248F656D747BE4 /* ConfigResponse.swift in Sources */,
-				4C0D8C2760C9F3EC7CC1E8AD /* SpinnerView.swift in Sources */,
 				66A016E31E3BB5550011BFD9 /* GradesProvider.swift in Sources */,
 				66FD667C1E3BAD9E007066E6 /* MyEventView.m in Sources */,
 				66A016E81E3BB5550011BFD9 /* LogoutProvider.swift in Sources */,
@@ -2304,6 +2361,7 @@
 				66A016DC1E3BB5550011BFD9 /* ConfigProvider.swift in Sources */,
 				66FD66A81E3BAD9E007066E6 /* ThesisCell.swift in Sources */,
 				66A016B91E3BB5230011BFD9 /* UserLogin.swift in Sources */,
+				66A0171B1E3BBF960011BFD9 /* TermsPopUpViewController.swift in Sources */,
 				66A016EE1E3BB5550011BFD9 /* RegistrationProvider.swift in Sources */,
 				66A016AE1E3BB1420011BFD9 /* MessageCell.swift in Sources */,
 				4C0D843CCE476A98F5AF9D81 /* UserSearch.swift in Sources */,
@@ -2316,7 +2374,6 @@
 				4C0D855782A3BEF578B52348 /* FacultyShort.swift in Sources */,
 				4C0D84EA2ECE10D624CD3221 /* ProgrammeSearchResponse.swift in Sources */,
 				66FD662D1E3BAD9E007066E6 /* EntryViewController.swift in Sources */,
-				66FD63DA1E3BAC6C007066E6 /* MenuItemTableViewCell.swift in Sources */,
 				66FD661F1E3BAD9E007066E6 /* NameSection.swift in Sources */,
 				66FD66B31E3BAD9E007066E6 /* UserDetailView.swift in Sources */,
 				4C0D85E06E058E1938ECB52A /* TheseSearch.swift in Sources */,
@@ -2326,7 +2383,6 @@
 				66FD66441E3BAD9E007066E6 /* GradesTableViewController.swift in Sources */,
 				66FD66881E3BAD9E007066E6 /* SearchViewProtocol.swift in Sources */,
 				66FD661B1E3BAD9E007066E6 /* CourseMeritsSection.swift in Sources */,
-				66FD669E1E3BAD9E007066E6 /* TermsTableViewCell.swift in Sources */,
 				4C0D82F9F37B3007827AE2EC /* SuperUserDetails.swift in Sources */,
 				4C0D8D30C74046B707A38B99 /* SuperUserResponse.swift in Sources */,
 			);
