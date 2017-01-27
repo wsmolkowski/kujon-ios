@@ -22,6 +22,7 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
 
     let settingsProvider: SettingsProvider = SettingsProvider()
     let userData = UserDataHolder.sharedInstance
+    private var systemPushNotificationsEnabledOnViewLoad: Bool = false
 
 
     override func viewDidLoad() {
@@ -41,6 +42,7 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
         updateCalendarSyncSwitchState()
         settingsProvider.loadSettings()
         self.spinner.isHidden = false
+        systemPushNotificationsEnabledOnViewLoad = NotificationsManager.systemPushNotificationsEnabled()
 
     }
 
@@ -127,10 +129,9 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
 
     internal func appDidBecomeActive() {
         let notificationsEnabled = NotificationsManager.systemPushNotificationsEnabled()
-        setupNotificationsSwitch()
-        updateNotificationsSwitchState()
-
-        if notificationsEnabled, userData.oneSignalNotificationsEnabled == false {
+        if notificationsEnabled != systemPushNotificationsEnabledOnViewLoad {
+            setupNotificationsSwitch()
+            updateNotificationsSwitchState()
             settingsProvider.setOneSignalNotifications(enabled: notificationsEnabled)
             spinner.isHidden = false
         }

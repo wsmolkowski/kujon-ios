@@ -19,7 +19,8 @@ class EntryViewController: UIViewController,
         ConfigProviderDelegate,
         OpenLoginScreenProtocol,
         UsosesTableViewControllerDelegate,
-        LogoutProviderDelegate {
+        LogoutProviderDelegate,
+        SettingsProviderDelegate {
 
     let googleSignInManager = GIDSignIn.sharedInstance()
 
@@ -144,6 +145,7 @@ class EntryViewController: UIViewController,
 
     func pairedWithUsos() {
         if !UserDataHolder.sharedInstance.areSettingsLoaded {
+            settingsProvider.delegate = self
             settingsProvider.loadSettings()
         }
         spinnerView.isHidden = true
@@ -201,6 +203,21 @@ class EntryViewController: UIViewController,
         self.navigationController?.pushViewController(controller, animated: true)
     }
 
+    // MARK: SettingsProviderDelegate
+
+    func settingsDidLoad(_ settings: Settings) {
+        if NotificationsManager.systemPushNotificationsEnabled() && UserDataHolder.sharedInstance.oneSignalNotificationsEnabled == false {
+            settingsProvider.setOneSignalNotifications(enabled: true)
+        }
+    }
+
+    func oneSignalNotificationsSettingDidSucceed() {
+
+    }
+
+    func calendarSyncronizationSettingDidSucceed() {
+
+    }
 
     //MARK: UsosesTableViewControllerDelegate
 

@@ -51,10 +51,6 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
                 self?.userData.oneSignalNotificationsEnabled = settings.oneSignalNotificationsEnabled ?? false
                 self?.userData.areSettingsLoaded = true
                 self?.delegate?.settingsDidLoad(settings)
-                if let strongSelf = self,
-                    NotificationsManager.systemPushNotificationsEnabled() && strongSelf.userData.oneSignalNotificationsEnabled == false {
-                    strongSelf.setOneSignalNotifications(enabled: true)
-                }
             } else {
                 self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
             }
