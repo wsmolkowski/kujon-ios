@@ -16,7 +16,7 @@ class GoogleManager: UserLogin, LogoutProviderDelegate {
     var logoutProvider = ProvidersProviderImpl.sharedInstance.provideLogoutProvider()
     var logoutResult: LogoutSucces!
 
-    func loadGoogleParams(_ listener: OnFacebookCredentailSaved) {
+    func loadGoogleParams(_ listener: UserLoginDelegate) {
 
         if (GIDSignIn.sharedInstance().currentUser != nil) {
             let accessToken = GIDSignIn.sharedInstance().currentUser.authentication.idToken
@@ -26,7 +26,7 @@ class GoogleManager: UserLogin, LogoutProviderDelegate {
             self.userDataHolder.userLoginType = StringHolder.googleType
 
             self.userDataHolder.userEmail = email
-            listener.onFacebookCredentailSaved(self.userDataHolder.loggedToUsosForCurrentEmail)
+            listener.onCredentialsSaved(self.userDataHolder.loggedToUsosForCurrentEmail)
         }
 
     }

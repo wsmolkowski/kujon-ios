@@ -8,10 +8,6 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 
-protocol OnFacebookCredentailSaved: class{
-    func onFacebookCredentailSaved(_ isLogged:Bool)
-}
-
 class FacebookManager : UserLogin, LogoutProviderDelegate {
 
     let userDataHolder = UserDataHolder.sharedInstance
@@ -19,7 +15,7 @@ class FacebookManager : UserLogin, LogoutProviderDelegate {
     var logoutProvider = ProvidersProviderImpl.sharedInstance.provideLogoutProvider()
     var logoutResult: LogoutSucces!
 
-    func loadFBParams(_ listener: OnFacebookCredentailSaved) {
+    func loadFBParams(_ listener: UserLoginDelegate) {
 
         if (FBSDKAccessToken.current() != nil) {
             let token: String = FBSDKAccessToken.current().tokenString;
@@ -35,7 +31,7 @@ class FacebookManager : UserLogin, LogoutProviderDelegate {
                     self.userDataHolder.userEmail = email
                 }
                 self.userDataHolder.userLoginType = StringHolder.fbType
-                listener.onFacebookCredentailSaved(self.userDataHolder.loggedToUsosForCurrentEmail)
+                listener.onCredentialsSaved(self.userDataHolder.loggedToUsosForCurrentEmail)
             }
         }
     }

@@ -5,6 +5,10 @@
 
 import Foundation
 
+protocol UserLoginDelegate: class {
+    func onCredentialsSaved(_ isLogged:Bool)
+}
+
 enum UserLoginEnum {
     case facebook
     case google

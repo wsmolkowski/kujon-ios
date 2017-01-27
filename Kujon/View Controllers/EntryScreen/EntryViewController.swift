@@ -13,7 +13,7 @@ import Crashlytics
 
 class EntryViewController: UIViewController,
         FBSDKLoginButtonDelegate,
-        OnFacebookCredentailSaved,
+        UserLoginDelegate,
         GIDSignInUIDelegate,
         GIDSignInDelegate,
         ConfigProviderDelegate,
@@ -98,7 +98,7 @@ class EntryViewController: UIViewController,
 
     @IBAction func onLoginClick(_ sender: AnyObject) {
         let controller = LoginViewController()
-        controller.delegeta = self
+        controller.delegete = self
         self.navigationController?.pushViewController(controller, animated: true)
     }
 
@@ -124,7 +124,7 @@ class EntryViewController: UIViewController,
     }
 
 
-    func onFacebookCredentailSaved(_ isLogged: Bool) {
+    func onCredentialsSaved(_ isLogged: Bool) {
         socialLogin = true
         spinnerView.isHidden = false
         if !UserDataHolder.sharedInstance.isConfigLoaded {
@@ -198,7 +198,7 @@ class EntryViewController: UIViewController,
 
     func openLoginScreenWithEmail(_ email: String) {
         let controller = LoginViewController()
-        controller.delegeta = self
+        controller.delegete = self
         controller.email = email
         self.navigationController?.pushViewController(controller, animated: true)
     }

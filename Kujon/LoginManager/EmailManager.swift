@@ -12,11 +12,11 @@ class EmailManager: UserLogin, LogoutProviderDelegate {
     var logoutResult: LogoutSucces! = nil
 
 
-    func login(_ email: String, token: String, listener: OnFacebookCredentailSaved) {
+    func login(_ email: String, token: String, listener: UserLoginDelegate) {
         self.userDataHolder.userLoginType = StringHolder.emailType
         self.userDataHolder.userEmail = email
         self.userDataHolder.userToken = token
-        listener.onFacebookCredentailSaved(self.userDataHolder.loggedToUsosForCurrentEmail)
+        listener.onCredentialsSaved(self.userDataHolder.loggedToUsosForCurrentEmail)
     }
 
 

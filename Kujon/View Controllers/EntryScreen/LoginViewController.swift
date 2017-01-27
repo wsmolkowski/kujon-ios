@@ -13,7 +13,7 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
     @IBOutlet weak var rejestrujacLabel: UILabel!
     @IBOutlet weak var passwordLabel: UITextField!
 
-    weak var delegeta: OnFacebookCredentailSaved! = nil
+    weak var delegete: UserLoginDelegate! = nil
     var loginProvider = ProvidersProviderImpl.sharedInstance.provideLoginProvider()
     let emailManager = EmailManager.sharedInstance
     var email:String = UserDataHolder.sharedInstance.userEmailRemembered ?? ""
@@ -41,7 +41,7 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
     func onLoginResponse(_ token: String) {
         let _ = navigationController?.popViewController(animated: true)
         UserDataHolder.sharedInstance.userEmailRemembered = email
-        emailManager.login(email, token: token,listener: delegeta)
+        emailManager.login(email, token: token,listener: delegete)
     }
 
 
