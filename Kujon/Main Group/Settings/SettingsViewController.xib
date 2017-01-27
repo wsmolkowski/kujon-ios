@@ -18,6 +18,7 @@
             <connections>
                 <outlet property="appVersionLabel" destination="giQ-s7-oOq" id="6Ay-or-hGp"/>
                 <outlet property="calendarSyncSwitch" destination="2gI-kf-DdS" id="5yY-5J-OdV"/>
+                <outlet property="hiddenNotificationsButton" destination="GUH-nb-zMr" id="pag-mN-hUA"/>
                 <outlet property="notificationSwitch" destination="5uV-88-Sd5" id="ej2-co-Tsq"/>
                 <outlet property="spinner" destination="mic-wh-eEW" id="tsm-N3-UG9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -56,8 +57,11 @@
                                         <color key="titleColor" red="0.16470588743686676" green="0.20000000298023224" blue="0.24313725531101227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                 </button>
-                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5uV-88-Sd5">
+                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5uV-88-Sd5">
                                     <rect key="frame" x="310" y="9" width="51" height="31"/>
+                                    <connections>
+                                        <action selector="notificationsSwitchDidChange:" destination="-1" eventType="valueChanged" id="TXy-jV-Sjr"/>
+                                    </connections>
                                 </switch>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUH-nb-zMr" userLabel="hiddenButton">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>

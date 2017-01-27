@@ -11,7 +11,7 @@ import Foundation
 
 class NotificationsManager {
 
-    static func pushNotificationsEnabled() -> Bool {
+    static func systemPushNotificationsEnabled() -> Bool {
         return UIApplication.shared.currentUserNotificationSettings?.types.contains(UIUserNotificationType.alert) ?? false
     }
 

@@ -15,6 +15,8 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
     var deleteAccountProvider = ProvidersProviderImpl.sharedInstance.provideDeleteAccount()
     @IBOutlet weak var spinner: SpinnerView!
     @IBOutlet weak var notificationSwitch: UISwitch!
+    @IBOutlet weak var hiddenNotificationsButton: UIButton!
+
     @IBOutlet weak var calendarSyncSwitch: UISwitch!
     @IBOutlet weak var appVersionLabel: UILabel!
 
@@ -31,15 +33,15 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
         spinner.isHidden = true
         view.backgroundColor = UIColor.greyBackgroundColor()
         notificationSwitch.onTintColor = UIColor.kujonBlueColor()
+        setupNotificationsSwitch()
         calendarSyncSwitch.onTintColor = UIColor.kujonBlueColor()
         updateNotificationsSwitchState()
         appVersionLabel.text = Constants.appVersion
         NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.appDidBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         updateCalendarSyncSwitchState()
-        if !userData.areSettingsLoaded {
-            settingsProvider.loadSettings()
-            self.spinner.isHidden = false
-        }
+        settingsProvider.loadSettings()
+        self.spinner.isHidden = false
+
     }
 
     deinit {
@@ -99,32 +101,6 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
         self.spinner.isHidden = true
     }
 
-
-    internal func appDidBecomeActive() {
-        let notificationsEnabled = NotificationsManager.pushNotificationsEnabled()
-        updateNotificationsSwitchState()
-        if userData.pushNotificationsEnabled != notificationsEnabled {
-            userData.pushNotificationsEnabled = notificationsEnabled
-            settingsProvider.setPushNotifications(enabled: notificationsEnabled)
-            spinner.isHidden = false
-        }
-    }
-
-    internal func pushNotificationsSettingDidSucceed() {
-        spinner.isHidden = true
-    }
-
-    @IBAction func notificationsButtonDidTap(_ sender: UIButton) {
-        presentAlertWithMessage(StringHolder.shouldOpenAppSettingsForNotifications, title: StringHolder.attention, addCancelAction: true) {
-            NotificationsManager.openAppSettings()
-        }
-    }
-
-    internal func updateNotificationsSwitchState() {
-        let notificationsEnabled = NotificationsManager.pushNotificationsEnabled()
-        notificationSwitch.setOn(notificationsEnabled, animated: true)
-    }
-
     @IBAction func shareButtonDidTap(_ sender: UIButton) {
         let controller = UIActivityViewController(activityItems: [StringHolder.appItunesLink], applicationActivities: nil)
         if let actv = controller.popoverPresentationController {
@@ -140,6 +116,47 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
         UIApplication.shared.openURL(mailToURL)
     }
 
+
+    // MARK: Notifications
+
+    private func setupNotificationsSwitch() {
+        let systemPushNotificationsEnabled = NotificationsManager.systemPushNotificationsEnabled()
+        notificationSwitch.isEnabled = systemPushNotificationsEnabled
+        hiddenNotificationsButton.isHidden = systemPushNotificationsEnabled
+    }
+
+    internal func appDidBecomeActive() {
+        let notificationsEnabled = NotificationsManager.systemPushNotificationsEnabled()
+        setupNotificationsSwitch()
+        updateNotificationsSwitchState()
+
+        if notificationsEnabled, userData.oneSignalNotificationsEnabled == false {
+            settingsProvider.setOneSignalNotifications(enabled: notificationsEnabled)
+            spinner.isHidden = false
+        }
+    }
+
+    internal func oneSignalNotificationsSettingDidSucceed() {
+        spinner.isHidden = true
+        updateNotificationsSwitchState()
+    }
+
+    @IBAction func notificationsSwitchDidChange(_ sender: UISwitch) {
+        settingsProvider.setOneSignalNotifications(enabled: sender.isOn)
+        spinner.isHidden = false
+    }
+
+    @IBAction func notificationsButtonDidTap(_ sender: UIButton) {
+        presentAlertWithMessage(StringHolder.shouldOpenAppSettingsForNotifications, title: StringHolder.attention, addCancelAction: true) {
+            NotificationsManager.openAppSettings()
+        }
+    }
+
+    internal func updateNotificationsSwitchState() {
+        let notificationsEnabled = NotificationsManager.systemPushNotificationsEnabled() && userData.oneSignalNotificationsEnabled
+        notificationSwitch.setOn(notificationsEnabled, animated: true)
+    }
+
     // MARK: Calendar Sync
 
     @IBAction func calendarSyncSwitchDidChange(_ sender: UISwitch) {
@@ -149,11 +166,13 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
 
     func settingsDidLoad(_ settings: Settings) {
         updateCalendarSyncSwitchState()
+        updateNotificationsSwitchState()
         self.spinner.isHidden = true
     }
 
     func calendarSyncronizationSettingDidSucceed() {
         spinner.isHidden = true
+        updateCalendarSyncSwitchState()
     }
 
     func onErrorOccurs(_ text: String) {

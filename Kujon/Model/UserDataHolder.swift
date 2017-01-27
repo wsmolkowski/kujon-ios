@@ -108,7 +108,7 @@ class UserDataHolder {
             return isCalendarSyncEnabled && UserLoginEnum.getLoginType() == .google
     }
 
-    var pushNotificationsEnabled: Bool {
+    var oneSignalNotificationsEnabled: Bool {
         get {
             if (userEmail == nil) {
                 return false

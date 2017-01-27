@@ -13,7 +13,7 @@ protocol SettingsProviderProtocol: JsonProviderProtocol {
     associatedtype T = SettingsResponse
     func loadSettings()
     func setCalendarSyncronization(enabled: Bool)
-    func setPushNotifications(enabled: Bool)
+    func setOneSignalNotifications(enabled: Bool)
 }
 
 
@@ -21,7 +21,7 @@ protocol SettingsProviderDelegate: ErrorResponseProtocol {
 
     func settingsDidLoad(_ settings: Settings)
     func calendarSyncronizationSettingDidSucceed()
-    func pushNotificationsSettingDidSucceed()
+    func oneSignalNotificationsSettingDidSucceed()
 }
 
 
@@ -48,12 +48,13 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
             if let response = try! self?.changeJsonToResposne(data, errorR: self?.delegate),
                 let settings: Settings = response.data {
                 self?.userData.isCalendarSyncEnabled = settings.calendarSyncEnabled ?? false
-                self?.userData.pushNotificationsEnabled = settings.pushNotificationsEnabled ?? false
+                self?.userData.oneSignalNotificationsEnabled = settings.oneSignalNotificationsEnabled ?? false
                 self?.userData.areSettingsLoaded = true
-                if self?.userData.pushNotificationsEnabled != NotificationsManager.pushNotificationsEnabled() {
-                    self?.setPushNotifications(enabled: NotificationsManager.pushNotificationsEnabled())
-                }
                 self?.delegate?.settingsDidLoad(settings)
+                if let strongSelf = self,
+                    NotificationsManager.systemPushNotificationsEnabled() && strongSelf.userData.oneSignalNotificationsEnabled == false {
+                    strongSelf.setOneSignalNotifications(enabled: true)
+                }
             } else {
                 self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
             }
@@ -78,14 +79,14 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
         })
     }
 
-    func setPushNotifications(enabled: Bool) {
+    func setOneSignalNotifications(enabled: Bool) {
         let state: State = enabled ? .enabled : .disabled
         endpointURL = SettingsEndpoint.postPushNotificationsState.rawValue + state.rawValue
         makeHTTPAuthenticatedPostRequest({ data in
             if let responseJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:Any],
                 let status = responseJSON?["status"], status as? String == "success" {
-                UserDataHolder.sharedInstance.pushNotificationsEnabled = enabled
-                self.delegate?.pushNotificationsSettingDidSucceed()
+                UserDataHolder.sharedInstance.oneSignalNotificationsEnabled = enabled
+                self.delegate?.oneSignalNotificationsSettingDidSucceed()
             } else {
                 self.delegate?.onErrorOccurs(StringHolder.errorOccures)
             }

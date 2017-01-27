@@ -12,7 +12,7 @@ class KujonAppearance {
 
     static func setSearchBarAppearance() {
         let barButtonAppearanceInSearchBar = UIBarButtonItem.appearance(whenContainedInInstancesOf:[UISearchBar.self])
-        let attr = [ NSFontAttributeName : UIFont.kjnFontLatoRegular(size: 16),
+        let attr: [String: Any] = [ NSFontAttributeName : UIFont.kjnFontLatoRegular(size: 16)!,
                      NSForegroundColorAttributeName : UIColor.kujonBlueColor() ]
         barButtonAppearanceInSearchBar.setTitleTextAttributes(attr, for: .normal)
         barButtonAppearanceInSearchBar.title = StringHolder.cancel

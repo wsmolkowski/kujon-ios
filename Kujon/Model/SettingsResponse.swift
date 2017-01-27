@@ -10,14 +10,14 @@ import Foundation
 import Decodable
 
 struct Settings {
-    let pushNotificationsEnabled: Bool?
+    let oneSignalNotificationsEnabled: Bool?
     let calendarSyncEnabled: Bool?
 }
 
 extension Settings: Decodable {
     static func decode(_ j: Any) throws -> Settings {
         return Settings(
-            pushNotificationsEnabled: try? j => "event_enable",
+            oneSignalNotificationsEnabled: try? j => "event_enable",
             calendarSyncEnabled: try? j => "google_callendar_enable"
         )
     }
