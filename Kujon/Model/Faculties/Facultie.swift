@@ -36,7 +36,7 @@ import Decodable
 struct Facultie {
 
     let logUrls: LogoUrls
-    let schoolStats: SchoolStats
+    let schoolStats: SchoolStats?
     let name: String
     let postalAdress: String!
     let facultyId: String
@@ -50,7 +50,7 @@ extension Facultie: Decodable {
     static func decode(_ j: Any) throws -> Facultie {
         return try Facultie(
         logUrls: j => "logo_urls",
-                schoolStats: j => "stats",
+                schoolStats: try? j => "stats",
                 name: j => "name",
                 postalAdress: j => "postal_address",
                 facultyId: j => "fac_id",
