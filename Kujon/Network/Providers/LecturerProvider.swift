@@ -26,7 +26,6 @@ class LecturerProvider: RestApiManager, LecturerProviderProtocol {
         self.makeHTTPAuthenticatedGetRequest({
             [unowned self] json in
                if let lecturerResponse = try! self.changeJsonToResposne(json,errorR: self.delegate){
-
                    self.delegate?.onLecturersLoaded(lecturerResponse.data)
                }
         }, onError: {[unowned self] text in self.delegate?.onErrorOccurs() })

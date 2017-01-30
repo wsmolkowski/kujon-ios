@@ -37,7 +37,6 @@ class MessagesTableViewController: RefreshingTableViewController, NavigationDele
         addToProvidersList(provider: messageProvider)
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(UserTableViewController.openDrawer), andTitle: StringHolder.messages)
         configureTableView()
-        addSearchController()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -121,6 +120,9 @@ class MessagesTableViewController: RefreshingTableViewController, NavigationDele
         filteredMessages = message
         backgroundLabel?.isHidden = !message.isEmpty
         backgroundImage?.isHidden = !message.isEmpty
+        if !message.isEmpty {
+            addSearchController()
+        }
         refreshControl?.endRefreshing()
         tableView.reloadData()
     }

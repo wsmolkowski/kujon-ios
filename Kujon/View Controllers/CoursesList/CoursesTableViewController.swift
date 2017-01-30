@@ -30,7 +30,6 @@ class CoursesTableViewController: RefreshingTableViewController, NavigationDeleg
         courseProvider.delegate = self
         addToProvidersList(provider:courseProvider)
         termsProvider.delegate = self
-        addSearchController()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -60,6 +59,9 @@ class CoursesTableViewController: RefreshingTableViewController, NavigationDeleg
 
         self.allSections = SortedDictionary(coursesWrappers: courses)
         self.filteredSections = allSections
+        if !courses.isEmpty {
+            addSearchController()
+        }
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
     }

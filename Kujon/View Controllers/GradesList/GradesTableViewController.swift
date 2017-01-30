@@ -38,7 +38,6 @@ class GradesTableViewController: RefreshingTableViewController, NavigationDelega
         self.tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         didLoadData = false;
-        addSearchController()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -75,6 +74,9 @@ class GradesTableViewController: RefreshingTableViewController, NavigationDelega
         didLoadData = true
         self.allTermGrades = SortedDictionary<PreparedGrades>(preparedTermGrades: preparedTermGrades)
         self.filteredTermGrades = allTermGrades
+        if !preparedTermGrades.isEmpty {
+            addSearchController()
+        }
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
     }

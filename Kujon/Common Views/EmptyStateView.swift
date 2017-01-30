@@ -12,7 +12,7 @@ import Foundation
 class EmptyStateView: UIView {
 
     internal static func showUsosDownAlert(inParent view: UIView) {
-        EmptyStateView.showAlert(inParent: view, imageName: "empty-state-sunbath", title: "Przerwa w dostępie do USOS", description: "Spróbuj ponownie za jakiś czas :)", descriptionLabelHeight: 30.0)
+        EmptyStateView.showAlert(inParent: view, imageName: "empty-state-sunbath", title: "Przerwa w dostępie do USOS", description: "Spróbuj ponownie za jakiś czas :)", descriptionLabelHeight: 30.0, offsetY: 50.0)
     }
 
     internal static func showNoResultsAlert(inParent view: UIView) {

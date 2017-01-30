@@ -13,7 +13,7 @@ class TeacherTableViewController: RefreshingTableViewController, NavigationDeleg
     private let TeachCellId = "teacherCellId"
     weak var delegate: NavigationMenuProtocol! = nil
     let lecturerProvider = ProvidersProviderImpl.sharedInstance.provideLecturerProvider()
-    private var allLecturers: Array<SimpleUser>! = nil
+    private var allLecturers: Array<SimpleUser>! = []
     private var filteredLecturers: [SimpleUser] = []
     private let searchController = UISearchController(searchResultsController: nil)
 
@@ -30,7 +30,6 @@ class TeacherTableViewController: RefreshingTableViewController, NavigationDeleg
         addToProvidersList(provider: lecturerProvider)
         self.tableView.tableFooterView = UIView()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        addSearchController()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -59,6 +58,9 @@ class TeacherTableViewController: RefreshingTableViewController, NavigationDeleg
     func onLecturersLoaded(_ lecturers: Array<SimpleUser>) {
         self.allLecturers = lecturers
         self.filteredLecturers = lecturers
+        if !lecturers.isEmpty {
+            addSearchController()
+        }
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
     }
