@@ -27,7 +27,7 @@ weak var delegate: FacultieProviderDelegate! = nil
         self.endpoint = id
         self.makeHTTPAuthenticatedGetRequest({
             [unowned self] json in
-                if let facult = try! self.changeJsonToResposne(json,errorR: self.delegate){
+                if let facult = try? self.changeJsonToResposne(json,errorR: self.delegate){
                     self.delegate?.onFacultieLoaded(facult.list)
                 }
         }, onError: {[unowned self] text in self.delegate?.onErrorOccurs() })
