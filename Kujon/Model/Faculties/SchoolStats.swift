@@ -8,18 +8,18 @@ import Decodable
 
 
 struct SchoolStats {
-    let courseCount: Int
-    let programmeCount: Int
-    let staffCount: Int
+    let courseCount: Int?
+    let programmeCount: Int?
+    let staffCount: Int?
 
 }
 
 extension SchoolStats: Decodable {
     static func decode(_ j: Any) throws -> SchoolStats {
-        return try SchoolStats(
-        courseCount: j => "course_count",
-                programmeCount: j => "programme_count",
-                staffCount: j => "staff_count"
+        return SchoolStats(
+        courseCount: try? j => "course_count",
+                programmeCount: try? j => "programme_count",
+                staffCount: try? j => "staff_count"
         )
     }
 

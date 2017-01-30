@@ -22,9 +22,25 @@ class StatisticsCell: UITableViewCell {
             guard let stats = stats else {
                 return
             }
-            programmesCountLabel.text = "\(stats.programmeCount)"
-            coursesCountLabel.text = "\(stats.courseCount)"
-            employeesCountLabel.text = "\(stats.staffCount)"
+            let none = StringHolder.none_lowercase
+
+            programmesCountLabel.text = none
+
+            coursesCountLabel.text = none
+
+            employeesCountLabel.text = none
+
+            if let programmeCount = stats.programmeCount {
+                programmesCountLabel.text = "\(programmeCount)"
+            }
+
+            if let courseCount = stats.courseCount {
+                coursesCountLabel.text = "\(courseCount)"
+            }
+
+            if let staffCount = stats.staffCount {
+                employeesCountLabel.text = "\(staffCount)"
+            }
         }
     }
     
