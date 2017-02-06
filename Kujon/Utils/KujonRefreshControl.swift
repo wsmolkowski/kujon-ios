@@ -17,6 +17,17 @@ class KujonRefreshControl: UIRefreshControl {
 
     var refreshType: RefreshType = .userInitiated
 
+    override init() {
+        super.init()
+        attributedTitle = StringHolder.refresh.toAttributedStringWithFont(UIFont.kjnFontLatoRegular(size: 11)!, color: .white)
+        tintColor = .white
+        backgroundColor = UIColor.kujonBlueColor()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     func beginRefreshingProgrammatically() {
         refreshType = .programmatic
         if let scrollView = superview as? UIScrollView {
@@ -32,5 +43,5 @@ class KujonRefreshControl: UIRefreshControl {
         super.endRefreshing()
         refreshType = .userInitiated
     }
-
+    
 }
