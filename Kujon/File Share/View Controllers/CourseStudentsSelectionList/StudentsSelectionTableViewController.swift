@@ -75,8 +75,8 @@ class StudentsSelectionTableViewController: UITableViewController, CourseDetails
 
     func setSearchBarAppearance() {
         let barButtonAppearanceInSearchBar = UIBarButtonItem.appearance(whenContainedInInstancesOf:[UISearchBar.self])
-        let attr = [ NSFontAttributeName : UIFont.kjnFontLatoRegular(size: 16),
-                     NSForegroundColorAttributeName : UIColor.kujonBlueColor() ]
+        let attr: [String: Any] = [ NSFontAttributeName : UIFont.kjnFontLatoRegular(size: 16)!,
+                                    NSForegroundColorAttributeName : UIColor.kujonBlueColor() ]
         barButtonAppearanceInSearchBar.setTitleTextAttributes(attr, for: .normal)
         barButtonAppearanceInSearchBar.title = StringHolder.cancel
     }
