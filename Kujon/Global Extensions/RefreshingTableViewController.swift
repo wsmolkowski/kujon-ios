@@ -17,7 +17,7 @@ class RefreshingTableViewController: UITableViewController  {
         super.viewDidLoad()
         refreshControl = KujonRefreshControl()
         refreshControl?.backgroundColor = UIColor.kujonBlueColor()
-        refreshControl?.attributedTitle = NSAttributedString(string: StringHolder.refresh)
+        refreshControl?.attributedTitle = StringHolder.refresh.toAttributedStringWithFont(UIFont.kjnFontLatoRegular(size: 11)!, color: .white)
         refreshControl?.addTarget(self, action: #selector(RefreshingTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
 
     }
@@ -32,7 +32,6 @@ class RefreshingTableViewController: UITableViewController  {
     func refresh(_ refreshControl: KujonRefreshControl) {
         if refreshControl.refreshType == .userInitiated {
             clearCachedResponse()
-            print("CLEAR CACHE")
         }
         loadData()
     }
