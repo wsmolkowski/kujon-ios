@@ -44,7 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let googleSignIn = GIDSignIn.sharedInstance()
         googleSignIn?.scopes.append("https://www.googleapis.com/auth/calendar")
         googleSignIn?.scopes.append("https://www.googleapis.com/auth/contacts")
-   
+        googleSignIn?.scopes.append("https://www.googleapis.com/auth/drive")
+
+
         googleSignIn?.signInSilently()
 
         //TODO setup proper OneSignal app Id

@@ -267,6 +267,15 @@
 		66A8BE551E48C410008B35B7 /* URL+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BE541E48C410008B35B7 /* URL+.swift */; };
 		66A8BE571E48C41A008B35B7 /* UIDevice+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BE561E48C41A008B35B7 /* UIDevice+.swift */; };
 		66A8BE591E48C68D008B35B7 /* Bool+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BE581E48C68D008B35B7 /* Bool+.swift */; };
+		66A8BE601E48CC90008B35B7 /* AccessoryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BE5A1E48CC90008B35B7 /* AccessoryItemCell.swift */; };
+		66A8BE611E48CC90008B35B7 /* AccessoryItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A8BE5B1E48CC90008B35B7 /* AccessoryItemCell.xib */; };
+		66A8BE621E48CC90008B35B7 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BE5C1E48CC90008B35B7 /* SectionHeader.swift */; };
+		66A8BE631E48CC90008B35B7 /* SectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A8BE5D1E48CC90008B35B7 /* SectionHeader.xib */; };
+		66A8BE641E48CC90008B35B7 /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BE5E1E48CC90008B35B7 /* SeparatorCell.swift */; };
+		66A8BE651E48CC90008B35B7 /* SeparatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A8BE5F1E48CC90008B35B7 /* SeparatorCell.xib */; };
+		66A8BE681E48CDC2008B35B7 /* ArrowedItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BE661E48CDC2008B35B7 /* ArrowedItemCell.swift */; };
+		66A8BE691E48CDC2008B35B7 /* ArrowedItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A8BE671E48CDC2008B35B7 /* ArrowedItemCell.xib */; };
+		66A8BE6B1E48CFFC008B35B7 /* FileShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BE6A1E48CFFC008B35B7 /* FileShareItem.swift */; };
 		66D46B181DE617EA003701D2 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D46B171DE617EA003701D2 /* NotificationsManager.swift */; };
 		66F4BC6B1DB2597000425E39 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 66F4BC6A1DB2597000425E39 /* Podfile */; };
 		66FD63D51E3BAC6C007066E6 /* ArrowedLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD63CA1E3BAC6C007066E6 /* ArrowedLabelView.swift */; };
@@ -335,7 +344,6 @@
 		66FD66591E3BAD9E007066E6 /* SearchMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD659E1E3BAD9E007066E6 /* SearchMenuItem.swift */; };
 		66FD665A1E3BAD9E007066E6 /* SendOpinionMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD659F1E3BAD9E007066E6 /* SendOpinionMenuItem.swift */; };
 		66FD665B1E3BAD9E007066E6 /* SettingsMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD65A01E3BAD9E007066E6 /* SettingsMenuItem.swift */; };
-		66FD665C1E3BAD9E007066E6 /* ShareMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD65A11E3BAD9E007066E6 /* ShareMenuItem.swift */; };
 		66FD665D1E3BAD9E007066E6 /* TeachersMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD65A21E3BAD9E007066E6 /* TeachersMenuItem.swift */; };
 		66FD665E1E3BAD9E007066E6 /* UserMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD65A31E3BAD9E007066E6 /* UserMenuItem.swift */; };
 		66FD665F1E3BAD9E007066E6 /* MenuItemsHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD65A41E3BAD9E007066E6 /* MenuItemsHolder.swift */; };
@@ -403,12 +411,6 @@
 		66FD669D1E3BAD9E007066E6 /* TeacherTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66FD65F11E3BAD9E007066E6 /* TeacherTableViewController.xib */; };
 		66FD66A01E3BAD9E007066E6 /* TermsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD65F51E3BAD9E007066E6 /* TermsTableViewController.swift */; };
 		66FD66A11E3BAD9E007066E6 /* ThesesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD65F71E3BAD9E007066E6 /* ThesesTableViewController.swift */; };
-		66FD66A21E3BAD9E007066E6 /* ArrowedItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD65F91E3BAD9E007066E6 /* ArrowedItemCell.swift */; };
-		66FD66A31E3BAD9E007066E6 /* ArrowedItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66FD65FA1E3BAD9E007066E6 /* ArrowedItemCell.xib */; };
-		66FD66A41E3BAD9E007066E6 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD65FB1E3BAD9E007066E6 /* SectionHeader.swift */; };
-		66FD66A51E3BAD9E007066E6 /* SectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66FD65FC1E3BAD9E007066E6 /* SectionHeader.xib */; };
-		66FD66A61E3BAD9E007066E6 /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD65FD1E3BAD9E007066E6 /* SeparatorCell.swift */; };
-		66FD66A71E3BAD9E007066E6 /* SeparatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66FD65FE1E3BAD9E007066E6 /* SeparatorCell.xib */; };
 		66FD66A81E3BAD9E007066E6 /* ThesisCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD65FF1E3BAD9E007066E6 /* ThesisCell.swift */; };
 		66FD66A91E3BAD9E007066E6 /* ThesisCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66FD66001E3BAD9E007066E6 /* ThesisCell.xib */; };
 		66FD66AA1E3BAD9E007066E6 /* ThesisDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD66021E3BAD9E007066E6 /* ThesisDetailHeaderCell.swift */; };
@@ -718,6 +720,15 @@
 		66A8BE541E48C410008B35B7 /* URL+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+.swift"; sourceTree = "<group>"; };
 		66A8BE561E48C41A008B35B7 /* UIDevice+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+.swift"; sourceTree = "<group>"; };
 		66A8BE581E48C68D008B35B7 /* Bool+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+.swift"; sourceTree = "<group>"; };
+		66A8BE5A1E48CC90008B35B7 /* AccessoryItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessoryItemCell.swift; sourceTree = "<group>"; };
+		66A8BE5B1E48CC90008B35B7 /* AccessoryItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccessoryItemCell.xib; sourceTree = "<group>"; };
+		66A8BE5C1E48CC90008B35B7 /* SectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		66A8BE5D1E48CC90008B35B7 /* SectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeader.xib; sourceTree = "<group>"; };
+		66A8BE5E1E48CC90008B35B7 /* SeparatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
+		66A8BE5F1E48CC90008B35B7 /* SeparatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeparatorCell.xib; sourceTree = "<group>"; };
+		66A8BE661E48CDC2008B35B7 /* ArrowedItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowedItemCell.swift; sourceTree = "<group>"; };
+		66A8BE671E48CDC2008B35B7 /* ArrowedItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArrowedItemCell.xib; sourceTree = "<group>"; };
+		66A8BE6A1E48CFFC008B35B7 /* FileShareItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileShareItem.swift; sourceTree = "<group>"; };
 		66D46B171DE617EA003701D2 /* NotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		66F402E31DB12E75001E28D1 /* KujonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KujonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		66F402F11DB12E82001E28D1 /* KujonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KujonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -788,7 +799,6 @@
 		66FD659E1E3BAD9E007066E6 /* SearchMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMenuItem.swift; sourceTree = "<group>"; };
 		66FD659F1E3BAD9E007066E6 /* SendOpinionMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendOpinionMenuItem.swift; sourceTree = "<group>"; };
 		66FD65A01E3BAD9E007066E6 /* SettingsMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsMenuItem.swift; sourceTree = "<group>"; };
-		66FD65A11E3BAD9E007066E6 /* ShareMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareMenuItem.swift; sourceTree = "<group>"; };
 		66FD65A21E3BAD9E007066E6 /* TeachersMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeachersMenuItem.swift; sourceTree = "<group>"; };
 		66FD65A31E3BAD9E007066E6 /* UserMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMenuItem.swift; sourceTree = "<group>"; };
 		66FD65A41E3BAD9E007066E6 /* MenuItemsHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemsHolder.swift; sourceTree = "<group>"; };
@@ -857,12 +867,6 @@
 		66FD65F11E3BAD9E007066E6 /* TeacherTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeacherTableViewController.xib; sourceTree = "<group>"; };
 		66FD65F51E3BAD9E007066E6 /* TermsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsTableViewController.swift; sourceTree = "<group>"; };
 		66FD65F71E3BAD9E007066E6 /* ThesesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesesTableViewController.swift; sourceTree = "<group>"; };
-		66FD65F91E3BAD9E007066E6 /* ArrowedItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowedItemCell.swift; sourceTree = "<group>"; };
-		66FD65FA1E3BAD9E007066E6 /* ArrowedItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArrowedItemCell.xib; sourceTree = "<group>"; };
-		66FD65FB1E3BAD9E007066E6 /* SectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
-		66FD65FC1E3BAD9E007066E6 /* SectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeader.xib; sourceTree = "<group>"; };
-		66FD65FD1E3BAD9E007066E6 /* SeparatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
-		66FD65FE1E3BAD9E007066E6 /* SeparatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeparatorCell.xib; sourceTree = "<group>"; };
 		66FD65FF1E3BAD9E007066E6 /* ThesisCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesisCell.swift; sourceTree = "<group>"; };
 		66FD66001E3BAD9E007066E6 /* ThesisCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThesisCell.xib; sourceTree = "<group>"; };
 		66FD66021E3BAD9E007066E6 /* ThesisDetailHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThesisDetailHeaderCell.swift; sourceTree = "<group>"; };
@@ -974,7 +978,6 @@
 		4C0D82489E8A720F1EED7B19 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				66A8BE4A1E48C3C1008B35B7 /* StringConvertible.swift */,
 				660915251DDDD31800D3FEC9 /* Constants.swift */,
 				661D1C201DAD974500BA9EE9 /* HTMLParser.h */,
 				661D1C211DAD974500BA9EE9 /* HTMLParser.m */,
@@ -986,6 +989,7 @@
 				66A2CBCA1DC77B440049217C /* RefreshingTableViewController.swift */,
 				66989CCC1E38DB9D00B659F6 /* SortedDictionary.swift */,
 				66989CCA1E38CE8200B659F6 /* SortKeyProviding.swift */,
+				66A8BE4A1E48C3C1008B35B7 /* StringConvertible.swift */,
 				4C0D8ACEDEE9F84A27992B79 /* StringHolder.swift */,
 				66A016FC1E3BB5BB0011BFD9 /* UserDefaultsManager.swift */,
 			);
@@ -1124,19 +1128,19 @@
 		4C0D8B22EBFA522F154A82EF /* Global Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4C0D8E122D49E9F1EAC590CA /* ArrayExtension.swift */,
 				66A8BE581E48C68D008B35B7 /* Bool+.swift */,
+				4C0D80C60F18F352959F2C99 /* CALayerExtensions.swift */,
 				66A8BE4C1E48C3E1008B35B7 /* Data+.swift */,
 				66A8BE4E1E48C3FA008B35B7 /* DispatchQueue+.swift */,
-				4C0D8E122D49E9F1EAC590CA /* ArrayExtension.swift */,
-				66A8BE521E48C408008B35B7 /* Operation+.swift */,
-				4C0D80C60F18F352959F2C99 /* CALayerExtensions.swift */,
 				66A8BE501E48C3FF008B35B7 /* FileManager+.swift */,
 				4C0D8E619AE4BB2F7B24C207 /* NSDateExtension.swift */,
+				66A8BE521E48C408008B35B7 /* Operation+.swift */,
 				662DAFEC1DAC14150094867E /* String+.swift */,
-				66A8BE561E48C41A008B35B7 /* UIDevice+.swift */,
 				4C0D83451742C0465B1D8D85 /* UIColorExtensions.swift */,
-				66A8BE541E48C410008B35B7 /* URL+.swift */,
+				66A8BE561E48C41A008B35B7 /* UIDevice+.swift */,
 				4C0D8DB54DD23281C3E2C08B /* UIViewExtension.swift */,
+				66A8BE541E48C410008B35B7 /* URL+.swift */,
 				4C0D80D05F8472B37F41EF0B /* ViewControllerExtension.swift */,
 			);
 			path = "Global Extensions";
@@ -1398,10 +1402,10 @@
 		66A8BDAD1E48C11E008B35B7 /* File Share */ = {
 			isa = PBXGroup;
 			children = (
-				66A8BDAE1E48C11E008B35B7 /* Common */,
-				66A8BDB71E48C11E008B35B7 /* Model */,
+				66A8BDEA1E48C11E008B35B7 /* UI */,
 				66A8BDCB1E48C11E008B35B7 /* Providers */,
-				66A8BDEA1E48C11E008B35B7 /* View Controllers */,
+				66A8BDB71E48C11E008B35B7 /* Model */,
+				66A8BDAE1E48C11E008B35B7 /* Common */,
 			);
 			path = "File Share";
 			sourceTree = "<group>";
@@ -1546,7 +1550,7 @@
 			path = "Google Drive Manager";
 			sourceTree = "<group>";
 		};
-		66A8BDEA1E48C11E008B35B7 /* View Controllers */ = {
+		66A8BDEA1E48C11E008B35B7 /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				66A8BDEB1E48C11E008B35B7 /* CoursesList */,
@@ -1555,6 +1559,7 @@
 				66A8BDFC1E48C11E008B35B7 /* Shared File List */,
 				66A8BE031E48C11E008B35B7 /* TransferView */,
 			);
+			name = UI;
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
@@ -1647,11 +1652,19 @@
 		66FD63A81E3BAA9D007066E6 /* Common Views */ = {
 			isa = PBXGroup;
 			children = (
+				66A8BE5A1E48CC90008B35B7 /* AccessoryItemCell.swift */,
+				66A8BE5B1E48CC90008B35B7 /* AccessoryItemCell.xib */,
+				66A8BE661E48CDC2008B35B7 /* ArrowedItemCell.swift */,
+				66A8BE671E48CDC2008B35B7 /* ArrowedItemCell.xib */,
 				66FD63CA1E3BAC6C007066E6 /* ArrowedLabelView.swift */,
 				66FD63CB1E3BAC6C007066E6 /* ArrowedLabelView.xib */,
 				669935C91E3F5ECB00A68C9E /* EmptyStateView.swift */,
 				66FD63CC1E3BAC6C007066E6 /* GoFurtherViewCellTableViewCell.swift */,
 				66FD63CD1E3BAC6C007066E6 /* GoFurtherViewCellTableViewCell.xib */,
+				66A8BE5C1E48CC90008B35B7 /* SectionHeader.swift */,
+				66A8BE5D1E48CC90008B35B7 /* SectionHeader.xib */,
+				66A8BE5E1E48CC90008B35B7 /* SeparatorCell.swift */,
+				66A8BE5F1E48CC90008B35B7 /* SeparatorCell.xib */,
 				66A0171F1E3BC0680011BFD9 /* SpinnerView.swift */,
 				66A017201E3BC0680011BFD9 /* ToastView.swift */,
 			);
@@ -1848,6 +1861,7 @@
 		66FD65991E3BAD9E007066E6 /* Menu Items */ = {
 			isa = PBXGroup;
 			children = (
+				66A8BE6A1E48CFFC008B35B7 /* FileShareItem.swift */,
 				66FD659A1E3BAD9E007066E6 /* CourseMenuItems.swift */,
 				66FD659B1E3BAD9E007066E6 /* GradesMenuItem.swift */,
 				66FD659C1E3BAD9E007066E6 /* MessagesMenuItem.swift */,
@@ -1855,7 +1869,6 @@
 				66FD659E1E3BAD9E007066E6 /* SearchMenuItem.swift */,
 				66FD659F1E3BAD9E007066E6 /* SendOpinionMenuItem.swift */,
 				66FD65A01E3BAD9E007066E6 /* SettingsMenuItem.swift */,
-				66FD65A11E3BAD9E007066E6 /* ShareMenuItem.swift */,
 				66FD65A21E3BAD9E007066E6 /* TeachersMenuItem.swift */,
 				66FD65A31E3BAD9E007066E6 /* UserMenuItem.swift */,
 			);
@@ -2044,12 +2057,6 @@
 		66FD65F81E3BAD9E007066E6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				66FD65F91E3BAD9E007066E6 /* ArrowedItemCell.swift */,
-				66FD65FA1E3BAD9E007066E6 /* ArrowedItemCell.xib */,
-				66FD65FB1E3BAD9E007066E6 /* SectionHeader.swift */,
-				66FD65FC1E3BAD9E007066E6 /* SectionHeader.xib */,
-				66FD65FD1E3BAD9E007066E6 /* SeparatorCell.swift */,
-				66FD65FE1E3BAD9E007066E6 /* SeparatorCell.xib */,
 				66FD65FF1E3BAD9E007066E6 /* ThesisCell.swift */,
 				66FD66001E3BAD9E007066E6 /* ThesisCell.xib */,
 			);
@@ -2277,7 +2284,6 @@
 				66FD664C1E3BAD9E007066E6 /* KierunekHeaderCell.xib in Resources */,
 				66A0171C1E3BBF960011BFD9 /* TermsPopUpViewController.xib in Resources */,
 				0A42914C1D409659006D6DAB /* GoogleService-Info.plist in Resources */,
-				66FD66A51E3BAD9E007066E6 /* SectionHeader.xib in Resources */,
 				66FD66A91E3BAD9E007066E6 /* ThesisCell.xib in Resources */,
 				66FD66281E3BAD9E007066E6 /* CoursesTableTableViewController.xib in Resources */,
 				66FD66931E3BAD9E007066E6 /* StudentDetailsTableViewController.xib in Resources */,
@@ -2303,8 +2309,10 @@
 				4C0D87058EAE5B71945F1AD8 /* Lecturers.json in Resources */,
 				4C0D8792155EDB3BF227067C /* FacultiesDetail.json in Resources */,
 				66FD668A1E3BAD9E007066E6 /* SearchTableViewCell.xib in Resources */,
+				66A8BE651E48CC90008B35B7 /* SeparatorCell.xib in Resources */,
 				66FD66911E3BAD9E007066E6 /* ShareViewController.xib in Resources */,
 				527B39B81D117B800028BCF9 /* Assets.xcassets in Resources */,
+				66A8BE691E48CDC2008B35B7 /* ArrowedItemCell.xib in Resources */,
 				66FD66371E3BAD9E007066E6 /* FacultieHeaderTableViewCell.xib in Resources */,
 				4C0D87FF3ADA197F8655E408 /* Programmes.json in Resources */,
 				4C0D85BA322F0D6699947ECE /* CourseEditions.json in Resources */,
@@ -2315,7 +2323,6 @@
 				4C0D88E3FFF806ADAB7E9661 /* Terms.json in Resources */,
 				66A0171E1E3BBF960011BFD9 /* TermView.xib in Resources */,
 				66FD66331E3BAD9E007066E6 /* RegisterViewController.xib in Resources */,
-				66FD66A71E3BAD9E007066E6 /* SeparatorCell.xib in Resources */,
 				66A8BE421E48C11E008B35B7 /* SharedFilesViewController.storyboard in Resources */,
 				66FD66B21E3BAD9E007066E6 /* UserDetailsTableViewCell.xib in Resources */,
 				4C0D82A00E6BB9E12219B536 /* Lato-Black.ttf in Resources */,
@@ -2367,8 +2374,10 @@
 				66FD664E1E3BAD9E007066E6 /* SectionHeaderView.xib in Resources */,
 				66FD66B71E3BAD9E007066E6 /* UsosTableViewCell.xib in Resources */,
 				4C0D880F1C5C7C10B24F68ED /* FacultiesSearchResult.json in Resources */,
+				66A8BE611E48CC90008B35B7 /* AccessoryItemCell.xib in Resources */,
 				4C0D8FB99127F45E713038A1 /* ProgrammeSearchResult.json in Resources */,
 				66A0172A1E3BC0DC0011BFD9 /* TextViewController.xib in Resources */,
+				66A8BE631E48CC90008B35B7 /* SectionHeader.xib in Resources */,
 				66FD66451E3BAD9E007066E6 /* GradesTableViewController.xib in Resources */,
 				66FD66871E3BAD9E007066E6 /* SearchTableViewController.xib in Resources */,
 				4C0D84C2D2CAA3C8644E2D29 /* StudentSearchResult.json in Resources */,
@@ -2376,7 +2385,6 @@
 				4C0D89479913D1C7C7B963F6 /* Message.json in Resources */,
 				66A017061E3BBD580011BFD9 /* MenuItemTableViewCell.xib in Resources */,
 				66FD662E1E3BAD9E007066E6 /* EntryViewController.xib in Resources */,
-				66FD66A31E3BAD9E007066E6 /* ArrowedItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2575,6 +2583,7 @@
 				66A8BE3C1E48C11E008B35B7 /* ChooseFolderConfiguration.swift in Sources */,
 				66A8BE2E1E48C11E008B35B7 /* DriveUploadFileOperation.swift in Sources */,
 				66FD66481E3BAD9E007066E6 /* ItemCell.swift in Sources */,
+				66A8BE641E48CC90008B35B7 /* SeparatorCell.swift in Sources */,
 				66989CCD1E38DB9D00B659F6 /* SortedDictionary.swift in Sources */,
 				66A016E01E3BB5550011BFD9 /* ErrorResponseProtocol.swift in Sources */,
 				66A016EF1E3BB5550011BFD9 /* CoursesSearchProvider.swift in Sources */,
@@ -2585,10 +2594,12 @@
 				66FD66651E3BAD9E007066E6 /* LeftMenuTableViewController.swift in Sources */,
 				66FD66B61E3BAD9E007066E6 /* UsosTableViewCell.swift in Sources */,
 				66FD66671E3BAD9E007066E6 /* FloatingButtonDelegate.swift in Sources */,
+				66A8BE601E48CC90008B35B7 /* AccessoryItemCell.swift in Sources */,
 				66A016B81E3BB5230011BFD9 /* GoogleManager.swift in Sources */,
 				4C0D8192306233E614847234 /* Programme.swift in Sources */,
 				66A8BE3E1E48C11E008B35B7 /* SelectFileConfiguration.swift in Sources */,
 				4C0D864F9F51B36FAD9866D5 /* KujonResponseSchools.swift in Sources */,
+				66A8BE681E48CDC2008B35B7 /* ArrowedItemCell.swift in Sources */,
 				66FD66801E3BAD9E007066E6 /* ThesisSearchElement.swift in Sources */,
 				4C0D8E35546E06FE6E50627E /* Usos.swift in Sources */,
 				4C0D81815EB0AFFE7A3E0346 /* Title.swift in Sources */,
@@ -2673,6 +2684,7 @@
 				66FD664D1E3BAD9E007066E6 /* SectionHeaderView.swift in Sources */,
 				4C0D818695E40BF4D795A14A /* EmploymentDetails.swift in Sources */,
 				66FD66631E3BAD9E007066E6 /* NavigationMenuCreator.swift in Sources */,
+				66A8BE621E48CC90008B35B7 /* SectionHeader.swift in Sources */,
 				66FD66621E3BAD9E007066E6 /* NavigationDelegate.swift in Sources */,
 				66FD662C1E3BAD9E007066E6 /* Checker.swift in Sources */,
 				66FD664B1E3BAD9E007066E6 /* KierunekHeaderCell.swift in Sources */,
@@ -2759,7 +2771,6 @@
 				66FD66821E3BAD9E007066E6 /* SearchResultsCell.swift in Sources */,
 				66A2CBC91DC76C280049217C /* KujonRefreshControl.swift in Sources */,
 				66A016EC1E3BB5550011BFD9 /* ProviderProvidersImpl.swift in Sources */,
-				66FD66A41E3BAD9E007066E6 /* SectionHeader.swift in Sources */,
 				4C0D87F683AA5AB29468001F /* UIViewExtension.swift in Sources */,
 				66FD66B01E3BAD9E007066E6 /* UserTableViewController.swift in Sources */,
 				66FD66AF1E3BAD9E007066E6 /* UserDetailsSectionHeaderTableViewCell.swift in Sources */,
@@ -2780,6 +2791,7 @@
 				4C0D80DAD146340FB32C5687 /* StudentProgrammeResponse.swift in Sources */,
 				66A016E51E3BB5550011BFD9 /* LectureProvider.swift in Sources */,
 				66FD666E1E3BAD9E007066E6 /* ScheduleSection.swift in Sources */,
+				66A8BE6B1E48CFFC008B35B7 /* FileShareItem.swift in Sources */,
 				4C0D8114A3AD4971E2BB867E /* ProgrameIdResponse.swift in Sources */,
 				66A8BE441E48C11E008B35B7 /* ToolbarMenuController.swift in Sources */,
 				66A016E91E3BB5550011BFD9 /* MessageProvider.swift in Sources */,
@@ -2812,7 +2824,6 @@
 				66FD66261E3BAD9E007066E6 /* CourseNameTableViewCell.swift in Sources */,
 				66FD665A1E3BAD9E007066E6 /* SendOpinionMenuItem.swift in Sources */,
 				4C0D83F598B52ADFF2CA1A31 /* RegisterResponse.swift in Sources */,
-				66FD66A61E3BAD9E007066E6 /* SeparatorCell.swift in Sources */,
 				66A8BE1F1E48C11E008B35B7 /* GTLRDrive_FileList+.swift in Sources */,
 				4C0D8F2CCD958EC1CD5966C9 /* Login.swift in Sources */,
 				66A016FB1E3BB5550011BFD9 /* VerificationProvider.swift in Sources */,
@@ -2834,10 +2845,8 @@
 				66A016EE1E3BB5550011BFD9 /* RegistrationProvider.swift in Sources */,
 				66A016AE1E3BB1420011BFD9 /* MessageCell.swift in Sources */,
 				4C0D843CCE476A98F5AF9D81 /* UserSearch.swift in Sources */,
-				66FD66A21E3BAD9E007066E6 /* ArrowedItemCell.swift in Sources */,
 				4C0D8136944E9A29A28A10E8 /* FacultySearch.swift in Sources */,
 				66A8BE141E48C11E008B35B7 /* APISharedFile.swift in Sources */,
-				66FD665C1E3BAD9E007066E6 /* ShareMenuItem.swift in Sources */,
 				4C0D8DD72C86A526F511E141 /* Thesis.swift in Sources */,
 				66FD668B1E3BAD9E007066E6 /* SecondLoginScreen.swift in Sources */,
 				66FD66781E3BAD9E007066E6 /* HeaderViewTableViewCell.swift in Sources */,
@@ -2928,7 +2937,7 @@
 				INFOPLIST_FILE = Kujon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "mobi-kujon";
+				PRODUCT_BUNDLE_IDENTIFIER = "mobi-kujonTEST";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3051,7 +3060,7 @@
 				INFOPLIST_FILE = Kujon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "mobi-kujon";
+				PRODUCT_BUNDLE_IDENTIFIER = "mobi-kujonTEST";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

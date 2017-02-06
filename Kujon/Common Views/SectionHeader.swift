@@ -11,9 +11,6 @@ import UIKit
 class SectionHeader: UIView {
 
     @IBOutlet weak var titleLabel: UILabel!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+    @IBOutlet weak var separator: UIView!
 
 }

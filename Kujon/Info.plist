@@ -115,6 +115,8 @@
 	</dict>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Potrzebne do synchronizacji kalendarza z planem zajęć</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Dostęp potrzebny do udostępniania zdjęć w aplikacji </string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Lato-Medium.ttf</string>
@@ -147,7 +149,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Dostęp potrzebny do udostępniania zdjęć w aplikacji </string>
 </dict>
 </plist>
