@@ -8,15 +8,25 @@ import UIKit
 
 extension UIViewController {
 
-    func presentAlertWithMessage(_ message: String, title: String, addCancelAction: Bool = false, completion: (() -> Void)? = nil) {
+    func presentActionSheet(actions: [UIAlertAction], title: String? = nil, message: String? = nil, completion: (() -> Void)? = nil) {
+        let actionSheetController: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        let cancelAction: UIAlertAction = UIAlertAction(title: StringHolder.cancel, style: .cancel, handler: nil)
+        actionSheetController.addAction(cancelAction)
+        actions.forEach { action in
+            actionSheetController.addAction(action)
+        }
+        self.present(actionSheetController, animated: true, completion: completion)
+    }
+
+    func presentAlertWithMessage(_ message: String, title: String, showCancelButton: Bool = false, okAction: (() -> Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
             (action: UIAlertAction!) in
-            if let completion = completion {
-                completion()
+            if let okAction = okAction {
+                okAction()
             }
         }))
-        if addCancelAction {
+        if showCancelButton {
             alert.addAction(UIAlertAction(title: "Anuluj", style: .cancel, handler: nil))
         }
         parent?.present(alert, animated: true, completion: nil)

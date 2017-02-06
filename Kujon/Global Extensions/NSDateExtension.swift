@@ -17,7 +17,8 @@ extension Date {
     private static let dateFormatDay = "EEEE"
     private static let dateFormatWithClock = "yyyy-MM-dd HH:mm:ss"
     private static let dateFormatOnlyTime = "HH:mm"
-
+    private static let dateFileEvent = "d.MM.yyyy"
+    private static let dateTimeFileEvent = "d.MM.yyyy, HH:mm"
 
     static func stringToDate(_ dateString: String) -> Date! {
         return getDateFormatter().date(from: dateString)
@@ -37,7 +38,15 @@ extension Date {
     func dateHoursToString() -> String {
         return Date.getDateFormatter(Date.dateFormatOnlyTime).string(from: self)
     }
-
+    func toFileEventString() -> String {
+        return Date.getDateFormatter(Date.dateFileEvent).string(from: self)
+    }
+    func toFileEventDateTime() -> String {
+        return Date.getDateFormatter(Date.dateTimeFileEvent).string(from: self)
+    }
+    func toFileEventTime() -> String {
+        return Date.getDateFormatter(Date.dateFormatOnlyTime).string(from: self)
+    }
     func dateWithDayToString() -> String {
         return Date.getDateFormatter(Date.dateFormatDay).string(from: self) + " " + Date.getDateFormatter().string(from: self)
     }
@@ -179,6 +188,10 @@ extension Date {
             return dateFormatter.string(from:date)
         }
         return nil
+    }
+
+    func isToday() -> Bool {
+        return Calendar.current.isDateInToday(self)
     }
 }
 

@@ -193,6 +193,80 @@
 		66A0172F1E3BC0E40011BFD9 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A0172D1E3BC0E40011BFD9 /* ImageViewController.xib */; };
 		66A2CBC91DC76C280049217C /* KujonRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A2CBC81DC76C280049217C /* KujonRefreshControl.swift */; };
 		66A2CBCB1DC77B440049217C /* RefreshingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A2CBCA1DC77B440049217C /* RefreshingTableViewController.swift */; };
+		66A8BE071E48C11E008B35B7 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDAF1E48C11E008B35B7 /* AsyncOperation.swift */; };
+		66A8BE081E48C11E008B35B7 /* CellPositionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDB01E48C11E008B35B7 /* CellPositionType.swift */; };
+		66A8BE091E48C11E008B35B7 /* FileIconProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDB11E48C11E008B35B7 /* FileIconProvider.swift */; };
+		66A8BE0A1E48C11E008B35B7 /* MIMEType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDB21E48C11E008B35B7 /* MIMEType.swift */; };
+		66A8BE0B1E48C11E008B35B7 /* ProgressTrackable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDB31E48C11E008B35B7 /* ProgressTrackable.swift */; };
+		66A8BE0C1E48C11E008B35B7 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDB41E48C11E008B35B7 /* Protocols.swift */; };
+		66A8BE0D1E48C11E008B35B7 /* ShareOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDB51E48C11E008B35B7 /* ShareOptions.swift */; };
+		66A8BE0F1E48C11E008B35B7 /* APIDeleteFileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDB91E48C11E008B35B7 /* APIDeleteFileResponse.swift */; };
+		66A8BE101E48C11E008B35B7 /* APIDownloadTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDBA1E48C11E008B35B7 /* APIDownloadTicket.swift */; };
+		66A8BE111E48C11E008B35B7 /* APIFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDBB1E48C11E008B35B7 /* APIFile.swift */; };
+		66A8BE121E48C11E008B35B7 /* APIFileListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDBC1E48C11E008B35B7 /* APIFileListResponse.swift */; };
+		66A8BE131E48C11E008B35B7 /* APIFileOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDBD1E48C11E008B35B7 /* APIFileOwner.swift */; };
+		66A8BE141E48C11E008B35B7 /* APISharedFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDBE1E48C11E008B35B7 /* APISharedFile.swift */; };
+		66A8BE151E48C11E008B35B7 /* APISharedFileListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDBF1E48C11E008B35B7 /* APISharedFileListResponse.swift */; };
+		66A8BE161E48C11E008B35B7 /* APIUploadedFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDC01E48C11E008B35B7 /* APIUploadedFile.swift */; };
+		66A8BE171E48C11E008B35B7 /* APIUploadedFileListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDC11E48C11E008B35B7 /* APIUploadedFileListResponse.swift */; };
+		66A8BE181E48C11E008B35B7 /* APIUploadTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDC21E48C11E008B35B7 /* APIUploadTicket.swift */; };
+		66A8BE191E48C11E008B35B7 /* DriveDownloadTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDC41E48C11E008B35B7 /* DriveDownloadTicket.swift */; };
+		66A8BE1A1E48C11E008B35B7 /* DriveQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDC51E48C11E008B35B7 /* DriveQuery.swift */; };
+		66A8BE1B1E48C11E008B35B7 /* DriveQueryFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDC61E48C11E008B35B7 /* DriveQueryFields.swift */; };
+		66A8BE1C1E48C11E008B35B7 /* DriveUploadTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDC71E48C11E008B35B7 /* DriveUploadTicket.swift */; };
+		66A8BE1D1E48C11E008B35B7 /* FolderContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDC81E48C11E008B35B7 /* FolderContents.swift */; };
+		66A8BE1E1E48C11E008B35B7 /* GTLRDrive_File+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDC91E48C11E008B35B7 /* GTLRDrive_File+.swift */; };
+		66A8BE1F1E48C11E008B35B7 /* GTLRDrive_FileList+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDCA1E48C11E008B35B7 /* GTLRDrive_FileList+.swift */; };
+		66A8BE201E48C11E008B35B7 /* APIDeletionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDCE1E48C11E008B35B7 /* APIDeletionProvider.swift */; };
+		66A8BE211E48C11E008B35B7 /* APIDownloadProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDCF1E48C11E008B35B7 /* APIDownloadProvider.swift */; };
+		66A8BE221E48C11E008B35B7 /* APIFileListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDD01E48C11E008B35B7 /* APIFileListProvider.swift */; };
+		66A8BE231E48C11E008B35B7 /* APIFileTransferSessionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDD11E48C11E008B35B7 /* APIFileTransferSessionProvider.swift */; };
+		66A8BE241E48C11E008B35B7 /* APIShareFileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDD21E48C11E008B35B7 /* APIShareFileProvider.swift */; };
+		66A8BE251E48C11E008B35B7 /* APIUploadProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDD31E48C11E008B35B7 /* APIUploadProvider.swift */; };
+		66A8BE261E48C11E008B35B7 /* MultipartProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDD41E48C11E008B35B7 /* MultipartProviding.swift */; };
+		66A8BE271E48C11E008B35B7 /* DriveFolderContentsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDD61E48C11E008B35B7 /* DriveFolderContentsProvider.swift */; };
+		66A8BE281E48C11E008B35B7 /* FolderContentsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDD71E48C11E008B35B7 /* FolderContentsCache.swift */; };
+		66A8BE291E48C11E008B35B7 /* FolderContentsProving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDD81E48C11E008B35B7 /* FolderContentsProving.swift */; };
+		66A8BE2A1E48C11E008B35B7 /* FileTransferManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDDA1E48C11E008B35B7 /* FileTransferManager.swift */; };
+		66A8BE2B1E48C11E008B35B7 /* APIDownloadFileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDDC1E48C11E008B35B7 /* APIDownloadFileOperation.swift */; };
+		66A8BE2C1E48C11E008B35B7 /* APIUploadFileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDDD1E48C11E008B35B7 /* APIUploadFileOperation.swift */; };
+		66A8BE2D1E48C11E008B35B7 /* DriveDownloadFileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDDE1E48C11E008B35B7 /* DriveDownloadFileOperation.swift */; };
+		66A8BE2E1E48C11E008B35B7 /* DriveUploadFileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDDF1E48C11E008B35B7 /* DriveUploadFileOperation.swift */; };
+		66A8BE2F1E48C11E008B35B7 /* RemoveCachedFileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDE01E48C11E008B35B7 /* RemoveCachedFileOperation.swift */; };
+		66A8BE301E48C11E008B35B7 /* API2DriveTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDE21E48C11E008B35B7 /* API2DriveTransfer.swift */; };
+		66A8BE311E48C11E008B35B7 /* Drive2APITransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDE31E48C11E008B35B7 /* Drive2APITransfer.swift */; };
+		66A8BE321E48C11E008B35B7 /* LocalFile2APITransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDE41E48C11E008B35B7 /* LocalFile2APITransfer.swift */; };
+		66A8BE331E48C11E008B35B7 /* Tranferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDE51E48C11E008B35B7 /* Tranferable.swift */; };
+		66A8BE341E48C11E008B35B7 /* DriveExportFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDE71E48C11E008B35B7 /* DriveExportFormat.swift */; };
+		66A8BE351E48C11E008B35B7 /* DriveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDE81E48C11E008B35B7 /* DriveManager.swift */; };
+		66A8BE361E48C11E008B35B7 /* PhotoFileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDE91E48C11E008B35B7 /* PhotoFileProvider.swift */; };
+		66A8BE371E48C11E008B35B7 /* ActiveCoursesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDEC1E48C11E008B35B7 /* ActiveCoursesListTableViewController.swift */; };
+		66A8BE381E48C11E008B35B7 /* StudentsSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDEE1E48C11E008B35B7 /* StudentsSelectionTableViewController.swift */; };
+		66A8BE391E48C11E008B35B7 /* CheckboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDF01E48C11E008B35B7 /* CheckboxCell.swift */; };
+		66A8BE3A1E48C11E008B35B7 /* CheckboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A8BDF11E48C11E008B35B7 /* CheckboxCell.xib */; };
+		66A8BE3B1E48C11E008B35B7 /* DriveBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDF31E48C11E008B35B7 /* DriveBrowser.swift */; };
+		66A8BE3C1E48C11E008B35B7 /* ChooseFolderConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDF51E48C11E008B35B7 /* ChooseFolderConfiguration.swift */; };
+		66A8BE3D1E48C11E008B35B7 /* DriveBrowserConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDF61E48C11E008B35B7 /* DriveBrowserConfigurable.swift */; };
+		66A8BE3E1E48C11E008B35B7 /* SelectFileConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDF71E48C11E008B35B7 /* SelectFileConfiguration.swift */; };
+		66A8BE3F1E48C11E008B35B7 /* DriveItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDF91E48C11E008B35B7 /* DriveItemCell.swift */; };
+		66A8BE401E48C11E008B35B7 /* DriveItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A8BDFA1E48C11E008B35B7 /* DriveItemCell.xib */; };
+		66A8BE411E48C11E008B35B7 /* ShareToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDFB1E48C11E008B35B7 /* ShareToolbar.swift */; };
+		66A8BE421E48C11E008B35B7 /* SharedFilesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66A8BDFD1E48C11E008B35B7 /* SharedFilesViewController.storyboard */; };
+		66A8BE431E48C11E008B35B7 /* SharedFilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDFE1E48C11E008B35B7 /* SharedFilesViewController.swift */; };
+		66A8BE441E48C11E008B35B7 /* ToolbarMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDFF1E48C11E008B35B7 /* ToolbarMenuController.swift */; };
+		66A8BE451E48C11E008B35B7 /* SharedFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BE011E48C11E008B35B7 /* SharedFileCell.swift */; };
+		66A8BE461E48C11E008B35B7 /* SharedFileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A8BE021E48C11E008B35B7 /* SharedFileCell.xib */; };
+		66A8BE471E48C11E008B35B7 /* TransferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BE041E48C11E008B35B7 /* TransferView.swift */; };
+		66A8BE481E48C11E008B35B7 /* TransferView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A8BE051E48C11E008B35B7 /* TransferView.xib */; };
+		66A8BE491E48C11E008B35B7 /* TransferViewProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BE061E48C11E008B35B7 /* TransferViewProviding.swift */; };
+		66A8BE4B1E48C3C1008B35B7 /* StringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BE4A1E48C3C1008B35B7 /* StringConvertible.swift */; };
+		66A8BE4D1E48C3E1008B35B7 /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BE4C1E48C3E1008B35B7 /* Data+.swift */; };
+		66A8BE4F1E48C3FA008B35B7 /* DispatchQueue+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BE4E1E48C3FA008B35B7 /* DispatchQueue+.swift */; };
+		66A8BE511E48C3FF008B35B7 /* FileManager+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BE501E48C3FF008B35B7 /* FileManager+.swift */; };
+		66A8BE531E48C408008B35B7 /* Operation+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BE521E48C408008B35B7 /* Operation+.swift */; };
+		66A8BE551E48C410008B35B7 /* URL+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BE541E48C410008B35B7 /* URL+.swift */; };
+		66A8BE571E48C41A008B35B7 /* UIDevice+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BE561E48C41A008B35B7 /* UIDevice+.swift */; };
+		66A8BE591E48C68D008B35B7 /* Bool+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BE581E48C68D008B35B7 /* Bool+.swift */; };
 		66D46B181DE617EA003701D2 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D46B171DE617EA003701D2 /* NotificationsManager.swift */; };
 		66F4BC6B1DB2597000425E39 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 66F4BC6A1DB2597000425E39 /* Podfile */; };
 		66FD63D51E3BAC6C007066E6 /* ArrowedLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD63CA1E3BAC6C007066E6 /* ArrowedLabelView.swift */; };
@@ -570,6 +644,80 @@
 		66A0172D1E3BC0E40011BFD9 /* ImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
 		66A2CBC81DC76C280049217C /* KujonRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KujonRefreshControl.swift; sourceTree = "<group>"; };
 		66A2CBCA1DC77B440049217C /* RefreshingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RefreshingTableViewController.swift; path = "../Global Extensions/RefreshingTableViewController.swift"; sourceTree = "<group>"; };
+		66A8BDAF1E48C11E008B35B7 /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
+		66A8BDB01E48C11E008B35B7 /* CellPositionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellPositionType.swift; sourceTree = "<group>"; };
+		66A8BDB11E48C11E008B35B7 /* FileIconProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileIconProvider.swift; sourceTree = "<group>"; };
+		66A8BDB21E48C11E008B35B7 /* MIMEType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIMEType.swift; sourceTree = "<group>"; };
+		66A8BDB31E48C11E008B35B7 /* ProgressTrackable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressTrackable.swift; sourceTree = "<group>"; };
+		66A8BDB41E48C11E008B35B7 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		66A8BDB51E48C11E008B35B7 /* ShareOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareOptions.swift; sourceTree = "<group>"; };
+		66A8BDB91E48C11E008B35B7 /* APIDeleteFileResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIDeleteFileResponse.swift; sourceTree = "<group>"; };
+		66A8BDBA1E48C11E008B35B7 /* APIDownloadTicket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIDownloadTicket.swift; sourceTree = "<group>"; };
+		66A8BDBB1E48C11E008B35B7 /* APIFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIFile.swift; sourceTree = "<group>"; };
+		66A8BDBC1E48C11E008B35B7 /* APIFileListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIFileListResponse.swift; sourceTree = "<group>"; };
+		66A8BDBD1E48C11E008B35B7 /* APIFileOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIFileOwner.swift; sourceTree = "<group>"; };
+		66A8BDBE1E48C11E008B35B7 /* APISharedFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APISharedFile.swift; sourceTree = "<group>"; };
+		66A8BDBF1E48C11E008B35B7 /* APISharedFileListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APISharedFileListResponse.swift; sourceTree = "<group>"; };
+		66A8BDC01E48C11E008B35B7 /* APIUploadedFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUploadedFile.swift; sourceTree = "<group>"; };
+		66A8BDC11E48C11E008B35B7 /* APIUploadedFileListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUploadedFileListResponse.swift; sourceTree = "<group>"; };
+		66A8BDC21E48C11E008B35B7 /* APIUploadTicket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUploadTicket.swift; sourceTree = "<group>"; };
+		66A8BDC41E48C11E008B35B7 /* DriveDownloadTicket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveDownloadTicket.swift; sourceTree = "<group>"; };
+		66A8BDC51E48C11E008B35B7 /* DriveQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveQuery.swift; sourceTree = "<group>"; };
+		66A8BDC61E48C11E008B35B7 /* DriveQueryFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveQueryFields.swift; sourceTree = "<group>"; };
+		66A8BDC71E48C11E008B35B7 /* DriveUploadTicket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveUploadTicket.swift; sourceTree = "<group>"; };
+		66A8BDC81E48C11E008B35B7 /* FolderContents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderContents.swift; sourceTree = "<group>"; };
+		66A8BDC91E48C11E008B35B7 /* GTLRDrive_File+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GTLRDrive_File+.swift"; sourceTree = "<group>"; };
+		66A8BDCA1E48C11E008B35B7 /* GTLRDrive_FileList+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GTLRDrive_FileList+.swift"; sourceTree = "<group>"; };
+		66A8BDCE1E48C11E008B35B7 /* APIDeletionProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIDeletionProvider.swift; sourceTree = "<group>"; };
+		66A8BDCF1E48C11E008B35B7 /* APIDownloadProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIDownloadProvider.swift; sourceTree = "<group>"; };
+		66A8BDD01E48C11E008B35B7 /* APIFileListProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIFileListProvider.swift; sourceTree = "<group>"; };
+		66A8BDD11E48C11E008B35B7 /* APIFileTransferSessionProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIFileTransferSessionProvider.swift; sourceTree = "<group>"; };
+		66A8BDD21E48C11E008B35B7 /* APIShareFileProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIShareFileProvider.swift; sourceTree = "<group>"; };
+		66A8BDD31E48C11E008B35B7 /* APIUploadProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUploadProvider.swift; sourceTree = "<group>"; };
+		66A8BDD41E48C11E008B35B7 /* MultipartProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipartProviding.swift; sourceTree = "<group>"; };
+		66A8BDD61E48C11E008B35B7 /* DriveFolderContentsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveFolderContentsProvider.swift; sourceTree = "<group>"; };
+		66A8BDD71E48C11E008B35B7 /* FolderContentsCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderContentsCache.swift; sourceTree = "<group>"; };
+		66A8BDD81E48C11E008B35B7 /* FolderContentsProving.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderContentsProving.swift; sourceTree = "<group>"; };
+		66A8BDDA1E48C11E008B35B7 /* FileTransferManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileTransferManager.swift; sourceTree = "<group>"; };
+		66A8BDDC1E48C11E008B35B7 /* APIDownloadFileOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIDownloadFileOperation.swift; sourceTree = "<group>"; };
+		66A8BDDD1E48C11E008B35B7 /* APIUploadFileOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUploadFileOperation.swift; sourceTree = "<group>"; };
+		66A8BDDE1E48C11E008B35B7 /* DriveDownloadFileOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveDownloadFileOperation.swift; sourceTree = "<group>"; };
+		66A8BDDF1E48C11E008B35B7 /* DriveUploadFileOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveUploadFileOperation.swift; sourceTree = "<group>"; };
+		66A8BDE01E48C11E008B35B7 /* RemoveCachedFileOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveCachedFileOperation.swift; sourceTree = "<group>"; };
+		66A8BDE21E48C11E008B35B7 /* API2DriveTransfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API2DriveTransfer.swift; sourceTree = "<group>"; };
+		66A8BDE31E48C11E008B35B7 /* Drive2APITransfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drive2APITransfer.swift; sourceTree = "<group>"; };
+		66A8BDE41E48C11E008B35B7 /* LocalFile2APITransfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalFile2APITransfer.swift; sourceTree = "<group>"; };
+		66A8BDE51E48C11E008B35B7 /* Tranferable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tranferable.swift; sourceTree = "<group>"; };
+		66A8BDE71E48C11E008B35B7 /* DriveExportFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveExportFormat.swift; sourceTree = "<group>"; };
+		66A8BDE81E48C11E008B35B7 /* DriveManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveManager.swift; sourceTree = "<group>"; };
+		66A8BDE91E48C11E008B35B7 /* PhotoFileProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFileProvider.swift; sourceTree = "<group>"; };
+		66A8BDEC1E48C11E008B35B7 /* ActiveCoursesListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveCoursesListTableViewController.swift; sourceTree = "<group>"; };
+		66A8BDEE1E48C11E008B35B7 /* StudentsSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentsSelectionTableViewController.swift; sourceTree = "<group>"; };
+		66A8BDF01E48C11E008B35B7 /* CheckboxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxCell.swift; sourceTree = "<group>"; };
+		66A8BDF11E48C11E008B35B7 /* CheckboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckboxCell.xib; sourceTree = "<group>"; };
+		66A8BDF31E48C11E008B35B7 /* DriveBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveBrowser.swift; sourceTree = "<group>"; };
+		66A8BDF51E48C11E008B35B7 /* ChooseFolderConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFolderConfiguration.swift; sourceTree = "<group>"; };
+		66A8BDF61E48C11E008B35B7 /* DriveBrowserConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveBrowserConfigurable.swift; sourceTree = "<group>"; };
+		66A8BDF71E48C11E008B35B7 /* SelectFileConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectFileConfiguration.swift; sourceTree = "<group>"; };
+		66A8BDF91E48C11E008B35B7 /* DriveItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveItemCell.swift; sourceTree = "<group>"; };
+		66A8BDFA1E48C11E008B35B7 /* DriveItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DriveItemCell.xib; sourceTree = "<group>"; };
+		66A8BDFB1E48C11E008B35B7 /* ShareToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareToolbar.swift; sourceTree = "<group>"; };
+		66A8BDFD1E48C11E008B35B7 /* SharedFilesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SharedFilesViewController.storyboard; sourceTree = "<group>"; };
+		66A8BDFE1E48C11E008B35B7 /* SharedFilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedFilesViewController.swift; sourceTree = "<group>"; };
+		66A8BDFF1E48C11E008B35B7 /* ToolbarMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarMenuController.swift; sourceTree = "<group>"; };
+		66A8BE011E48C11E008B35B7 /* SharedFileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedFileCell.swift; sourceTree = "<group>"; };
+		66A8BE021E48C11E008B35B7 /* SharedFileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SharedFileCell.xib; sourceTree = "<group>"; };
+		66A8BE041E48C11E008B35B7 /* TransferView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferView.swift; sourceTree = "<group>"; };
+		66A8BE051E48C11E008B35B7 /* TransferView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransferView.xib; sourceTree = "<group>"; };
+		66A8BE061E48C11E008B35B7 /* TransferViewProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferViewProviding.swift; sourceTree = "<group>"; };
+		66A8BE4A1E48C3C1008B35B7 /* StringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConvertible.swift; sourceTree = "<group>"; };
+		66A8BE4C1E48C3E1008B35B7 /* Data+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
+		66A8BE4E1E48C3FA008B35B7 /* DispatchQueue+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+.swift"; sourceTree = "<group>"; };
+		66A8BE501E48C3FF008B35B7 /* FileManager+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+.swift"; sourceTree = "<group>"; };
+		66A8BE521E48C408008B35B7 /* Operation+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Operation+.swift"; sourceTree = "<group>"; };
+		66A8BE541E48C410008B35B7 /* URL+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+.swift"; sourceTree = "<group>"; };
+		66A8BE561E48C41A008B35B7 /* UIDevice+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+.swift"; sourceTree = "<group>"; };
+		66A8BE581E48C68D008B35B7 /* Bool+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+.swift"; sourceTree = "<group>"; };
 		66D46B171DE617EA003701D2 /* NotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		66F402E31DB12E75001E28D1 /* KujonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KujonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		66F402F11DB12E82001E28D1 /* KujonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KujonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -814,6 +962,7 @@
 				4C0D83449C89A353F86CED95 /* Network */,
 				66A016B11E3BB5230011BFD9 /* LoginManager */,
 				66FD654D1E3BAD9E007066E6 /* View Controllers */,
+				66A8BDAD1E48C11E008B35B7 /* File Share */,
 				4C0D8B22EBFA522F154A82EF /* Global Extensions */,
 				66FD63A81E3BAA9D007066E6 /* Common Views */,
 				4C0D82489E8A720F1EED7B19 /* Utils */,
@@ -825,6 +974,7 @@
 		4C0D82489E8A720F1EED7B19 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				66A8BE4A1E48C3C1008B35B7 /* StringConvertible.swift */,
 				660915251DDDD31800D3FEC9 /* Constants.swift */,
 				661D1C201DAD974500BA9EE9 /* HTMLParser.h */,
 				661D1C211DAD974500BA9EE9 /* HTMLParser.m */,
@@ -974,11 +1124,18 @@
 		4C0D8B22EBFA522F154A82EF /* Global Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				66A8BE581E48C68D008B35B7 /* Bool+.swift */,
+				66A8BE4C1E48C3E1008B35B7 /* Data+.swift */,
+				66A8BE4E1E48C3FA008B35B7 /* DispatchQueue+.swift */,
 				4C0D8E122D49E9F1EAC590CA /* ArrayExtension.swift */,
+				66A8BE521E48C408008B35B7 /* Operation+.swift */,
 				4C0D80C60F18F352959F2C99 /* CALayerExtensions.swift */,
+				66A8BE501E48C3FF008B35B7 /* FileManager+.swift */,
 				4C0D8E619AE4BB2F7B24C207 /* NSDateExtension.swift */,
 				662DAFEC1DAC14150094867E /* String+.swift */,
+				66A8BE561E48C41A008B35B7 /* UIDevice+.swift */,
 				4C0D83451742C0465B1D8D85 /* UIColorExtensions.swift */,
+				66A8BE541E48C410008B35B7 /* URL+.swift */,
 				4C0D8DB54DD23281C3E2C08B /* UIViewExtension.swift */,
 				4C0D80D05F8472B37F41EF0B /* ViewControllerExtension.swift */,
 			);
@@ -1236,6 +1393,255 @@
 				66A0172D1E3BC0E40011BFD9 /* ImageViewController.xib */,
 			);
 			path = ImageViewController;
+			sourceTree = "<group>";
+		};
+		66A8BDAD1E48C11E008B35B7 /* File Share */ = {
+			isa = PBXGroup;
+			children = (
+				66A8BDAE1E48C11E008B35B7 /* Common */,
+				66A8BDB71E48C11E008B35B7 /* Model */,
+				66A8BDCB1E48C11E008B35B7 /* Providers */,
+				66A8BDEA1E48C11E008B35B7 /* View Controllers */,
+			);
+			path = "File Share";
+			sourceTree = "<group>";
+		};
+		66A8BDAE1E48C11E008B35B7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				66A8BDAF1E48C11E008B35B7 /* AsyncOperation.swift */,
+				66A8BDB01E48C11E008B35B7 /* CellPositionType.swift */,
+				66A8BDB11E48C11E008B35B7 /* FileIconProvider.swift */,
+				66A8BDB21E48C11E008B35B7 /* MIMEType.swift */,
+				66A8BDB31E48C11E008B35B7 /* ProgressTrackable.swift */,
+				66A8BDB41E48C11E008B35B7 /* Protocols.swift */,
+				66A8BDB51E48C11E008B35B7 /* ShareOptions.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		66A8BDB71E48C11E008B35B7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				66A8BDB81E48C11E008B35B7 /* API */,
+				66A8BDC31E48C11E008B35B7 /* Google Drive */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		66A8BDB81E48C11E008B35B7 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				66A8BDB91E48C11E008B35B7 /* APIDeleteFileResponse.swift */,
+				66A8BDBA1E48C11E008B35B7 /* APIDownloadTicket.swift */,
+				66A8BDBB1E48C11E008B35B7 /* APIFile.swift */,
+				66A8BDBC1E48C11E008B35B7 /* APIFileListResponse.swift */,
+				66A8BDBD1E48C11E008B35B7 /* APIFileOwner.swift */,
+				66A8BDBE1E48C11E008B35B7 /* APISharedFile.swift */,
+				66A8BDBF1E48C11E008B35B7 /* APISharedFileListResponse.swift */,
+				66A8BDC01E48C11E008B35B7 /* APIUploadedFile.swift */,
+				66A8BDC11E48C11E008B35B7 /* APIUploadedFileListResponse.swift */,
+				66A8BDC21E48C11E008B35B7 /* APIUploadTicket.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		66A8BDC31E48C11E008B35B7 /* Google Drive */ = {
+			isa = PBXGroup;
+			children = (
+				66A8BDC41E48C11E008B35B7 /* DriveDownloadTicket.swift */,
+				66A8BDC51E48C11E008B35B7 /* DriveQuery.swift */,
+				66A8BDC61E48C11E008B35B7 /* DriveQueryFields.swift */,
+				66A8BDC71E48C11E008B35B7 /* DriveUploadTicket.swift */,
+				66A8BDC81E48C11E008B35B7 /* FolderContents.swift */,
+				66A8BDC91E48C11E008B35B7 /* GTLRDrive_File+.swift */,
+				66A8BDCA1E48C11E008B35B7 /* GTLRDrive_FileList+.swift */,
+			);
+			path = "Google Drive";
+			sourceTree = "<group>";
+		};
+		66A8BDCB1E48C11E008B35B7 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				66A8BDCC1E48C11E008B35B7 /* API File List */,
+				66A8BDCD1E48C11E008B35B7 /* API Transfer Providers */,
+				66A8BDD51E48C11E008B35B7 /* Drive Contents Provider */,
+				66A8BDD91E48C11E008B35B7 /* File Transfer Provider */,
+				66A8BDE61E48C11E008B35B7 /* Google Drive Manager */,
+				66A8BDE91E48C11E008B35B7 /* PhotoFileProvider.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		66A8BDCC1E48C11E008B35B7 /* API File List */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "API File List";
+			sourceTree = "<group>";
+		};
+		66A8BDCD1E48C11E008B35B7 /* API Transfer Providers */ = {
+			isa = PBXGroup;
+			children = (
+				66A8BDCE1E48C11E008B35B7 /* APIDeletionProvider.swift */,
+				66A8BDCF1E48C11E008B35B7 /* APIDownloadProvider.swift */,
+				66A8BDD01E48C11E008B35B7 /* APIFileListProvider.swift */,
+				66A8BDD11E48C11E008B35B7 /* APIFileTransferSessionProvider.swift */,
+				66A8BDD21E48C11E008B35B7 /* APIShareFileProvider.swift */,
+				66A8BDD31E48C11E008B35B7 /* APIUploadProvider.swift */,
+				66A8BDD41E48C11E008B35B7 /* MultipartProviding.swift */,
+			);
+			path = "API Transfer Providers";
+			sourceTree = "<group>";
+		};
+		66A8BDD51E48C11E008B35B7 /* Drive Contents Provider */ = {
+			isa = PBXGroup;
+			children = (
+				66A8BDD61E48C11E008B35B7 /* DriveFolderContentsProvider.swift */,
+				66A8BDD71E48C11E008B35B7 /* FolderContentsCache.swift */,
+				66A8BDD81E48C11E008B35B7 /* FolderContentsProving.swift */,
+			);
+			path = "Drive Contents Provider";
+			sourceTree = "<group>";
+		};
+		66A8BDD91E48C11E008B35B7 /* File Transfer Provider */ = {
+			isa = PBXGroup;
+			children = (
+				66A8BDDA1E48C11E008B35B7 /* FileTransferManager.swift */,
+				66A8BDDB1E48C11E008B35B7 /* Operations */,
+				66A8BDE11E48C11E008B35B7 /* Sequences */,
+			);
+			path = "File Transfer Provider";
+			sourceTree = "<group>";
+		};
+		66A8BDDB1E48C11E008B35B7 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				66A8BDDC1E48C11E008B35B7 /* APIDownloadFileOperation.swift */,
+				66A8BDDD1E48C11E008B35B7 /* APIUploadFileOperation.swift */,
+				66A8BDDE1E48C11E008B35B7 /* DriveDownloadFileOperation.swift */,
+				66A8BDDF1E48C11E008B35B7 /* DriveUploadFileOperation.swift */,
+				66A8BDE01E48C11E008B35B7 /* RemoveCachedFileOperation.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		66A8BDE11E48C11E008B35B7 /* Sequences */ = {
+			isa = PBXGroup;
+			children = (
+				66A8BDE21E48C11E008B35B7 /* API2DriveTransfer.swift */,
+				66A8BDE31E48C11E008B35B7 /* Drive2APITransfer.swift */,
+				66A8BDE41E48C11E008B35B7 /* LocalFile2APITransfer.swift */,
+				66A8BDE51E48C11E008B35B7 /* Tranferable.swift */,
+			);
+			path = Sequences;
+			sourceTree = "<group>";
+		};
+		66A8BDE61E48C11E008B35B7 /* Google Drive Manager */ = {
+			isa = PBXGroup;
+			children = (
+				66A8BDE71E48C11E008B35B7 /* DriveExportFormat.swift */,
+				66A8BDE81E48C11E008B35B7 /* DriveManager.swift */,
+			);
+			path = "Google Drive Manager";
+			sourceTree = "<group>";
+		};
+		66A8BDEA1E48C11E008B35B7 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				66A8BDEB1E48C11E008B35B7 /* CoursesList */,
+				66A8BDED1E48C11E008B35B7 /* CourseStudentsSelectionList */,
+				66A8BDF21E48C11E008B35B7 /* Drive Browser */,
+				66A8BDFC1E48C11E008B35B7 /* Shared File List */,
+				66A8BE031E48C11E008B35B7 /* TransferView */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		66A8BDEB1E48C11E008B35B7 /* CoursesList */ = {
+			isa = PBXGroup;
+			children = (
+				66A8BDEC1E48C11E008B35B7 /* ActiveCoursesListTableViewController.swift */,
+			);
+			path = CoursesList;
+			sourceTree = "<group>";
+		};
+		66A8BDED1E48C11E008B35B7 /* CourseStudentsSelectionList */ = {
+			isa = PBXGroup;
+			children = (
+				66A8BDEE1E48C11E008B35B7 /* StudentsSelectionTableViewController.swift */,
+				66A8BDEF1E48C11E008B35B7 /* Views */,
+			);
+			path = CourseStudentsSelectionList;
+			sourceTree = "<group>";
+		};
+		66A8BDEF1E48C11E008B35B7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				66A8BDF01E48C11E008B35B7 /* CheckboxCell.swift */,
+				66A8BDF11E48C11E008B35B7 /* CheckboxCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		66A8BDF21E48C11E008B35B7 /* Drive Browser */ = {
+			isa = PBXGroup;
+			children = (
+				66A8BDF31E48C11E008B35B7 /* DriveBrowser.swift */,
+				66A8BDF41E48C11E008B35B7 /* Modes */,
+				66A8BDF81E48C11E008B35B7 /* Views */,
+			);
+			path = "Drive Browser";
+			sourceTree = "<group>";
+		};
+		66A8BDF41E48C11E008B35B7 /* Modes */ = {
+			isa = PBXGroup;
+			children = (
+				66A8BDF51E48C11E008B35B7 /* ChooseFolderConfiguration.swift */,
+				66A8BDF61E48C11E008B35B7 /* DriveBrowserConfigurable.swift */,
+				66A8BDF71E48C11E008B35B7 /* SelectFileConfiguration.swift */,
+			);
+			path = Modes;
+			sourceTree = "<group>";
+		};
+		66A8BDF81E48C11E008B35B7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				66A8BDF91E48C11E008B35B7 /* DriveItemCell.swift */,
+				66A8BDFA1E48C11E008B35B7 /* DriveItemCell.xib */,
+				66A8BDFB1E48C11E008B35B7 /* ShareToolbar.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		66A8BDFC1E48C11E008B35B7 /* Shared File List */ = {
+			isa = PBXGroup;
+			children = (
+				66A8BDFD1E48C11E008B35B7 /* SharedFilesViewController.storyboard */,
+				66A8BDFE1E48C11E008B35B7 /* SharedFilesViewController.swift */,
+				66A8BDFF1E48C11E008B35B7 /* ToolbarMenuController.swift */,
+				66A8BE001E48C11E008B35B7 /* Views */,
+			);
+			path = "Shared File List";
+			sourceTree = "<group>";
+		};
+		66A8BE001E48C11E008B35B7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				66A8BE011E48C11E008B35B7 /* SharedFileCell.swift */,
+				66A8BE021E48C11E008B35B7 /* SharedFileCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		66A8BE031E48C11E008B35B7 /* TransferView */ = {
+			isa = PBXGroup;
+			children = (
+				66A8BE041E48C11E008B35B7 /* TransferView.swift */,
+				66A8BE051E48C11E008B35B7 /* TransferView.xib */,
+				66A8BE061E48C11E008B35B7 /* TransferViewProviding.swift */,
+			);
+			path = TransferView;
 			sourceTree = "<group>";
 		};
 		66FD63A81E3BAA9D007066E6 /* Common Views */ = {
@@ -1876,7 +2282,9 @@
 				66FD66281E3BAD9E007066E6 /* CoursesTableTableViewController.xib in Resources */,
 				66FD66931E3BAD9E007066E6 /* StudentDetailsTableViewController.xib in Resources */,
 				66FD66351E3BAD9E007066E6 /* FacultieTableViewController.xib in Resources */,
+				66A8BE461E48C11E008B35B7 /* SharedFileCell.xib in Resources */,
 				4C0D8EDC5E5F870381B4C21D /* LaunchScreen.storyboard in Resources */,
+				66A8BE481E48C11E008B35B7 /* TransferView.xib in Resources */,
 				66FD668D1E3BAD9E007066E6 /* SecondLoginViewController.xib in Resources */,
 				66FD66181E3BAD9E007066E6 /* CourseDetailsTableViewController.xib in Resources */,
 				4C0D8D641FD73F7E585E72B6 /* User.json in Resources */,
@@ -1891,6 +2299,7 @@
 				66FD66491E3BAD9E007066E6 /* ItemCell.xib in Resources */,
 				66FD66B91E3BAD9E007066E6 /* WebViewController.xib in Resources */,
 				66FD66251E3BAD9E007066E6 /* CourseMeritsTableViewCell.xib in Resources */,
+				66A8BE3A1E48C11E008B35B7 /* CheckboxCell.xib in Resources */,
 				4C0D87058EAE5B71945F1AD8 /* Lecturers.json in Resources */,
 				4C0D8792155EDB3BF227067C /* FacultiesDetail.json in Resources */,
 				66FD668A1E3BAD9E007066E6 /* SearchTableViewCell.xib in Resources */,
@@ -1907,6 +2316,7 @@
 				66A0171E1E3BBF960011BFD9 /* TermView.xib in Resources */,
 				66FD66331E3BAD9E007066E6 /* RegisterViewController.xib in Resources */,
 				66FD66A71E3BAD9E007066E6 /* SeparatorCell.xib in Resources */,
+				66A8BE421E48C11E008B35B7 /* SharedFilesViewController.storyboard in Resources */,
 				66FD66B21E3BAD9E007066E6 /* UserDetailsTableViewCell.xib in Resources */,
 				4C0D82A00E6BB9E12219B536 /* Lato-Black.ttf in Resources */,
 				66FD66711E3BAD9E007066E6 /* LectureViewTableViewCell.xib in Resources */,
@@ -1930,6 +2340,7 @@
 				66FD66831E3BAD9E007066E6 /* SearchResultsCell.xib in Resources */,
 				4C0D8E7C2F8E9C4975AA3606 /* Lato-HeavyItalic.ttf in Resources */,
 				4C0D8C6232B539463B9C44FF /* Lato-Italic.ttf in Resources */,
+				66A8BE401E48C11E008B35B7 /* DriveItemCell.xib in Resources */,
 				66FD662B1E3BAD9E007066E6 /* CourseTableViewCell.xib in Resources */,
 				66A016AD1E3BB1420011BFD9 /* MessageDetailViewController.xib in Resources */,
 				4C0D82983500855989BA22B8 /* Lato-Light.ttf in Resources */,
@@ -2143,17 +2554,26 @@
 			files = (
 				66FD66291E3BAD9E007066E6 /* CoursesTableViewController.swift in Sources */,
 				4C0D86EDDF1F15B819DBF358 /* AppDelegate.swift in Sources */,
+				66A8BE371E48C11E008B35B7 /* ActiveCoursesListTableViewController.swift in Sources */,
 				66FD669B1E3BAD9E007066E6 /* TeacherTableViewCell.swift in Sources */,
 				66989CCB1E38CE8200B659F6 /* SortKeyProviding.swift in Sources */,
+				66A8BE2F1E48C11E008B35B7 /* RemoveCachedFileOperation.swift in Sources */,
+				66A8BE2A1E48C11E008B35B7 /* FileTransferManager.swift in Sources */,
+				66A8BE191E48C11E008B35B7 /* DriveDownloadTicket.swift in Sources */,
+				66A8BE221E48C11E008B35B7 /* APIFileListProvider.swift in Sources */,
 				66FD662F1E3BAD9E007066E6 /* LoginViewController.swift in Sources */,
+				66A8BE0C1E48C11E008B35B7 /* Protocols.swift in Sources */,
 				66FD663C1E3BAD9E007066E6 /* SupervisingUnitCell.swift in Sources */,
 				661D1C221DAD974500BA9EE9 /* HTMLParser.m in Sources */,
 				52B3F9AF1DBF40F500B0CC55 /* Message.swift in Sources */,
 				66FD66661E3BAD9E007066E6 /* CalendarViewController.swift in Sources */,
+				66A8BE531E48C408008B35B7 /* Operation+.swift in Sources */,
 				660E28911DC0A6F0008CD5A9 /* IdentifiedTapGestureRecogniezer.swift in Sources */,
 				66FD666C1E3BAD9E007066E6 /* LectureCellHandler.swift in Sources */,
 				66FD63D51E3BAC6C007066E6 /* ArrowedLabelView.swift in Sources */,
 				66FD661C1E3BAD9E007066E6 /* CycleSection.swift in Sources */,
+				66A8BE3C1E48C11E008B35B7 /* ChooseFolderConfiguration.swift in Sources */,
+				66A8BE2E1E48C11E008B35B7 /* DriveUploadFileOperation.swift in Sources */,
 				66FD66481E3BAD9E007066E6 /* ItemCell.swift in Sources */,
 				66989CCD1E38DB9D00B659F6 /* SortedDictionary.swift in Sources */,
 				66A016E01E3BB5550011BFD9 /* ErrorResponseProtocol.swift in Sources */,
@@ -2167,28 +2587,38 @@
 				66FD66671E3BAD9E007066E6 /* FloatingButtonDelegate.swift in Sources */,
 				66A016B81E3BB5230011BFD9 /* GoogleManager.swift in Sources */,
 				4C0D8192306233E614847234 /* Programme.swift in Sources */,
+				66A8BE3E1E48C11E008B35B7 /* SelectFileConfiguration.swift in Sources */,
 				4C0D864F9F51B36FAD9866D5 /* KujonResponseSchools.swift in Sources */,
 				66FD66801E3BAD9E007066E6 /* ThesisSearchElement.swift in Sources */,
 				4C0D8E35546E06FE6E50627E /* Usos.swift in Sources */,
 				4C0D81815EB0AFFE7A3E0346 /* Title.swift in Sources */,
+				66A8BE0B1E48C11E008B35B7 /* ProgressTrackable.swift in Sources */,
 				4C0D8B1CC0F1F04A0031EFD4 /* UserDetail.swift in Sources */,
 				66A2CBCB1DC77B440049217C /* RefreshingTableViewController.swift in Sources */,
+				66A8BE571E48C41A008B35B7 /* UIDevice+.swift in Sources */,
 				4C0D850BF68640550F269D74 /* Account.swift in Sources */,
+				66A8BE111E48C11E008B35B7 /* APIFile.swift in Sources */,
 				66FD66321E3BAD9E007066E6 /* RegisterViewController.swift in Sources */,
 				66989CC91E38CB9700B659F6 /* KujonAppearance.swift in Sources */,
 				66FD66171E3BAD9E007066E6 /* CourseDetailsTableViewController.swift in Sources */,
 				66A017071E3BBD580011BFD9 /* NavDrawerHeaderViewCellTableViewCell.swift in Sources */,
+				66A8BE511E48C3FF008B35B7 /* FileManager+.swift in Sources */,
 				66FD661E1E3BAD9E007066E6 /* LecturersSection.swift in Sources */,
+				66A8BE391E48C11E008B35B7 /* CheckboxCell.swift in Sources */,
+				66A8BE181E48C11E008B35B7 /* APIUploadTicket.swift in Sources */,
 				66FD66AC1E3BAD9E007066E6 /* ThesisDetailTableViewController.swift in Sources */,
 				66FD63D71E3BAC6C007066E6 /* GoFurtherViewCellTableViewCell.swift in Sources */,
 				66A016F71E3BB5550011BFD9 /* SuperUserProvider.swift in Sources */,
 				66FD663E1E3BAD9E007066E6 /* TelephoneTableViewCell.swift in Sources */,
+				66A8BE281E48C11E008B35B7 /* FolderContentsCache.swift in Sources */,
+				66A8BE201E48C11E008B35B7 /* APIDeletionProvider.swift in Sources */,
 				66A016B01E3BB1420011BFD9 /* MessagesTableViewController.swift in Sources */,
 				66FD66581E3BAD9E007066E6 /* ScheduleMenuItem.swift in Sources */,
 				4C0D807545C280601AAB48CB /* StudentProgramme.swift in Sources */,
 				4C0D8E84B66279CE377A8D78 /* Lecture.swift in Sources */,
 				4C0D8B0ECFC83EB343FC15A1 /* LectureResponse.swift in Sources */,
 				66FD66551E3BAD9E007066E6 /* CourseMenuItems.swift in Sources */,
+				66A8BE551E48C410008B35B7 /* URL+.swift in Sources */,
 				66FD66591E3BAD9E007066E6 /* SearchMenuItem.swift in Sources */,
 				66FD66A11E3BAD9E007066E6 /* ThesesTableViewController.swift in Sources */,
 				4C0D8D1041B61DE7CCC02962 /* SimpleUser.swift in Sources */,
@@ -2198,21 +2628,27 @@
 				4C0D88190EFAA340F1D2D178 /* GradeResponse.swift in Sources */,
 				66FD666F1E3BAD9E007066E6 /* ScheduleSectionImpl.swift in Sources */,
 				66FD66701E3BAD9E007066E6 /* LectureViewTableViewCell.swift in Sources */,
+				66A8BE0F1E48C11E008B35B7 /* APIDeleteFileResponse.swift in Sources */,
 				66A017051E3BBD580011BFD9 /* MenuItemTableViewCell.swift in Sources */,
 				66FD66541E3BAD9E007066E6 /* ContainerViewController.swift in Sources */,
 				66A017221E3BC0680011BFD9 /* ToastView.swift in Sources */,
 				4C0D8125E905FFA9FF65765F /* LecturerDetail.swift in Sources */,
 				4C0D8276D4657EED0BD1B0C2 /* LecturersResponse.swift in Sources */,
 				4C0D853633AEE49F996B454C /* CourseEdition.swift in Sources */,
+				66A8BE1E1E48C11E008B35B7 /* GTLRDrive_File+.swift in Sources */,
 				662DAFED1DAC14150094867E /* String+.swift in Sources */,
 				66A016EA1E3BB5550011BFD9 /* ProgrammeIdProvider.swift in Sources */,
 				66FD665D1E3BAD9E007066E6 /* TeachersMenuItem.swift in Sources */,
+				66A8BE331E48C11E008B35B7 /* Tranferable.swift in Sources */,
 				669935CA1E3F5ECB00A68C9E /* EmptyStateView.swift in Sources */,
 				66FD669C1E3BAD9E007066E6 /* TeacherTableViewController.swift in Sources */,
 				4C0D8A432E3EC531C1FE79D7 /* UIColorExtensions.swift in Sources */,
+				66A8BE321E48C11E008B35B7 /* LocalFile2APITransfer.swift in Sources */,
 				66A017251E3BC0D20011BFD9 /* PopUpViewController.swift in Sources */,
 				4C0D82084D092C855DB2FB09 /* RestApiManager.swift in Sources */,
 				4C0D886897D95F586FB998CF /* Facultie.swift in Sources */,
+				66A8BE361E48C11E008B35B7 /* PhotoFileProvider.swift in Sources */,
+				66A8BE1D1E48C11E008B35B7 /* FolderContents.swift in Sources */,
 				66FD66641E3BAD9E007066E6 /* NavigationMenuProtocol.swift in Sources */,
 				4C0D863F610BFD74A4C029CC /* SchoolName.swift in Sources */,
 				4C0D807A59B2A7B85B701839 /* SchoolPath.swift in Sources */,
@@ -2224,8 +2660,10 @@
 				66FD667D1E3BAD9E007066E6 /* CourseSearchElement.swift in Sources */,
 				4C0D818BA0EBA18711EA841E /* LogoUrls.swift in Sources */,
 				66A017131E3BBE580011BFD9 /* TermsTableViewCell.swift in Sources */,
+				66A8BE071E48C11E008B35B7 /* AsyncOperation.swift in Sources */,
 				66FD66461E3BAD9E007066E6 /* IntroScreenViewController.swift in Sources */,
 				66FD664A1E3BAD9E007066E6 /* KierunekDetailViewController.swift in Sources */,
+				66A8BE3F1E48C11E008B35B7 /* DriveItemCell.swift in Sources */,
 				66FD66AD1E3BAD9E007066E6 /* KierunkiViewController.swift in Sources */,
 				4C0D811BF9E0E00EDE9CA088 /* FacultiesResposne.swift in Sources */,
 				4C0D81849DAA7ACD6F8A1D47 /* JsonDataLoader.swift in Sources */,
@@ -2249,57 +2687,75 @@
 				66FD66811E3BAD9E007066E6 /* UserSearchElement.swift in Sources */,
 				52B3F9AD1DBF40C300B0CC55 /* MessageResponse.swift in Sources */,
 				4C0D8DD1DC491DC007F98692 /* SessionManager.swift in Sources */,
+				66A8BE261E48C11E008B35B7 /* MultipartProviding.swift in Sources */,
 				4C0D8E8FDA4A6ABE3B6829A8 /* NSlogManager.swift in Sources */,
 				66FD66861E3BAD9E007066E6 /* SearchTableViewController.swift in Sources */,
 				66FD66571E3BAD9E007066E6 /* MessagesMenuItem.swift in Sources */,
 				4C0D8BD54E52DB2C8D674422 /* NSDateExtension.swift in Sources */,
 				66FD665E1E3BAD9E007066E6 /* UserMenuItem.swift in Sources */,
 				66FD666D1E3BAD9E007066E6 /* LectureWrapper.swift in Sources */,
+				66A8BE241E48C11E008B35B7 /* APIShareFileProvider.swift in Sources */,
 				4C0D8526C5650D6AABCDF39A /* ArrayExtension.swift in Sources */,
 				66FD66611E3BAD9E007066E6 /* MenuItemWithURL.swift in Sources */,
 				66A016F51E3BB5550011BFD9 /* UserSearchProvider.swift in Sources */,
 				66A016FD1E3BB5BB0011BFD9 /* UserDefaultsManager.swift in Sources */,
+				66A8BE311E48C11E008B35B7 /* Drive2APITransfer.swift in Sources */,
 				66FD667F1E3BAD9E007066E6 /* ProgrammeSearchElement.swift in Sources */,
 				66FD66311E3BAD9E007066E6 /* OpenLoginScreenProtocol.swift in Sources */,
 				66A016E11E3BB5550011BFD9 /* FacultieProvider.swift in Sources */,
 				66FD66761E3BAD9E007066E6 /* DayTableViewCell.swift in Sources */,
 				66FD661A1E3BAD9E007066E6 /* CoordinatorsSection.swift in Sources */,
+				66A8BE171E48C11E008B35B7 /* APIUploadedFileListResponse.swift in Sources */,
 				66FD66421E3BAD9E007066E6 /* Grade2TableViewCell.swift in Sources */,
+				66A8BE431E48C11E008B35B7 /* SharedFilesViewController.swift in Sources */,
 				66FD662A1E3BAD9E007066E6 /* CourseTableViewCell.swift in Sources */,
 				66FD665F1E3BAD9E007066E6 /* MenuItemsHolder.swift in Sources */,
 				66FD66891E3BAD9E007066E6 /* SearchTableViewCell.swift in Sources */,
+				66A8BE161E48C11E008B35B7 /* APIUploadedFile.swift in Sources */,
 				66A016F91E3BB5550011BFD9 /* UserDetailsProvider.swift in Sources */,
 				66FD66A01E3BAD9E007066E6 /* TermsTableViewController.swift in Sources */,
 				66FD66901E3BAD9E007066E6 /* ShareViewController.swift in Sources */,
+				66A8BE4D1E48C3E1008B35B7 /* Data+.swift in Sources */,
+				66A8BE0A1E48C11E008B35B7 /* MIMEType.swift in Sources */,
 				66FD66201E3BAD9E007066E6 /* ParticipantsSection.swift in Sources */,
 				4C0D89A149A07C2183D5E1B4 /* Course.swift in Sources */,
 				66FD661D1E3BAD9E007066E6 /* FacultieSection.swift in Sources */,
+				66A8BE2C1E48C11E008B35B7 /* APIUploadFileOperation.swift in Sources */,
 				66FD66721E3BAD9E007066E6 /* ScheduleTableViewController.swift in Sources */,
 				4C0D81D02A26767DB7C49C52 /* CourseGroup.swift in Sources */,
 				52C4A3DF1DDA16FB00BBBA3A /* UsosPairResponse.swift in Sources */,
+				66A8BE211E48C11E008B35B7 /* APIDownloadProvider.swift in Sources */,
 				66FD66841E3BAD9E007066E6 /* SearchResultTableViewController.swift in Sources */,
 				4C0D85E772027B77B2D540BD /* CoursesWrapper.swift in Sources */,
+				66A8BE091E48C11E008B35B7 /* FileIconProvider.swift in Sources */,
 				66FD66B81E3BAD9E007066E6 /* WebViewController.swift in Sources */,
 				66FD66381E3BAD9E007066E6 /* MapTableViewCell.swift in Sources */,
+				66A8BE101E48C11E008B35B7 /* APIDownloadTicket.swift in Sources */,
 				66A017291E3BC0DC0011BFD9 /* TextViewController.swift in Sources */,
 				66A016DE1E3BB5550011BFD9 /* CourseProvider.swift in Sources */,
 				66FD667E1E3BAD9E007066E6 /* FacultySearchElement.swift in Sources */,
+				66A8BE351E48C11E008B35B7 /* DriveManager.swift in Sources */,
 				66A016EB1E3BB5550011BFD9 /* ProgrammeProvider.swift in Sources */,
 				66A016E61E3BB5550011BFD9 /* LecturerProvider.swift in Sources */,
 				66FD66981E3BAD9E007066E6 /* TeacherHeaderTableViewCell.swift in Sources */,
 				66852C191DE8639B009234C9 /* SettingsResponse.swift in Sources */,
+				66A8BE451E48C11E008B35B7 /* SharedFileCell.swift in Sources */,
+				66A8BE2B1E48C11E008B35B7 /* APIDownloadFileOperation.swift in Sources */,
 				4C0D8E02015B88F38F0F59F4 /* FacultieResponse.swift in Sources */,
 				66FD66921E3BAD9E007066E6 /* StudentDetailsTableViewController.swift in Sources */,
 				4C0D81EAB6447F9ABA3B7AD5 /* CourseDetails.swift in Sources */,
 				4C0D865D9B6FEF3BD55EA8C4 /* FacId.swift in Sources */,
+				66A8BE4B1E48C3C1008B35B7 /* StringConvertible.swift in Sources */,
 				4C0D81140EF8EDB90CA288CD /* Term.swift in Sources */,
 				66FD66561E3BAD9E007066E6 /* GradesMenuItem.swift in Sources */,
 				66FD66AA1E3BAD9E007066E6 /* ThesisDetailHeaderCell.swift in Sources */,
 				66FD666B1E3BAD9E007066E6 /* DayWrapper.swift in Sources */,
 				4C0D88792066D89E9F575D88 /* CourseDetailsResponse.swift in Sources */,
 				66FD66361E3BAD9E007066E6 /* FacultieHeaderTableViewCell.swift in Sources */,
+				66A8BE3D1E48C11E008B35B7 /* DriveBrowserConfigurable.swift in Sources */,
 				66FD668C1E3BAD9E007066E6 /* SecondLoginViewController.swift in Sources */,
 				66A0172E1E3BC0E40011BFD9 /* ImageViewController.swift in Sources */,
+				66A8BE1A1E48C11E008B35B7 /* DriveQuery.swift in Sources */,
 				66FD66821E3BAD9E007066E6 /* SearchResultsCell.swift in Sources */,
 				66A2CBC91DC76C280049217C /* KujonRefreshControl.swift in Sources */,
 				66A016EC1E3BB5550011BFD9 /* ProviderProvidersImpl.swift in Sources */,
@@ -2318,27 +2774,36 @@
 				66A016E71E3BB5550011BFD9 /* LoginProvider.swift in Sources */,
 				4C0D86AB196D67D0C0451162 /* ClassType.swift in Sources */,
 				66FD66B51E3BAD9E007066E6 /* UsosesTableViewController.swift in Sources */,
+				66A8BE121E48C11E008B35B7 /* APIFileListResponse.swift in Sources */,
 				4C0D80C2E817C52141156F68 /* TermsResponse.swift in Sources */,
 				66A016F31E3BB5550011BFD9 /* SearchType.swift in Sources */,
 				4C0D80DAD146340FB32C5687 /* StudentProgrammeResponse.swift in Sources */,
 				66A016E51E3BB5550011BFD9 /* LectureProvider.swift in Sources */,
 				66FD666E1E3BAD9E007066E6 /* ScheduleSection.swift in Sources */,
 				4C0D8114A3AD4971E2BB867E /* ProgrameIdResponse.swift in Sources */,
+				66A8BE441E48C11E008B35B7 /* ToolbarMenuController.swift in Sources */,
 				66A016E91E3BB5550011BFD9 /* MessageProvider.swift in Sources */,
 				66A016F61E3BB5550011BFD9 /* SettingsProvider.swift in Sources */,
 				4C0D845DFC2CE73D1C66A3CC /* SingleProgramme.swift in Sources */,
 				66FD66691E3BAD9E007066E6 /* CellHandlingStrategy.swift in Sources */,
+				66A8BE341E48C11E008B35B7 /* DriveExportFormat.swift in Sources */,
 				4C0D8A35DA11DC43CD171D80 /* ProgrammeWithDifferentId.swift in Sources */,
+				66A8BE231E48C11E008B35B7 /* APIFileTransferSessionProvider.swift in Sources */,
 				66A016F01E3BB5550011BFD9 /* FacultySearchProvider.swift in Sources */,
+				66A8BE301E48C11E008B35B7 /* API2DriveTransfer.swift in Sources */,
 				66A016F41E3BB5550011BFD9 /* ThesisSearchProvider.swift in Sources */,
 				4C0D8F3F7FF39000760EEB08 /* ErrorClass.swift in Sources */,
+				66A8BE131E48C11E008B35B7 /* APIFileOwner.swift in Sources */,
+				66A8BE1B1E48C11E008B35B7 /* DriveQueryFields.swift in Sources */,
 				4C0D86610EB3A7F8698DCC56 /* CALayerExtensions.swift in Sources */,
 				66FD66241E3BAD9E007066E6 /* CourseMeritsTableViewCell.swift in Sources */,
+				66A8BE2D1E48C11E008B35B7 /* DriveDownloadFileOperation.swift in Sources */,
 				66FD66961E3BAD9E007066E6 /* TeacherDetailTableViewController.swift in Sources */,
 				4C0D8E79EF248F656D747BE4 /* ConfigResponse.swift in Sources */,
 				66A016E31E3BB5550011BFD9 /* GradesProvider.swift in Sources */,
 				66FD667C1E3BAD9E007066E6 /* MyEventView.m in Sources */,
 				66A016E81E3BB5550011BFD9 /* LogoutProvider.swift in Sources */,
+				66A8BE411E48C11E008B35B7 /* ShareToolbar.swift in Sources */,
 				66FD666A1E3BAD9E007066E6 /* DayCellHandler.swift in Sources */,
 				66A016FA1E3BB5550011BFD9 /* UsosesProvider.swift in Sources */,
 				66FD665B1E3BAD9E007066E6 /* SettingsMenuItem.swift in Sources */,
@@ -2348,14 +2813,18 @@
 				66FD665A1E3BAD9E007066E6 /* SendOpinionMenuItem.swift in Sources */,
 				4C0D83F598B52ADFF2CA1A31 /* RegisterResponse.swift in Sources */,
 				66FD66A61E3BAD9E007066E6 /* SeparatorCell.swift in Sources */,
+				66A8BE1F1E48C11E008B35B7 /* GTLRDrive_FileList+.swift in Sources */,
 				4C0D8F2CCD958EC1CD5966C9 /* Login.swift in Sources */,
 				66A016FB1E3BB5550011BFD9 /* VerificationProvider.swift in Sources */,
 				66FD669A1E3BAD9E007066E6 /* CurrentTeacherHolder.swift in Sources */,
 				66A016F81E3BB5550011BFD9 /* TermsProvider.swift in Sources */,
 				66FD66741E3BAD9E007066E6 /* CoursePopUpViewController.swift in Sources */,
+				66A8BE151E48C11E008B35B7 /* APISharedFileListResponse.swift in Sources */,
 				66A016DD1E3BB5550011BFD9 /* CourseDetailsProvider.swift in Sources */,
 				4C0D83577DFA9E0E3D2AD2B5 /* SearchElementProtocol.swift in Sources */,
 				4C0D8FAE3D9478F5CCC1BE75 /* Unauthorized.swift in Sources */,
+				66A8BE591E48C68D008B35B7 /* Bool+.swift in Sources */,
+				66A8BE081E48C11E008B35B7 /* CellPositionType.swift in Sources */,
 				4C0D8302D334081CC971901F /* CourseSearch.swift in Sources */,
 				66FD66401E3BAD9E007066E6 /* WWWTableViewCell.swift in Sources */,
 				66A016DC1E3BB5550011BFD9 /* ConfigProvider.swift in Sources */,
@@ -2367,17 +2836,26 @@
 				4C0D843CCE476A98F5AF9D81 /* UserSearch.swift in Sources */,
 				66FD66A21E3BAD9E007066E6 /* ArrowedItemCell.swift in Sources */,
 				4C0D8136944E9A29A28A10E8 /* FacultySearch.swift in Sources */,
+				66A8BE141E48C11E008B35B7 /* APISharedFile.swift in Sources */,
 				66FD665C1E3BAD9E007066E6 /* ShareMenuItem.swift in Sources */,
 				4C0D8DD72C86A526F511E141 /* Thesis.swift in Sources */,
 				66FD668B1E3BAD9E007066E6 /* SecondLoginScreen.swift in Sources */,
 				66FD66781E3BAD9E007066E6 /* HeaderViewTableViewCell.swift in Sources */,
 				4C0D855782A3BEF578B52348 /* FacultyShort.swift in Sources */,
+				66A8BE491E48C11E008B35B7 /* TransferViewProviding.swift in Sources */,
 				4C0D84EA2ECE10D624CD3221 /* ProgrammeSearchResponse.swift in Sources */,
 				66FD662D1E3BAD9E007066E6 /* EntryViewController.swift in Sources */,
 				66FD661F1E3BAD9E007066E6 /* NameSection.swift in Sources */,
+				66A8BE251E48C11E008B35B7 /* APIUploadProvider.swift in Sources */,
 				66FD66B31E3BAD9E007066E6 /* UserDetailView.swift in Sources */,
+				66A8BE4F1E48C3FA008B35B7 /* DispatchQueue+.swift in Sources */,
+				66A8BE1C1E48C11E008B35B7 /* DriveUploadTicket.swift in Sources */,
 				4C0D85E06E058E1938ECB52A /* TheseSearch.swift in Sources */,
+				66A8BE471E48C11E008B35B7 /* TransferView.swift in Sources */,
+				66A8BE3B1E48C11E008B35B7 /* DriveBrowser.swift in Sources */,
+				66A8BE381E48C11E008B35B7 /* StudentsSelectionTableViewController.swift in Sources */,
 				66A016B71E3BB5230011BFD9 /* FacebookManager.swift in Sources */,
+				66A8BE291E48C11E008B35B7 /* FolderContentsProving.swift in Sources */,
 				66FD663A1E3BAD9E007066E6 /* StatisticsCell.swift in Sources */,
 				4C0D81E3D2881A457538D27E /* GetListOfSearchElements.swift in Sources */,
 				66FD66441E3BAD9E007066E6 /* GradesTableViewController.swift in Sources */,
@@ -2385,6 +2863,8 @@
 				66FD661B1E3BAD9E007066E6 /* CourseMeritsSection.swift in Sources */,
 				4C0D82F9F37B3007827AE2EC /* SuperUserDetails.swift in Sources */,
 				4C0D8D30C74046B707A38B99 /* SuperUserResponse.swift in Sources */,
+				66A8BE271E48C11E008B35B7 /* DriveFolderContentsProvider.swift in Sources */,
+				66A8BE0D1E48C11E008B35B7 /* ShareOptions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

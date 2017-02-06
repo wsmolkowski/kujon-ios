@@ -10,9 +10,9 @@ class ToastView: UIView {
     static let toastHeight:CGFloat = 50.0
     static let toastGap:CGFloat = 10;
     lazy var textLabel: UILabel = UILabel(frame: CGRect(x: 5.0, y: 5.0, width: self.frame.size.width - 10.0, height: self.frame.size.height - 10.0))
+    static var completion: (() -> Void)?
 
-
-    static func showInParent(_ parentView: UIView!, withText text: String, forDuration duration: double_t) {
+    static func showInParent(_ parentView: UIView!, withText text: String, forDuration duration: double_t, completion: (() -> Void)? = nil) {
 
         //Count toast views are already showing on parent. Made to show several toasts one above another
         var toastsAlreadyInParent = 0;
@@ -35,7 +35,7 @@ class ToastView: UIView {
         toast.textLabel.textColor = UIColor.white
         toast.textLabel.numberOfLines = 2
         toast.textLabel.font = UIFont.systemFont(ofSize: 13.0)
-//        toast.textLabel.lineBreakMode = NSLineBreakMode.NSLineBreakByCharWrapping
+        //        toast.textLabel.lineBreakMode = NSLineBreakMode.NSLineBreakByCharWrapping
         toast.addSubview(toast.textLabel)
 
         toast.backgroundColor = UIColor.darkGray
@@ -49,6 +49,7 @@ class ToastView: UIView {
             toast.textLabel.alpha = 0.9
         })
 
+        ToastView.completion = completion
 
         toast.perform(#selector(ToastView.hideSelf), with: nil, afterDelay: duration)
 
@@ -58,11 +59,14 @@ class ToastView: UIView {
         return (70.0 + toastHeight * CGFloat(toastsAlreadyInParent) + toastGap * CGFloat(toastsAlreadyInParent));
     }
 
-     func hideSelf() {
-        UIView.animate(withDuration: 0.4, animations: {
-            self.alpha = 0.0
-            self.textLabel.alpha = 0.0
-        }, completion: { t in self.removeFromSuperview() })
+    func hideSelf() {
+        UIView.animate(withDuration: 0.4, animations: { [weak self] in
+            self?.alpha = 0.0
+            self?.textLabel.alpha = 0.0
+            }, completion: { [weak self] _ in
+                self?.removeFromSuperview()
+                ToastView.completion?()
+        })
     }
-
+    
 }

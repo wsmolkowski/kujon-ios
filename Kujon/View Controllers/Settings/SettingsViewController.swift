@@ -148,7 +148,7 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
     }
 
     @IBAction func notificationsButtonDidTap(_ sender: UIButton) {
-        presentAlertWithMessage(StringHolder.shouldOpenAppSettingsForNotifications, title: StringHolder.attention, addCancelAction: true) {
+        presentAlertWithMessage(StringHolder.shouldOpenAppSettingsForNotifications, title: StringHolder.attention, showCancelButton: true) {
             NotificationsManager.openAppSettings()
         }
     }

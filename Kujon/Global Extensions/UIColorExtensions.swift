@@ -18,12 +18,21 @@ extension UIColor{
     static func blackWithAlpha(alpha: CGFloat = 0.34) -> UIColor {
         return UIColor(red: 0,green: 0,blue: 0, alpha: alpha)
     }
+    static func white(alpha: CGFloat) -> UIColor {
+        return UIColor(red: 1,green: 1,blue: 1, alpha: alpha)
+    }
     static func kujonCalendarBlue ()->UIColor{ return UIColor(red: 217/255,green: 241/255,blue: 247/255,alpha: 1)}
     static func greyBackgroundColor ()->UIColor{ return UIColor(colorLiteralRed: 239/255,green: 242/255,blue: 248/255,alpha: 1)}
     static func lightGray(alpha: CGFloat = 1.0)->UIColor{ return UIColor(red: 216/255,green: 216/255,blue: 216/255,alpha: alpha)}
     static func calendarSeparatorColor ()->UIColor{ return UIColor(red: 160/255,green: 160/255,blue: 160/255,alpha: 0.6)}
     static func kjnTealBlueColor() -> UIColor {
         return UIColor(red: 0.0 / 255.0, green: 128.0 / 255.0, blue: 179.0 / 255.0, alpha: 1.0)
+    }
+    static func driveBackgroundColor() -> UIColor {
+        return UIColor(red:0.97, green:0.97, blue:0.98, alpha:1.00)
+    }
+    static func driveBlackColor() -> UIColor {
+        return UIColor(red:0.46, green:0.46, blue:0.46, alpha:1.00)
     }
 
     // helper mapping for communication with designer

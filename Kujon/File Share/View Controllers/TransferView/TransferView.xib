@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D17a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="175-ph-WtI" customClass="TransferView" customModule="Kujon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="392" height="82"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+            <subviews>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressImage="bar" trackImage="bar_light" translatesAutoresizingMaskIntoConstraints="NO" id="PXT-NE-YWV">
+                    <rect key="frame" x="16" y="47" width="360" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="Ch4-Qp-vPS"/>
+                    </constraints>
+                </progressView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Przygotowywanie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fw-bV-ZrG">
+                    <rect key="frame" x="16" y="20" width="338" height="19"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="19" id="Mrk-w1-D7M"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAU-Ld-uhR">
+                    <rect key="frame" x="362" y="20" width="14" height="14"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="14" id="KJw-i7-OS7"/>
+                        <constraint firstAttribute="width" constant="14" id="Oup-q4-Cpm"/>
+                    </constraints>
+                    <state key="normal" image="cancel-icon">
+                        <color key="titleColor" red="0.99019607843137258" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelButtonDidTap:" destination="175-ph-WtI" eventType="touchUpInside" id="Z6b-ob-3tO"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.99215686274509807" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="rAU-Ld-uhR" secondAttribute="trailing" constant="16" id="9bY-3g-6BP"/>
+                <constraint firstItem="0Fw-bV-ZrG" firstAttribute="top" secondItem="175-ph-WtI" secondAttribute="top" constant="20" id="GTf-OI-Sv9"/>
+                <constraint firstItem="rAU-Ld-uhR" firstAttribute="top" secondItem="0Fw-bV-ZrG" secondAttribute="top" id="SDj-dT-NB6"/>
+                <constraint firstItem="rAU-Ld-uhR" firstAttribute="leading" secondItem="0Fw-bV-ZrG" secondAttribute="trailing" constant="8" id="ZXC-T0-Hkb"/>
+                <constraint firstAttribute="trailing" secondItem="PXT-NE-YWV" secondAttribute="trailing" constant="16" id="bE7-cb-2OK"/>
+                <constraint firstItem="0Fw-bV-ZrG" firstAttribute="leading" secondItem="175-ph-WtI" secondAttribute="leading" constant="16" id="jdD-Hh-0G0"/>
+                <constraint firstItem="PXT-NE-YWV" firstAttribute="top" secondItem="0Fw-bV-ZrG" secondAttribute="bottom" constant="8" id="mJ1-v5-aZ9"/>
+                <constraint firstItem="PXT-NE-YWV" firstAttribute="leading" secondItem="175-ph-WtI" secondAttribute="leading" constant="16" id="wie-3b-KWs"/>
+                <constraint firstAttribute="bottom" secondItem="PXT-NE-YWV" secondAttribute="bottom" constant="20" id="zz5-NQ-1Fb"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="cancelButton" destination="rAU-Ld-uhR" id="V56-Z3-S20"/>
+                <outlet property="descriptionLabel" destination="0Fw-bV-ZrG" id="QW3-zS-yEY"/>
+                <outlet property="progressView" destination="PXT-NE-YWV" id="sMY-NX-QgV"/>
+            </connections>
+            <point key="canvasLocation" x="86" y="-359"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bar" width="1" height="1"/>
+        <image name="bar_light" width="1" height="1"/>
+        <image name="cancel-icon" width="14" height="14"/>
+    </resources>
+</document>

@@ -107,6 +107,56 @@ class StringHolder {
     static let kierunekTitle = "Kierunek"
     static let openLink = "Otwórz link"
     static let noLecturesIn = "- brak zajęć"
+    static let rootFolderName = "Mój dysk Google"
+    static let folderEmpty = "Folder jest pusty"
+    static let defaultFolderContentsTitle = "Zawartość folderu"
+    static let fileShareTitle = "Pliki udostępnione"
+    static let fileShare = "Udostępnianie plików"
+    static let noCachesDirectory = "Nie znaleziono folderu tymczasowego"
+    static let delete = "Usuń"
+    static let addToGoogleDrive = "Zapisz w Google Drive"
+    static let showFileDetails = "Szczegóły pliku"
+    static let addFromGoogleDrive = "Udostępnij plik z Google Drive"
+    static let addFromPhotoGallery = "Udostępnij zdjęcie z galerii"
+    static let fileNotFound = "Nie znaleziono pliku"
+    static let fileShareError = "Wystąpił błąd podczas udostępniania pliku użytkownikom Kujona"
+    static let fileDeleteError = "Wystąpił błąd podczas usuwania pliku w serwisie Kujon"
+    static let cannotShareFileWithoutId = "Cannot share file without file id provided"
+    static let shareFile = "Udostępnij plik"
+    static let share = "Udostępnij"
+    static let files = "Pliki"
+    static let folders = "Foldery"
+    static let sutdentsListTitle = "Lista osób"
+    static let all = "Wszyscy"
+    static let added = "Dodano"
+    static let modified = "Zmodyfikowano"
+    static let megabytes_short = "MB"
+    static let shareWithAll = "Udostępnij wszystkim"
+    static let shareWithAll_short = "Wszystkim"
+    static let shareWithSelected = "Wybierz osoby"
+    static let shareWithSelected_short = "Wybranym"
+    static let sharePhoto = "Udostępnij zdjęcie"
+    static let enterFileNameForPhoto = "Wprowadź nazwę, pod którą zdjęcie zostanie udostępnione w Kujonie"
+    static let fileNamePlaceholder = "Nazwa pliku"
+    static let fileDownloadCancelled = "Pobieranie pliku zostało anulowane"
+    static let photoSaveErrorMessage = "Wystąpił błąd podczas zapisywania zdjęcia do pliku"
+    static let fileSize = "Rozmiar"
+    static let fileSave = "Zapisywanie plików"
+    static let fileSaveHasBeenCancelled = "Zapisywanie pliku zostało anulowane"
+    static let save = "Zapisz"
+
+
+    static func fileHasBeenRemovedMessage(fileName: String) -> String {
+        return "Plik \(fileName) został usunięty"
+    }
+
+    static func fileHasBeenSharedMessage(fileName: String) -> String {
+        return "Plik \(fileName) został udostępniony"
+    }
+
+    static func fileHasBeenSavedOnGoogleDriveMessage(fileName: String) -> String {
+        return "Plik \(fileName) został zapisany na dysku Google"
+    }
 
 
 }

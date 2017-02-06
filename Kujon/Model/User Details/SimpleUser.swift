@@ -47,10 +47,33 @@ extension SimpleUser: Decodable {
 
 }
 
-
 extension SimpleUser: SortKeyProviding {
 
-        internal var sortKey: String {
-            return lastName + " " + firstName
-        }
+    internal var sortKey: String {
+        return lastName + " " + firstName
+    }
+}
+
+extension SimpleUser: Hashable {
+
+    var hashValue: Int {
+        return firstName.hashValue ^ lastName.hashValue
+    }
+}
+
+extension SimpleUser: Equatable {
+
+    static func == (lhs: SimpleUser, rhs: SimpleUser) -> Bool {
+        var userIdsSame: Bool = false
+        if lhs.userId == nil && rhs.userId == nil { userIdsSame = true }
+        if lhs.userId != nil && rhs.userId != nil && lhs.userId! == rhs.userId! { userIdsSame = true }
+
+        var idsSame: Bool = false
+        if lhs.id == nil && rhs.id == nil { idsSame = true }
+        if lhs.id != nil && rhs.id != nil && lhs.id! == rhs.id! { idsSame = true }
+
+        return
+            lhs.firstName == rhs.firstName && lhs.lastName == rhs.lastName && userIdsSame && idsSame
+    }
+    
 }

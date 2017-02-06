@@ -14,6 +14,7 @@ target 'Kujon' do
   pod 'CalendarLib'
   pod 'Google/SignIn'
   pod 'OneSignal', '~> 1.13.3'
+  pod 'GoogleAPIClientForREST/Drive'
 
   # Pods for Kujon
 
