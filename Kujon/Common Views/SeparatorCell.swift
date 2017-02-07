@@ -10,6 +10,8 @@ import UIKit
 
 class SeparatorCell: UITableViewCell {
 
+    @IBOutlet weak var optionalTitleLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none

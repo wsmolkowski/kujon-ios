@@ -176,22 +176,33 @@ class ShareDetailsController: UITableViewController, CourseDetailsProviderDelega
     // MARK: - CourseDetailsProviderDelegate
 
     func onCourseDetailsLoaded(_ courseDetails: CourseDetails) {
+        spinner.isHidden = true
+        guard let participants = courseDetails.participants else {
+            return
+        }
+        studentsArray = participants
+        students = SortedDictionary<SimpleUser>(with: participants)
+
         DispatchQueue.main.async { [weak self] in
             self?.spinner.isHidden = true
-            guard let participants = courseDetails.participants else {
-                return
-            }
-            self?.studentsArray = participants
-            self?.students = SortedDictionary<SimpleUser>(with: participants)
             self?.addSearchController()
             self?.tableView.reloadData()
         }
     }
 
     func onErrorOccurs(_ text: String) {
-        spinner.isHidden = true
-        presentAlertWithMessage(text, title: StringHolder.errorAlertTitle, showCancelButton: false) { [weak self] in
-            self?.delegate?.shareDetailsControllerDidCancel()
+        DispatchQueue.main.async { [weak self] in
+            self?.spinner.isHidden = true
+            self?.presentAlertWithMessage(text, title: StringHolder.errorAlertTitle, showCancelButton: false) { [weak self] in
+                self?.delegate?.shareDetailsControllerDidCancel()
+            }
+        }
+    }
+
+    func onUsosDown() {
+        DispatchQueue.main.async { [weak self] in
+            self?.spinner.isHidden = true
+            print("USOS Down")
         }
     }
 

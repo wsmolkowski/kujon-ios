@@ -539,8 +539,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "92"
             endingLineNumber = "92"
-            landmarkName = "RestApiManager"
-            landmarkType = "3">
+            landmarkName = "makeHTTPAuthenticatedPostRequest(_:onError:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -555,7 +555,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "123"
             endingLineNumber = "123"
-            landmarkName = "makeHTTPAuthenticatedPostRequest(_:onError:)"
+            landmarkName = "makeHTTPAuthenticatedGetRequest(_:onError:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -860,6 +860,214 @@
             startingLineNumber = "97"
             endingLineNumber = "97"
             landmarkName = "onErrorOccurs(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kujon/File Share/View Controllers/FileDetails/FileDetailsController.swift"
+            timestampString = "508187902.885831"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "init(file:courseId:termId:courseStudents:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kujon/File Share/Providers/API Transfer Providers/APIShareFileProvider.swift"
+            timestampString = "508188298.299962"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "shareFile(_:shareOptions:successHandler:failureHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kujon/File Share/Providers/API Transfer Providers/APIShareFileProvider.swift"
+            timestampString = "508188298.299962"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "shareFile(_:shareOptions:successHandler:failureHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kujon/File Share/Providers/API Transfer Providers/APIShareFileProvider.swift"
+            timestampString = "508176229.114905"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "parameters(fileId:shareOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kujon/File Share/View Controllers/FileDetails/FileDetailsController.swift"
+            timestampString = "508187902.885831"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "saveButtonDidTap()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kujon/File Share/View Controllers/FileDetails/FileDetailsController.swift"
+            timestampString = "508187902.885831"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "saveButtonDidTap()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kujon/File Share/Providers/API Transfer Providers/APIShareFileProvider.swift"
+            timestampString = "508189502.339195"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "shareFile(_:shareOptions:successHandler:failureHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kujon/File Share/Providers/API Transfer Providers/APIShareFileProvider.swift"
+            timestampString = "508189502.339195"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "shareFile(_:shareOptions:successHandler:failureHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kujon.APIShareFileProvider.(shareFile (Swift.String, shareOptions : Kujon.ShareOptions, successHandler : (Swift.Array&lt;Kujon.APISharedFile&gt;) -&gt; (), failureHandler : (Swift.String) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "Kujon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Adam/kujon-ios/Kujon/File%20Share/Providers/API%20Transfer%20Providers/APIShareFileProvider.swift"
+                  timestampString = "508189757.231309"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "216">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kujon.APIShareFileProvider.(shareFile (Swift.String, shareOptions : Kujon.ShareOptions, successHandler : (Swift.Array&lt;Kujon.APISharedFile&gt;) -&gt; (), failureHandler : (Swift.String) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "Kujon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Adam/kujon-ios/Kujon/File%20Share/Providers/API%20Transfer%20Providers/APIShareFileProvider.swift"
+                  timestampString = "508189757.233328"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "264">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kujon/File Share/Providers/API Transfer Providers/APIShareFileProvider.swift"
+            timestampString = "508188908.859777"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "shareFile(_:shareOptions:successHandler:failureHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kujon/File Share/Providers/API Transfer Providers/APIShareFileProvider.swift"
+            timestampString = "508189808.031296"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "shareFile(_:shareOptions:successHandler:failureHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kujon/File Share/Model/API/APISharedFile.swift"
+            timestampString = "508189868.184201"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "decode(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

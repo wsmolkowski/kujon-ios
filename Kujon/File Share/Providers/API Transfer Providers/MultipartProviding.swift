@@ -18,7 +18,6 @@ protocol MultipartProviding: class {
 
 }
 
-
 extension MultipartProviding {
 
     func setupMultipartContentTypeInRequest( _ request: inout URLRequest) {

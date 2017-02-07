@@ -9,7 +9,7 @@
 import Foundation
 import GoogleAPIClientForREST
 
-class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, FileTransferManagerDelegate, TransferViewProviding, UITableViewDataSource, UITableViewDelegate, ToolbarMenuControllerDelegate, PhotoFileProviderDelegate {
+class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, FileTransferManagerDelegate, TransferViewProviding, UITableViewDataSource, UITableViewDelegate, ToolbarMenuControllerDelegate, PhotoFileProviderDelegate, FileDetailsControllerDelegate {
 
     private let fileCellHeight: CGFloat = 50.0
     private let fileCellId: String = "fileCellId"
@@ -44,6 +44,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         return false
         }
     }
+    private var courseStudents: [SimpleUser]?
 
     // MARK: - Initial section
 
@@ -204,8 +205,11 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         let title = file.fileName
         let description = StringHolder.fileSize + " " + (file.fileSize ?? "0.00") + " " + StringHolder.megabytes_short
 
-        let showDetails: UIAlertAction = UIAlertAction(title: StringHolder.showFileDetails, style: .default) { _ in
-            print("NOT IMPLEMENTED")
+        let showDetails: UIAlertAction = UIAlertAction(title: StringHolder.showFileDetails, style: .default) { [unowned self] _ in
+                let controller = FileDetailsController(file: file, courseId: self.courseId, termId: self.termId, courseStudents: self.courseStudents)
+                controller.delegate = self
+                let navigationController = UINavigationController(rootViewController: controller)
+                self.present(navigationController, animated: true, completion: nil)
         }
 
         let addToDriveAction: UIAlertAction = UIAlertAction(title: StringHolder.addToGoogleDrive, style: .default) { [unowned self] _ in
@@ -361,4 +365,26 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         return (courseId: courseId, termId: termId)
     }
 
+    // MARK: - FileDetailsControllerDelegate
+
+    func fileDetailsController(_ controller: FileDetailsController?, didFinishWith shareOptions: ShareOptions, forFile file: APIFile, loadedForCache courseStudents: [SimpleUser]?) {
+        if let courseStudents = courseStudents, self.courseStudents == nil {
+            self.courseStudents = courseStudents
+        }
+        updateFile(file, shareOptions: shareOptions)
+    }
+
+    private func updateFile(_ file: APIFile, shareOptions: ShareOptions ) {
+        for (index, originalfile) in allFiles.enumerated() {
+            if let originalFileId = originalfile.fileId, let fileId = file.fileId, originalFileId == fileId {
+                allFiles[index].shareOptions = file.shareOptions
+                tableView.reloadData()
+            }
+        }
+    }
+    func fileDetailsControllerDidCancel(loadedForCache courseStudents: [SimpleUser]?) {
+        if let courseStudents = courseStudents, self.courseStudents == nil {
+            self.courseStudents = courseStudents
+        }
+    }
 }

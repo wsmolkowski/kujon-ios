@@ -29,6 +29,7 @@ class SharedFileCell: UITableViewCell {
         case .middle: setMiddleItem()
         case .bottom: setBottomItem()
         case .topAndBottom: setTopAndBottomItem()
+        case .universal: fatalError("Not implemented")
         }
     }
 

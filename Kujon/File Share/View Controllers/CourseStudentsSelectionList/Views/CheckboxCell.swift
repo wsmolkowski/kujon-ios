@@ -58,6 +58,7 @@ class CheckboxCell: UITableViewCell {
         case .middle: setMiddleItem()
         case .bottom: setBottomItem()
         case .topAndBottom: setTopAndBottomItem()
+        case .universal: setUniversalItem()
         }
     }
 
@@ -87,6 +88,12 @@ class CheckboxCell: UITableViewCell {
         isTopFullSeparatorEnabled = true
         isBottomPartialSeparatorEnabled = false
         isBottomFullSeparatorEnabled = true
+    }
+
+    private func setUniversalItem() {
+        isTopFullSeparatorEnabled = true
+        isBottomPartialSeparatorEnabled = false
+        isBottomFullSeparatorEnabled = false
     }
 
 }

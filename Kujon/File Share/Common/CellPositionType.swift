@@ -13,6 +13,7 @@ internal enum CellPositionType {
     case middle
     case bottom
     case topAndBottom
+    case universal
 
     internal static func cellPositionTypeForIndex(_ index: Int, in list: [AnyObject]) -> CellPositionType {
 

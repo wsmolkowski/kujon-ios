@@ -21,10 +21,10 @@ class APIShareFileProvider {
         return URL(string: endpointString)!
     }
 
-    private func parameters(fileId: String, shareOptions: ShareOptions) -> [String : Any] {
-        return [ "file_id" : fileId,
+    private func parameters(fileId: String, shareOptions: ShareOptions) -> [[String : Any]] {
+        return [[ "file_id" : fileId,
                  "file_shared_with" : shareOptions.sharedWith?.rawValue ?? "None",
-                 "file_shared_with_ids" : shareOptions.sharedWithIds ?? [String]() ]
+                 "file_shared_with_ids" : shareOptions.sharedWithIds ?? [String]()]]
     }
 
     internal func shareFile( _ fileId: String, shareOptions: ShareOptions, successHandler: @escaping SuccessHandlerType, failureHandler: @escaping FailureHandlerType) {
@@ -34,6 +34,7 @@ class APIShareFileProvider {
         HeaderManager().addHeadersToRequest(&request)
         let parameters = self.parameters(fileId: fileId, shareOptions: shareOptions)
         request.httpBody = try! JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
 
         task = session.dataTask(with: request) { responseData, response, error in
