@@ -11,7 +11,7 @@ import GoogleAPIClientForREST
 
 typealias DriveBrowserCompletionHandler = (GTLRDrive_File, ShareOptions) -> Void
 
-class DriveBrowser: UITableViewController, FolderContentsProvidingDelegate, FileTransferManagerDelegate, StudentsSelectionTableViewControllerDelegate, TransferViewProviding, ShareToolbarDelegate {
+class DriveBrowser: UITableViewController, FolderContentsProvidingDelegate, FileTransferManagerDelegate, ShareDetailsControllerDelegate, TransferViewProviding, ShareToolbarDelegate {
 
     private enum SectionsMap: Int {
         case folders = 0
@@ -169,7 +169,7 @@ class DriveBrowser: UITableViewController, FolderContentsProvidingDelegate, File
     internal func rightToolbarButtonDidTap() {
         if let configuration = configuration as? SelectFileConfiguration,
             let courseId = configuration.courseId, let termId = configuration.termId {
-            let controller = StudentsSelectionTableViewController(courseId: courseId, termId: termId)
+            let controller = ShareDetailsController(courseId: courseId, termId: termId)
             controller.delegate = self
             let navigationController = UINavigationController(rootViewController: controller)
             present(navigationController, animated: true, completion: nil)
@@ -452,17 +452,16 @@ class DriveBrowser: UITableViewController, FolderContentsProvidingDelegate, File
         }
     }
 
-    // MARK: - StudentsSelectionTableViewControllerDelegate
+    // MARK: - ShareDetailsControllerDelegate
 
-    func studentsSelectionTableViewController(_ controller: StudentsSelectionTableViewController?, didFinishWith shareOptions: ShareOptions) {
-        dismissBrowser { [weak self] in
+    func shareDetailsController(_ controller: ShareDetailsController?, didFinishWith shareOptions: ShareOptions) {
+         dismissBrowser { [weak self] in
             if let selectedItem = self?.selectedItem {
                 self?.completionHandler?(selectedItem.file, shareOptions)
             }
         }
     }
-
-    func studentsSelectionTableViewControllerDidCancel() {
+    func shareDetailsControllerDidCancel() {
         // do nothing
     }
 

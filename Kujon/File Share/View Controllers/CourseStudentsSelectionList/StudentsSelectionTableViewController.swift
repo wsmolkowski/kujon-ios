@@ -1,5 +1,5 @@
 //
-//  StudentsSelectionTableViewController.swift
+//  ShareDetailsController
 //  Kujon
 //
 //  Created by Adam on 20.01.2017.
@@ -8,16 +8,16 @@
 
 import UIKit
 
-protocol StudentsSelectionTableViewControllerDelegate: class {
+protocol ShareDetailsControllerDelegate: class {
 
-    func studentsSelectionTableViewControllerDidCancel()
+    func shareDetailsControllerDidCancel()
 
-    func studentsSelectionTableViewController(_ controller: StudentsSelectionTableViewController?, didFinishWith shareOptions: ShareOptions)
+    func shareDetailsController(_ controller: ShareDetailsController?, didFinishWith shareOptions: ShareOptions)
 }
 
-class StudentsSelectionTableViewController: UITableViewController, CourseDetailsProviderDelegate, UISearchResultsUpdating {
+class ShareDetailsController: UITableViewController, CourseDetailsProviderDelegate, UISearchResultsUpdating {
 
-    internal weak var delegate: StudentsSelectionTableViewControllerDelegate?
+    internal weak var delegate: ShareDetailsControllerDelegate?
     private var spinner = SpinnerView()
     private var rightBarButtonItem: UIBarButtonItem?
     private let itemCellId: String = "itemCellId"
@@ -54,7 +54,6 @@ class StudentsSelectionTableViewController: UITableViewController, CourseDetails
         setSearchBarAppearance()
         configureTableView()
         configureNavigationBar()
-        addSearchController()
         title = StringHolder.sutdentsListTitle
 
     }
@@ -96,9 +95,9 @@ class StudentsSelectionTableViewController: UITableViewController, CourseDetails
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.black]
         navigationController?.navigationBar.tintColor = UIColor.kujonBlueColor()
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: StringHolder.cancel, style: UIBarButtonItemStyle.plain, target: self, action: #selector(StudentsSelectionTableViewController.cancelButtonDidTap))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: StringHolder.cancel, style: UIBarButtonItemStyle.plain, target: self, action: #selector(ShareDetailsController.cancelButtonDidTap))
 
-        rightBarButtonItem = UIBarButtonItem(title: StringHolder.share, style: UIBarButtonItemStyle.done, target: self, action: #selector(StudentsSelectionTableViewController.shareButtonDidTap))
+        rightBarButtonItem = UIBarButtonItem(title: StringHolder.share, style: UIBarButtonItemStyle.done, target: self, action: #selector(ShareDetailsController.shareButtonDidTap))
         rightBarButtonItem?.isEnabled = false
 
         navigationItem.rightBarButtonItem = rightBarButtonItem
@@ -131,12 +130,12 @@ class StudentsSelectionTableViewController: UITableViewController, CourseDetails
         if searchController.isActive {
             searchController.dismiss(animated: true, completion: { [weak self] in
                 self?.dismiss(animated: true, completion: { [weak self] in
-                    self?.delegate?.studentsSelectionTableViewControllerDidCancel()
+                    self?.delegate?.shareDetailsControllerDidCancel()
                 })
             })
         } else {
             dismiss(animated: true, completion: { [weak self] in
-                self?.delegate?.studentsSelectionTableViewControllerDidCancel()
+                self?.delegate?.shareDetailsControllerDidCancel()
             })
         }
     }
@@ -150,7 +149,7 @@ class StudentsSelectionTableViewController: UITableViewController, CourseDetails
                     let studentsArray = [SimpleUser](selectedStudentsSet)
                     let studentsIds = self?.mapToNonNilIds(inUsers: studentsArray) ?? []
                     let shareOptions = ShareOptions(sharedWith: .list, ids: studentsIds)
-                    self?.delegate?.studentsSelectionTableViewController(self, didFinishWith: shareOptions)
+                    self?.delegate?.shareDetailsController(self, didFinishWith: shareOptions)
                 })
 
             })
@@ -160,7 +159,7 @@ class StudentsSelectionTableViewController: UITableViewController, CourseDetails
                 let studentsArray = [SimpleUser](selectedStudentsSet)
                 let studentsIds = self?.mapToNonNilIds(inUsers: studentsArray) ?? []
                 let shareOptions = ShareOptions(sharedWith: .list, ids: studentsIds)
-                self?.delegate?.studentsSelectionTableViewController(self, didFinishWith: shareOptions)
+                self?.delegate?.shareDetailsController(self, didFinishWith: shareOptions)
             })
 
         }
@@ -184,6 +183,7 @@ class StudentsSelectionTableViewController: UITableViewController, CourseDetails
             }
             self?.studentsArray = participants
             self?.students = SortedDictionary<SimpleUser>(with: participants)
+            self?.addSearchController()
             self?.tableView.reloadData()
         }
     }
@@ -191,7 +191,7 @@ class StudentsSelectionTableViewController: UITableViewController, CourseDetails
     func onErrorOccurs(_ text: String) {
         spinner.isHidden = true
         presentAlertWithMessage(text, title: StringHolder.errorAlertTitle, showCancelButton: false) { [weak self] in
-            self?.delegate?.studentsSelectionTableViewControllerDidCancel()
+            self?.delegate?.shareDetailsControllerDidCancel()
         }
     }
 

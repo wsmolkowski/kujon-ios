@@ -21,7 +21,7 @@ enum PhotoFileProviderError: Error {
     case cannotFindCachesDirectory
 }
 
-class PhotoFileProvider: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate, StudentsSelectionTableViewControllerDelegate {
+class PhotoFileProvider: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ShareDetailsControllerDelegate {
 
     private let imagePicker = UIImagePickerController()
     private var controller: UIViewController?
@@ -149,15 +149,15 @@ class PhotoFileProvider: NSObject, UIImagePickerControllerDelegate, UINavigation
     }
 
     private func presentStudentsSelectionController(courseId: String, termId: String) {
-        let studentsController = StudentsSelectionTableViewController(courseId: courseId, termId: termId)
+        let studentsController = ShareDetailsController(courseId: courseId, termId: termId)
         studentsController.delegate = self
         let navigationController = UINavigationController(rootViewController: studentsController)
         controller?.present(navigationController, animated: true, completion: nil)
     }
 
-    // MARK: - StudentsSelectionTableViewControllerDelegate
+    // MARK: - ShareDetailsControllerDelegate
 
-    func studentsSelectionTableViewController(_ controller: StudentsSelectionTableViewController?, didFinishWith shareOptions: ShareOptions) {
+    func shareDetailsController(_ controller: ShareDetailsController?, didFinishWith shareOptions: ShareOptions) {
         guard let fileURL = fileURL else {
             delegate?.photoFileProviderDidFailToDeliverPhoto()
             return
@@ -165,7 +165,7 @@ class PhotoFileProvider: NSObject, UIImagePickerControllerDelegate, UINavigation
         delegate?.photoFileProvider(self, didFinishWithPhotoFileURL: fileURL, shareOptions: shareOptions)
     }
 
-    func studentsSelectionTableViewControllerDidCancel() {
+    func shareDetailsControllerDidCancel() {
         delegate?.photoFileProviderDidCancel()
     }
 
