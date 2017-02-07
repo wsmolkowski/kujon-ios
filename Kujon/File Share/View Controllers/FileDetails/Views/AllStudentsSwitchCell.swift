@@ -20,4 +20,6 @@ class AllStudentsSwitchCell: UITableViewCell {
         selectionStyle = .none
     }
 
+
+
 }

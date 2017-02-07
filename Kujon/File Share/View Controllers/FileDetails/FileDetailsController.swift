@@ -78,7 +78,7 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
         super.viewDidLoad()
         configureTableView()
         configureNavigationBar()
-        title = StringHolder.sutdentsListTitle
+        title = StringHolder.fileDetailsTitle
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -280,30 +280,12 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
         return cell
     }
 
-
     func switchCellForIndexPath(_ indexPath: IndexPath) -> AllStudentsSwitchCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: allStudentsSwitchCellId, for: indexPath) as! AllStudentsSwitchCell
         //
         return cell
     }
 
-/*
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard
-            let header = Bundle.main.loadNibNamed("SectionHeader", owner: self, options: nil)?.first as? SectionHeader
-            else { return nil }
-        let sectionName = students.sections[section]
-        header.titleLabel.text = sectionName
-        header.titleLabel.textColor = UIColor.driveBlackColor()
-        header.backgroundColor = UIColor.driveBackgroundColor()
-        header.separator.isHidden = true
-        return header
-    }
-
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return headerCellHeight
-    }
-*/
     // MARK: - Table view data delegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -311,6 +293,11 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
     }
 
     private func updateCheckboxState(at indexPath:IndexPath) {
+        let section = SectionMap.sectionForIndex(indexPath.section)
+        guard section == .students else {
+            return
+        }
+
         let studentForCurrentCell = students[indexPath.row]
         let cell = tableView.cellForRow(at: indexPath) as! CheckboxCell
 

@@ -127,6 +127,7 @@ class StringHolder {
     static let files = "Pliki"
     static let folders = "Foldery"
     static let sutdentsListTitle = "Lista osób"
+    static let fileDetailsTitle = "Szczegóły pliku"
     static let all = "Wszyscy"
     static let added = "Dodano"
     static let modified = "Zmodyfikowano"
