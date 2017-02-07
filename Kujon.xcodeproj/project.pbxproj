@@ -241,7 +241,7 @@
 		66A8BE351E48C11E008B35B7 /* DriveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDE81E48C11E008B35B7 /* DriveManager.swift */; };
 		66A8BE361E48C11E008B35B7 /* PhotoFileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDE91E48C11E008B35B7 /* PhotoFileProvider.swift */; };
 		66A8BE371E48C11E008B35B7 /* ActiveCoursesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDEC1E48C11E008B35B7 /* ActiveCoursesListTableViewController.swift */; };
-		66A8BE381E48C11E008B35B7 /* StudentsSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDEE1E48C11E008B35B7 /* StudentsSelectionTableViewController.swift */; };
+		66A8BE381E48C11E008B35B7 /* ShareDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDEE1E48C11E008B35B7 /* ShareDetailsController.swift */; };
 		66A8BE391E48C11E008B35B7 /* CheckboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDF01E48C11E008B35B7 /* CheckboxCell.swift */; };
 		66A8BE3A1E48C11E008B35B7 /* CheckboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A8BDF11E48C11E008B35B7 /* CheckboxCell.xib */; };
 		66A8BE3B1E48C11E008B35B7 /* DriveBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDF31E48C11E008B35B7 /* DriveBrowser.swift */; };
@@ -694,7 +694,7 @@
 		66A8BDE81E48C11E008B35B7 /* DriveManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveManager.swift; sourceTree = "<group>"; };
 		66A8BDE91E48C11E008B35B7 /* PhotoFileProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFileProvider.swift; sourceTree = "<group>"; };
 		66A8BDEC1E48C11E008B35B7 /* ActiveCoursesListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveCoursesListTableViewController.swift; sourceTree = "<group>"; };
-		66A8BDEE1E48C11E008B35B7 /* StudentsSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentsSelectionTableViewController.swift; sourceTree = "<group>"; };
+		66A8BDEE1E48C11E008B35B7 /* ShareDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareDetailsController.swift; sourceTree = "<group>"; };
 		66A8BDF01E48C11E008B35B7 /* CheckboxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxCell.swift; sourceTree = "<group>"; };
 		66A8BDF11E48C11E008B35B7 /* CheckboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckboxCell.xib; sourceTree = "<group>"; };
 		66A8BDF31E48C11E008B35B7 /* DriveBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveBrowser.swift; sourceTree = "<group>"; };
@@ -1553,8 +1553,8 @@
 		66A8BDEA1E48C11E008B35B7 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				66A8BDEB1E48C11E008B35B7 /* CoursesList */,
-				66A8BDED1E48C11E008B35B7 /* CourseStudentsSelectionList */,
+				66A8BDEB1E48C11E008B35B7 /* ActiveCoursesList */,
+				66A8BDED1E48C11E008B35B7 /* ShareDetails */,
 				66A8BDF21E48C11E008B35B7 /* Drive Browser */,
 				66A8BDFC1E48C11E008B35B7 /* Shared File List */,
 				66A8BE031E48C11E008B35B7 /* TransferView */,
@@ -1563,20 +1563,22 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		66A8BDEB1E48C11E008B35B7 /* CoursesList */ = {
+		66A8BDEB1E48C11E008B35B7 /* ActiveCoursesList */ = {
 			isa = PBXGroup;
 			children = (
 				66A8BDEC1E48C11E008B35B7 /* ActiveCoursesListTableViewController.swift */,
 			);
+			name = ActiveCoursesList;
 			path = CoursesList;
 			sourceTree = "<group>";
 		};
-		66A8BDED1E48C11E008B35B7 /* CourseStudentsSelectionList */ = {
+		66A8BDED1E48C11E008B35B7 /* ShareDetails */ = {
 			isa = PBXGroup;
 			children = (
-				66A8BDEE1E48C11E008B35B7 /* StudentsSelectionTableViewController.swift */,
+				66A8BDEE1E48C11E008B35B7 /* ShareDetailsController.swift */,
 				66A8BDEF1E48C11E008B35B7 /* Views */,
 			);
+			name = ShareDetails;
 			path = CourseStudentsSelectionList;
 			sourceTree = "<group>";
 		};
@@ -2862,7 +2864,7 @@
 				4C0D85E06E058E1938ECB52A /* TheseSearch.swift in Sources */,
 				66A8BE471E48C11E008B35B7 /* TransferView.swift in Sources */,
 				66A8BE3B1E48C11E008B35B7 /* DriveBrowser.swift in Sources */,
-				66A8BE381E48C11E008B35B7 /* StudentsSelectionTableViewController.swift in Sources */,
+				66A8BE381E48C11E008B35B7 /* ShareDetailsController.swift in Sources */,
 				66A016B71E3BB5230011BFD9 /* FacebookManager.swift in Sources */,
 				66A8BE291E48C11E008B35B7 /* FolderContentsProving.swift in Sources */,
 				66FD663A1E3BAD9E007066E6 /* StatisticsCell.swift in Sources */,
