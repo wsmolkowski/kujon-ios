@@ -117,7 +117,7 @@ class StringHolder {
     static let addToGoogleDrive = "Zapisz w Google Drive"
     static let showFileDetails = "Szczegóły pliku"
     static let addFromGoogleDrive = "Udostępnij plik z Google Drive"
-    static let addFromPhotoGallery = "Udostępnij zdjęcie z galerii"
+    static let addFromPhotoGallery = "Udostępnij zdjęcie z Galerii"
     static let fileNotFound = "Nie znaleziono pliku"
     static let fileShareError = "Wystąpił błąd podczas udostępniania pliku użytkownikom Kujona"
     static let fileDeleteError = "Wystąpił błąd podczas usuwania pliku w serwisie Kujon"
