@@ -38,9 +38,12 @@ class SharedFileCell: UITableViewCell {
         fileNameLabel.text = item.fileName
         sharedLabel.text = shareStringForItem(item)
 
-        if let fileSize = item.fileSize {
-            fileSizeLabel.text = fileSize + " " + StringHolder.megabytes_short
+        var fileSize = item.fileSize ?? "0.00"
+        if !fileSize.hasSuffix(StringHolder.megabytes_short) && !fileSize.hasSuffix(StringHolder.kilobytes_short) {
+            fileSize += " " + StringHolder.megabytes_short
         }
+        fileSizeLabel.text = fileSize
+
 
         if  let createdTimeString = item.createdTime,
             let date = Date.stringToDateWithClock(createdTimeString) {

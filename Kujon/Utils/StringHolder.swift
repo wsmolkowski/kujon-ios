@@ -132,6 +132,7 @@ class StringHolder {
     static let added = "Dodano"
     static let modified = "Zmodyfikowano"
     static let megabytes_short = "MB"
+    static let kilobytes_short = "KB"
     static let shareWithAll = "Udostępnij wszystkim"
     static let shareWithAll_short = "Wszystkim"
     static let shareWithSelected = "Wybierz osoby"

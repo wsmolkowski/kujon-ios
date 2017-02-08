@@ -203,7 +203,11 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
 
     private func presentUserOptions(for file: APIFile) {
         let title = file.fileName
-        let description = StringHolder.fileSize + " " + (file.fileSize ?? "0.00") + " " + StringHolder.megabytes_short
+        var fileSize = file.fileSize ?? "0.00"
+        if !fileSize.hasSuffix(StringHolder.megabytes_short) && !fileSize.hasSuffix(StringHolder.kilobytes_short) {
+            fileSize += " " + StringHolder.megabytes_short
+        }
+        let description = StringHolder.fileSize + " " + fileSize
 
         let showDetails: UIAlertAction = UIAlertAction(title: StringHolder.showFileDetails, style: .default) { [unowned self] _ in
                 let controller = FileDetailsController(file: file, courseId: self.courseId, termId: self.termId, courseStudents: self.courseStudents)

@@ -32,6 +32,10 @@ extension Date {
         return Date.getDateFormatter().string(from: self)
     }
 
+    func toAPIDateString() -> String {
+        return Date.getDateFormatter(Date.dateFormatWithClock).string(from: self)
+    }
+
     func dateToStringSchedule() -> String {
         return Date.getDateFormatter(Date.dateFormatSchedule).string(from: self)
     }

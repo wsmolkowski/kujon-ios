@@ -23,7 +23,11 @@ class FileDetailsCell: UITableViewCell {
 
     internal func configure(with file: APIFile) {
         fileNameLabel.text = file.fileName
-        fileSizeLabel.text = (file.fileSize ?? "0.00") + " " + StringHolder.megabytes_short
+        var fileSize = file.fileSize ?? "0.00"
+        if !fileSize.hasSuffix(StringHolder.megabytes_short) && !fileSize.hasSuffix(StringHolder.kilobytes_short) {
+            fileSize += " " + StringHolder.megabytes_short
+        }
+        fileSizeLabel.text = fileSize
 
         if  let createdTimeString = file.createdTime,
             let date = Date.stringToDateWithClock(createdTimeString) {

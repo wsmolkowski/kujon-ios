@@ -14,7 +14,7 @@ struct APIFile: Decodable, Hashable {
 
     var localFileURL: URL?
     var fileId: String?
-    let createdTime: String?
+    var createdTime: String?
     let fileName: String
     let courseId: String
     let termId: String

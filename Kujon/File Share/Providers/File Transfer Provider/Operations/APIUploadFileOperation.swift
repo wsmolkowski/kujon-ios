@@ -47,11 +47,17 @@ class APIUploadFileOperation: AsyncOperation, CallbackOperation {
 
         guard
             let localFileURL = localFileURL,
-            let file = APIFile(localFileURL: localFileURL, courseId: courseId, termId: termId, shareOptions: shareOptions, contentType: contentType) else {
+            let fileSize = FileManager.sizeOfFile(url: localFileURL),
+            var file = APIFile(localFileURL: localFileURL, courseId: courseId, termId: termId, shareOptions: shareOptions, contentType: contentType) else {
                 NSlogManager.showLog("Operation \(name ?? "none") is not performed intentionally")
                 state = .finished
                 return
         }
+
+        let fileSizeString = ByteCountFormatter.string(fromByteCount: Int64(fileSize), countStyle: .binary)
+        file.fileSize = fileSizeString
+        let createdDateString = Date().toAPIDateString()
+        file.createdTime = createdDateString
 
         self.file = file
 
