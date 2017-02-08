@@ -53,7 +53,6 @@ class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
             }
             do {
                 if let courseResponse = try strongSelf.changeJsonToResposne(json,errorR: strongSelf.delegate){
-
                     strongSelf.delegate?.onCourseDetailsLoaded(courseResponse.details)
                 }
             } catch {

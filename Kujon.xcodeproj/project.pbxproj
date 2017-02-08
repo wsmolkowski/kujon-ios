@@ -1480,7 +1480,6 @@
 		66A8BDCB1E48C11E008B35B7 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
-				66A8BDCC1E48C11E008B35B7 /* API File List */,
 				66A8BDCD1E48C11E008B35B7 /* API Transfer Providers */,
 				66A8BDD51E48C11E008B35B7 /* Drive Contents Provider */,
 				66A8BDD91E48C11E008B35B7 /* File Transfer Provider */,
@@ -1488,13 +1487,6 @@
 				66A8BDE91E48C11E008B35B7 /* PhotoFileProvider.swift */,
 			);
 			path = Providers;
-			sourceTree = "<group>";
-		};
-		66A8BDCC1E48C11E008B35B7 /* API File List */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "API File List";
 			sourceTree = "<group>";
 		};
 		66A8BDCD1E48C11E008B35B7 /* API Transfer Providers */ = {
