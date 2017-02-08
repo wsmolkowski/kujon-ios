@@ -44,7 +44,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         return false
         }
     }
-    private var courseStudents: [SimpleUser]?
+    private var courseStudentsCached: [SimpleUser]?
 
     // MARK: - Initial section
 
@@ -133,7 +133,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         let addPhotoFromPhotoGallery: UIAlertAction = UIAlertAction(title: StringHolder.addFromPhotoGallery, style: .default) { [weak self] _ in
             if let strongSelf = self {
                 strongSelf.photoProvider.delegate = strongSelf
-                strongSelf.photoProvider.presentImagePicker(parentController: strongSelf)
+                strongSelf.photoProvider.presentImagePicker(parentController: strongSelf, courseStudentsCached: strongSelf.courseStudentsCached)
             }
         }
         presentActionSheet(actions: [addFileFromGoogleDrive, addPhotoFromPhotoGallery])
@@ -210,7 +210,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         let description = StringHolder.fileSize + " " + fileSize
 
         let showDetails: UIAlertAction = UIAlertAction(title: StringHolder.showFileDetails, style: .default) { [unowned self] _ in
-                let controller = FileDetailsController(file: file, courseId: self.courseId, termId: self.termId, courseStudents: self.courseStudents)
+                let controller = FileDetailsController(file: file, courseId: self.courseId, termId: self.termId, courseStudents: self.courseStudentsCached)
                 controller.delegate = self
                 let navigationController = UINavigationController(rootViewController: controller)
                 self.present(navigationController, animated: true, completion: nil)
@@ -239,15 +239,24 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
 
     private func addFilesFromDriveToKujon(assignToCourseId courseId:String, andTermId termId:String) {
         let driveContentsProvider = DriveFolderContentsProvider()
-        let configuration = SelectFileConfiguration(courseId: courseId, termId: termId)
-        let completion: DriveBrowserCompletionHandler = { file, shareOptions in
+        let configuration = SelectFileConfiguration(courseId: courseId, termId: termId, courseStudentsCached: courseStudentsCached)
+        let completion: DriveBrowserCompletionHandler = { [weak self] file, shareOptions, courseStudentsCached in
+            guard let strongSelf = self else {
+                return
+            }
+            strongSelf.courseStudentsCached = courseStudentsCached
+            guard
+                let file = file,
+                let shareOptions = shareOptions else {
+                return
+            }
             let transferManager = FileTransferManager.shared
-            transferManager.delegate = self
+            transferManager.delegate = strongSelf
             let transfer = Drive2APITransfer(file: file, assignApiCourseId: courseId, termId: termId, shareOptions: shareOptions)
             transferManager.execute(transfer: transfer)
             DispatchQueue.main.async {
-                self.addTransferView(toParent: self.tableView, trackTransfer: transfer)
-                self.addButtonItem?.isEnabled = false
+                strongSelf.addTransferView(toParent: strongSelf.tableView, trackTransfer: transfer)
+                strongSelf.addButtonItem?.isEnabled = false
             }
         }
         let driveBrowser = DriveBrowser(configuration:configuration, provider:driveContentsProvider, completionHandler:completion)
@@ -341,7 +350,8 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
 
     // MARK: - PhotoFileProviderDelegate
 
-    func photoFileProvider(_ provider: PhotoFileProvider?, didFinishWithPhotoFileURL fileURL: URL, shareOptions: ShareOptions) {
+    func photoFileProvider(_ provider: PhotoFileProvider?, didFinishWithPhotoFileURL fileURL: URL, shareOptions: ShareOptions, loadedForCache courseStudents: [SimpleUser]?) {
+        courseStudentsCached = courseStudents
         let transferManager = FileTransferManager.shared
         transferManager.delegate = self
         let transfer = LocalFile2APITransfer(fileURL: fileURL, assignApiCourseId: courseId, termId: termId, shareOptions: shareOptions)
@@ -352,13 +362,15 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         }
     }
 
-    func photoFileProviderDidCancel() {
+    func photoFileProviderDidCancel(loadedForCache courseStudents: [SimpleUser]?) {
+        courseStudentsCached = courseStudents
         DispatchQueue.main.async { [weak self] in
             self?.addButtonItem?.isEnabled = true
         }
     }
 
-    func photoFileProviderDidFailToDeliverPhoto() {
+    func photoFileProviderDidFailToDeliverPhoto(loadedForCache courseStudents: [SimpleUser]?) {
+        courseStudentsCached = courseStudents
         DispatchQueue.main.async { [weak self] in
             self?.presentAlertWithMessage(StringHolder.photoSaveErrorMessage, title: StringHolder.errorAlertTitle)
             self?.addButtonItem?.isEnabled = true
@@ -372,8 +384,8 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     // MARK: - FileDetailsControllerDelegate
 
     func fileDetailsController(_ controller: FileDetailsController?, didFinishWith shareOptions: ShareOptions, forFile file: APIFile, loadedForCache courseStudents: [SimpleUser]?) {
-        if let courseStudents = courseStudents, self.courseStudents == nil {
-            self.courseStudents = courseStudents
+        if let courseStudents = courseStudents, self.courseStudentsCached == nil {
+            self.courseStudentsCached = courseStudents
         }
         updateFile(file, shareOptions: shareOptions)
     }
@@ -387,8 +399,8 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         }
     }
     func fileDetailsControllerDidCancel(loadedForCache courseStudents: [SimpleUser]?) {
-        if let courseStudents = courseStudents, self.courseStudents == nil {
-            self.courseStudents = courseStudents
+        if let courseStudents = courseStudents, self.courseStudentsCached == nil {
+            self.courseStudentsCached = courseStudents
         }
     }
 }

@@ -47,15 +47,18 @@ class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
 
     private func makeApiShot(){
         self.makeHTTPAuthenticatedGetRequest({
-            [unowned self] json in
+            [weak self] json in
+            guard let strongSelf = self else {
+                return
+            }
             do {
-                if let courseResponse = try self.changeJsonToResposne(json,errorR: self.delegate){
+                if let courseResponse = try strongSelf.changeJsonToResposne(json,errorR: strongSelf.delegate){
 
-                    self.delegate?.onCourseDetailsLoaded(courseResponse.details)
+                    strongSelf.delegate?.onCourseDetailsLoaded(courseResponse.details)
                 }
             } catch {
                 NSlogManager.showLog("JSON serialization failed:  \(error)")
-                self.delegate?.onErrorOccurs()
+                strongSelf.delegate?.onErrorOccurs()
             }
         }, onError: {[unowned self] text in self.delegate?.onErrorOccurs() })
     }

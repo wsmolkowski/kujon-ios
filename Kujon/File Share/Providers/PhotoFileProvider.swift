@@ -10,9 +10,9 @@ import Foundation
 
 protocol PhotoFileProviderDelegate: class {
 
-    func photoFileProvider(_ provider: PhotoFileProvider?, didFinishWithPhotoFileURL fileURL: URL, shareOptions: ShareOptions)
-    func photoFileProviderDidCancel()
-    func photoFileProviderDidFailToDeliverPhoto()
+    func photoFileProvider(_ provider: PhotoFileProvider?, didFinishWithPhotoFileURL fileURL: URL, shareOptions: ShareOptions, loadedForCache courseStudents: [SimpleUser]?)
+    func photoFileProviderDidCancel(loadedForCache courseStudents: [SimpleUser]?)
+    func photoFileProviderDidFailToDeliverPhoto(loadedForCache courseStudents: [SimpleUser]?)
     func photoFileProviderWillPresentStudentsListForCourseIdAndTermId() -> (courseId: String, termId: String)
 }
 
@@ -29,6 +29,7 @@ class PhotoFileProvider: NSObject, UIImagePickerControllerDelegate, UINavigation
     private var shareWithSelectedAction: UIAlertAction?
     internal weak var delegate: PhotoFileProviderDelegate?
     private var fileURL: URL?
+    private var courseStudentsCached: [SimpleUser]?
 
     override init() {
         super.init()
@@ -37,9 +38,10 @@ class PhotoFileProvider: NSObject, UIImagePickerControllerDelegate, UINavigation
         imagePicker.sourceType = .photoLibrary
     }
 
-    internal func presentImagePicker(parentController controller: UIViewController) {
+    internal func presentImagePicker(parentController controller: UIViewController, courseStudentsCached: [SimpleUser]?) {
         self.controller = controller
         self.controller?.present(imagePicker, animated: true, completion: nil)
+        self.courseStudentsCached = courseStudentsCached
     }
 
 
@@ -48,32 +50,31 @@ class PhotoFileProvider: NSObject, UIImagePickerControllerDelegate, UINavigation
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             controller?.dismiss(animated: true, completion: nil)
-            delegate?.photoFileProviderDidFailToDeliverPhoto()
+            delegate?.photoFileProviderDidFailToDeliverPhoto(loadedForCache: nil)
             return
         }
         controller?.dismiss(animated: true, completion: { [weak self] in
             self?.presentFileNameInputAlert(onShareWithAll: { [weak self] fileName in
                 guard let url = try? self?.saveJPEGFromImage(image, withFileName: fileName), let fileURL = url else {
-                    self?.delegate?.photoFileProviderDidFailToDeliverPhoto()
+                    self?.delegate?.photoFileProviderDidFailToDeliverPhoto(loadedForCache: nil)
                     return
                 }
                 let shareOptions = ShareOptions(sharedWith: .all)
-                self?.delegate?.photoFileProvider(self, didFinishWithPhotoFileURL: fileURL, shareOptions: shareOptions)
+                self?.delegate?.photoFileProvider(self, didFinishWithPhotoFileURL: fileURL, shareOptions: shareOptions, loadedForCache: nil)
 
 
             }, onShareWithSelected: { fileName in
                 guard
                     let fileURL = try? self?.saveJPEGFromImage(image, withFileName: fileName),
                     let courseIdAndTermId = self?.delegate?.photoFileProviderWillPresentStudentsListForCourseIdAndTermId() else {
-                    self?.delegate?.photoFileProviderDidFailToDeliverPhoto()
+                    self?.delegate?.photoFileProviderDidFailToDeliverPhoto(loadedForCache: nil)
                     return
                 }
                 self?.fileURL = fileURL
-                self?.presentStudentsSelectionController(courseId: courseIdAndTermId.courseId, termId: courseIdAndTermId.termId)
-
+                self?.presentStudentsSelectionController(courseId: courseIdAndTermId.courseId, termId: courseIdAndTermId.termId, courseStudentsCached: self?.courseStudentsCached)
 
             }, onCancel: { _ in
-                self?.delegate?.photoFileProviderDidCancel()
+                self?.delegate?.photoFileProviderDidCancel(loadedForCache: nil)
             })
         })
     }
@@ -102,7 +103,7 @@ class PhotoFileProvider: NSObject, UIImagePickerControllerDelegate, UINavigation
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         controller?.dismiss(animated: true, completion: { [weak self] in
-            self?.delegate?.photoFileProviderDidCancel()
+            self?.delegate?.photoFileProviderDidCancel(loadedForCache: nil)
         })
     }
 
@@ -148,8 +149,8 @@ class PhotoFileProvider: NSObject, UIImagePickerControllerDelegate, UINavigation
         shareWithSelectedAction?.isEnabled = shareActionsEnabled
     }
 
-    private func presentStudentsSelectionController(courseId: String, termId: String) {
-        let studentsController = ShareDetailsController(courseId: courseId, termId: termId)
+    private func presentStudentsSelectionController(courseId: String, termId: String, courseStudentsCached: [SimpleUser]?) {
+        let studentsController = ShareDetailsController(courseId: courseId, termId: termId, courseStudentsCached: courseStudentsCached)
         studentsController.delegate = self
         let navigationController = UINavigationController(rootViewController: studentsController)
         controller?.present(navigationController, animated: true, completion: nil)
@@ -157,16 +158,16 @@ class PhotoFileProvider: NSObject, UIImagePickerControllerDelegate, UINavigation
 
     // MARK: - ShareDetailsControllerDelegate
 
-    func shareDetailsController(_ controller: ShareDetailsController?, didFinishWith shareOptions: ShareOptions) {
+    func shareDetailsController(_ controller: ShareDetailsController?, didFinishWith shareOptions: ShareOptions, loadedForCache courseStudents: [SimpleUser]?) {
         guard let fileURL = fileURL else {
-            delegate?.photoFileProviderDidFailToDeliverPhoto()
+            delegate?.photoFileProviderDidFailToDeliverPhoto(loadedForCache: courseStudents)
             return
         }
-        delegate?.photoFileProvider(self, didFinishWithPhotoFileURL: fileURL, shareOptions: shareOptions)
+        delegate?.photoFileProvider(self, didFinishWithPhotoFileURL: fileURL, shareOptions: shareOptions, loadedForCache: courseStudents)
     }
 
-    func shareDetailsControllerDidCancel() {
-        delegate?.photoFileProviderDidCancel()
+    func shareDetailsControllerDidCancel(loadedForCache courseStudents: [SimpleUser]?) {
+        delegate?.photoFileProviderDidCancel(loadedForCache: courseStudents)
     }
 
 }

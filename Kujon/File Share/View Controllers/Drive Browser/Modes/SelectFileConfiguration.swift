@@ -16,11 +16,11 @@ protocol SelectFileConfigurable: DriveBrowserConfigurable {
     var courseId: String? { get set }
     var termId: String? { get set }
     var selectedItem: SelectedItem? { get set }
+    var courseStudentsCached: [SimpleUser]? { get set }
 
 }
 
 class SelectFileConfiguration: SelectFileConfigurable {
-
 
     var mode: DriveBrowserMode {
         return .selectFile
@@ -29,7 +29,11 @@ class SelectFileConfiguration: SelectFileConfigurable {
     var leftNavigationBarButton: DriveBrowserButtonItem?
 
     var rightNavigationBarButton: DriveBrowserButtonItem? = (title: StringHolder.cancel, action: { browser in
-        browser.dismissBrowser()
+        let browser = browser
+        browser.dismissBrowser {
+            browser.completionHandler?(nil, nil, (browser.configuration as? SelectFileConfiguration)?.courseStudentsCached)
+        }
+
     })
 
     var isFileSelectionEnabled = true
@@ -40,10 +44,13 @@ class SelectFileConfiguration: SelectFileConfigurable {
 
     var termId: String?
 
-    init(courseId: String, termId: String, selectedFile: SelectedItem? = nil) {
+    var courseStudentsCached: [SimpleUser]?
+
+    init(courseId: String, termId: String, selectedFile: SelectedItem? = nil, courseStudentsCached: [SimpleUser]?) {
         self.courseId = courseId
         self.termId = termId
         self.selectedItem = selectedFile
+        self.courseStudentsCached = courseStudentsCached
     }
     
 }

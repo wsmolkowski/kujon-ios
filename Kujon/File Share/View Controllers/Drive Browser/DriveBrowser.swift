@@ -9,7 +9,7 @@
 import UIKit
 import GoogleAPIClientForREST
 
-typealias DriveBrowserCompletionHandler = (GTLRDrive_File, ShareOptions) -> Void
+typealias DriveBrowserCompletionHandler = (GTLRDrive_File?, ShareOptions?, [SimpleUser]?) -> Void
 
 class DriveBrowser: UITableViewController, FolderContentsProvidingDelegate, FileTransferManagerDelegate, ShareDetailsControllerDelegate, TransferViewProviding, ShareToolbarDelegate {
 
@@ -161,7 +161,7 @@ class DriveBrowser: UITableViewController, FolderContentsProvidingDelegate, File
         dismissBrowser { [weak self] in
             if let selectedItem = self?.selectedItem {
                 let shareOptions = ShareOptions(sharedWith: .all)
-                self?.completionHandler?(selectedItem.file, shareOptions)
+                self?.completionHandler?(selectedItem.file, shareOptions, (self?.configuration as? SelectFileConfiguration)?.courseStudentsCached)
             }
         }
     }
@@ -169,7 +169,7 @@ class DriveBrowser: UITableViewController, FolderContentsProvidingDelegate, File
     internal func rightToolbarButtonDidTap() {
         if let configuration = configuration as? SelectFileConfiguration,
             let courseId = configuration.courseId, let termId = configuration.termId {
-            let controller = ShareDetailsController(courseId: courseId, termId: termId)
+            let controller = ShareDetailsController(courseId: courseId, termId: termId, courseStudentsCached: configuration.courseStudentsCached)
             controller.delegate = self
             let navigationController = UINavigationController(rootViewController: controller)
             present(navigationController, animated: true, completion: nil)
@@ -454,15 +454,24 @@ class DriveBrowser: UITableViewController, FolderContentsProvidingDelegate, File
 
     // MARK: - ShareDetailsControllerDelegate
 
-    func shareDetailsController(_ controller: ShareDetailsController?, didFinishWith shareOptions: ShareOptions) {
+    func shareDetailsController(_ controller: ShareDetailsController?, didFinishWith shareOptions: ShareOptions, loadedForCache courseStudents: [SimpleUser]?) {
+        if let courseStudents = courseStudents,
+           let configuration = configuration as? SelectFileConfiguration,
+            configuration.courseStudentsCached == nil {
+            configuration.courseStudentsCached = courseStudents
+        }
          dismissBrowser { [weak self] in
             if let selectedItem = self?.selectedItem {
-                self?.completionHandler?(selectedItem.file, shareOptions)
+                self?.completionHandler?(selectedItem.file, shareOptions, (self?.configuration as? SelectFileConfiguration)?.courseStudentsCached)
             }
         }
     }
-    func shareDetailsControllerDidCancel() {
-        // do nothing
+    func shareDetailsControllerDidCancel(loadedForCache courseStudents: [SimpleUser]?) {
+        if let courseStudents = courseStudents,
+            let configuration = configuration as? SelectFileConfiguration,
+            configuration.courseStudentsCached == nil {
+            configuration.courseStudentsCached = courseStudents
+        }
     }
 
     // MARK: - UIScrollViewDelegate

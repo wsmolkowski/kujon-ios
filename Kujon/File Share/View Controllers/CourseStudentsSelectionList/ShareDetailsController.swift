@@ -10,9 +10,9 @@ import UIKit
 
 protocol ShareDetailsControllerDelegate: class {
 
-    func shareDetailsControllerDidCancel()
+    func shareDetailsControllerDidCancel(loadedForCache courseStudents: [SimpleUser]?)
 
-    func shareDetailsController(_ controller: ShareDetailsController?, didFinishWith shareOptions: ShareOptions)
+    func shareDetailsController(_ controller: ShareDetailsController?, didFinishWith shareOptions: ShareOptions, loadedForCache courseStudents: [SimpleUser]?)
 }
 
 class ShareDetailsController: UITableViewController, CourseDetailsProviderDelegate, UISearchResultsUpdating {
@@ -24,7 +24,7 @@ class ShareDetailsController: UITableViewController, CourseDetailsProviderDelega
     private let headerCellHeight: CGFloat = 45.0
     let searchController = UISearchController(searchResultsController: nil)
 
-    private let courseDetailsProvider = CourseDetailsProvider()
+    private var courseDetailsProvider: CourseDetailsProvider?
     private var studentsArray: [SimpleUser] = []
     private var students = SortedDictionary<SimpleUser>(with: [])
     private var selectedStudents: Set<SimpleUser> = Set() {
@@ -39,10 +39,17 @@ class ShareDetailsController: UITableViewController, CourseDetailsProviderDelega
 
     // MARK: - Initial section
 
-    init(courseId: String, termId: String) {
+    init(courseId: String, termId: String, courseStudentsCached: [SimpleUser]?) {
         super.init(style: .plain)
-        courseDetailsProvider.delegate = self
-        courseDetailsProvider.loadCourseDetails(courseId, andTermId: termId)
+        if let courseStudentsCached = courseStudentsCached {
+            studentsArray = courseStudentsCached
+            students = SortedDictionary<SimpleUser>(with: studentsArray)
+            return
+        }
+        courseDetailsProvider = CourseDetailsProvider()
+        courseDetailsProvider?.delegate = self
+        courseDetailsProvider?.loadCourseDetails(courseId, andTermId: termId)
+
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -55,6 +62,10 @@ class ShareDetailsController: UITableViewController, CourseDetailsProviderDelega
         configureTableView()
         configureNavigationBar()
         title = StringHolder.sutdentsListTitle
+        if !studentsArray.isEmpty {
+            addSearchController()
+            tableView.reloadData()
+        }
 
     }
 
@@ -122,7 +133,7 @@ class ShareDetailsController: UITableViewController, CourseDetailsProviderDelega
         spinner.frame.size = CGSize(width: spinnerSize, height: spinnerSize)
         spinner.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
         navigationController?.view.addSubview(spinner)
-        spinner.isHidden = false
+        spinner.isHidden = courseDetailsProvider == nil
     }
 
     internal func cancelButtonDidTap() {
@@ -130,12 +141,12 @@ class ShareDetailsController: UITableViewController, CourseDetailsProviderDelega
         if searchController.isActive {
             searchController.dismiss(animated: true, completion: { [weak self] in
                 self?.dismiss(animated: true, completion: { [weak self] in
-                    self?.delegate?.shareDetailsControllerDidCancel()
+                    self?.delegate?.shareDetailsControllerDidCancel(loadedForCache: self?.studentsArray)
                 })
             })
         } else {
             dismiss(animated: true, completion: { [weak self] in
-                self?.delegate?.shareDetailsControllerDidCancel()
+                self?.delegate?.shareDetailsControllerDidCancel(loadedForCache: self?.studentsArray)
             })
         }
     }
@@ -149,7 +160,7 @@ class ShareDetailsController: UITableViewController, CourseDetailsProviderDelega
                     let studentsArray = [SimpleUser](selectedStudentsSet)
                     let studentsIds = self?.mapToNonNilIds(inUsers: studentsArray) ?? []
                     let shareOptions = ShareOptions(sharedWith: .list, ids: studentsIds)
-                    self?.delegate?.shareDetailsController(self, didFinishWith: shareOptions)
+                    self?.delegate?.shareDetailsController(self, didFinishWith: shareOptions, loadedForCache: self?.studentsArray)
                 })
 
             })
@@ -159,7 +170,7 @@ class ShareDetailsController: UITableViewController, CourseDetailsProviderDelega
                 let studentsArray = [SimpleUser](selectedStudentsSet)
                 let studentsIds = self?.mapToNonNilIds(inUsers: studentsArray) ?? []
                 let shareOptions = ShareOptions(sharedWith: .list, ids: studentsIds)
-                self?.delegate?.shareDetailsController(self, didFinishWith: shareOptions)
+                self?.delegate?.shareDetailsController(self, didFinishWith: shareOptions, loadedForCache: self?.studentsArray)
             })
 
         }
@@ -194,7 +205,7 @@ class ShareDetailsController: UITableViewController, CourseDetailsProviderDelega
         DispatchQueue.main.async { [weak self] in
             self?.spinner.isHidden = true
             self?.presentAlertWithMessage(text, title: StringHolder.errorAlertTitle, showCancelButton: false) { [weak self] in
-                self?.delegate?.shareDetailsControllerDidCancel()
+                self?.delegate?.shareDetailsControllerDidCancel(loadedForCache: self?.studentsArray)
             }
         }
     }
