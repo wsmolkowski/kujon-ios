@@ -63,6 +63,7 @@ class ActiveCoursesListTableViewController: RefreshingTableViewController, Navig
     }
 
     func dataDidLoad() {
+        activeCoursesWrappers = []
         for courseWrapper in coursesWrappers {
                 for term in terms {
                     if term.active && term.termId == courseWrapper.title  {
