@@ -51,7 +51,7 @@ class EmptyStateView: UIView {
             container.alpha = 1
         })
 
-        container.perform(#selector(EmptyStateView.hide), with: nil, afterDelay: 5.0)
+        container.perform(#selector(EmptyStateView.hide), with: nil, afterDelay: 2.0)
     }
 
 

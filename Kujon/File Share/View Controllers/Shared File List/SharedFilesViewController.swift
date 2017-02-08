@@ -407,7 +407,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
                 fileToUpdate.shareOptions = shareOptions
                 allFiles[index] = fileToUpdate
                 DispatchQueue.main.async { [weak self] in
-                    self?.tableView.reloadData()
+                    self?.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
                 }
             }
         }
