@@ -147,6 +147,7 @@ class StringHolder {
     static let fileSaveHasBeenCancelled = "Zapisywanie pliku zostało anulowane"
     static let save = "Zapisz"
     static let change = "Zmień"
+    static let filesForCourses = "Pliki dla Przedmiotów"
 
 
     static func fileHasBeenRemovedMessage(fileName: String) -> String {

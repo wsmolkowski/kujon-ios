@@ -19,7 +19,7 @@ class ActiveCoursesListTableViewController: RefreshingTableViewController, Navig
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(CoursesTableViewController.openDrawer),andTitle: StringHolder.courses)
+        NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(CoursesTableViewController.openDrawer),andTitle: StringHolder.filesForCourses)
         self.tableView.register(UINib(nibName: "CourseTableViewCell", bundle: nil), forCellReuseIdentifier: CourseCellId)
         self.tableView.tableFooterView = UIView()
         self.tableView.rowHeight = UITableViewAutomaticDimension
