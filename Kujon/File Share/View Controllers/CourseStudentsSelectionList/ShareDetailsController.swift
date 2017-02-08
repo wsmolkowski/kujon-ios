@@ -41,7 +41,7 @@ class ShareDetailsController: UITableViewController, CourseDetailsProviderDelega
 
     init(courseId: String, termId: String, courseStudentsCached: [SimpleUser]?) {
         super.init(style: .plain)
-        if let courseStudentsCached = courseStudentsCached {
+        if let courseStudentsCached = courseStudentsCached, !courseStudentsCached.isEmpty {
             studentsArray = courseStudentsCached
             students = SortedDictionary<SimpleUser>(with: studentsArray)
             return
@@ -213,7 +213,10 @@ class ShareDetailsController: UITableViewController, CourseDetailsProviderDelega
     func onUsosDown() {
         DispatchQueue.main.async { [weak self] in
             self?.spinner.isHidden = true
-            print("USOS Down")
+            guard let strongSelf = self else {
+                return
+            }
+            EmptyStateView.showUsosDownAlert(inParent: strongSelf.view)
         }
     }
 

@@ -175,6 +175,16 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         presentAlertWithMessage(text, title: StringHolder.errorAlertTitle)
     }
 
+    func onUsosDown() {
+        DispatchQueue.main.async { [weak self] in
+            self?.refreshControl?.endRefreshing()
+            guard let strongSelf = self else {
+                return
+            }
+            EmptyStateView.showUsosDownAlert(inParent: strongSelf.view)
+        }
+    }
+
 
     // MARK: - Table view data source
 

@@ -66,7 +66,7 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
     init(file: APIFile, courseId: String, termId: String, courseStudents: [SimpleUser]?) {
         self.file = file
         super.init(style: .plain)
-        if let courseStudents = courseStudents {
+        if let courseStudents = courseStudents, !courseStudents.isEmpty {
             students = courseStudents
             let userIds = sharedIdsForFile(file: file)
             setSelectedStudents(forIds: userIds)
@@ -239,6 +239,17 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
         spinner.isHidden = true
         presentAlertWithMessage(text, title: StringHolder.errorAlertTitle, showCancelButton: false) { [weak self] in
             self?.delegate?.fileDetailsControllerDidCancel(loadedForCache: self?.students)
+        }
+    }
+
+    func onUsosDown() {
+        DispatchQueue.main.async { [weak self] in
+            self?.spinner.isHidden = true
+            self?.refreshControl?.endRefreshing()
+            guard let strongSelf = self else {
+                return
+            }
+            EmptyStateView.showUsosDownAlert(inParent: strongSelf.view)
         }
     }
 

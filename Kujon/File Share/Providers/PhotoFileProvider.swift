@@ -41,7 +41,9 @@ class PhotoFileProvider: NSObject, UIImagePickerControllerDelegate, UINavigation
     internal func presentImagePicker(parentController controller: UIViewController, courseStudentsCached: [SimpleUser]?) {
         self.controller = controller
         self.controller?.present(imagePicker, animated: true, completion: nil)
-        self.courseStudentsCached = courseStudentsCached
+        if let courseStudentsCached = courseStudentsCached, !courseStudentsCached.isEmpty {
+            self.courseStudentsCached = courseStudentsCached
+        }
     }
 
 

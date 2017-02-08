@@ -84,6 +84,16 @@ class ActiveCoursesListTableViewController: RefreshingTableViewController, Navig
         })
     }
 
+    func onUsosDown() {
+        DispatchQueue.main.async { [weak self] in
+            self?.refreshControl?.endRefreshing()
+            guard let strongSelf = self else {
+                return
+            }
+            EmptyStateView.showUsosDownAlert(inParent: strongSelf.view)
+        }
+    }
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
