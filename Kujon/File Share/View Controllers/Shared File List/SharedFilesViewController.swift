@@ -171,11 +171,14 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     }
 
     func onErrorOccurs(_ text: String) {
+        emptyFolderLabel?.isHidden = true
+
         refreshControl?.endRefreshing()
         presentAlertWithMessage(text, title: StringHolder.errorAlertTitle)
     }
 
     func onUsosDown() {
+        emptyFolderLabel?.isHidden = true
         DispatchQueue.main.async { [weak self] in
             self?.refreshControl?.endRefreshing()
             guard let strongSelf = self else {
@@ -311,11 +314,13 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         DispatchQueue.main.async { [weak self] in
             self?.closeTransferView()
             self?.addButtonItem?.isEnabled = true
-            if let view = self?.navigationController?.view,
+            if  let strongSelf = self,
+                let view = strongSelf.navigationController?.view,
                 let file = file as? APIFile {
-                self?.allFiles.append(file)
-                self?.allFiles.sort { $0.fileName < $1.fileName }
-                self?.tableView.reloadData()
+                strongSelf.allFiles.append(file)
+                strongSelf.allFiles.sort { $0.fileName < $1.fileName }
+                strongSelf.emptyFolderLabel?.isHidden = !strongSelf.allFiles.isEmpty
+                strongSelf.tableView.reloadData()
                 ToastView.showInParent(view, withText: StringHolder.fileHasBeenSharedMessage(fileName: file.fileName), forDuration: 2.0)
             }
         }
@@ -412,6 +417,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
             }
         }
     }
+
     func fileDetailsControllerDidCancel(loadedForCache courseStudents: [SimpleUser]?) {
         if let courseStudents = courseStudents, self.courseStudentsCached == nil {
             self.courseStudentsCached = courseStudents

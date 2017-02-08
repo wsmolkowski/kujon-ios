@@ -30,7 +30,6 @@ class EmptyStateView: UIView {
         let container = EmptyStateView(frame: frame)
 
         container.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin]
-        container.backgroundColor = .white
 
         if let imageName = imageName {
             let image = EmptyStateView.imageInParentView(container, imageName: imageName, offsetY: offsetY)
@@ -51,7 +50,7 @@ class EmptyStateView: UIView {
             container.alpha = 1
         })
 
-        container.perform(#selector(EmptyStateView.hide), with: nil, afterDelay: 2.0)
+        container.perform(#selector(EmptyStateView.hide), with: nil, afterDelay: 5.0)
     }
 
 
