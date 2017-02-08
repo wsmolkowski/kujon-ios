@@ -29,6 +29,8 @@ class FileDetailsCell: UITableViewCell {
         }
         fileSizeLabel.text = fileSize
 
+        fileTypeLabel.text = FileTypeDescriptionProvider.descriptionForMIMETypeString(file.contentType)
+
         if  let createdTimeString = file.createdTime,
             let date = Date.stringToDateWithClock(createdTimeString) {
             let dateFormatted = date.toFileEventDateTime()
