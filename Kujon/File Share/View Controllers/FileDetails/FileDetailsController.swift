@@ -15,7 +15,7 @@ protocol FileDetailsControllerDelegate: class {
     func fileDetailsController(_ controller: FileDetailsController?, didFinishWith shareOptions: ShareOptions, forFile file: APIFile, loadedForCache courseStudents: [SimpleUser]?)
 }
 
-class FileDetailsController: UITableViewController, CourseDetailsProviderDelegate {
+class FileDetailsController: UITableViewController, CourseDetailsProviderDelegate, AllStudentsSwitchCellDelegate {
 
     private enum SectionMap: Int {
         case header = 0
@@ -44,12 +44,18 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
     private lazy var shareFileProvider = APIShareFileProvider()
     private var courseDetailsProvider: CourseDetailsProvider?
     private var students: [SimpleUser] = []
-    private var selectedStudentsAtLoad: Set<SimpleUser> = Set()
     private var selectedStudents: Set<SimpleUser> = Set() {
         didSet {
             rightBarButtonItem?.isEnabled = didUserChangeShareOptions()
         }
     }
+    private var areAllStudentsSelected: Bool {
+        return selectedStudents.count == students.count
+    }
+    private var allStudentsEnabled: Bool = false
+    private var selectedStudentsAtLoad: Set<SimpleUser> = Set()
+    private var temporarySelection: Set<SimpleUser>?
+
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
@@ -62,7 +68,11 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
         super.init(style: .plain)
         if let courseStudents = courseStudents {
             students = courseStudents
-            setSelectedStudents(for: file)
+            let userIds = sharedIdsForFile(file: file)
+            setSelectedStudents(forIds: userIds)
+            selectedStudentsAtLoad = selectedStudents
+            allStudentsEnabled = areAllStudentsSelected
+            updateControllerOnAllStudentsSwichChange()
             return
         }
         courseDetailsProvider = CourseDetailsProvider()
@@ -105,7 +115,7 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
         tableView.estimatedRowHeight = 50.0
 
         tableView.separatorStyle = .none
-        tableView.backgroundColor = UIColor.driveBackgroundColor()
+        tableView.backgroundColor = UIColor.greyBackgroundColor()
         tableView.tintColor = UIColor.kujonBlueColor()
         tableView.reloadData()
     }
@@ -132,7 +142,7 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
         spinner.isHidden = courseDetailsProvider == nil
     }
 
-    private func sharedWithIdsForFile(file: APIFile) -> [String] {
+    private func sharedIdsForFile(file: APIFile) -> [String] {
         guard
             let sharedWith = file.shareOptions.sharedWith,
             let sharedWithIds = file.shareOptions.sharedWithIds else {
@@ -148,14 +158,14 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
         }
     }
 
-    private func setSelectedStudents(for file: APIFile) {
-        let sharedWithIds = sharedWithIdsForFile(file: file)
+    private func setSelectedStudents(forIds ids: [String]) {
+        var selectedGroup: Set<SimpleUser> = Set()
         for student in students {
-            if sharedWithIds.contains(student.userId) {
-                selectedStudents.insert(student)
+            if ids.contains(student.userId) {
+                selectedGroup.insert(student)
             }
         }
-        selectedStudentsAtLoad = selectedStudents
+        selectedStudents = selectedGroup
     }
 
     private func didUserChangeShareOptions() -> Bool {
@@ -214,10 +224,14 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
                 let participants = courseDetails.participants else {
                 return
             }
-            self?.students = participants
-            self?.setSelectedStudents(for: strongSelf.file)
-            self?.rightBarButtonItem?.isEnabled = false
-            self?.tableView.reloadData()
+            strongSelf.students = participants
+            let userIds = strongSelf.sharedIdsForFile(file: strongSelf.file)
+            strongSelf.setSelectedStudents(forIds: userIds)
+            strongSelf.selectedStudentsAtLoad = strongSelf.selectedStudents
+            strongSelf.rightBarButtonItem?.isEnabled = false
+            strongSelf.allStudentsEnabled = strongSelf.areAllStudentsSelected
+            strongSelf.updateControllerOnAllStudentsSwichChange()
+            strongSelf.tableView.reloadData()
         }
     }
 
@@ -282,7 +296,8 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
 
     func switchCellForIndexPath(_ indexPath: IndexPath) -> AllStudentsSwitchCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: allStudentsSwitchCellId, for: indexPath) as! AllStudentsSwitchCell
-        //
+        cell.delegate = self
+        cell.setSwitchOn(allStudentsEnabled)
         return cell
     }
 
@@ -307,8 +322,38 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
             selectedStudents.insert(studentForCurrentCell)
         }
         cell.toggle()
+        allStudentsEnabled = areAllStudentsSelected
         tableView.reloadData()
     }
 
-    
+    // MARK: - AllStudentsSwitchCellDelegate
+
+    func allStudentsSwitchCell(_ cell: AllStudentsSwitchCell?, didChangeSwitchState isOn: Bool) {
+        allStudentsEnabled = isOn
+        updateControllerOnAllStudentsSwichChange()
+    }
+
+    private func updateControllerOnAllStudentsSwichChange() {
+        switch allStudentsEnabled {
+        case true:
+            temporarySelection = areAllStudentsSelected ? Set<SimpleUser>() : selectedStudents
+            if let allStudentsIds = students.map({ $0.userId }) as? [String] {
+                setSelectedStudents(forIds: allStudentsIds)
+            }
+        case false:
+            if let temporarySelection = temporarySelection {
+                selectedStudents = temporarySelection
+                self.temporarySelection = nil
+                if let tempStudentsIds = temporarySelection.map({ $0.userId }) as? [String] {
+                    setSelectedStudents(forIds: tempStudentsIds)
+                }
+            }
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadSections(IndexSet(integer: 1), with: .fade)
+        }
+
+    }
+
+
 }

@@ -1523,7 +1523,7 @@
 			children = (
 				66A8BDDA1E48C11E008B35B7 /* FileTransferManager.swift */,
 				66A8BDDB1E48C11E008B35B7 /* Operations */,
-				66A8BDE11E48C11E008B35B7 /* Sequences */,
+				66A8BDE11E48C11E008B35B7 /* Transfers */,
 			);
 			path = "File Transfer Provider";
 			sourceTree = "<group>";
@@ -1540,7 +1540,7 @@
 			path = Operations;
 			sourceTree = "<group>";
 		};
-		66A8BDE11E48C11E008B35B7 /* Sequences */ = {
+		66A8BDE11E48C11E008B35B7 /* Transfers */ = {
 			isa = PBXGroup;
 			children = (
 				66A8BDE21E48C11E008B35B7 /* API2DriveTransfer.swift */,
@@ -1548,6 +1548,7 @@
 				66A8BDE41E48C11E008B35B7 /* LocalFile2APITransfer.swift */,
 				66A8BDE51E48C11E008B35B7 /* Tranferable.swift */,
 			);
+			name = Transfers;
 			path = Sequences;
 			sourceTree = "<group>";
 		};

@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol AllStudentsSwitchCellDelegate: class {
+
+    func allStudentsSwitchCell(_ cell: AllStudentsSwitchCell?, didChangeSwitchState isOn: Bool)
+}
+
 class AllStudentsSwitchCell: UITableViewCell {
 
 
-    @IBOutlet weak var allStudentsSwitch: UISwitch!
+    internal weak var delegate: AllStudentsSwitchCellDelegate?
+    @IBOutlet internal weak var allStudentsSwitch: UISwitch!
 
 
     override func awakeFromNib() {
@@ -20,6 +26,12 @@ class AllStudentsSwitchCell: UITableViewCell {
         selectionStyle = .none
     }
 
+    internal func setSwitchOn(_ on: Bool) {
+        allStudentsSwitch.setOn(on, animated: true)
+    }
 
+    @IBAction internal func switchDidChangeState(_ sender: UISwitch) {
+        delegate?.allStudentsSwitchCell(self, didChangeSwitchState: sender.isOn)
+    }
 
 }
