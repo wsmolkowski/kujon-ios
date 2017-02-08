@@ -12,7 +12,7 @@ protocol FileDetailsControllerDelegate: class {
 
     func fileDetailsControllerDidCancel(loadedForCache courseStudents: [SimpleUser]?)
 
-    func fileDetailsController(_ controller: FileDetailsController?, didFinishWith shareOptions: ShareOptions, forFile file: APIFile, loadedForCache courseStudents: [SimpleUser]?)
+    func fileDetailsController(_ controller: FileDetailsController?, didUpdateFile file: APIFile, with shareOptions: ShareOptions, loadedForCache courseStudents: [SimpleUser]?)
 }
 
 class FileDetailsController: UITableViewController, CourseDetailsProviderDelegate, AllStudentsSwitchCellDelegate {
@@ -196,7 +196,7 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
             DispatchQueue.main.async { [weak self] in
                 self?.spinner.isHidden = true
             }
-            strongSelf.delegate?.fileDetailsController(strongSelf, didFinishWith: shareOptions, forFile: strongSelf.file, loadedForCache: strongSelf.students)
+            strongSelf.delegate?.fileDetailsController(strongSelf, didUpdateFile: strongSelf.file, with: shareOptions, loadedForCache: strongSelf.students)
             strongSelf.dismiss(animated: true, completion: nil)
             }, failureHandler: { [weak self] (message) in
                 DispatchQueue.main.async { [weak self] in

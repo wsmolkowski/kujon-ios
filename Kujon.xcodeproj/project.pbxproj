@@ -1610,19 +1610,20 @@
 			isa = PBXGroup;
 			children = (
 				66A8BDF31E48C11E008B35B7 /* DriveBrowser.swift */,
-				66A8BDF41E48C11E008B35B7 /* Modes */,
+				66A8BDF41E48C11E008B35B7 /* Configuration */,
 				66A8BDF81E48C11E008B35B7 /* Views */,
 			);
 			path = "Drive Browser";
 			sourceTree = "<group>";
 		};
-		66A8BDF41E48C11E008B35B7 /* Modes */ = {
+		66A8BDF41E48C11E008B35B7 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
 				66A8BDF51E48C11E008B35B7 /* ChooseFolderConfiguration.swift */,
 				66A8BDF61E48C11E008B35B7 /* DriveBrowserConfigurable.swift */,
 				66A8BDF71E48C11E008B35B7 /* SelectFileConfiguration.swift */,
 			);
+			name = Configuration;
 			path = Modes;
 			sourceTree = "<group>";
 		};

@@ -12,12 +12,12 @@ import Decodable
 struct APISharedFileListResponse: Decodable {
 
     let status: String
-    var files: [APISharedFile]
+    var file: APISharedFile
 
     static func decode(_ j: Any) throws -> APISharedFileListResponse {
         return try APISharedFileListResponse (
             status: j => "status",
-            files: j => "data"
+            file: j => "data"
         )
     }
     

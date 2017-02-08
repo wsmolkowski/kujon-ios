@@ -10,7 +10,7 @@ import Foundation
 
 class APIShareFileProvider {
 
-    typealias SuccessHandlerType = ([APISharedFile]) -> Void
+    typealias SuccessHandlerType = (APISharedFile) -> Void
     typealias FailureHandlerType = (String) -> Void
 
     private let session = SessionManager.provideSession()
@@ -64,7 +64,7 @@ class APIShareFileProvider {
                 let sharedFileResponseJSON = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments) {
 
                 if let sharedFileResponse = try? APISharedFileListResponse.decode(sharedFileResponseJSON) {
-                    successHandler(sharedFileResponse.files)
+                    successHandler(sharedFileResponse.file)
                     return
                 }
 

@@ -383,7 +383,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
 
     // MARK: - FileDetailsControllerDelegate
 
-    func fileDetailsController(_ controller: FileDetailsController?, didFinishWith shareOptions: ShareOptions, forFile file: APIFile, loadedForCache courseStudents: [SimpleUser]?) {
+    func fileDetailsController(_ controller: FileDetailsController?, didUpdateFile file: APIFile, with shareOptions: ShareOptions, loadedForCache courseStudents: [SimpleUser]?) {
         if let courseStudents = courseStudents, self.courseStudentsCached == nil {
             self.courseStudentsCached = courseStudents
         }
@@ -393,8 +393,12 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     private func updateFile(_ file: APIFile, shareOptions: ShareOptions ) {
         for (index, originalfile) in allFiles.enumerated() {
             if let originalFileId = originalfile.fileId, let fileId = file.fileId, originalFileId == fileId {
-                allFiles[index].shareOptions = file.shareOptions
-                tableView.reloadData()
+                var fileToUpdate = allFiles[index]
+                fileToUpdate.shareOptions = shareOptions
+                allFiles[index] = fileToUpdate
+                DispatchQueue.main.async { [weak self] in
+                    self?.tableView.reloadData()
+                }
             }
         }
     }
