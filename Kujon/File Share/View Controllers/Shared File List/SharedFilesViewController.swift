@@ -27,6 +27,8 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     private weak var toolbarMenu: ToolbarMenuController?
     private lazy var photoProvider: PhotoFileProvider = PhotoFileProvider()
     private var addButtonItem: UIBarButtonItem?
+    @IBOutlet weak var courseNameLabel: UILabel!
+    internal var courseName: String = ""
 
     private var fileListProvider = APIFileListProvider()
     private var presentedFiles: [APIFile] {
@@ -63,6 +65,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         configureNavigationBar()
         configureTableView()
         addEmptyFolderLabel(hidden:true)
+        courseNameLabel.text = courseName
     }
 
     override func viewDidAppear(_ animated: Bool) {

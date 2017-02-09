@@ -130,6 +130,7 @@ class ActiveCoursesListTableViewController: RefreshingTableViewController, Navig
         let sharedFilesController = storyboard.instantiateViewController(withIdentifier: "SharedFilesViewController") as! SharedFilesViewController
         sharedFilesController.courseId = course.courseId
         sharedFilesController.termId = course.termId
+        sharedFilesController.courseName = course.courseName
         navigationController?.pushViewController(sharedFilesController, animated: true)
     }
 

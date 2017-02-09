@@ -110,7 +110,7 @@ class StringHolder {
     static let rootFolderName = "Mój dysk Google"
     static let folderEmpty = "Folder jest pusty"
     static let defaultFolderContentsTitle = "Zawartość folderu"
-    static let fileShareTitle = "Pliki udostępnione"
+    static let fileShareTitle = "Pliki przedmiotu"
     static let fileShare = "Udostępnianie plików"
     static let noCachesDirectory = "Nie znaleziono folderu tymczasowego"
     static let delete = "Usuń"
