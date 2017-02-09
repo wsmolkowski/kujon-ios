@@ -14,7 +14,12 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     private let fileCellHeight: CGFloat = 50.0
     private let fileCellId: String = "fileCellId"
     private var spinner = SpinnerView()
-    private var emptyFolderLabel: UILabel?
+    private var emptyFolderView: UIView?
+    private var folderIsEmpty: Bool = false {
+        didSet {
+            emptyFolderView?.isHidden = !folderIsEmpty
+        }
+    }
     private var actionButton: UIBarButtonItem!
 
     internal var courseId: String!
@@ -64,13 +69,13 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         addRefreshControl()
         configureNavigationBar()
         configureTableView()
-        addEmptyFolderLabel(hidden:true)
         courseNameLabel.text = courseName
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         addSpinner()
+        addEmptyFolderView(hidden: !presentedFiles.isEmpty)
         if self.isBeingPresented || self.isMovingToParentViewController {
             (refreshControl as? KujonRefreshControl)?.beginRefreshingProgrammatically()
         }
@@ -113,12 +118,11 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         tableView.backgroundColor = .greyBackgroundColor()
     }
 
-    private func addEmptyFolderLabel(hidden:Bool) {
-        emptyFolderLabel = UILabel()
-        emptyFolderLabel?.text = StringHolder.folderEmpty
-        emptyFolderLabel?.textAlignment = .center
-        tableView.backgroundView = emptyFolderLabel!
-        emptyFolderLabel?.isHidden = hidden
+    private func addEmptyFolderView(hidden:Bool) {
+        emptyFolderView = EmptyStateView.noFilesView(parentBounds: tableView.bounds)
+        emptyFolderView?.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin]
+        tableView.backgroundView = emptyFolderView!
+        emptyFolderView?.isHidden = hidden
     }
 
     private func addSpinner() {
@@ -172,23 +176,24 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         toolbarMenu?.reset()
         refreshControl?.endRefreshing()
         tableView.reloadData()
-        emptyFolderLabel?.isHidden = !presentedFiles.isEmpty
+        folderIsEmpty = presentedFiles.isEmpty
     }
 
     func onErrorOccurs(_ text: String) {
-        emptyFolderLabel?.isHidden = true
+        folderIsEmpty = false
 
         refreshControl?.endRefreshing()
         presentAlertWithMessage(text, title: StringHolder.errorAlertTitle)
     }
 
     func onUsosDown() {
-        emptyFolderLabel?.isHidden = true
+        folderIsEmpty = false
         DispatchQueue.main.async { [weak self] in
             self?.refreshControl?.endRefreshing()
             guard let strongSelf = self else {
                 return
             }
+            self?.tableView.visibleCells.forEach { $0.isHidden = true }
             EmptyStateView.showUsosDownAlert(inParent: strongSelf.view)
         }
     }
@@ -292,10 +297,14 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         spinner.isHidden = false
         deletionProvider.deleteFile(file, successHandler: { [weak self] fileId in
             DispatchQueue.main.async { [weak self] in
-                self?.spinner.isHidden = true
-                self?.removeFileFromModel(file)
-                self?.tableView.reloadData()
-                if let view = self?.navigationController?.view {
+                guard let strongSelf = self else {
+                    return
+                }
+                strongSelf.spinner.isHidden = true
+                strongSelf.removeFileFromModel(file)
+                strongSelf.folderIsEmpty = strongSelf.allFiles.isEmpty
+                strongSelf.tableView.reloadData()
+                if let view = strongSelf.navigationController?.view {
                     ToastView.showInParent(view, withText: StringHolder.fileHasBeenRemovedMessage(fileName: file.fileName), forDuration: 2.0)
                 }
             }
@@ -318,7 +327,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         }
     }
 
-    // MARK: FileTransferManagerDelegate
+    // MARK: - FileTransferManagerDelegate
 
     func transfer(_ transfer: Transferable?, didFinishWithSuccessAndReturn file: Any?) {
         DispatchQueue.main.async { [weak self] in
@@ -329,7 +338,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
                 let file = file as? APIFile {
                 strongSelf.allFiles.append(file)
                 strongSelf.allFiles.sort { $0.fileName < $1.fileName }
-                strongSelf.emptyFolderLabel?.isHidden = !strongSelf.allFiles.isEmpty
+                strongSelf.folderIsEmpty = strongSelf.allFiles.isEmpty
                 strongSelf.tableView.reloadData()
                 ToastView.showInParent(view, withText: StringHolder.fileHasBeenSharedMessage(fileName: file.fileName), forDuration: 2.0)
             }

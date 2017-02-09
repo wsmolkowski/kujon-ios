@@ -91,6 +91,7 @@ class ActiveCoursesListTableViewController: RefreshingTableViewController, Navig
             guard let strongSelf = self else {
                 return
             }
+            self?.tableView.visibleCells.forEach { $0.isHidden = true }
             EmptyStateView.showUsosDownAlert(inParent: strongSelf.view)
         }
     }

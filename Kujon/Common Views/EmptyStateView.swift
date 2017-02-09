@@ -19,6 +19,12 @@ class EmptyStateView: UIView {
         EmptyStateView.showAlert(inParent: view, imageName: nil, title: "Brak wyników wyszukiwania", offsetY: 50.0)
     }
 
+    internal static func noFilesView(parentBounds: CGRect) -> UIView {
+        return EmptyStateView.alertView(parentBounds: parentBounds, imageName: "empty-state-cactus", title: "Trochę tu pusto", description: "Aby dodać plik, wybierz ikonę + znajdującą się w prawym górnym rogu.", descriptionLabelHeight: 60.0, offsetY: 100.0)
+    }
+
+
+    // Generic alerts
 
     internal static func showAlert(inParent view: UIView, imageName: String?, title: String, description: String? = nil, descriptionLabelHeight: CGFloat = 30.0, offsetY: CGFloat = 0) {
         let width: CGFloat = view.bounds.size.width - 20
@@ -53,6 +59,30 @@ class EmptyStateView: UIView {
         container.perform(#selector(EmptyStateView.hide), with: nil, afterDelay: 5.0)
     }
 
+    internal static func alertView(parentBounds: CGRect, imageName: String?, title: String, description: String? = nil, descriptionLabelHeight: CGFloat = 30.0, offsetY: CGFloat = 0) -> UIView {
+
+        let container = UIView()
+        container.frame = parentBounds
+        container.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin]
+
+        if let imageName = imageName {
+            let image = EmptyStateView.imageInParentView(container, imageName: imageName, offsetY: offsetY)
+            container.addSubview(image)
+        }
+
+        let titleLabel = EmptyStateView.titleLabelInParentView(container, title: title, offsetY: offsetY)
+        container.addSubview(titleLabel)
+
+
+        if let description = description,
+            let descriptionLabel = EmptyStateView.descriptionLabelInParentView(container, description: description, labelHeight: descriptionLabelHeight, offsetY: offsetY) {
+            container.addSubview(descriptionLabel)
+        }
+
+        return container
+    }
+
+    // Alert components
 
     private static func imageInParentView(_ view: UIView, imageName: String, offsetY: CGFloat = 0) -> UIView {
         let image = UIImage(named: imageName)
