@@ -18,6 +18,8 @@ class ShareToolbar: UIToolbar {
     internal weak var toolbarDelegate: ShareToolbarDelegate?
     private var title: String = "Udostępnij wybrany plik"
     private var titleLabel: UILabel?
+    private let toolbarHeight: CGFloat = 105.0
+    private let textLabelHeight: CGFloat = 40.0
 
     override var isHidden: Bool {
         didSet {
@@ -55,12 +57,13 @@ class ShareToolbar: UIToolbar {
         view.backgroundColor = UIColor.kujonBlueColor()
         view.tintColor = UIColor.white
 
-        let titleLabelFrame: CGRect = CGRect(x: 0, y: 15, width: view.bounds.size.width, height: 20)
+        let titleLabelFrame: CGRect = CGRect(x: 0, y: 15, width: view.bounds.size.width, height: textLabelHeight)
         let titleLabel = UILabel(frame: titleLabelFrame)
         titleLabel.autoresizingMask = [.flexibleWidth, .flexibleLeftMargin, .flexibleRightMargin]
         titleLabel.textColor = .white
         titleLabel.textAlignment = .center
         titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.numberOfLines = 2
         view.addSubview(titleLabel)
         self.titleLabel = titleLabel
 
@@ -71,14 +74,14 @@ class ShareToolbar: UIToolbar {
     override func layoutSubviews() {
         super.layoutSubviews()
         var frame = bounds
-        frame.size.height = 85
+        frame.size.height = toolbarHeight
         frame.origin.y = UIScreen.main.bounds.size.height - frame.size.height
         self.frame = frame
     }
 
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         var size = super.sizeThatFits(size)
-        size.height = 85
+        size.height = toolbarHeight
         return size
     }
 

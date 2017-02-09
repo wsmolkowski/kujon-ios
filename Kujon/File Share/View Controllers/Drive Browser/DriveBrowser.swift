@@ -232,7 +232,7 @@ class DriveBrowser: UITableViewController, FolderContentsProvidingDelegate, File
 
     func shareToolbarTitle() -> String {
         let fileName = selectedItem?.file.name ?? ""
-        return StringHolder.share + " " + fileName
+        return StringHolder.share + " " + fileName + " studentom przedmiotu"
     }
 
     // MARK: - FolderContentsProvidingDelegate
