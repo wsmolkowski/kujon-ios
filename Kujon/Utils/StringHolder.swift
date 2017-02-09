@@ -148,6 +148,7 @@ class StringHolder {
     static let save = "Zapisz"
     static let change = "Zmień"
     static let filesForCourses = "Pliki dla Przedmiotów"
+    static let showPreview = "Otwórz podgląd"
 
 
     static func fileHasBeenRemovedMessage(fileName: String) -> String {

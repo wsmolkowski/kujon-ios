@@ -9,7 +9,7 @@
 import Foundation
 import GoogleAPIClientForREST
 
-class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, FileTransferManagerDelegate, TransferViewProviding, UITableViewDataSource, UITableViewDelegate, ToolbarMenuControllerDelegate, PhotoFileProviderDelegate, FileDetailsControllerDelegate {
+class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, FileTransferManagerDelegate, TransferViewProviding, UITableViewDataSource, UITableViewDelegate, ToolbarMenuControllerDelegate, PhotoFileProviderDelegate, FileDetailsControllerDelegate, UIDocumentInteractionControllerDelegate {
 
     private let fileCellHeight: CGFloat = 50.0
     private let fileCellId: String = "fileCellId"
@@ -45,6 +45,8 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         }
     }
     private var courseStudentsCached: [SimpleUser]?
+    private var cachedFiles: [URL] = []
+
 
     // MARK: - Initial section
 
@@ -211,10 +213,10 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let file = presentedFiles[indexPath.row]
-        presentUserOptions(for: file)
+        presentFileOptions(for: file)
     }
 
-    private func presentUserOptions(for file: APIFile) {
+    private func presentFileOptions(for file: APIFile) {
         let title = file.fileName
         var fileSize = file.fileSize ?? "0.00"
         if !fileSize.hasSuffix(StringHolder.megabytes_short) && !fileSize.hasSuffix(StringHolder.kilobytes_short) {
@@ -222,24 +224,29 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         }
         let description = StringHolder.fileSize + " " + fileSize
 
-        let showDetails: UIAlertAction = UIAlertAction(title: StringHolder.showFileDetails, style: .default) { [unowned self] _ in
+        let showDetailsAction: UIAlertAction = UIAlertAction(title: StringHolder.showFileDetails, style: .default) { [unowned self] _ in
                 let controller = FileDetailsController(file: file, courseId: self.courseId, termId: self.termId, courseStudents: self.courseStudentsCached)
                 controller.delegate = self
                 let navigationController = UINavigationController(rootViewController: controller)
                 self.present(navigationController, animated: true, completion: nil)
         }
 
+        let previewFileAction: UIAlertAction = UIAlertAction(title: StringHolder.showPreview, style: .default) { [unowned self] _ in
+            self.previewFile(file)
+        }
+
         let addToDriveAction: UIAlertAction = UIAlertAction(title: StringHolder.addToGoogleDrive, style: .default) { [unowned self] _ in
             self.addToDrive(file: file)
         }
 
-        let deleteAction: UIAlertAction = UIAlertAction(title: StringHolder.delete, style: .destructive) { [unowned self] _ in
+        let deleteFileAction: UIAlertAction = UIAlertAction(title: StringHolder.delete, style: .destructive) { [unowned self] _ in
             self.deleteFile(file)
         }
         let hasDeletionRight = file.fileSharedByMe != nil && file.fileSharedByMe == true
-        deleteAction.isEnabled = hasDeletionRight
+        deleteFileAction.isEnabled = hasDeletionRight
 
-        presentActionSheet(actions: [showDetails, addToDriveAction, deleteAction], title: title, message: description)
+        let actions = [showDetailsAction, previewFileAction, addToDriveAction, deleteFileAction]
+        presentActionSheet(actions: actions, title: title, message: description)
     }
 
     private func addToDrive(file: APIFile) {
@@ -423,4 +430,52 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
             self.courseStudentsCached = courseStudents
         }
     }
+
+    // MARK: - Document preview
+
+    func previewFile(_ file: APIFile) {
+        let downloadProvider = APIDownloadProvider.shared
+        spinner.isHidden = false
+        downloadProvider.startDownload(file: file, successHandler: { fileURL in
+            DispatchQueue.main.async { [weak self] in
+                self?.spinner.isHidden = true
+                self?.cachedFiles.append(fileURL)
+                let previewController = UIDocumentInteractionController(url: fileURL)
+                previewController.delegate = self
+                previewController.presentPreview(animated: true)
+            }
+        }, failureHandler: { message in
+            DispatchQueue.main.async { [weak self] in
+                self?.spinner.isHidden = true
+                self?.presentAlertWithMessage(message, title: StringHolder.errorAlertTitle)
+            }
+        }, progressUpdateHandler: { _, _, _ in })
+
+    }
+
+    // MARK: - UIDocumentInteractionControllerDelegate
+
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        return self
+    }
+
+    func documentInteractionControllerDidEndPreview(_ controller: UIDocumentInteractionController) {
+        removeAllCachedFiles()
+    }
+
+    private func removeAllCachedFiles() {
+        for cachedFileURL in cachedFiles {
+            if let _ = try? cachedFileURL.checkPromisedItemIsReachable() {
+                NSlogManager.showLog("Removing cached file: \(cachedFileURL.lastPathComponent)")
+                try? FileManager.default.removeItem(at: cachedFileURL)
+            }
+        }
+    }
+
+    // MARK: - Deinit
+
+    deinit {
+        removeAllCachedFiles()
+    }
+
 }
