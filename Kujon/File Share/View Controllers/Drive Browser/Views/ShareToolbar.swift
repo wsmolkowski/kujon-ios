@@ -56,8 +56,8 @@ class ShareToolbar: UIToolbar {
         view.autoresizingMask = [.flexibleWidth, .flexibleLeftMargin, .flexibleRightMargin]
         view.backgroundColor = UIColor.kujonBlueColor()
         view.tintColor = UIColor.white
-
-        let titleLabelFrame: CGRect = CGRect(x: 0, y: 15, width: view.bounds.size.width, height: textLabelHeight)
+        let horizontalPadding: CGFloat = 10.0
+        let titleLabelFrame: CGRect = CGRect(x: horizontalPadding, y: 15, width: view.bounds.size.width - horizontalPadding * 2, height: textLabelHeight)
         let titleLabel = UILabel(frame: titleLabelFrame)
         titleLabel.autoresizingMask = [.flexibleWidth, .flexibleLeftMargin, .flexibleRightMargin]
         titleLabel.textColor = .white
