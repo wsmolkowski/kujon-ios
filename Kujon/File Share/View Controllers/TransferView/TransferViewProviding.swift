@@ -27,15 +27,17 @@ extension TransferViewProviding {
     }
 
     func addTransferView(toParent tableView: UITableView, trackTransfer transfer: Transferable?) {
-        guard let transfer = transfer else {
-            return
-        }
 
-        guard let transferView = Bundle.main.loadNibNamed("TransferView", owner: self, options: nil)?.first as? TransferView
+        guard
+            let transfer = transfer,
+            let transferView = Bundle.main.loadNibNamed("TransferView", owner: self, options: nil)?.first as? TransferView
             else { return }
 
         transferView.transfer = transfer
-        transferView.frame.size.width = tableView.bounds.size.width
+        var frame = tableView.bounds
+        frame.size.height = 82
+        frame.origin.y = tableView.contentOffset.y > 0.0 ? tableView.contentOffset.y : 0
+        transferView.frame = frame
         transferView.autoresizingMask = [.flexibleWidth, .flexibleLeftMargin, .flexibleRightMargin]
         transferView.alpha = 0.0
         tableView.addSubview(transferView)
@@ -53,12 +55,10 @@ extension TransferViewProviding {
         }
         var newFrame = transferView.frame
         newFrame.origin.x = 0
-        if scrollView.contentOffset.y > 0.0 {
+        if scrollView.contentOffset.y > -10 {
             newFrame.origin.y = scrollView.contentOffset.y
-            print("correcting")
         }
         transferView.frame = newFrame
-        print("view frame: ", newFrame)
         scrollView.bringSubview(toFront:transferView)
     }
 
