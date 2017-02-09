@@ -75,7 +75,9 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         addSpinner()
-        addEmptyFolderView(hidden: !presentedFiles.isEmpty)
+        if tableView.backgroundView == nil {
+            addEmptyFolderView(hidden: !allFiles.isEmpty)
+        }
         if self.isBeingPresented || self.isMovingToParentViewController {
             (refreshControl as? KujonRefreshControl)?.beginRefreshingProgrammatically()
         }
