@@ -25,13 +25,16 @@ extension JsonProviderProtocol {
                 let json = try JSONSerialization.jsonObject(with: jsonData, options: [])
                 let errora = try ErrorClass.decode(json)
                 if (errora.code != nil && errorR != nil) {
+
                     switchOverCodes(errora.code!, text: errora.message, errorR: errorR!)
                 }else if(errora.code == nil){
+
                     errorR.onErrorOccurs(errora.message)
                 }
                 return nil
             } catch {
                 if (errorR != nil) {
+
                     errorR.onErrorOccurs(StringHolder.errorOccures)
                 }
                 return nil

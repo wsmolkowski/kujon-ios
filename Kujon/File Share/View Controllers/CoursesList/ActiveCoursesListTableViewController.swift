@@ -77,6 +77,10 @@ class ActiveCoursesListTableViewController: RefreshingTableViewController, Navig
     }
 
     func onErrorOccurs(_ text: String) {
+        coursesWrappers = []
+        activeCoursesWrappers = []
+        termsDidLoad = false
+        coursesDidLoad = false
         self.showAlertApi(StringHolder.attention, text: text, succes: {
             [unowned self] in
             self.loadData()
@@ -86,6 +90,10 @@ class ActiveCoursesListTableViewController: RefreshingTableViewController, Navig
     }
 
     func onUsosDown() {
+        coursesWrappers = []
+        activeCoursesWrappers = []
+        termsDidLoad = false
+        coursesDidLoad = false
         DispatchQueue.main.async { [weak self] in
             self?.refreshControl?.endRefreshing()
             guard let strongSelf = self else {

@@ -21,9 +21,15 @@ class CourseProvider: RestApiManager {
             if (data != nil) {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: [])
+
                     let error = try? ErrorClass.decode(json)
-                    if let error = error {
-                        self.delegate.onErrorOccurs(error.message)
+                    if let error = error, let code = error.code {
+                        switch code {
+                        case 504:
+                            self.delegate.onUsosDown()
+                        default:
+                            self.delegate.onErrorOccurs(error.message)
+                        }
                         return
                     }
                     let arrayOfCourses: NSMutableArray = NSMutableArray()
