@@ -150,6 +150,7 @@ class StringHolder {
     static let change = "Zmień"
     static let filesForCourses = "Pliki przedmiotów"
     static let showPreview = "Otwórz podgląd"
+    static let deleteFile = "Usuń plik"
 
 
     static func fileHasBeenRemovedMessage(fileName: String) -> String {
@@ -162,6 +163,10 @@ class StringHolder {
 
     static func fileHasBeenSavedOnGoogleDriveMessage(fileName: String) -> String {
         return "Plik \(fileName) został zapisany na dysku Google"
+    }
+
+    static func fileWillBeDeletedMessage(fileName: String) -> String {
+        return  "Plik \(fileName) zostanie usunięty z Kujona. Czy chcesz usunąć plik?"
     }
 
 

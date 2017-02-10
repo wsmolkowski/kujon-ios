@@ -250,7 +250,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         }
 
         let deleteFileAction: UIAlertAction = UIAlertAction(title: StringHolder.delete, style: .destructive) { [unowned self] _ in
-            self.deleteFile(file)
+            self.deleteFileIfUserConfirms(file: file)
         }
         let hasDeletionRight = file.fileSharedByMe != nil && file.fileSharedByMe == true
         deleteFileAction.isEnabled = hasDeletionRight
@@ -293,6 +293,15 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         let navigationController = UINavigationController(navigationBarClass: nil, toolbarClass: ShareToolbar.self)
         navigationController.setViewControllers([driveBrowser], animated: true)
         present(navigationController, animated: true, completion: nil)
+    }
+
+    private func deleteFileIfUserConfirms(file: APIFile) {
+        let alert = UIAlertController(title: StringHolder.deleteFile, message: StringHolder.fileWillBeDeletedMessage(fileName: file.fileName), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: StringHolder.delete, style: .destructive, handler: { [weak self] _ in
+            self?.deleteFile(file)
+        }))
+        alert.addAction(UIAlertAction(title: StringHolder.cancel, style: .cancel, handler: nil))
+        parent?.present(alert, animated: true, completion: nil)
     }
 
     private func deleteFile(_ file: APIFile) {
