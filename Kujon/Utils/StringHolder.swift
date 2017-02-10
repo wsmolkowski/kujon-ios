@@ -111,7 +111,7 @@ class StringHolder {
     static let folderEmpty = "Folder jest pusty"
     static let defaultFolderContentsTitle = "Zawartość folderu"
     static let fileShareTitle = "Pliki przedmiotu"
-    static let fileShareMenuItem = "Pliki udostępnione"
+    static let fileShareMenuItem = "Pliki przedmiotów"
     static let fileShare = "Udostępnianie plików"
     static let noCachesDirectory = "Nie znaleziono folderu tymczasowego"
     static let delete = "Usuń"
