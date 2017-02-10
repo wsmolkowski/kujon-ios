@@ -44,7 +44,7 @@ class FileIconProvider {
              .imageJPG,
              .googlePhoto,
              .googleDrawing:
-            return #imageLiteral(resourceName: "jpg-icon")
+            return #imageLiteral(resourceName: "img-icon")
 
         case .googleAudio,
              .audioMP3,
@@ -66,7 +66,7 @@ class FileIconProvider {
              .audiAIFF,
              .audiAIFF_alt,
              .audioAMR:
-            return #imageLiteral(resourceName: "mp3-icon")
+            return #imageLiteral(resourceName: "snd-icon")
 
         case .documentPDF:
             return #imageLiteral(resourceName: "pdf-icon")
