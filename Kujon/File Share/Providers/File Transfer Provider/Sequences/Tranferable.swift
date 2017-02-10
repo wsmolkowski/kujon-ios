@@ -8,11 +8,17 @@
 
 import Foundation
 
+enum TransferType {
+    case add
+    case download
+}
 
 protocol Transferable: class {
 
     var delegate: TransferDelegate? { get set }
     var operations: [Operation] { get set }
+
+    var type: TransferType { get }
 
     func createOperations() -> [Operation]
     func cancel()

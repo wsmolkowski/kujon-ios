@@ -19,6 +19,7 @@ class Drive2APITransfer: Transferable, OperationDelegate {
     private var downloadProgress: Float = 0.0
     private var uploadProgress: Float = 0.0
     private var transferProgress: Float { return downloadProgress / 2.0 + uploadProgress / 2.0 }
+    internal var type: TransferType = .add
 
     internal var operations: [Operation] = []
     internal weak var delegate: TransferDelegate?

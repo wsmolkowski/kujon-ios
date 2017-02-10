@@ -13,6 +13,7 @@ class TransferView: UIView {
     enum Action: String {
         case preparing = "Przygotowywanie"
         case addingFile = "Dodawanie pliku"
+        case downloadingFile = "Pobieranie pliku"
         case fileAdded = "Plik został dodany"
         case cancelling = "Trwa anulowanie operacji"
     }
@@ -42,7 +43,13 @@ class TransferView: UIView {
 
     internal func update(progress: Float) {
         if action == .preparing {
-            action = .addingFile
+            guard let transfer = transfer else {
+                return
+            }
+            switch transfer.type {
+            case .add: action = .addingFile
+            case .download: action = .downloadingFile
+            }
         }
         guard progress >= 0.0 && progress <= 1.0 else {
             return

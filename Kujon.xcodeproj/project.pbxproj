@@ -127,6 +127,7 @@
 		661D1C221DAD974500BA9EE9 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 661D1C211DAD974500BA9EE9 /* HTMLParser.m */; };
 		662DAFED1DAC14150094867E /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662DAFEC1DAC14150094867E /* String+.swift */; };
 		664DCFFF1E4E02CE004EE946 /* SharedFilesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664DCFFE1E4E02CE004EE946 /* SharedFilesSection.swift */; };
+		664DD0011E4E0BAA004EE946 /* API2DeviceTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664DD0001E4E0BAA004EE946 /* API2DeviceTransfer.swift */; };
 		66852C191DE8639B009234C9 /* SettingsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66852C181DE8639B009234C9 /* SettingsResponse.swift */; };
 		66989CC91E38CB9700B659F6 /* KujonAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66989CC81E38CB9700B659F6 /* KujonAppearance.swift */; };
 		66989CCB1E38CE8200B659F6 /* SortKeyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66989CCA1E38CE8200B659F6 /* SortKeyProviding.swift */; };
@@ -587,6 +588,7 @@
 		661D1C211DAD974500BA9EE9 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLParser.m; path = "../Global Extensions/HTMLParser.m"; sourceTree = "<group>"; };
 		662DAFEC1DAC14150094867E /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		664DCFFE1E4E02CE004EE946 /* SharedFilesSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedFilesSection.swift; sourceTree = "<group>"; };
+		664DD0001E4E0BAA004EE946 /* API2DeviceTransfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API2DeviceTransfer.swift; sourceTree = "<group>"; };
 		66852C181DE8639B009234C9 /* SettingsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsResponse.swift; sourceTree = "<group>"; };
 		66989CC81E38CB9700B659F6 /* KujonAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KujonAppearance.swift; sourceTree = "<group>"; };
 		66989CCA1E38CE8200B659F6 /* SortKeyProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortKeyProviding.swift; sourceTree = "<group>"; };
@@ -1544,6 +1546,7 @@
 				66A8BDE31E48C11E008B35B7 /* Drive2APITransfer.swift */,
 				66A8BDE41E48C11E008B35B7 /* LocalFile2APITransfer.swift */,
 				66A8BDE51E48C11E008B35B7 /* Tranferable.swift */,
+				664DD0001E4E0BAA004EE946 /* API2DeviceTransfer.swift */,
 			);
 			name = Transfers;
 			path = Sequences;
@@ -2871,6 +2874,7 @@
 				66FD66741E3BAD9E007066E6 /* CoursePopUpViewController.swift in Sources */,
 				66A8BE151E48C11E008B35B7 /* APISharedFileListResponse.swift in Sources */,
 				66A016DD1E3BB5550011BFD9 /* CourseDetailsProvider.swift in Sources */,
+				664DD0011E4E0BAA004EE946 /* API2DeviceTransfer.swift in Sources */,
 				4C0D83577DFA9E0E3D2AD2B5 /* SearchElementProtocol.swift in Sources */,
 				4C0D8FAE3D9478F5CCC1BE75 /* Unauthorized.swift in Sources */,
 				66A8BE591E48C68D008B35B7 /* Bool+.swift in Sources */,

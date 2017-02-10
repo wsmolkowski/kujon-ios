@@ -17,6 +17,7 @@ class LocalFile2APITransfer: Transferable, OperationDelegate {
     private let shareOptions: ShareOptions
 
     private var transferProgress: Float = 0.0
+    internal var type: TransferType = .add
 
     internal var operations: [Operation] = []
     internal weak var delegate: TransferDelegate?

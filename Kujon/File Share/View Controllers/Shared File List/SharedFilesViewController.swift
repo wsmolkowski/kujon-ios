@@ -235,7 +235,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         let description = StringHolder.fileSize + " " + fileSize
 
         let previewFileAction: UIAlertAction = UIAlertAction(title: StringHolder.showPreview, style: .default) { [unowned self] _ in
-            self.previewFile(file)
+            self.previewAPIFile(file)
         }
 
         let showDetailsAction: UIAlertAction = UIAlertAction(title: StringHolder.showFileDetails, style: .default) { [unowned self] _ in
@@ -338,22 +338,46 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         }
     }
 
+    private func setupNewTransfer(_ transfer: Transferable) {
+        let transferManager = FileTransferManager.shared
+        transferManager.delegate = self
+        transferManager.execute(transfer: transfer)
+        DispatchQueue.main.async {
+            self.addTransferView(toParent: self.tableView, trackTransfer: transfer)
+            self.addButtonItem?.isEnabled = false
+        }
+
+    }
+
     // MARK: - FileTransferManagerDelegate
 
     func transfer(_ transfer: Transferable?, didFinishWithSuccessAndReturn file: Any?) {
         DispatchQueue.main.async { [weak self] in
-            self?.closeTransferView()
-            self?.addButtonItem?.isEnabled = true
-            if  let strongSelf = self,
-                let view = strongSelf.navigationController?.view,
+            guard let strongSelf = self else {
+                return
+            }
+            strongSelf.closeTransferView()
+            strongSelf.addButtonItem?.isEnabled = true
+
+            if transfer is API2DeviceTransfer {
+                guard let file = file as? APIFile, let url = file.localFileURL else { return }
+                strongSelf.previewLocalFile(url: url)
+                return
+            }
+
+            if let view = strongSelf.navigationController?.view,
                 let file = file as? APIFile {
-                strongSelf.allFiles.append(file)
-                strongSelf.allFiles.sort { $0.fileName < $1.fileName }
-                strongSelf.folderIsEmpty = strongSelf.allFiles.isEmpty
-                strongSelf.tableView.reloadData()
+                strongSelf.updateController(newFile: file)
                 ToastView.showInParent(view, withText: StringHolder.fileHasBeenSharedMessage(fileName: file.fileName), forDuration: 2.0)
             }
         }
+    }
+
+    private func updateController(newFile file: APIFile) {
+        allFiles.append(file)
+        allFiles.sort { $0.fileName < $1.fileName }
+        folderIsEmpty = allFiles.isEmpty
+        tableView.reloadData()
     }
 
     func transfer(_ transfer: Transferable?, didFailExecuting operation: Operation?, errorMessage: String) {
@@ -456,24 +480,17 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
 
     // MARK: - Document preview
 
-    func previewFile(_ file: APIFile) {
-        let downloadProvider = APIDownloadProvider.shared
-        spinner.isHidden = false
-        downloadProvider.startDownload(file: file, successHandler: { fileURL in
-            DispatchQueue.main.async { [weak self] in
-                self?.spinner.isHidden = true
-                self?.cachedFiles.append(fileURL)
-                let previewController = UIDocumentInteractionController(url: fileURL)
-                previewController.delegate = self
-                previewController.presentPreview(animated: true)
-            }
-        }, failureHandler: { message in
-            DispatchQueue.main.async { [weak self] in
-                self?.spinner.isHidden = true
-                self?.presentAlertWithMessage(message, title: StringHolder.errorAlertTitle)
-            }
-        }, progressUpdateHandler: { _, _, _ in })
+    func previewAPIFile(_ file: APIFile) {
+        let transfer = API2DeviceTransfer(file: file)
+        setupNewTransfer(transfer)
 
+    }
+
+    private func previewLocalFile(url: URL) {
+        cachedFiles.append(url)
+        let previewController = UIDocumentInteractionController(url: url)
+        previewController.delegate = self
+        previewController.presentPreview(animated: true)
     }
 
     // MARK: - UIDocumentInteractionControllerDelegate
