@@ -44,7 +44,8 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     }
 
     private var allFiles: [APIFile] = []
-    private var mineFiles: [APIFile] { return allFiles.filter { file in
+    private var mineFiles: [APIFile] {
+        return allFiles.filter { file in
         if let fileSharedByMe = file.fileSharedByMe, fileSharedByMe == true {
             return true
         }
@@ -53,7 +54,6 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     }
     private var courseStudentsCached: [SimpleUser]?
     private var cachedFiles: [URL] = []
-
 
     // MARK: - Initial section
 
@@ -83,15 +83,6 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         }
     }
 
-    func refresh(_ refreshControl: KujonRefreshControl) {
-        if refreshControl.refreshType == .userInitiated {
-            fileListProvider.reload()
-        }
-        if let courseId = courseId, let termId = termId {
-            fileListProvider.loadFileList(courseId: courseId, termId: termId)
-        }
-    }
-
     private func addRefreshControl() {
         refreshControl = KujonRefreshControl()
         refreshControl?.addTarget(self, action: #selector(RefreshingTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
@@ -104,10 +95,6 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         navigationController?.navigationBar.tintColor = UIColor.white
         addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(SharedFilesViewController.addButtonDidTap))
         navigationItem.rightBarButtonItem = addButtonItem
-    }
-
-    internal func addButtonDidTap() {
-        presentAddOptions()
     }
 
     private func configureTableView() {
@@ -136,28 +123,20 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         spinner.isHidden = true
     }
 
-    private func presentAddOptions() {
-        let addFileFromGoogleDrive: UIAlertAction = UIAlertAction(title: StringHolder.addFromGoogleDrive, style: .default) { [unowned self] _ in
-            self.addFilesFromDriveToKujon(assignToCourseId: self.courseId, andTermId: self.termId)
-        }
-
-        let addPhotoFromPhotoGallery: UIAlertAction = UIAlertAction(title: StringHolder.addFromPhotoGallery, style: .default) { [weak self] _ in
-            if let strongSelf = self {
-                strongSelf.photoProvider.delegate = strongSelf
-                strongSelf.photoProvider.presentImagePicker(parentController: strongSelf, courseStudentsCached: strongSelf.courseStudentsCached)
-            }
-        }
-        presentActionSheet(actions: [addFileFromGoogleDrive, addPhotoFromPhotoGallery])
-    }
-
-    // MARK: - ToolbarMenuControllerDelegate
-
-    func toolbarMenuControllerDidSelectState(_ state: ToolbarMenuState) {
-        tableView.reloadData()
-    }
-
-
     // MARK: - Navigation
+
+    func refresh(_ refreshControl: KujonRefreshControl) {
+        if refreshControl.refreshType == .userInitiated {
+            fileListProvider.reload()
+        }
+        if let courseId = courseId, let termId = termId {
+            fileListProvider.loadFileList(courseId: courseId, termId: termId)
+        }
+    }
+
+    internal func addButtonDidTap() {
+        presentAddOptions()
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == toolbarMenuSegueId {
@@ -169,6 +148,12 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
 
     internal func dismissFolderContents(completion: (() -> Void)? = nil) {
         dismiss(animated: true, completion: completion)
+    }
+
+    // MARK: - ToolbarMenuControllerDelegate
+
+    func toolbarMenuControllerDidSelectState(_ state: ToolbarMenuState) {
+        tableView.reloadData()
     }
 
     // MARK: - APIFileListProviderDelegate
@@ -200,30 +185,20 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         }
     }
 
+    // MARK: - Controller actions
 
-    // MARK: - Table view data source
+    private func presentAddOptions() {
+        let addFileFromGoogleDrive: UIAlertAction = UIAlertAction(title: StringHolder.addFromGoogleDrive, style: .default) { [unowned self] _ in
+            self.addFilesToKujonFromDrive(assignToCourseId: self.courseId, andTermId: self.termId)
+        }
 
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presentedFiles.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: fileCellId, for: indexPath) as! SharedFileCell
-        let file = presentedFiles[indexPath.row]
-        let position = CellPositionType.cellPositionTypeForIndex(indexPath.row, in: presentedFiles as [AnyObject])
-        cell.configure(with: file, cellPosition: position)
-        return cell
-    }
-
-    // MARK: - Table view data delegate
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let file = presentedFiles[indexPath.row]
-        presentFileOptions(for: file)
+        let addPhotoFromPhotoGallery: UIAlertAction = UIAlertAction(title: StringHolder.addFromPhotoGallery, style: .default) { [weak self] _ in
+            if let strongSelf = self {
+                strongSelf.photoProvider.delegate = strongSelf
+                strongSelf.photoProvider.presentImagePicker(parentController: strongSelf, courseStudentsCached: strongSelf.courseStudentsCached)
+            }
+        }
+        presentActionSheet(actions: [addFileFromGoogleDrive, addPhotoFromPhotoGallery])
     }
 
     private func presentFileOptions(for file: APIFile) {
@@ -239,10 +214,10 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         }
 
         let showDetailsAction: UIAlertAction = UIAlertAction(title: StringHolder.showFileDetails, style: .default) { [unowned self] _ in
-                let controller = FileDetailsController(file: file, courseId: self.courseId, termId: self.termId, courseStudents: self.courseStudentsCached)
-                controller.delegate = self
-                let navigationController = UINavigationController(rootViewController: controller)
-                self.present(navigationController, animated: true, completion: nil)
+            let controller = FileDetailsController(file: file, courseId: self.courseId, termId: self.termId, courseStudents: self.courseStudentsCached)
+            controller.delegate = self
+            let navigationController = UINavigationController(rootViewController: controller)
+            self.present(navigationController, animated: true, completion: nil)
         }
 
         let addToDriveAction: UIAlertAction = UIAlertAction(title: StringHolder.addToGoogleDrive, style: .default) { [unowned self] _ in
@@ -267,7 +242,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         present(navigationController, animated: true, completion: nil)
     }
 
-    private func addFilesFromDriveToKujon(assignToCourseId courseId:String, andTermId termId:String) {
+    private func addFilesToKujonFromDrive(assignToCourseId courseId:String, andTermId termId:String) {
         let driveContentsProvider = DriveFolderContentsProvider()
         let configuration = SelectFileConfiguration(courseId: courseId, termId: termId, courseStudentsCached: courseStudentsCached)
         let completion: DriveBrowserCompletionHandler = { [weak self] file, shareOptions, courseStudentsCached in
@@ -278,7 +253,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
             guard
                 let file = file,
                 let shareOptions = shareOptions else {
-                return
+                    return
             }
             let transfer = Drive2APITransfer(file: file, assignApiCourseId: courseId, termId: termId, shareOptions: shareOptions)
             strongSelf.setupNewTransfer(transfer)
@@ -320,16 +295,19 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
                 self?.presentAlertWithMessage(message, title: StringHolder.errorAlertTitle)
             }
         }
-
+        
     }
 
-    private func removeFileFromModel(_ fileToRemove: APIFile) {
-        for (index, file) in allFiles.enumerated() {
-            if file == fileToRemove {
-                allFiles.remove(at: index)
-                return
-            }
-        }
+    func previewAPIFile(_ file: APIFile) {
+        let transfer = API2DeviceTransfer(file: file)
+        setupNewTransfer(transfer)
+    }
+
+    private func previewLocalFile(url: URL) {
+        UIApplication.shared.statusBarStyle = .default
+        let previewController = UIDocumentInteractionController(url: url)
+        previewController.delegate = self
+        previewController.presentPreview(animated: true)
     }
 
     private func setupNewTransfer(_ transfer: Transferable) {
@@ -341,6 +319,31 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
             self.addButtonItem?.isEnabled = false
         }
 
+    }
+
+    // MARK: - Table view data source
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return presentedFiles.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: fileCellId, for: indexPath) as! SharedFileCell
+        let file = presentedFiles[indexPath.row]
+        let position = CellPositionType.cellPositionTypeForIndex(indexPath.row, in: presentedFiles as [AnyObject])
+        cell.configure(with: file, cellPosition: position)
+        return cell
+    }
+
+    // MARK: - Table view data delegate
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let file = presentedFiles[indexPath.row]
+        presentFileOptions(for: file)
     }
 
     // MARK: - FileTransferManagerDelegate
@@ -366,13 +369,6 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
                 ToastView.showInParent(view, withText: StringHolder.fileHasBeenSharedMessage(fileName: file.fileName), forDuration: 2.0)
             }
         }
-    }
-
-    private func updateController(newFile file: APIFile) {
-        allFiles.append(file)
-        allFiles.sort { $0.fileName < $1.fileName }
-        folderIsEmpty = allFiles.isEmpty
-        tableView.reloadData()
     }
 
     func transfer(_ transfer: Transferable?, didFailExecuting operation: Operation?, errorMessage: String) {
@@ -445,40 +441,13 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         if let courseStudents = courseStudents, self.courseStudentsCached == nil {
             self.courseStudentsCached = courseStudents
         }
-        updateFile(file, shareOptions: shareOptions)
-    }
-
-    private func updateFile(_ file: APIFile, shareOptions: ShareOptions ) {
-        for (index, originalfile) in allFiles.enumerated() {
-            if let originalFileId = originalfile.fileId, let fileId = file.fileId, originalFileId == fileId {
-                var fileToUpdate = allFiles[index]
-                fileToUpdate.shareOptions = shareOptions
-                allFiles[index] = fileToUpdate
-                DispatchQueue.main.async { [weak self] in
-                    self?.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
-                }
-            }
-        }
+        updateControllersFile(file, with: shareOptions)
     }
 
     func fileDetailsControllerDidCancel(loadedForCache courseStudents: [SimpleUser]?) {
         if let courseStudents = courseStudents, self.courseStudentsCached == nil {
             self.courseStudentsCached = courseStudents
         }
-    }
-
-    // MARK: - Document preview
-
-    func previewAPIFile(_ file: APIFile) {
-        let transfer = API2DeviceTransfer(file: file)
-        setupNewTransfer(transfer)
-    }
-
-    private func previewLocalFile(url: URL) {
-        UIApplication.shared.statusBarStyle = .default
-        let previewController = UIDocumentInteractionController(url: url)
-        previewController.delegate = self
-        previewController.presentPreview(animated: true)
     }
 
     // MARK: - UIDocumentInteractionControllerDelegate
@@ -505,6 +474,37 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
 
     deinit {
         removeAllCachedFiles()
+    }
+
+    // MARK: - Helpers
+
+    private func updateController(newFile file: APIFile) {
+        allFiles.append(file)
+        allFiles.sort { $0.fileName < $1.fileName }
+        folderIsEmpty = allFiles.isEmpty
+        tableView.reloadData()
+    }
+
+    private func updateControllersFile(_ file: APIFile, with shareOptions: ShareOptions ) {
+        for (index, originalfile) in allFiles.enumerated() {
+            if let originalFileId = originalfile.fileId, let fileId = file.fileId, originalFileId == fileId {
+                var fileToUpdate = allFiles[index]
+                fileToUpdate.shareOptions = shareOptions
+                allFiles[index] = fileToUpdate
+                DispatchQueue.main.async { [weak self] in
+                    self?.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+                }
+            }
+        }
+    }
+
+    private func removeFileFromModel(_ fileToRemove: APIFile) {
+        for (index, file) in allFiles.enumerated() {
+            if file == fileToRemove {
+                allFiles.remove(at: index)
+                return
+            }
+        }
     }
 
 }
