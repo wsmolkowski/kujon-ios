@@ -46,6 +46,7 @@ class CourseDetailsTableViewController: RefreshingTableViewController,CourseDeta
 
     private func createSections()->Array<SectionHelperProtocol>{
         return [NameSection(),
+                SharedFilesSection(),
                 FacultieSection(),
                 CourseMeritsSection(),
                 CycleSection(),

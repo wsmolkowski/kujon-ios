@@ -126,6 +126,7 @@
 		660E28911DC0A6F0008CD5A9 /* IdentifiedTapGestureRecogniezer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660E28901DC0A6F0008CD5A9 /* IdentifiedTapGestureRecogniezer.swift */; };
 		661D1C221DAD974500BA9EE9 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 661D1C211DAD974500BA9EE9 /* HTMLParser.m */; };
 		662DAFED1DAC14150094867E /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662DAFEC1DAC14150094867E /* String+.swift */; };
+		664DCFFF1E4E02CE004EE946 /* SharedFilesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664DCFFE1E4E02CE004EE946 /* SharedFilesSection.swift */; };
 		66852C191DE8639B009234C9 /* SettingsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66852C181DE8639B009234C9 /* SettingsResponse.swift */; };
 		66989CC91E38CB9700B659F6 /* KujonAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66989CC81E38CB9700B659F6 /* KujonAppearance.swift */; };
 		66989CCB1E38CE8200B659F6 /* SortKeyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66989CCA1E38CE8200B659F6 /* SortKeyProviding.swift */; };
@@ -585,6 +586,7 @@
 		661D1C201DAD974500BA9EE9 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLParser.h; path = "../Global Extensions/HTMLParser.h"; sourceTree = "<group>"; };
 		661D1C211DAD974500BA9EE9 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLParser.m; path = "../Global Extensions/HTMLParser.m"; sourceTree = "<group>"; };
 		662DAFEC1DAC14150094867E /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		664DCFFE1E4E02CE004EE946 /* SharedFilesSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedFilesSection.swift; sourceTree = "<group>"; };
 		66852C181DE8639B009234C9 /* SettingsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsResponse.swift; sourceTree = "<group>"; };
 		66989CC81E38CB9700B659F6 /* KujonAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KujonAppearance.swift; sourceTree = "<group>"; };
 		66989CCA1E38CE8200B659F6 /* SortKeyProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortKeyProviding.swift; sourceTree = "<group>"; };
@@ -1759,6 +1761,7 @@
 				66FD65581E3BAD9E007066E6 /* NameSection.swift */,
 				66FD65591E3BAD9E007066E6 /* ParticipantsSection.swift */,
 				66FD655A1E3BAD9E007066E6 /* SectionHelperProtocol.swift */,
+				664DCFFE1E4E02CE004EE946 /* SharedFilesSection.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -2688,6 +2691,7 @@
 				4C0D8A432E3EC531C1FE79D7 /* UIColorExtensions.swift in Sources */,
 				66A8BE321E48C11E008B35B7 /* LocalFile2APITransfer.swift in Sources */,
 				66A017251E3BC0D20011BFD9 /* PopUpViewController.swift in Sources */,
+				664DCFFF1E4E02CE004EE946 /* SharedFilesSection.swift in Sources */,
 				4C0D82084D092C855DB2FB09 /* RestApiManager.swift in Sources */,
 				4C0D886897D95F586FB998CF /* Facultie.swift in Sources */,
 				66A8BE361E48C11E008B35B7 /* PhotoFileProvider.swift in Sources */,
