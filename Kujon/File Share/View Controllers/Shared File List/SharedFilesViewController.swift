@@ -280,14 +280,8 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
                 let shareOptions = shareOptions else {
                 return
             }
-            let transferManager = FileTransferManager.shared
-            transferManager.delegate = strongSelf
             let transfer = Drive2APITransfer(file: file, assignApiCourseId: courseId, termId: termId, shareOptions: shareOptions)
-            transferManager.execute(transfer: transfer)
-            DispatchQueue.main.async {
-                strongSelf.addTransferView(toParent: strongSelf.tableView, trackTransfer: transfer)
-                strongSelf.addButtonItem?.isEnabled = false
-            }
+            strongSelf.setupNewTransfer(transfer)
         }
         let driveBrowser = DriveBrowser(configuration:configuration, provider:driveContentsProvider, completionHandler:completion)
         let navigationController = UINavigationController(navigationBarClass: nil, toolbarClass: ShareToolbar.self)
@@ -421,14 +415,8 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
 
     func photoFileProvider(_ provider: PhotoFileProvider?, didFinishWithPhotoFileURL fileURL: URL, shareOptions: ShareOptions, loadedForCache courseStudents: [SimpleUser]?) {
         courseStudentsCached = courseStudents
-        let transferManager = FileTransferManager.shared
-        transferManager.delegate = self
         let transfer = LocalFile2APITransfer(fileURL: fileURL, assignApiCourseId: courseId, termId: termId, shareOptions: shareOptions)
-        transferManager.execute(transfer: transfer)
-        DispatchQueue.main.async {
-            self.addTransferView(toParent: self.tableView, trackTransfer: transfer)
-            self.addButtonItem?.isEnabled = false
-        }
+        setupNewTransfer(transfer)
     }
 
     func photoFileProviderDidCancel(loadedForCache courseStudents: [SimpleUser]?) {
@@ -483,7 +471,6 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     func previewAPIFile(_ file: APIFile) {
         let transfer = API2DeviceTransfer(file: file)
         setupNewTransfer(transfer)
-
     }
 
     private func previewLocalFile(url: URL) {
