@@ -234,15 +234,15 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         }
         let description = StringHolder.fileSize + " " + fileSize
 
+        let previewFileAction: UIAlertAction = UIAlertAction(title: StringHolder.showPreview, style: .default) { [unowned self] _ in
+            self.previewFile(file)
+        }
+
         let showDetailsAction: UIAlertAction = UIAlertAction(title: StringHolder.showFileDetails, style: .default) { [unowned self] _ in
                 let controller = FileDetailsController(file: file, courseId: self.courseId, termId: self.termId, courseStudents: self.courseStudentsCached)
                 controller.delegate = self
                 let navigationController = UINavigationController(rootViewController: controller)
                 self.present(navigationController, animated: true, completion: nil)
-        }
-
-        let previewFileAction: UIAlertAction = UIAlertAction(title: StringHolder.showPreview, style: .default) { [unowned self] _ in
-            self.previewFile(file)
         }
 
         let addToDriveAction: UIAlertAction = UIAlertAction(title: StringHolder.addToGoogleDrive, style: .default) { [unowned self] _ in
@@ -255,7 +255,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         let hasDeletionRight = file.fileSharedByMe != nil && file.fileSharedByMe == true
         deleteFileAction.isEnabled = hasDeletionRight
 
-        let actions = [showDetailsAction, previewFileAction, addToDriveAction, deleteFileAction]
+        let actions = [previewFileAction, showDetailsAction, addToDriveAction, deleteFileAction]
         presentActionSheet(actions: actions, title: title, message: description)
     }
 
