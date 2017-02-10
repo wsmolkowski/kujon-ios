@@ -36,6 +36,13 @@ class ActiveCoursesListTableViewController: RefreshingTableViewController, Navig
         termsProvider.loadTerms()
     }
 
+    private func resetData() {
+        coursesWrappers = []
+        activeCoursesWrappers = []
+        termsDidLoad = false
+        coursesDidLoad = false
+    }
+
     func setNavigationProtocol(_ delegate: NavigationMenuProtocol) {
         self.delegate = delegate
     }
@@ -77,10 +84,7 @@ class ActiveCoursesListTableViewController: RefreshingTableViewController, Navig
     }
 
     func onErrorOccurs(_ text: String) {
-        coursesWrappers = []
-        activeCoursesWrappers = []
-        termsDidLoad = false
-        coursesDidLoad = false
+        resetData()
         self.showAlertApi(StringHolder.attention, text: text, succes: {
             [unowned self] in
             self.loadData()
@@ -90,10 +94,7 @@ class ActiveCoursesListTableViewController: RefreshingTableViewController, Navig
     }
 
     func onUsosDown() {
-        coursesWrappers = []
-        activeCoursesWrappers = []
-        termsDidLoad = false
-        coursesDidLoad = false
+        resetData()
         DispatchQueue.main.async { [weak self] in
             self?.refreshControl?.endRefreshing()
             guard let strongSelf = self else {
