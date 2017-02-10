@@ -12,9 +12,7 @@ class API2DeviceTransfer: Transferable, OperationDelegate {
 
     private let file: APIFile
 
-    private var downloadProgress: Float = 0.0
-    private var uploadProgress: Float = 0.0
-    private var transferProgress: Float { return downloadProgress / 2.0 + uploadProgress / 2.0 }
+    private var transferProgress: Float = 0.0
     internal var type: TransferType = .download
 
     internal var operations: [Operation] = []
@@ -58,7 +56,7 @@ class API2DeviceTransfer: Transferable, OperationDelegate {
     }
 
     internal func operation(_ operation: Operation?, didProceedWithProgress progress: Float, bytesProceeded: String, totalSize: String) {
-        downloadProgress = progress
+        transferProgress = progress
         delegate?.transfer(self, didProceedWithProgress: transferProgress, bytesProceededPerOperation: bytesProceeded, totalSize: totalSize)
     }
     
