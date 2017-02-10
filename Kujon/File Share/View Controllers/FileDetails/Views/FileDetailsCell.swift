@@ -14,6 +14,7 @@ class FileDetailsCell: UITableViewCell {
     @IBOutlet weak var fileTypeLabel: UILabel!
     @IBOutlet weak var fileSizeLabel: UILabel!
     @IBOutlet weak var createdDateLabel: UILabel!
+    @IBOutlet weak var fileOwnerLabel: UILabel!
 
 
     override func awakeFromNib() {
@@ -23,13 +24,17 @@ class FileDetailsCell: UITableViewCell {
 
     internal func configure(with file: APIFile) {
         fileNameLabel.text = file.fileName
+        fileTypeLabel.text = FileTypeDescriptionProvider.descriptionForMIMETypeString(file.contentType)
+
+        if let firstName = file.firstName, let lastName = file.lastName {
+            fileOwnerLabel.text = firstName + " " + lastName
+        }
+
         var fileSize = file.fileSize ?? "0.00"
         if !fileSize.hasSuffix(StringHolder.megabytes_short) && !fileSize.hasSuffix(StringHolder.kilobytes_short) {
             fileSize += " " + StringHolder.megabytes_short
         }
         fileSizeLabel.text = fileSize
-
-        fileTypeLabel.text = FileTypeDescriptionProvider.descriptionForMIMETypeString(file.contentType)
 
         if  let createdTimeString = file.createdTime,
             let date = Date.stringToDateWithClock(createdTimeString) {
