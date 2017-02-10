@@ -475,6 +475,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     }
 
     private func previewLocalFile(url: URL) {
+        UIApplication.shared.statusBarStyle = .default
         let previewController = UIDocumentInteractionController(url: url)
         previewController.delegate = self
         previewController.presentPreview(animated: true)
@@ -487,6 +488,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     }
 
     func documentInteractionControllerDidEndPreview(_ controller: UIDocumentInteractionController) {
+        UIApplication.shared.statusBarStyle = .lightContent
         removeAllCachedFiles()
     }
 
