@@ -355,7 +355,8 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
 
             if transfer is API2DeviceTransfer {
                 guard let file = file as? APIFile, let url = file.localFileURL else { return }
-                strongSelf.previewLocalFile(url: url)
+                strongSelf.cachedFiles.append(url)
+                strongSelf.isViewInViewHierarchy ? strongSelf.previewLocalFile(url: url) : strongSelf.removeAllCachedFiles()
                 return
             }
 
@@ -474,7 +475,6 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     }
 
     private func previewLocalFile(url: URL) {
-        cachedFiles.append(url)
         let previewController = UIDocumentInteractionController(url: url)
         previewController.delegate = self
         previewController.presentPreview(animated: true)

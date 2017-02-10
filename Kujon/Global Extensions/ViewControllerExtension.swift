@@ -138,3 +138,11 @@ extension UIViewController: Unauthorized,LogoutSucces {
 
 
 }
+
+extension UIViewController {
+
+    internal var isViewInViewHierarchy: Bool {
+        return isViewLoaded && view.window != nil
+    }
+
+}
