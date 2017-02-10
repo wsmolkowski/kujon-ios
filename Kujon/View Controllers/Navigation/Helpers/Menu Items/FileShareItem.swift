@@ -11,7 +11,7 @@ import Foundation
 class FileShareItem: MenuItemWithController {
 
     func returnTitle() -> String {
-        return StringHolder.fileShareTitle
+        return StringHolder.fileShareMenuItem
     }
 
     func returnImage() -> UIImage! {
