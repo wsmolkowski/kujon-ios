@@ -238,7 +238,7 @@
 		66A8BE2F1E48C11E008B35B7 /* RemoveCachedFileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDE01E48C11E008B35B7 /* RemoveCachedFileOperation.swift */; };
 		66A8BE301E48C11E008B35B7 /* API2DriveTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDE21E48C11E008B35B7 /* API2DriveTransfer.swift */; };
 		66A8BE311E48C11E008B35B7 /* Drive2APITransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDE31E48C11E008B35B7 /* Drive2APITransfer.swift */; };
-		66A8BE321E48C11E008B35B7 /* LocalFile2APITransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDE41E48C11E008B35B7 /* LocalFile2APITransfer.swift */; };
+		66A8BE321E48C11E008B35B7 /* Device2APITransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDE41E48C11E008B35B7 /* Device2APITransfer.swift */; };
 		66A8BE331E48C11E008B35B7 /* Tranferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDE51E48C11E008B35B7 /* Tranferable.swift */; };
 		66A8BE341E48C11E008B35B7 /* DriveExportFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDE71E48C11E008B35B7 /* DriveExportFormat.swift */; };
 		66A8BE351E48C11E008B35B7 /* DriveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BDE81E48C11E008B35B7 /* DriveManager.swift */; };
@@ -699,7 +699,7 @@
 		66A8BDE01E48C11E008B35B7 /* RemoveCachedFileOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveCachedFileOperation.swift; sourceTree = "<group>"; };
 		66A8BDE21E48C11E008B35B7 /* API2DriveTransfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API2DriveTransfer.swift; sourceTree = "<group>"; };
 		66A8BDE31E48C11E008B35B7 /* Drive2APITransfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drive2APITransfer.swift; sourceTree = "<group>"; };
-		66A8BDE41E48C11E008B35B7 /* LocalFile2APITransfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalFile2APITransfer.swift; sourceTree = "<group>"; };
+		66A8BDE41E48C11E008B35B7 /* Device2APITransfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device2APITransfer.swift; sourceTree = "<group>"; };
 		66A8BDE51E48C11E008B35B7 /* Tranferable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tranferable.swift; sourceTree = "<group>"; };
 		66A8BDE71E48C11E008B35B7 /* DriveExportFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveExportFormat.swift; sourceTree = "<group>"; };
 		66A8BDE81E48C11E008B35B7 /* DriveManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveManager.swift; sourceTree = "<group>"; };
@@ -1544,9 +1544,9 @@
 			children = (
 				66A8BDE21E48C11E008B35B7 /* API2DriveTransfer.swift */,
 				66A8BDE31E48C11E008B35B7 /* Drive2APITransfer.swift */,
-				66A8BDE41E48C11E008B35B7 /* LocalFile2APITransfer.swift */,
-				66A8BDE51E48C11E008B35B7 /* Tranferable.swift */,
 				664DD0001E4E0BAA004EE946 /* API2DeviceTransfer.swift */,
+				66A8BDE41E48C11E008B35B7 /* Device2APITransfer.swift */,
+				66A8BDE51E48C11E008B35B7 /* Tranferable.swift */,
 			);
 			name = Transfers;
 			path = Sequences;
@@ -2692,7 +2692,7 @@
 				669935CA1E3F5ECB00A68C9E /* EmptyStateView.swift in Sources */,
 				66FD669C1E3BAD9E007066E6 /* TeacherTableViewController.swift in Sources */,
 				4C0D8A432E3EC531C1FE79D7 /* UIColorExtensions.swift in Sources */,
-				66A8BE321E48C11E008B35B7 /* LocalFile2APITransfer.swift in Sources */,
+				66A8BE321E48C11E008B35B7 /* Device2APITransfer.swift in Sources */,
 				66A017251E3BC0D20011BFD9 /* PopUpViewController.swift in Sources */,
 				664DCFFF1E4E02CE004EE946 /* SharedFilesSection.swift in Sources */,
 				4C0D82084D092C855DB2FB09 /* RestApiManager.swift in Sources */,

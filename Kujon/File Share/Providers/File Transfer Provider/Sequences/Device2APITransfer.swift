@@ -9,7 +9,7 @@
 import Foundation
 
 
-class LocalFile2APITransfer: Transferable, OperationDelegate {
+class Device2APITransfer: Transferable, OperationDelegate {
 
     private let fileURL: URL
     private let courseId: String

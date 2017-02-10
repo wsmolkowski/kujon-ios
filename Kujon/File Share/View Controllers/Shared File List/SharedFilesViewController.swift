@@ -416,7 +416,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
 
     func photoFileProvider(_ provider: PhotoFileProvider?, didFinishWithPhotoFileURL fileURL: URL, shareOptions: ShareOptions, loadedForCache courseStudents: [SimpleUser]?) {
         courseStudentsCached = courseStudents
-        let transfer = LocalFile2APITransfer(fileURL: fileURL, assignApiCourseId: courseId, termId: termId, shareOptions: shareOptions)
+        let transfer = Device2APITransfer(fileURL: fileURL, assignApiCourseId: courseId, termId: termId, shareOptions: shareOptions)
         setupNewTransfer(transfer)
     }
 
