@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pdf-icon" translatesAutoresizingMaskIntoConstraints="NO" id="oQ6-Jm-NmJ" userLabel="icon">
@@ -65,7 +65,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="file name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVy-pc-bkB">
-                        <rect key="frame" x="40" y="17" width="230" height="17"/>
+                        <rect key="frame" x="40" y="17" width="215" height="17"/>
                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                         <color key="textColor" red="0.16470588235294117" green="0.20000000000000001" blue="0.24313725490196078" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -121,7 +121,7 @@
                     <constraint firstItem="9Ly-M7-OcF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Hw0-P9-FwU"/>
                     <constraint firstAttribute="trailingMargin" secondItem="J26-g9-nO7" secondAttribute="trailing" id="Jlh-hB-hO7"/>
                     <constraint firstAttribute="bottom" secondItem="bvw-te-5Ae" secondAttribute="bottom" constant="17" id="LOF-7S-gPx"/>
-                    <constraint firstItem="J26-g9-nO7" firstAttribute="leading" secondItem="PVy-pc-bkB" secondAttribute="trailing" id="LWr-V9-HYl"/>
+                    <constraint firstItem="J26-g9-nO7" firstAttribute="leading" secondItem="PVy-pc-bkB" secondAttribute="trailing" constant="15" id="LWr-V9-HYl"/>
                     <constraint firstItem="bvw-te-5Ae" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="32" id="T8i-Rj-V1H"/>
                     <constraint firstItem="9Ly-M7-OcF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="TWt-om-2ib"/>
                     <constraint firstAttribute="trailing" secondItem="9Ly-M7-OcF" secondAttribute="trailing" id="aW6-ig-1LC"/>
