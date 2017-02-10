@@ -83,7 +83,7 @@ class FileIconProvider {
         case .zip,
              .zip_alt_1,
              .zip_alt_2:
-            return #imageLiteral(resourceName: "unknown-icon")
+            return #imageLiteral(resourceName: "zip-icon")
 
         case .text:
             return #imageLiteral(resourceName: "unknown-icon")
