@@ -474,6 +474,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
 
     deinit {
         removeAllCachedFiles()
+        FileTransferManager.shared.cancelAllTransfers()
     }
 
     // MARK: - Helpers
