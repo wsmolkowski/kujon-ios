@@ -283,7 +283,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
                 strongSelf.spinner.isHidden = true
                 strongSelf.removeFileFromModel(file)
                 strongSelf.folderIsEmpty = strongSelf.allFiles.isEmpty
-                strongSelf.tableView.reloadData()
+                strongSelf.tableView.reloadSections(IndexSet(integer:0), with: .fade)
                 if let view = strongSelf.navigationController?.view {
                     ToastView.showInParent(view, withText: StringHolder.fileHasBeenRemovedMessage(fileName: file.fileName), forDuration: 2.0)
                 }
@@ -482,7 +482,9 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         allFiles.append(file)
         allFiles.sort { $0.fileName < $1.fileName }
         folderIsEmpty = allFiles.isEmpty
-        tableView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
+        }
     }
 
     private func updateControllersFile(_ file: APIFile, with shareOptions: ShareOptions ) {
@@ -499,11 +501,8 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     }
 
     private func removeFileFromModel(_ fileToRemove: APIFile) {
-        for (index, file) in allFiles.enumerated() {
-            if file == fileToRemove {
-                allFiles.remove(at: index)
-                return
-            }
+        if let index = allFiles.index(of: fileToRemove) {
+            allFiles.remove(at: index)
         }
     }
 
