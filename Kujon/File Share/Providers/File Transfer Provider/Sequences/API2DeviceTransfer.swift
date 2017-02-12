@@ -28,7 +28,9 @@ class API2DeviceTransfer: Transferable, OperationDelegate {
         apiDownloadOperation.delegate = self
         apiDownloadOperation.name = "API Download File"
         apiDownloadOperation.completionBlock = { [weak self] in
-            self?.delegate?.transfer(self, didFinishWithSuccessAndReturn: apiDownloadOperation.file)
+            if !apiDownloadOperation.didFail {
+                self?.delegate?.transfer(self, didFinishWithSuccessAndReturn: apiDownloadOperation.file)
+            }
         }
 
         let operations = [apiDownloadOperation]

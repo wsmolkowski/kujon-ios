@@ -375,7 +375,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         DispatchQueue.main.async { [weak self] in
             self?.closeTransferView()
             self?.addButtonItem?.isEnabled = true
-            self?.presentAlertWithMessage(errorMessage, title: StringHolder.fileShare)
+            self?.presentAlertWithMessage(errorMessage, title: StringHolder.errorAlertTitle)
         }
     }
 
