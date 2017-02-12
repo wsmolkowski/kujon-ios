@@ -42,15 +42,29 @@ struct APIFile: Decodable, Hashable {
         self.fileSharedByMe = fileSharedByMe
     }
 
-    init?(localFileURL:URL, courseId:String, termId:String, shareOptions: ShareOptions, contentType: String = MIMEType.binary.rawValue) {
+    init?(localFileURL:URL, courseId:String, termId:String, shareOptions: ShareOptions, contentType: String) {
 
         guard let _ = try? localFileURL.checkPromisedItemIsReachable() else {
             return nil
         }
+        let fileName = localFileURL.lastPathComponent
 
-        self.init(fileName:localFileURL.lastPathComponent, courseId:courseId, termId:termId, shareOptions: shareOptions, contentType: contentType)
+        var fileSizeString: String?
+        if let fileSize = FileManager.sizeOfFile(url: localFileURL) {
+            fileSizeString = ByteCountFormatter.string(fromByteCount: Int64(fileSize), countStyle: .binary)
+        }
 
-        self.localFileURL = localFileURL
+        let createdDateString = Date().toAPIDateString()
+        let userNameComponents = UserDataHolder.sharedInstance.userName.components(separatedBy: " ")
+        var firstName: String?
+        var lastName: String?
+        if userNameComponents.count > 1 {
+            firstName = userNameComponents.first
+            lastName = userNameComponents.last
+        }
+        let usosUserId = UserDataHolder.sharedInstance.usosId
+
+        self.init(fileName: fileName, courseId: courseId, termId: termId, shareOptions: shareOptions, fileSharedByMe: true, contentType: contentType, localFileURL: localFileURL, firstName: firstName, lastName: lastName, usosUserId: usosUserId, fileId: nil, createdTime: createdDateString, fileSize: fileSizeString)
     }
 
     // MARK: Decodable
