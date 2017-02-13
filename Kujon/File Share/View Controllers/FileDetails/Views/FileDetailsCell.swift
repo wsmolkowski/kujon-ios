@@ -10,12 +10,15 @@ import UIKit
 
 class FileDetailsCell: UITableViewCell {
 
+
+    @IBOutlet weak var fileIcon: UIImageView!
     @IBOutlet weak var fileNameLabel: UILabel!
     @IBOutlet weak var fileTypeLabel: UILabel!
     @IBOutlet weak var fileSizeLabel: UILabel!
     @IBOutlet weak var createdDateLabel: UILabel!
     @IBOutlet weak var fileOwnerLabel: UILabel!
-
+    @IBOutlet weak var courseLabel: UILabel!
+    @IBOutlet weak var termLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,6 +28,9 @@ class FileDetailsCell: UITableViewCell {
     internal func configure(with file: APIFile) {
         fileNameLabel.text = file.fileName
         fileTypeLabel.text = FileTypeDescriptionProvider.descriptionForMIMETypeString(file.contentType)
+        courseLabel.text = file.courseId
+        termLabel.text = file.termId
+        fileIcon.image = FileIconProvider.iconForMIMETypeString(file.contentType)
 
         if let firstName = file.firstName, let lastName = file.lastName {
             fileOwnerLabel.text = firstName + " " + lastName
