@@ -126,7 +126,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     // MARK: - Navigation
 
     internal func backButtonDidTap() {
-        self.navigationController?.popViewController(animated: true)
+        let _ = self.navigationController?.popViewController(animated: true)
     }
 
     func refresh(_ refreshControl: KujonRefreshControl) {

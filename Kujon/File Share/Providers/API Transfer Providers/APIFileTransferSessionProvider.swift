@@ -26,7 +26,7 @@ class APIFileTransferSessionProvider {
 
     static func deafultSesionConfiguration() -> URLSessionConfiguration {
         let configuration = URLSessionConfiguration.default
-        configuration.requestCachePolicy = .reloadIgnoringCacheData
+        configuration.requestCachePolicy = .returnCacheDataElseLoad
         configuration.timeoutIntervalForRequest = 180
         configuration.httpMaximumConnectionsPerHost = 6
         configuration.allowsCellularAccess = true
