@@ -21,7 +21,7 @@ class NavigationMenuCreator {
         let image = UIImage(named: "arrow-left-white")
         let button = UIButton(type: .custom)
         button.setImage(image, for: UIControlState())
-        button.setTitle(StringHolder.back, for: UIControlState())
+        button.setTitle(" " + StringHolder.back, for: UIControlState())
         let font = UIFont.kjnTextStyle2Font()
         button.titleLabel?.font = font
         button.addTarget(controller, action: selector, for: UIControlEvents.touchUpInside)

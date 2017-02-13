@@ -65,7 +65,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         if let courseId = courseId, let termId = termId {
             fileListProvider.loadFileList(courseId: courseId, termId: termId)
         }
-        title = StringHolder.fileShareTitle
+        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SharedFilesViewController.backButtonDidTap),andTitle: StringHolder.fileShareTitle)
         addRefreshControl()
         configureNavigationBar()
         configureTableView()
@@ -124,6 +124,10 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     }
 
     // MARK: - Navigation
+
+    internal func backButtonDidTap() {
+        self.navigationController?.popViewController(animated: true)
+    }
 
     func refresh(_ refreshControl: KujonRefreshControl) {
         if refreshControl.refreshType == .userInitiated {
