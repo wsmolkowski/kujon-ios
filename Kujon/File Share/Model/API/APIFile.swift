@@ -54,14 +54,11 @@ struct APIFile: Decodable, Hashable {
         }
 
         let createdDateString = Date().toAPIDateString()
-        let userNameComponents = UserDataHolder.sharedInstance.userName.components(separatedBy: " ")
-        var firstName: String?
-        var lastName: String?
-        if userNameComponents.count > 1 {
-            firstName = userNameComponents.first
-            lastName = userNameComponents.last
-        }
+
         let usosUserId = UserDataHolder.sharedInstance.usosId
+        let userNameComponents = UserDataHolder.sharedInstance.userNameComponents()
+        let firstName = userNameComponents.firstName
+        let lastName = userNameComponents.lastName
 
         self.init(fileName: fileName, courseId: courseId, termId: termId, shareOptions: shareOptions, fileSharedByMe: true, contentType: contentType, localFileURL: localFileURL, firstName: firstName, lastName: lastName, usosUserId: usosUserId, fileId: nil, createdTime: createdDateString, fileSize: fileSizeString)
     }
@@ -114,5 +111,6 @@ struct APIFile: Decodable, Hashable {
             && lhs.contentType == rhs.contentType
             && idsAreEqual
     }
+
 
 }

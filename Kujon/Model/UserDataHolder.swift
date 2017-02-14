@@ -141,4 +141,20 @@ class UserDataHolder {
     }
 
 
+    func userNameComponents() -> (firstName: String, lastName: String) {
+        let space = " "
+        var userNameComponents: [String] = []
+
+        guard let userName = UserDataHolder.sharedInstance.userName else {
+            return (firstName: "", lastName: "")
+        }
+
+        if userName.contains(space) {
+            userNameComponents = userName.components(separatedBy: space)
+            return (firstName: userNameComponents.first!, lastName: userNameComponents.last!)
+        }
+
+        return (firstName: userName, lastName: "")
+    }
+
 }
