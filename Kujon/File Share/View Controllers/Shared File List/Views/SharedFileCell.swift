@@ -15,6 +15,7 @@ class SharedFileCell: UITableViewCell {
     @IBOutlet weak var sharedLabel: UILabel!
     @IBOutlet weak var fileSizeLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var addedByLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,7 +49,11 @@ class SharedFileCell: UITableViewCell {
         if  let createdTimeString = item.createdTime,
             let date = Date.stringToDateWithClock(createdTimeString) {
             let dateFormatted = date.isToday() ? date.toFileEventTime() : date.toFileEventDateTime()
-            dateLabel.text = "\(StringHolder.added) \(dateFormatted)"
+            dateLabel.text = dateFormatted
+        }
+
+        if let firstName = item.firstName, let lastName = item.lastName {
+            addedByLabel.text = "Dodany przez \(firstName) \(lastName)"
         }
     }
 
