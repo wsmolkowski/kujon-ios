@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Lato-Light.ttf">
+            <string>Lato-Light</string>
+        </array>
         <array key="Lato-Regular.ttf">
             <string>Lato-Regular</string>
         </array>
@@ -55,17 +58,17 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="8.88 MB" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J26-g9-nO7">
-                        <rect key="frame" x="257" y="36" width="55" height="18"/>
+                        <rect key="frame" x="252" y="36" width="60" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="8il-M7-V0P"/>
-                            <constraint firstAttribute="width" constant="55" id="Ku8-hE-bSr"/>
+                            <constraint firstAttribute="width" constant="60" id="Ku8-hE-bSr"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="11"/>
+                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="15"/>
                         <color key="textColor" red="0.1647058824" green="0.20000000000000001" blue="0.24313725489999999" alpha="0.5955961045" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="file name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVy-pc-bkB">
-                        <rect key="frame" x="40" y="17" width="217" height="18"/>
+                        <rect key="frame" x="40" y="17" width="212" height="18"/>
                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                         <color key="textColor" red="0.16470588235294117" green="0.20000000000000001" blue="0.24313725490196078" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -109,7 +112,7 @@
                         </subviews>
                     </stackView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Brak informacji nt. właściciela pliku" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfZ-xb-NjD">
-                        <rect key="frame" x="40" y="40" width="217" height="14"/>
+                        <rect key="frame" x="40" y="40" width="212" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="Bas-Xo-rLC"/>
                         </constraints>
