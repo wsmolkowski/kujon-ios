@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D17a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E144f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -33,22 +33,33 @@
                         <constraint firstAttribute="height" constant="1" id="SiZ-dq-bAq"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Erg-zS-cUH" userLabel="separator">
+                    <rect key="frame" x="0.0" y="29" width="369" height="1"/>
+                    <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="a77-3W-yKl"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Erg-zS-cUH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0Dx-eo-6qn"/>
                 <constraint firstItem="AVC-h3-IpE" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="2eO-Hr-Igi"/>
+                <constraint firstAttribute="bottom" secondItem="Erg-zS-cUH" secondAttribute="bottom" id="FXz-Bn-Kid"/>
                 <constraint firstItem="AVC-h3-IpE" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="Lhs-K8-XX0"/>
                 <constraint firstItem="AVC-h3-IpE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="MdP-tK-yuD"/>
+                <constraint firstAttribute="trailing" secondItem="Erg-zS-cUH" secondAttribute="trailing" id="YmR-Oo-vAz"/>
                 <constraint firstItem="xTf-jo-cv5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jkw-G9-5G4"/>
                 <constraint firstAttribute="trailing" secondItem="xTf-jo-cv5" secondAttribute="trailing" id="k7x-uo-02x"/>
                 <constraint firstItem="xTf-jo-cv5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="yEO-Vl-Tqz"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="separator" destination="xTf-jo-cv5" id="ZJW-Y7-Pmk"/>
+                <outlet property="separatorBottom" destination="Erg-zS-cUH" id="srg-mJ-ad6"/>
+                <outlet property="separatorTop" destination="xTf-jo-cv5" id="C6a-KJ-ii3"/>
                 <outlet property="titleLabel" destination="AVC-h3-IpE" id="zk8-Wz-e5F"/>
             </connections>
-            <point key="canvasLocation" x="-176.5" y="-158"/>
+            <point key="canvasLocation" x="-178" y="-152"/>
         </view>
     </objects>
 </document>

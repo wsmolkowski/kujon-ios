@@ -254,7 +254,7 @@ class ShareDetailsController: UITableViewController, CourseDetailsProviderDelega
         header.titleLabel.text = sectionName
         header.titleLabel.textColor = UIColor.driveBlackColor()
         header.backgroundColor = UIColor.driveBackgroundColor()
-        header.separator.isHidden = true
+        header.separatorTopEnabled = false
         return header
     }
 

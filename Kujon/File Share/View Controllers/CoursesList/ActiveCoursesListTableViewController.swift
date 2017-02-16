@@ -20,7 +20,7 @@ class ActiveCoursesListTableViewController: RefreshingTableViewController, Navig
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(CoursesTableViewController.openDrawer),andTitle: StringHolder.filesForCourses)
-        self.tableView.register(UINib(nibName: "CourseTableViewCell", bundle: nil), forCellReuseIdentifier: CourseCellId)
+        self.tableView.register(UINib(nibName: "ActiveCourseCell", bundle: nil), forCellReuseIdentifier: CourseCellId)
         self.tableView.tableFooterView = UIView()
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140
@@ -116,10 +116,9 @@ class ActiveCoursesListTableViewController: RefreshingTableViewController, Navig
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CourseCellId, for: indexPath) as! CourseTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CourseCellId, for: indexPath) as! ActiveCourseCell
         let course = activeCoursesWrappers[indexPath.section].courses[indexPath.row]  as Course
-        cell.courseNameLabel.text = course.courseName
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.configure(courseName: course.courseName, filesNumber: "0")
         return cell
     }
 
@@ -128,7 +127,15 @@ class ActiveCoursesListTableViewController: RefreshingTableViewController, Navig
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = createLabelForSectionTitle(activeCoursesWrappers[section].title, middle: true)
+        guard let header = Bundle.main.loadNibNamed("SectionHeader", owner: self, options: nil)?.first as? SectionHeader else {
+            return nil
+        }
+        let termName = activeCoursesWrappers[section].title
+        header.titleLabel.text = termName
+        header.backgroundColor = UIColor.greyBackgroundColor()
+        header.separatorTopEnabled = true
+        header.separatorBottomEnabled = true
+
         return header
     }
 

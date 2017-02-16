@@ -11,6 +11,25 @@ import UIKit
 class SectionHeader: UIView {
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var separator: UIView!
+    @IBOutlet weak var separatorTop: UIView!
+    @IBOutlet weak var separatorBottom: UIView!
+
+    internal var separatorTopEnabled: Bool = true {
+        didSet {
+            separatorTop.isHidden = !separatorTopEnabled
+        }
+    }
+
+    internal var separatorBottomEnabled: Bool = false {
+        didSet {
+            separatorBottom.isHidden = !separatorBottomEnabled
+        }
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        separatorTopEnabled = true
+        separatorBottomEnabled = false
+    }
 
 }

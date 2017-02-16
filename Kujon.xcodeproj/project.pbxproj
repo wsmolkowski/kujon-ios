@@ -279,6 +279,8 @@
 		66A8BE681E48CDC2008B35B7 /* ArrowedItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BE661E48CDC2008B35B7 /* ArrowedItemCell.swift */; };
 		66A8BE691E48CDC2008B35B7 /* ArrowedItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A8BE671E48CDC2008B35B7 /* ArrowedItemCell.xib */; };
 		66A8BE6B1E48CFFC008B35B7 /* FileShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8BE6A1E48CFFC008B35B7 /* FileShareItem.swift */; };
+		66B81D231E55D2A20049AE59 /* ActiveCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B81D211E55D2A20049AE59 /* ActiveCourseCell.swift */; };
+		66B81D241E55D2A20049AE59 /* ActiveCourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66B81D221E55D2A20049AE59 /* ActiveCourseCell.xib */; };
 		66D1EEAA1E49F37E00B600D8 /* FileDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D1EEA91E49F37E00B600D8 /* FileDetailsController.swift */; };
 		66D1EEAE1E4A471200B600D8 /* FileDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D1EEAC1E4A471200B600D8 /* FileDetailsCell.swift */; };
 		66D1EEAF1E4A471200B600D8 /* FileDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66D1EEAD1E4A471200B600D8 /* FileDetailsCell.xib */; };
@@ -740,6 +742,8 @@
 		66A8BE661E48CDC2008B35B7 /* ArrowedItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowedItemCell.swift; sourceTree = "<group>"; };
 		66A8BE671E48CDC2008B35B7 /* ArrowedItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArrowedItemCell.xib; sourceTree = "<group>"; };
 		66A8BE6A1E48CFFC008B35B7 /* FileShareItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileShareItem.swift; sourceTree = "<group>"; };
+		66B81D211E55D2A20049AE59 /* ActiveCourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveCourseCell.swift; sourceTree = "<group>"; };
+		66B81D221E55D2A20049AE59 /* ActiveCourseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActiveCourseCell.xib; sourceTree = "<group>"; };
 		66D1EEA91E49F37E00B600D8 /* FileDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDetailsController.swift; sourceTree = "<group>"; };
 		66D1EEAC1E4A471200B600D8 /* FileDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDetailsCell.swift; sourceTree = "<group>"; };
 		66D1EEAD1E4A471200B600D8 /* FileDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FileDetailsCell.xib; sourceTree = "<group>"; };
@@ -1578,6 +1582,7 @@
 		66A8BDEB1E48C11E008B35B7 /* ActiveCoursesList */ = {
 			isa = PBXGroup;
 			children = (
+				66B81D201E55D1AA0049AE59 /* Views */,
 				66A8BDEC1E48C11E008B35B7 /* ActiveCoursesListTableViewController.swift */,
 			);
 			name = ActiveCoursesList;
@@ -1662,6 +1667,15 @@
 				66A8BE061E48C11E008B35B7 /* TransferViewProviding.swift */,
 			);
 			path = TransferView;
+			sourceTree = "<group>";
+		};
+		66B81D201E55D1AA0049AE59 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				66B81D211E55D2A20049AE59 /* ActiveCourseCell.swift */,
+				66B81D221E55D2A20049AE59 /* ActiveCourseCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		66D1EEA81E49F36100B600D8 /* FileDetails */ = {
@@ -2394,6 +2408,7 @@
 				66D1EEAF1E4A471200B600D8 /* FileDetailsCell.xib in Resources */,
 				4C0D81232D2C18BCBF411F54 /* Lato-Medium.ttf in Resources */,
 				66FD63D61E3BAC6C007066E6 /* ArrowedLabelView.xib in Resources */,
+				66B81D241E55D2A20049AE59 /* ActiveCourseCell.xib in Resources */,
 				66FD66411E3BAD9E007066E6 /* WWWTableViewCell.xib in Resources */,
 				66FD66391E3BAD9E007066E6 /* MapTableViewCell.xib in Resources */,
 				4C0D84F81218E23D2DF5FDB3 /* Lato-MediumItalic.ttf in Resources */,
@@ -2717,6 +2732,7 @@
 				66FD66AD1E3BAD9E007066E6 /* KierunkiViewController.swift in Sources */,
 				4C0D811BF9E0E00EDE9CA088 /* FacultiesResposne.swift in Sources */,
 				4C0D81849DAA7ACD6F8A1D47 /* JsonDataLoader.swift in Sources */,
+				66B81D231E55D2A20049AE59 /* ActiveCourseCell.swift in Sources */,
 				4C0D8436123E61F0F64C9F9C /* UserDataHolder.swift in Sources */,
 				66FD668E1E3BAD9E007066E6 /* SettingsViewController.swift in Sources */,
 				4C0D8F84739469EB809E6E14 /* Room.swift in Sources */,

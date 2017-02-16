@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E144f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="50" id="KGk-i7-Jjw" customClass="ActiveCourseCell" customModule="Kujon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="287" height="49"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ak-KO-UTZ">
+                        <rect key="frame" x="16" y="18" width="204" height="14"/>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                        <color key="textColor" red="0.16470588743686676" green="0.20000000298023224" blue="0.24313725531101227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unknown-icon" translatesAutoresizingMaskIntoConstraints="NO" id="TfB-eK-bU9">
+                        <rect key="frame" x="263" y="15" width="16" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="16" id="CmC-7a-QpJ"/>
+                            <constraint firstAttribute="height" constant="20" id="XVO-Rn-Azd"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kgh-aF-VJs">
+                        <rect key="frame" x="230" y="17" width="28" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="ZfF-vc-tYV"/>
+                            <constraint firstAttribute="width" constant="28" id="yuk-ez-caW"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                        <color key="textColor" red="0.16470588743686676" green="0.20000000298023224" blue="0.24313725531101227" alpha="0.39557470034246578" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="TfB-eK-bU9" firstAttribute="leading" secondItem="Kgh-aF-VJs" secondAttribute="trailing" constant="5" id="4kv-PQ-KJO"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="7ak-KO-UTZ" secondAttribute="bottom" constant="10" id="ADD-70-pgk"/>
+                    <constraint firstItem="TfB-eK-bU9" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="DOq-kR-jlN"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="TfB-eK-bU9" secondAttribute="trailing" id="GcM-tS-kHG"/>
+                    <constraint firstItem="Kgh-aF-VJs" firstAttribute="leading" secondItem="7ak-KO-UTZ" secondAttribute="trailing" constant="10" id="MAY-KA-Ouk"/>
+                    <constraint firstItem="Kgh-aF-VJs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lJs-qO-uot"/>
+                    <constraint firstItem="7ak-KO-UTZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="p0R-p5-T3W"/>
+                    <constraint firstItem="7ak-KO-UTZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="wxX-CO-7nG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="courseNameLabel" destination="7ak-KO-UTZ" id="5GI-Bu-Hln"/>
+                <outlet property="filesNumberLabel" destination="Kgh-aF-VJs" id="SSL-Qq-wVx"/>
+            </connections>
+            <point key="canvasLocation" x="66" y="57"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="unknown-icon" width="16" height="20"/>
+    </resources>
+</document>
