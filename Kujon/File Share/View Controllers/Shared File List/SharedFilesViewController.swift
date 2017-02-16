@@ -32,7 +32,6 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     private weak var toolbarMenu: ToolbarMenuController?
     private lazy var photoProvider: PhotoFileProvider = PhotoFileProvider()
     private var addButtonItem: UIBarButtonItem?
-    @IBOutlet weak var courseNameLabel: UILabel!
     internal var courseName: String = ""
 
     private var fileListProvider = APIFileListProvider()
@@ -65,11 +64,10 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         if let courseId = courseId, let termId = termId {
             fileListProvider.loadFileList(courseId: courseId, termId: termId)
         }
-        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SharedFilesViewController.backButtonDidTap),andTitle: StringHolder.fileShareTitle)
+        NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SharedFilesViewController.backButtonDidTap),andTitle: courseName)
         addRefreshControl()
         configureNavigationBar()
         configureTableView()
-        courseNameLabel.text = courseName
     }
 
     override func viewDidAppear(_ animated: Bool) {
