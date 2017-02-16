@@ -24,7 +24,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ak-KO-UTZ">
-                        <rect key="frame" x="16" y="18" width="204" height="14"/>
+                        <rect key="frame" x="36" y="18" width="184" height="14"/>
                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                         <color key="textColor" red="0.16470588743686676" green="0.20000000298023224" blue="0.24313725531101227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -46,26 +46,39 @@
                         <color key="textColor" red="0.16470588743686676" green="0.20000000298023224" blue="0.24313725531101227" alpha="0.39557470034246578" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="folder-icon-blue" translatesAutoresizingMaskIntoConstraints="NO" id="vRB-MZ-a55">
+                        <rect key="frame" x="8" y="16" width="20" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="WKV-dD-puj"/>
+                            <constraint firstAttribute="height" constant="16" id="uew-3P-2RY"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="TfB-eK-bU9" firstAttribute="leading" secondItem="Kgh-aF-VJs" secondAttribute="trailing" constant="5" id="4kv-PQ-KJO"/>
+                    <constraint firstItem="vRB-MZ-a55" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="84t-mr-pZ5"/>
                     <constraint firstAttribute="bottomMargin" secondItem="7ak-KO-UTZ" secondAttribute="bottom" constant="10" id="ADD-70-pgk"/>
                     <constraint firstItem="TfB-eK-bU9" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="DOq-kR-jlN"/>
                     <constraint firstAttribute="trailingMargin" secondItem="TfB-eK-bU9" secondAttribute="trailing" id="GcM-tS-kHG"/>
                     <constraint firstItem="Kgh-aF-VJs" firstAttribute="leading" secondItem="7ak-KO-UTZ" secondAttribute="trailing" constant="10" id="MAY-KA-Ouk"/>
+                    <constraint firstItem="vRB-MZ-a55" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ONA-SG-JId"/>
+                    <constraint firstItem="7ak-KO-UTZ" firstAttribute="leading" secondItem="vRB-MZ-a55" secondAttribute="trailing" constant="8" id="Rqd-79-yFQ"/>
                     <constraint firstItem="Kgh-aF-VJs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lJs-qO-uot"/>
                     <constraint firstItem="7ak-KO-UTZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="p0R-p5-T3W"/>
-                    <constraint firstItem="7ak-KO-UTZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="wxX-CO-7nG"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="courseNameLabel" destination="7ak-KO-UTZ" id="5GI-Bu-Hln"/>
+                <outlet property="courseNameLabelLeadingConstraint" destination="Rqd-79-yFQ" id="HJC-6g-yhh"/>
                 <outlet property="filesNumberLabel" destination="Kgh-aF-VJs" id="SSL-Qq-wVx"/>
+                <outlet property="folderIcon" destination="vRB-MZ-a55" id="RiE-b4-PoF"/>
+                <outlet property="folderIconLeadingConstraint" destination="ONA-SG-JId" id="89W-Ko-9t9"/>
             </connections>
             <point key="canvasLocation" x="66" y="57"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="folder-icon-blue" width="20" height="16"/>
         <image name="unknown-icon" width="16" height="20"/>
     </resources>
 </document>

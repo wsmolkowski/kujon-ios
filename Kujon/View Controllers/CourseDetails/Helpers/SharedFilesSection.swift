@@ -22,7 +22,7 @@ class  SharedFilesSection: SectionHelperProtocol {
     }
 
     func registerView(_ tableView: UITableView) {
-        tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
+        tableView.register(UINib(nibName: "ActiveCourseCell", bundle: nil), forCellReuseIdentifier: cellId)
     }
 
     func getSectionTitle() -> String? {
@@ -38,8 +38,8 @@ class  SharedFilesSection: SectionHelperProtocol {
     }
 
     func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: position) as! GoFurtherViewCellTableViewCell
-        cell.plainLabel.text = StringHolder.fileShareTitle
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: position) as! ActiveCourseCell
+        cell.configure(courseName: StringHolder.fileShareTitle, filesNumber: "0", showFolderIcon: true)
         return cell
     }
 

@@ -24,6 +24,7 @@ class ActiveCoursesListTableViewController: RefreshingTableViewController, Navig
         self.tableView.tableFooterView = UIView()
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140
+        tableView.separatorStyle = .none
 
         courseProvider.delegate = self
         termsProvider.delegate = self
@@ -118,7 +119,7 @@ class ActiveCoursesListTableViewController: RefreshingTableViewController, Navig
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CourseCellId, for: indexPath) as! ActiveCourseCell
         let course = activeCoursesWrappers[indexPath.section].courses[indexPath.row]  as Course
-        cell.configure(courseName: course.courseName, filesNumber: "0")
+        cell.configure(courseName: course.courseName, filesNumber: "0", showFolderIcon: false)
         return cell
     }
 
@@ -134,7 +135,7 @@ class ActiveCoursesListTableViewController: RefreshingTableViewController, Navig
         header.titleLabel.text = termName
         header.backgroundColor = UIColor.greyBackgroundColor()
         header.separatorTopEnabled = true
-        header.separatorBottomEnabled = true
+        header.separatorBottomEnabled = false
 
         return header
     }
