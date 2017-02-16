@@ -55,7 +55,7 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
     private var allStudentsEnabled: Bool = false
     private var selectedStudentsAtLoad: Set<SimpleUser> = Set()
     private var temporarySelection: Set<SimpleUser>?
-
+    private let courseName: String
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
@@ -63,8 +63,9 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
 
     // MARK: - Initial section
 
-    init(file: APIFile, courseId: String, termId: String, courseStudents: [SimpleUser]?) {
+    init(file: APIFile, courseName: String, courseId: String, termId: String, courseStudents: [SimpleUser]?) {
         self.file = file
+        self.courseName = courseName
         super.init(style: .plain)
         if let courseStudents = courseStudents, !courseStudents.isEmpty {
             students = courseStudents
@@ -296,7 +297,7 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
 
     func fileDetailsCellForIndexPath(_ indexPath: IndexPath) -> FileDetailsCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: fileDetailsCellId, for: indexPath) as! FileDetailsCell
-        cell.configure(with:file)
+        cell.configure(with:file, courseName:courseName)
         return cell
     }
 

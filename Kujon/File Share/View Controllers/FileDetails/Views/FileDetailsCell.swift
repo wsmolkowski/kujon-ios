@@ -25,10 +25,10 @@ class FileDetailsCell: UITableViewCell {
         selectionStyle = .none
     }
 
-    internal func configure(with file: APIFile) {
+    internal func configure(with file: APIFile, courseName: String) {
         fileNameLabel.text = file.fileName
         fileTypeLabel.text = FileTypeDescriptionProvider.descriptionForMIMETypeString(file.contentType)
-        courseLabel.text = file.courseId
+        courseLabel.text = courseName
         termLabel.text = file.termId
         fileIcon.image = FileIconProvider.iconForMIMETypeString(file.contentType)
 

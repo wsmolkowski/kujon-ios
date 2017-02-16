@@ -218,7 +218,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         }
 
         let showDetailsAction: UIAlertAction = UIAlertAction(title: StringHolder.showFileDetails, style: .default) { [unowned self] _ in
-            let controller = FileDetailsController(file: file, courseId: self.courseId, termId: self.termId, courseStudents: self.courseStudentsCached)
+            let controller = FileDetailsController(file: file, courseName: self.courseName, courseId: self.courseId, termId: self.termId, courseStudents: self.courseStudentsCached)
             controller.delegate = self
             let navigationController = UINavigationController(rootViewController: controller)
             self.present(navigationController, animated: true, completion: nil)
