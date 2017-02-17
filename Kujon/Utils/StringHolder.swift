@@ -151,6 +151,8 @@ class StringHolder {
     static let filesForCourses = "Pliki przedmiotów"
     static let showPreview = "Otwórz podgląd"
     static let deleteFile = "Usuń plik"
+    static let active = "Aktywny"
+    static let inactive = "Nieaktywny"
 
 
     static func fileHasBeenRemovedMessage(fileName: String) -> String {
