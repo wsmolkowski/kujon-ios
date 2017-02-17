@@ -41,6 +41,7 @@ class CycleSection: SectionHelperProtocol {
     func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath) -> UITableViewCell! {
         let cell = tableView.dequeueReusableCell(withIdentifier: cycleId, for: position) as! GoFurtherViewCellTableViewCell
         cell.plainLabel.text = terms[(position as NSIndexPath).row].name
+        cell.arrow.isHidden = true
         return cell
     }
 
