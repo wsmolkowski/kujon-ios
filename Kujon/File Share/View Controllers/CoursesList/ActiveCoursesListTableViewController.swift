@@ -133,6 +133,7 @@ class ActiveCoursesListTableViewController: RefreshingTableViewController, Navig
         }
         let termName = activeCoursesWrappers[section].title
         header.titleLabel.text = termName
+        header.titleLabel.textAlignment = .center
         header.backgroundColor = UIColor.greyBackgroundColor()
         header.separatorTopEnabled = true
         header.separatorBottomEnabled = false
