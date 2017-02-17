@@ -53,6 +53,13 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     }
     private var courseStudentsCached: [SimpleUser]?
     private var cachedFiles: [URL] = []
+    private var sortKey: SortKey = .dateAddedDescending
+
+    enum SortKey: Int {
+        case fileNameAscending = 0
+        case dateAddedDescending
+        case ownerNameAscending
+    }
 
     // MARK: - Initial section
 
@@ -92,7 +99,9 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         navigationController?.navigationBar.tintColor = UIColor.white
         addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(SharedFilesViewController.addButtonDidTap))
-        navigationItem.rightBarButtonItem = addButtonItem
+        let sortButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "sort-by-icon"), style: .plain, target: self, action: #selector(SharedFilesViewController.sortButtonDidTap))
+
+        navigationItem.rightBarButtonItems = [addButtonItem!, sortButtonItem]
     }
 
     private func configureTableView() {
@@ -140,6 +149,10 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         presentAddOptions()
     }
 
+    internal func sortButtonDidTap() {
+        presentSortOptions()
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == toolbarMenuSegueId {
             let toolbarController = segue.destination as! ToolbarMenuController
@@ -161,7 +174,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     // MARK: - APIFileListProviderDelegate
 
     func apliFileListProvider(_ provider: APIFileListProvider?, didLoadFileList files: [APIFile]) {
-        allFiles = files.sorted { $0.fileName < $1.fileName }
+        allFiles = sortedFiles(files, withKey: sortKey)
         toolbarMenu?.reset()
         refreshControl?.endRefreshing()
         tableView.reloadData()
@@ -323,6 +336,38 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
 
     }
 
+    private func presentSortOptions() {
+        let section = IndexSet(integer: 0)
+        let imageKey = "image"
+
+        let sortWithNameAction: UIAlertAction = UIAlertAction(title: StringHolder.name, style: .default) { [unowned self] _ in
+            self.sortKey = .fileNameAscending
+            self.allFiles = self.sortedFiles(self.allFiles, withKey: self.sortKey)
+            self.tableView.reloadSections(section, with: .top)
+        }
+        let nameSortIcon = UIImage(named: "sort-by-name-icon")!
+        sortWithNameAction.setValue(nameSortIcon.withRenderingMode(.alwaysOriginal), forKey: imageKey)
+
+        let sortWithDateAction: UIAlertAction = UIAlertAction(title: StringHolder.date, style: .default) { [unowned self] _ in
+            self.sortKey = .dateAddedDescending
+            self.allFiles = self.sortedFiles(self.allFiles, withKey: self.sortKey)
+            self.tableView.reloadSections(section, with: .top)
+        }
+        let dateSortIcon = UIImage(named: "sort-by-date-icon")!
+        sortWithDateAction.setValue(dateSortIcon.withRenderingMode(.alwaysOriginal), forKey: imageKey)
+
+        let sortWithOwnerAction: UIAlertAction = UIAlertAction(title: StringHolder.author, style: .default) { [unowned self] _ in
+            self.sortKey = .ownerNameAscending
+            self.allFiles = self.sortedFiles(self.allFiles, withKey: self.sortKey)
+            self.tableView.reloadSections(section, with: .top)
+        }
+        let authorSortIcon = UIImage(named: "sort-by-author-icon")!
+        sortWithOwnerAction.setValue(authorSortIcon.withRenderingMode(.alwaysOriginal), forKey: imageKey)
+        presentActionSheet(actions: [sortWithNameAction, sortWithDateAction, sortWithOwnerAction], title: StringHolder.sortWith)
+    }
+
+
+
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -483,7 +528,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
 
     private func updateController(newFile file: APIFile) {
         allFiles.append(file)
-        allFiles.sort { $0.fileName < $1.fileName }
+        allFiles = sortedFiles(allFiles, withKey: sortKey)
         folderIsEmpty = allFiles.isEmpty
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
@@ -506,6 +551,27 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     private func removeFileFromModel(_ fileToRemove: APIFile) {
         if let index = allFiles.index(of: fileToRemove) {
             allFiles.remove(at: index)
+        }
+    }
+
+    private func sortedFiles(_ files: [APIFile], withKey sortKey: SortKey) -> [APIFile] {
+
+        switch sortKey {
+        case .fileNameAscending:
+            return files.sorted { $0.fileName < $1.fileName }
+        case .ownerNameAscending:
+            return files.sorted { lhs, rhs in
+                let lhsName = (lhs.lastName ?? "") + (lhs.firstName ?? "")
+                let rhsName = (rhs.lastName ?? "") + (rhs.firstName ?? "")
+                return lhsName < rhsName
+            }
+        case .dateAddedDescending:
+            return files.sorted { lhs, rhs in
+                guard let lhsDate = lhs.createdDate, let rhsDate = rhs.createdDate else {
+                    return true
+                }
+                return rhsDate.isLessThanDate(lhsDate)
+            }
         }
     }
 

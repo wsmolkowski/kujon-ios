@@ -153,6 +153,10 @@ class StringHolder {
     static let deleteFile = "Usuń plik"
     static let active = "Aktywny"
     static let inactive = "Nieaktywny"
+    static let name = "Nazwa pliku"
+    static let date = "Data dodania"
+    static let author = "Autor"
+    static let sortWith = "Sortuj według"
 
 
     static func fileHasBeenRemovedMessage(fileName: String) -> String {

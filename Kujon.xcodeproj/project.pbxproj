@@ -2274,7 +2274,6 @@
 				ORGANIZATIONNAME = Mobi;
 				TargetAttributes = {
 					4C0D876E78B6409220622356 = {
-						DevelopmentTeam = KBHT45SF63;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -2988,7 +2987,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Wojciech Smolkowski (KBHT45SF63)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = KBHT45SF63;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3111,7 +3110,7 @@
 				CODE_SIGN_ENTITLEMENTS = Kujon/Kujon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Wojciech Smolkowski (KBHT45SF63)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = KBHT45SF63;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
