@@ -14,11 +14,13 @@ class  SharedFilesSection: SectionHelperProtocol {
     private var courseId: String?
     private var termId: String?
     private var courseName: String?
+    private var filesCount: Int?
 
     func fillUpWithData(_ courseDetails: CourseDetails) {
         courseId = courseDetails.courseId
         termId = courseDetails.termId
         courseName = courseDetails.courseName
+        filesCount = courseDetails.filesCount
     }
 
     func registerView(_ tableView: UITableView) {
@@ -39,7 +41,8 @@ class  SharedFilesSection: SectionHelperProtocol {
 
     func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath) -> UITableViewCell! {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: position) as! ActiveCourseCell
-        cell.configure(courseName: StringHolder.fileShareTitle, filesNumber: "0", showFolderIcon: true)
+        let count = filesCount == nil ? 0 : filesCount!
+        cell.configure(courseName: StringHolder.fileShareTitle, filesNumber: count, showFolderIcon: true)
         return cell
     }
 

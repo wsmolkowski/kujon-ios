@@ -26,6 +26,7 @@ struct CourseDetails {
     let courseId : String
     let courseName : String
     let assessmentCriteria: String
+    let filesCount: Int
 
 }
 
@@ -48,7 +49,8 @@ extension CourseDetails:Decodable{
                     learnignOutcomes: j => "learning_outcomes",
                     courseId: j => "course_id",
                     courseName: j => "course_name",
-                    assessmentCriteria: j => "assessment_criteria"
+                    assessmentCriteria: j => "assessment_criteria",
+                    filesCount: j => "files_count"
         )
     }
 

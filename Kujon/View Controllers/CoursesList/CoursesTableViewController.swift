@@ -113,7 +113,7 @@ class CoursesTableViewController: RefreshingTableViewController, NavigationDeleg
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CourseCellId, for: indexPath) as! ActiveCourseCell
         let course = filteredSections.itemForIndexPath(indexPath)
-        cell.configure(courseName: course.courseName, filesNumber: "0", showFolderIcon: false)
+        cell.configure(courseName: course.courseName, filesNumber: course.filesCount, showFolderIcon: false)
         return cell
     }
 
