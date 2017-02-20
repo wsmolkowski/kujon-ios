@@ -68,9 +68,6 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         tableView.delegate = self
         tableView.dataSource = self
         fileListProvider.delegate = self
-        if let courseId = courseId, let termId = termId {
-            fileListProvider.loadFileList(courseId: courseId, termId: termId)
-        }
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(SharedFilesViewController.backButtonDidTap),andTitle: courseName)
         addRefreshControl()
         configureNavigationBar()
