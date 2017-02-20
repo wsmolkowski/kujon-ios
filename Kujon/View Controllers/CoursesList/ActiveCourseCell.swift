@@ -32,9 +32,9 @@ class ActiveCourseCell: UITableViewCell {
         return super.layer
     }
 
-    internal func configure(courseName: String, filesNumber: String, showFolderIcon: Bool) {
+    internal func configure(courseName: String, filesNumber: Int, showFolderIcon: Bool) {
         courseNameLabel.text = courseName
-        filesNumberLabel.text = filesNumber
+        filesNumberLabel.text = String(filesNumber)
         showFolderIcon ? showFolder() : hideFolder()
     }
 

@@ -25,6 +25,13 @@ struct APIFile: Decodable, Hashable {
     var fileSharedByMe: Bool?
     var shareOptions: ShareOptions
 
+    var createdDate: Date? {
+        guard let createdTime = createdTime  else {
+            return nil
+        }
+        return Date.stringToDateWithClock(createdTime)
+    }
+
     init(fileName: String, courseId: String, termId: String, shareOptions: ShareOptions, fileSharedByMe: Bool? = true, contentType: String, localFileURL: URL? = nil, firstName: String? = nil, lastName: String? = nil, usosUserId: String? = nil, fileId: String? = nil, createdTime: String? = nil, fileSize: String? = nil) {
         self.fileName = fileName
         self.fileId = fileId

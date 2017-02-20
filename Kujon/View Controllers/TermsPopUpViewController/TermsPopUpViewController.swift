@@ -26,9 +26,9 @@ class TermsPopUpViewController: PopUpViewController {
         endDateLabel.text = term.endDate
         endindTimeLabel.text = term.finishDate
         startDateLabel.text = term.startDate
-        termActiveLabel.text = term.active ? StringHolder.yes:StringHolder.no
+        termActiveLabel.text = term.active ? StringHolder.active : StringHolder.inactive
         termNameLabel.text = term.name
-        termNumberLabel.text = term.termId
+        termNumberLabel.text = "numer " + term.termId
     }
 
     override func setMyPopUpView() -> UIView! {
