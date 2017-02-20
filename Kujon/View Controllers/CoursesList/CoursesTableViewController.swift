@@ -10,7 +10,7 @@ import UIKit
 
 class CoursesTableViewController: RefreshingTableViewController, NavigationDelegate,CourseProviderDelegate, TermsProviderDelegate, UISearchResultsUpdating {
 
-    private let CourseCellId = "courseCellId"
+    private let CourseCellId = "ActiveCourseCell"
     private let courseProvider = ProvidersProviderImpl.sharedInstance.provideCourseProvider()
     private let termsProvider = ProvidersProviderImpl.sharedInstance.provideTermsProvider()
     private var allSections: SortedDictionary<Course> = SortedDictionary(coursesWrappers: [])
@@ -23,7 +23,7 @@ class CoursesTableViewController: RefreshingTableViewController, NavigationDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithDrawerOpening(self, selector: #selector(CoursesTableViewController.openDrawer),andTitle: StringHolder.courses)
-        self.tableView.register(UINib(nibName: "CourseTableViewCell", bundle: nil), forCellReuseIdentifier: CourseCellId)
+        self.tableView.register(UINib(nibName: "ActiveCourseCell", bundle: nil), forCellReuseIdentifier: CourseCellId)
         self.tableView.tableFooterView = UIView()
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140
@@ -111,10 +111,9 @@ class CoursesTableViewController: RefreshingTableViewController, NavigationDeleg
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CourseCellId, for: indexPath) as! CourseTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CourseCellId, for: indexPath) as! ActiveCourseCell
         let course = filteredSections.itemForIndexPath(indexPath)
-        cell.courseNameLabel.text = course.courseName
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.configure(courseName: course.courseName, filesNumber: "0", showFolderIcon: false)
         return cell
     }
 
