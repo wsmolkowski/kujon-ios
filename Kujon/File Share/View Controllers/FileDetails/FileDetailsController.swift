@@ -140,7 +140,7 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
         spinner.frame.size = CGSize(width: spinnerSize, height: spinnerSize)
         spinner.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
         navigationController?.view.addSubview(spinner)
-        spinner.isHidden = courseDetailsProvider == nil
+        spinner.isHidden = !(courseDetailsProvider?.isFetching ?? false)
     }
 
     private func sharedIdsForFile(file: APIFile) -> [String] {

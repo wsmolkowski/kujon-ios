@@ -132,8 +132,8 @@ class ShareDetailsController: UITableViewController, CourseDetailsProviderDelega
         spinner.frame.origin = CGPoint(x: view.bounds.midX - correction, y: view.bounds.midY - correction)
         spinner.frame.size = CGSize(width: spinnerSize, height: spinnerSize)
         spinner.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
+        spinner.isHidden = !(courseDetailsProvider?.isFetching ?? false)
         navigationController?.view.addSubview(spinner)
-        spinner.isHidden = courseDetailsProvider == nil
     }
 
     internal func cancelButtonDidTap() {
@@ -187,15 +187,13 @@ class ShareDetailsController: UITableViewController, CourseDetailsProviderDelega
     // MARK: - CourseDetailsProviderDelegate
 
     func onCourseDetailsLoaded(_ courseDetails: CourseDetails) {
-        spinner.isHidden = true
-        guard let participants = courseDetails.participants else {
-            return
-        }
-        studentsArray = participants
-        students = SortedDictionary<SimpleUser>(with: participants)
-
         DispatchQueue.main.async { [weak self] in
             self?.spinner.isHidden = true
+            guard let participants = courseDetails.participants else {
+                return
+            }
+            self?.studentsArray = participants
+            self?.students = SortedDictionary<SimpleUser>(with: participants)
             self?.addSearchController()
             self?.tableView.reloadData()
         }
