@@ -1,38 +1,45 @@
 //
-//  LocalFile2APITransfer.swift
+//  ICloudDrive2APITransfer.swift
 //  Kujon
 //
-//  Created by Adam on 05.02.2017.
+//  Created by Adam on 21.02.2017.
 //  Copyright © 2017 Mobi. All rights reserved.
 //
 
 import Foundation
 
+class ICloudDrive2APITransfer: Transferable, OperationDelegate {
 
-class Device2APITransfer: Transferable, OperationDelegate {
-
-    private let fileURL: URL
     private let courseId: String
     private let termId: String
-    private let shareOptions: ShareOptions
+    private let parentController: UIViewController
+    private var courseStudentsCached: [SimpleUser]?
 
-    private var transferProgress: Float = 0.0
+    private var uploadProgress: Float = 0.0
+    private var transferProgress: Float { return uploadProgress }
     internal var type: TransferType = .add
 
     internal var operations: [Operation] = []
     internal weak var delegate: TransferDelegate?
 
 
-    init(fileURL: URL, assignApiCourseId courseId:String, termId:String, shareOptions: ShareOptions) {
-        self.fileURL = fileURL
+    init(parentController: UIViewController, assignApiCourseId courseId:String, termId:String, courseStudentsCached: [SimpleUser]?) {
+        self.parentController = parentController
         self.courseId = courseId
         self.termId = termId
-        self.shareOptions = shareOptions
+        self.courseStudentsCached = courseStudentsCached
     }
 
     func createOperations() -> [Operation] {
+        let downloadOperation = ICloudDriveDownloadOperation(parentController: parentController)
+        downloadOperation.delegate = self
+        downloadOperation.name = "ICloud Drive Download File"
 
-        let uploadOperation = APIUploadFileOperation(localFileURL: fileURL, contentType: MIMEType.imageJPG.rawValue, courseId: courseId, termId: termId, shareOptions: shareOptions)
+        let shareOperation = ShareDetailsOperation(parentController: parentController, courseId: courseId, termId: termId, courseStudentsCached: courseStudentsCached)
+        shareOperation.delegate = self
+        shareOperation.name = "Share Details Set Operation"
+
+        let uploadOperation = APIUploadFileOperation(courseId: courseId, termId: termId, shareOptions: nil)
         uploadOperation.delegate = self
         uploadOperation.shouldDismissTransferView = true
         uploadOperation.name = "API Upload File"
@@ -44,9 +51,9 @@ class Device2APITransfer: Transferable, OperationDelegate {
             self?.delegate?.transfer(self, didFinishWithSuccessAndReturn: removeCacheOperation.file)
         }
 
-        removeCacheOperation.dependsOn(uploadOperation)
+        removeCacheOperation.dependsOn(uploadOperation).dependsOn(shareOperation).dependsOn(downloadOperation)
 
-        let operations = [uploadOperation, removeCacheOperation]
+        let operations = [downloadOperation, shareOperation, uploadOperation, removeCacheOperation]
         self.operations = operations
         return self.operations
     }
@@ -79,7 +86,7 @@ class Device2APITransfer: Transferable, OperationDelegate {
 
     internal func operation(_ operation: Operation?, didProceedWithProgress progress: Float, bytesProceeded: String, totalSize: String) {
         if operation is APIUploadFileOperation {
-            transferProgress = progress
+            uploadProgress = progress
         }
         delegate?.transfer(self, didProceedWithProgress: transferProgress, bytesProceededPerOperation: bytesProceeded, totalSize: totalSize)
     }

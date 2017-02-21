@@ -8,6 +8,7 @@
 
 import Foundation
 import GoogleAPIClientForREST
+import MobileCoreServices
 
 class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, FileTransferManagerDelegate, TransferViewProviding, UITableViewDataSource, UITableViewDelegate, ToolbarMenuControllerDelegate, PhotoFileProviderDelegate, FileDetailsControllerDelegate, UIDocumentInteractionControllerDelegate {
 
@@ -34,6 +35,9 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     private var addButtonItem: UIBarButtonItem?
     internal var courseName: String = ""
 
+    private lazy var icloudProvider: ICloudDriveProvider = {
+        return ICloudDriveProvider(with: self)
+    }()
     private var fileListProvider = APIFileListProvider()
     private var presentedFiles: [APIFile] {
         guard let state = toolbarMenu?.state else {
@@ -201,7 +205,11 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
 
     private func presentAddOptions() {
         let addFileFromGoogleDrive: UIAlertAction = UIAlertAction(title: StringHolder.addFromGoogleDrive, style: .default) { [unowned self] _ in
-            self.addFilesToKujonFromDrive(assignToCourseId: self.courseId, andTermId: self.termId)
+            self.shareFilesFromGoogleDrive(assignToCourseId: self.courseId, andTermId: self.termId)
+        }
+
+        let addFileFromICloudDrive: UIAlertAction = UIAlertAction(title: StringHolder.addFromICloudDrive, style: .default) { [unowned self] _ in
+            self.shareFilesFromICloudDrive(assignToCourseId: self.courseId, andTermId: self.termId)
         }
 
         let addPhotoFromPhotoGallery: UIAlertAction = UIAlertAction(title: StringHolder.addFromPhotoGallery, style: .default) { [weak self] _ in
@@ -210,7 +218,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
                 strongSelf.photoProvider.presentImagePicker(parentController: strongSelf, courseStudentsCached: strongSelf.courseStudentsCached)
             }
         }
-        presentActionSheet(actions: [addFileFromGoogleDrive, addPhotoFromPhotoGallery])
+        presentActionSheet(actions: [addFileFromGoogleDrive, addFileFromICloudDrive, addPhotoFromPhotoGallery])
     }
 
     private func presentFileOptions(for file: APIFile) {
@@ -232,8 +240,12 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
             self.present(navigationController, animated: true, completion: nil)
         }
 
-        let addToDriveAction: UIAlertAction = UIAlertAction(title: StringHolder.addToGoogleDrive, style: .default) { [unowned self] _ in
-            self.addToDrive(file: file)
+        let addToGoogleDriveAction: UIAlertAction = UIAlertAction(title: StringHolder.addToGoogleDrive, style: .default) { [unowned self] _ in
+            self.addToGoogleDrive(file: file)
+        }
+
+        let addToICloudDriveAction: UIAlertAction = UIAlertAction(title: StringHolder.addToICloudDrive, style: .default) { [unowned self] _ in
+            self.addToICloudDrive(file: file)
         }
 
         let deleteFileAction: UIAlertAction = UIAlertAction(title: StringHolder.delete, style: .destructive) { [unowned self] _ in
@@ -242,11 +254,11 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         let hasDeletionRight = file.fileSharedByMe != nil && file.fileSharedByMe == true
         deleteFileAction.isEnabled = hasDeletionRight
 
-        let actions = [previewFileAction, showDetailsAction, addToDriveAction, deleteFileAction]
+        let actions = [previewFileAction, showDetailsAction, addToGoogleDriveAction, addToICloudDriveAction, deleteFileAction]
         presentActionSheet(actions: actions, title: title, message: description)
     }
 
-    private func addToDrive(file: APIFile) {
+    private func addToGoogleDrive(file: APIFile) {
         let driveContentsProvider = DriveFolderContentsProvider()
         let configuration = ChooseFolderConfiguration(inputFile: file)
         let driveBrowser = DriveBrowser(configuration: configuration, provider: driveContentsProvider, completionHandler: nil)
@@ -254,7 +266,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         present(navigationController, animated: true, completion: nil)
     }
 
-    private func addFilesToKujonFromDrive(assignToCourseId courseId:String, andTermId termId:String) {
+    private func shareFilesFromGoogleDrive(assignToCourseId courseId:String, andTermId termId:String) {
         let driveContentsProvider = DriveFolderContentsProvider()
         let configuration = SelectFileConfiguration(courseId: courseId, termId: termId, courseStudentsCached: courseStudentsCached)
         let completion: DriveBrowserCompletionHandler = { [weak self] file, shareOptions, courseStudentsCached in
@@ -274,6 +286,19 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         let navigationController = UINavigationController(navigationBarClass: nil, toolbarClass: ShareToolbar.self)
         navigationController.setViewControllers([driveBrowser], animated: true)
         present(navigationController, animated: true, completion: nil)
+    }
+
+    private func addToICloudDrive(file: APIFile) {
+
+        let transfer = API2ICloudDriveTransfer(file: file, parentViewController: self)
+        setupNewTransfer(transfer)
+        self.addButtonItem?.isEnabled = false
+    }
+
+    private func shareFilesFromICloudDrive(assignToCourseId courseId:String, andTermId termId:String) {
+        let transfer = ICloudDrive2APITransfer(parentController: self, assignApiCourseId: courseId, termId: termId, courseStudentsCached: courseStudentsCached)
+        setupNewTransfer(transfer)
+        self.addButtonItem?.isEnabled = false
     }
 
     private func deleteFileIfUserConfirms(file: APIFile) {
@@ -326,11 +351,6 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         let transferManager = FileTransferManager.shared
         transferManager.delegate = self
         transferManager.execute(transfer: transfer)
-        DispatchQueue.main.async {
-            self.addTransferView(toParent: self.tableView, trackTransfer: transfer)
-            self.addButtonItem?.isEnabled = false
-        }
-
     }
 
     private func presentSortOptions() {
@@ -392,6 +412,20 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
 
     // MARK: - FileTransferManagerDelegate
 
+    func transfer(_ transfer: Transferable?, willStartReportingProgressForOperation operation: Operation?) {
+        DispatchQueue.main.async {
+            self.addTransferView(toParent: self.tableView, trackTransfer: transfer)
+            self.addButtonItem?.isEnabled = false
+        }
+    }
+
+    func transfer(_ transfer: Transferable?, willStopReportingProgressForOperation operation: Operation?) {
+        DispatchQueue.main.async { [weak self] in
+            self?.closeTransferView()
+            self?.addButtonItem?.isEnabled = true
+        }
+    }
+
     func transfer(_ transfer: Transferable?, didFinishWithSuccessAndReturn file: Any?) {
         DispatchQueue.main.async { [weak self] in
             guard let strongSelf = self else {
@@ -404,6 +438,13 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
                 guard let file = file as? APIFile, let url = file.localFileURL else { return }
                 strongSelf.cachedFiles.append(url)
                 strongSelf.isViewInViewHierarchy ? strongSelf.previewLocalFile(url: url) : strongSelf.removeAllCachedFiles()
+                return
+            }
+
+            if transfer is API2ICloudDriveTransfer {
+                if let file = file as? APIFile {
+                    ToastView.showInParent(strongSelf.navigationController?.view, withText: StringHolder.fileHasBeenAddedToiCloudDriveMessage(fileName: file.fileName), forDuration: 2.0)
+                }
                 return
             }
 
@@ -458,6 +499,8 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         courseStudentsCached = courseStudents
         let transfer = Device2APITransfer(fileURL: fileURL, assignApiCourseId: courseId, termId: termId, shareOptions: shareOptions)
         setupNewTransfer(transfer)
+        addTransferView(toParent: tableView, trackTransfer: transfer)
+        self.addButtonItem?.isEnabled = false
     }
 
     func photoFileProviderDidCancel(loadedForCache courseStudents: [SimpleUser]?) {

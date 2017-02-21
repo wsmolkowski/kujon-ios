@@ -12,6 +12,7 @@ import GoogleAPIClientForREST
 protocol APIUploadFileOperationDataProvider {
     var localFileURL: URL? { get }
     var contentType: String { get }
+    var shareOptions: ShareOptions? { get }
 }
 
 class APIUploadFileOperation: AsyncOperation, CallbackOperation {
@@ -23,9 +24,11 @@ class APIUploadFileOperation: AsyncOperation, CallbackOperation {
 
     private let courseId: String
     private let termId: String
-    private let shareOptions: ShareOptions
+    private var shareOptions: ShareOptions?
+    internal var shouldDismissTransferView: Bool = false
 
-    internal init(localFileURL: URL? = nil, contentType:String = MIMEType.binary.rawValue, courseId:String, termId:String, shareOptions: ShareOptions) {
+
+    internal init(localFileURL: URL? = nil, contentType:String = MIMEType.binary.rawValue, courseId:String, termId:String, shareOptions: ShareOptions?) {
         self.localFileURL = localFileURL
         self.contentType = contentType
         self.courseId = courseId
@@ -43,18 +46,26 @@ class APIUploadFileOperation: AsyncOperation, CallbackOperation {
             .first as? APIUploadFileOperationDataProvider {
             localFileURL = dependentDownloadOperation.localFileURL
             contentType = dependentDownloadOperation.contentType
+            if shareOptions == nil {
+                shareOptions = dependentDownloadOperation.shareOptions
+            }
         }
 
         guard
             let localFileURL = localFileURL,
+            let shareOptions = shareOptions,
             let file = APIFile(localFileURL: localFileURL, courseId: courseId, termId: termId, shareOptions: shareOptions, contentType: contentType)
              else {
                 NSlogManager.showLog("Operation \(name ?? "none") is not performed intentionally")
                 state = .finished
                 return
         }
-
         self.file = file
+
+        guard let _ = try? Data.init(contentsOf: localFileURL) else {
+            delegate?.operation(self, didFailWithErrorMessage: StringHolder.fileNotFound)
+            return
+        }
 
         if state == .cancelled {
             delegate?.operationDidCancel(operation: self)
@@ -74,6 +85,9 @@ class APIUploadFileOperation: AsyncOperation, CallbackOperation {
                 self?.file?.shareOptions = uploadedFile.shareOptions
             }
             self?.state = .finished
+            if let strongSelf = self, strongSelf.shouldDismissTransferView == true {
+                self?.delegate?.operationWillStopReportingProgress(self)
+            }
 
             }, failureHandler: { [weak self] message in
                 self?.delegate?.operation(self, didFailWithErrorMessage:message)

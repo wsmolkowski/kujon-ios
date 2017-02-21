@@ -26,4 +26,8 @@ extension URL {
         return URL.createURLForFileName(fileName, in: .cachesDirectory)
     }
 
+    var fileTypeIdentifier: String? {
+        return (try? resourceValues(forKeys: [.typeIdentifierKey]))?.typeIdentifier
+    }
+
 }

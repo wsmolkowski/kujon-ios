@@ -14,6 +14,7 @@ class APIDownloadFileOperation: AsyncOperation, CallbackOperation {
     private let api = APIDownloadProvider.shared
     internal weak var delegate: OperationDelegate?
     internal var didFail: Bool = false
+    internal var shouldDismissTransferView: Bool = false
 
     internal init(file: APIFile) {
         self.file = file
@@ -29,6 +30,7 @@ class APIDownloadFileOperation: AsyncOperation, CallbackOperation {
             state = .finished
             return
         }
+        delegate?.operationWillStartReportingProgress(self)
 
         api.startDownload(file:file, successHandler: { [weak self] downloadedFileURL in
 
@@ -40,6 +42,9 @@ class APIDownloadFileOperation: AsyncOperation, CallbackOperation {
 
             self?.file.localFileURL = downloadedFileURL
             self?.state = .finished
+            if let strongSelf = self, strongSelf.shouldDismissTransferView == true {
+                self?.delegate?.operationWillStopReportingProgress(self)
+            }
 
             }, failureHandler: { [weak self] message in
                 self?.state = .finished

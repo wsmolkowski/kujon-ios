@@ -116,8 +116,10 @@ class StringHolder {
     static let noCachesDirectory = "Nie znaleziono folderu tymczasowego"
     static let delete = "Usuń"
     static let addToGoogleDrive = "Zapisz w Google Drive"
+    static let addToICloudDrive = "Zapisz w iCloud Drive"
     static let showFileDetails = "Szczegóły pliku"
     static let addFromGoogleDrive = "Udostępnij plik z Google Drive"
+    static let addFromICloudDrive = "Udostępnij plik z iCloud Drive"
     static let addFromPhotoGallery = "Udostępnij zdjęcie z Galerii"
     static let fileNotFound = "Nie znaleziono pliku"
     static let fileShareError = "Wystąpił błąd podczas udostępniania pliku użytkownikom Kujona"
@@ -140,6 +142,7 @@ class StringHolder {
     static let shareWithSelected_short = "Wybranym"
     static let sharePhoto = "Udostępnij zdjęcie"
     static let enterFileNameForPhoto = "Wprowadź nazwę, pod którą zdjęcie zostanie udostępnione innym studentom przedmiotu"
+    static let selectShareOption = "Czy chcesz udostępnić wybrany plik wszystkim studentom przedmiotu?"
     static let fileNamePlaceholder = "Nazwa pliku"
     static let fileDownloadCancelled = "Pobieranie pliku zostało anulowane"
     static let photoSaveErrorMessage = "Wystąpił błąd podczas zapisywania zdjęcia do pliku"
@@ -165,6 +168,10 @@ class StringHolder {
 
     static func fileHasBeenSharedMessage(fileName: String) -> String {
         return "Plik \(fileName) został udostępniony"
+    }
+
+    static func fileHasBeenAddedToiCloudDriveMessage(fileName: String) -> String {
+        return "Plik \(fileName) został zapisany na dysku iCloud"
     }
 
     static func fileHasBeenSavedOnGoogleDriveMessage(fileName: String) -> String {

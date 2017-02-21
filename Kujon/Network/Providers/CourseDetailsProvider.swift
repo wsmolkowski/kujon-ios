@@ -22,7 +22,9 @@ protocol CourseDetailsProviderDelegate: ErrorResponseProtocol {
 
 class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
     var endpoint:String! = nil
-   weak var delegate: CourseDetailsProviderDelegate! = nil
+    weak var delegate: CourseDetailsProviderDelegate! = nil
+    internal var isFetching: Bool = false
+
     func loadCourseDetails(_ course: Course) {
         let courseString = course.courseId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         let termsString = course.termId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
@@ -36,18 +38,20 @@ class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
         let termsString = termId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         endpoint = "/courseseditions/" + courseString! + "/" + termsString!
         makeApiShot()
+        isFetching = true
     }
 
     func loadCourseDetails(_ courseId: String) {
         let courseString = courseId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         endpoint = "/courses/" + courseString!
         makeApiShot()
+        isFetching = true
     }
 
 
     private func makeApiShot(){
-        self.makeHTTPAuthenticatedGetRequest({
-            [weak self] json in
+        self.makeHTTPAuthenticatedGetRequest({ [weak self] json in
+            self?.isFetching = false
             guard let strongSelf = self else {
                 return
             }
@@ -59,7 +63,9 @@ class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
                 NSlogManager.showLog("JSON serialization failed:  \(error)")
                 strongSelf.delegate?.onErrorOccurs()
             }
-        }, onError: {[unowned self] text in self.delegate?.onErrorOccurs() })
+        }, onError: {[weak self] text in
+            self?.isFetching = false
+            self?.delegate?.onErrorOccurs() })
     }
 
 

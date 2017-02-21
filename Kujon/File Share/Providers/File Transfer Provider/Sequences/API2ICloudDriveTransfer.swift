@@ -1,41 +1,40 @@
 //
-//  LocalFile2APITransfer.swift
+//  API2ICloudDriveTransfer.swift
 //  Kujon
 //
-//  Created by Adam on 05.02.2017.
+//  Created by Adam on 17.02.2017.
 //  Copyright © 2017 Mobi. All rights reserved.
 //
 
 import Foundation
 
+class API2ICloudDriveTransfer: Transferable, OperationDelegate {
 
-class Device2APITransfer: Transferable, OperationDelegate {
+    private let file: APIFile
+    private let parentViewController: UIViewController
 
-    private let fileURL: URL
-    private let courseId: String
-    private let termId: String
-    private let shareOptions: ShareOptions
-
-    private var transferProgress: Float = 0.0
-    internal var type: TransferType = .add
+    private var downloadProgress: Float = 0.0
+    private var transferProgress: Float { return downloadProgress }
+    internal var type: TransferType = .download
 
     internal var operations: [Operation] = []
     internal weak var delegate: TransferDelegate?
 
-
-    init(fileURL: URL, assignApiCourseId courseId:String, termId:String, shareOptions: ShareOptions) {
-        self.fileURL = fileURL
-        self.courseId = courseId
-        self.termId = termId
-        self.shareOptions = shareOptions
+    init(file: APIFile, parentViewController: UIViewController) {
+        self.file = file
+        self.parentViewController = parentViewController
     }
 
     func createOperations() -> [Operation] {
 
-        let uploadOperation = APIUploadFileOperation(localFileURL: fileURL, contentType: MIMEType.imageJPG.rawValue, courseId: courseId, termId: termId, shareOptions: shareOptions)
-        uploadOperation.delegate = self
-        uploadOperation.shouldDismissTransferView = true
-        uploadOperation.name = "API Upload File"
+        let apiDownloadOperation = APIDownloadFileOperation(file: file)
+        apiDownloadOperation.delegate = self
+        apiDownloadOperation.shouldDismissTransferView = true
+        apiDownloadOperation.name = "API Download File"
+
+        let driveUploadOperation = ICloudDriveUploadOperation(parentController: parentViewController)
+        driveUploadOperation.delegate = self
+        driveUploadOperation.name = "iCloud Drive Upload File"
 
         let removeCacheOperation = RemoveCachedFileOperation()
         removeCacheOperation.delegate = self
@@ -44,9 +43,9 @@ class Device2APITransfer: Transferable, OperationDelegate {
             self?.delegate?.transfer(self, didFinishWithSuccessAndReturn: removeCacheOperation.file)
         }
 
-        removeCacheOperation.dependsOn(uploadOperation)
+        removeCacheOperation.dependsOn(driveUploadOperation).dependsOn(apiDownloadOperation)
 
-        let operations = [uploadOperation, removeCacheOperation]
+        let operations = [apiDownloadOperation, driveUploadOperation, removeCacheOperation]
         self.operations = operations
         return self.operations
     }
@@ -58,6 +57,7 @@ class Device2APITransfer: Transferable, OperationDelegate {
             }
         }
     }
+
 
     // MARK: Operation delegate
 
@@ -78,8 +78,8 @@ class Device2APITransfer: Transferable, OperationDelegate {
     }
 
     internal func operation(_ operation: Operation?, didProceedWithProgress progress: Float, bytesProceeded: String, totalSize: String) {
-        if operation is APIUploadFileOperation {
-            transferProgress = progress
+        if operation is APIDownloadFileOperation {
+            downloadProgress = progress
         }
         delegate?.transfer(self, didProceedWithProgress: transferProgress, bytesProceededPerOperation: bytesProceeded, totalSize: totalSize)
     }

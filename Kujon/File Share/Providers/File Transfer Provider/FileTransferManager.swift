@@ -11,6 +11,8 @@ import GoogleAPIClientForREST
 
 protocol FileTransferManagerDelegate: class {
 
+    func transfer(_ transfer: Transferable?, willStartReportingProgressForOperation operation: Operation?)
+    func transfer(_ transfer: Transferable?, willStopReportingProgressForOperation operation: Operation?)
     func transfer(_ transfer: Transferable?, didFinishWithSuccessAndReturn file: Any?)
     func transfer(_ transfer: Transferable?, didCancelExecuting operation: Operation?)
     func transfer(_ transfer: Transferable?, didFailExecuting operation: Operation?, errorMessage: String)
@@ -48,6 +50,13 @@ class FileTransferManager: TransferDelegate {
 
     // MARK: TransferDelegate
 
+    func transfer(_ transfer: Transferable?, willStartReportingProgressForOperation operation: Operation?) {
+        delegate?.transfer(transfer, willStartReportingProgressForOperation: operation)
+    }
+
+    func transfer(_ transfer: Transferable?, willStopReportingProgressForOperation operation: Operation?) {
+        delegate?.transfer(transfer, willStopReportingProgressForOperation: operation)
+    }
 
     func transfer(_ transfer: Transferable?, didFinishWithSuccessAndReturn file: Any?) {
         let transfer = removeTransfer(transfer)
