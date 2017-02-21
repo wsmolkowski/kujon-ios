@@ -15,9 +15,8 @@ class ICloudDrive2APITransfer: Transferable, OperationDelegate {
     private let shareOptions: ShareOptions
     private let parentController: UIViewController
 
-    private var downloadProgress: Float = 0.0
     private var uploadProgress: Float = 0.0
-    private var transferProgress: Float { return downloadProgress / 2.0 + uploadProgress / 2.0 }
+    private var transferProgress: Float { return uploadProgress }
     internal var type: TransferType = .add
 
     internal var operations: [Operation] = []
@@ -77,9 +76,7 @@ class ICloudDrive2APITransfer: Transferable, OperationDelegate {
     }
 
     internal func operation(_ operation: Operation?, didProceedWithProgress progress: Float, bytesProceeded: String, totalSize: String) {
-        if operation is DriveDownloadFileOperation {
-            downloadProgress = progress
-        } else if operation is APIUploadFileOperation {
+        if operation is APIUploadFileOperation {
             uploadProgress = progress
         }
         delegate?.transfer(self, didProceedWithProgress: transferProgress, bytesProceededPerOperation: bytesProceeded, totalSize: totalSize)

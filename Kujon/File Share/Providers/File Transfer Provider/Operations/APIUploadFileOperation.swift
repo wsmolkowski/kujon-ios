@@ -53,8 +53,12 @@ class APIUploadFileOperation: AsyncOperation, CallbackOperation {
                 state = .finished
                 return
         }
-
         self.file = file
+
+        guard let _ = try? Data.init(contentsOf: localFileURL) else {
+            delegate?.operation(self, didFailWithErrorMessage: StringHolder.fileNotFound)
+            return
+        }
 
         if state == .cancelled {
             delegate?.operationDidCancel(operation: self)
