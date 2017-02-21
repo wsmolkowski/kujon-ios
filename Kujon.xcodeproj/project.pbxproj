@@ -134,6 +134,7 @@
 		664DCFFF1E4E02CE004EE946 /* SharedFilesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664DCFFE1E4E02CE004EE946 /* SharedFilesSection.swift */; };
 		664DD0011E4E0BAA004EE946 /* API2DeviceTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664DD0001E4E0BAA004EE946 /* API2DeviceTransfer.swift */; };
 		66678B001E5C52500059F7A7 /* ICloudDrive2APITransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66678AFF1E5C52500059F7A7 /* ICloudDrive2APITransfer.swift */; };
+		66678B021E5C67CE0059F7A7 /* ICloudDriveUploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66678B011E5C67CE0059F7A7 /* ICloudDriveUploadOperation.swift */; };
 		66852C191DE8639B009234C9 /* SettingsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66852C181DE8639B009234C9 /* SettingsResponse.swift */; };
 		66989CC91E38CB9700B659F6 /* KujonAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66989CC81E38CB9700B659F6 /* KujonAppearance.swift */; };
 		66989CCB1E38CE8200B659F6 /* SortKeyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66989CCA1E38CE8200B659F6 /* SortKeyProviding.swift */; };
@@ -597,6 +598,7 @@
 		664DCFFE1E4E02CE004EE946 /* SharedFilesSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedFilesSection.swift; sourceTree = "<group>"; };
 		664DD0001E4E0BAA004EE946 /* API2DeviceTransfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API2DeviceTransfer.swift; sourceTree = "<group>"; };
 		66678AFF1E5C52500059F7A7 /* ICloudDrive2APITransfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICloudDrive2APITransfer.swift; sourceTree = "<group>"; };
+		66678B011E5C67CE0059F7A7 /* ICloudDriveUploadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICloudDriveUploadOperation.swift; sourceTree = "<group>"; };
 		66852C181DE8639B009234C9 /* SettingsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsResponse.swift; sourceTree = "<group>"; };
 		66989CC81E38CB9700B659F6 /* KujonAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KujonAppearance.swift; sourceTree = "<group>"; };
 		66989CCA1E38CE8200B659F6 /* SortKeyProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortKeyProviding.swift; sourceTree = "<group>"; };
@@ -1541,6 +1543,7 @@
 				66A8BDDF1E48C11E008B35B7 /* DriveUploadFileOperation.swift */,
 				66A8BDE01E48C11E008B35B7 /* RemoveCachedFileOperation.swift */,
 				6647D5B81E5B514F00D3BFD9 /* ICloudDriveDownloadOperation.swift */,
+				66678B011E5C67CE0059F7A7 /* ICloudDriveUploadOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -2716,6 +2719,7 @@
 				66FD664A1E3BAD9E007066E6 /* KierunekDetailViewController.swift in Sources */,
 				66A8BE3F1E48C11E008B35B7 /* DriveItemCell.swift in Sources */,
 				66FD66AD1E3BAD9E007066E6 /* KierunkiViewController.swift in Sources */,
+				66678B021E5C67CE0059F7A7 /* ICloudDriveUploadOperation.swift in Sources */,
 				4C0D811BF9E0E00EDE9CA088 /* FacultiesResposne.swift in Sources */,
 				4C0D81849DAA7ACD6F8A1D47 /* JsonDataLoader.swift in Sources */,
 				4C0D8436123E61F0F64C9F9C /* UserDataHolder.swift in Sources */,

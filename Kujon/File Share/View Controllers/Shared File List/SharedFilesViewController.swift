@@ -290,6 +290,11 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
 
     private func addToICloudDrive(file: APIFile) {
 
+        let transfer = API2ICloudDriveTransfer(file: file, parentViewController: self)
+        let transferManager = FileTransferManager.shared
+        transferManager.delegate = self
+        transferManager.execute(transfer: transfer)
+        self.addButtonItem?.isEnabled = false
     }
 
     private func shareFilesFromICloudDrive(assignToCourseId courseId:String, andTermId termId:String) {
@@ -434,6 +439,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
                 strongSelf.isViewInViewHierarchy ? strongSelf.previewLocalFile(url: url) : strongSelf.removeAllCachedFiles()
                 return
             }
+
 
             if let view = strongSelf.navigationController?.view,
                 let file = file as? APIFile {

@@ -26,51 +26,45 @@ class ICloudDriveProvider: NSObject, UIDocumentPickerDelegate {
     internal func uploadFile(url: URL, completion: @escaping ICloudDriveProviderCompletionHandler, cancel: @escaping ICloudDriveProviderCancelHandler) {
         completionHandler = completion
         cancelHandler = cancel
-        let documentPicker = UIDocumentPickerViewController(url: url, in: .exportToService)
-        documentPicker.delegate = self
         DispatchQueue.main.async { [weak self] in
-            self?.parentViewController.present(documentPicker, animated: true, completion: nil)
+            guard let strongSelf = self else {
+                return
+            }
+            let documentPicker = UIDocumentPickerViewController(url: url, in: .exportToService)
+            documentPicker.delegate = strongSelf
+            strongSelf.parentViewController.present(documentPicker, animated: true, completion: nil)
         }
     }
 
     internal func downloadFile(completion: @escaping ICloudDriveProviderCompletionHandler, cancel: @escaping ICloudDriveProviderCancelHandler) {
         completionHandler = completion
         cancelHandler = cancel
-        let documentPicker = UIDocumentPickerViewController(documentTypes: [publicDocumentsType], in: .import)
-        documentPicker.delegate = self
-        parentViewController.present(documentPicker, animated: true, completion: nil)
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else {
+                return
+            }
+
+            let documentPicker = UIDocumentPickerViewController(documentTypes: [strongSelf.publicDocumentsType], in: .import)
+            documentPicker.delegate = strongSelf
+            strongSelf.parentViewController.present(documentPicker, animated: true, completion: nil)
         }
+    }
 
 
     // MARK: - UIDocumentPickerDelegate
 
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-        print("DID PICK")
-        completionHandler?(url)
-    }   
+        print("documentPicker DID PICK")
+            completionHandler?(url)
+    }
 
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        print("CANCELLED")
+        print("documentPicker CANCELLED")
         cancelHandler?()
     }
 
     deinit {
-        print("DEALLOC")
+        print("documentPicker DEALLOC")
     }
 
 }
-
-
-/* 
- 
- DispatchQueue.main.async { [weak self] in
- self?.parentViewController.presentAlertWithMessage("Dokument został dodany do iCloud Drive: \(url.absoluteString)", title: "Sukces")
- self?.parentViewController.addButtonItem?.isEnabled = true
- }
- 
- DispatchQueue.main.async { [weak self] in
- self?.parentViewController.presentAlertWithMessage("Dokument został pobrany z iCloud Drive: \(url.absoluteString)", title: "Sukces")
- self?.parentViewController.addButtonItem?.isEnabled = true
- }
- 
- */
