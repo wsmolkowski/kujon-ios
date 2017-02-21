@@ -44,6 +44,10 @@ class API2ICloudDriveTransfer: Transferable, OperationDelegate {
 
     // MARK: Operation delegate
 
+    func operationWillStartReportingProgress(_ operation: Operation?) {
+        delegate?.transfer(self, willStartReportingProgressForOperation: operation)
+    }
+
     internal func operation(_ operation: Operation?, didFailWithErrorMessage message: String) {
         delegate?.transfer(self, didFailExecuting: operation, errorMessage: message)
     }

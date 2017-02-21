@@ -27,6 +27,8 @@ protocol Transferable: class {
 
 protocol TransferDelegate: class {
 
+    func transfer( _ transfer: Transferable?, willStartReportingProgressForOperation operation: Operation?)
+
     func transfer( _ transfer: Transferable?, didProceedWithProgress progress: Float, bytesProceededPerOperation bytesProceeded: String, totalSize: String)
 
     func transfer( _ transfer: Transferable?, didFinishWithSuccessAndReturn file: Any?)

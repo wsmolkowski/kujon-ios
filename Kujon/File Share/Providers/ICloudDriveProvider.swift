@@ -28,7 +28,9 @@ class ICloudDriveProvider: NSObject, UIDocumentPickerDelegate {
         cancelHandler = cancel
         let documentPicker = UIDocumentPickerViewController(url: url, in: .exportToService)
         documentPicker.delegate = self
-        parentViewController.present(documentPicker, animated: true, completion: nil)
+        DispatchQueue.main.async { [weak self] in
+            self?.parentViewController.present(documentPicker, animated: true, completion: nil)
+        }
     }
 
     internal func downloadFile(completion: @escaping ICloudDriveProviderCompletionHandler, cancel: @escaping ICloudDriveProviderCancelHandler) {
@@ -37,7 +39,7 @@ class ICloudDriveProvider: NSObject, UIDocumentPickerDelegate {
         let documentPicker = UIDocumentPickerViewController(documentTypes: [publicDocumentsType], in: .import)
         documentPicker.delegate = self
         parentViewController.present(documentPicker, animated: true, completion: nil)
-    }
+        }
 
 
     // MARK: - UIDocumentPickerDelegate
@@ -45,13 +47,16 @@ class ICloudDriveProvider: NSObject, UIDocumentPickerDelegate {
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         print("DID PICK")
         completionHandler?(url)
-    }
+    }   
 
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         print("CANCELLED")
         cancelHandler?()
     }
 
+    deinit {
+        print("DEALLOC")
+    }
 
 }
 

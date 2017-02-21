@@ -16,6 +16,8 @@ protocol CallbackOperation {
 
 protocol OperationDelegate: class {
 
+    func operationWillStartReportingProgress( _ operation: Operation?)
+
     func operation( _ operation: Operation?, didProceedWithProgress progress:Float, bytesProceeded:String, totalSize:String)
 
     func operation( _ operation: Operation?, didFailWithErrorMessage message: String)

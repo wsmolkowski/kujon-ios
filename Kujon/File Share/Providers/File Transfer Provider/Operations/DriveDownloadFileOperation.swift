@@ -36,6 +36,8 @@ class DriveDownloadFileOperation: AsyncOperation, CallbackOperation {
             return
         }
 
+        delegate?.operationWillStartReportingProgress(self)
+
         do {
             try drive.downloadFile(inputFile, toDirectory: cacheDirectory, success: { [weak self] downloadedFileURL in
 

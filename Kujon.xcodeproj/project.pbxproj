@@ -130,8 +130,10 @@
 		663757C21E572B860072A33F /* API2ICloudDriveTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663757C11E572B860072A33F /* API2ICloudDriveTransfer.swift */; };
 		66431E591E5AF5BB0023BC53 /* ActiveCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66431E571E5AF5BB0023BC53 /* ActiveCourseCell.swift */; };
 		66431E5A1E5AF5BB0023BC53 /* ActiveCourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66431E581E5AF5BB0023BC53 /* ActiveCourseCell.xib */; };
+		6647D5B91E5B514F00D3BFD9 /* ICloudDriveDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647D5B81E5B514F00D3BFD9 /* ICloudDriveDownloadOperation.swift */; };
 		664DCFFF1E4E02CE004EE946 /* SharedFilesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664DCFFE1E4E02CE004EE946 /* SharedFilesSection.swift */; };
 		664DD0011E4E0BAA004EE946 /* API2DeviceTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664DD0001E4E0BAA004EE946 /* API2DeviceTransfer.swift */; };
+		66678B001E5C52500059F7A7 /* ICloudDrive2APITransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66678AFF1E5C52500059F7A7 /* ICloudDrive2APITransfer.swift */; };
 		66852C191DE8639B009234C9 /* SettingsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66852C181DE8639B009234C9 /* SettingsResponse.swift */; };
 		66989CC91E38CB9700B659F6 /* KujonAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66989CC81E38CB9700B659F6 /* KujonAppearance.swift */; };
 		66989CCB1E38CE8200B659F6 /* SortKeyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66989CCA1E38CE8200B659F6 /* SortKeyProviding.swift */; };
@@ -591,8 +593,10 @@
 		663757C11E572B860072A33F /* API2ICloudDriveTransfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API2ICloudDriveTransfer.swift; sourceTree = "<group>"; };
 		66431E571E5AF5BB0023BC53 /* ActiveCourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveCourseCell.swift; sourceTree = "<group>"; };
 		66431E581E5AF5BB0023BC53 /* ActiveCourseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActiveCourseCell.xib; sourceTree = "<group>"; };
+		6647D5B81E5B514F00D3BFD9 /* ICloudDriveDownloadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICloudDriveDownloadOperation.swift; sourceTree = "<group>"; };
 		664DCFFE1E4E02CE004EE946 /* SharedFilesSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedFilesSection.swift; sourceTree = "<group>"; };
 		664DD0001E4E0BAA004EE946 /* API2DeviceTransfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API2DeviceTransfer.swift; sourceTree = "<group>"; };
+		66678AFF1E5C52500059F7A7 /* ICloudDrive2APITransfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICloudDrive2APITransfer.swift; sourceTree = "<group>"; };
 		66852C181DE8639B009234C9 /* SettingsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsResponse.swift; sourceTree = "<group>"; };
 		66989CC81E38CB9700B659F6 /* KujonAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KujonAppearance.swift; sourceTree = "<group>"; };
 		66989CCA1E38CE8200B659F6 /* SortKeyProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortKeyProviding.swift; sourceTree = "<group>"; };
@@ -1536,6 +1540,7 @@
 				66A8BDDE1E48C11E008B35B7 /* DriveDownloadFileOperation.swift */,
 				66A8BDDF1E48C11E008B35B7 /* DriveUploadFileOperation.swift */,
 				66A8BDE01E48C11E008B35B7 /* RemoveCachedFileOperation.swift */,
+				6647D5B81E5B514F00D3BFD9 /* ICloudDriveDownloadOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -1549,6 +1554,7 @@
 				66A8BDE41E48C11E008B35B7 /* Device2APITransfer.swift */,
 				66A8BDE51E48C11E008B35B7 /* Tranferable.swift */,
 				663757C11E572B860072A33F /* API2ICloudDriveTransfer.swift */,
+				66678AFF1E5C52500059F7A7 /* ICloudDrive2APITransfer.swift */,
 			);
 			name = Transfers;
 			path = Sequences;
@@ -2750,6 +2756,7 @@
 				66FD66311E3BAD9E007066E6 /* OpenLoginScreenProtocol.swift in Sources */,
 				66A016E11E3BB5550011BFD9 /* FacultieProvider.swift in Sources */,
 				66FD66761E3BAD9E007066E6 /* DayTableViewCell.swift in Sources */,
+				6647D5B91E5B514F00D3BFD9 /* ICloudDriveDownloadOperation.swift in Sources */,
 				66FD661A1E3BAD9E007066E6 /* CoordinatorsSection.swift in Sources */,
 				66A8BE171E48C11E008B35B7 /* APIUploadedFileListResponse.swift in Sources */,
 				66FD66421E3BAD9E007066E6 /* Grade2TableViewCell.swift in Sources */,
@@ -2812,6 +2819,7 @@
 				4C0D828E1DD05D4C0DC9B2C5 /* ViewControllerExtension.swift in Sources */,
 				66A016E21E3BB5550011BFD9 /* FacultiesProvider.swift in Sources */,
 				66FD66941E3BAD9E007066E6 /* StudentHeaderTableViewCell.swift in Sources */,
+				66678B001E5C52500059F7A7 /* ICloudDrive2APITransfer.swift in Sources */,
 				66A016F21E3BB5550011BFD9 /* SearchProvider.swift in Sources */,
 				66A017211E3BC0680011BFD9 /* SpinnerView.swift in Sources */,
 				66A016AC1E3BB1420011BFD9 /* MessageDetailViewController.swift in Sources */,

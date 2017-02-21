@@ -8,6 +8,7 @@
 
 import Foundation
 import GoogleAPIClientForREST
+import MobileCoreServices
 
 class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, FileTransferManagerDelegate, TransferViewProviding, UITableViewDataSource, UITableViewDelegate, ToolbarMenuControllerDelegate, PhotoFileProviderDelegate, FileDetailsControllerDelegate, UIDocumentInteractionControllerDelegate {
 
@@ -34,6 +35,9 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     private var addButtonItem: UIBarButtonItem?
     internal var courseName: String = ""
 
+    private lazy var icloudProvider: ICloudDriveProvider = {
+        return ICloudDriveProvider(with: self)
+    }()
     private var fileListProvider = APIFileListProvider()
     private var presentedFiles: [APIFile] {
         guard let state = toolbarMenu?.state else {
@@ -289,14 +293,13 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     }
 
     private func shareFilesFromICloudDrive(assignToCourseId courseId:String, andTermId termId:String) {
-        let icloudProvider = ICloudDriveProvider(with: self)
-        icloudProvider.downloadFile(completion: { [weak self] url in
+        let shareAll = ShareOptions(sharedWith: .all)
+        let transfer = ICloudDrive2APITransfer(parentController: self, assignApiCourseId: courseId, termId: termId, shareOptions: shareAll)
 
-
-
-        }, cancel: { [weak self] in
-            print("CANCELLED")
-        })
+        let transferManager = FileTransferManager.shared
+        transferManager.delegate = self
+        transferManager.execute(transfer: transfer)
+        self.addButtonItem?.isEnabled = false
     }
 
     private func deleteFileIfUserConfirms(file: APIFile) {
@@ -349,11 +352,6 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         let transferManager = FileTransferManager.shared
         transferManager.delegate = self
         transferManager.execute(transfer: transfer)
-        DispatchQueue.main.async {
-            self.addTransferView(toParent: self.tableView, trackTransfer: transfer)
-            self.addButtonItem?.isEnabled = false
-        }
-
     }
 
     private func presentSortOptions() {
@@ -414,6 +412,13 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     }
 
     // MARK: - FileTransferManagerDelegate
+
+    func transfer(_ transfer: Transferable?, willStartReportingProgressForOperation operation: Operation?) {
+        DispatchQueue.main.async {
+            self.addTransferView(toParent: self.tableView, trackTransfer: transfer)
+            self.addButtonItem?.isEnabled = false
+        }
+    }
 
     func transfer(_ transfer: Transferable?, didFinishWithSuccessAndReturn file: Any?) {
         DispatchQueue.main.async { [weak self] in

@@ -405,11 +405,16 @@ class DriveBrowser: UITableViewController, FolderContentsProvidingDelegate, File
         transferManager.delegate = self
         let transfer = API2DriveTransfer(file: file, destinationFolder: folder)
         transferManager.execute(transfer: transfer)
-        addTransferView(toParent: tableView, trackTransfer: transfer)
-        navigationItem.rightBarButtonItem?.isEnabled = false
     }
 
     // MARK: - FileTransferManagerDelegate
+
+    func transfer(_ transfer: Transferable?, willStartReportingProgressForOperation operation: Operation?) {
+        DispatchQueue.main.async {
+            self.addTransferView(toParent: self.tableView, trackTransfer: transfer)
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
+        }
+    }
 
     func transfer(_ transfer: Transferable?, didFinishWithSuccessAndReturn file: Any?) {
         DispatchQueue.main.async { [weak self] in

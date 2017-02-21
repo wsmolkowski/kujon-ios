@@ -29,6 +29,7 @@ class APIDownloadFileOperation: AsyncOperation, CallbackOperation {
             state = .finished
             return
         }
+        delegate?.operationWillStartReportingProgress(self)
 
         api.startDownload(file:file, successHandler: { [weak self] downloadedFileURL in
 
