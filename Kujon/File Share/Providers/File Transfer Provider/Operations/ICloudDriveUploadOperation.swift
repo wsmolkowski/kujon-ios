@@ -42,7 +42,6 @@ class ICloudDriveUploadOperation: AsyncOperation, CallbackOperation {
 
         icloudProvider.uploadFile(url: fileURL, completion: { [weak self] url in
 
-            print("UPLOADED. RETURNED URL: ", url)
             self?.state = .finished
 
         }, cancel: { [weak self] in
