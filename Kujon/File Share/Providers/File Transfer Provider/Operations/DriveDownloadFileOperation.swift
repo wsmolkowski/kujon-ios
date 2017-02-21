@@ -77,4 +77,5 @@ class DriveDownloadFileOperation: AsyncOperation, CallbackOperation {
 extension DriveDownloadFileOperation: APIUploadFileOperationDataProvider {
     internal var localFileURL: URL? { return outputURL }
     internal var contentType: String { return inputFile.mimeType ?? MIMEType.binary.rawValue }
+    internal var shareOptions: ShareOptions? { return nil }
 }

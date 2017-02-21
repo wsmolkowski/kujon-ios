@@ -40,7 +40,6 @@ class ICloudDriveDownloadOperation: AsyncOperation, CallbackOperation {
             }
 
             self?.downloadedFileURL = localFileURL
-            self?.delegate?.operationWillStartReportingProgress(self)
             self?.state = .finished
 
         }, cancel: { [weak self] in
@@ -60,7 +59,7 @@ class ICloudDriveDownloadOperation: AsyncOperation, CallbackOperation {
     
 }
 
-extension ICloudDriveDownloadOperation: APIUploadFileOperationDataProvider {
+extension ICloudDriveDownloadOperation: ShareDetailsOperationDataProvider {
 
     var localFileURL: URL? {
         return downloadedFileURL

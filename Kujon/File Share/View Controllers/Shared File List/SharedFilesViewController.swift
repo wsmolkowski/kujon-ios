@@ -291,19 +291,13 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     private func addToICloudDrive(file: APIFile) {
 
         let transfer = API2ICloudDriveTransfer(file: file, parentViewController: self)
-        let transferManager = FileTransferManager.shared
-        transferManager.delegate = self
-        transferManager.execute(transfer: transfer)
+        setupNewTransfer(transfer)
         self.addButtonItem?.isEnabled = false
     }
 
     private func shareFilesFromICloudDrive(assignToCourseId courseId:String, andTermId termId:String) {
-        let shareAll = ShareOptions(sharedWith: .all)
-        let transfer = ICloudDrive2APITransfer(parentController: self, assignApiCourseId: courseId, termId: termId, shareOptions: shareAll)
-
-        let transferManager = FileTransferManager.shared
-        transferManager.delegate = self
-        transferManager.execute(transfer: transfer)
+        let transfer = ICloudDrive2APITransfer(parentController: self, assignApiCourseId: courseId, termId: termId, courseStudentsCached: courseStudentsCached)
+        setupNewTransfer(transfer)
         self.addButtonItem?.isEnabled = false
     }
 
@@ -492,6 +486,8 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         courseStudentsCached = courseStudents
         let transfer = Device2APITransfer(fileURL: fileURL, assignApiCourseId: courseId, termId: termId, shareOptions: shareOptions)
         setupNewTransfer(transfer)
+        addTransferView(toParent: tableView, trackTransfer: transfer)
+        self.addButtonItem?.isEnabled = false
     }
 
     func photoFileProviderDidCancel(loadedForCache courseStudents: [SimpleUser]?) {

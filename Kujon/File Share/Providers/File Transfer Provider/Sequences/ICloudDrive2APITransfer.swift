@@ -12,8 +12,8 @@ class ICloudDrive2APITransfer: Transferable, OperationDelegate {
 
     private let courseId: String
     private let termId: String
-    private let shareOptions: ShareOptions
     private let parentController: UIViewController
+    private var courseStudentsCached: [SimpleUser]?
 
     private var uploadProgress: Float = 0.0
     private var transferProgress: Float { return uploadProgress }
@@ -23,11 +23,11 @@ class ICloudDrive2APITransfer: Transferable, OperationDelegate {
     internal weak var delegate: TransferDelegate?
 
 
-    init(parentController: UIViewController, assignApiCourseId courseId:String, termId:String, shareOptions: ShareOptions) {
+    init(parentController: UIViewController, assignApiCourseId courseId:String, termId:String, courseStudentsCached: [SimpleUser]?) {
         self.parentController = parentController
         self.courseId = courseId
         self.termId = termId
-        self.shareOptions = shareOptions
+        self.courseStudentsCached = courseStudentsCached
     }
 
     func createOperations() -> [Operation] {
@@ -35,7 +35,11 @@ class ICloudDrive2APITransfer: Transferable, OperationDelegate {
         downloadOperation.delegate = self
         downloadOperation.name = "ICloud Drive Download File"
 
-        let uploadOperation = APIUploadFileOperation(courseId: courseId, termId: termId, shareOptions: shareOptions)
+        let shareOperation = ShareDetailsOperation(parentController: parentController, courseId: courseId, termId: termId, courseStudentsCached: courseStudentsCached)
+        shareOperation.delegate = self
+        shareOperation.name = "Share Details Set Operation"
+
+        let uploadOperation = APIUploadFileOperation(courseId: courseId, termId: termId, shareOptions: nil)
         uploadOperation.delegate = self
         uploadOperation.name = "API Upload File"
 
@@ -46,9 +50,9 @@ class ICloudDrive2APITransfer: Transferable, OperationDelegate {
             self?.delegate?.transfer(self, didFinishWithSuccessAndReturn: removeCacheOperation.file)
         }
 
-        removeCacheOperation.dependsOn(uploadOperation).dependsOn(downloadOperation)
+        removeCacheOperation.dependsOn(uploadOperation).dependsOn(shareOperation).dependsOn(downloadOperation)
 
-        let operations = [downloadOperation, uploadOperation, removeCacheOperation]
+        let operations = [downloadOperation, shareOperation, uploadOperation, removeCacheOperation]
         self.operations = operations
         return self.operations
     }

@@ -142,6 +142,7 @@ class StringHolder {
     static let shareWithSelected_short = "Wybranym"
     static let sharePhoto = "Udostępnij zdjęcie"
     static let enterFileNameForPhoto = "Wprowadź nazwę, pod którą zdjęcie zostanie udostępnione innym studentom przedmiotu"
+    static let selectShareOption = "Czy chcesz udostępnić wybrany plik wszystkim studentom przedmiotu?"
     static let fileNamePlaceholder = "Nazwa pliku"
     static let fileDownloadCancelled = "Pobieranie pliku zostało anulowane"
     static let photoSaveErrorMessage = "Wystąpił błąd podczas zapisywania zdjęcia do pliku"
