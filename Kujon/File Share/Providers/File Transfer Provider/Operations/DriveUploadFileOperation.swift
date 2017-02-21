@@ -18,6 +18,7 @@ class DriveUploadFileOperation: AsyncOperation, CallbackOperation {
     private let destinationFolderId: String?
     private let drive = DriveManager.shared
     internal weak var delegate: OperationDelegate?
+    internal var shouldDismissTransferView: Bool = false
 
 
     internal init(destinationFolder: GTLRDrive_File? = nil) {
@@ -56,6 +57,9 @@ class DriveUploadFileOperation: AsyncOperation, CallbackOperation {
                     return
                 } else {
                     self?.state = .finished
+                    if let strongSelf = self, strongSelf.shouldDismissTransferView == true {
+                        self?.delegate?.operationWillStopReportingProgress(self)
+                    }
                 }
 
                 }, failure: { [weak self] message in

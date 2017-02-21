@@ -416,9 +416,14 @@ class DriveBrowser: UITableViewController, FolderContentsProvidingDelegate, File
         }
     }
 
-    func transfer(_ transfer: Transferable?, didFinishWithSuccessAndReturn file: Any?) {
+    func transfer(_ transfer: Transferable?, willStopReportingProgressForOperation operation: Operation?) {
         DispatchQueue.main.async { [weak self] in
             self?.closeTransferView()
+        }
+    }
+
+    func transfer(_ transfer: Transferable?, didFinishWithSuccessAndReturn file: Any?) {
+        DispatchQueue.main.async { [weak self] in
             if let view = self?.navigationController?.view,
                 let file = file as? APIFile {
                 self?.refresh()

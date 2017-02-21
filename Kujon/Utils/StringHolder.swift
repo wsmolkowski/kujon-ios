@@ -170,6 +170,10 @@ class StringHolder {
         return "Plik \(fileName) został udostępniony"
     }
 
+    static func fileHasBeenAddedToiCloudDriveMessage(fileName: String) -> String {
+        return "Plik \(fileName) został zapisany na dysku iCloud"
+    }
+
     static func fileHasBeenSavedOnGoogleDriveMessage(fileName: String) -> String {
         return "Plik \(fileName) został zapisany na dysku Google"
     }

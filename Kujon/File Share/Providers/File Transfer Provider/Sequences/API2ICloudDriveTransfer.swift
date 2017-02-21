@@ -29,6 +29,7 @@ class API2ICloudDriveTransfer: Transferable, OperationDelegate {
 
         let apiDownloadOperation = APIDownloadFileOperation(file: file)
         apiDownloadOperation.delegate = self
+        apiDownloadOperation.shouldDismissTransferView = true
         apiDownloadOperation.name = "API Download File"
 
         let driveUploadOperation = ICloudDriveUploadOperation(parentController: parentViewController)
@@ -39,7 +40,7 @@ class API2ICloudDriveTransfer: Transferable, OperationDelegate {
         removeCacheOperation.delegate = self
         removeCacheOperation.name = "Remove Cached File"
         removeCacheOperation.completionBlock = { [weak self] in
-            self?.delegate?.transfer(self, didFinishWithSuccessAndReturn: nil)
+            self?.delegate?.transfer(self, didFinishWithSuccessAndReturn: removeCacheOperation.file)
         }
 
         removeCacheOperation.dependsOn(driveUploadOperation).dependsOn(apiDownloadOperation)
@@ -62,6 +63,10 @@ class API2ICloudDriveTransfer: Transferable, OperationDelegate {
 
     func operationWillStartReportingProgress(_ operation: Operation?) {
         delegate?.transfer(self, willStartReportingProgressForOperation: operation)
+    }
+
+    func operationWillStopReportingProgress(_ operation: Operation?) {
+        delegate?.transfer(self, willStopReportingProgressForOperation: operation)
     }
 
     internal func operation(_ operation: Operation?, didFailWithErrorMessage message: String) {

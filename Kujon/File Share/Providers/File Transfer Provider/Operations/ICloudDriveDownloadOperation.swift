@@ -14,6 +14,8 @@ class ICloudDriveDownloadOperation: AsyncOperation, CallbackOperation {
     private let icloudProvider: ICloudDriveProvider
     internal weak var delegate: OperationDelegate?
     fileprivate var downloadedFileURL: URL?
+    internal var shouldDismissTransferView: Bool = false
+
 
     internal init(parentController: UIViewController) {
         self.parentController = parentController
@@ -41,6 +43,9 @@ class ICloudDriveDownloadOperation: AsyncOperation, CallbackOperation {
 
             self?.downloadedFileURL = localFileURL
             self?.state = .finished
+            if let strongSelf = self, strongSelf.shouldDismissTransferView == true {
+                self?.delegate?.operationWillStopReportingProgress(self)
+            }
 
         }, cancel: { [weak self] in
             self?.delegate?.operationDidCancel(operation: self)

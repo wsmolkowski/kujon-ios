@@ -26,6 +26,7 @@ class API2DeviceTransfer: Transferable, OperationDelegate {
 
         let apiDownloadOperation = APIDownloadFileOperation(file: file)
         apiDownloadOperation.delegate = self
+        apiDownloadOperation.shouldDismissTransferView = true
         apiDownloadOperation.name = "API Download File"
         apiDownloadOperation.completionBlock = { [weak self] in
             if !apiDownloadOperation.didFail {
@@ -51,6 +52,10 @@ class API2DeviceTransfer: Transferable, OperationDelegate {
 
     func operationWillStartReportingProgress(_ operation: Operation?) {
         delegate?.transfer(self, willStartReportingProgressForOperation: operation)
+    }
+
+    func operationWillStopReportingProgress(_ operation: Operation?) {
+        delegate?.transfer(self, willStopReportingProgressForOperation: operation)
     }
 
     internal func operation(_ operation: Operation?, didFailWithErrorMessage message: String) {

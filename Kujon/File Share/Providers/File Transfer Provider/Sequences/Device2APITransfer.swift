@@ -34,6 +34,7 @@ class Device2APITransfer: Transferable, OperationDelegate {
 
         let uploadOperation = APIUploadFileOperation(localFileURL: fileURL, contentType: MIMEType.imageJPG.rawValue, courseId: courseId, termId: termId, shareOptions: shareOptions)
         uploadOperation.delegate = self
+        uploadOperation.shouldDismissTransferView = true
         uploadOperation.name = "API Upload File"
 
         let removeCacheOperation = RemoveCachedFileOperation()
@@ -62,6 +63,10 @@ class Device2APITransfer: Transferable, OperationDelegate {
 
     func operationWillStartReportingProgress(_ operation: Operation?) {
         delegate?.transfer(self, willStartReportingProgressForOperation: operation)
+    }
+
+    func operationWillStopReportingProgress(_ operation: Operation?) {
+        delegate?.transfer(self, willStopReportingProgressForOperation: operation)
     }
 
     internal func operation(_ operation: Operation?, didFailWithErrorMessage message: String) {

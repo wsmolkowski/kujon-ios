@@ -25,6 +25,8 @@ class APIUploadFileOperation: AsyncOperation, CallbackOperation {
     private let courseId: String
     private let termId: String
     private var shareOptions: ShareOptions?
+    internal var shouldDismissTransferView: Bool = false
+
 
     internal init(localFileURL: URL? = nil, contentType:String = MIMEType.binary.rawValue, courseId:String, termId:String, shareOptions: ShareOptions?) {
         self.localFileURL = localFileURL
@@ -83,6 +85,9 @@ class APIUploadFileOperation: AsyncOperation, CallbackOperation {
                 self?.file?.shareOptions = uploadedFile.shareOptions
             }
             self?.state = .finished
+            if let strongSelf = self, strongSelf.shouldDismissTransferView == true {
+                self?.delegate?.operationWillStopReportingProgress(self)
+            }
 
             }, failureHandler: { [weak self] message in
                 self?.delegate?.operation(self, didFailWithErrorMessage:message)

@@ -419,6 +419,13 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         }
     }
 
+    func transfer(_ transfer: Transferable?, willStopReportingProgressForOperation operation: Operation?) {
+        DispatchQueue.main.async { [weak self] in
+            self?.closeTransferView()
+            self?.addButtonItem?.isEnabled = true
+        }
+    }
+
     func transfer(_ transfer: Transferable?, didFinishWithSuccessAndReturn file: Any?) {
         DispatchQueue.main.async { [weak self] in
             guard let strongSelf = self else {
@@ -434,6 +441,12 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
                 return
             }
 
+            if transfer is API2ICloudDriveTransfer {
+                if let file = file as? APIFile {
+                    ToastView.showInParent(strongSelf.navigationController?.view, withText: StringHolder.fileHasBeenAddedToiCloudDriveMessage(fileName: file.fileName), forDuration: 2.0)
+                }
+                return
+            }
 
             if let view = strongSelf.navigationController?.view,
                 let file = file as? APIFile {

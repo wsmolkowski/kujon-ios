@@ -27,6 +27,7 @@ class ShareDetailsOperation: AsyncOperation, CallbackOperation, ShareDetailsCont
     private var shareController: ShareDetailsController?
     private let controller: UIViewController
     private var courseStudentsCached: [SimpleUser]?
+    internal var shouldDismissTransferView: Bool = false
 
 
 

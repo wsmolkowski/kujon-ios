@@ -39,6 +39,7 @@ class Drive2APITransfer: Transferable, OperationDelegate {
 
         let uploadOperation = APIUploadFileOperation(courseId: courseId, termId: termId, shareOptions: shareOptions)
         uploadOperation.delegate = self
+        uploadOperation.shouldDismissTransferView = true
         uploadOperation.name = "API Upload File"
 
         let removeCacheOperation = RemoveCachedFileOperation()
@@ -68,7 +69,11 @@ class Drive2APITransfer: Transferable, OperationDelegate {
     func operationWillStartReportingProgress(_ operation: Operation?) {
         delegate?.transfer(self, willStartReportingProgressForOperation: operation)
     }
-    
+
+    func operationWillStopReportingProgress(_ operation: Operation?) {
+        delegate?.transfer(self, willStopReportingProgressForOperation: operation)
+    }
+
     internal func operation(_ operation: Operation?, didFailWithErrorMessage message: String) {
         delegate?.transfer(self, didFailExecuting: operation, errorMessage: message)
     }

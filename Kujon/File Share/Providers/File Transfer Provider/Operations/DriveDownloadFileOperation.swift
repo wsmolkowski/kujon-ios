@@ -15,6 +15,7 @@ class DriveDownloadFileOperation: AsyncOperation, CallbackOperation {
     internal var outputURL: URL?
     private let drive = DriveManager.shared
     internal weak var delegate: OperationDelegate?
+    internal var shouldDismissTransferView: Bool = false
 
     internal init(file: GTLRDrive_File) {
         self.inputFile = file
@@ -48,6 +49,9 @@ class DriveDownloadFileOperation: AsyncOperation, CallbackOperation {
                 }
                 self?.outputURL = downloadedFileURL
                 self?.state = .finished
+                if let strongSelf = self, strongSelf.shouldDismissTransferView == true {
+                    self?.delegate?.operationWillStopReportingProgress(self)
+                }
 
                 }, failure: { [weak self] message in
                     self?.delegate?.operation(self, didFailWithErrorMessage: message)
