@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E144f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -16,12 +20,14 @@
             <rect key="frame" x="0.0" y="0.0" width="341" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="308" height="49"/>
+                <rect key="frame" x="0.0" y="0.0" width="308" height="49"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DQS-et-zP7">
+                        <rect key="frame" x="0.0" y="0.0" width="308" height="50"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="senderLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="425" translatesAutoresizingMaskIntoConstraints="NO" id="K9n-jp-Ejh">
+                                <rect key="frame" x="8" y="8" width="296" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="aRA-e9-2Y6"/>
                                 </constraints>
@@ -30,6 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="753" text="dateLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ks-4Y-HiN">
+                                <rect key="frame" x="8" y="29" width="296" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="13" id="n1v-SF-LlC"/>
                                 </constraints>
@@ -37,20 +44,16 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wiadomosci-list-icon-blue" highlightedImage="arrow-right" translatesAutoresizingMaskIntoConstraints="NO" id="z6M-w0-YVh"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="K9n-jp-Ejh" firstAttribute="top" secondItem="DQS-et-zP7" secondAttribute="top" constant="8" id="0OZ-oP-CmN"/>
                             <constraint firstAttribute="trailing" secondItem="3ks-4Y-HiN" secondAttribute="trailing" constant="4" id="Bap-Sh-pPi"/>
-                            <constraint firstItem="z6M-w0-YVh" firstAttribute="top" secondItem="DQS-et-zP7" secondAttribute="top" constant="16" id="Jpk-wQ-RvL"/>
                             <constraint firstAttribute="height" constant="50" id="Jx4-8p-utI"/>
                             <constraint firstAttribute="bottom" secondItem="3ks-4Y-HiN" secondAttribute="bottom" constant="8" id="Mbb-Yv-QR2"/>
                             <constraint firstAttribute="trailing" secondItem="K9n-jp-Ejh" secondAttribute="trailing" constant="4" id="RFp-jh-Yh8"/>
-                            <constraint firstAttribute="bottom" secondItem="z6M-w0-YVh" secondAttribute="bottom" constant="16" id="acJ-1g-3RX"/>
-                            <constraint firstItem="K9n-jp-Ejh" firstAttribute="leading" secondItem="DQS-et-zP7" secondAttribute="leading" constant="36" id="gBa-eX-NiB"/>
-                            <constraint firstItem="z6M-w0-YVh" firstAttribute="leading" secondItem="DQS-et-zP7" secondAttribute="leading" constant="8" id="mte-aD-lTw"/>
-                            <constraint firstItem="3ks-4Y-HiN" firstAttribute="leading" secondItem="DQS-et-zP7" secondAttribute="leading" constant="36" id="sR0-EF-tBN"/>
+                            <constraint firstItem="K9n-jp-Ejh" firstAttribute="leading" secondItem="DQS-et-zP7" secondAttribute="leadingMargin" id="gBa-eX-NiB"/>
+                            <constraint firstItem="3ks-4Y-HiN" firstAttribute="leading" secondItem="DQS-et-zP7" secondAttribute="leadingMargin" id="sR0-EF-tBN"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -68,8 +71,4 @@
             <point key="canvasLocation" x="48.5" y="-130"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="arrow-right" width="9" height="15"/>
-        <image name="wiadomosci-list-icon-blue" width="18" height="18"/>
-    </resources>
 </document>
