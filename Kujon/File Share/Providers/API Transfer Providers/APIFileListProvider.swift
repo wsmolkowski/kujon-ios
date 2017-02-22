@@ -61,6 +61,14 @@ class APIFileListProvider: RestApiManager, APIFileListProviderProtocol {
 
     }
 
+    internal override func reload() {
+        var request = URLRequest(url: URL(string: getMyUrl())!)
+        self.headerManager.addHeadersToRequest(&request)
+        SessionManager.clearCacheForRequest(request as URLRequest)
+        addStoredCookies = false
+        refresh = false
+    }
+
     internal override func getMyUrl() -> String {
         return endpoint
     }
