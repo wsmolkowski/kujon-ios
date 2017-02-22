@@ -56,7 +56,6 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         }
     }
     private var courseStudentsCached: [SimpleUser]?
-    private var cachedFiles: [URL] = []
     private var sortKey: SortKey = .dateAddedDescending
 
     enum SortKey: Int {
@@ -230,7 +229,11 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         let description = StringHolder.fileSize + " " + fileSize
 
         let previewFileAction: UIAlertAction = UIAlertAction(title: StringHolder.showPreview, style: .default) { [unowned self] _ in
-            self.previewAPIFile(file)
+            if let url = file.localFileURL {
+                self.previewLocalFile(url: url)
+            } else {
+                self.previewAPIFile(file)
+            }
         }
 
         let showDetailsAction: UIAlertAction = UIAlertAction(title: StringHolder.showFileDetails, style: .default) { [unowned self] _ in
@@ -436,7 +439,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
 
             if transfer is API2DeviceTransfer {
                 guard let file = file as? APIFile, let url = file.localFileURL else { return }
-                strongSelf.cachedFiles.append(url)
+                strongSelf.updateModelWith(existingFile: file)
                 strongSelf.isViewInViewHierarchy ? strongSelf.previewLocalFile(url: url) : strongSelf.removeAllCachedFiles()
                 return
             }
@@ -545,12 +548,12 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
 
     func documentInteractionControllerDidEndPreview(_ controller: UIDocumentInteractionController) {
         UIApplication.shared.statusBarStyle = .lightContent
-        removeAllCachedFiles()
     }
 
     private func removeAllCachedFiles() {
-        for cachedFileURL in cachedFiles {
-            if let _ = try? cachedFileURL.checkPromisedItemIsReachable() {
+        for file in allFiles {
+            if let cachedFileURL = file.localFileURL,
+                let _ = try? cachedFileURL.checkPromisedItemIsReachable() {
                 NSlogManager.showLog("Removing cached file: \(cachedFileURL.lastPathComponent)")
                 try? FileManager.default.removeItem(at: cachedFileURL)
             }
@@ -584,6 +587,14 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
                 DispatchQueue.main.async { [weak self] in
                     self?.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
                 }
+            }
+        }
+    }
+
+    private func updateModelWith(existingFile file: APIFile) {
+        for (index, originalfile) in allFiles.enumerated() {
+            if let originalFileId = originalfile.fileId, let fileId = file.fileId, originalFileId == fileId {
+                allFiles[index] = file
             }
         }
     }
