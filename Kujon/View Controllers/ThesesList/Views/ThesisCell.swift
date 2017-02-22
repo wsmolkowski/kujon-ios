@@ -48,10 +48,10 @@ class ThesisCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource {
     private let headerCellId: String = "headerCellId"
     private let sectionSeparatorCellId: String = "separatorCellId"
 
-    static let itemCellHeight: CGFloat = 40.0
+    static let itemCellHeight: CGFloat = 43.0
     static let itemHeaderHeight: CGFloat = 30.0
-    static let headerCellHeight: CGFloat = 120.0
-    static let sectionSeparatorHeight: CGFloat = 50
+    static let headerCellHeight: CGFloat = 119.0
+    static let sectionSeparatorHeight: CGFloat = 44
     static let sectionsCount: Int = 5
 
     static func calculateCellHeightForThesis(_ thesis: Thesis) -> CGFloat {
