@@ -14,7 +14,7 @@ class LecturersSection: SectionHelperProtocol {
     }
 
     func registerView(_ tableView: UITableView) {
-        tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: getMyCellId())
+        tableView.register(UINib(nibName: "AccessoryItemCell", bundle: nil), forCellReuseIdentifier: getMyCellId())
     }
 
     func getSectionTitle() -> String? {
@@ -30,9 +30,10 @@ class LecturersSection: SectionHelperProtocol {
     }
 
     func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCell(withIdentifier: getMyCellId(), for: position) as! GoFurtherViewCellTableViewCell
-        let teacher = list[(position as NSIndexPath).row] 
-        cell.plainLabel.text = teacher.firstName + " " + teacher.lastName
+        let cell = tableView.dequeueReusableCell(withIdentifier: getMyCellId(), for: position) as! AccessoryItemCell
+        let teacher = list[(position as NSIndexPath).row]
+        cell.setStyle(.arrowRight)
+        cell.titleLabel.text = teacher.firstName + " " + teacher.lastName
         return cell
     }
 

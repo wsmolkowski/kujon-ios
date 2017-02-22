@@ -13,7 +13,7 @@ class FacultieSection: SectionHelperProtocol {
     }
 
     func registerView(_ tableView: UITableView) {
-        tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: facultieCellId)
+        tableView.register(UINib(nibName: "AccessoryItemCell", bundle: nil), forCellReuseIdentifier: facultieCellId)
     }
 
     func getSectionTitle() -> String? {
@@ -29,8 +29,9 @@ class FacultieSection: SectionHelperProtocol {
     }
 
     func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCell(withIdentifier: facultieCellId, for: position) as! GoFurtherViewCellTableViewCell
-        cell.plainLabel.text = facId.name
+        let cell = tableView.dequeueReusableCell(withIdentifier: facultieCellId, for: position) as! AccessoryItemCell
+        cell.setStyle(.arrowRight)
+        cell.titleLabel.text = facId.name
         return cell
     }
 
