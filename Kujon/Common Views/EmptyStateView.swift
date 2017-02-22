@@ -20,7 +20,7 @@ class EmptyStateView: UIView {
     }
 
     internal static func noFilesView(parentBounds: CGRect) -> UIView {
-        return EmptyStateView.alertView(parentBounds: parentBounds, imageName: "empty-state-cactus", title: "Trochę tu pusto", description: "Aby dodać plik, wybierz ikonę + znajdującą się w prawym górnym rogu.", descriptionLabelHeight: 60.0, offsetY: 100.0)
+        return EmptyStateView.alertView(parentBounds: parentBounds, imageName: "empty-state-cactus", title: "brak plików i notatek", description: "Aby dodać do przedmiotu plik lub notatkę, wybierz + w górnym rogu.", descriptionLabelHeight: 60.0, offsetY: 100.0)
     }
 
 
