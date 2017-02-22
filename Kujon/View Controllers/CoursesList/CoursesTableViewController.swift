@@ -27,6 +27,7 @@ class CoursesTableViewController: RefreshingTableViewController, NavigationDeleg
         self.tableView.tableFooterView = UIView()
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140
+        self.tableView.separatorStyle = .none
         courseProvider.delegate = self
         addToProvidersList(provider:courseProvider)
         termsProvider.delegate = self
