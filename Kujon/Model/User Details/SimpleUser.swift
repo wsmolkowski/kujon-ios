@@ -21,7 +21,7 @@ extension SimpleUser: Decodable {
         firstName: j => "first_name",
                 lastName: j => "last_name",
                 userId: try? j => "user_id",
-                id: try? j => "user_id",         // TODO: remove
+                id: try? j => "id",         // TODO: remove
                 titles: try? j => "titles"
 
 

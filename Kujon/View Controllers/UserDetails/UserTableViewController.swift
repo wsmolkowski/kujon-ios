@@ -65,9 +65,9 @@ class UserTableViewController: RefreshingTableViewController
         view.backgroundColor = UIColor.white
         self.tableView.tableFooterView = UIView()
         self.tableView.register(UINib(nibName: "UserDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: usedDetailCellId)
-        self.tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: StudentProgrammeCellId)
-        self.tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: FacultieProgrammeCellId)
-        self.tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: termsCellId)
+        self.tableView.register(UINib(nibName: "AccessoryItemCell", bundle: nil), forCellReuseIdentifier: StudentProgrammeCellId)
+        self.tableView.register(UINib(nibName: "AccessoryItemCell", bundle: nil), forCellReuseIdentifier: FacultieProgrammeCellId)
+        self.tableView.register(UINib(nibName: "AccessoryItemCell", bundle: nil), forCellReuseIdentifier: termsCellId)
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor.greyBackgroundColor()
         self.navigationController?.navigationBar.barTintColor = UIColor.kujonBlueColor()
@@ -265,21 +265,23 @@ class UserTableViewController: RefreshingTableViewController
     }
 
     private func configureStudentProgrammeCell(_ indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: StudentProgrammeCellId, for: indexPath) as! GoFurtherViewCellTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: StudentProgrammeCellId, for: indexPath) as! AccessoryItemCell
         let myProgramme: StudentProgramme = self.programmes[indexPath.row]
-        cell.plainLabel.text = myProgramme.programme.description
+        cell.titleLabel.text = myProgramme.programme.description
+        cell.setStyle(.arrowRight)
         return cell
     }
 
     private func configureFacultieCell(_ indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FacultieProgrammeCellId, for: indexPath) as! GoFurtherViewCellTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: FacultieProgrammeCellId, for: indexPath) as! AccessoryItemCell
         let myFac: Facultie = self.userFaculties[indexPath.row]
-        cell.plainLabel.text = myFac.name
+        cell.titleLabel.text = myFac.name
+        cell.setStyle(.arrowRight)
         return cell
     }
 
     private func configureStatsCellForIndexPath(_ indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FacultieProgrammeCellId, for: indexPath) as! GoFurtherViewCellTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: FacultieProgrammeCellId, for: indexPath) as! AccessoryItemCell
 
         let termsIndex: Int = 0
         let thesesIndex: Int = 1
@@ -296,8 +298,8 @@ class UserTableViewController: RefreshingTableViewController
         default:
             fatalError("Unidentified cell row in stats section")
         }
-
-        cell.plainLabel.text = itemName + " (" + String(itemsCount) + ")"
+        cell.setStyle(.arrowRight)
+        cell.titleLabel.text = itemName + " (" + String(itemsCount) + ")"
         return cell
     }
 

@@ -42,7 +42,7 @@ class ThesisDetailTableViewController: UITableViewController {
     }
 
     private func configureTableView() {
-        tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: itemCellId)
+        tableView.register(UINib(nibName: "AccessoryItemCell", bundle: nil), forCellReuseIdentifier: itemCellId)
         tableView.register(UINib(nibName: "ThesisDetailHeaderCell", bundle: nil), forCellReuseIdentifier: headerCellId)
         tableView.separatorStyle = .none
         tableView.backgroundColor = .greyBackgroundColor()
@@ -100,8 +100,8 @@ class ThesisDetailTableViewController: UITableViewController {
         return cell
     }
 
-    private func itemCellForIndexPath(_ indexPath: IndexPath) -> GoFurtherViewCellTableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: itemCellId, for: indexPath) as! GoFurtherViewCellTableViewCell
+    private func itemCellForIndexPath(_ indexPath: IndexPath) -> AccessoryItemCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: itemCellId, for: indexPath) as! AccessoryItemCell
         let section = SectionMap.sectionForIndex(indexPath.section)
         let labelText: String?
 
@@ -111,8 +111,8 @@ class ThesisDetailTableViewController: UITableViewController {
         case .supervisors: labelText = thesis?.supervisors?[indexPath.row].getNameWithTitles()
         case .faculty: labelText = thesis?.faculty?.name
         }
-
-        cell.plainLabel.text = labelText
+        cell.setStyle(.arrowRight)
+        cell.titleLabel.text = labelText
         return cell
     }
 

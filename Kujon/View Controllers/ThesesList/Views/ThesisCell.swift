@@ -159,7 +159,6 @@ class ThesisCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource {
         case .faculty: labelText = thesis?.faculty.name
         case .sectionSeparator: labelText = nil
         }
-
         cell.titleLabel.text = labelText
         return cell
     }

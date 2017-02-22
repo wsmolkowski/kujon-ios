@@ -20,6 +20,7 @@ class AccessoryItemCell: UITableViewCell {
 
     private var separatorPosition: UIRectEdge = [] {
         didSet {
+
             let separatorColor = UIColor.lightGray()
             layer.addBorder(separatorPosition, color:separatorColor, thickness:1)
             accessoryView?.layer.addBorder(separatorPosition, color:separatorColor, thickness:1)

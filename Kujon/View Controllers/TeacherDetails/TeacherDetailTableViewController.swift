@@ -25,7 +25,7 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
         title = StringHolder.teacher
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "teacher-cal-icon"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(TeacherDetailTableViewController.teacherPlan))
         self.tableView.register(UINib(nibName: "TeacherHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: TeacherDetailViewId)
-        self.tableView.register(UINib(nibName: "ArrowedItemCell", bundle: nil), forCellReuseIdentifier: programmesIdCell)
+        self.tableView.register(UINib(nibName: "AccessoryItemCell", bundle: nil), forCellReuseIdentifier: programmesIdCell)
         userDetailsProvider.delegate = self
         addToProvidersList(provider: userDetailsProvider)
         self.tableView.showsVerticalScrollIndicator = false
@@ -195,12 +195,12 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
         return getPrefix(self.userDetails.titles) + " " + self.userDetails.firstName + " " + self.userDetails.lastName + getSuffix(self.userDetails.titles)
     }
     func configureTeacherCourse(_ indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: programmesIdCell, for: indexPath) as! ArrowedItemCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: programmesIdCell, for: indexPath) as! AccessoryItemCell
         let courseEdition = self.userDetails?.courseEditionsConducted?[indexPath.row]
         if (courseEdition != nil){
             cell.titleLabel.text = courseEdition!.courseName + " (" + courseEdition!.termId + ")"
         }
-        cell.addTopSeparator()
+        cell.setStyle(.arrowRight)
         return cell
     }
 

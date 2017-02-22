@@ -12,16 +12,9 @@ class ArrowedItemCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
 
-    @IBOutlet weak var topSeparator: UIView!
-
-    func addTopSeparator() {
-        topSeparator.isHidden = false
-    }
-
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
-        topSeparator.isHidden = true
     }
 
 }

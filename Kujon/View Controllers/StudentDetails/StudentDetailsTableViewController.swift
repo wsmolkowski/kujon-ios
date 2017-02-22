@@ -30,7 +30,7 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
         title = StringHolder.student
         self.tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: kierunekCellId)
         self.tableView.register(UINib(nibName: "StudentHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: headerCellId)
-        self.tableView.tableFooterView = UIView()
+        self.tableView.separatorStyle = .none
         if (userId == nil) {
             userId = user.userId
         }
