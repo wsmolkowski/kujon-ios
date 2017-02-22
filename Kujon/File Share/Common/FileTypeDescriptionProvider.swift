@@ -19,6 +19,8 @@ class FileTypeDescriptionProvider {
             return "Folder plików"
 
         case .googleSpreadsheet,
+             .openOfficeSpreadsheet,
+             .iWorkNumbers,
              .msExcel,
              .msExcel_old1,
              .msExcel_old2,
@@ -27,6 +29,8 @@ class FileTypeDescriptionProvider {
             return "Arkusz kalkulacyjny"
 
         case .googlePresentation,
+             .openOfficePresentation,
+             .iWorkKeynote,
              .msPowerPoint,
              .msPowerPoint_old1,
              .msPowerPoint_old2,
@@ -35,6 +39,9 @@ class FileTypeDescriptionProvider {
             return "Prezentacja"
 
         case .googleDocument,
+             .openOfficeDocument,
+             .iWorkPages,
+             .documentRTF,
              .msWord,
              .msWord_old:
             return "Dokument tekstowy"

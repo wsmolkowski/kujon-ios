@@ -20,6 +20,8 @@ class FileIconProvider {
             return #imageLiteral(resourceName: "folder-icon")
 
         case .googleSpreadsheet,
+             .openOfficeSpreadsheet,
+             .iWorkNumbers,
              .msExcel,
              .msExcel_old1,
              .msExcel_old2,
@@ -28,6 +30,8 @@ class FileIconProvider {
             return #imageLiteral(resourceName: "xls-icon")
 
         case .googlePresentation,
+             .openOfficePresentation,
+             .iWorkKeynote,
              .msPowerPoint,
              .msPowerPoint_old1,
              .msPowerPoint_old2,
@@ -36,6 +40,9 @@ class FileIconProvider {
             return #imageLiteral(resourceName: "preso-icon")
 
         case .googleDocument,
+             .openOfficeDocument,
+             .iWorkPages,
+             .documentRTF,
              .msWord,
              .msWord_old:
             return #imageLiteral(resourceName: "doc-icon")

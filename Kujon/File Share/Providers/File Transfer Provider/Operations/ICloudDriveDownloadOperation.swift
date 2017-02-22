@@ -71,7 +71,11 @@ extension ICloudDriveDownloadOperation: ShareDetailsOperationDataProvider {
     }
 
     var contentType: String {
-        return MIMEType.binary.rawValue // TODO: map mime type
+        guard let localFileURL = localFileURL else {
+            return MIMEType.binary.rawValue
+        }
+        let fileExtension = localFileURL.pathExtension
+        return MIMEType.mimeTypeForFileExtension(fileExtension).rawValue
     }
 
 }
