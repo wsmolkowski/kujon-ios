@@ -56,6 +56,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         }
     }
     private var courseStudentsCached: [SimpleUser]?
+    private var cachedFiles: [URL] = []
     private var sortKey: SortKey = .dateAddedDescending
 
     enum SortKey: Int {
@@ -439,6 +440,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
 
             if transfer is API2DeviceTransfer {
                 guard let file = file as? APIFile, let url = file.localFileURL else { return }
+                strongSelf.cachedFiles.append(url)
                 strongSelf.updateModelWith(existingFile: file)
                 strongSelf.isViewInViewHierarchy ? strongSelf.previewLocalFile(url: url) : strongSelf.removeAllCachedFiles()
                 return
@@ -551,9 +553,8 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     }
 
     private func removeAllCachedFiles() {
-        for file in allFiles {
-            if let cachedFileURL = file.localFileURL,
-                let _ = try? cachedFileURL.checkPromisedItemIsReachable() {
+        for cachedFileURL in cachedFiles {
+            if let _ = try? cachedFileURL.checkPromisedItemIsReachable() {
                 NSlogManager.showLog("Removing cached file: \(cachedFileURL.lastPathComponent)")
                 try? FileManager.default.removeItem(at: cachedFileURL)
             }
