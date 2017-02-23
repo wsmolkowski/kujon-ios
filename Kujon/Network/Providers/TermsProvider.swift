@@ -27,7 +27,7 @@ class TermsProvider: RestApiManager, TermsProviderProtocol {
                 return
             }
 
-            if let termsResponse = try! self.changeJsonToResposne(json, errorR: self.delegate) {
+            if let termsResponse = try? self.changeJsonToResposne(json, errorR: self.delegate) {
                 self.delegate?.onTermsLoaded(termsResponse.terms)
             }
 

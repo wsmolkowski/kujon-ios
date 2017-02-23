@@ -35,7 +35,7 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
                 return
             }
 
-            if let user = try! self.changeJsonToResposne(json,errorR: self.delegate) {
+            if let user = try? self.changeJsonToResposne(json,errorR: self.delegate) {
 
                 self.delegate?.onUserDetailLoaded(user.data)
             }
@@ -56,7 +56,7 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
                 return
             }
 
-           if let user = try! self.changeJsonToResposne(json, errorR: self.delegate){
+           if let user = try? self.changeJsonToResposne(json, errorR: self.delegate){
                self.delegate?.onUserDetailLoaded(user.data)
            }
         }, onError: {[unowned self] text in self.delegate?.onErrorOccurs() })
@@ -72,7 +72,7 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
                 return
             }
 
-            if let user = try! self.changeJsonToResposne(json, errorR: self.delegate){
+            if let user = try? self.changeJsonToResposne(json, errorR: self.delegate){
                 self.delegate?.onUserDetailLoaded(user.data)
             }
         }, onError: {[unowned self] text in self.delegate?.onErrorOccurs() })

@@ -31,7 +31,7 @@ class LecturerProvider: RestApiManager, LecturerProviderProtocol {
                 return
             }
 
-            if let lecturerResponse = try! self.changeJsonToResposne(json,errorR: self.delegate){
+            if let lecturerResponse = try? self.changeJsonToResposne(json,errorR: self.delegate){
                 self.delegate?.onLecturersLoaded(lecturerResponse.data)
             }
 

@@ -29,7 +29,7 @@ class LoginProvider:RestApiManager,LoginProviderProtocol {
                 return
             }
 
-            if let loginResponse = try! self.changeJsonToResposne(json,errorR: self.delegate){
+            if let loginResponse = try? self.changeJsonToResposne(json,errorR: self.delegate){
                 self.delegate?.onLoginResponse(loginResponse.data.token)
             }
 

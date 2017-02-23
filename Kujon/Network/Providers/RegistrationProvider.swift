@@ -32,7 +32,7 @@ class RegistrationProvider :RestApiManager,RegistrationProviderProtocol {
                 return
             }
 
-            if let registerResponse = try! self.changeJsonToResposne(json, errorR: self.delegate) {
+            if let registerResponse = try? self.changeJsonToResposne(json, errorR: self.delegate) {
                 self.delegate?.onRegisterResponse(registerResponse.data)
             }
         }, onError: {[unowned self] text in

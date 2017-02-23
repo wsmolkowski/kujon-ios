@@ -30,7 +30,7 @@ class ProgrammeProvider: RestApiManager, ProgrammeProviderProtocol {
                 return
             }
 
-            if let programeResponse = try! self.changeJsonToResposne(json, errorR: self.delegate) {
+            if let programeResponse = try? self.changeJsonToResposne(json, errorR: self.delegate) {
 
                 self.delegate?.onProgrammeLoaded(programeResponse.list)
             }

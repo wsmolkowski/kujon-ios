@@ -37,7 +37,7 @@ weak var delegate: LectureProviderDelegate!
             }
 
             if  let strongSelf = self,
-                let lectureResponse = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate){
+                let lectureResponse = try? strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate){
                 strongSelf.delegate?.onLectureLoaded(lectureResponse.data,date: Date())
             }
 
@@ -57,7 +57,7 @@ weak var delegate: LectureProviderDelegate!
             }
 
             if  let strongSelf = self,
-                let lectureResponse = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate){
+                let lectureResponse = try? strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate){
                 strongSelf.delegate?.onLectureLoaded(lectureResponse.data, date: date)
             }
 

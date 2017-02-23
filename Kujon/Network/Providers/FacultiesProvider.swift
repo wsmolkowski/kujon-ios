@@ -33,7 +33,7 @@ weak var delegate: FacultiesProviderDelegate! = nil
                 return
             }
 
-            if let faculties = try! self.changeJsonToResposne(json,errorR: self.delegate){
+            if let faculties = try? self.changeJsonToResposne(json,errorR: self.delegate){
 
                 self.delegate?.onFacultiesLoaded(faculties.list)
             }

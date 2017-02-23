@@ -46,8 +46,8 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
         endpointURL = SettingsEndpoint.getSettings.rawValue
         makeHTTPAuthenticatedGetRequest({ [weak self] data in
             if let data = data,
-                let response = try! self?.changeJsonToResposne(data, errorR: self?.delegate),
-                let settings: Settings = response.data {
+                let response = try? self?.changeJsonToResposne(data, errorR: self?.delegate),
+                let settings: Settings = response?.data {
                 self?.userData.isCalendarSyncEnabled = settings.calendarSyncEnabled ?? false
                 self?.userData.oneSignalNotificationsEnabled = settings.oneSignalNotificationsEnabled ?? false
                 self?.userData.areSettingsLoaded = true
@@ -55,7 +55,7 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
             } else {
                 self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
             }
-        }, onError: { [weak self] text in
+            }, onError: { [weak self] text in
             self?.delegate?.onErrorOccurs(text)
         })
     }
