@@ -36,14 +36,20 @@ class DriveManager {
     private let app = UIApplication.shared
 
 
-    internal static let shared: DriveManager = {
-        let manager = DriveManager()
-        let service = GTLRDriveService()
-        service.shouldFetchNextPages = true
-        service.isRetryEnabled = true
-        service.authorizer = GIDSignIn.sharedInstance().currentUser.authentication.fetcherAuthorizer()
-        manager.service = service
-        return manager
+    internal static let shared: DriveManager? = {
+        if let gidSignIn = GIDSignIn.sharedInstance(),
+            let user = gidSignIn.currentUser,
+            let authentication = user.authentication,
+            let authorizer = authentication.fetcherAuthorizer() {
+            let manager = DriveManager()
+            let service = GTLRDriveService()
+            service.shouldFetchNextPages = true
+            service.isRetryEnabled = true
+            service.authorizer = authorizer
+            manager.service = service
+            return manager
+        }
+        return nil
     }()
 
 

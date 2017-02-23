@@ -161,6 +161,7 @@ class StringHolder {
     static let author = "Autor"
     static let sortWith = "Sortuj według"
     static let timeoutMessage = "Przekroczono czas oczekiwania na odpowiedź serwera"
+    static let userNotLoggedInToGoogleMessage = "Aby korzystać z Google Drive, zaloguj się do Kujona przy użyciu swojego konta Google"
 
 
     static func fileHasBeenRemovedMessage(fileName: String) -> String {

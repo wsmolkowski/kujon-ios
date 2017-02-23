@@ -39,6 +39,12 @@ class DriveDownloadFileOperation: AsyncOperation, CallbackOperation {
 
         delegate?.operationWillStartReportingProgress(self)
 
+        guard let drive = drive else {
+            delegate?.operation(self, didFailWithErrorMessage: StringHolder.userNotLoggedInToGoogleMessage)
+            state = .finished
+            return
+        }
+
         do {
             try drive.downloadFile(inputFile, toDirectory: cacheDirectory, success: { [weak self] downloadedFileURL in
 
@@ -70,7 +76,7 @@ class DriveDownloadFileOperation: AsyncOperation, CallbackOperation {
 
     override internal func cancel() {
         super.cancel()
-        drive.cancelDownload(file: inputFile)
+        drive?.cancelDownload(file: inputFile)
         delegate?.operationDidCancel(operation: self)
         state = .finished
     }

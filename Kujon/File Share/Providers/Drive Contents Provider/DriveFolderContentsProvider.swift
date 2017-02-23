@@ -14,7 +14,7 @@ class DriveFolderContentsProvider: FolderContentsProviding {
 
     internal weak var delegate: FolderContentsProvidingDelegate?
     internal var cache: FolderContentsCachable?
-    internal var isFetching: Bool {  return drive.isFetchingFileList  }
+    internal var isFetching: Bool {  return drive?.isFetchingFileList ?? false }
     private let drive = DriveManager.shared
 
     internal func loadContentsForRootFolder() {
@@ -36,6 +36,11 @@ class DriveFolderContentsProvider: FolderContentsProviding {
             return
         }
 
+        guard let drive = drive else {
+            self.delegate?.folderContentsProvider(provider: self, didFailWithErrorMessage: StringHolder.userNotLoggedInToGoogleMessage)
+            return
+        }
+
         if drive.isFetchingFileList {
             drive.cancelFileListFetch()
         }
@@ -51,11 +56,11 @@ class DriveFolderContentsProvider: FolderContentsProviding {
     }
 
     internal func cancelFetch() {
-        drive.cancelFileListFetch()
+        drive?.cancelFileListFetch()
     }
 
     deinit {
-        drive.cancelFileListFetch()
+        drive?.cancelFileListFetch()
     }
 
 }

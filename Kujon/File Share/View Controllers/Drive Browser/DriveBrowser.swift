@@ -248,10 +248,11 @@ class DriveBrowser: UITableViewController, FolderContentsProvidingDelegate, File
     func folderContentsProvider(provider: FolderContentsProviding, didFailWithErrorMessage message: String) {
         updateSpinnerState()
         refreshControl?.endRefreshing()
-        DispatchQueue.main.asyncAfter(seconds: 0.4) { [unowned self] in
-             self.presentAlertWithMessage(message, title: StringHolder.errorAlertTitle)
+        DispatchQueue.main.asyncAfter(seconds: 0.4) { [weak self] in
+            self?.presentAlertWithMessage(message, title: StringHolder.errorAlertTitle, showCancelButton: false, okAction: { [weak self] in
+                self?.dismissBrowser()
+            })
         }
-
     }
 
     // MARK: - Table view data source

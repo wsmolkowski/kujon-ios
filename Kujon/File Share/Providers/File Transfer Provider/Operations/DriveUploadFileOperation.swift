@@ -47,7 +47,13 @@ class DriveUploadFileOperation: AsyncOperation, CallbackOperation {
             state = .finished
             return
         }
-        
+
+        guard let drive = drive else {
+            delegate?.operation(self, didFailWithErrorMessage: StringHolder.userNotLoggedInToGoogleMessage)
+            state = .finished
+            return
+        }
+
         do {
             try drive.uploadFile(fileURL: fileURL, destinationFolderId: destinationFolderId, success: { [weak self] _ in
 
@@ -81,7 +87,7 @@ class DriveUploadFileOperation: AsyncOperation, CallbackOperation {
         super.cancel()
 
         if let localFileURL = file?.localFileURL {
-            drive.cancelUpload(fileURL: localFileURL)
+            drive?.cancelUpload(fileURL: localFileURL)
         }
         delegate?.operationDidCancel(operation: self)
         state = .finished
