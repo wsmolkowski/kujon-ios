@@ -56,7 +56,6 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         }
     }
     private var courseStudentsCached: [SimpleUser]?
-    private var cachedFiles: [URL] = []
     private var sortKey: SortKey = .dateAddedDescending
 
     enum SortKey: Int {
@@ -230,11 +229,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         let description = StringHolder.fileSize + " " + fileSize
 
         let previewFileAction: UIAlertAction = UIAlertAction(title: StringHolder.showPreview, style: .default) { [unowned self] _ in
-            if let url = file.localFileURL {
-                self.previewLocalFile(url: url)
-            } else {
-                self.previewAPIFile(file)
-            }
+            self.previewAPIFile(file)
         }
 
         let showDetailsAction: UIAlertAction = UIAlertAction(title: StringHolder.showFileDetails, style: .default) { [unowned self] _ in
@@ -440,9 +435,10 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
 
             if transfer is API2DeviceTransfer {
                 guard let file = file as? APIFile, let url = file.localFileURL else { return }
-                strongSelf.cachedFiles.append(url)
                 strongSelf.updateModelWith(existingFile: file)
-                strongSelf.isViewInViewHierarchy ? strongSelf.previewLocalFile(url: url) : strongSelf.removeAllCachedFiles()
+                if strongSelf.isViewInViewHierarchy {
+                    strongSelf.previewLocalFile(url: url)
+                }
                 return
             }
 
@@ -552,19 +548,9 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         UIApplication.shared.statusBarStyle = .lightContent
     }
 
-    private func removeAllCachedFiles() {
-        for cachedFileURL in cachedFiles {
-            if let _ = try? cachedFileURL.checkPromisedItemIsReachable() {
-                NSlogManager.showLog("Removing cached file: \(cachedFileURL.lastPathComponent)")
-                try? FileManager.default.removeItem(at: cachedFileURL)
-            }
-        }
-    }
-
     // MARK: - Deinit
 
     deinit {
-        removeAllCachedFiles()
         FileTransferManager.shared.cancelAllTransfers()
     }
 

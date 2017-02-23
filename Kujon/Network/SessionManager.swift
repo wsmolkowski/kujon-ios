@@ -14,7 +14,7 @@ class SessionManager {
         return URLSession(configuration: conf)
     }
     static func setCache(){
-        let URLCache = Foundation.URLCache(memoryCapacity: 4 * 1024 * 1024, diskCapacity: 20 * 1024 * 1024, diskPath: nil)
+        let URLCache = Foundation.URLCache(memoryCapacity: 4 * 1024 * 1024, diskCapacity: 200 * 1024 * 1024, diskPath: nil)
         Foundation.URLCache.shared = URLCache
     }
 
