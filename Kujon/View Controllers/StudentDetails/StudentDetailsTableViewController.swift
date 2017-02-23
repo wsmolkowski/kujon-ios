@@ -28,7 +28,7 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(StudentDetailsTableViewController.back))
         title = StringHolder.student
-        self.tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: kierunekCellId)
+        self.tableView.register(UINib(nibName: "AccessoryItemCell", bundle: nil), forCellReuseIdentifier: kierunekCellId)
         self.tableView.register(UINib(nibName: "StudentHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: headerCellId)
         self.tableView.separatorStyle = .none
         if (userId == nil) {
@@ -124,10 +124,10 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
     }
 
     private func configureStudentProgrammeCell(_ indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: kierunekCellId, for: indexPath) as! GoFurtherViewCellTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: kierunekCellId, for: indexPath) as! AccessoryItemCell
         let myProgramme: StudentProgramme = self.studentProgrammes[indexPath.row]
-        cell.plainLabel.text = myProgramme.programme.description
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.titleLabel.text = myProgramme.programme.description
+        cell.setStyle(.arrowRight)
         return cell
     }
 

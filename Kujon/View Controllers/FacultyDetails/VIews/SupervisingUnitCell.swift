@@ -13,6 +13,8 @@ protocol SupervisingUnitCellDelegate: class {
 }
 
 class SupervisingUnitCell: UITableViewCell {
+    
+    @IBOutlet weak var arrowView: UIImageView!
 
     internal var supervisingUnit: SchoolPath? {
         didSet {
@@ -27,7 +29,7 @@ class SupervisingUnitCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        arrowView.tintColor = UIColor.blackWithAlpha(alpha: 0.3)
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(SupervisingUnitCell.unitLabelDidTap))
         tapRecognizer.numberOfTapsRequired = 1
         tapRecognizer.numberOfTouchesRequired = 1

@@ -12,5 +12,13 @@ class ArrowedLabelView: UIView {
 
     @IBOutlet weak var titleLabel: UILabel!
 
+    @IBOutlet weak var arrowView: UIImageView!
+
+
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        arrowView.tintColor = UIColor.blackWithAlpha(alpha: 0.3)
+    }
 
 }

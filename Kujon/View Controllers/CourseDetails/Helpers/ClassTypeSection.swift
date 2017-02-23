@@ -25,7 +25,7 @@ class ClassTypeSection:SectionHelperProtocol {
     }
 
     func registerView(_ tableView: UITableView) {
-        tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: classTypeCellId)
+        tableView.register(UINib(nibName: "AccessoryItemCell", bundle: nil), forCellReuseIdentifier: classTypeCellId)
     }
 
     func getSectionTitle() -> String? {
@@ -41,11 +41,11 @@ class ClassTypeSection:SectionHelperProtocol {
     }
 
     func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCell(withIdentifier: classTypeCellId, for: position) as! GoFurtherViewCellTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: classTypeCellId, for: position) as! AccessoryItemCell
         if let typesAsString = typesAsString {
-            cell.plainLabel.text = typesAsString
+            cell.titleLabel.text = typesAsString
         }
-        cell.arrow.isHidden = true
+        cell.setStyle(.plain)
         return cell
     }
 

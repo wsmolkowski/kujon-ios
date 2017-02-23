@@ -23,7 +23,7 @@ class CycleSection: SectionHelperProtocol {
     }
 
     func registerView(_ tableView: UITableView) {
-        tableView.register(UINib(nibName: "GoFurtherViewCellTableViewCell", bundle: nil), forCellReuseIdentifier: cycleId)
+        tableView.register(UINib(nibName: "AccessoryItemCell", bundle: nil), forCellReuseIdentifier: cycleId)
     }
 
     func getSectionTitle() -> String? {
@@ -39,9 +39,9 @@ class CycleSection: SectionHelperProtocol {
     }
 
     func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cycleId, for: position) as! GoFurtherViewCellTableViewCell
-        cell.plainLabel.text = terms[(position as NSIndexPath).row].name
-        cell.arrow.isHidden = true
+        let cell = tableView.dequeueReusableCell(withIdentifier: cycleId, for: position) as! AccessoryItemCell
+        cell.titleLabel.text = terms[(position as NSIndexPath).row].name
+        cell.setStyle(.plain)
         return cell
     }
 
