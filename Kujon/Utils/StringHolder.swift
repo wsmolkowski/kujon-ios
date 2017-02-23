@@ -160,6 +160,7 @@ class StringHolder {
     static let date = "Data dodania"
     static let author = "Autor"
     static let sortWith = "Sortuj według"
+    static let timeoutMessage = "Przekroczono czas oczekiwania na odpowiedź serwera"
 
 
     static func fileHasBeenRemovedMessage(fileName: String) -> String {

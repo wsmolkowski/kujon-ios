@@ -52,6 +52,8 @@ extension JsonProviderProtocol {
             }
         case 504:
             errorR.onUsosDown()
+        case 524:
+            errorR.onErrorOccurs(StringHolder.timeoutMessage)
         default:
             errorR.onErrorOccurs(text)
         }
