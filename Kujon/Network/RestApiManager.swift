@@ -6,7 +6,7 @@
 import Foundation
 import Decodable
 
-typealias onSucces = (Data!) -> Void
+typealias onSucces = (Data?) -> Void
 typealias onErrorOccurs = (String) -> Void
 
 enum APIMode: String {

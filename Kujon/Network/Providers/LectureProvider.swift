@@ -30,10 +30,17 @@ weak var delegate: LectureProviderDelegate!
         endpoint = firstPart + date
         self.makeHTTPAuthenticatedGetRequest({
             [weak self] json in
-                if  let strongSelf = self,
-                    let lectureResponse = try! strongSelf.changeJsonToResposne(json,errorR: strongSelf.delegate){
-                    strongSelf.delegate?.onLectureLoaded(lectureResponse.data,date: Date())
-                }
+
+            guard let json = json else {
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                return
+            }
+
+            if  let strongSelf = self,
+                let lectureResponse = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate){
+                strongSelf.delegate?.onLectureLoaded(lectureResponse.data,date: Date())
+            }
+
         }, onError: {[weak self] text in
             self?.delegate?.onErrorOccurs()
         })
@@ -43,11 +50,18 @@ weak var delegate: LectureProviderDelegate!
         endpoint = firstPart + date.dateToString()
         self.makeHTTPAuthenticatedGetRequest({
             [weak self] json in
+
+            guard let json = json else {
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                return
+            }
+
             if  let strongSelf = self,
-                let lectureResponse = try! strongSelf.changeJsonToResposne(json,errorR: strongSelf.delegate){
+                let lectureResponse = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate){
                 strongSelf.delegate?.onLectureLoaded(lectureResponse.data, date: date)
             }
-        }, onError: {[weak self] text in
+
+            }, onError: {[weak self] text in
             self?.delegate?.onErrorOccurs()
         })
     }

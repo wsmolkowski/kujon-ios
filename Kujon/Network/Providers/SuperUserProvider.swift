@@ -28,6 +28,11 @@ class SuperUserProvider:RestApiManager,SuperUserProviderProtocol {
         self.makeHTTPAuthenticatedGetRequest({
             [unowned self] json in
 
+            guard let json = json else {
+                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                return
+            }
+
             if let user = try! self.changeJsonToResposne(json,errorR: self.delegate) {
 
                 self.delegate?.onUserDetailLoaded(user.data)

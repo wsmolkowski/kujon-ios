@@ -18,7 +18,7 @@ class CourseProvider: RestApiManager {
         self.makeHTTPAuthenticatedGetRequest({
             [unowned self] data in
             
-            if (data != nil) {
+            if let data = data {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: [])
 

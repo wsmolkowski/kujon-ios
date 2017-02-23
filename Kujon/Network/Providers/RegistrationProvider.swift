@@ -26,7 +26,13 @@ class RegistrationProvider :RestApiManager,RegistrationProviderProtocol {
         let data = Register.createRegisterJSON(email, password: password)
         self.makeHTTPPostRequest({
             [unowned self] json in
-            if let registerResponse = try! self.changeJsonToResposne(json,errorR: self.delegate) {
+
+            guard let json = json else {
+                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                return
+            }
+
+            if let registerResponse = try! self.changeJsonToResposne(json, errorR: self.delegate) {
                 self.delegate?.onRegisterResponse(registerResponse.data)
             }
         }, onError: {[unowned self] text in

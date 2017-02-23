@@ -25,6 +25,12 @@ class ProgrammeIdProvider: RestApiManager, ProgrammeIdProviderProtocol {
         endpoint = "/programmes/" + id
         self.makeHTTPAuthenticatedGetRequest({
             [unowned self] json in
+
+            guard let json = json else {
+                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                return
+            }
+
             if let programeResponse = try! self.changeJsonToResposne(json,errorR: self.delegate) {
                 let programmeEnd = programeResponse.singleProgramme.getProgramme()
                 self.delegate?.onProgrammeLoaded(id,programme: StudentProgramme(id: id,programme: programmeEnd))

@@ -31,6 +31,11 @@ class ThesisSearchProvider: RestApiManager, ThesisSearchProtocol, SearchProvider
         endpoint = text + "?start=" + String(more)
         self.makeHTTPAuthenticatedGetRequest({
             json in
+
+            guard let json = json else {
+                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                return
+            }
             let val = try! self.changeJsonToResposne(json, errorR: self.delegate)
             if let val = val {
 

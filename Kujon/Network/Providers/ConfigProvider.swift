@@ -29,8 +29,12 @@ class ConfigProvider: RestApiManager, ConfigProviderProtocol {
         self.makeHTTPAuthenticatedGetRequest({
             [unowned self] json in
 
+            guard let json = json else {
+                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                return
+            }
 
-            if let configRes = try! self.changeJsonToResposne(json,errorR: self.delegate) {
+            if let configRes = try! self.changeJsonToResposne(json, errorR: self.delegate) {
                 let config = configRes.data
                 if (!config.userLogged) {
                     self.delegate?.notLogged()

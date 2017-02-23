@@ -30,6 +30,11 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
         self.makeHTTPAuthenticatedGetRequest({
             [unowned self] json in
 
+            guard let json = json else {
+                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                return
+            }
+
             if let user = try! self.changeJsonToResposne(json,errorR: self.delegate) {
 
                 self.delegate?.onUserDetailLoaded(user.data)
@@ -45,7 +50,13 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
         endpoint = "/lecturers/" + id
         self.makeHTTPAuthenticatedGetRequest({
             [unowned self] json in
-           if let user = try! self.changeJsonToResposne(json,errorR: self.delegate){
+
+            guard let json = json else {
+                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                return
+            }
+
+           if let user = try! self.changeJsonToResposne(json, errorR: self.delegate){
                self.delegate?.onUserDetailLoaded(user.data)
            }
         }, onError: {[unowned self] text in self.delegate?.onErrorOccurs() })
@@ -55,7 +66,13 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
         endpoint = "/users/" + id
         self.makeHTTPAuthenticatedGetRequest({
             [unowned self] json in
-            if let user = try! self.changeJsonToResposne(json,errorR: self.delegate){
+
+            guard let json = json else {
+                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                return
+            }
+
+            if let user = try! self.changeJsonToResposne(json, errorR: self.delegate){
                 self.delegate?.onUserDetailLoaded(user.data)
             }
         }, onError: {[unowned self] text in self.delegate?.onErrorOccurs() })

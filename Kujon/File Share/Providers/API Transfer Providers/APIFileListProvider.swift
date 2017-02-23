@@ -50,6 +50,11 @@ class APIFileListProvider: RestApiManager, APIFileListProviderProtocol {
             self?.isFetching = false
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
 
+            guard let data = data else {
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                return
+            }
+
             if let delegate = self?.delegate,
                 let fileListResponse = try! self?.changeJsonToResposne(data, errorR: delegate) {
                 self?.delegate?.apliFileListProvider(self, didLoadFileList: fileListResponse.files)

@@ -16,7 +16,7 @@ protocol FacultieProviderProtocol: JsonProviderProtocol {
 
 class FacultieProvider: RestApiManager, FacultieProviderProtocol {
 
-weak var delegate: FacultieProviderDelegate! = nil
+    weak var delegate: FacultieProviderDelegate! = nil
 
     var endpoint: String! = nil
     override func getMyUrl() -> String {
@@ -27,13 +27,23 @@ weak var delegate: FacultieProviderDelegate! = nil
         self.endpoint = id
         self.makeHTTPAuthenticatedGetRequest({
             [weak self] json in
+
+            guard let json = json else {
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                return
+            }
+
             guard let strongSelf = self else {
                 return
             }
-                if let facult = try? strongSelf.changeJsonToResposne(json,errorR: strongSelf.delegate){
-                    strongSelf.delegate?.onFacultieLoaded(facult.list)
-                }
-        }, onError: {[weak self] text in self?.delegate?.onErrorOccurs() })
-    }
 
+            if let facult = try? strongSelf.changeJsonToResposne(json,errorR: strongSelf.delegate){
+                strongSelf.delegate?.onFacultieLoaded(facult.list)
+            }
+
+            }, onError: {[weak self] text in
+                self?.delegate?.onErrorOccurs()
+        })
+    }
+    
 }

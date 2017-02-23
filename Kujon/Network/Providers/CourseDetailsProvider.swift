@@ -52,9 +52,16 @@ class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
     private func makeApiShot(){
         self.makeHTTPAuthenticatedGetRequest({ [weak self] json in
             self?.isFetching = false
+
+            guard let json = json else {
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                return
+            }
+
             guard let strongSelf = self else {
                 return
             }
+
             do {
                 if let courseResponse = try strongSelf.changeJsonToResposne(json,errorR: strongSelf.delegate){
                     strongSelf.delegate?.onCourseDetailsLoaded(courseResponse.details)

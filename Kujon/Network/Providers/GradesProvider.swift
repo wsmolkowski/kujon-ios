@@ -25,6 +25,11 @@ weak var delegate: GradesProviderDelegate!
         self.makeHTTPAuthenticatedGetRequest({
             [unowned self] json in
 
+            guard let json = json else {
+                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                return
+            }
+
             do {
                 if let grades = try self.changeJsonToResposne(json,errorR: self.delegate){
 

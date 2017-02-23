@@ -25,11 +25,19 @@ class ProgrammeProvider: RestApiManager, ProgrammeProviderProtocol {
     func loadProgramme() {
         self.makeHTTPAuthenticatedGetRequest({
             [unowned self] json in
-            if let programeResponse = try! self.changeJsonToResposne(json,errorR: self.delegate) {
+            guard let json = json else {
+                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                return
+            }
+
+            if let programeResponse = try! self.changeJsonToResposne(json, errorR: self.delegate) {
 
                 self.delegate?.onProgrammeLoaded(programeResponse.list)
             }
-        }, onError: {[unowned self] text in self.delegate?.onErrorOccurs() })
+
+        }, onError: {[unowned self] text in
+            self.delegate?.onErrorOccurs()
+        })
     }
 
     override func getMyUrl() -> String {

@@ -21,11 +21,19 @@ class TermsProvider: RestApiManager, TermsProviderProtocol {
     func loadTerms() {
         self.makeHTTPAuthenticatedGetRequest({
             [unowned self] json in
-            if let termsResponse = try! self.changeJsonToResposne(json,errorR: self.delegate) {
 
+            guard let json = json else {
+                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                return
+            }
+
+            if let termsResponse = try! self.changeJsonToResposne(json, errorR: self.delegate) {
                 self.delegate?.onTermsLoaded(termsResponse.terms)
             }
-        }, onError: { [unowned self] text in self.delegate?.onErrorOccurs() })
+
+        }, onError: { [unowned self] text in
+            self.delegate?.onErrorOccurs()
+        })
     }
 
     override func getMyUrl() -> String {

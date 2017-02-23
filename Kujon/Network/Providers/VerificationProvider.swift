@@ -35,6 +35,11 @@ class VerificationProvider: RestApiManager, VerificationProviderProtocol {
         addStoredCookies = true
         makeHTTPAuthenticatedGetRequest({ [unowned self] data in
 
+            guard let data = data else {
+                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                return
+            }
+
             if let _ = try? self.changeJsonToResposne(data, errorR: self.delegate){
                 self.delegate?.onVerificationSuccess()
             }

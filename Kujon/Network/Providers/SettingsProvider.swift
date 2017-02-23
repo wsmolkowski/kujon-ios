@@ -45,7 +45,8 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
     func loadSettings() {
         endpointURL = SettingsEndpoint.getSettings.rawValue
         makeHTTPAuthenticatedGetRequest({ [weak self] data in
-            if let response = try! self?.changeJsonToResposne(data, errorR: self?.delegate),
+            if let data = data,
+                let response = try! self?.changeJsonToResposne(data, errorR: self?.delegate),
                 let settings: Settings = response.data {
                 self?.userData.isCalendarSyncEnabled = settings.calendarSyncEnabled ?? false
                 self?.userData.oneSignalNotificationsEnabled = settings.oneSignalNotificationsEnabled ?? false
@@ -63,7 +64,8 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
         let state: State = enabled ? .enabled : .disabled
         endpointURL = SettingsEndpoint.postCalendarSync.rawValue + state.rawValue
         makeHTTPAuthenticatedPostRequest({ data in
-            if let responseJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:Any],
+            if let data = data,
+                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:Any],
                 let status = responseJSON?["status"], status as? String == "success" {
                     UserDataHolder.sharedInstance.isCalendarSyncEnabled = enabled
                     self.delegate?.calendarSyncronizationSettingDidSucceed()
@@ -79,7 +81,9 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
         let state: State = enabled ? .enabled : .disabled
         endpointURL = SettingsEndpoint.postPushNotificationsState.rawValue + state.rawValue
         makeHTTPAuthenticatedPostRequest({ data in
-            if let responseJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:Any],
+
+            if let data = data,
+                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:Any],
                 let status = responseJSON?["status"], status as? String == "success" {
                 UserDataHolder.sharedInstance.oneSignalNotificationsEnabled = enabled
                 self.delegate?.oneSignalNotificationsSettingDidSucceed()
