@@ -14,6 +14,10 @@ class ToastView: UIView {
 
     static func showInParent(_ parentView: UIView!, withText text: String, forDuration duration: double_t, completion: (() -> Void)? = nil) {
 
+        guard let parentView = parentView else {
+            return
+        }
+
         //Count toast views are already showing on parent. Made to show several toasts one above another
         var toastsAlreadyInParent = 0;
 
