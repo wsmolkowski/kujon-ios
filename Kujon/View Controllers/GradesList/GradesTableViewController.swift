@@ -171,8 +171,8 @@ class GradesTableViewController: RefreshingTableViewController, NavigationDelega
     private func presentPopUpWithTerm(_ term:Term) {
         let termPopUp = TermsPopUpViewController(nibName: "TermsPopUpViewController", bundle: nil)
         termPopUp.modalPresentationStyle = .overCurrentContext
-        parent?.present(termPopUp, animated: false) { [unowned termPopUp] in
-            termPopUp.showAnimate();
+        parent?.present(termPopUp, animated: false) { [weak termPopUp] in
+            termPopUp?.showAnimate();
         }
         termPopUp.showInView(term)
     }
