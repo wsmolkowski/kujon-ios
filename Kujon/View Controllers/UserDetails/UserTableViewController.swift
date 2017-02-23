@@ -229,7 +229,7 @@ class UserTableViewController: RefreshingTableViewController
         cell.accountNumberLabel.text = userDetail.id
         cell.userImageView.makeMyselfCircleWithBorder()
         cell.userImageView.image = UIImage(named: "user-placeholder")
-        if (userDetail.photoUrl != nil) {
+        if (userDetail.photoUrl != nil && restImageProvider.isFetching == false) {
             self.restImageProvider.loadImage("", urlString: self.userDetail.photoUrl!, onImageLoaded: self)
 
         }
@@ -238,7 +238,9 @@ class UserTableViewController: RefreshingTableViewController
         tapGestureRecognizer.numberOfTapsRequired = 1
         cell.userImageView.addGestureRecognizer(tapGestureRecognizer)
         cell.userImageView.isUserInteractionEnabled = true
-        self.loadImageFromUrl(UserDataHolder.sharedInstance.userUsosImage, indexPath: indexPath)
+        if restImageProvider.isFetching == false {
+            self.loadImageFromUrl(UserDataHolder.sharedInstance.userUsosImage, indexPath: indexPath)
+        }
         return cell
     }
 
