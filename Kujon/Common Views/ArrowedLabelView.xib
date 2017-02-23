@@ -27,7 +27,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow-right" translatesAutoresizingMaskIntoConstraints="NO" id="gsd-c0-uXc">
-                    <rect key="frame" x="330" y="14" width="8" height="12"/>
+                    <rect key="frame" x="330" y="14.5" width="8" height="12"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="12" id="J7g-9t-zhw"/>
                         <constraint firstAttribute="width" constant="8" id="vNG-Gr-yY9"/>
@@ -52,6 +52,6 @@
         </view>
     </objects>
     <resources>
-        <image name="arrow-right" width="9" height="15"/>
+        <image name="arrow-right" width="8" height="13"/>
     </resources>
 </document>
