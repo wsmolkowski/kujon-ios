@@ -9,7 +9,7 @@ class FloatingButtonDelegate {
 
     private let floatingSize: CGFloat = 55.0
     private let floatingMargin: CGFloat = 15.0
-    private var floatingButton: UIButton! = nil
+    private var floatingButton: UIButton?
 
     func viewWillAppear(_ controller:UIViewController,selector:Selector) {
         floatingButton = UIButton(type: .custom)
@@ -29,7 +29,7 @@ class FloatingButtonDelegate {
     }
 
      func viewWillDisappear() {
-        floatingButton.removeFromSuperview()
+        floatingButton?.removeFromSuperview()
 
     }
 
