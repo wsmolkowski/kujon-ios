@@ -35,7 +35,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.729046434051-9otpcdgno5ctbr3lqspa14bsaf9csihg</string>
+				<string>com.googleusercontent.apps.896765768628-88vkgkc131m2flfvfumvn3iojripp4hp</string>
 			</array>
 		</dict>
 		<dict>
@@ -51,7 +51,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>mobi-kujonTEST</string>
+				<string>mobi-kujon</string>
 			</array>
 		</dict>
 	</array>
