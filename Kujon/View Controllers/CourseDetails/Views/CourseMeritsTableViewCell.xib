@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2553a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E144f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,53 +16,74 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="CourseMeritsTableViewCell" customModule="Kujon" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="328" height="255"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="184" id="KGk-i7-Jjw" customClass="CourseMeritsTableViewCell" customModule="Kujon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="328" height="184"/>
+            <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="328" height="254"/>
+                <rect key="frame" x="0.0" y="0.0" width="328" height="183.66666666666666"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="dSa-AX-G6h">
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dSa-AX-G6h">
+                        <rect key="frame" x="8" y="23" width="312" height="137.66666666666666"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ka0-i3-8B9">
+                                <rect key="frame" x="0.0" y="0.0" width="312" height="18"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="descriptionLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iT-3j-DLc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" placeholderIntrinsicWidth="312" placeholderIntrinsicHeight="22.666666666666671" text="descriptionLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iT-3j-DLc">
+                                <rect key="frame" x="0.0" y="18" width="312" height="47.666666666666671"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bibliografia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eY-JM-Ncr">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Bibliografia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eY-JM-Ncr">
+                                <rect key="frame" x="0.0" y="65.666666666666671" width="312" height="18"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bibliographyLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TsO-bD-bDq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="312" placeholderIntrinsicHeight="18" text="bibliographyLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TsO-bD-bDq">
+                                <rect key="frame" x="0.0" y="83.666666666666671" width="312" height="18"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kryteria oceny" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zg9-sJ-52c">
+                                <rect key="frame" x="0.0" y="101.66666666666666" width="312" height="17.999999999999986"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="assessmentCriteriaLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLJ-ZA-UNo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="312" placeholderIntrinsicHeight="18" text="assessmentCriteriaLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLJ-ZA-UNo">
+                                <rect key="frame" x="0.0" y="119.66666666666666" width="312" height="18"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="zg9-sJ-52c" secondAttribute="trailing" id="1iw-QU-iZa"/>
+                            <constraint firstAttribute="trailing" secondItem="6iT-3j-DLc" secondAttribute="trailing" id="9Hs-Yy-j5J"/>
+                            <constraint firstItem="xLJ-ZA-UNo" firstAttribute="leading" secondItem="dSa-AX-G6h" secondAttribute="leading" id="FFJ-Dg-FYU"/>
+                            <constraint firstItem="zg9-sJ-52c" firstAttribute="leading" secondItem="dSa-AX-G6h" secondAttribute="leading" id="Htw-18-wh1"/>
+                            <constraint firstAttribute="trailing" secondItem="TsO-bD-bDq" secondAttribute="trailing" id="IYZ-gs-Cuj"/>
+                            <constraint firstItem="ka0-i3-8B9" firstAttribute="leading" secondItem="dSa-AX-G6h" secondAttribute="leading" id="OgO-Yg-Nh9"/>
+                            <constraint firstItem="2eY-JM-Ncr" firstAttribute="leading" secondItem="dSa-AX-G6h" secondAttribute="leading" id="QZ6-ax-9Nn"/>
+                            <constraint firstItem="6iT-3j-DLc" firstAttribute="leading" secondItem="dSa-AX-G6h" secondAttribute="leading" id="Wn9-8A-UhF"/>
+                            <constraint firstAttribute="trailing" secondItem="2eY-JM-Ncr" secondAttribute="trailing" id="oc9-DV-77t"/>
+                            <constraint firstAttribute="trailing" secondItem="xLJ-ZA-UNo" secondAttribute="trailing" id="qg1-W1-blJ"/>
+                            <constraint firstAttribute="trailing" secondItem="ka0-i3-8B9" secondAttribute="trailing" id="r0D-C5-MjL"/>
+                            <constraint firstItem="TsO-bD-bDq" firstAttribute="leading" secondItem="dSa-AX-G6h" secondAttribute="leading" id="rBB-J7-VYG"/>
+                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="dSa-AX-G6h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="15" id="1eu-i9-Vln"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="dSa-AX-G6h" secondAttribute="bottom" constant="15" id="8fn-tg-jpK"/>
                     <constraint firstAttribute="trailingMargin" secondItem="dSa-AX-G6h" secondAttribute="trailing" id="LxA-Ou-BSy"/>
                     <constraint firstAttribute="leadingMargin" secondItem="dSa-AX-G6h" secondAttribute="leading" id="SlZ-gH-afU"/>
-                    <constraint firstItem="dSa-AX-G6h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="fWk-dJ-4N6"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="dSa-AX-G6h" secondAttribute="bottom" constant="10" id="j6t-JK-n68"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -67,7 +91,7 @@
                 <outlet property="bibliographyLabel" destination="TsO-bD-bDq" id="jO1-fv-S2x"/>
                 <outlet property="descriptionLabel" destination="6iT-3j-DLc" id="ltW-ge-g8h"/>
             </connections>
-            <point key="canvasLocation" x="31" y="-132.5"/>
+            <point key="canvasLocation" x="31" y="-190"/>
         </tableViewCell>
     </objects>
 </document>

@@ -18,6 +18,7 @@ class CourseMeritsTableViewCell: GoFurtherViewCellTableViewCell {
         descriptionLabel.text = description
         bibliographyLabel.text = bibliography
         assessmentCriteriaLabel.text = assessmentCriteria
+        setNeedsLayout()
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
