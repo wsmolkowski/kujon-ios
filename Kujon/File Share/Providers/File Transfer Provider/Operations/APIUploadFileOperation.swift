@@ -62,6 +62,12 @@ class APIUploadFileOperation: AsyncOperation, CallbackOperation {
         }
         self.file = file
 
+        guard file.fileSizeInBytes <= UInt64(Constants.maxAPIFileSizeInBytes) else {
+            delegate?.operation(self, didFailWithErrorMessage: StringHolder.fileToLargeForAPIUpload)
+            state = .finished
+            return
+        }
+
         guard let _ = try? Data.init(contentsOf: localFileURL) else {
             delegate?.operation(self, didFailWithErrorMessage: StringHolder.fileNotFound)
             return
@@ -93,7 +99,7 @@ class APIUploadFileOperation: AsyncOperation, CallbackOperation {
                 self?.delegate?.operation(self, didFailWithErrorMessage:message)
                 self?.state = .finished
 
-            }, progressUpdateHandler: { [weak self] progress, totalBytesProceededFormatted, totalSizeFormatted in
+            }, progressUpdateHandler: { [weak self] progress, totalBytesProceededFormatted, totalSizeFormatted, bytesProceeded in
                 self?.delegate?.operation(self, didProceedWithProgress: progress, bytesProceeded: totalBytesProceededFormatted, totalSize: totalSizeFormatted)
         })
 

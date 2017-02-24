@@ -24,7 +24,8 @@ struct APIFile: Decodable, Hashable {
     var usosUserId: String?
     var fileSharedByMe: Bool?
     var shareOptions: ShareOptions
-
+    var fileSizeInBytes: UInt64 = 0
+    
     var createdDate: Date? {
         guard let createdTime = createdTime  else {
             return nil
@@ -32,7 +33,8 @@ struct APIFile: Decodable, Hashable {
         return Date.stringToDateWithClock(createdTime)
     }
 
-    init(fileName: String, courseId: String, termId: String, shareOptions: ShareOptions, fileSharedByMe: Bool? = true, contentType: String, localFileURL: URL? = nil, firstName: String? = nil, lastName: String? = nil, usosUserId: String? = nil, fileId: String? = nil, createdTime: String? = nil, fileSize: String? = nil) {
+
+    init(fileName: String, courseId: String, termId: String, shareOptions: ShareOptions, fileSharedByMe: Bool? = true, contentType: String, localFileURL: URL? = nil, firstName: String? = nil, lastName: String? = nil, usosUserId: String? = nil, fileId: String? = nil, createdTime: String? = nil, fileSize: String? = nil, fileSizeInBytes: UInt64 = 0) {
         self.fileName = fileName
         self.fileId = fileId
         self.courseId = courseId
@@ -46,6 +48,7 @@ struct APIFile: Decodable, Hashable {
         self.usosUserId = usosUserId
         self.shareOptions = shareOptions
         self.fileSharedByMe = fileSharedByMe
+        self.fileSizeInBytes = fileSizeInBytes
     }
 
     init?(localFileURL:URL, courseId:String, termId:String, shareOptions: ShareOptions, contentType: String) {
@@ -56,7 +59,10 @@ struct APIFile: Decodable, Hashable {
         let fileName = localFileURL.lastPathComponent
 
         var fileSizeString: String?
+        var fileSizeInBytes: UInt64 = 0
         if let fileSize = FileManager.sizeOfFile(url: localFileURL) {
+            
+            fileSizeInBytes = fileSize
             fileSizeString = ByteCountFormatter.string(fromByteCount: Int64(fileSize), countStyle: .binary)
         }
 
@@ -67,7 +73,7 @@ struct APIFile: Decodable, Hashable {
         let firstName = userNameComponents.firstName
         let lastName = userNameComponents.lastName
 
-        self.init(fileName: fileName, courseId: courseId, termId: termId, shareOptions: shareOptions, fileSharedByMe: true, contentType: contentType, localFileURL: localFileURL, firstName: firstName, lastName: lastName, usosUserId: usosUserId, fileId: nil, createdTime: createdDateString, fileSize: fileSizeString)
+        self.init(fileName: fileName, courseId: courseId, termId: termId, shareOptions: shareOptions, fileSharedByMe: true, contentType: contentType, localFileURL: localFileURL, firstName: firstName, lastName: lastName, usosUserId: usosUserId, fileId: nil, createdTime: createdDateString, fileSize: fileSizeString, fileSizeInBytes: fileSizeInBytes)
     }
 
     // MARK: Decodable

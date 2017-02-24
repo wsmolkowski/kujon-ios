@@ -11,6 +11,7 @@ import Foundation
 struct Constants {
 
     static let appVersion: String = "2.4.2"
+    static let maxAPIFileSizeInBytes: Int64 = 10 * 1024 * 1024
 
     struct OneSignal {
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias ProgressUpdateHandlerType = ( _ progress:Float, _ totalBytesProceededFormatted:String, _ totalSizeFormatted:String) -> Void
+typealias ProgressUpdateHandlerType = ( _ progress:Float, _ totalBytesProceededFormatted:String, _ totalSizeFormatted:String, _ bytesProceeded: Int64) -> Void
 
 protocol ProgressTrackable: class {
 
@@ -27,7 +27,7 @@ extension ProgressTrackable {
     }
 
     internal var totalBytesProceededFormatted: String {
-        return ByteCountFormatter.string(fromByteCount: totalBytesProceeded, countStyle: .binary)
+        return ByteCountFormatter.string(fromByteCount: totalSizeInBytes, countStyle: .binary)
     }
 
     internal var totalSizeFormatted: String {
@@ -42,6 +42,6 @@ extension ProgressTrackable {
         if progress < 0.001 { progress = 0.0 }
         self.totalBytesProceeded = totalBytesProceeded
         self.totalSizeInBytes = totalSizeInBytes
-        progressUpdateHandler(progress, totalBytesProceededFormatted, totalSizeFormatted)
+        progressUpdateHandler(progress, totalBytesProceededFormatted, totalSizeFormatted, totalBytesProceeded)
     }
 }

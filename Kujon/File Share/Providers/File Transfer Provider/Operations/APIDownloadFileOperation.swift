@@ -51,7 +51,7 @@ class APIDownloadFileOperation: AsyncOperation, CallbackOperation {
                 self?.didFail = true
                 self?.delegate?.operation(self, didFailWithErrorMessage: message)
 
-            }, progressUpdateHandler: { [weak self] progress, totalBytesProceededFormatted, totalSizeFormatted in
+            }, progressUpdateHandler: { [weak self] progress, totalBytesProceededFormatted, totalSizeFormatted, bytesProceeded in
                 self?.delegate?.operation(self, didProceedWithProgress: progress, bytesProceeded: totalBytesProceededFormatted, totalSize: totalSizeFormatted)
         })
 

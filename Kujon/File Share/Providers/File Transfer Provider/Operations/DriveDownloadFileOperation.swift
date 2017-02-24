@@ -63,7 +63,12 @@ class DriveDownloadFileOperation: AsyncOperation, CallbackOperation {
                     self?.delegate?.operation(self, didFailWithErrorMessage: message)
                     self?.state = .finished
 
-                }, progressUpdateHandler: { [weak self] progress, totalBytesProceededFormatted, totalSizeFormatted in
+                }, progressUpdateHandler: { [weak self] progress, totalBytesProceededFormatted, totalSizeFormatted, bytesProceeded in
+                    if bytesProceeded > Constants.maxAPIFileSizeInBytes {
+                        self?.delegate?.operation(self, didFailWithErrorMessage: StringHolder.fileToLargeForAPIUpload)
+                        self?.state = .finished
+                        return
+                    }
                     self?.delegate?.operation(self, didProceedWithProgress: progress, bytesProceeded: totalBytesProceededFormatted, totalSize: totalSizeFormatted)
             })
             
@@ -80,6 +85,7 @@ class DriveDownloadFileOperation: AsyncOperation, CallbackOperation {
         delegate?.operationDidCancel(operation: self)
         state = .finished
     }
+
 
 }
 

@@ -72,7 +72,7 @@ class DriveUploadFileOperation: AsyncOperation, CallbackOperation {
                     self?.delegate?.operation(self, didFailWithErrorMessage:message)
                     self?.state = .finished
 
-                }, progressUpdateHandler: { [weak self] progress, totalBytesProceededFormatted, totalSizeFormatted in
+                }, progressUpdateHandler: { [weak self] progress, totalBytesProceededFormatted, totalSizeFormatted, bytesProceeded in
                     self?.delegate?.operation(self, didProceedWithProgress: progress, bytesProceeded: totalBytesProceededFormatted, totalSize: totalSizeFormatted)
 
             })
