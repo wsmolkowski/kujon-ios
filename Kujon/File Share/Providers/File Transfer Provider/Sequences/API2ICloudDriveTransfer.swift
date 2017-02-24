@@ -16,6 +16,8 @@ class API2ICloudDriveTransfer: Transferable, OperationDelegate {
     private var downloadProgress: Float = 0.0
     private var transferProgress: Float { return downloadProgress }
     internal var type: TransferType = .download
+    private var transferDidFail = false
+
 
     internal var operations: [Operation] = []
     internal weak var delegate: TransferDelegate?
@@ -40,9 +42,13 @@ class API2ICloudDriveTransfer: Transferable, OperationDelegate {
         removeCacheOperation.delegate = self
         removeCacheOperation.name = "Remove Cached File"
         removeCacheOperation.completionBlock = { [weak self] in
-            self?.delegate?.transfer(self, didFinishWithSuccessAndReturn: removeCacheOperation.file)
+            guard let srongSelf = self else {
+                return
+            }
+            if !srongSelf.transferDidFail {
+                self?.delegate?.transfer(self, didFinishWithSuccessAndReturn: removeCacheOperation.file)
+            }
         }
-
         removeCacheOperation.dependsOn(driveUploadOperation).dependsOn(apiDownloadOperation)
 
         let operations = [apiDownloadOperation, driveUploadOperation, removeCacheOperation]
@@ -70,6 +76,7 @@ class API2ICloudDriveTransfer: Transferable, OperationDelegate {
     }
 
     internal func operation(_ operation: Operation?, didFailWithErrorMessage message: String) {
+        transferDidFail = true
         delegate?.transfer(self, didFailExecuting: operation, errorMessage: message)
     }
 

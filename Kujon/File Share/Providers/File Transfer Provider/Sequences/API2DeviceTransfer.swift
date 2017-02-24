@@ -14,6 +14,7 @@ class API2DeviceTransfer: Transferable, OperationDelegate {
 
     private var transferProgress: Float = 0.0
     internal var type: TransferType = .download
+    private var transferDidFail = false
 
     internal var operations: [Operation] = []
     internal weak var delegate: TransferDelegate?
@@ -29,7 +30,10 @@ class API2DeviceTransfer: Transferable, OperationDelegate {
         apiDownloadOperation.shouldDismissTransferView = true
         apiDownloadOperation.name = "API Download File"
         apiDownloadOperation.completionBlock = { [weak self] in
-            if !apiDownloadOperation.didFail {
+            guard let srongSelf = self else {
+                return
+            }
+            if !srongSelf.transferDidFail {
                 self?.delegate?.transfer(self, didFinishWithSuccessAndReturn: apiDownloadOperation.file)
             }
         }
@@ -59,6 +63,7 @@ class API2DeviceTransfer: Transferable, OperationDelegate {
     }
 
     internal func operation(_ operation: Operation?, didFailWithErrorMessage message: String) {
+        transferDidFail = true
         delegate?.transfer(self, didFailExecuting: operation, errorMessage: message)
     }
 

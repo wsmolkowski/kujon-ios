@@ -65,8 +65,12 @@ class DriveDownloadFileOperation: AsyncOperation, CallbackOperation {
 
                 }, progressUpdateHandler: { [weak self] progress, totalBytesProceededFormatted, totalSizeFormatted, bytesProceeded in
                     if bytesProceeded > Constants.maxAPIFileSizeInBytes {
-                        self?.delegate?.operation(self, didFailWithErrorMessage: StringHolder.fileToLargeForAPIUpload)
-                        self?.state = .finished
+                        guard let strongSelf = self else {
+                            return
+                        }
+                        strongSelf.drive.cancelDownload(file: strongSelf.inputFile)
+                        strongSelf.delegate?.operation(self, didFailWithErrorMessage: StringHolder.fileToLargeForAPIUpload)
+                        strongSelf.state = .finished
                         return
                     }
                     self?.delegate?.operation(self, didProceedWithProgress: progress, bytesProceeded: totalBytesProceededFormatted, totalSize: totalSizeFormatted)

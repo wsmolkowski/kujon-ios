@@ -13,7 +13,6 @@ class APIDownloadFileOperation: AsyncOperation, CallbackOperation {
     internal var file: APIFile
     private let api = APIDownloadProvider.shared
     internal weak var delegate: OperationDelegate?
-    internal var didFail: Bool = false
     internal var shouldDismissTransferView: Bool = false
 
     internal init(file: APIFile) {
@@ -48,7 +47,6 @@ class APIDownloadFileOperation: AsyncOperation, CallbackOperation {
 
             }, failureHandler: { [weak self] message in
                 self?.state = .finished
-                self?.didFail = true
                 self?.delegate?.operation(self, didFailWithErrorMessage: message)
 
             }, progressUpdateHandler: { [weak self] progress, totalBytesProceededFormatted, totalSizeFormatted, bytesProceeded in
