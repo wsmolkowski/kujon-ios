@@ -56,8 +56,8 @@ class APIFileListProvider: RestApiManager, APIFileListProviderProtocol {
             }
 
             if let delegate = self?.delegate,
-                let fileListResponse = try? self?.changeJsonToResposne(data, errorR: delegate),
-                let files = fileListResponse?.files {
+                let fileListResponse = try! self?.changeJsonToResposne(data, errorR: delegate) {
+                let files = fileListResponse.files
                 self?.delegate?.apliFileListProvider(self, didLoadFileList: files)
             }
 

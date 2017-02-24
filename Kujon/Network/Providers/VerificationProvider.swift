@@ -40,7 +40,7 @@ class VerificationProvider: RestApiManager, VerificationProviderProtocol {
                 return
             }
 
-            if let _ = try? self.changeJsonToResposne(data, errorR: self.delegate){
+            if let _ = try! self.changeJsonToResposne(data, errorR: self.delegate){
                 self.delegate?.onVerificationSuccess()
             }
 

@@ -36,7 +36,7 @@ class ThesisSearchProvider: RestApiManager, ThesisSearchProtocol, SearchProvider
                 self.delegate?.onErrorOccurs(StringHolder.errorOccures)
                 return
             }
-            let val = try? self.changeJsonToResposne(json, errorR: self.delegate)
+            let val = try! self.changeJsonToResposne(json, errorR: self.delegate)
             if let val = val {
 
                 self.delegate?.searchedItems(self.getSearchElements(val))

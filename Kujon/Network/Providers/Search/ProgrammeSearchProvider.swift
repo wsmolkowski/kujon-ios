@@ -38,7 +38,7 @@ class ProgrammeSearchProvider:RestApiManager,ProgrammeSearchProtocol,SearchProvi
                 return
             }
 
-            if let val  = try? self.changeJsonToResposne(json, errorR: self.delegate) {
+            if let val  = try! self.changeJsonToResposne(json, errorR: self.delegate) {
                 self.delegate?.searchedItems(self.getSearchElements(val))
                 self.delegate?.isThereNextPage(self.isThereNext(val));
             }

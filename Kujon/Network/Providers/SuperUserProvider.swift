@@ -33,7 +33,7 @@ class SuperUserProvider:RestApiManager,SuperUserProviderProtocol {
                 return
             }
 
-            if let user = try? self.changeJsonToResposne(json,errorR: self.delegate) {
+            if let user = try! self.changeJsonToResposne(json,errorR: self.delegate) {
 
                 self.delegate?.onUserDetailLoaded(user.data)
             }

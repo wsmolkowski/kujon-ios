@@ -29,7 +29,7 @@ class UsosesProvider: RestApiManager, UsosProviderProtocol {
             }
 
             if let mySelf  = self,
-                let usoses = try? mySelf.changeJsonToResposne(json,errorR: mySelf.delegate) {
+                let usoses = try! mySelf.changeJsonToResposne(json,errorR: mySelf.delegate) {
                     mySelf.delegate?.onUsosesLoaded(usoses.data)
             }
         }, onError: {[weak self] text in

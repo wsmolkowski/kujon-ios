@@ -31,7 +31,7 @@ class ProgrammeIdProvider: RestApiManager, ProgrammeIdProviderProtocol {
                 return
             }
 
-            if let programeResponse = try? self.changeJsonToResposne(json,errorR: self.delegate) {
+            if let programeResponse = try! self.changeJsonToResposne(json,errorR: self.delegate) {
                 let programmeEnd = programeResponse.singleProgramme.getProgramme()
                 self.delegate?.onProgrammeLoaded(id,programme: StudentProgramme(id: id,programme: programmeEnd))
             }

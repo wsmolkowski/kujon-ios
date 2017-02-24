@@ -37,7 +37,7 @@ class FacultieProvider: RestApiManager, FacultieProviderProtocol {
                 return
             }
 
-            if let facult = try? strongSelf.changeJsonToResposne(json,errorR: strongSelf.delegate){
+            if let facult = try! strongSelf.changeJsonToResposne(json,errorR: strongSelf.delegate){
                 strongSelf.delegate?.onFacultieLoaded(facult.list)
             }
 
