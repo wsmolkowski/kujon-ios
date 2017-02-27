@@ -44,7 +44,7 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
     }
 
     override func loadData() {
-        provider.loadUserDetail(userId)
+        provider.loadStudentDetails(userId)
     }
 
     func onUserDetailLoaded(_ userDetails: UserDetail) {
