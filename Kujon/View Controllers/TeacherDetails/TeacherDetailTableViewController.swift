@@ -238,7 +238,6 @@ class TeacherDetailTableViewController: RefreshingTableViewController, UserDetai
     }
 
     func wwwTaped(_ sender: UITapGestureRecognizer) {
-        print(sender.view?.tag as Any)
         if let url = URL(string: self.userDetails.homepage != nil ? self.userDetails.homepage! : "") {
             UIApplication.shared.openURL(url)
         }

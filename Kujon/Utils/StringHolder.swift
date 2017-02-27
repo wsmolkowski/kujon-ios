@@ -45,6 +45,7 @@ class StringHolder {
     static let kujonRegulaminUrl = "https://kujon.mobi/regulamin"
     static let noPicture = "Nie ma zdjęcia"
     static let kierunki = "Kierunki"
+    static let email = "Email"
     static let chooseUsos = "Wybierz Uczelnię"
     static let addedDemo = "Dodano uniwersytet DEMO"
     static let demoId = "DEMO"

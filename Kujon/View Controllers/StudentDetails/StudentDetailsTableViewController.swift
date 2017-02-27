@@ -12,6 +12,7 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
 
     let kierunekCellId = "kierunekCellId"
     let headerCellId = "studentHeaderCellId"
+    let emailCellId = "StudentEmailCellId"
 
     let restImageProvider = RestImageProvider.sharedInstance
     var provider = ProvidersProviderImpl.sharedInstance.provideUserDetailsProvider()
@@ -28,6 +29,7 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
         title = StringHolder.student
         self.tableView.register(UINib(nibName: "AccessoryItemCell", bundle: nil), forCellReuseIdentifier: kierunekCellId)
         self.tableView.register(UINib(nibName: "StudentHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: headerCellId)
+        self.tableView.register(UINib(nibName: "StudentEmailCell", bundle: nil), forCellReuseIdentifier: emailCellId)
         self.tableView.separatorStyle = .none
         if (userId == nil) {
             userId = user.userId
@@ -64,13 +66,14 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.userDetails != nil ? 2 : 0
+        return self.userDetails != nil ? 3 : 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch (section) {
         case 0: return self.userDetails != nil ? 1 : 0
         case 1: return userDetails?.studentProgrammes.count ?? 0
+        case 2: return userDetails.hasEmail ? 1 : 0
         default: return 0
         }
 
@@ -79,6 +82,7 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch (indexPath.section) {
         case 0: return 216
+        case 2: return userDetails.hasEmail ?  50 :  0
         default: return 50
         }
     }
@@ -87,6 +91,7 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
         switch (indexPath.section) {
         case 0: return self.studentCellConfigure(indexPath)
         case 1: return self.configureStudentProgrammeCell(indexPath)
+        case 2: return self.configureEmailCell(indexPath)
         default: return self.configureStudentProgrammeCell(indexPath)
         }
     }
@@ -119,6 +124,11 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
         return cell
     }
 
+    private func configureEmailCell(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: emailCellId, for: indexPath) as! StudentEmailCell
+        return cell
+    }
+
 
     func imageLoaded(_ tag: String, image: UIImage) {
         if let cell = self.tableView.cellForRow(at: IndexPath(item: 0, section: 0)) {
@@ -130,7 +140,6 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
     }
 
     func imageTapped(_ sender: UITapGestureRecognizer) {
-        print(sender.view?.tag as Any)
         if (isImageLoaded) {
             if let cell = self.tableView.cellForRow(at: IndexPath(item: 0, section: 0)) {
                 let imageController = ImageViewController(nibName: "ImageViewController", bundle: Bundle.main)
@@ -149,7 +158,7 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch (section) {
         case 0: return 0
-
+        case 2: return userDetails.hasEmail ? 51 : 0
         default: return 51
         }
     }
@@ -159,6 +168,7 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
         switch (section) {
         case 0: return nil
         case 1: return createLabelForSectionTitle(StringHolder.kierunki)
+        case 2: return userDetails.hasEmail ? createLabelForSectionTitle(StringHolder.email) : nil
         default: return nil
         }
     }
@@ -166,14 +176,15 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section) {
         case 1:
-            self.clicked(indexPath)
-            break;
+            self.facultyClicked(indexPath)
+        case 2:
+            self.emailClicked()
         default:
             break;
         }
     }
 
-    func clicked(_ indexPath: IndexPath) {
+    func facultyClicked(_ indexPath: IndexPath) {
         DispatchQueue.main.async { [weak self] in
             guard let programme: Programme = self?.userDetails?.studentProgrammes[indexPath.row].programme else {
                 return
@@ -182,6 +193,15 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
             kierunekDetailController.programme = programme
             self?.navigationController?.pushViewController(kierunekDetailController, animated: true)
         }
+    }
+
+    func emailClicked() {
+        if let emailUrlString = userDetails.emailUrl,
+            let url = URL(string: emailUrlString) {
+            print(emailUrlString)
+            UIApplication.shared.openURL(url)
+        }
+
     }
 
 }

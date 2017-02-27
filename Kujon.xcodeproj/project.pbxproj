@@ -133,6 +133,8 @@
 		6647D5B91E5B514F00D3BFD9 /* ICloudDriveDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647D5B81E5B514F00D3BFD9 /* ICloudDriveDownloadOperation.swift */; };
 		664DCFFF1E4E02CE004EE946 /* SharedFilesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664DCFFE1E4E02CE004EE946 /* SharedFilesSection.swift */; };
 		664DD0011E4E0BAA004EE946 /* API2DeviceTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664DD0001E4E0BAA004EE946 /* API2DeviceTransfer.swift */; };
+		66634EB31E64786C004E91EB /* StudentEmailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66634EB11E64786C004E91EB /* StudentEmailCell.swift */; };
+		66634EB41E64786C004E91EB /* StudentEmailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66634EB21E64786C004E91EB /* StudentEmailCell.xib */; };
 		66678B001E5C52500059F7A7 /* ICloudDrive2APITransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66678AFF1E5C52500059F7A7 /* ICloudDrive2APITransfer.swift */; };
 		66678B021E5C67CE0059F7A7 /* ICloudDriveUploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66678B011E5C67CE0059F7A7 /* ICloudDriveUploadOperation.swift */; };
 		66678B041E5CA4930059F7A7 /* ShareDetailsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66678B031E5CA4930059F7A7 /* ShareDetailsOperation.swift */; };
@@ -598,6 +600,8 @@
 		6647D5B81E5B514F00D3BFD9 /* ICloudDriveDownloadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICloudDriveDownloadOperation.swift; sourceTree = "<group>"; };
 		664DCFFE1E4E02CE004EE946 /* SharedFilesSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedFilesSection.swift; sourceTree = "<group>"; };
 		664DD0001E4E0BAA004EE946 /* API2DeviceTransfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API2DeviceTransfer.swift; sourceTree = "<group>"; };
+		66634EB11E64786C004E91EB /* StudentEmailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentEmailCell.swift; sourceTree = "<group>"; };
+		66634EB21E64786C004E91EB /* StudentEmailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentEmailCell.xib; sourceTree = "<group>"; };
 		66678AFF1E5C52500059F7A7 /* ICloudDrive2APITransfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICloudDrive2APITransfer.swift; sourceTree = "<group>"; };
 		66678B011E5C67CE0059F7A7 /* ICloudDriveUploadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICloudDriveUploadOperation.swift; sourceTree = "<group>"; };
 		66678B031E5CA4930059F7A7 /* ShareDetailsOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareDetailsOperation.swift; sourceTree = "<group>"; };
@@ -2041,6 +2045,8 @@
 			children = (
 				66FD65E51E3BAD9E007066E6 /* StudentHeaderTableViewCell.swift */,
 				66FD65E61E3BAD9E007066E6 /* StudentHeaderTableViewCell.xib */,
+				66634EB11E64786C004E91EB /* StudentEmailCell.swift */,
+				66634EB21E64786C004E91EB /* StudentEmailCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2381,6 +2387,7 @@
 				66A017041E3BBD580011BFD9 /* MenuItem.xib in Resources */,
 				66FD663D1E3BAD9E007066E6 /* SupervisingUnitCell.xib in Resources */,
 				4C0D8247D1BF8BC9FBE086A2 /* Lato-BoldItalic.ttf in Resources */,
+				66634EB41E64786C004E91EB /* StudentEmailCell.xib in Resources */,
 				66FD66851E3BAD9E007066E6 /* SearchResultTableViewController.xib in Resources */,
 				66FD66431E3BAD9E007066E6 /* Grade2TableViewCell.xib in Resources */,
 				4C0D81AD1E9F60C01789670C /* Lato-Hairline.ttf in Resources */,
@@ -2838,6 +2845,7 @@
 				66FD66B51E3BAD9E007066E6 /* UsosesTableViewController.swift in Sources */,
 				66A8BE121E48C11E008B35B7 /* APIFileListResponse.swift in Sources */,
 				4C0D80C2E817C52141156F68 /* TermsResponse.swift in Sources */,
+				66634EB31E64786C004E91EB /* StudentEmailCell.swift in Sources */,
 				66A016F31E3BB5550011BFD9 /* SearchType.swift in Sources */,
 				4C0D80DAD146340FB32C5687 /* StudentProgrammeResponse.swift in Sources */,
 				66A016E51E3BB5550011BFD9 /* LectureProvider.swift in Sources */,
