@@ -80,14 +80,11 @@ class UserTableViewController: RefreshingTableViewController
         }
         let navigationBar = navigationController.navigationBar
         let navigationSeparator = UIView(frame: CGRect(x: 0, y: navigationBar.frame.size.height - 1, width: navigationBar.frame.size.width, height: 2))
-        navigationSeparator.backgroundColor = UIColor.kujonBlueColor()// Here your custom color
+        navigationSeparator.backgroundColor = UIColor.kujonBlueColor()
         navigationSeparator.isOpaque = true
+        navigationSeparator.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin, .flexibleWidth]
         navigationController.navigationBar.addSubview(navigationSeparator)
-        let constraints: [NSLayoutConstraint] = [
-                navigationSeparator.leadingAnchor.constraint(equalTo: navigationBar.leadingAnchor),
-                navigationSeparator.trailingAnchor.constraint(equalTo: navigationBar.trailingAnchor),
-        ]
-        NSLayoutConstraint.activate(constraints)
+
     }
 
     override func loadData() {
