@@ -20,19 +20,23 @@ class TermsProvider: RestApiManager, TermsProviderProtocol {
     weak   var delegate: TermsProviderDelegate! = nil
     func loadTerms() {
         self.makeHTTPAuthenticatedGetRequest({
-            [unowned self] json in
+            [weak self] json in
 
             guard let json = json else {
-                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
                 return
             }
 
-            if let termsResponse = try! self.changeJsonToResposne(json, errorR: self.delegate) {
-                self.delegate?.onTermsLoaded(termsResponse.terms)
+            guard let strongSelf = self else {
+                return
             }
 
-        }, onError: { [unowned self] text in
-            self.delegate?.onErrorOccurs()
+            if let termsResponse = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate) {
+                strongSelf.delegate?.onTermsLoaded(termsResponse.terms)
+            }
+
+        }, onError: { [weak self] text in
+            self?.delegate?.onErrorOccurs()
         })
     }
 

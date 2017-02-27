@@ -39,7 +39,9 @@ class MessageProvider: RestApiManager,MessageProviderProtocol  {
             if let strongSelf = self, let messageResponse = try! strongSelf.changeJsonToResposne(json,errorR: strongSelf.delegate){
                 strongSelf.delegate?.onMessageLoaded(messageResponse.data)
             }
-        }) {[weak self] text in self?.delegate?.onErrorOccurs()}
+        }) {[weak self] text in
+            self?.delegate?.onErrorOccurs()
+        }
     }
 
     

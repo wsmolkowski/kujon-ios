@@ -24,19 +24,23 @@ class ProgrammeProvider: RestApiManager, ProgrammeProviderProtocol {
 
     func loadProgramme() {
         self.makeHTTPAuthenticatedGetRequest({
-            [unowned self] json in
+            [weak self] json in
+
             guard let json = json else {
-                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
                 return
             }
 
-            if let programeResponse = try! self.changeJsonToResposne(json, errorR: self.delegate) {
-
-                self.delegate?.onProgrammeLoaded(programeResponse.list)
+            guard let strongSelf = self else {
+                return
             }
 
-        }, onError: {[unowned self] text in
-            self.delegate?.onErrorOccurs()
+            if let programeResponse = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate) {
+                strongSelf.delegate?.onProgrammeLoaded(programeResponse.list)
+            }
+
+        }, onError: {[weak self] text in
+            self?.delegate?.onErrorOccurs()
         })
     }
 

@@ -23,15 +23,19 @@ weak var delegate: GradesProviderDelegate!
     func loadGrades() {
 
         self.makeHTTPAuthenticatedGetRequest({
-            [unowned self] json in
+            [weak self] json in
 
             guard let json = json else {
-                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                return
+            }
+
+            guard let strongSelf = self else {
                 return
             }
 
             do {
-                if let grades = try self.changeJsonToResposne(json,errorR: self.delegate){
+                if let grades = try strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate){
 
                     var preparedTermGrades = Array<PreparedTermGrades>()
                     if grades.data.count > 0 {
@@ -57,13 +61,15 @@ weak var delegate: GradesProviderDelegate!
                             preparedTermGrades.append(PreparedTermGrades(termId: termGrade.termId, grades: preparedGrades, averageGrade: termAverageGrade))
                         }
                     }
-                    self.delegate?.onGradesLoaded(preparedTermGrades:preparedTermGrades)
+                    strongSelf.delegate?.onGradesLoaded(preparedTermGrades:preparedTermGrades)
                 }
             } catch {
                 NSlogManager.showLog("JSON serialization failed:  \(error)")
-                self.delegate.onErrorOccurs()
+                strongSelf.delegate.onErrorOccurs()
             }
-        }, onError: {[unowned self] text in self.delegate?.onErrorOccurs() })
+        }, onError: {[weak self] text in
+            self?.delegate?.onErrorOccurs()
+        })
 
     }
 

@@ -21,25 +21,29 @@ protocol UserDetailsProviderDelegate: ErrorResponseProtocol {
 
 class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
 
-
     weak  var delegate: UserDetailsProviderDelegate!
-
     private var endpoint: String = "/users"
+
     func loadUserDetail() {
         endpoint = "/users"
         self.makeHTTPAuthenticatedGetRequest({
-            [unowned self] json in
+            [weak self] json in
 
             guard let json = json else {
-                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
                 return
             }
 
-            if let user = try! self.changeJsonToResposne(json,errorR: self.delegate) {
-
-                self.delegate?.onUserDetailLoaded(user.data)
+            guard let strongSelf = self else {
+                return
             }
-        }, onError: {[unowned self] text in  self.delegate?.onErrorOccurs() })
+
+            if let user = try! strongSelf.changeJsonToResposne(json,errorR: strongSelf.delegate) {
+                strongSelf.delegate?.onUserDetailLoaded(user.data)
+            }
+        }, onError: {[weak self] text in
+            self?.delegate?.onErrorOccurs()
+        })
     }
 
     override func getMyUrl() -> String {
@@ -49,33 +53,45 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
     func loadUserDetail(_ id: String) {
         endpoint = "/lecturers/" + id
         self.makeHTTPAuthenticatedGetRequest({
-            [unowned self] json in
+            [weak self] json in
 
             guard let json = json else {
-                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
                 return
             }
 
-           if let user = try! self.changeJsonToResposne(json, errorR: self.delegate){
-               self.delegate?.onUserDetailLoaded(user.data)
+            guard let strongSelf = self else {
+                return
+            }
+
+           if let user = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate){
+               strongSelf.delegate?.onUserDetailLoaded(user.data)
            }
-        }, onError: {[unowned self] text in self.delegate?.onErrorOccurs() })
+        }, onError: {[weak self] text in
+            self?.delegate?.onErrorOccurs()
+        })
     }
 
     func loadStudentDetails(_ id: String) {
         endpoint = "/users/" + id
         self.makeHTTPAuthenticatedGetRequest({
-            [unowned self] json in
+            [weak self] json in
 
             guard let json = json else {
-                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
                 return
             }
 
-            if let user = try! self.changeJsonToResposne(json, errorR: self.delegate){
-                self.delegate?.onUserDetailLoaded(user.data)
+            guard let strongSelf = self else {
+                return
             }
-        }, onError: {[unowned self] text in self.delegate?.onErrorOccurs() })
+
+            if let user = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate){
+                strongSelf.delegate?.onUserDetailLoaded(user.data)
+            }
+        }, onError: {[weak self] text in
+            self?.delegate?.onErrorOccurs()
+        })
     }
 }
 

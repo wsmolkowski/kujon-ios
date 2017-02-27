@@ -27,36 +27,40 @@ class ConfigProvider: RestApiManager, ConfigProviderProtocol {
 
     func checkConfig() {
         self.makeHTTPAuthenticatedGetRequest({
-            [unowned self] json in
+            [weak self] json in
 
             guard let json = json else {
-                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
                 return
             }
 
-            if let configRes = try! self.changeJsonToResposne(json, errorR: self.delegate) {
+            guard let strongSelf = self else {
+                return
+            }
+
+            if let configRes = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate) {
                 let config = configRes.data
                 if (!config.userLogged) {
-                    self.delegate?.notLogged()
+                    strongSelf.delegate?.notLogged()
                     return
                 }
 
                 if (config.usosPaired) {
                     if (!config.usosWorks) {
-                        self.delegate?.usosDown()
+                        strongSelf.delegate?.usosDown()
                         return
                     }
-                    self.delegate?.pairedWithUsos()
+                    strongSelf.delegate?.pairedWithUsos()
                     return
                 } else {
-                    self.delegate?.notPairedWithUsos()
+                    strongSelf.delegate?.notPairedWithUsos()
                     return
                 }
 
             }
         }, onError: {
-            [unowned self] text in
-            self.delegate?.onErrorOccurs(text)
+            [weak self] text in
+            self?.delegate?.onErrorOccurs(text)
         })
 
     }

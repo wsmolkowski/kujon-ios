@@ -19,12 +19,12 @@ class DeleteAccountProvider: RestApiManager, DeleteAccountProviderProtocol {
     weak var delegate: DeleteAccountProviderDelegate! = nil
     func deleteAccount() {
         self.makeHTTPAuthenticatedPostRequest({
-            [unowned self] data in
-            self.delegate?.accountDeleted()
+            [weak self] data in
+            self?.delegate?.accountDeleted()
             SessionManager.clearCache()
         }, onError: {
-            [unowned self] text in
-            self.delegate.onErrorOccurs()
+            [weak self] text in
+            self?.delegate.onErrorOccurs()
         })
     }
 

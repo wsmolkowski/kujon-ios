@@ -24,19 +24,23 @@ class LecturerProvider: RestApiManager, LecturerProviderProtocol {
 
     func loadLecturers() {
         self.makeHTTPAuthenticatedGetRequest({
-            [unowned self] json in
+            [weak self] json in
 
             guard let json = json else {
-                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
                 return
             }
 
-            if let lecturerResponse = try! self.changeJsonToResposne(json,errorR: self.delegate){
-                self.delegate?.onLecturersLoaded(lecturerResponse.data)
+            guard let strongSelf = self else {
+                return
             }
 
-        }, onError: {[unowned self] text in
-            self.delegate?.onErrorOccurs()
+            if let lecturerResponse = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate){
+                strongSelf.delegate?.onLecturersLoaded(lecturerResponse.data)
+            }
+
+        }, onError: {[weak self] text in
+            self?.delegate?.onErrorOccurs()
         })
 
     }

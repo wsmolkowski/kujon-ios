@@ -25,18 +25,22 @@ class RegistrationProvider :RestApiManager,RegistrationProviderProtocol {
     func register(_ email: String, password: String) {
         let data = Register.createRegisterJSON(email, password: password)
         self.makeHTTPPostRequest({
-            [unowned self] json in
+            [weak self] json in
 
             guard let json = json else {
-                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
                 return
             }
 
-            if let registerResponse = try! self.changeJsonToResposne(json, errorR: self.delegate) {
-                self.delegate?.onRegisterResponse(registerResponse.data)
+            guard let strongSelf = self else {
+                return
             }
-        }, onError: {[unowned self] text in
-            self.delegate!.onErrorOccurs(text)
+
+            if let registerResponse = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate) {
+                strongSelf.delegate?.onRegisterResponse(registerResponse.data)
+            }
+        }, onError: {[weak self] text in
+            self?.delegate?.onErrorOccurs(text)
         }, json: data)
     }
 

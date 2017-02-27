@@ -33,15 +33,19 @@ class VerificationProvider: RestApiManager, VerificationProviderProtocol {
     internal func verify(URLString: String) {
         endpoint = URLString
         addStoredCookies = true
-        makeHTTPAuthenticatedGetRequest({ [unowned self] data in
+        makeHTTPAuthenticatedGetRequest({ [weak self] data in
 
             guard let data = data else {
-                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
                 return
             }
 
-            if let _ = try! self.changeJsonToResposne(data, errorR: self.delegate){
-                self.delegate?.onVerificationSuccess()
+            guard let strongSelf = self else {
+                return
+            }
+
+            if let _ = try! strongSelf.changeJsonToResposne(data, errorR: strongSelf.delegate){
+                strongSelf.delegate?.onVerificationSuccess()
             }
 
         }, onError: {[weak self] text in

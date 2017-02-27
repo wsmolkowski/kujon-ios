@@ -22,11 +22,13 @@ class LogoutProvider: RestApiManager, LogoutProviderProtocol {
         UserDataHolder.sharedInstance.userUsosImage = nil
 
         self.makeHTTPAuthenticatedGetRequest({
-            [unowned self] json in
+            [weak self] json in
 
-            self.delegate?.onSuccesfullLogout()
+            self?.delegate?.onSuccesfullLogout()
 
-        }, onError: {[unowned self] text in self.delegate?.onErrorOccurs() })
+        }, onError: {[weak self] text in
+            self?.delegate?.onErrorOccurs()
+        })
     }
 
 

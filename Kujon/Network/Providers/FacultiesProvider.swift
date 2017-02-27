@@ -26,20 +26,23 @@ weak var delegate: FacultiesProviderDelegate! = nil
 
     func loadFaculties() {
         self.makeHTTPAuthenticatedGetRequest({
-            [unowned self] json in
+            [weak self] json in
 
             guard let json = json else {
-                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
                 return
             }
 
-            if let faculties = try! self.changeJsonToResposne(json,errorR: self.delegate){
-
-                self.delegate?.onFacultiesLoaded(faculties.list)
+            guard let strongSelf = self else {
+                return
             }
 
-        }, onError: {[unowned self] text in
-            self.delegate?.onErrorOccurs()
+            if let faculties = try! strongSelf.changeJsonToResposne(json,errorR: strongSelf.delegate){
+                strongSelf.delegate?.onFacultiesLoaded(faculties.list)
+            }
+
+        }, onError: {[weak self] text in
+            self?.delegate?.onErrorOccurs()
         })
 
 

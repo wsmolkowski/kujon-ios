@@ -16,7 +16,11 @@ class CourseProvider: RestApiManager {
 
     func provideCourses() {
         self.makeHTTPAuthenticatedGetRequest({
-            [unowned self] data in
+            [weak self] data in
+
+            guard let strongSelf = self else {
+                return
+            }
             
             if let data = data {
                 do {
@@ -26,9 +30,9 @@ class CourseProvider: RestApiManager {
                     if let error = error, let code = error.code {
                         switch code {
                         case 504:
-                            self.delegate.onUsosDown()
+                            strongSelf.delegate.onUsosDown()
                         default:
-                            self.delegate.onErrorOccurs(error.message)
+                            strongSelf.delegate.onErrorOccurs(error.message)
                         }
                         return
                     }
@@ -50,11 +54,11 @@ class CourseProvider: RestApiManager {
                         }
                     }
 
-                    self.delegate?.coursesProvided(arrayOfCourses.copy() as! Array<CoursesWrapper>)
+                    strongSelf.delegate?.coursesProvided(arrayOfCourses.copy() as! Array<CoursesWrapper>)
 
                 } catch {
                     NSlogManager.showLog("JSON serialization failed:  \(error)")
-                    self.delegate.onErrorOccurs()
+                    strongSelf.delegate.onErrorOccurs()
                 }
 
             }

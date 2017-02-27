@@ -22,20 +22,24 @@ class LoginProvider:RestApiManager,LoginProviderProtocol {
         let data = Register.createLoginJSON(email, password: password)
 
         self.makeHTTPPostRequest({
-            [unowned self] json in
+            [weak self] json in
 
             guard let json = json else {
-                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
                 return
             }
 
-            if let loginResponse = try! self.changeJsonToResposne(json,errorR: self.delegate){
-                self.delegate?.onLoginResponse(loginResponse.data.token)
+            guard let strongSelf = self else {
+                return
+            }
+
+            if let loginResponse = try! strongSelf.changeJsonToResposne(json,errorR: strongSelf.delegate){
+                strongSelf.delegate?.onLoginResponse(loginResponse.data.token)
             }
 
         }, onError: {
-            [unowned self] text in
-            self.delegate!.onErrorOccurs(text)
+            [weak self] text in
+            self?.delegate!.onErrorOccurs(text)
         }, json: data)
 
     }

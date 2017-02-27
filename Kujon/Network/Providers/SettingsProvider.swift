@@ -63,35 +63,35 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
     func setCalendarSyncronization(enabled: Bool) {
         let state: State = enabled ? .enabled : .disabled
         endpointURL = SettingsEndpoint.postCalendarSync.rawValue + state.rawValue
-        makeHTTPAuthenticatedPostRequest({ data in
+        makeHTTPAuthenticatedPostRequest({ [weak self] data in
             if let data = data,
                 let responseJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:Any],
                 let status = responseJSON?["status"], status as? String == "success" {
                     UserDataHolder.sharedInstance.isCalendarSyncEnabled = enabled
-                    self.delegate?.calendarSyncronizationSettingDidSucceed()
+                    self?.delegate?.calendarSyncronizationSettingDidSucceed()
             } else {
-                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
             }
-        }, onError: { text in
-            self.delegate?.onErrorOccurs(text)
+        }, onError: { [weak self] text in
+            self?.delegate?.onErrorOccurs(text)
         })
     }
 
     func setOneSignalNotifications(enabled: Bool) {
         let state: State = enabled ? .enabled : .disabled
         endpointURL = SettingsEndpoint.postPushNotificationsState.rawValue + state.rawValue
-        makeHTTPAuthenticatedPostRequest({ data in
+        makeHTTPAuthenticatedPostRequest({ [weak self] data in
 
             if let data = data,
                 let responseJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:Any],
                 let status = responseJSON?["status"], status as? String == "success" {
                 UserDataHolder.sharedInstance.oneSignalNotificationsEnabled = enabled
-                self.delegate?.oneSignalNotificationsSettingDidSucceed()
+                self?.delegate?.oneSignalNotificationsSettingDidSucceed()
             } else {
-                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
             }
-        }, onError: { text in
-            self.delegate?.onErrorOccurs(text)
+        }, onError: { [weak self] text in
+            self?.delegate?.onErrorOccurs(text)
         })
     }
 

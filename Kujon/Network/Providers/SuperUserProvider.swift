@@ -26,20 +26,23 @@ class SuperUserProvider:RestApiManager,SuperUserProviderProtocol {
     private var endpoint: String = "/usersinfoall"
     func loadUserDetail() {
         self.makeHTTPAuthenticatedGetRequest({
-            [unowned self] json in
+            [weak self] json in
 
             guard let json = json else {
-                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
                 return
             }
 
-            if let user = try! self.changeJsonToResposne(json,errorR: self.delegate) {
-
-                self.delegate?.onUserDetailLoaded(user.data)
+            guard let strongSelf = self else {
+                return
             }
-        }, onError: {[unowned self]
+
+            if let user = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate) {
+                strongSelf.delegate?.onUserDetailLoaded(user.data)
+            }
+        }, onError: {[weak self]
             text in
-            self.delegate?.onErrorOccurs(text)
+            self?.delegate?.onErrorOccurs(text)
         })
     }
 
