@@ -14,6 +14,15 @@ struct Programme {
     let id: String
     let description: String?
     let ectsUsedSum: Double?
+    let schoolPath: SchoolPath?
+
+    var nameShort: String? {
+        let comma = ","
+        if let name = name, name.contains(comma), !name.hasPrefix(comma) {
+            return name.components(separatedBy: comma).first!
+        }
+        return nil
+    }
 }
 
 extension Programme: Decodable {
@@ -25,7 +34,8 @@ extension Programme: Decodable {
                 levelOfStudies: try? j => "level_of_studies",
                 id: j => "id",
                 description: try? j => "description",
-                ectsUsedSum: try? j => "ects_used_sum"
+                ectsUsedSum: try? j => "ects_used_sum",
+                schoolPath: try? j => "faculty"
 
         )
     }

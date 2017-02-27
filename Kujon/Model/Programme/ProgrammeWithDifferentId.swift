@@ -33,6 +33,6 @@ extension ProgrammeWithDifferentId: Decodable {
 
 extension ProgrammeWithDifferentId {
     func getProgramme() -> Programme {
-        return Programme(name: self.name, modeOfStudies: self.modeOfStudies, duration: self.duration, levelOfStudies: self.levelOfStudies, id: self.id, description: self.description, ectsUsedSum: self.ectsUsedSum)
+        return Programme(name: self.name, modeOfStudies: self.modeOfStudies, duration: self.duration, levelOfStudies: self.levelOfStudies, id: self.id, description: self.description, ectsUsedSum: self.ectsUsedSum, schoolPath: nil)
     }
 }

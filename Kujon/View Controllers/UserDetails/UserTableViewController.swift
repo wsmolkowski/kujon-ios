@@ -96,8 +96,8 @@ class UserTableViewController: RefreshingTableViewController
     }
 
     func onUserDetailLoaded(_ userDetails: SuperUserDetails) {
-        self.userDetail = userDetails;
-        self.programmes = userDetails.programmes
+        self.userDetail = userDetails
+        self.programmes = userDetails.studentProgrammes
         programmeLoaded = true
         self.terms = userDetails.terms
         self.userFaculties = userDetails.faculties
@@ -271,7 +271,7 @@ class UserTableViewController: RefreshingTableViewController
     private func configureStudentProgrammeCell(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StudentProgrammeCellId, for: indexPath) as! AccessoryItemCell
         let myProgramme: StudentProgramme = self.programmes[indexPath.row]
-        cell.titleLabel.text = myProgramme.programme.description
+        cell.titleLabel.text = myProgramme.programme.nameShort
         cell.setStyle(.arrowRight)
         return cell
     }
@@ -312,11 +312,13 @@ class UserTableViewController: RefreshingTableViewController
             return
         }
         DispatchQueue.main.async { [weak self] in
-            guard let programme: Programme = self?.programmes[indexPath.row].programme else {
+            guard
+                let programme: Programme = self?.programmes[indexPath.row].programme,
+                let schoolPath: SchoolPath = self?.programmes[indexPath.row].programme.schoolPath else {
                 return
             }
             let kierunekDetailController = KierunekDetailViewController()
-            kierunekDetailController.programme = programme
+            kierunekDetailController.configureViewController(programme: programme, schoolPath: schoolPath)
             self?.navigationController?.pushViewController(kierunekDetailController, animated: true)
         }
 

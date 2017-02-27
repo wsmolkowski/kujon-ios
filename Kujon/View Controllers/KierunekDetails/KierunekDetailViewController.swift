@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class KierunekDetailViewController: UITableViewController {
+class KierunekDetailViewController: UITableViewController, SupervisingUnitCellDelegate {
 
     private enum SectionMap: Int {
         case header = 0
@@ -19,7 +19,7 @@ class KierunekDetailViewController: UITableViewController {
         case id
         case mode
         case ectsUsedSum
-        case description
+        case superUnit
 
         static func sectionForIndex(_ index:Int) -> SectionMap {
             if let section = SectionMap(rawValue: index) {
@@ -37,14 +37,23 @@ class KierunekDetailViewController: UITableViewController {
     private let headerCellId: String = "headerCellId"
     private let headerCellHeight: CGFloat = 80.0
 
+    private let superUnitCellId = "SupervisingUnitCell"
+
+
     private let sectionsCount: Int = 7
 
     var programme: Programme?
+    var schoolPath: SchoolPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = StringHolder.kierunekTitle
         configureTableView()
+    }
+
+    internal func configureViewController(programme: Programme, schoolPath: SchoolPath) {
+        self.programme = programme
+        self.schoolPath = schoolPath
     }
 
     private func configureTableView() {
@@ -53,6 +62,7 @@ class KierunekDetailViewController: UITableViewController {
 
         tableView.register(UINib(nibName: "ItemCell", bundle: nil), forCellReuseIdentifier: itemCellId)
         tableView.register(UINib(nibName: "KierunekHeaderCell", bundle: nil), forCellReuseIdentifier: headerCellId)
+        tableView.register(UINib(nibName: "SupervisingUnitCell", bundle: nil), forCellReuseIdentifier: superUnitCellId)
 
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50
@@ -83,7 +93,7 @@ class KierunekDetailViewController: UITableViewController {
         case .id: labelText = StringHolder.identificator
         case .mode: labelText = StringHolder.tryb
         case .ectsUsedSum: labelText = StringHolder.ectsPoints
-        case .description: labelText = StringHolder.description
+        case .superUnit: return nil
         }
 
         header.headerLabel.text = labelText
@@ -92,12 +102,30 @@ class KierunekDetailViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = SectionMap.sectionForIndex(indexPath.section)
-        return section == .header ? headerCellForIndexPath(indexPath) : itemCellForIndexPath(indexPath)
+        switch section {
+        case .header:
+            return headerCellForIndexPath(indexPath)
+        case .superUnit:
+            return supervisingUnitCellForIndexPath(indexPath)
+        default:
+            return itemCellForIndexPath(indexPath)
+        }
+
+
     }
 
     private func headerCellForIndexPath(_ indexPath: IndexPath) -> KierunekHeaderCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: headerCellId, for: indexPath) as! KierunekHeaderCell
         cell.kierunekLabel.text = programme?.name?.components(separatedBy:",").first
+        return cell
+    }
+
+    private func supervisingUnitCellForIndexPath(_ indexPath: IndexPath) -> SupervisingUnitCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: superUnitCellId, for: indexPath) as! SupervisingUnitCell
+        if let unit = schoolPath {
+            cell.supervisingUnit = unit
+            cell.delegate = self
+        }
         return cell
     }
 
@@ -112,7 +140,7 @@ class KierunekDetailViewController: UITableViewController {
         case .id: labelText = programme?.id
         case .mode: labelText = programme?.modeOfStudies
         case .ectsUsedSum: labelText = programme?.ectsUsedSum == nil ? nil : "\(programme!.ectsUsedSum!)"
-        case .description: labelText = programme?.description
+        case .superUnit: labelText = schoolPath?.schoolName
         default: fatalError("Invalid indexpath")
         }
 
@@ -122,13 +150,17 @@ class KierunekDetailViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let section = SectionMap.sectionForIndex(section)
-        return section == .header ? 0.0 : itemHeaderHeight
+        return section == .header || section == .superUnit ? 0.0 : itemHeaderHeight
     }
-/*
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let section = SectionMap.sectionForIndex(indexPath.section)
-        return section == .header ? headerCellHeight : itemCellHeight
+
+    // MARK: - SupervisingUnitCellDelegate
+
+
+    func supervisingUnitCell(_ cell: SupervisingUnitCell, didTapSupervisingUnitWithId id: String) {
+        let faculiteController = FacultieTableViewController(nibName: "FacultieTableViewController", bundle: Bundle.main)
+        faculiteController.facultieId = id
+        self.navigationController?.pushViewController(faculiteController, animated: true)
     }
-*/
+
 
  }
