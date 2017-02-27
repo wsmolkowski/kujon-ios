@@ -67,12 +67,16 @@ class CoursesTableViewController: RefreshingTableViewController, NavigationDeleg
         self.refreshControl?.endRefreshing()
     }
 
-    func onErrorOccurs(_ text: String) {
+    func onErrorOccurs(_ text: String, retry: Bool) {
+        if retry {
+            courseProvider.provideCourses()
+            return
+        }
         self.showAlertApi(StringHolder.attention, text: text, succes: {
-            [unowned self] in
-            self.courseProvider.provideCourses()
-        }, cancel: { [unowned self] in
-            self.refreshControl?.endRefreshing()
+            [weak self] in
+            self?.courseProvider.provideCourses()
+        }, cancel: { [weak self] in
+            self?.refreshControl?.endRefreshing()
         })
     }
 

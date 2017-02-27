@@ -163,14 +163,22 @@ class CalendarViewController: MGCDayPlannerViewController,
     }
 
 
-    func onErrorOccurs() {
+    func onErrorOccurs(retry: Bool) {
         spinner.isHidden = true
+        if retry {
+            reload()
+            return
+        }
         ToastView.showInParent(self.navigationController?.view, withText: StringHolder.errorOccures, forDuration: 2.0)
     }
 
 
-    func onErrorOccurs(_ text: String) {
+    func onErrorOccurs(_ text: String, retry: Bool) {
         spinner.isHidden = true
+        if retry {
+            reload()
+            return
+        }
         ToastView.showInParent(self.navigationController?.view, withText: text, forDuration: 2.0)
     }
 

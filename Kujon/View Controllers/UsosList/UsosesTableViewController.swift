@@ -149,12 +149,19 @@ class UsosesTableViewController: UITableViewController, UsosesProviderDelegate {
         self.refreshControl?.endRefreshing()
     }
 
-    func onErrorOccurs() {
+    func onErrorOccurs(retry: Bool) {
+        if retry {
+            usosProvider.loadUsoses()
+            return
+        }
         self.refreshControl?.endRefreshing()
     }
 
-    func onErrorOccurs(_ text: String) {
-
+    func onErrorOccurs(_ text: String, retry: Bool) {
+        if retry {
+            usosProvider.loadUsoses()
+            return
+        }
         self.refreshControl?.endRefreshing()
         self.showAlertApi(StringHolder.attention, text: text, succes: {
             self.usosProvider.loadUsoses()

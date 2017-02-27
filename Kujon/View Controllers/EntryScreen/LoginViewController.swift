@@ -45,7 +45,11 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
     }
 
 
-    func onErrorOccurs(_ text: String) {
+    func onErrorOccurs(_ text: String, retry: Bool) {
+        if retry &&  passwordLabel.text != nil {
+            loginProvider.login(email, password: passwordLabel.text!)
+            return
+        }
         showAlert(text)
     }
 

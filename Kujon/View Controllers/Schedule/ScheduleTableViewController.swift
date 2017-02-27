@@ -138,16 +138,24 @@ class ScheduleTableViewController:
         return sectionsArray[pos]
     }
 
-    func onErrorOccurs() {
+    func onErrorOccurs(retry: Bool) {
         ToastView.showInParent(self.navigationController?.view, withText: StringHolder.errorOccures, forDuration: 2.0)
         isQuering = false
+        if retry {
+            askForData()
+            return
+        }
         self.refreshControl?.endRefreshing()
     }
 
 
-    func onErrorOccurs(_ text: String) {
+    func onErrorOccurs(_ text: String, retry: Bool) {
         ToastView.showInParent(self.navigationController?.view, withText: text, forDuration: 2.0)
         isQuering = false
+        if retry {
+            askForData()
+            return
+        }
         self.refreshControl?.endRefreshing()
     }
 

@@ -50,6 +50,13 @@ extension JsonProviderProtocol {
             } else {
                 errorR.unauthorized(text)
             }
+        case 400:
+            if UserLoginEnum.getLoginType() == .google {
+                GIDSignIn.sharedInstance().signInSilently()
+                errorR.onErrorOccurs(text, retry: true)
+            } else {
+                errorR.onErrorOccurs(text)
+            }
         case 504:
             errorR.onUsosDown()
         case 524:

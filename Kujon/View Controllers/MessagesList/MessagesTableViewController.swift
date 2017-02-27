@@ -128,8 +128,12 @@ class MessagesTableViewController: RefreshingTableViewController, NavigationDele
     }
 
 
-    func onErrorOccurs(_ text: String) {
+    func onErrorOccurs(_ text: String, retry: Bool) {
         refreshControl?.endRefreshing()
+        if retry {
+            loadData()
+            return
+        }
         presentAlertWithMessage(StringHolder.errorRetrievingMessages, title: StringHolder.errorAlertTitle)
 
     }

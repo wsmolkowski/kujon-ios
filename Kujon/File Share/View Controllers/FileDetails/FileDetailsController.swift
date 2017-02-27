@@ -56,6 +56,8 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
     private var selectedStudentsAtLoad: Set<SimpleUser> = Set()
     private var temporarySelection: Set<SimpleUser>?
     private let courseName: String
+    private let courseId: String
+    private let termId: String
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
@@ -66,6 +68,8 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
     init(file: APIFile, courseName: String, courseId: String, termId: String, courseStudents: [SimpleUser]?) {
         self.file = file
         self.courseName = courseName
+        self.courseId = courseId
+        self.termId = termId
         super.init(style: .plain)
         if let courseStudents = courseStudents, !courseStudents.isEmpty {
             students = courseStudents
@@ -236,8 +240,12 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
         }
     }
 
-    func onErrorOccurs(_ text: String) {
+    func onErrorOccurs(_ text: String, retry: Bool) {
         spinner.isHidden = true
+        if retry {
+            courseDetailsProvider?.loadCourseDetails(courseId, andTermId: termId)
+            return
+        }
         presentAlertWithMessage(text, title: StringHolder.errorAlertTitle, showCancelButton: false) { [weak self] in
             self?.delegate?.fileDetailsControllerDidCancel(loadedForCache: self?.students)
         }

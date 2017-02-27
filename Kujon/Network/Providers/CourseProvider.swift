@@ -29,8 +29,19 @@ class CourseProvider: RestApiManager {
                     let error = try? ErrorClass.decode(json)
                     if let error = error, let code = error.code {
                         switch code {
+                        case 401:
+                            strongSelf.delegate.unauthorized(error.message)
+                        case 400:
+                            if UserLoginEnum.getLoginType() == .google {
+                                GIDSignIn.sharedInstance().signInSilently()
+                                strongSelf.onErrorOccurs(error.message, retry: true)
+                            } else {
+                                strongSelf.delegate.onErrorOccurs(error.message)
+                            }
                         case 504:
                             strongSelf.delegate.onUsosDown()
+                        case 524:
+                            strongSelf.delegate.onErrorOccurs(StringHolder.timeoutMessage)
                         default:
                             strongSelf.delegate.onErrorOccurs(error.message)
                         }

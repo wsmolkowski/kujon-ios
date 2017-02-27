@@ -68,8 +68,13 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
             self.successs()
     }
 
-    func onErrorOccurs(_ text: String) {
-    
+    func onErrorOccurs(_ text: String, retry: Bool) {
+        if retry {
+            let url = verificationProvider.getRequestUrl()
+            let request = URLRequest(url: URL(string: url)!)
+            webView.loadRequest(request)
+            return
+        }
             self.presentAlertWithMessage(text, title: StringHolder.loginError) { [weak self] in
                 self?.dismiss(animated: true)
      

@@ -178,6 +178,7 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
 
     func onErrorOccurs(_ text: String) {
         self.spinner.isHidden = true
+
         updateCalendarSyncSwitchState()
         updateNotificationsSwitchState()
         presentAlertWithMessage(text, title: StringHolder.errorAlertTitle)

@@ -81,7 +81,11 @@ class GradesTableViewController: RefreshingTableViewController, NavigationDelega
         self.refreshControl?.endRefreshing()
     }
 
-    func onErrorOccurs(_ text: String) {
+    func onErrorOccurs(_ text: String, retry: Bool) {
+        if retry {
+            loadData()
+            return
+        }
         self.showAlertApi(StringHolder.attention, text: text, succes: {
             self.gradesProvider.reload()
             self.gradesProvider.loadGrades()

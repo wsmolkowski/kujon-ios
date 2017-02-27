@@ -181,9 +181,16 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         folderIsEmpty = presentedFiles.isEmpty
     }
 
-    func onErrorOccurs(_ text: String) {
-        folderIsEmpty = false
+    func onErrorOccurs(_ text: String, retry: Bool) {
 
+        if retry {
+            if let courseId = courseId, let termId = termId {
+                fileListProvider.loadFileList(courseId: courseId, termId: termId)
+            }
+            return
+        }
+
+        folderIsEmpty = false
         refreshControl?.endRefreshing()
         presentAlertWithMessage(text, title: StringHolder.errorAlertTitle)
     }

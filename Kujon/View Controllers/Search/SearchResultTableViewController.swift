@@ -44,7 +44,11 @@ class SearchResultTableViewController: RefreshingTableViewController, SearchProv
         self.isThereNext = isThere
     }
 
-    func onErrorOccurs(_ text: String) {
+    func onErrorOccurs(_ text: String, retry: Bool) {
+        if retry {
+            loadData()
+            return
+        }
         showAlertApi("Bład",text:text,succes: {
             self.isQuering = false
             self.isThereNext = true

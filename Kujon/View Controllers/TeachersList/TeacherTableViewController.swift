@@ -65,7 +65,11 @@ class TeacherTableViewController: RefreshingTableViewController, NavigationDeleg
         self.refreshControl?.endRefreshing()
     }
 
-    func onErrorOccurs(_ text: String) {
+    func onErrorOccurs(_ text: String, retry: Bool) {
+        if retry {
+            loadData()
+            return
+        }
         self.showAlertApi(StringHolder.attention, text: text, succes: {
             self.lecturerProvider.reload()
             self.lecturerProvider.loadLecturers()

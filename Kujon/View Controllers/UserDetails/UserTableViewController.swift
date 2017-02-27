@@ -111,7 +111,12 @@ class UserTableViewController: RefreshingTableViewController
     }
 
 
-    func onErrorOccurs(_ text: String) {
+    func onErrorOccurs(_ text: String, retry: Bool) {
+        if retry {
+            superUserProvider.loadUserDetail()
+            return
+        }
+
         self.showAlertApi(StringHolder.attention, text: text, succes: {
             [unowned self] in
             self.superUserProvider.loadUserDetail()

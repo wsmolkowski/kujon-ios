@@ -70,7 +70,14 @@ class CourseDetailsTableViewController: RefreshingTableViewController,CourseDeta
         self.refreshControl?.endRefreshing()
     }
 
-    func onErrorOccurs(_ text: String) {
+
+    func onErrorOccurs(_ text: String, retry: Bool) {
+
+        if retry {
+            loadData()
+            return
+        }
+
         self.showAlertApi(StringHolder.attention,text:text,succes:{
             if(self.course != nil ) {
                 self.courseDetailsProvider.loadCourseDetails(self.course)

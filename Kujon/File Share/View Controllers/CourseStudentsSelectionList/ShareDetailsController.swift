@@ -36,10 +36,14 @@ class ShareDetailsController: UITableViewController, CourseDetailsProviderDelega
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }
+    private let courseId: String
+    private let termId: String
 
     // MARK: - Initial section
 
     init(courseId: String, termId: String, courseStudentsCached: [SimpleUser]?) {
+        self.courseId = courseId
+        self.termId = termId
         super.init(style: .plain)
         if let courseStudentsCached = courseStudentsCached, !courseStudentsCached.isEmpty {
             studentsArray = courseStudentsCached
@@ -199,7 +203,11 @@ class ShareDetailsController: UITableViewController, CourseDetailsProviderDelega
         }
     }
 
-    func onErrorOccurs(_ text: String) {
+    func onErrorOccurs(_ text: String, retry: Bool) {
+        if retry {
+            courseDetailsProvider?.loadCourseDetails(courseId, andTermId: termId)
+            return
+        }
         DispatchQueue.main.async { [weak self] in
             self?.spinner.isHidden = true
             self?.presentAlertWithMessage(text, title: StringHolder.errorAlertTitle, showCancelButton: false) { [weak self] in

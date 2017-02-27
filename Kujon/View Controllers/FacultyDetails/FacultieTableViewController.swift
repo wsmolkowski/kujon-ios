@@ -85,7 +85,12 @@ class FacultieTableViewController: UITableViewController, FacultieProviderDelega
         self.tableView.reloadData()
     }
 
-    func onErrorOccurs(_ text: String) {
+    func onErrorOccurs(_ text: String, retry: Bool) {
+
+        if retry {
+            facultieProvider.loadFacultie(self.facultieId)
+            return
+        }
 
         self.showAlertApi(StringHolder.attention, text: text, succes: {
             self.facultieProvider.delegate = self
