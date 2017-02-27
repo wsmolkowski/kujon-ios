@@ -34,7 +34,7 @@ class CourseProvider: RestApiManager {
                         case 400:
                             if UserLoginEnum.getLoginType() == .google {
                                 GIDSignIn.sharedInstance().signInSilently()
-                                strongSelf.onErrorOccurs(error.message, retry: true)
+                                strongSelf.delegate.onErrorOccurs(error.message, retry: true)
                             } else {
                                 strongSelf.delegate.onErrorOccurs(error.message)
                             }
