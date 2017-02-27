@@ -8,16 +8,14 @@
 
 import UIKit
 
-class StudentDetailsTableViewController: RefreshingTableViewController, UserDetailsProviderDelegate, OnImageLoadedFromRest, ProgrammeIdProviderDelegate {
+class StudentDetailsTableViewController: RefreshingTableViewController, UserDetailsProviderDelegate, OnImageLoadedFromRest {
 
     let kierunekCellId = "kierunekCellId"
     let headerCellId = "studentHeaderCellId"
 
     let restImageProvider = RestImageProvider.sharedInstance
     var provider = ProvidersProviderImpl.sharedInstance.provideUserDetailsProvider()
-    var programmeProvider = ProvidersProviderImpl.sharedInstance.provideProgrammeId()
     var user: SimpleUser! = nil
-    var studentProgrammes: Array<StudentProgramme> = Array()
     var userDetails: UserDetail! = nil
     var userId: String! = nil
     var isImageLoaded = false
@@ -34,7 +32,6 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
         if (userId == nil) {
             userId = user.userId
         }
-        programmeProvider.delegate = self
         provider.delegate = self
         addToProvidersList(provider: provider)
       }
@@ -49,17 +46,7 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
 
     func onUserDetailLoaded(_ userDetails: UserDetail) {
         self.refreshControl?.endRefreshing()
-        self.userDetails = userDetails;
-        self.studentProgrammes = Array()
-        for programmess in userDetails.studentProgrammes {
-            programmeProvider.loadProgramme((programmess as StudentProgramme).programme.id)
-        }
-        self.tableView.reloadData()
-    }
-
-
-    func onProgrammeLoaded(_ id: String, programme: StudentProgramme) {
-        self.studentProgrammes.append(programme)
+        self.userDetails = userDetails
         self.tableView.reloadData()
     }
 
@@ -83,7 +70,7 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch (section) {
         case 0: return self.userDetails != nil ? 1 : 0
-        case 1: return studentProgrammes.count
+        case 1: return userDetails?.studentProgrammes.count ?? 0
         default: return 0
         }
 
@@ -125,8 +112,9 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
 
     private func configureStudentProgrammeCell(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: kierunekCellId, for: indexPath) as! AccessoryItemCell
-        let myProgramme: StudentProgramme = self.studentProgrammes[indexPath.row]
-        cell.titleLabel.text = myProgramme.programme.description
+        if let myProgramme: StudentProgramme = userDetails?.studentProgrammes[indexPath.row] {
+            cell.titleLabel.text = myProgramme.programme.description
+        }
         cell.setStyle(.arrowRight)
         return cell
     }
@@ -187,7 +175,7 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
 
     func clicked(_ indexPath: IndexPath) {
         DispatchQueue.main.async { [weak self] in
-            guard let programme: Programme = self?.studentProgrammes[indexPath.row].programme else {
+            guard let programme: Programme = self?.userDetails?.studentProgrammes[indexPath.row].programme else {
                 return
             }
             let kierunekDetailController = KierunekDetailViewController()
