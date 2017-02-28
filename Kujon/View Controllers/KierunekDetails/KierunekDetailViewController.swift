@@ -105,7 +105,6 @@ class KierunekDetailViewController: UITableViewController, SupervisingUnitCellDe
             return itemCellForIndexPath(indexPath)
         }
 
-
     }
 
     private func headerCellForIndexPath(_ indexPath: IndexPath) -> KierunekHeaderCell {

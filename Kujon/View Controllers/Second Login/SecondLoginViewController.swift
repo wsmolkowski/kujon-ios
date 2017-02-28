@@ -85,9 +85,24 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
 
     func connection(_ connection: NSURLConnection, didReceive response: URLResponse) {
 
+        if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+            presentAlertWithMessage(StringHolder.errorOccures, title: StringHolder.errorAlertTitle)
+            webView.stopLoading()
+        }
+
     }
 
     func connection(_ connection: NSURLConnection, didReceive data: Data) {
+
+        if let errorResponse = parseError(data: data) {
+            var errorMessage = errorResponse.message
+            if let code = errorResponse.code {
+                errorMessage += " (\(code))"
+            }
+            presentAlertWithMessage(errorMessage, title: StringHolder.errorAlertTitle)
+            webView.stopLoading()
+            return
+        }
         self.successs()
     }
 
@@ -99,5 +114,19 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
             self.present(controller, animated: true, completion: nil)
         
     }
-    
+
+
+    private func parseError(data: Data) -> ErrorClass? {
+
+        if let json = try? JSONSerialization.jsonObject(with: data, options: []),
+            let errorResponse = try? ErrorClass.decode(json) {
+            return errorResponse
+        }
+
+        return nil
+    }
+
+
+
+
 }
