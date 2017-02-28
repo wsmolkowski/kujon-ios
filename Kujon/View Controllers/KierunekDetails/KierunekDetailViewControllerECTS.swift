@@ -1,14 +1,14 @@
 //
-//  KierunekDetailViewController.swift
+//  KierunekDetailViewControllerECTS.swift
 //  Kujon
 //
-//  Created by Adam on 29.11.2016.
-//  Copyright © 2016 Mobi. All rights reserved.
+//  Created by Adam on 28.02.2017.
+//  Copyright © 2017 Mobi. All rights reserved.
 //
 
 import UIKit
 
-class KierunekDetailViewController: UITableViewController, SupervisingUnitCellDelegate {
+class KierunekDetailViewControllerECTS: UITableViewController, SupervisingUnitCellDelegate {
 
     private enum SectionMap: Int {
         case header = 0
@@ -16,6 +16,7 @@ class KierunekDetailViewController: UITableViewController, SupervisingUnitCellDe
         case duration
         case id
         case mode
+        case ectsUsedSum
         case superUnit
 
         static func sectionForIndex(_ index:Int) -> SectionMap {
@@ -37,9 +38,10 @@ class KierunekDetailViewController: UITableViewController, SupervisingUnitCellDe
     private let superUnitCellId = "SupervisingUnitCell"
 
 
-    private let sectionsCount: Int = 6
+    private let sectionsCount: Int = 7
 
     var programme: Programme?
+    var schoolPath: SchoolPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +49,9 @@ class KierunekDetailViewController: UITableViewController, SupervisingUnitCellDe
         configureTableView()
     }
 
-    internal func configureViewController(programme: Programme) {
+    internal func configureViewController(programme: Programme, schoolPath: SchoolPath) {
         self.programme = programme
+        self.schoolPath = schoolPath
     }
 
     private func configureTableView() {
@@ -87,6 +90,7 @@ class KierunekDetailViewController: UITableViewController, SupervisingUnitCellDe
         case .duration: labelText = StringHolder.time_length
         case .id: labelText = StringHolder.identificator
         case .mode: labelText = StringHolder.tryb
+        case .ectsUsedSum: labelText = StringHolder.ectsPoints
         case .superUnit: return nil
         }
 
@@ -116,7 +120,7 @@ class KierunekDetailViewController: UITableViewController, SupervisingUnitCellDe
 
     private func supervisingUnitCellForIndexPath(_ indexPath: IndexPath) -> SupervisingUnitCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: superUnitCellId, for: indexPath) as! SupervisingUnitCell
-        if let unit = programme?.schoolPath {
+        if let unit = schoolPath {
             cell.supervisingUnit = unit
             cell.delegate = self
         }
@@ -133,7 +137,8 @@ class KierunekDetailViewController: UITableViewController, SupervisingUnitCellDe
         case .duration: labelText = programme?.duration
         case .id: labelText = programme?.id
         case .mode: labelText = programme?.modeOfStudies
-        case .superUnit: labelText = programme?.schoolPath?.schoolName
+        case .ectsUsedSum: labelText = programme?.ectsUsedSum == nil ? nil : "\(programme!.ectsUsedSum!)"
+        case .superUnit: labelText = schoolPath?.schoolName
         default: fatalError("Invalid indexpath")
         }
 
@@ -154,6 +159,6 @@ class KierunekDetailViewController: UITableViewController, SupervisingUnitCellDe
         faculiteController.facultieId = id
         self.navigationController?.pushViewController(faculiteController, animated: true)
     }
-
-
- }
+    
+    
+}

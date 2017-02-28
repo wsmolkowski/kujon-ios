@@ -128,6 +128,7 @@
 		662DAFED1DAC14150094867E /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662DAFEC1DAC14150094867E /* String+.swift */; };
 		663757C01E571FA40072A33F /* ICloudDriveProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663757BF1E571FA40072A33F /* ICloudDriveProvider.swift */; };
 		663757C21E572B860072A33F /* API2ICloudDriveTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663757C11E572B860072A33F /* API2ICloudDriveTransfer.swift */; };
+		663E0CE11E65AD0300F7AD06 /* KierunekDetailViewControllerECTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663E0CE01E65AD0300F7AD06 /* KierunekDetailViewControllerECTS.swift */; };
 		66431E591E5AF5BB0023BC53 /* ActiveCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66431E571E5AF5BB0023BC53 /* ActiveCourseCell.swift */; };
 		66431E5A1E5AF5BB0023BC53 /* ActiveCourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66431E581E5AF5BB0023BC53 /* ActiveCourseCell.xib */; };
 		6647D5B91E5B514F00D3BFD9 /* ICloudDriveDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647D5B81E5B514F00D3BFD9 /* ICloudDriveDownloadOperation.swift */; };
@@ -595,6 +596,7 @@
 		662DAFEC1DAC14150094867E /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		663757BF1E571FA40072A33F /* ICloudDriveProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICloudDriveProvider.swift; sourceTree = "<group>"; };
 		663757C11E572B860072A33F /* API2ICloudDriveTransfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API2ICloudDriveTransfer.swift; sourceTree = "<group>"; };
+		663E0CE01E65AD0300F7AD06 /* KierunekDetailViewControllerECTS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KierunekDetailViewControllerECTS.swift; sourceTree = "<group>"; };
 		66431E571E5AF5BB0023BC53 /* ActiveCourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveCourseCell.swift; sourceTree = "<group>"; };
 		66431E581E5AF5BB0023BC53 /* ActiveCourseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActiveCourseCell.xib; sourceTree = "<group>"; };
 		6647D5B81E5B514F00D3BFD9 /* ICloudDriveDownloadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICloudDriveDownloadOperation.swift; sourceTree = "<group>"; };
@@ -1869,6 +1871,7 @@
 				66FD65891E3BAD9E007066E6 /* ItemCell.swift */,
 				66FD658A1E3BAD9E007066E6 /* ItemCell.xib */,
 				66FD658B1E3BAD9E007066E6 /* KierunekDetailViewController.swift */,
+				663E0CE01E65AD0300F7AD06 /* KierunekDetailViewControllerECTS.swift */,
 				66FD658C1E3BAD9E007066E6 /* KierunekHeaderCell.swift */,
 				66FD658D1E3BAD9E007066E6 /* KierunekHeaderCell.xib */,
 				66FD658E1E3BAD9E007066E6 /* SectionHeaderView.swift */,
@@ -2699,6 +2702,7 @@
 				4C0D8276D4657EED0BD1B0C2 /* LecturersResponse.swift in Sources */,
 				4C0D853633AEE49F996B454C /* CourseEdition.swift in Sources */,
 				66A8BE1E1E48C11E008B35B7 /* GTLRDrive_File+.swift in Sources */,
+				663E0CE11E65AD0300F7AD06 /* KierunekDetailViewControllerECTS.swift in Sources */,
 				662DAFED1DAC14150094867E /* String+.swift in Sources */,
 				66A016EA1E3BB5550011BFD9 /* ProgrammeIdProvider.swift in Sources */,
 				66FD665D1E3BAD9E007066E6 /* TeachersMenuItem.swift in Sources */,

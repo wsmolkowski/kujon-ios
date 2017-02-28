@@ -317,7 +317,7 @@ class UserTableViewController: RefreshingTableViewController
                 let schoolPath: SchoolPath = self?.programmes[indexPath.row].programme.schoolPath else {
                 return
             }
-            let kierunekDetailController = KierunekDetailViewController()
+            let kierunekDetailController = KierunekDetailViewControllerECTS()
             kierunekDetailController.configureViewController(programme: programme, schoolPath: schoolPath)
             self?.navigationController?.pushViewController(kierunekDetailController, animated: true)
         }
