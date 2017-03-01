@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol CourseDetailsTableViewControllerDelegate: class {
+
+    func courseDetailsTableViewController(_ controller: CourseDetailsTableViewController, didUpdateFilesCount count: Int, forCourseId courseId: String, andTermId termId: String)
+}
+
 class CourseDetailsTableViewController: RefreshingTableViewController, CourseDetailsProviderDelegate, SharedFilesViewControllerDelegate {
 
     var sectionHelpers:Array<SectionHelperProtocol> = []
@@ -15,6 +20,7 @@ class CourseDetailsTableViewController: RefreshingTableViewController, CourseDet
     var courseId:String! = nil;
     var termId:String! = nil;
     let courseDetailsProvider  = ProvidersProviderImpl.sharedInstance.provideCourseDetailsProvider()
+    weak var delegate: CourseDetailsTableViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -138,6 +144,7 @@ class CourseDetailsTableViewController: RefreshingTableViewController, CourseDet
         if let sharedFilesSection = sectionHelpers.filter({ $0 is SharedFilesSection }).first as? SharedFilesSection {
             sharedFilesSection.updateFilesCount(count)
             tableView.reloadData()
+            delegate?.courseDetailsTableViewController(self, didUpdateFilesCount: count, forCourseId: courseId, andTermId: termId)
         }
     }
 

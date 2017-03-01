@@ -14,7 +14,7 @@ struct Course {
     let termId : String
     let courseName: String
     let courseId : String
-    let filesCount: Int
+    var filesCount: Int
 }
 
 

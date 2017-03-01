@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CoursesTableViewController: RefreshingTableViewController, NavigationDelegate,CourseProviderDelegate, TermsProviderDelegate, UISearchResultsUpdating {
+class CoursesTableViewController: RefreshingTableViewController, NavigationDelegate,CourseProviderDelegate, TermsProviderDelegate, UISearchResultsUpdating, CourseDetailsTableViewControllerDelegate {
 
     private let CourseCellId = "ActiveCourseCell"
     private let courseProvider = ProvidersProviderImpl.sharedInstance.provideCourseProvider()
@@ -111,6 +111,7 @@ class CoursesTableViewController: RefreshingTableViewController, NavigationDeleg
         let course = filteredSections.itemForIndexPath(indexPath)
         let courseDetails = CourseDetailsTableViewController(nibName: "CourseDetailsTableViewController", bundle: Bundle.main)
         courseDetails.course = course
+        courseDetails.delegate = self
         self.navigationController?.pushViewController(courseDetails, animated: true)
     }
 
@@ -178,6 +179,26 @@ class CoursesTableViewController: RefreshingTableViewController, NavigationDeleg
         let filterKey: String = searchController.searchBar.text!
         filteredSections = allSections.copyFilteredWithKey(filterKey)
         tableView.reloadData()
+    }
+
+    // MARK: = CourseDetailsTableViewControllerDelegate
+
+    func courseDetailsTableViewController(_ controller: CourseDetailsTableViewController, didUpdateFilesCount count: Int, forCourseId courseId: String, andTermId termId: String) {
+
+        let sections = allSections.sections
+        for section in sections {
+            var courses = allSections.itemsInSection(name: section)
+            for (index,course) in courses.enumerated() {
+                    if course.courseId == courseId && course.termId == termId {
+                        courses[index].filesCount = count
+                        allSections.updateItemsInSection(name: section, items: courses)
+                        filteredSections = allSections
+                        tableView.reloadData()
+                        return
+                    }
+
+            }
+        }
     }
 
 }

@@ -96,6 +96,10 @@ struct SortedDictionary<T: SortKeyProviding> {
         return []
     }
 
+    internal mutating func updateItemsInSection(name section: String, items: [T]) {
+        sortedDictionary[section] = items
+    }
+
     internal func itemsInSection(index: Int) -> [T] {
         let sectionName = sections[index]
         return itemsInSection(name: sectionName)
