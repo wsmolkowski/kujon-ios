@@ -48,7 +48,7 @@ class CourseMeritsSection: SectionHelperProtocol {
         return cell
     }
 
-    func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?) {
+    func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?, setDelegate delegate: AnyObject?) {
         // do nothing
     }
 }

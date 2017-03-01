@@ -23,7 +23,7 @@ class ParticipantsSection:LecturersSection {
         return StringHolder.students
     }
 
-    override func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?) {
+    override func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?, setDelegate delegate: AnyObject?) {
         guard position < list.count else {
             return
         }

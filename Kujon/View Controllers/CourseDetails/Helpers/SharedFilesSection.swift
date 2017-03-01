@@ -23,6 +23,10 @@ class  SharedFilesSection: SectionHelperProtocol {
         filesCount = courseDetails.filesCount
     }
 
+    internal func updateFilesCount(_ count: Int) {
+        self.filesCount = count
+    }
+
     func registerView(_ tableView: UITableView) {
         tableView.register(UINib(nibName: "ActiveCourseCell", bundle: nil), forCellReuseIdentifier: cellId)
     }
@@ -46,7 +50,7 @@ class  SharedFilesSection: SectionHelperProtocol {
         return cell
     }
 
-    func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?) {
+    func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?, setDelegate delegate: AnyObject? = nil) {
         guard let courseId = courseId, let termId = termId, let courseName = courseName else {
             return
         }
@@ -55,6 +59,9 @@ class  SharedFilesSection: SectionHelperProtocol {
         sharedFilesController.courseId = courseId
         sharedFilesController.termId = termId
         sharedFilesController.courseName = courseName
+        if let delegate = delegate as? SharedFilesViewControllerDelegate {
+            sharedFilesController.delegate = delegate
+        }
         controller?.pushViewController(sharedFilesController, animated: true)
     }
     

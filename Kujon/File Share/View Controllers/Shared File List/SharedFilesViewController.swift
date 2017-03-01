@@ -10,6 +10,11 @@ import Foundation
 import GoogleAPIClientForREST
 import MobileCoreServices
 
+protocol SharedFilesViewControllerDelegate: class {
+
+    func sharedFilesViewController(_ controller: SharedFilesViewController, didUpdateFilesCount count: Int, forCourseId courseId: String, andTermId termId: String)
+}
+
 class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, FileTransferManagerDelegate, TransferViewProviding, UITableViewDataSource, UITableViewDelegate, ToolbarMenuControllerDelegate, PhotoFileProviderDelegate, FileDetailsControllerDelegate, UIDocumentInteractionControllerDelegate {
 
     private let fileCellHeight: CGFloat = 50.0
@@ -63,6 +68,8 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         case dateAddedDescending
         case ownerNameAscending
     }
+
+    weak var delegate: SharedFilesViewControllerDelegate?
 
     // MARK: - Initial section
 
@@ -327,6 +334,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
                 strongSelf.removeFileFromModel(file)
                 strongSelf.folderIsEmpty = strongSelf.allFiles.isEmpty
                 strongSelf.tableView.reloadSections(IndexSet(integer:0), with: .fade)
+                strongSelf.delegate?.sharedFilesViewController(strongSelf, didUpdateFilesCount: strongSelf.allFiles.count, forCourseId: strongSelf.courseId, andTermId: strongSelf.termId)
                 if let view = strongSelf.navigationController?.view {
                     ToastView.showInParent(view, withText: StringHolder.fileHasBeenRemovedMessage(fileName: file.fileName), forDuration: 2.0)
                 }
@@ -460,6 +468,10 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
                 let file = file as? APIFile {
                 strongSelf.updateController(newFile: file)
                 ToastView.showInParent(view, withText: StringHolder.fileHasBeenSharedMessage(fileName: file.fileName), forDuration: 2.0)
+            }
+
+            if transfer is Drive2APITransfer || transfer is Device2APITransfer || transfer is ICloudDrive2APITransfer {
+                strongSelf.delegate?.sharedFilesViewController(strongSelf, didUpdateFilesCount: strongSelf.allFiles.count, forCourseId: strongSelf.courseId, andTermId: strongSelf.termId)
             }
         }
     }

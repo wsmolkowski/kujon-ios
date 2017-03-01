@@ -35,7 +35,7 @@ class FacultieSection: SectionHelperProtocol {
         return cell
     }
 
-    func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?) {
+    func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?, setDelegate delegate: AnyObject?) {
         let faculiteController = FacultieTableViewController(nibName: "FacultieTableViewController", bundle: Bundle.main)
         faculiteController.facultieId = facId.id
         controller?.pushViewController(faculiteController, animated: true)

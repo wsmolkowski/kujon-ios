@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CourseDetailsTableViewController: RefreshingTableViewController,CourseDetailsProviderDelegate {
+class CourseDetailsTableViewController: RefreshingTableViewController, CourseDetailsProviderDelegate, SharedFilesViewControllerDelegate {
 
     var sectionHelpers:Array<SectionHelperProtocol> = []
     var course:Course! = nil;
@@ -126,7 +126,19 @@ class CourseDetailsTableViewController: RefreshingTableViewController,CourseDeta
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        (sectionHelpers[indexPath.section]).reactOnSectionClick(indexPath.row,withController: self.navigationController)
+        (sectionHelpers[indexPath.section]).reactOnSectionClick(indexPath.row,withController: self.navigationController, setDelegate: self)
+    }
+
+
+    // MARK: - SharedFilesViewControllerDelegate
+
+    func sharedFilesViewController(_ controller: SharedFilesViewController, didUpdateFilesCount count: Int, forCourseId courseId: String, andTermId termId: String) {
+        print("COUNT UPDATED: ",count)
+
+        if let sharedFilesSection = sectionHelpers.filter({ $0 is SharedFilesSection }).first as? SharedFilesSection {
+            sharedFilesSection.updateFilesCount(count)
+            tableView.reloadData()
+        }
     }
 
 }

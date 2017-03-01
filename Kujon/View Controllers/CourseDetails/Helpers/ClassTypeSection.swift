@@ -49,7 +49,7 @@ class ClassTypeSection:SectionHelperProtocol {
         return cell
     }
 
-    func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?) {
+    func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?, setDelegate delegate: AnyObject?) {
 //        let textController = TextViewController(nibName: "TextViewController", bundle: NSBundle.mainBundle())
 //        textController.text = description
 //        textController.myTitle = getSectionTitle()
