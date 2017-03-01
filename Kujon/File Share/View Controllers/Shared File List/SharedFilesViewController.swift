@@ -217,6 +217,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
     // MARK: - Controller actions
 
     private func presentAddOptions() {
+
         let addFileFromGoogleDrive: UIAlertAction = UIAlertAction(title: StringHolder.addFromGoogleDrive, style: .default) { [unowned self] _ in
             self.shareFilesFromGoogleDrive(assignToCourseId: self.courseId, andTermId: self.termId)
         }
@@ -231,7 +232,10 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
                 strongSelf.photoProvider.presentImagePicker(parentController: strongSelf, courseStudentsCached: strongSelf.courseStudentsCached)
             }
         }
-        presentActionSheet(actions: [addFileFromGoogleDrive, addFileFromICloudDrive, addPhotoFromPhotoGallery])
+
+        let actions = UserLoginEnum.getLoginType() == .google ? [addFileFromGoogleDrive, addFileFromICloudDrive, addPhotoFromPhotoGallery] : [addFileFromICloudDrive, addPhotoFromPhotoGallery]
+
+        presentActionSheet(actions: actions)
     }
 
     private func presentFileOptions(for file: APIFile) {
@@ -267,7 +271,7 @@ class SharedFilesViewController: UIViewController, APIFileListProviderDelegate, 
         let hasDeletionRight = file.fileSharedByMe != nil && file.fileSharedByMe == true
         deleteFileAction.isEnabled = hasDeletionRight
 
-        let actions = [previewFileAction, showDetailsAction, addToGoogleDriveAction, addToICloudDriveAction, deleteFileAction]
+        let actions = UserLoginEnum.getLoginType() == .google ? [previewFileAction, showDetailsAction, addToGoogleDriveAction, addToICloudDriveAction, deleteFileAction] : [previewFileAction, showDetailsAction, addToICloudDriveAction, deleteFileAction]
         presentActionSheet(actions: actions, title: title, message: description)
     }
 
