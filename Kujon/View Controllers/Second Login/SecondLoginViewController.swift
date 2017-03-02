@@ -31,6 +31,7 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
         let url = verificationProvider.getRequestUrl()
         let request = URLRequest(url: URL(string: url)!)
         webView.loadRequest(request)
+        webView.isHidden = true
     }
 
     func back() {
@@ -53,6 +54,21 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
 
     func webViewDidFinishLoad(_ webView: UIWebView) {
 
+        guard let html = webView.stringByEvaluatingJavaScript(from: "document.body.innerHTML") else {
+            return
+        }
+
+        let jsonString = String.stripHTMLFromString(html)
+
+        guard let data = jsonString.data(using: String.Encoding.utf8) else {
+            return
+        }
+
+        if let errorResponse = parseError(data: data) {
+            presentAlertWithMessage(errorResponse.message, title: StringHolder.errorAlertTitle)
+            return
+        }
+        webView.isHidden = false
         self.webView.stringByEvaluatingJavaScript(from: "javascript:window.HtmlViewer.showHTML" +
             "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');")
     }
