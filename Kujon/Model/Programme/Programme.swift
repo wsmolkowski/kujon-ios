@@ -7,6 +7,7 @@ import Foundation
 import Decodable
 
 struct Programme {
+
     let name: String?
     let modeOfStudies: String?
     let duration: String?
@@ -23,9 +24,12 @@ struct Programme {
         }
         return nil
     }
+
+
 }
 
 extension Programme: Decodable {
+
     static func decode(_ j: Any) throws -> Programme {
         return try Programme(
                 name:  try? j => "name",
@@ -36,7 +40,6 @@ extension Programme: Decodable {
                 description: try? j => "description",
                 ectsUsedSum: try? j => "ects_used_sum",
                 schoolPath: try? j => "faculty"
-
         )
     }
 }

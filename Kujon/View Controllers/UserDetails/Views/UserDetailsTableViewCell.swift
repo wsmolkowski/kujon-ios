@@ -16,9 +16,7 @@ class UserDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var bigUsosImage: UIImageView!
     @IBOutlet weak var accountNumberLabel: UILabel!
     @IBOutlet weak var indexNumberLabel: UILabel!
-    @IBOutlet weak var schoolNameLabel: UILabel!
     @IBOutlet weak var schoolImageVirw: UIImageView!
-    @IBOutlet weak var studentStatusLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
 
     override func awakeFromNib() {

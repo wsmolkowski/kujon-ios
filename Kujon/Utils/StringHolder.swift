@@ -165,6 +165,11 @@ class StringHolder {
     static let timeoutMessage = "Przekroczono czas oczekiwania na odpowiedź serwera"
     static let userNotLoggedInToGoogleMessage = "Aby korzystać z Google Drive, zaloguj się do Kujona przy użyciu swojego konta Google"
     static let fileToLargeForAPIUpload = "Plik jest za duży. W Kujonie możesz udostępniać pliki, których rozmiar nie przekracza 10 MB."
+    static let programmeStatusActive = "Aktywny student"
+    static let programmeStatusCancelled = "Przerwane studia"
+    static let programmeStatusGraduatedBeforeDiploma = "Zakończone, przed obroną"
+    static let programmeStatusGraduatedDiploma = "Zakończone, dyplom obroniony"
+    static let programmeStatusGraduatedEndOfStudy = "Zakończone"
 
     static func fileHasBeenRemovedMessage(fileName: String) -> String {
         return "Plik \(fileName) został usunięty"

@@ -65,7 +65,7 @@ class UserTableViewController: RefreshingTableViewController
         view.backgroundColor = UIColor.white
         self.tableView.tableFooterView = UIView()
         self.tableView.register(UINib(nibName: "UserDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: usedDetailCellId)
-        self.tableView.register(UINib(nibName: "AccessoryItemCell", bundle: nil), forCellReuseIdentifier: StudentProgrammeCellId)
+        self.tableView.register(UINib(nibName: "ProgrammeCell", bundle: nil), forCellReuseIdentifier: StudentProgrammeCellId)
         self.tableView.register(UINib(nibName: "AccessoryItemCell", bundle: nil), forCellReuseIdentifier: FacultieProgrammeCellId)
         self.tableView.register(UINib(nibName: "AccessoryItemCell", bundle: nil), forCellReuseIdentifier: termsCellId)
         tableView.separatorStyle = .none
@@ -194,8 +194,8 @@ class UserTableViewController: RefreshingTableViewController
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch (indexPath.section) {
-        case 0: return 196
-        case 1: return 51
+        case 0: return 125
+        case 1: return 60
         case 2: return 51;
         default: return 51
         }
@@ -226,7 +226,6 @@ class UserTableViewController: RefreshingTableViewController
     private func configureUserDetails(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: usedDetailCellId, for: indexPath) as! UserDetailsTableViewCell
         cell.nameSurnameLabel.text = userDetail.firstName + " " + userDetail.lastName
-        cell.studentStatusLabel.text = userDetail.studentStatus
         cell.indexNumberLabel.text = userDetail.studentNumber
         cell.accountNumberLabel.text = userDetail.id
         cell.userImageView.makeMyselfCircleWithBorder()
@@ -269,10 +268,9 @@ class UserTableViewController: RefreshingTableViewController
     }
 
     private func configureStudentProgrammeCell(_ indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: StudentProgrammeCellId, for: indexPath) as! AccessoryItemCell
-        let myProgramme: StudentProgramme = self.programmes[indexPath.row]
-        cell.titleLabel.text = myProgramme.programme.nameShort
-        cell.setStyle(.arrowRight)
+        let cell = tableView.dequeueReusableCell(withIdentifier: StudentProgrammeCellId, for: indexPath) as! ProgrammeCell
+        let studentProgramme: StudentProgramme = self.programmes[indexPath.row]
+        cell.configureCell(with: studentProgramme)
         return cell
     }
 

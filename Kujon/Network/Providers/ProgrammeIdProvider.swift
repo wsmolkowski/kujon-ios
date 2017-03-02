@@ -37,7 +37,7 @@ class ProgrammeIdProvider: RestApiManager, ProgrammeIdProviderProtocol {
 
             if let programeResponse = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate) {
                 let programmeEnd = programeResponse.singleProgramme.getProgramme()
-                strongSelf.delegate?.onProgrammeLoaded(id,programme: StudentProgramme(id: id,programme: programmeEnd))
+                strongSelf.delegate?.onProgrammeLoaded(id,programme: StudentProgramme(id: id,programme: programmeEnd, status: nil))
             }
         }, onError: {[weak self] text in
             self?.delegate?.onErrorOccurs()

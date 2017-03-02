@@ -136,6 +136,8 @@
 		664DD0011E4E0BAA004EE946 /* API2DeviceTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664DD0001E4E0BAA004EE946 /* API2DeviceTransfer.swift */; };
 		66634EB31E64786C004E91EB /* StudentEmailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66634EB11E64786C004E91EB /* StudentEmailCell.swift */; };
 		66634EB41E64786C004E91EB /* StudentEmailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66634EB21E64786C004E91EB /* StudentEmailCell.xib */; };
+		6665DC961E6845D000EC627D /* ProgrammeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6665DC941E6845D000EC627D /* ProgrammeCell.swift */; };
+		6665DC971E6845D000EC627D /* ProgrammeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6665DC951E6845D000EC627D /* ProgrammeCell.xib */; };
 		66678B001E5C52500059F7A7 /* ICloudDrive2APITransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66678AFF1E5C52500059F7A7 /* ICloudDrive2APITransfer.swift */; };
 		66678B021E5C67CE0059F7A7 /* ICloudDriveUploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66678B011E5C67CE0059F7A7 /* ICloudDriveUploadOperation.swift */; };
 		66678B041E5CA4930059F7A7 /* ShareDetailsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66678B031E5CA4930059F7A7 /* ShareDetailsOperation.swift */; };
@@ -604,6 +606,8 @@
 		664DD0001E4E0BAA004EE946 /* API2DeviceTransfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API2DeviceTransfer.swift; sourceTree = "<group>"; };
 		66634EB11E64786C004E91EB /* StudentEmailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentEmailCell.swift; sourceTree = "<group>"; };
 		66634EB21E64786C004E91EB /* StudentEmailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentEmailCell.xib; sourceTree = "<group>"; };
+		6665DC941E6845D000EC627D /* ProgrammeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammeCell.swift; sourceTree = "<group>"; };
+		6665DC951E6845D000EC627D /* ProgrammeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgrammeCell.xib; sourceTree = "<group>"; };
 		66678AFF1E5C52500059F7A7 /* ICloudDrive2APITransfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICloudDrive2APITransfer.swift; sourceTree = "<group>"; };
 		66678B011E5C67CE0059F7A7 /* ICloudDriveUploadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICloudDriveUploadOperation.swift; sourceTree = "<group>"; };
 		66678B031E5CA4930059F7A7 /* ShareDetailsOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareDetailsOperation.swift; sourceTree = "<group>"; };
@@ -2140,6 +2144,8 @@
 				66FD660C1E3BAD9E007066E6 /* UserDetailsTableViewCell.xib */,
 				66FD660D1E3BAD9E007066E6 /* UserDetailView.swift */,
 				66FD660E1E3BAD9E007066E6 /* UserDetailView.xib */,
+				6665DC941E6845D000EC627D /* ProgrammeCell.swift */,
+				6665DC951E6845D000EC627D /* ProgrammeCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2388,6 +2394,7 @@
 				66FD66731E3BAD9E007066E6 /* ScheduleTableViewController.xib in Resources */,
 				66A0172F1E3BC0E40011BFD9 /* ImageViewController.xib in Resources */,
 				66A017041E3BBD580011BFD9 /* MenuItem.xib in Resources */,
+				6665DC971E6845D000EC627D /* ProgrammeCell.xib in Resources */,
 				66FD663D1E3BAD9E007066E6 /* SupervisingUnitCell.xib in Resources */,
 				4C0D8247D1BF8BC9FBE086A2 /* Lato-BoldItalic.ttf in Resources */,
 				66634EB41E64786C004E91EB /* StudentEmailCell.xib in Resources */,
@@ -2884,6 +2891,7 @@
 				66A016FA1E3BB5550011BFD9 /* UsosesProvider.swift in Sources */,
 				66FD665B1E3BAD9E007066E6 /* SettingsMenuItem.swift in Sources */,
 				66FD66B11E3BAD9E007066E6 /* UserDetailsTableViewCell.swift in Sources */,
+				6665DC961E6845D000EC627D /* ProgrammeCell.swift in Sources */,
 				4C0D810245563FE50B783EAD /* Register.swift in Sources */,
 				66FD66261E3BAD9E007066E6 /* CourseNameTableViewCell.swift in Sources */,
 				66FD665A1E3BAD9E007066E6 /* SendOpinionMenuItem.swift in Sources */,
