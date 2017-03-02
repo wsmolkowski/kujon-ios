@@ -18,8 +18,13 @@ class SupervisingUnitCell: UITableViewCell {
 
     internal var supervisingUnit: SchoolPath? {
         didSet {
-            if let unitName = supervisingUnit?.schoolName {
+            if let unit = supervisingUnit {
+                let unitName = unit.schoolName
                 supervisingUnitLabel.text = unitName
+                arrowView?.isHidden = false
+            } else {
+                supervisingUnitLabel.text = StringHolder.none
+                arrowView?.isHidden = true
             }
         }
     }

@@ -109,16 +109,14 @@ class KierunekDetailViewController: UITableViewController, SupervisingUnitCellDe
 
     private func headerCellForIndexPath(_ indexPath: IndexPath) -> KierunekHeaderCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: headerCellId, for: indexPath) as! KierunekHeaderCell
-        cell.kierunekLabel.text = programme?.name?.components(separatedBy:",").first
+        cell.kierunekLabel.text = programme?.nameShort ?? StringHolder.none
         return cell
     }
 
     private func supervisingUnitCellForIndexPath(_ indexPath: IndexPath) -> SupervisingUnitCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: superUnitCellId, for: indexPath) as! SupervisingUnitCell
-        if let unit = programme?.schoolPath {
-            cell.supervisingUnit = unit
+            cell.supervisingUnit = programme?.schoolPath
             cell.delegate = self
-        }
         return cell
     }
 

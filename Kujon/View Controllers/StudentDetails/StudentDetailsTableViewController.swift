@@ -118,7 +118,7 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
     private func configureStudentProgrammeCell(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: kierunekCellId, for: indexPath) as! AccessoryItemCell
         if let myProgramme: StudentProgramme = userDetails?.studentProgrammes[indexPath.row] {
-            cell.titleLabel.text = myProgramme.programme.description
+            cell.titleLabel.text = myProgramme.programme.nameShort ?? StringHolder.none
         }
         cell.setStyle(.arrowRight)
         return cell
@@ -190,7 +190,7 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
                 return
             }
             let kierunekDetailController = KierunekDetailViewController()
-            kierunekDetailController.programme = programme
+            kierunekDetailController.configureViewController(programme: programme)
             self?.navigationController?.pushViewController(kierunekDetailController, animated: true)
         }
     }
