@@ -170,6 +170,7 @@ class StringHolder {
     static let programmeStatusGraduatedBeforeDiploma = "Zakończone, przed obroną"
     static let programmeStatusGraduatedDiploma = "Zakończone, dyplom obroniony"
     static let programmeStatusGraduatedEndOfStudy = "Zakończone"
+    static let noStatusInfo = "Brak informacji o statusie"
 
     static func fileHasBeenRemovedMessage(fileName: String) -> String {
         return "Plik \(fileName) został usunięty"
