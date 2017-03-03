@@ -31,15 +31,17 @@ class ProgrammeCell: UITableViewCell {
 
     internal func configureCell(with programme: StudentProgramme) {
 
-        if let name = programme.programme.nameShort {
+        if let name = programme.programme.name {
             programmeName.text = name
         }
 
         if let status = programme.status {
             statusDescription.text = status.statusDescription
             statusIcon.image = status.iconImage
+        } else {
+            statusDescription.text = "Brak informacji o statusie"
+            statusIcon.image = #imageLiteral(resourceName: "canceled-status")
         }
-
 
     }
     

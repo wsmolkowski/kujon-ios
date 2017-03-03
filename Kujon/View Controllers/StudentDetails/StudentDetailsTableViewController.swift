@@ -118,7 +118,7 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
     private func configureStudentProgrammeCell(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: kierunekCellId, for: indexPath) as! AccessoryItemCell
         if let myProgramme: StudentProgramme = userDetails?.studentProgrammes[indexPath.row] {
-            cell.titleLabel.text = myProgramme.programme.nameShort ?? StringHolder.none
+            cell.titleLabel.text = myProgramme.programme.name ?? StringHolder.none
         }
         cell.setStyle(.arrowRight)
         return cell
