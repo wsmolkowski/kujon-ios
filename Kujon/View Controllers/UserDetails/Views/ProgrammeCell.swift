@@ -39,7 +39,7 @@ class ProgrammeCell: UITableViewCell {
             statusDescription.text = status.statusDescription
             statusIcon.image = status.iconImage
         } else {
-            statusDescription.text = "Brak informacji o statusie"
+            statusDescription.text = StringHolder.noStatusInfo
             statusIcon.image = #imageLiteral(resourceName: "canceled-status")
         }
 
