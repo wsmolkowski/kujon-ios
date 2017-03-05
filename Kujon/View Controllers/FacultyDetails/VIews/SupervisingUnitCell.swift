@@ -34,6 +34,7 @@ class SupervisingUnitCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
         arrowView.tintColor = UIColor.blackWithAlpha(alpha: 0.3)
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(SupervisingUnitCell.unitLabelDidTap))
         tapRecognizer.numberOfTapsRequired = 1
