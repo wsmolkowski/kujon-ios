@@ -30,6 +30,10 @@ class AllStudentsSwitchCell: UITableViewCell {
         allStudentsSwitch.setOn(on, animated: true)
     }
 
+    internal func isSwitchEnabled(_ isEnabled: Bool) {
+        allStudentsSwitch.isEnabled = isEnabled
+    }
+
     @IBAction internal func switchDidChangeState(_ sender: UISwitch) {
         delegate?.allStudentsSwitchCell(self, didChangeSwitchState: sender.isOn)
     }

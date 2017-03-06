@@ -319,6 +319,7 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
         let cell = tableView.dequeueReusableCell(withIdentifier: allStudentsSwitchCellId, for: indexPath) as! AllStudentsSwitchCell
         cell.delegate = self
         cell.setSwitchOn(allStudentsEnabled)
+        cell.isSwitchEnabled(file.fileSharedByMe ?? false)
         return cell
     }
 
