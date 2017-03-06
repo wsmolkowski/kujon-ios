@@ -12,15 +12,15 @@ import Foundation
 class EmptyStateView: UIView {
 
     internal static func showUsosDownAlert(inParent view: UIView) {
-        EmptyStateView.showAlert(inParent: view, imageName: "empty-state-sunbath", title: "Przerwa w dostępie do USOS", description: "Spróbuj ponownie za jakiś czas :)", descriptionLabelHeight: 30.0, offsetY: 50.0)
+        EmptyStateView.showAlert(inParent: view, imageName: "empty-state-sunbath", title: StringHolder.usosDownTitle, description: StringHolder.usosDownDescription, descriptionLabelHeight: 30.0, offsetY: 50.0)
     }
 
     internal static func showNoResultsAlert(inParent view: UIView) {
-        EmptyStateView.showAlert(inParent: view, imageName: nil, title: "Brak wyników wyszukiwania", offsetY: 50.0)
+        EmptyStateView.showAlert(inParent: view, imageName: nil, title: StringHolder.searchResultsNotFound, offsetY: 50.0)
     }
 
     internal static func noFilesView(parentBounds: CGRect) -> UIView {
-        return EmptyStateView.alertView(parentBounds: parentBounds, imageName: "empty-state-cactus", title: "brak plików i notatek", description: "Aby dodać do przedmiotu plik lub notatkę, wybierz + w górnym rogu.", descriptionLabelHeight: 60.0, offsetY: 100.0)
+        return EmptyStateView.alertView(parentBounds: parentBounds, imageName: "empty-state-cactus", title: StringHolder.noFilesTitle, description: StringHolder.noFilesDescription, descriptionLabelHeight: 60.0, offsetY: 100.0)
     }
 
 
