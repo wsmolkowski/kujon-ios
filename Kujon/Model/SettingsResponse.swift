@@ -10,14 +10,17 @@ import Foundation
 import Decodable
 
 struct Settings {
-    let oneSignalNotificationsEnabled: Bool?
+    let oneSignalGradeNotificationsEnabled: Bool?
+    let oneSignalFileNotificationsEnabled: Bool?
     let calendarSyncEnabled: Bool?
 }
 
 extension Settings: Decodable {
     static func decode(_ j: Any) throws -> Settings {
         return Settings(
-            oneSignalNotificationsEnabled: try? j => "event_enable",
+            oneSignalGradeNotificationsEnabled: try? j => "event_enable",
+            // TODO: fill in field
+            oneSignalFileNotificationsEnabled: try? j => "xxxxxxxx",
             calendarSyncEnabled: try? j => "google_callendar_enable"
         )
     }

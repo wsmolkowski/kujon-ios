@@ -9,15 +9,16 @@ class UserDataHolder {
 
     static let sharedInstance = UserDataHolder()
 
-    private  let LOGGED_KEY = "is_logged_key"
-    private  let EMAIL_KEY = "email_key"
-    private  let EMAIL_REMEMBERED_KEY = "email_remembered_key"
-    private  let TOKEN_KEY = "token_key"
-    private  let USOS_IMAGE_KEY = "usos_image_key"
-    private  let LOGIN_TYPE_KEY = "login_type_traalalal_key"
-    private  let CALENDAR_SYNC_KEY = "calendar_sync_key"
-    private let PUSH_NOTIFIACTIONS_KEY = "push_notifications_key"
-    
+    private let LOGGED_KEY = "is_logged_key"
+    private let EMAIL_KEY = "email_key"
+    private let EMAIL_REMEMBERED_KEY = "email_remembered_key"
+    private let TOKEN_KEY = "token_key"
+    private let USOS_IMAGE_KEY = "usos_image_key"
+    private let LOGIN_TYPE_KEY = "login_type_traalalal_key"
+    private let CALENDAR_SYNC_KEY = "calendar_sync_key"
+    private let GRADE_NOTIFIACTIONS_KEY = "grade_notifications_key"
+    private let FILE_NOTIFIACTIONS_KEY = "file_notifications_key"
+
     private var loadedEmail: String! = nil
 
     private var loadedToken: String! = nil
@@ -108,15 +109,27 @@ class UserDataHolder {
             return isCalendarSyncEnabled && UserLoginEnum.getLoginType() == .google
     }
 
-    var oneSignalNotificationsEnabled: Bool {
+    var oneSignalGradeNotificationsEnabled: Bool {
         get {
             if (userEmail == nil) {
                 return false
             }
-            return defaultsManager.readBooleanFromUserDefaults(PUSH_NOTIFIACTIONS_KEY)
+            return defaultsManager.readBooleanFromUserDefaults(GRADE_NOTIFIACTIONS_KEY)
         }
         set(value) {
-            defaultsManager.writeBoolToUserDefaults(value,key:PUSH_NOTIFIACTIONS_KEY)
+            defaultsManager.writeBoolToUserDefaults(value, key:GRADE_NOTIFIACTIONS_KEY)
+        }
+    }
+
+    var oneSignalFileNotificationsEnabled: Bool {
+        get {
+            if (userEmail == nil) {
+                return false
+            }
+            return defaultsManager.readBooleanFromUserDefaults(FILE_NOTIFIACTIONS_KEY)
+        }
+        set(value) {
+            defaultsManager.writeBoolToUserDefaults(value, key:FILE_NOTIFIACTIONS_KEY)
         }
     }
 

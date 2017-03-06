@@ -206,8 +206,13 @@ class EntryViewController: UIViewController,
     // MARK: SettingsProviderDelegate
 
     func settingsDidLoad(_ settings: Settings) {
-        if NotificationsManager.systemPushNotificationsEnabled() && UserDataHolder.sharedInstance.oneSignalNotificationsEnabled == false {
-            settingsProvider.setOneSignalNotifications(enabled: true)
+        if NotificationsManager.systemPushNotificationsEnabled() {
+            if UserDataHolder.sharedInstance.oneSignalGradeNotificationsEnabled == false {
+                settingsProvider.setOneSignalGradeNotifications(enabled: true)
+            }
+            if UserDataHolder.sharedInstance.oneSignalFileNotificationsEnabled == false {
+                settingsProvider.setOneSignalFileNotifications(enabled: true)
+            }
         }
     }
 

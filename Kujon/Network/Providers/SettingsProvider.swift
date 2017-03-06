@@ -13,7 +13,7 @@ protocol SettingsProviderProtocol: JsonProviderProtocol {
     associatedtype T = SettingsResponse
     func loadSettings()
     func setCalendarSyncronization(enabled: Bool)
-    func setOneSignalNotifications(enabled: Bool)
+    func setOneSignalGradeNotifications(enabled: Bool)
 }
 
 
@@ -29,7 +29,8 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
 
     enum SettingsEndpoint: String {
         case getSettings = "/settings"
-        case postPushNotificationsState = "/settings/event"
+        case postGradeNotificationsState = "/settings/event"
+        case postFileNotificationsState = "/settings/eventfiles"
         case postCalendarSync = "/settings/googlecalendar"
     }
 
@@ -49,7 +50,8 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
                 let response = try! self?.changeJsonToResposne(data, errorR: self?.delegate),
                 let settings: Settings = response.data {
                 self?.userData.isCalendarSyncEnabled = settings.calendarSyncEnabled ?? false
-                self?.userData.oneSignalNotificationsEnabled = settings.oneSignalNotificationsEnabled ?? false
+                self?.userData.oneSignalGradeNotificationsEnabled = settings.oneSignalGradeNotificationsEnabled ?? false
+                self?.userData.oneSignalFileNotificationsEnabled = settings.oneSignalFileNotificationsEnabled ?? false
                 self?.userData.areSettingsLoaded = true
                 self?.delegate?.settingsDidLoad(settings)
             } else {
@@ -77,21 +79,39 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
         })
     }
 
-    func setOneSignalNotifications(enabled: Bool) {
+    func setOneSignalGradeNotifications(enabled: Bool) {
         let state: State = enabled ? .enabled : .disabled
-        endpointURL = SettingsEndpoint.postPushNotificationsState.rawValue + state.rawValue
+        endpointURL = SettingsEndpoint.postGradeNotificationsState.rawValue + state.rawValue
         makeHTTPAuthenticatedPostRequest({ [weak self] data in
 
             if let data = data,
                 let responseJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:Any],
                 let status = responseJSON?["status"], status as? String == "success" {
-                UserDataHolder.sharedInstance.oneSignalNotificationsEnabled = enabled
+                UserDataHolder.sharedInstance.oneSignalGradeNotificationsEnabled = enabled
                 self?.delegate?.oneSignalNotificationsSettingDidSucceed()
             } else {
                 self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
             }
         }, onError: { [weak self] text in
             self?.delegate?.onErrorOccurs(text)
+        })
+    }
+
+    func setOneSignalFileNotifications(enabled: Bool) {
+        let state: State = enabled ? .enabled : .disabled
+        endpointURL = SettingsEndpoint.postFileNotificationsState.rawValue + state.rawValue
+        makeHTTPAuthenticatedPostRequest({ [weak self] data in
+
+            if let data = data,
+                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:Any],
+                let status = responseJSON?["status"], status as? String == "success" {
+                UserDataHolder.sharedInstance.oneSignalFileNotificationsEnabled = enabled
+                self?.delegate?.oneSignalNotificationsSettingDidSucceed()
+            } else {
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+            }
+            }, onError: { [weak self] text in
+                self?.delegate?.onErrorOccurs(text)
         })
     }
 

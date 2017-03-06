@@ -40,9 +40,9 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
         view.backgroundColor = UIColor.greyBackgroundColor()
         gradeNotificationsSwitch.onTintColor = UIColor.kujonBlueColor()
         fileNotificationsSwitch.onTintColor = UIColor.kujonBlueColor()
-        setupNotificationsSwitch()
+        setupNotificationSwitches()
         calendarSyncSwitch.onTintColor = UIColor.kujonBlueColor()
-        updateNotificationsSwitchState()
+        updateNotificationSwitchesState()
         appVersionLabel.text = Constants.appVersion
         NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.appDidBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         updateCalendarSyncSwitchState()
@@ -127,32 +127,32 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
 
     // MARK: Grade Notifications
 
-    private func setupNotificationsSwitch() {
+    private func setupNotificationSwitches() {
         let systemPushNotificationsEnabled = NotificationsManager.systemPushNotificationsEnabled()
         gradeNotificationsSwitch.isEnabled = systemPushNotificationsEnabled
         hiddenGradeNotificationsButton.isHidden = systemPushNotificationsEnabled
-        // TODO: implement
-        fileNotificationsSwitch.isEnabled = true
-        hiddenFileNotificationsButton.isHidden = true
+        fileNotificationsSwitch.isEnabled = systemPushNotificationsEnabled
+        hiddenFileNotificationsButton.isHidden = systemPushNotificationsEnabled
     }
 
     internal func appDidBecomeActive() {
         let notificationsEnabled = NotificationsManager.systemPushNotificationsEnabled()
         if notificationsEnabled != systemPushNotificationsEnabledOnViewLoad {
-            setupNotificationsSwitch()
-            updateNotificationsSwitchState()
-            settingsProvider.setOneSignalNotifications(enabled: notificationsEnabled)
+            setupNotificationSwitches()
+            updateNotificationSwitchesState()
+            settingsProvider.setOneSignalGradeNotifications(enabled: notificationsEnabled)
+            settingsProvider.setOneSignalFileNotifications(enabled: notificationsEnabled)
             spinner.isHidden = false
         }
     }
 
     internal func oneSignalNotificationsSettingDidSucceed() {
         spinner.isHidden = true
-        updateNotificationsSwitchState()
+        updateNotificationSwitchesState()
     }
 
     @IBAction func gradeNotificationsSwitchDidChange(_ sender: UISwitch) {
-        settingsProvider.setOneSignalNotifications(enabled: sender.isOn)
+        settingsProvider.setOneSignalGradeNotifications(enabled: sender.isOn)
         spinner.isHidden = false
     }
 
@@ -162,19 +162,25 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
         }
     }
 
-    internal func updateNotificationsSwitchState() {
-        let notificationsEnabled = NotificationsManager.systemPushNotificationsEnabled() && userData.oneSignalNotificationsEnabled
-        gradeNotificationsSwitch.setOn(notificationsEnabled, animated: true)
+    internal func updateNotificationSwitchesState() {
+        let gradeNotificationsEnabled = NotificationsManager.systemPushNotificationsEnabled() && userData.oneSignalGradeNotificationsEnabled
+        gradeNotificationsSwitch.setOn(gradeNotificationsEnabled, animated: true)
+        let fileNotificationsEnabled = NotificationsManager.systemPushNotificationsEnabled() && userData.oneSignalFileNotificationsEnabled
+        fileNotificationsSwitch.setOn(fileNotificationsEnabled, animated: true)
     }
 
     // MARK: File Notifications
 
     @IBAction func fileNotificationsSwitchDidChange(_ sender: UISwitch) {
+        settingsProvider.setOneSignalFileNotifications(enabled: sender.isOn)
+        spinner.isHidden = false
     }
 
     @IBAction func fileNotificationsButtonDidTap(_ sender: UIButton) {
+        presentAlertWithMessage(StringHolder.shouldOpenAppSettingsForNotifications, title: StringHolder.attention, showCancelButton: true) {
+            NotificationsManager.openAppSettings()
+        }
     }
-
 
 
     // MARK: Calendar Sync
@@ -186,7 +192,7 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
 
     func settingsDidLoad(_ settings: Settings) {
         updateCalendarSyncSwitchState()
-        updateNotificationsSwitchState()
+        updateNotificationSwitchesState()
         self.spinner.isHidden = true
     }
 
@@ -199,7 +205,7 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
         self.spinner.isHidden = true
 
         updateCalendarSyncSwitchState()
-        updateNotificationsSwitchState()
+        updateNotificationSwitchesState()
         presentAlertWithMessage(text, title: StringHolder.errorAlertTitle)
     }
 
