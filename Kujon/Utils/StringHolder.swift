@@ -206,4 +206,10 @@ class StringHolder {
     static let thesisTypeEngineer = "Praca inżynierska"
     static let thesisTypePostgraduate = "Praca podyplomowa"
 
+    static let more = "więcej"
+    static let less = "mniej"
+    static let descriptionTitle = "Opis"
+    static let bibliographyTitle = "Bibliografia"
+    static let assessmentCriteriaTitle = "Kryteria oceny"
+
 }

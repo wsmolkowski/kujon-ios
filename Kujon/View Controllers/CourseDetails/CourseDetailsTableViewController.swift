@@ -13,7 +13,7 @@ protocol CourseDetailsTableViewControllerDelegate: class {
     func courseDetailsTableViewController(_ controller: CourseDetailsTableViewController, didUpdateFilesCount count: Int, forCourseId courseId: String, andTermId termId: String)
 }
 
-class CourseDetailsTableViewController: RefreshingTableViewController, CourseDetailsProviderDelegate, SharedFilesViewControllerDelegate {
+class CourseDetailsTableViewController: RefreshingTableViewController, CourseDetailsProviderDelegate, SharedFilesViewControllerDelegate, CourseMeritsTableViewCellDelegate {
 
     var sectionHelpers:Array<SectionHelperProtocol> = []
     var course:Course! = nil;
@@ -54,7 +54,9 @@ class CourseDetailsTableViewController: RefreshingTableViewController, CourseDet
         return [NameSection(),
                 SharedFilesSection(),
                 FacultieSection(),
-                CourseMeritsSection(),
+                CourseMeritsDescriptionSection(),
+                CourseMeritsBibliographySection(),
+                CourseMeritsAssessemntSection(),
                 CycleSection(),
                 LecturersSection(),
                 CoordinatorsSection(),
@@ -115,18 +117,17 @@ class CourseDetailsTableViewController: RefreshingTableViewController, CourseDet
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return sectionHelpers.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return (sectionHelpers[section]).getSectionSize()
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let helper = (sectionHelpers[indexPath.section])
         let cell = helper.giveMeCellAtPosition(tableView,onPosition: indexPath)
+        (cell as? CourseMeritsTableViewCell)?.delegate = self
         cell?.selectionStyle = UITableViewCellSelectionStyle.none
         return  cell!
     }
@@ -139,13 +140,18 @@ class CourseDetailsTableViewController: RefreshingTableViewController, CourseDet
     // MARK: - SharedFilesViewControllerDelegate
 
     func sharedFilesViewController(_ controller: SharedFilesViewController, didUpdateFilesCount count: Int, forCourseId courseId: String, andTermId termId: String) {
-        print("COUNT UPDATED: ",count)
-
         if let sharedFilesSection = sectionHelpers.filter({ $0 is SharedFilesSection }).first as? SharedFilesSection {
             sharedFilesSection.updateFilesCount(count)
             tableView.reloadData()
             delegate?.courseDetailsTableViewController(self, didUpdateFilesCount: count, forCourseId: courseId, andTermId: termId)
         }
+    }
+
+    // MARK: - CourseMeritsTableViewCellDelegate
+
+    func courseMeritsCellDidChangeContent(_ cell: CourseMeritsTableViewCell) {
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
 
 }
