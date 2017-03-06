@@ -1746,7 +1746,7 @@
 				66FD65F21E3BAD9E007066E6 /* Terms */,
 				66A017151E3BBF960011BFD9 /* TermsPopUpViewController */,
 				66A017261E3BC0DC0011BFD9 /* TextViewController */,
-				66FD65F61E3BAD9E007066E6 /* ThesesList */,
+				66FD65F61E3BAD9E007066E6 /* ThesesDetailedList */,
 				66FD66011E3BAD9E007066E6 /* ThesisDetail */,
 				66FD66051E3BAD9E007066E6 /* UserDetails */,
 				66FD660F1E3BAD9E007066E6 /* UsosList */,
@@ -2097,12 +2097,13 @@
 			path = Terms;
 			sourceTree = "<group>";
 		};
-		66FD65F61E3BAD9E007066E6 /* ThesesList */ = {
+		66FD65F61E3BAD9E007066E6 /* ThesesDetailedList */ = {
 			isa = PBXGroup;
 			children = (
 				66FD65F71E3BAD9E007066E6 /* ThesesTableViewController.swift */,
 				66FD65F81E3BAD9E007066E6 /* Views */,
 			);
+			name = ThesesDetailedList;
 			path = ThesesList;
 			sourceTree = "<group>";
 		};

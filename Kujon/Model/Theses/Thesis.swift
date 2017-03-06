@@ -20,8 +20,26 @@ struct Thesis : Decodable{
                 faculty: j => "faculty",
                 id: j => "id",
                 title: j => "title",
-                type: j => "type",
+                type: Thesis.mapThesisType(j => "type"),
                 supervisors: j => "supervisors")
+    }
+
+
+    static func mapThesisType(_ type: String) -> String {
+        switch type {
+        case "doctoral":
+            return StringHolder.thesisTypeDoctoral
+        case "master":
+            return StringHolder.thesisTypeMaster
+        case "licentiate":
+            return StringHolder.thesisTypeLicentiate
+        case "engineer":
+            return StringHolder.thesisTypeEngineer
+        case "postgraduate":
+            return StringHolder.thesisTypePostgraduate
+        default:
+            return StringHolder.none
+        }
     }
 
 }

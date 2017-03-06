@@ -77,7 +77,7 @@ struct ThesisSearchInside: Decodable {
         return try ThesisSearchInside(
                 id: j => "id",
                 title: j => "title",
-                type: j => "type",
+                type: Thesis.mapThesisType(j => "type"),
                 authors: try? j => "authors",
                 supervisors: try? j => "supervisors",
                 faculty: try? j => "faculty")

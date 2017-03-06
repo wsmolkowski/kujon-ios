@@ -28,7 +28,7 @@ class ThesisDetailTableViewController: UITableViewController {
     private let itemCellHeight: CGFloat = 50.0
     private let itemHeaderHeight: CGFloat = 50.0
     private let headerCellId: String = "headerCellId"
-    private let headerCellHeight: CGFloat = 150.0
+    private let headerCellHeight: CGFloat = 76.0
     private let sectionsCount: Int = 4
 
     var thesis: ThesisSearchInside?
@@ -83,10 +83,6 @@ class ThesisDetailTableViewController: UITableViewController {
         return section == .header ? 0.0 : itemHeaderHeight
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let section = SectionMap.sectionForIndex(indexPath.section)
-        return section == .header ? headerCellHeight : itemCellHeight
-    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = SectionMap.sectionForIndex(indexPath.section)

@@ -200,7 +200,10 @@ class StringHolder {
     static let noFilesDescription = "Aby dodać do przedmiotu plik lub notatkę, wybierz + w górnym rogu."
     static let noMessegesTitle = "Brak wiadomości"
 
-
-
+    static let thesisTypeDoctoral = "Praca doktorska"
+    static let thesisTypeMaster = "Praca magisterska"
+    static let thesisTypeLicentiate = "Praca licencjacka"
+    static let thesisTypeEngineer = "Praca inżynierska"
+    static let thesisTypePostgraduate = "Praca podyplomowa"
 
 }

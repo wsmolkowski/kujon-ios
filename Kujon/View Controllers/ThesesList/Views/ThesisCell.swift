@@ -50,7 +50,7 @@ class ThesisCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource {
 
     static let itemCellHeight: CGFloat = 43.0
     static let itemHeaderHeight: CGFloat = 30.0
-    static let headerCellHeight: CGFloat = 119.0
+    static let headerCellHeight: CGFloat = 76.0
     static let sectionSeparatorHeight: CGFloat = 44
     static let sectionsCount: Int = 5
 
