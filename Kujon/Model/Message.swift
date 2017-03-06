@@ -11,20 +11,23 @@ import Decodable
 
 
 struct Message {
-    let createdTime:String
+    let createdTime:Date
     let from:String
     let message:String
     let type:String
+
+
 }
+extension Message: Decodable {
 
-
-extension Message:Decodable{
     static func decode(_ j: Any) throws -> Message {
-        return try Message(createdTime: j => "created_time",
+        let date: Date = Date.stringToDateWithClock(try j => "created_time")
+        return try Message(createdTime: date,
                            from: j => "from",
                            message: j => "message",
                            type: j => "typ")
     }
+
 }
 
 extension Message: SortKeyProviding {

@@ -23,9 +23,7 @@ class MessageDetailViewController: UIViewController {
 
         if let message = message {
             senderLabel.text = message.from
-            if let dateString = Date.stringFromFormatWithClockString(message.createdTime) {
-                dateLabel.text = dateString
-            }
+            dateLabel.text = message.createdTime.toFileEventDateTime()
             messageLabel.text = message.message
         }
     }

@@ -23,6 +23,9 @@ class EmptyStateView: UIView {
         return EmptyStateView.alertView(parentBounds: parentBounds, imageName: "empty-state-cactus", title: StringHolder.noFilesTitle, description: StringHolder.noFilesDescription, descriptionLabelHeight: 60.0, offsetY: 100.0)
     }
 
+    internal static func showNoMessegesAlert(inParent view: UIView) {
+        EmptyStateView.showAlert(inParent: view, imageName: nil, title: StringHolder.noMessages, offsetY: 50.0)
+    }
 
     // Generic alerts
 

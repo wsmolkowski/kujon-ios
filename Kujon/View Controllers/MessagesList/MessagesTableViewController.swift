@@ -80,7 +80,7 @@ class MessagesTableViewController: RefreshingTableViewController, NavigationDele
         if let backgroundImage = backgroundImage {
             var frame = backgroundImage.frame
             let originX = view.bounds.midX - backgroundImage.frame.width/2
-            let originY = view.bounds.midY - backgroundImage.frame.height/2 - 150
+            let originY = view.bounds.midY - backgroundImage.frame.height/2 - 100
             frame.origin = CGPoint(x: originX, y: originY)
             backgroundImage.frame = frame
             backgroundImage.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin]
@@ -94,8 +94,13 @@ class MessagesTableViewController: RefreshingTableViewController, NavigationDele
         backgroundLabel = UILabel(frame: frame)
         backgroundLabel?.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin]
         backgroundLabel!.textAlignment = .center
-        backgroundLabel!.attributedText = message.toAttributedStringWithFont(UIFont.kjnFontLatoRegular(size: 17)!, color: UIColor.kujonDarkTextColor())
+        backgroundLabel!.attributedText = message.toAttributedStringWithFont(UIFont.kjnFontLatoRegular(size: 19)!, color: UIColor.kujonDarkTextColor())
         view.addSubview(backgroundLabel!)
+    }
+
+    private func updateNoMessagesInfo(show: Bool) {
+    backgroundLabel?.isHidden = !show
+    backgroundImage?.isHidden = !show
     }
 
     // MARK: Hamburger button
@@ -116,10 +121,9 @@ class MessagesTableViewController: RefreshingTableViewController, NavigationDele
     // MARK: MessageProviderDelegate
 
     func onMessageLoaded(_ message: Array<Message>) {
-        allMessages = message
-        filteredMessages = message
-        backgroundLabel?.isHidden = !message.isEmpty
-        backgroundImage?.isHidden = !message.isEmpty
+        allMessages = message.sorted { $0.createdTime > $1.createdTime}
+        filteredMessages = allMessages
+        updateNoMessagesInfo(show: allMessages.isEmpty)
         if !message.isEmpty {
             addSearchController()
         }
@@ -134,8 +138,7 @@ class MessagesTableViewController: RefreshingTableViewController, NavigationDele
             loadData()
             return
         }
-        presentAlertWithMessage(StringHolder.errorRetrievingMessages, title: StringHolder.errorAlertTitle)
-
+        updateNoMessagesInfo(show: true)
     }
 
     func onUsosDown() {

@@ -198,7 +198,7 @@ class StringHolder {
     static let searchResultsNotFound = "Brak wyników wyszukiwania"
     static let noFilesTitle = "brak plików i notatek"
     static let noFilesDescription = "Aby dodać do przedmiotu plik lub notatkę, wybierz + w górnym rogu."
-
+    static let noMessegesTitle = "Brak wiadomości"
 
 
 
