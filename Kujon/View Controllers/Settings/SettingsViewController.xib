@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -17,8 +18,10 @@
             <connections>
                 <outlet property="appVersionLabel" destination="giQ-s7-oOq" id="6Ay-or-hGp"/>
                 <outlet property="calendarSyncSwitch" destination="2gI-kf-DdS" id="5yY-5J-OdV"/>
-                <outlet property="hiddenNotificationsButton" destination="GUH-nb-zMr" id="pag-mN-hUA"/>
-                <outlet property="notificationSwitch" destination="5uV-88-Sd5" id="ej2-co-Tsq"/>
+                <outlet property="fileNotificationsSwitch" destination="PdM-Ty-T7U" id="u3d-ts-caD"/>
+                <outlet property="gradeNotificationsSwitch" destination="5uV-88-Sd5" id="yT8-5o-XyO"/>
+                <outlet property="hiddenFileNotificationsButton" destination="RGV-JG-Uwk" id="QA3-if-ARj"/>
+                <outlet property="hiddenGradeNotificationsButton" destination="GUH-nb-zMr" id="AWM-Fq-CAa"/>
                 <outlet property="spinner" destination="mic-wh-eEW" id="tsm-N3-UG9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -32,7 +35,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="si3-Mz-eSa" userLabel="Settings Stack">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="503"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="575"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ak5-KQ-hCq" userLabel="separator view">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
@@ -41,8 +44,8 @@
                                         <constraint firstAttribute="height" constant="30" id="i4r-lK-nOy"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DsQ-9c-FL4" userLabel="container notyfikacje">
-                                    <rect key="frame" x="0.0" y="30" width="375" height="48"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DsQ-9c-FL4" userLabel="container notyfikacje grades">
+                                    <rect key="frame" x="0.0" y="30" width="375" height="60"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ty-jt-RO9" userLabel="top_separator">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -52,46 +55,93 @@
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="qOi-nC-1Ut"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgD-Vd-UHs">
-                                            <rect key="frame" x="10" y="1" width="300" height="47"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powiadomienia o ocenach i sprawdzianach" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJY-Cm-Rcg">
+                                            <rect key="frame" x="8" y="0.0" width="297" height="60"/>
                                             <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
-                                            <state key="normal" title="Powiadomienia">
-                                                <color key="titleColor" red="0.16470588743686676" green="0.20000000298023224" blue="0.24313725531101227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                        </button>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5uV-88-Sd5">
-                                            <rect key="frame" x="310" y="9" width="51" height="31"/>
+                                            <color key="textColor" red="0.16470588235294117" green="0.20000000000000001" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5uV-88-Sd5">
+                                            <rect key="frame" x="310" y="15" width="51" height="31"/>
                                             <connections>
-                                                <action selector="notificationsSwitchDidChange:" destination="-1" eventType="valueChanged" id="TXy-jV-Sjr"/>
+                                                <action selector="gradeNotificationsSwitchDidChange:" destination="-1" eventType="valueChanged" id="qqK-Ye-Y9P"/>
                                             </connections>
                                         </switch>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUH-nb-zMr" userLabel="hiddenButton">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <connections>
-                                                <action selector="notificationsButtonDidTap:" destination="-1" eventType="touchUpInside" id="drO-DY-6sq"/>
+                                                <action selector="gradeNotificationsButtonDidTap:" destination="-1" eventType="touchUpInside" id="qB7-2s-XWN"/>
                                             </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="1ty-jt-RO9" firstAttribute="top" secondItem="DsQ-9c-FL4" secondAttribute="top" id="03w-uf-yXZ"/>
-                                        <constraint firstAttribute="trailing" secondItem="5uV-88-Sd5" secondAttribute="trailing" constant="16" id="5iZ-f8-MVH"/>
                                         <constraint firstAttribute="trailing" secondItem="1ty-jt-RO9" secondAttribute="trailing" id="8dY-SQ-bkS"/>
                                         <constraint firstAttribute="trailing" secondItem="GUH-nb-zMr" secondAttribute="trailing" id="CWg-Ci-1Ma"/>
-                                        <constraint firstItem="qgD-Vd-UHs" firstAttribute="leading" secondItem="DsQ-9c-FL4" secondAttribute="leading" constant="10" id="Cs2-1v-9uZ"/>
-                                        <constraint firstAttribute="height" constant="48" id="JWm-hL-kby"/>
-                                        <constraint firstItem="5uV-88-Sd5" firstAttribute="leading" secondItem="qgD-Vd-UHs" secondAttribute="trailing" id="UpZ-mM-6kd"/>
+                                        <constraint firstAttribute="height" constant="60" id="JWm-hL-kby"/>
+                                        <constraint firstItem="SJY-Cm-Rcg" firstAttribute="leading" secondItem="DsQ-9c-FL4" secondAttribute="leadingMargin" id="LGq-ig-noe"/>
                                         <constraint firstItem="GUH-nb-zMr" firstAttribute="top" secondItem="DsQ-9c-FL4" secondAttribute="top" id="Zda-SX-vyM"/>
+                                        <constraint firstAttribute="trailing" secondItem="5uV-88-Sd5" secondAttribute="trailing" constant="16" id="aBj-PX-i0q"/>
                                         <constraint firstItem="5uV-88-Sd5" firstAttribute="centerY" secondItem="DsQ-9c-FL4" secondAttribute="centerY" id="c0c-YZ-EeT"/>
                                         <constraint firstItem="GUH-nb-zMr" firstAttribute="leading" secondItem="DsQ-9c-FL4" secondAttribute="leading" id="dCA-Q0-cLV"/>
-                                        <constraint firstAttribute="bottom" secondItem="qgD-Vd-UHs" secondAttribute="bottom" id="elw-oB-Hst"/>
-                                        <constraint firstItem="qgD-Vd-UHs" firstAttribute="top" secondItem="1ty-jt-RO9" secondAttribute="bottom" id="kRx-wR-DwQ"/>
+                                        <constraint firstItem="5uV-88-Sd5" firstAttribute="leading" secondItem="SJY-Cm-Rcg" secondAttribute="trailing" constant="5" id="ela-VM-FnU"/>
+                                        <constraint firstItem="SJY-Cm-Rcg" firstAttribute="top" secondItem="DsQ-9c-FL4" secondAttribute="top" id="iBI-gh-a8j"/>
                                         <constraint firstItem="1ty-jt-RO9" firstAttribute="leading" secondItem="DsQ-9c-FL4" secondAttribute="leading" id="lky-lT-6ze"/>
+                                        <constraint firstAttribute="bottom" secondItem="SJY-Cm-Rcg" secondAttribute="bottom" id="mlv-nj-5XM"/>
                                         <constraint firstAttribute="bottom" secondItem="GUH-nb-zMr" secondAttribute="bottom" id="qaw-QE-lUH"/>
                                     </constraints>
                                 </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NoA-fm-5pp" userLabel="container notyfikacje files">
+                                    <rect key="frame" x="0.0" y="90" width="375" height="60"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QSB-Ei-gD1" userLabel="top_separator">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                                            <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="0Ce-eC-5cs"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="40E-T1-MQj"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powiadomienia o nowych plikach i notatkach" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BM5-pi-cAZ">
+                                            <rect key="frame" x="8" y="0.0" width="297" height="60"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                            <color key="textColor" red="0.16470588235294117" green="0.20000000000000001" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PdM-Ty-T7U">
+                                            <rect key="frame" x="310" y="15" width="51" height="31"/>
+                                            <connections>
+                                                <action selector="fileNotificationsSwitchDidChange:" destination="-1" eventType="valueChanged" id="hjZ-WQ-rKM"/>
+                                            </connections>
+                                        </switch>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RGV-JG-Uwk" userLabel="hiddenButton">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <connections>
+                                                <action selector="fileNotificationsButtonDidTap:" destination="-1" eventType="touchUpInside" id="BdB-S1-5Yc"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="PdM-Ty-T7U" secondAttribute="trailing" constant="16" id="04d-97-jRg"/>
+                                        <constraint firstItem="RGV-JG-Uwk" firstAttribute="top" secondItem="NoA-fm-5pp" secondAttribute="top" id="66I-M1-YuW"/>
+                                        <constraint firstItem="PdM-Ty-T7U" firstAttribute="centerY" secondItem="NoA-fm-5pp" secondAttribute="centerY" id="8aq-yv-nM9"/>
+                                        <constraint firstAttribute="height" constant="60" id="AN0-mO-wkT"/>
+                                        <constraint firstItem="BM5-pi-cAZ" firstAttribute="top" secondItem="NoA-fm-5pp" secondAttribute="top" id="EvH-eG-9Lr"/>
+                                        <constraint firstItem="BM5-pi-cAZ" firstAttribute="leading" secondItem="NoA-fm-5pp" secondAttribute="leadingMargin" id="G7y-Uc-tXy"/>
+                                        <constraint firstAttribute="bottom" secondItem="RGV-JG-Uwk" secondAttribute="bottom" id="Ohr-Y1-f9I"/>
+                                        <constraint firstItem="RGV-JG-Uwk" firstAttribute="leading" secondItem="NoA-fm-5pp" secondAttribute="leading" id="W9z-jV-j6f"/>
+                                        <constraint firstAttribute="bottom" secondItem="BM5-pi-cAZ" secondAttribute="bottom" id="Wk1-g1-vc5"/>
+                                        <constraint firstItem="QSB-Ei-gD1" firstAttribute="leading" secondItem="NoA-fm-5pp" secondAttribute="leading" id="e7c-8R-WtE"/>
+                                        <constraint firstItem="QSB-Ei-gD1" firstAttribute="top" secondItem="NoA-fm-5pp" secondAttribute="top" id="nyT-CO-sOw"/>
+                                        <constraint firstAttribute="trailing" secondItem="QSB-Ei-gD1" secondAttribute="trailing" id="uU8-m2-TFK"/>
+                                        <constraint firstAttribute="trailing" secondItem="RGV-JG-Uwk" secondAttribute="trailing" id="yC1-bq-D0N"/>
+                                        <constraint firstItem="PdM-Ty-T7U" firstAttribute="leading" secondItem="BM5-pi-cAZ" secondAttribute="trailing" constant="5" id="yDw-cd-7pE"/>
+                                    </constraints>
+                                </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWq-PG-mtp" userLabel="container calendar sync">
-                                    <rect key="frame" x="0.0" y="78" width="375" height="60"/>
+                                    <rect key="frame" x="0.0" y="150" width="375" height="60"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBn-Tb-91v" userLabel="top_separator">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -109,10 +159,10 @@
                                             </connections>
                                         </switch>
                                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReN-U3-xNZ">
-                                            <rect key="frame" x="10" y="1" width="300" height="45"/>
+                                            <rect key="frame" x="10" y="1" width="295" height="45"/>
                                             <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                             <state key="normal" title="Synchronizuj kalendarz Google">
-                                                <color key="titleColor" red="0.1647058874" green="0.20000000300000001" blue="0.24313725529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleColor" red="0.16470588235294117" green="0.20000000000000001" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opcja dostępna tylko dla użytkowników konta Google" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8yr-qa-gAx" userLabel="wymaganie">
@@ -126,7 +176,7 @@
                                     <constraints>
                                         <constraint firstItem="8yr-qa-gAx" firstAttribute="top" secondItem="ZBn-Tb-91v" secondAttribute="bottom" constant="34" id="2sE-Wx-VH0"/>
                                         <constraint firstItem="ZBn-Tb-91v" firstAttribute="leading" secondItem="nWq-PG-mtp" secondAttribute="leading" id="EpQ-7Z-Q7h"/>
-                                        <constraint firstItem="2gI-kf-DdS" firstAttribute="leading" secondItem="ReN-U3-xNZ" secondAttribute="trailing" id="S81-JE-q9n"/>
+                                        <constraint firstItem="2gI-kf-DdS" firstAttribute="leading" secondItem="ReN-U3-xNZ" secondAttribute="trailing" constant="5" id="S81-JE-q9n"/>
                                         <constraint firstAttribute="trailing" secondItem="ZBn-Tb-91v" secondAttribute="trailing" id="S9B-Ad-ZuM"/>
                                         <constraint firstItem="ReN-U3-xNZ" firstAttribute="leading" secondItem="nWq-PG-mtp" secondAttribute="leading" constant="10" id="Yql-Nc-W5G"/>
                                         <constraint firstItem="2gI-kf-DdS" firstAttribute="centerY" secondItem="nWq-PG-mtp" secondAttribute="centerY" id="a7Q-MD-twx"/>
@@ -141,7 +191,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X3I-hl-Sm2" userLabel="separator view">
-                                    <rect key="frame" x="0.0" y="138" width="375" height="38"/>
+                                    <rect key="frame" x="0.0" y="210" width="375" height="38"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HGf-Gq-OnT" userLabel="top_separator">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -161,7 +211,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MC6-th-e2q" userLabel="container logout">
-                                    <rect key="frame" x="0.0" y="176" width="375" height="48"/>
+                                    <rect key="frame" x="0.0" y="248" width="375" height="48"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gzg-c2-bGV" userLabel="top_separator">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -203,7 +253,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owO-Fi-cFf" userLabel="container regulamin">
-                                    <rect key="frame" x="0.0" y="224" width="375" height="48"/>
+                                    <rect key="frame" x="0.0" y="296" width="375" height="48"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZjH-E5-KM3" userLabel="top_separator">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -246,7 +296,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YoN-bz-y9l" userLabel="container sharing">
-                                    <rect key="frame" x="0.0" y="272" width="375" height="48"/>
+                                    <rect key="frame" x="0.0" y="344" width="375" height="48"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tyv-ce-SSe" userLabel="top_separator">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -290,7 +340,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3uj-GF-NSQ" userLabel="container message">
-                                    <rect key="frame" x="0.0" y="320" width="375" height="48"/>
+                                    <rect key="frame" x="0.0" y="392" width="375" height="48"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n6K-7I-yhN" userLabel="top_separator">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -335,7 +385,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="En1-M8-frT" userLabel="container delete">
-                                    <rect key="frame" x="0.0" y="368" width="375" height="48"/>
+                                    <rect key="frame" x="0.0" y="440" width="375" height="48"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hNo-Kq-v9A" userLabel="top_separator">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -380,7 +430,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tjr-mP-zfw" userLabel="separator view">
-                                    <rect key="frame" x="0.0" y="416" width="375" height="38"/>
+                                    <rect key="frame" x="0.0" y="488" width="375" height="38"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0C-iw-sE4" userLabel="top_separator">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -400,7 +450,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zk2-7h-NWP" userLabel="container version">
-                                    <rect key="frame" x="0.0" y="454" width="375" height="48"/>
+                                    <rect key="frame" x="0.0" y="526" width="375" height="48"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hg0-YL-IJk" userLabel="top_separator">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -445,7 +495,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogp-1R-uc5" userLabel="top_separator">
-                                    <rect key="frame" x="0.0" y="502" width="375" height="1"/>
+                                    <rect key="frame" x="0.0" y="574" width="375" height="1"/>
                                     <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="9Zi-6m-AHD"/>

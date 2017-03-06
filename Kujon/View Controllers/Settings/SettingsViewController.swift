@@ -14,8 +14,13 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
     var loginMenager: UserLogin! = nil
     var deleteAccountProvider = ProvidersProviderImpl.sharedInstance.provideDeleteAccount()
     @IBOutlet weak var spinner: SpinnerView!
-    @IBOutlet weak var notificationSwitch: UISwitch!
-    @IBOutlet weak var hiddenNotificationsButton: UIButton!
+
+    @IBOutlet weak var gradeNotificationsSwitch: UISwitch!
+    @IBOutlet weak var hiddenGradeNotificationsButton: UIButton!
+
+    @IBOutlet weak var fileNotificationsSwitch: UISwitch!
+    @IBOutlet weak var hiddenFileNotificationsButton: UIButton!
+
 
     @IBOutlet weak var calendarSyncSwitch: UISwitch!
     @IBOutlet weak var appVersionLabel: UILabel!
@@ -33,7 +38,8 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
         deleteAccountProvider.delegate = self
         spinner.isHidden = true
         view.backgroundColor = UIColor.greyBackgroundColor()
-        notificationSwitch.onTintColor = UIColor.kujonBlueColor()
+        gradeNotificationsSwitch.onTintColor = UIColor.kujonBlueColor()
+        fileNotificationsSwitch.onTintColor = UIColor.kujonBlueColor()
         setupNotificationsSwitch()
         calendarSyncSwitch.onTintColor = UIColor.kujonBlueColor()
         updateNotificationsSwitchState()
@@ -119,12 +125,15 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
     }
 
 
-    // MARK: Notifications
+    // MARK: Grade Notifications
 
     private func setupNotificationsSwitch() {
         let systemPushNotificationsEnabled = NotificationsManager.systemPushNotificationsEnabled()
-        notificationSwitch.isEnabled = systemPushNotificationsEnabled
-        hiddenNotificationsButton.isHidden = systemPushNotificationsEnabled
+        gradeNotificationsSwitch.isEnabled = systemPushNotificationsEnabled
+        hiddenGradeNotificationsButton.isHidden = systemPushNotificationsEnabled
+        // TODO: implement
+        fileNotificationsSwitch.isEnabled = true
+        hiddenFileNotificationsButton.isHidden = true
     }
 
     internal func appDidBecomeActive() {
@@ -142,12 +151,12 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
         updateNotificationsSwitchState()
     }
 
-    @IBAction func notificationsSwitchDidChange(_ sender: UISwitch) {
+    @IBAction func gradeNotificationsSwitchDidChange(_ sender: UISwitch) {
         settingsProvider.setOneSignalNotifications(enabled: sender.isOn)
         spinner.isHidden = false
     }
 
-    @IBAction func notificationsButtonDidTap(_ sender: UIButton) {
+    @IBAction func gradeNotificationsButtonDidTap(_ sender: UIButton) {
         presentAlertWithMessage(StringHolder.shouldOpenAppSettingsForNotifications, title: StringHolder.attention, showCancelButton: true) {
             NotificationsManager.openAppSettings()
         }
@@ -155,8 +164,18 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
 
     internal func updateNotificationsSwitchState() {
         let notificationsEnabled = NotificationsManager.systemPushNotificationsEnabled() && userData.oneSignalNotificationsEnabled
-        notificationSwitch.setOn(notificationsEnabled, animated: true)
+        gradeNotificationsSwitch.setOn(notificationsEnabled, animated: true)
     }
+
+    // MARK: File Notifications
+
+    @IBAction func fileNotificationsSwitchDidChange(_ sender: UISwitch) {
+    }
+
+    @IBAction func fileNotificationsButtonDidTap(_ sender: UIButton) {
+    }
+
+
 
     // MARK: Calendar Sync
 
