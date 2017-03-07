@@ -7,23 +7,50 @@ import Foundation
 import UIKit
 
 
-class TermsTableViewController:UITableViewController {
+class TermsTableViewController: UITableViewController {
 
-    var terms:Array<Term> = Array()
-    let cellId = "termCellSuperId"
+
+    private enum SectionMap: Int {
+        case active = 0
+        case inactive
+
+        static func sectionForIndex(_ index:Int) -> SectionMap {
+            if let section = SectionMap(rawValue: index) {
+                return section
+            }
+            fatalError("Invalid section index")
+        }
+    }
+
+    private let inactiveTermCellId = "InactiveTermCell"
+    private let activeTermCellId = "ActiveTermCell"
+    private let sectionsCount: Int = 2
+
+
+    internal var terms: [Term] = []
+
+    internal var activeTerms: [Term]  {
+        return terms.filter { $0.active == true }
+    }
+    internal var inactiveTerms: [Term]  {
+        return terms.filter { $0.active == false }
+    }
+
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationMenuCreator.createNavMenuWithBackButton(self, selector: #selector(TermsTableViewController.back),andTitle: StringHolder.terms)
-        self.tableView.register(UINib(nibName: "TermsTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
-        self.tableView.tableFooterView = UIView()
+        tableView.register(UINib(nibName: "InactiveTermCell", bundle: nil), forCellReuseIdentifier: inactiveTermCellId)
+        tableView.register(UINib(nibName: "ActiveTermCell", bundle: nil), forCellReuseIdentifier: activeTermCellId)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = UIColor.greyBackgroundColor()
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 200
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        self.tableView.reloadData()
-        // Dispose of any resources that can be recreated.
-    }
+
     func setUpTerms(_ terms:Array<Term>){
         self.terms = terms
         self.tableView.reloadData()
@@ -37,37 +64,53 @@ class TermsTableViewController:UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return sectionsCount
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let section = SectionMap.sectionForIndex(section)
 
-        return terms.count
+        switch section {
+        case .active: return activeTerms.count
+        case .inactive: return inactiveTerms.count
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let section = SectionMap.sectionForIndex(section)
+
+        switch section {
+        case .active: return createLabelForSectionTitle("Aktywne")
+        case .inactive: return createLabelForSectionTitle("Nieaktywne")
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: TermsTableViewCell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! TermsTableViewCell
-        let term: Term = self.terms[indexPath.row]
+        let section = SectionMap.sectionForIndex(indexPath.section)
+        switch section {
+        case .active: return provideCellForActiveTerm(at: indexPath)
+        case .inactive: return provideCellForInactiveTerm(at: indexPath)
+        }
 
-        cell.endDateLabel.text = term.endDate
-        cell.endDateLabel.adjustsFontSizeToFitWidth = true
+    }
 
-        cell.endindTimeLabel.text = term.finishDate
-        cell.endindTimeLabel.adjustsFontSizeToFitWidth = true
-        cell.startDateLabel.text = term.startDate
-        cell.startDateLabel.adjustsFontSizeToFitWidth = true
-        cell.termActiveLabel.text = term.active ? StringHolder.yes:StringHolder.no
-        cell.termNameLabel.text = term.name
-        cell.termNumberLabel.text = term.termId
+    private func provideCellForActiveTerm(at indexPath: IndexPath) -> ActiveTermCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: activeTermCellId, for: indexPath) as! ActiveTermCell
+        let term = activeTerms[indexPath.row]
+        cell.configureCell(with: term)
         return cell
     }
 
-
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+    private func provideCellForInactiveTerm(at indexPath: IndexPath) -> InactiveTermCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: inactiveTermCellId, for: indexPath) as! InactiveTermCell
+        let term = inactiveTerms[indexPath.row]
+        cell.configureCell(with: term)
+        return cell
     }
-
 
 }
