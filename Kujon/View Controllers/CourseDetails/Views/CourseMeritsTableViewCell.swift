@@ -64,7 +64,6 @@ class CourseMeritsTableViewCell: UITableViewCell {
     }
 
     private func updateContentLabelState() {
-        self.contentLabel.text = self.isContentLabelFolded ? self.content : self.contentPreview
         self.isContentLabelFolded = !self.isContentLabelFolded
         self.moreButton.setTitle(self.isContentLabelFolded ? StringHolder.more : StringHolder.less, for: .normal)
         self.delegate?.courseMeritsCell(self, didChangeFoldedState: isContentLabelFolded)
