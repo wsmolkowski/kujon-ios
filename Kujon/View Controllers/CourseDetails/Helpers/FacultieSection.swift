@@ -41,4 +41,8 @@ class FacultieSection: SectionHelperProtocol {
         controller?.pushViewController(faculiteController, animated: true)
     }
 
+    func updateState(isFolded: Bool) {
+        // do nothing
+    }
+
 }

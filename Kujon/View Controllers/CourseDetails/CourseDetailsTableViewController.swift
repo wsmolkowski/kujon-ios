@@ -149,9 +149,15 @@ class CourseDetailsTableViewController: RefreshingTableViewController, CourseDet
 
     // MARK: - CourseMeritsTableViewCellDelegate
 
-    func courseMeritsCellDidChangeContent(_ cell: CourseMeritsTableViewCell) {
-        tableView.beginUpdates()
-        tableView.endUpdates()
+    func courseMeritsCell(_ cell: CourseMeritsTableViewCell, didChangeFoldedState isFolded: Bool) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            sectionHelpers[indexPath.section].updateState(isFolded: isFolded)
+            let section = cell.tag - 1000
+            let indexPath = IndexPath(row: 0, section: section)
+            tableView.reloadRows(at: [indexPath], with: .fade)
+        }
+
+
     }
 
 }

@@ -56,4 +56,8 @@ class ClassTypeSection:SectionHelperProtocol {
 //        controller?.pushViewController(textController, animated: true)
     }
 
+    func updateState(isFolded: Bool) {
+        // do nothing
+    }
+
 }

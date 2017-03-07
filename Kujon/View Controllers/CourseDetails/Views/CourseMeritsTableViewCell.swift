@@ -11,7 +11,7 @@ import UIKit
 
 protocol CourseMeritsTableViewCellDelegate: class {
 
-    func courseMeritsCellDidChangeContent(_ cell: CourseMeritsTableViewCell)
+    func courseMeritsCell(_ cell: CourseMeritsTableViewCell, didChangeFoldedState isFolded: Bool)
 }
 
 class CourseMeritsTableViewCell: UITableViewCell {
@@ -41,12 +41,14 @@ class CourseMeritsTableViewCell: UITableViewCell {
 
     }
 
-    internal func configureCellWith(title: String, content: String, showUpperSeparator: Bool = false) {
+    internal func configureCellWith(title: String, content: String, isFolded: Bool, showUpperSeparator: Bool = false, tag: Int) {
+        self.tag = tag
+        isContentLabelFolded = isFolded
         titleLabel.text = title
         self.content = content.trim()
-        contentLabel.text = contentPreview
+        contentLabel.text = self.isContentLabelFolded ? self.contentPreview : self.content
         moreButton.isHidden = content.characters.count <= passusLength
-        moreButton.setTitle(StringHolder.more, for: .normal)
+        moreButton.setTitle(self.isContentLabelFolded ? StringHolder.more : StringHolder.less, for: .normal)
         upperSeparator.isHidden = !showUpperSeparator
     }
 
@@ -65,7 +67,7 @@ class CourseMeritsTableViewCell: UITableViewCell {
         self.contentLabel.text = self.isContentLabelFolded ? self.content : self.contentPreview
         self.isContentLabelFolded = !self.isContentLabelFolded
         self.moreButton.setTitle(self.isContentLabelFolded ? StringHolder.more : StringHolder.less, for: .normal)
-        self.delegate?.courseMeritsCellDidChangeContent(self)
+        self.delegate?.courseMeritsCell(self, didChangeFoldedState: isContentLabelFolded)
     }
 
     // MARK: - Helpers

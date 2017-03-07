@@ -12,6 +12,7 @@ class CourseMeritsBibliographySection: SectionHelperProtocol {
 
     private var bibliography:String?
     let bibliographyCellId = "bibliographyCourseMeritsCellId"
+    private var isFolded: Bool = true
 
 
     func fillUpWithData(_ courseDetails: CourseDetails) {
@@ -37,12 +38,16 @@ class CourseMeritsBibliographySection: SectionHelperProtocol {
     func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath) -> UITableViewCell! {
         let cell = tableView.dequeueReusableCell(withIdentifier: bibliographyCellId, for: position) as! CourseMeritsTableViewCell
         if let bibliography = bibliography {
-            cell.configureCellWith(title: StringHolder.bibliographyTitle, content: bibliography)
+            cell.configureCellWith(title: StringHolder.bibliographyTitle,content: bibliography, isFolded: isFolded, tag: 1004)
         }
         return cell
     }
 
     func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?, setDelegate delegate: AnyObject?) {
         // do nothing
+    }
+
+    func updateState(isFolded: Bool) {
+        self.isFolded = isFolded
     }
 }

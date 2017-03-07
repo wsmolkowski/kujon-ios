@@ -64,5 +64,9 @@ class  SharedFilesSection: SectionHelperProtocol {
         }
         controller?.pushViewController(sharedFilesController, animated: true)
     }
-    
+
+    func updateState(isFolded: Bool) {
+        // do nothing
+    }
+
 }

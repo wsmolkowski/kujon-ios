@@ -20,4 +20,7 @@ protocol SectionHelperProtocol {
     func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath)->UITableViewCell!
 
     func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?, setDelegate delegate: AnyObject?)
+
+    func updateState(isFolded: Bool)
+
 }

@@ -53,4 +53,8 @@ class LecturersSection: SectionHelperProtocol {
         return "lecturersId"
     }
 
+    func updateState(isFolded: Bool) {
+        // do nothing
+    }
+
 }
