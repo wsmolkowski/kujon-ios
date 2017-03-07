@@ -14,7 +14,7 @@ struct Course {
     let termId : String
     let courseName: String
     let courseId : String
-    var filesCount: Int
+    var filesCount: Int?
 }
 
 
@@ -29,7 +29,7 @@ extension Course:Decodable{
                     termId: j => "term_id",
                     courseName: j => "course_name",
                     courseId: j => "course_id",
-                    filesCount: j => "files_count"
+                    filesCount: try? j => "files_count"
         )
     }
 
