@@ -25,7 +25,8 @@ class CourseMeritsTableViewCell: UITableViewCell {
     private var isContentLabelFolded: Bool = true
     private var content = String()
     private var contentPreview: String { return passus(from: content) }
-    @IBOutlet private weak var moreLabel: UILabel!
+
+    @IBOutlet weak var moreButton: UIButton!
 
     // MARK: - Initial section
 
@@ -44,21 +45,28 @@ class CourseMeritsTableViewCell: UITableViewCell {
         titleLabel.text = title
         self.content = content.trim()
         contentLabel.text = contentPreview
-        moreLabel.isHidden = content.characters.count <= passusLength
-        moreLabel.text = StringHolder.more
+        moreButton.isHidden = content.characters.count <= passusLength
+        moreButton.setTitle(StringHolder.more, for: .normal)
         upperSeparator.isHidden = !showUpperSeparator
     }
 
     // MARK: - Actions
 
     func descriptionLabelDidTap(_ tap: UITapGestureRecognizer) {
-        self.contentLabel.text = self.isContentLabelFolded ? self.content : self.contentPreview
-        self.isContentLabelFolded = !self.isContentLabelFolded
-        self.moreLabel.text = self.isContentLabelFolded ? StringHolder.more : StringHolder.less
-        self.delegate?.courseMeritsCellDidChangeContent(self)
-
+        updateContentLabelState()
     }
 
+
+    @IBAction func moreButtonDidTap(_ sender: UIButton) {
+        updateContentLabelState()
+    }
+
+    private func updateContentLabelState() {
+        self.contentLabel.text = self.isContentLabelFolded ? self.content : self.contentPreview
+        self.isContentLabelFolded = !self.isContentLabelFolded
+        self.moreButton.setTitle(self.isContentLabelFolded ? StringHolder.more : StringHolder.less, for: .normal)
+        self.delegate?.courseMeritsCellDidChangeContent(self)
+    }
 
     // MARK: - Helpers
 
