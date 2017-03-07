@@ -48,7 +48,7 @@ class CheckboxCell: UITableViewCell {
         selectionStyle = .none
     }
 
-    internal func configure(with title: String, cellPosition positionType: CellPositionType, isChecked: Bool) {
+    internal func configure(with title: String, cellPosition positionType: CellPositionType, isChecked: Bool, isDisabled: Bool = false) {
 
         self.isChecked = isChecked
         self.titleLabel.text = title
@@ -59,6 +59,10 @@ class CheckboxCell: UITableViewCell {
         case .bottom: setBottomItem()
         case .topAndBottom: setTopAndBottomItem()
         case .universal: setUniversalItem()
+        }
+
+        if isDisabled {
+            checkboxImageView.alpha = 0.6
         }
     }
 

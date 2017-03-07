@@ -290,7 +290,7 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
         let cell = tableView.dequeueReusableCell(withIdentifier: itemCellId, for: indexPath) as! CheckboxCell
         let student = students[indexPath.row]
         let isChecked = selectedStudents.contains(student)
-        cell.configure(with: student.fullName(), cellPosition: .universal, isChecked:isChecked)
+        cell.configure(with: student.fullName(), cellPosition: .universal, isChecked:isChecked, isDisabled: !(file.fileSharedByMe ?? false))
         return cell
     }
 
@@ -332,6 +332,10 @@ class FileDetailsController: UITableViewController, CourseDetailsProviderDelegat
     private func updateCheckboxState(at indexPath:IndexPath) {
         let section = SectionMap.sectionForIndex(indexPath.section)
         guard section == .students else {
+            return
+        }
+
+        guard let fileSharedByMe = file.fileSharedByMe, fileSharedByMe == true else {
             return
         }
 
