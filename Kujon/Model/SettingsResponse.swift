@@ -19,8 +19,7 @@ extension Settings: Decodable {
     static func decode(_ j: Any) throws -> Settings {
         return Settings(
             oneSignalGradeNotificationsEnabled: try? j => "event_enable",
-            // TODO: fill in field
-            oneSignalFileNotificationsEnabled: try? j => "xxxxxxxx",
+            oneSignalFileNotificationsEnabled: try? j => "event_files_enable",
             calendarSyncEnabled: try? j => "google_callendar_enable"
         )
     }

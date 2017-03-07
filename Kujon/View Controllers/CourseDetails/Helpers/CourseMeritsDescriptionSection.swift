@@ -1,5 +1,5 @@
 //
-//  CourseMeritsSection.swift
+//  CourseMeritsDescriptionSection
 //  Kujon
 //
 //  Created by Adam on 24.10.2016.
@@ -8,19 +8,14 @@
 
 import UIKit
 
-class CourseMeritsSection: SectionHelperProtocol {
+class CourseMeritsDescriptionSection: SectionHelperProtocol {
 
     private var description:String?
-    private var bibliography:String?
-    private var assessmentCiteria:String?
-
     let descriptionCellId = "courseMeritsCellId"
 
 
     func fillUpWithData(_ courseDetails: CourseDetails) {
         description = courseDetails.description
-        bibliography = courseDetails.bibliography
-        assessmentCiteria = courseDetails.assessmentCriteria
     }
 
     func registerView(_ tableView: UITableView) {
@@ -41,10 +36,9 @@ class CourseMeritsSection: SectionHelperProtocol {
 
     func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath) -> UITableViewCell! {
         let cell = tableView.dequeueReusableCell(withIdentifier: descriptionCellId, for: position) as! CourseMeritsTableViewCell
-        if let description = description, let bibliography = bibliography, let assessmentCiteria = assessmentCiteria {
-            cell.configureCellWith(description: description, bibliography: bibliography, assessmentCriteria: assessmentCiteria)
+        if let description = description {
+            cell.configureCellWith(title: StringHolder.descriptionTitle, content: description, showUpperSeparator: true)
         }
-        cell.layoutIfNeeded()
         return cell
     }
 

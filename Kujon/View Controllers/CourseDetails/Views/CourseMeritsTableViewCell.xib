@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E144f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E175b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Lato-Italic.ttf">
+            <string>Lato-Italic</string>
+        </array>
         <array key="Lato-Regular.ttf">
             <string>Lato-Regular</string>
         </array>
@@ -16,82 +19,73 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="184" id="KGk-i7-Jjw" customClass="CourseMeritsTableViewCell" customModule="Kujon" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="328" height="184"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="78" id="KGk-i7-Jjw" customClass="CourseMeritsTableViewCell" customModule="Kujon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="328" height="78"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="328" height="183.66666666666666"/>
+                <rect key="frame" x="0.0" y="0.0" width="328" height="77.666666666666671"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JYH-AH-iSR" userLabel="separator">
+                        <rect key="frame" x="0.0" y="0.0" width="328" height="1"/>
+                        <color key="backgroundColor" red="0.1647058874" green="0.20000000300000001" blue="0.24313725529999999" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="u6K-fl-yJZ"/>
+                        </constraints>
+                    </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dSa-AX-G6h">
-                        <rect key="frame" x="8" y="23" width="312" height="137.66666666666666"/>
+                        <rect key="frame" x="8" y="10" width="312" height="57.666666666666671"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ka0-i3-8B9">
                                 <rect key="frame" x="0.0" y="0.0" width="312" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="7jX-EV-SKf"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.1647058874" green="0.20000000300000001" blue="0.24313725529999999" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" placeholderIntrinsicWidth="312" placeholderIntrinsicHeight="22.666666666666671" text="descriptionLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iT-3j-DLc">
-                                <rect key="frame" x="0.0" y="18" width="312" height="47.666666666666671"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" placeholderIntrinsicWidth="312" placeholderIntrinsicHeight="22.666666666666671" text="descriptionLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iT-3j-DLc">
+                                <rect key="frame" x="0.0" y="18" width="312" height="25.666666666666664"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Bibliografia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eY-JM-Ncr">
-                                <rect key="frame" x="0.0" y="65.666666666666671" width="312" height="18"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="312" placeholderIntrinsicHeight="18" text="bibliographyLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TsO-bD-bDq">
-                                <rect key="frame" x="0.0" y="83.666666666666671" width="312" height="18"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kryteria oceny" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zg9-sJ-52c">
-                                <rect key="frame" x="0.0" y="101.66666666666666" width="312" height="17.999999999999986"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="312" placeholderIntrinsicHeight="18" text="assessmentCriteriaLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLJ-ZA-UNo">
-                                <rect key="frame" x="0.0" y="119.66666666666666" width="312" height="18"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rozwiń" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pJ-Oi-sL4" userLabel="descriptionMore">
+                                <rect key="frame" x="0.0" y="43.666666666666671" width="312" height="14.000000000000007"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="KhG-25-X7s"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Italic" family="Lato" pointSize="13"/>
+                                <color key="textColor" red="0.1647058874" green="0.20000000300000001" blue="0.24313725529999999" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="zg9-sJ-52c" secondAttribute="trailing" id="1iw-QU-iZa"/>
                             <constraint firstAttribute="trailing" secondItem="6iT-3j-DLc" secondAttribute="trailing" id="9Hs-Yy-j5J"/>
-                            <constraint firstItem="xLJ-ZA-UNo" firstAttribute="leading" secondItem="dSa-AX-G6h" secondAttribute="leading" id="FFJ-Dg-FYU"/>
-                            <constraint firstItem="zg9-sJ-52c" firstAttribute="leading" secondItem="dSa-AX-G6h" secondAttribute="leading" id="Htw-18-wh1"/>
-                            <constraint firstAttribute="trailing" secondItem="TsO-bD-bDq" secondAttribute="trailing" id="IYZ-gs-Cuj"/>
                             <constraint firstItem="ka0-i3-8B9" firstAttribute="leading" secondItem="dSa-AX-G6h" secondAttribute="leading" id="OgO-Yg-Nh9"/>
-                            <constraint firstItem="2eY-JM-Ncr" firstAttribute="leading" secondItem="dSa-AX-G6h" secondAttribute="leading" id="QZ6-ax-9Nn"/>
                             <constraint firstItem="6iT-3j-DLc" firstAttribute="leading" secondItem="dSa-AX-G6h" secondAttribute="leading" id="Wn9-8A-UhF"/>
-                            <constraint firstAttribute="trailing" secondItem="2eY-JM-Ncr" secondAttribute="trailing" id="oc9-DV-77t"/>
-                            <constraint firstAttribute="trailing" secondItem="xLJ-ZA-UNo" secondAttribute="trailing" id="qg1-W1-blJ"/>
                             <constraint firstAttribute="trailing" secondItem="ka0-i3-8B9" secondAttribute="trailing" id="r0D-C5-MjL"/>
-                            <constraint firstItem="TsO-bD-bDq" firstAttribute="leading" secondItem="dSa-AX-G6h" secondAttribute="leading" id="rBB-J7-VYG"/>
                         </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="dSa-AX-G6h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="15" id="1eu-i9-Vln"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="dSa-AX-G6h" secondAttribute="bottom" constant="15" id="8fn-tg-jpK"/>
+                    <constraint firstItem="dSa-AX-G6h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="1eu-i9-Vln"/>
+                    <constraint firstAttribute="bottom" secondItem="dSa-AX-G6h" secondAttribute="bottom" constant="10" id="8fn-tg-jpK"/>
+                    <constraint firstItem="JYH-AH-iSR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ElW-F5-BlQ"/>
                     <constraint firstAttribute="trailingMargin" secondItem="dSa-AX-G6h" secondAttribute="trailing" id="LxA-Ou-BSy"/>
+                    <constraint firstItem="JYH-AH-iSR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="SOb-Km-IMk"/>
                     <constraint firstAttribute="leadingMargin" secondItem="dSa-AX-G6h" secondAttribute="leading" id="SlZ-gH-afU"/>
+                    <constraint firstAttribute="trailing" secondItem="JYH-AH-iSR" secondAttribute="trailing" id="ct8-le-8Hz"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="assessmentCriteriaLabel" destination="xLJ-ZA-UNo" id="JY1-4h-MPT"/>
-                <outlet property="bibliographyLabel" destination="TsO-bD-bDq" id="jO1-fv-S2x"/>
-                <outlet property="descriptionLabel" destination="6iT-3j-DLc" id="ltW-ge-g8h"/>
+                <outlet property="contentLabel" destination="6iT-3j-DLc" id="R1x-JF-8hC"/>
+                <outlet property="moreLabel" destination="4pJ-Oi-sL4" id="Zg8-uO-17c"/>
+                <outlet property="titleLabel" destination="ka0-i3-8B9" id="dzh-do-e9i"/>
+                <outlet property="upperSeparator" destination="JYH-AH-iSR" id="Om2-iS-9ua"/>
             </connections>
-            <point key="canvasLocation" x="31" y="-190"/>
+            <point key="canvasLocation" x="31" y="-242"/>
         </tableViewCell>
     </objects>
 </document>
