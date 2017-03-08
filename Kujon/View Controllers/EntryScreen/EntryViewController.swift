@@ -34,9 +34,12 @@ class EntryViewController: UIViewController,
     @IBOutlet weak var rejestrujacLabel: UILabel!
     private let logoutProvider = LogoutProvider()
     private let settingsProvider: SettingsProvider = SettingsProvider()
+    @IBOutlet weak var registerButton: UIButton!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         UIApplication.shared.statusBarStyle = .lightContent
         navigationController?.navigationBar.barTintColor = UIColor.kujonBlueColor()
         navigationController?.navigationBar.tintColor = UIColor.white
@@ -48,6 +51,7 @@ class EntryViewController: UIViewController,
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         loginButton.delegate = self
         self.configProvider.delegate = self
+
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
 
@@ -65,6 +69,12 @@ class EntryViewController: UIViewController,
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(EntryViewController.showTerms))
         tapGestureRecognizer.numberOfTapsRequired = 1
+
+        googleLogInButton.style = .wide
+
+        registerButton.layer.cornerRadius = 3.0
+        registerButton.layer.masksToBounds = true
+
         rejestrujacLabel.isUserInteractionEnabled = true
         rejestrujacLabel.addGestureRecognizer(tapGestureRecognizer)
 
@@ -74,6 +84,7 @@ class EntryViewController: UIViewController,
         settingsProvider.delegate = nil
 
     }
+
 
     func toggleAPIMode(_ sender: UITapGestureRecognizer) {
         RestApiManager.toggleAPIMode()
