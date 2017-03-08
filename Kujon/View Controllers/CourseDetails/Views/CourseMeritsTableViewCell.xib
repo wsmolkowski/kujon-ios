@@ -23,7 +23,7 @@
             <rect key="frame" x="0.0" y="0.0" width="328" height="78"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="328" height="77.666666666666671"/>
+                <rect key="frame" x="0.0" y="0.0" width="328" height="77"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JYH-AH-iSR" userLabel="separator">
@@ -34,7 +34,7 @@
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dSa-AX-G6h">
-                        <rect key="frame" x="8" y="10" width="312" height="57.666666666666671"/>
+                        <rect key="frame" x="8" y="10" width="312" height="58"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ka0-i3-8B9">
                                 <rect key="frame" x="0.0" y="0.0" width="312" height="18"/>
@@ -46,20 +46,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" placeholderIntrinsicWidth="312" placeholderIntrinsicHeight="22.666666666666671" text="descriptionLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iT-3j-DLc">
-                                <rect key="frame" x="0.0" y="18" width="312" height="25.666666666666664"/>
+                                <rect key="frame" x="0.0" y="18" width="312" height="26"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rozwiń" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pJ-Oi-sL4" userLabel="descriptionMore">
-                                <rect key="frame" x="0.0" y="43.666666666666671" width="312" height="14.000000000000007"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGX-2q-S4k">
+                                <rect key="frame" x="0.0" y="44" width="312" height="14"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="14" id="KhG-25-X7s"/>
+                                    <constraint firstAttribute="height" constant="14" id="6eF-GR-UHh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Italic" family="Lato" pointSize="13"/>
-                                <color key="textColor" red="0.1647058874" green="0.20000000300000001" blue="0.24313725529999999" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" title="rozwiń">
+                                    <color key="titleColor" red="0.1647058874" green="0.20000000300000001" blue="0.24313725529999999" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="moreButtonDidTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="yP4-Rl-CfL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="6iT-3j-DLc" secondAttribute="trailing" id="9Hs-Yy-j5J"/>
@@ -81,7 +85,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="contentLabel" destination="6iT-3j-DLc" id="R1x-JF-8hC"/>
-                <outlet property="moreLabel" destination="4pJ-Oi-sL4" id="Zg8-uO-17c"/>
+                <outlet property="moreButton" destination="oGX-2q-S4k" id="Hoh-9Z-0v2"/>
                 <outlet property="titleLabel" destination="ka0-i3-8B9" id="dzh-do-e9i"/>
                 <outlet property="upperSeparator" destination="JYH-AH-iSR" id="Om2-iS-9ua"/>
             </connections>

@@ -55,4 +55,8 @@ class CycleSection: SectionHelperProtocol {
         }
     }
 
+    func updateState(isFolded: Bool) {
+        // do nothing
+    }
+
 }

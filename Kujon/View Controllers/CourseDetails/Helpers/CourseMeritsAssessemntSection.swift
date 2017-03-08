@@ -12,6 +12,7 @@ class CourseMeritsAssessemntSection: SectionHelperProtocol {
 
     private var assessmentCriteria: String?
     let assessmentCellId = "assessmentCriteriaCourseMeritsCellId"
+    private var isFolded: Bool = true
 
 
     func fillUpWithData(_ courseDetails: CourseDetails) {
@@ -37,12 +38,16 @@ class CourseMeritsAssessemntSection: SectionHelperProtocol {
     func giveMeCellAtPosition(_ tableView: UITableView, onPosition position: IndexPath) -> UITableViewCell! {
         let cell = tableView.dequeueReusableCell(withIdentifier: assessmentCellId, for: position) as! CourseMeritsTableViewCell
         if let assessmentCriteria = assessmentCriteria {
-            cell.configureCellWith(title: StringHolder.assessmentCriteriaTitle, content: assessmentCriteria)
+            cell.configureCellWith(title: StringHolder.assessmentCriteriaTitle, content: assessmentCriteria, isFolded: isFolded, tag: 1005)
         }
         return cell
     }
 
     func reactOnSectionClick(_ position: Int, withController controller: UINavigationController?, setDelegate delegate: AnyObject?) {
         // do nothing
+    }
+
+    func updateState(isFolded: Bool) {
+        self.isFolded = isFolded
     }
 }
