@@ -3,15 +3,15 @@ This application makes use of the following third party libraries:
 
 ## FirebaseAnalytics
 
-Copyright 2016 Google
+Copyright 2017 Google
 
 ## FirebaseCore
 
-Copyright 2016 Google
+Copyright 2017 Google
 
 ## FirebaseInstanceID
 
-Copyright 2016 Google
+Copyright 2017 Google
 
 ## GTMOAuth2
 
@@ -429,21 +429,9 @@ Copyright 2016 Google
 
 Copyright 2016 Google Inc.
 
-## GoogleAppUtilities
-
-Copyright 2016 Google
-
-## GoogleInterchangeUtilities
-
-Copyright 2016 Google
-
 ## GoogleSignIn
 
-Copyright 2016 Google
-
-## GoogleSymbolUtilities
-
-Copyright 2016 Google
+Copyright 2017 Google
 
 ## GoogleToolboxForMac
 
