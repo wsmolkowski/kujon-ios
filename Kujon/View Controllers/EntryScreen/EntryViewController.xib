@@ -57,6 +57,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="i3K-cG-gtN"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="tintColor" red="0.24705882370000001" green="0.72941178080000002" blue="0.85098040100000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <state key="normal" title="Zarejestruj się">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -70,7 +71,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="4L3-X3-nLl"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                     <state key="normal" title="Mam już konto">
                         <color key="titleColor" red="0.24705882370000001" green="0.72941178080000002" blue="0.85098040100000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -79,11 +80,11 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- lub -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3v4-pU-hof">
-                    <rect key="frame" x="168" y="309" width="40" height="18"/>
+                    <rect key="frame" x="169.5" y="309" width="37" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="4Dl-d2-LUq"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
