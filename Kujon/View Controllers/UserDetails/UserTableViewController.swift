@@ -311,12 +311,11 @@ class UserTableViewController: RefreshingTableViewController
         }
         DispatchQueue.main.async { [weak self] in
             guard
-                let programme: Programme = self?.programmes[indexPath.row].programme,
-                let schoolPath: SchoolPath = self?.programmes[indexPath.row].programme.schoolPath else {
+                let programme: Programme = self?.programmes[indexPath.row].programme else {
                 return
             }
             let kierunekDetailController = KierunekDetailViewControllerECTS()
-            kierunekDetailController.configureViewController(programme: programme, schoolPath: schoolPath)
+            kierunekDetailController.configureViewController(programme: programme)
             self?.navigationController?.pushViewController(kierunekDetailController, animated: true)
         }
 

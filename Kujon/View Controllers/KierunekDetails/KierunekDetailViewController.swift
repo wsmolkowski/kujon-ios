@@ -70,7 +70,13 @@ class KierunekDetailViewController: UITableViewController, SupervisingUnitCellDe
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        let section = SectionMap.sectionForIndex(section)
+        switch section {
+        case .superUnit:
+            return programme?.schoolPath == nil ? 0 : 1
+        default:
+            return 1
+        }
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

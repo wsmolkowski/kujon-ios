@@ -41,7 +41,6 @@ class KierunekDetailViewControllerECTS: UITableViewController, SupervisingUnitCe
     private let sectionsCount: Int = 7
 
     var programme: Programme?
-    var schoolPath: SchoolPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,9 +48,8 @@ class KierunekDetailViewControllerECTS: UITableViewController, SupervisingUnitCe
         configureTableView()
     }
 
-    internal func configureViewController(programme: Programme, schoolPath: SchoolPath) {
+    internal func configureViewController(programme: Programme) {
         self.programme = programme
-        self.schoolPath = schoolPath
     }
 
     private func configureTableView() {
@@ -73,7 +71,13 @@ class KierunekDetailViewControllerECTS: UITableViewController, SupervisingUnitCe
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        let section = SectionMap.sectionForIndex(section)
+        switch section {
+        case .superUnit:
+            return programme?.schoolPath == nil ? 0 : 1
+        default:
+            return 1
+        }
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -120,7 +124,7 @@ class KierunekDetailViewControllerECTS: UITableViewController, SupervisingUnitCe
 
     private func supervisingUnitCellForIndexPath(_ indexPath: IndexPath) -> SupervisingUnitCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: superUnitCellId, for: indexPath) as! SupervisingUnitCell
-        if let unit = schoolPath {
+        if let unit = programme?.schoolPath {
             cell.supervisingUnit = unit
             cell.delegate = self
         }
@@ -138,7 +142,7 @@ class KierunekDetailViewControllerECTS: UITableViewController, SupervisingUnitCe
         case .id: labelText = programme?.id
         case .mode: labelText = programme?.modeOfStudies
         case .ectsUsedSum: labelText = programme?.ectsUsedSum == nil ? nil : "\(programme!.ectsUsedSum!)"
-        case .superUnit: labelText = schoolPath?.schoolName
+        case .superUnit: labelText = programme?.schoolPath?.schoolName
         default: fatalError("Invalid indexpath")
         }
 
