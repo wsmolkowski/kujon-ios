@@ -33,7 +33,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zaloguj się" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mY1-at-Y1Z">
-                    <rect key="frame" x="136" y="178" width="103" height="26"/>
+                    <rect key="frame" x="134" y="178" width="107" height="26"/>
                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                     <color key="textColor" red="0.16470588743686676" green="0.20000000298023224" blue="0.24313725531101227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -80,7 +80,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- lub -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3v4-pU-hof">
-                    <rect key="frame" x="169.5" y="334" width="37" height="18"/>
+                    <rect key="frame" x="169" y="334" width="38" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="4Dl-d2-LUq"/>
                     </constraints>

@@ -13,7 +13,7 @@ protocol JsonParsing {
 
 extension JsonParsing {
     
-    func parseResposne(_ jsonData: Data, errorHandler delegate: ErrorHandlingDelegate!) throws -> T! {
+    func parseResposne(_ jsonData: Data, errorHandler delegate: ResponseHandlingDelegate!) throws -> T! {
         do {
 
             let json = try JSONSerialization.jsonObject(with: jsonData, options: [])
@@ -27,7 +27,7 @@ extension JsonParsing {
                 let json = try JSONSerialization.jsonObject(with: jsonData, options: [])
                 let errorResponse = try ErrorResponse.decode(json)
                 if (errorResponse.code != nil && delegate != nil) {
-                    handleErrorResponseCode(errorResponse.code!, text: errorResponse.message, delegate: delegate!)
+                    handleErrorResponseCode(errorResponse.code!, text: errorResponse.message, errorHandler: delegate!)
                 }else if(errorResponse.code == nil){
                     delegate.onErrorOccurs(errorResponse.message, retry: false)
                 }
@@ -39,7 +39,7 @@ extension JsonParsing {
         }
     }
 
-    private func handleErrorResponseCode(_ code: Int, text: String, delegate: ErrorHandlingDelegate) {
+    private func handleErrorResponseCode(_ code: Int, text: String, errorHandler delegate: ResponseHandlingDelegate) {
         switch code {
         case 401:
             if delegate is LoginProviderDelegate {

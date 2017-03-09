@@ -9,7 +9,7 @@
 import Foundation
 
 
-protocol APIFileListProviderDelegate: ErrorHandlingDelegate {
+protocol APIFileListProviderDelegate: ResponseHandlingDelegate {
     func apliFileListProvider( _ provider: APIFileListProvider?, didLoadFileList files: [APIFile])
 
 }

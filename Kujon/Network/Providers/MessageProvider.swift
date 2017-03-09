@@ -16,7 +16,7 @@ protocol MessageProviderProtocol: JsonParsing {
     
 }
 
-protocol MessageProviderDelegate: ErrorHandlingDelegate {
+protocol MessageProviderDelegate: ResponseHandlingDelegate {
     func onMessageLoaded(_ message: Array<Message>)
 
 }

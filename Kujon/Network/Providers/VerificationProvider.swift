@@ -15,7 +15,7 @@ protocol VerificationProviderProtocol: JsonParsing {
 }
 
 
-protocol VerificationProviderDelegate: ErrorHandlingDelegate {
+protocol VerificationProviderDelegate: ResponseHandlingDelegate {
     func onVerificationSuccess()
 }
 

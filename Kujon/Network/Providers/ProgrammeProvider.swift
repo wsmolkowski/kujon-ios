@@ -14,7 +14,7 @@ protocol ProgrammeProviderProtocol: JsonParsing {
 
 }
 
-protocol ProgrammeProviderDelegate: ErrorHandlingDelegate {
+protocol ProgrammeProviderDelegate: ResponseHandlingDelegate {
     func onProgrammeLoaded(_ terms: Array<StudentProgramme>)
 
 }

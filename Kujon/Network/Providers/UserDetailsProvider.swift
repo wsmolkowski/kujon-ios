@@ -14,7 +14,7 @@ protocol UserDetailsProviderProtocol: JsonParsing {
     func loadStudentDetails(_ id: String)
 }
 
-protocol UserDetailsProviderDelegate: ErrorHandlingDelegate {
+protocol UserDetailsProviderDelegate: ResponseHandlingDelegate {
     func onUserDetailLoaded(_ userDetails: UserDetail)
 
 }

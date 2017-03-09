@@ -14,7 +14,7 @@ protocol SuperUserProviderProtocol: JsonParsing {
 
 }
 
-protocol SuperUserDetailsProviderDelegate: ErrorHandlingDelegate {
+protocol SuperUserDetailsProviderDelegate: ResponseHandlingDelegate {
     func onUserDetailLoaded(_ userDetails: SuperUserDetails)
 
 }

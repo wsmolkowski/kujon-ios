@@ -12,7 +12,7 @@ protocol ConfigProviderProtocol: JsonParsing {
 
 }
 
-protocol ConfigProviderDelegate: ErrorHandlingDelegate {
+protocol ConfigProviderDelegate: ResponseHandlingDelegate {
     func notLogged()
 
     func pairedWithUsos()

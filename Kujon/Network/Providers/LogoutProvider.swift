@@ -10,7 +10,7 @@ protocol LogoutProviderProtocol {
     func logout()
 }
 
-protocol LogoutProviderDelegate: ErrorHandlingDelegate {
+protocol LogoutProviderDelegate: ResponseHandlingDelegate {
     func onSuccesfullLogout();
 }
 

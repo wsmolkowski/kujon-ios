@@ -11,7 +11,7 @@ protocol FacultiesProviderProtocol: JsonParsing {
     func loadFaculties()
 }
 
-protocol FacultiesProviderDelegate: ErrorHandlingDelegate {
+protocol FacultiesProviderDelegate: ResponseHandlingDelegate {
     func onFacultiesLoaded(_ list: Array<Facultie>)
 }
 

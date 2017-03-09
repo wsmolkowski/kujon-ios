@@ -13,7 +13,7 @@ protocol LecturerProviderProtocol: JsonParsing {
 }
 
 
-protocol LecturerProviderDelegate: ErrorHandlingDelegate {
+protocol LecturerProviderDelegate: ResponseHandlingDelegate {
     func onLecturersLoaded(_ lecturers: Array<SimpleUser>)
 }
 

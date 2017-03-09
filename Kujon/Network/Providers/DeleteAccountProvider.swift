@@ -9,7 +9,7 @@ protocol DeleteAccountProviderProtocol {
     func deleteAccount()
 }
 
-protocol DeleteAccountProviderDelegate: ErrorHandlingDelegate {
+protocol DeleteAccountProviderDelegate: ResponseHandlingDelegate {
 
     func accountDeleted()
 

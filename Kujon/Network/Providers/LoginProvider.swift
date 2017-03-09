@@ -11,7 +11,7 @@ protocol LoginProviderProtocol: JsonParsing {
     func login(_ email: String, password:String)
 
 }
-protocol LoginProviderDelegate: ErrorHandlingDelegate {
+protocol LoginProviderDelegate: ResponseHandlingDelegate {
     func onLoginResponse(_ token: String)
 }
 class LoginProvider:RestApiManager,LoginProviderProtocol {

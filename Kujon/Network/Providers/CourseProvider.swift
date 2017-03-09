@@ -5,7 +5,7 @@
 
 import Foundation
 
-protocol CourseProviderDelegate: ErrorHandlingDelegate {
+protocol CourseProviderDelegate: ResponseHandlingDelegate {
 
     func coursesProvided(_ courses: Array<CoursesWrapper>)
 

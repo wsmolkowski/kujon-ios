@@ -12,7 +12,7 @@ protocol ProgrammeIdProviderProtocol: JsonParsing {
     func loadProgramme(_ id: String)
 }
 
-protocol ProgrammeIdProviderDelegate: ErrorHandlingDelegate {
+protocol ProgrammeIdProviderDelegate: ResponseHandlingDelegate {
     func onProgrammeLoaded(_ id:String, programme: StudentProgramme)
 
 }

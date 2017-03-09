@@ -11,7 +11,7 @@ protocol TermsProviderProtocol: JsonParsing {
     func loadTerms()
 }
 
-protocol TermsProviderDelegate: ErrorHandlingDelegate {
+protocol TermsProviderDelegate: ResponseHandlingDelegate {
     func onTermsLoaded(_ terms: Array<Term>)
 
 }

@@ -16,7 +16,7 @@ protocol CourseDetailsProviderProtocol: JsonParsing {
     func loadCourseDetails(_ courseId : String)
 }
 
-protocol CourseDetailsProviderDelegate: ErrorHandlingDelegate {
+protocol CourseDetailsProviderDelegate: ResponseHandlingDelegate {
     func onCourseDetailsLoaded(_ courseDetails: CourseDetails)
 }
 

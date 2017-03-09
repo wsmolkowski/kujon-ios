@@ -11,7 +11,7 @@ protocol GradesProviderProtocol: JsonParsing {
     func loadGrades()
 }
 
-protocol GradesProviderDelegate: ErrorHandlingDelegate {
+protocol GradesProviderDelegate: ResponseHandlingDelegate {
     func onGradesLoaded(preparedTermGrades: Array<PreparedTermGrades>)
 
 }

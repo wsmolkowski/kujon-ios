@@ -15,7 +15,7 @@ protocol RegistrationProviderProtocol: JsonParsing {
 
 }
 
-protocol RegistrationProviderDelegate: ErrorHandlingDelegate {
+protocol RegistrationProviderDelegate: ResponseHandlingDelegate {
     func onRegisterResponse(_ text: String)
 }
 

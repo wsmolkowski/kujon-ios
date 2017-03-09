@@ -17,7 +17,7 @@ protocol SettingsProviderProtocol: JsonParsing {
 }
 
 
-protocol SettingsProviderDelegate: ErrorHandlingDelegate {
+protocol SettingsProviderDelegate: ResponseHandlingDelegate {
 
     func settingsDidLoad(_ settings: Settings)
     func calendarSyncronizationSettingDidSucceed()

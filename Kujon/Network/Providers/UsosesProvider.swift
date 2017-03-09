@@ -12,7 +12,7 @@ protocol UsosProviderProtocol: JsonParsing {
     func loadUsoses()
 }
 
-protocol UsosesProviderDelegate: ErrorHandlingDelegate {
+protocol UsosesProviderDelegate: ResponseHandlingDelegate {
     func onUsosesLoaded(_ arrayOfUsoses: Array<Usos>)
 
 }

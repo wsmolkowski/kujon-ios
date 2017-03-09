@@ -14,7 +14,7 @@ protocol LectureProviderProtocol: JsonParsing {
 
 }
 
-protocol LectureProviderDelegate: ErrorHandlingDelegate {
+protocol LectureProviderDelegate: ResponseHandlingDelegate {
     func onLectureLoaded(_ lectures: Array<Lecture>,date:Date)
 
 }
