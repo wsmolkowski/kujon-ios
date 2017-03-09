@@ -33,26 +33,26 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zaloguj się" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mY1-at-Y1Z">
-                    <rect key="frame" x="136" y="152" width="103" height="27"/>
+                    <rect key="frame" x="136" y="178" width="103" height="26"/>
                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                     <color key="textColor" red="0.16470588743686676" green="0.20000000298023224" blue="0.24313725531101227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="w Kujon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7SU-Cg-8cS">
-                    <rect key="frame" x="142" y="179" width="91" height="30"/>
+                    <rect key="frame" x="142" y="204" width="91" height="30"/>
                     <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="25"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="owl" translatesAutoresizingMaskIntoConstraints="NO" id="AUd-TK-qW5">
-                    <rect key="frame" x="140" y="12" width="96" height="124"/>
+                <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="owl" translatesAutoresizingMaskIntoConstraints="NO" id="AUd-TK-qW5">
+                    <rect key="frame" x="113" y="28" width="150" height="124"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="96" id="hmS-WD-gOg"/>
+                        <constraint firstAttribute="width" constant="150" id="hmS-WD-gOg"/>
                         <constraint firstAttribute="height" constant="124" id="lq7-pM-GJS"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pi5-mO-0sB">
-                    <rect key="frame" x="68" y="335" width="240" height="28"/>
+                    <rect key="frame" x="68" y="360" width="240" height="28"/>
                     <color key="backgroundColor" red="0.24705882370000001" green="0.72941178080000002" blue="0.85098040100000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="i3K-cG-gtN"/>
@@ -67,7 +67,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxJ-ZU-fTQ">
-                    <rect key="frame" x="68" y="371" width="240" height="28"/>
+                    <rect key="frame" x="68" y="396" width="240" height="28"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="4L3-X3-nLl"/>
                     </constraints>
@@ -80,7 +80,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- lub -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3v4-pU-hof">
-                    <rect key="frame" x="169.5" y="309" width="37" height="18"/>
+                    <rect key="frame" x="169.5" y="334" width="37" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="4Dl-d2-LUq"/>
                     </constraints>
@@ -89,7 +89,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rejestrując się wyrażasz zgodę  na następujące warunki" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miO-Ux-yaG">
-                    <rect key="frame" x="68" y="429" width="240" height="36"/>
+                    <rect key="frame" x="68" y="454" width="240" height="36"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="nLC-25-sP7"/>
                     </constraints>
@@ -98,7 +98,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleAspectFit" placeholderIntrinsicWidth="230" placeholderIntrinsicHeight="36" translatesAutoresizingMaskIntoConstraints="NO" id="49K-dA-dFD" userLabel="Google Sign In Button" customClass="GIDSignInButton">
-                    <rect key="frame" x="64" y="219" width="248" height="28"/>
+                    <rect key="frame" x="64" y="244" width="248" height="28"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="CmR-sG-Wqz"/>
@@ -106,7 +106,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="CZ2-Eu-BAD" userLabel="FBLogin Button" customClass="FBSDKLoginButton">
-                    <rect key="frame" x="67" y="276" width="240" height="28"/>
+                    <rect key="frame" x="67" y="301" width="240" height="28"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="GDO-YV-uuX"/>
@@ -124,7 +124,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="mY1-at-Y1Z" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="0CQ-UX-hHe"/>
-                <constraint firstItem="AUd-TK-qW5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="12" id="2FG-pe-Qas"/>
+                <constraint firstItem="AUd-TK-qW5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="28" id="2FG-pe-Qas"/>
                 <constraint firstItem="5vv-VQ-Avk" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="3rJ-Wv-6El"/>
                 <constraint firstItem="3v4-pU-hof" firstAttribute="top" secondItem="7SU-Cg-8cS" secondAttribute="bottom" constant="100" id="BeW-jd-ci5"/>
                 <constraint firstItem="3v4-pU-hof" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="D9R-cW-U6l"/>
@@ -134,7 +134,7 @@
                 <constraint firstItem="bxJ-ZU-fTQ" firstAttribute="top" secondItem="pi5-mO-0sB" secondAttribute="bottom" constant="8" id="Vpq-ey-ikC"/>
                 <constraint firstItem="pi5-mO-0sB" firstAttribute="top" secondItem="3v4-pU-hof" secondAttribute="bottom" constant="8" id="YDR-SC-hWv"/>
                 <constraint firstItem="pi5-mO-0sB" firstAttribute="width" secondItem="CZ2-Eu-BAD" secondAttribute="width" id="Yf5-tg-H8y"/>
-                <constraint firstItem="mY1-at-Y1Z" firstAttribute="top" secondItem="AUd-TK-qW5" secondAttribute="bottom" constant="16" id="a9S-XJ-9fN"/>
+                <constraint firstItem="mY1-at-Y1Z" firstAttribute="top" secondItem="AUd-TK-qW5" secondAttribute="bottom" constant="26" id="a9S-XJ-9fN"/>
                 <constraint firstItem="5vv-VQ-Avk" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="c5H-Na-cY1"/>
                 <constraint firstItem="miO-Ux-yaG" firstAttribute="top" secondItem="bxJ-ZU-fTQ" secondAttribute="bottom" constant="30" id="dOC-Rk-XGV"/>
                 <constraint firstItem="7SU-Cg-8cS" firstAttribute="top" secondItem="mY1-at-Y1Z" secondAttribute="bottom" id="dsJ-3h-fkN"/>
