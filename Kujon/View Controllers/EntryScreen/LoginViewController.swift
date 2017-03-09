@@ -9,10 +9,12 @@
 import UIKit
 
 class LoginViewController: UIViewController,LoginProviderDelegate {
+
     @IBOutlet weak var emailLabel: UITextField!
     @IBOutlet weak var rejestrujacLabel: UILabel!
     @IBOutlet weak var passwordLabel: UITextField!
-
+    @IBOutlet weak var spinner: SpinnerView!
+    
     weak var delegete: UserLoginDelegate! = nil
     var loginProvider = ProvidersProviderImpl.sharedInstance.provideLoginProvider()
     let emailManager = EmailManager.sharedInstance
@@ -30,15 +32,11 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
         rejestrujacLabel.addGestureRecognizer(tapGestureRecognizer)
         loginProvider.delegate = self
         emailLabel.text = email
+        spinner.isHidden = true
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
     func onLoginResponse(_ token: String) {
+        spinner.isHidden = true
         let _ = navigationController?.popViewController(animated: true)
         UserDataHolder.sharedInstance.userEmailRemembered = email
         emailManager.login(email, token: token,listener: delegete)
@@ -46,8 +44,10 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
 
 
     func onErrorOccurs(_ text: String, retry: Bool) {
+        spinner.isHidden = true
         if retry &&  passwordLabel.text != nil {
             loginProvider.login(email, password: passwordLabel.text!)
+            spinner.isHidden = false
             return
         }
         showAlert(text)
@@ -77,7 +77,9 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
             showAlert(StringHolder.passwordPasswordError)
             return
         }
+        loginProvider.delegate = self
         loginProvider.login(email, password: password)
+        spinner.isHidden = false
     }
 
 
