@@ -5,7 +5,7 @@
 
 import Foundation
 
-protocol ThesisSearchProtocol: JsonProviderProtocol {
+protocol ThesisSearchProtocol: JsonParsing {
     associatedtype T = TheseSearchResponse
 
 
@@ -33,16 +33,18 @@ class ThesisSearchProvider: RestApiManager, ThesisSearchProtocol, SearchProvider
             json in
 
             guard let json = json else {
-                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
                 return
             }
-            let val = try! self.changeJsonToResposne(json, errorR: self.delegate)
+            let val = try! self.parseResposne(json, errorHandler: self.delegate)
             if let val = val {
 
                 self.delegate?.searchedItems(self.getSearchElements(val))
                 self.delegate?.isThereNextPage(self.isThereNext(val));
             }
-        }, onError: { text in self.delegate?.onErrorOccurs(text) })
+        }, onError: { [weak self] text in
+            self?.delegate?.onErrorOccurs(text, retry: false)
+        })
     }
 
 }

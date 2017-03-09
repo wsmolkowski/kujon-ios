@@ -6,14 +6,14 @@
 import Foundation
 
 
-protocol LecturerProviderProtocol: JsonProviderProtocol {
+protocol LecturerProviderProtocol: JsonParsing {
     associatedtype T = LecturersResponse
 
     func loadLecturers()
 }
 
 
-protocol LecturerProviderDelegate: ErrorResponseProtocol {
+protocol LecturerProviderDelegate: ErrorHandlingDelegate {
     func onLecturersLoaded(_ lecturers: Array<SimpleUser>)
 }
 
@@ -27,7 +27,7 @@ class LecturerProvider: RestApiManager, LecturerProviderProtocol {
             [weak self] json in
 
             guard let json = json else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
                 return
             }
 
@@ -35,7 +35,7 @@ class LecturerProvider: RestApiManager, LecturerProviderProtocol {
                 return
             }
 
-            if let lecturerResponse = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate){
+            if let lecturerResponse = try! strongSelf.parseResposne(json, errorHandler: strongSelf.delegate) {
                 strongSelf.delegate?.onLecturersLoaded(lecturerResponse.data)
             }
 

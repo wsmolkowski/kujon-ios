@@ -5,7 +5,7 @@
 
 import Foundation
 
-protocol UsersSearchProtocol: JsonProviderProtocol {
+protocol UsersSearchProtocol: JsonParsing {
     associatedtype T = UserSearchResponse
 
 
@@ -31,15 +31,17 @@ class UserSearchProvider: RestApiManager, UsersSearchProtocol, SearchProviderPro
             json in
 
             guard let json = json else {
-                self.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
                 return
             }
 
-            if let val = try! self.changeJsonToResposne(json, errorR: self.delegate) {
+            if let val = try! self.parseResposne(json, errorHandler: self.delegate) {
                 self.delegate?.searchedItems(self.getSearchElements(val))
                 self.delegate?.isThereNextPage(self.isThereNext(val));
             }
-        }, onError: { text in self.delegate?.onErrorOccurs(text) })
+        }, onError: { text in
+            self.delegate?.onErrorOccurs(text, retry: false)
+        })
     }
 
 

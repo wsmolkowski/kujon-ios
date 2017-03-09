@@ -52,6 +52,10 @@ class StudentDetailsTableViewController: RefreshingTableViewController, UserDeta
         self.tableView.reloadData()
     }
 
+    func onErrorOccurs(_ text: String, retry: Bool) {
+        self.refreshControl?.endRefreshing()
+    }
+
     func onUsosDown() {
         self.refreshControl?.endRefreshing()
         EmptyStateView.showUsosDownAlert(inParent: view)

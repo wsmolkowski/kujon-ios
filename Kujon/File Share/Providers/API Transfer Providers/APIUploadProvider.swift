@@ -114,7 +114,7 @@ class APIUploadProvider: NSObject, MultipartProviding, URLSessionTaskDelegate, U
             if let responseData = uploadTicket.responseData,
                 let uploadResponseJSON = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments) {
 
-                if let errorResponse = try? ErrorClass.decode(uploadResponseJSON) {
+                if let errorResponse = try? ErrorResponse.decode(uploadResponseJSON) {
                     errorMessage = errorResponse.message
                 }
             }
@@ -133,7 +133,7 @@ class APIUploadProvider: NSObject, MultipartProviding, URLSessionTaskDelegate, U
                 return
             }
 
-            if let errorResponse = try? ErrorClass.decode(uploadResponseJSON) {
+            if let errorResponse = try? ErrorResponse.decode(uploadResponseJSON) {
                 uploadTicket.failureHandler(errorResponse.message)
                 activeUploads[file] = nil
                 return

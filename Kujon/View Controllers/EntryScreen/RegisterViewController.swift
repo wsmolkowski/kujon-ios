@@ -10,6 +10,7 @@ import UIKit
 
 class RegisterViewController: UIViewController, RegistrationProviderDelegate {
 
+
     @IBOutlet weak var rejestrujacLabel: UILabel!
     @IBOutlet weak var seconPasswordTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -65,7 +66,7 @@ class RegisterViewController: UIViewController, RegistrationProviderDelegate {
         present(alertController, animated: true, completion: nil)
     }
 
-    func onErrorOccurs(_ text: String) {
+    internal func onErrorOccurs(_ text: String, retry: Bool) {
         showAlert(text)
     }
 

@@ -33,7 +33,7 @@ class EmailManager: UserLogin, LogoutProviderDelegate {
         logoutResult = nil
     }
 
-    func onErrorOccurs(_ text: String) {
+    internal func onErrorOccurs(_ text: String, retry: Bool) {
         logoutResult.failed(text)
         logoutResult = nil
     }

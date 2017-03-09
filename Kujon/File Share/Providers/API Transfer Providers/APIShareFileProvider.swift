@@ -51,7 +51,7 @@ class APIShareFileProvider {
                 if let responseData = responseData,
                     let uploadResponseJSON = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments) {
 
-                    if let errorResponse = try? ErrorClass.decode(uploadResponseJSON) {
+                    if let errorResponse = try? ErrorResponse.decode(uploadResponseJSON) {
                         errorMessage = errorResponse.message
                     }
                 }
@@ -68,7 +68,7 @@ class APIShareFileProvider {
                     return
                 }
 
-                if let errorResponse = try? ErrorClass.decode(sharedFileResponseJSON) {
+                if let errorResponse = try? ErrorResponse.decode(sharedFileResponseJSON) {
                     failureHandler(errorResponse.message)
                     return
                 }

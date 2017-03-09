@@ -6,7 +6,7 @@
 import Foundation
 
 
-protocol ProgrammeProviderProtocol: JsonProviderProtocol {
+protocol ProgrammeProviderProtocol: JsonParsing {
     associatedtype T = StudentProgrammeResponse
 
     func loadProgramme()
@@ -14,7 +14,7 @@ protocol ProgrammeProviderProtocol: JsonProviderProtocol {
 
 }
 
-protocol ProgrammeProviderDelegate: ErrorResponseProtocol {
+protocol ProgrammeProviderDelegate: ErrorHandlingDelegate {
     func onProgrammeLoaded(_ terms: Array<StudentProgramme>)
 
 }
@@ -27,7 +27,7 @@ class ProgrammeProvider: RestApiManager, ProgrammeProviderProtocol {
             [weak self] json in
 
             guard let json = json else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
                 return
             }
 
@@ -35,7 +35,7 @@ class ProgrammeProvider: RestApiManager, ProgrammeProviderProtocol {
                 return
             }
 
-            if let programeResponse = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate) {
+            if let programeResponse = try! strongSelf.parseResposne(json, errorHandler: strongSelf.delegate) {
                 strongSelf.delegate?.onProgrammeLoaded(programeResponse.list)
             }
 

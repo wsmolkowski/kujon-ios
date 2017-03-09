@@ -42,7 +42,6 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
         emailManager.login(email, token: token,listener: delegete)
     }
 
-
     func onErrorOccurs(_ text: String, retry: Bool) {
         spinner.isHidden = true
         if retry &&  passwordLabel.text != nil {
@@ -53,19 +52,18 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
         showAlert(text)
     }
 
-
     func showTerms(_ sender: UITapGestureRecognizer){
         NSlogManager.showLog("showTermsAndConditions")
         var controller: UIViewController!
         controller = WebViewController()
         let navigationController = UINavigationController(rootViewController: controller)
         self.present(navigationController, animated: true, completion: nil)
-
     }
 
     func back() {
         let _ = self.navigationController?.popViewController(animated: true)
     }
+
     @IBAction func onLoginClick(_ sender: AnyObject) {
         email = emailLabel.text!
         if(!checker.isEmail(email)){
@@ -81,8 +79,6 @@ class LoginViewController: UIViewController,LoginProviderDelegate {
         loginProvider.login(email, password: password)
         spinner.isHidden = false
     }
-
-
 
     private func showAlert(_ text: String){
         let alertController = UIAlertController(title: "Błąd Logowania ", message: text, preferredStyle: .alert)

@@ -201,7 +201,7 @@ class SettingsViewController: UIViewController, DeleteAccountProviderDelegate, S
         updateCalendarSyncSwitchState()
     }
 
-    func onErrorOccurs(_ text: String) {
+    internal func onErrorOccurs(_ text: String, retry: Bool) {
         self.spinner.isHidden = true
 
         updateCalendarSyncSwitchState()

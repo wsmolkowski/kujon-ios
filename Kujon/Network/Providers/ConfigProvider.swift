@@ -5,14 +5,14 @@
 
 import Foundation
 
-protocol ConfigProviderProtocol: JsonProviderProtocol {
+protocol ConfigProviderProtocol: JsonParsing {
     associatedtype T = ConfigResponse
 
     func checkConfig()
 
 }
 
-protocol ConfigProviderDelegate: ErrorResponseProtocol {
+protocol ConfigProviderDelegate: ErrorHandlingDelegate {
     func notLogged()
 
     func pairedWithUsos()
@@ -30,7 +30,7 @@ class ConfigProvider: RestApiManager, ConfigProviderProtocol {
             [weak self] json in
 
             guard let json = json else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
                 return
             }
 
@@ -38,7 +38,7 @@ class ConfigProvider: RestApiManager, ConfigProviderProtocol {
                 return
             }
 
-            if let configRes = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate) {
+            if let configRes = try! strongSelf.parseResposne(json, errorHandler: strongSelf.delegate) {
                 let config = configRes.data
                 if (!config.userLogged) {
                     strongSelf.delegate?.notLogged()
@@ -60,7 +60,7 @@ class ConfigProvider: RestApiManager, ConfigProviderProtocol {
             }
         }, onError: {
             [weak self] text in
-            self?.delegate?.onErrorOccurs(text)
+            self?.delegate?.onErrorOccurs(text, retry: false)
         })
 
     }

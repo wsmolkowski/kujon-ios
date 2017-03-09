@@ -5,7 +5,7 @@
 
 import Foundation
 
-protocol UserDetailsProviderProtocol: JsonProviderProtocol {
+protocol UserDetailsProviderProtocol: JsonParsing {
     associatedtype T = UserDetailsResponse
 
     func loadUserDetail()
@@ -14,7 +14,7 @@ protocol UserDetailsProviderProtocol: JsonProviderProtocol {
     func loadStudentDetails(_ id: String)
 }
 
-protocol UserDetailsProviderDelegate: ErrorResponseProtocol {
+protocol UserDetailsProviderDelegate: ErrorHandlingDelegate {
     func onUserDetailLoaded(_ userDetails: UserDetail)
 
 }
@@ -30,7 +30,7 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
             [weak self] json in
 
             guard let json = json else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
                 return
             }
 
@@ -38,7 +38,7 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
                 return
             }
 
-            if let user = try! strongSelf.changeJsonToResposne(json,errorR: strongSelf.delegate) {
+            if let user = try! strongSelf.parseResposne(json, errorHandler: strongSelf.delegate) {
                 strongSelf.delegate?.onUserDetailLoaded(user.data)
             }
         }, onError: {[weak self] text in
@@ -56,7 +56,7 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
             [weak self] json in
 
             guard let json = json else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
                 return
             }
 
@@ -64,7 +64,7 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
                 return
             }
 
-           if let user = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate){
+           if let user = try! strongSelf.parseResposne(json, errorHandler: strongSelf.delegate){
                strongSelf.delegate?.onUserDetailLoaded(user.data)
            }
         }, onError: {[weak self] text in
@@ -78,7 +78,7 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
             [weak self] json in
 
             guard let json = json else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
                 return
             }
 
@@ -86,7 +86,7 @@ class UserDetailsProvider: RestApiManager, UserDetailsProviderProtocol {
                 return
             }
 
-            if let user = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate){
+            if let user = try! strongSelf.parseResposne(json, errorHandler: strongSelf.delegate){
                 strongSelf.delegate?.onUserDetailLoaded(user.data)
             }
         }, onError: {[weak self] text in

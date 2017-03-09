@@ -8,14 +8,14 @@ import Foundation
 
 
 
-protocol RegistrationProviderProtocol:JsonProviderProtocol {
+protocol RegistrationProviderProtocol: JsonParsing {
 
     associatedtype T = RegisterResponse
     func register(_ email: String, password:String)
 
 }
 
-protocol RegistrationProviderDelegate: ErrorResponseProtocol {
+protocol RegistrationProviderDelegate: ErrorHandlingDelegate {
     func onRegisterResponse(_ text: String)
 }
 
@@ -28,7 +28,7 @@ class RegistrationProvider :RestApiManager,RegistrationProviderProtocol {
             [weak self] json in
 
             guard let json = json else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
                 return
             }
 
@@ -36,11 +36,11 @@ class RegistrationProvider :RestApiManager,RegistrationProviderProtocol {
                 return
             }
 
-            if let registerResponse = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate) {
+            if let registerResponse = try! strongSelf.parseResposne(json, errorHandler: strongSelf.delegate) {
                 strongSelf.delegate?.onRegisterResponse(registerResponse.data)
             }
         }, onError: {[weak self] text in
-            self?.delegate?.onErrorOccurs(text)
+            self?.delegate?.onErrorOccurs(text, retry: false)
         }, json: data)
     }
 

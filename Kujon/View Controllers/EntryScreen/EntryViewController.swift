@@ -179,7 +179,7 @@ class EntryViewController: UIViewController,
         }, cancel: {})
     }
 
-    func onErrorOccurs(_ text: String) {
+    internal func onErrorOccurs(_ text: String, retry: Bool) {
         self.showAlertApi(StringHolder.attention, text: text, succes: {
             self.spinnerView.isHidden = true
         }, cancel: {

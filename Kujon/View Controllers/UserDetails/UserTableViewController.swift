@@ -123,7 +123,6 @@ class UserTableViewController: RefreshingTableViewController
         })
     }
 
-
     func onUsosDown() {
         self.refreshControl?.endRefreshing()
         EmptyStateView.showUsosDownAlert(inParent: view)

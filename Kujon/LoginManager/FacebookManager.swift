@@ -60,7 +60,7 @@ class FacebookManager : UserLogin, LogoutProviderDelegate {
         logoutResult = nil
     }
 
-    func onErrorOccurs(_ text: String) {
+    func onErrorOccurs(_ text: String, retry: Bool) {
         logoutResult.failed(text)
         logoutResult = nil
     }

@@ -5,16 +5,16 @@
 
 import Foundation
 import Decodable
-struct ErrorClass {
+struct ErrorResponse {
     let status: String
     let message: String
     let code: Int?
 }
 
 
-extension ErrorClass: Decodable {
-    static func decode(_ j: Any) throws -> ErrorClass {
-        return try ErrorClass(
+extension ErrorResponse: Decodable {
+    static func decode(_ j: Any) throws -> ErrorResponse {
+        return try ErrorResponse(
                 status: j => "status",
                 message: j => "message",
                 code: try? j => "code"

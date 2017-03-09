@@ -5,13 +5,13 @@
 
 import Foundation
 
-protocol LoginProviderProtocol:JsonProviderProtocol {
+protocol LoginProviderProtocol: JsonParsing {
     associatedtype T = LoginResponse
 
     func login(_ email: String, password:String)
 
 }
-protocol LoginProviderDelegate: ErrorResponseProtocol {
+protocol LoginProviderDelegate: ErrorHandlingDelegate {
     func onLoginResponse(_ token: String)
 }
 class LoginProvider:RestApiManager,LoginProviderProtocol {
@@ -25,7 +25,7 @@ class LoginProvider:RestApiManager,LoginProviderProtocol {
             [weak self] json in
 
             guard let json = json else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
                 return
             }
 
@@ -33,13 +33,13 @@ class LoginProvider:RestApiManager,LoginProviderProtocol {
                 return
             }
 
-            if let loginResponse = try! strongSelf.changeJsonToResposne(json,errorR: strongSelf.delegate){
+            if let loginResponse = try! strongSelf.parseResposne(json, errorHandler: strongSelf.delegate){
                 strongSelf.delegate?.onLoginResponse(loginResponse.data.token)
             }
 
         }, onError: {
             [weak self] text in
-            self?.delegate!.onErrorOccurs(text)
+            self?.delegate!.onErrorOccurs(text, retry: false)
         }, json: data)
 
     }

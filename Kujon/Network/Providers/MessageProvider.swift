@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol MessageProviderProtocol: JsonProviderProtocol {
+protocol MessageProviderProtocol: JsonParsing {
     associatedtype T = MessageResponse
     
     func loadMessage()
@@ -16,7 +16,7 @@ protocol MessageProviderProtocol: JsonProviderProtocol {
     
 }
 
-protocol MessageProviderDelegate: ErrorResponseProtocol {
+protocol MessageProviderDelegate: ErrorHandlingDelegate {
     func onMessageLoaded(_ message: Array<Message>)
 
 }
@@ -32,11 +32,11 @@ class MessageProvider: RestApiManager,MessageProviderProtocol  {
             [weak self] json in
 
             guard let json = json else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
                 return
             }
 
-            if let strongSelf = self, let messageResponse = try! strongSelf.changeJsonToResposne(json,errorR: strongSelf.delegate){
+            if let strongSelf = self, let messageResponse = try! strongSelf.parseResposne(json, errorHandler: strongSelf.delegate) {
                 strongSelf.delegate?.onMessageLoaded(messageResponse.data)
             }
         }) {[weak self] text in

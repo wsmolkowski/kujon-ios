@@ -113,7 +113,7 @@
 		4C0D8EDC5E5F870381B4C21D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D83B44B564B4E55F64BE8 /* LaunchScreen.storyboard */; };
 		4C0D8EE504A6F04F1B414751 /* Schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8F0FD29DE7CF921001CE /* Schedule.json */; };
 		4C0D8F2CCD958EC1CD5966C9 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D8AB5B02E8762206BAB22 /* Login.swift */; };
-		4C0D8F3F7FF39000760EEB08 /* ErrorClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D800C832CA7D7CEF0D4AB /* ErrorClass.swift */; };
+		4C0D8F3F7FF39000760EEB08 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D800C832CA7D7CEF0D4AB /* ErrorResponse.swift */; };
 		4C0D8F84739469EB809E6E14 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D806D09BD6C9327949956 /* Room.swift */; };
 		4C0D8FAE3D9478F5CCC1BE75 /* Unauthorized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D80883A4507BB621D8A2F /* Unauthorized.swift */; };
 		4C0D8FB99127F45E713038A1 /* ProgrammeSearchResult.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D8BA734C2D9C931F706C4 /* ProgrammeSearchResult.json */; };
@@ -164,11 +164,11 @@
 		66A016DD1E3BB5550011BFD9 /* CourseDetailsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A016BC1E3BB5550011BFD9 /* CourseDetailsProvider.swift */; };
 		66A016DE1E3BB5550011BFD9 /* CourseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A016BD1E3BB5550011BFD9 /* CourseProvider.swift */; };
 		66A016DF1E3BB5550011BFD9 /* DeleteAccountProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A016BE1E3BB5550011BFD9 /* DeleteAccountProvider.swift */; };
-		66A016E01E3BB5550011BFD9 /* ErrorResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A016BF1E3BB5550011BFD9 /* ErrorResponseProtocol.swift */; };
+		66A016E01E3BB5550011BFD9 /* ErrorHandlingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A016BF1E3BB5550011BFD9 /* ErrorHandlingDelegate.swift */; };
 		66A016E11E3BB5550011BFD9 /* FacultieProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A016C01E3BB5550011BFD9 /* FacultieProvider.swift */; };
 		66A016E21E3BB5550011BFD9 /* FacultiesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A016C11E3BB5550011BFD9 /* FacultiesProvider.swift */; };
 		66A016E31E3BB5550011BFD9 /* GradesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A016C21E3BB5550011BFD9 /* GradesProvider.swift */; };
-		66A016E41E3BB5550011BFD9 /* JsonProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A016C31E3BB5550011BFD9 /* JsonProviderProtocol.swift */; };
+		66A016E41E3BB5550011BFD9 /* JsonParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A016C31E3BB5550011BFD9 /* JsonParsing.swift */; };
 		66A016E51E3BB5550011BFD9 /* LectureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A016C41E3BB5550011BFD9 /* LectureProvider.swift */; };
 		66A016E61E3BB5550011BFD9 /* LecturerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A016C51E3BB5550011BFD9 /* LecturerProvider.swift */; };
 		66A016E71E3BB5550011BFD9 /* LoginProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A016C61E3BB5550011BFD9 /* LoginProvider.swift */; };
@@ -473,7 +473,7 @@
 /* Begin PBXFileReference section */
 		0A42914B1D409659006D6DAB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		17AEA59CD7A7AF647C8DB4EA /* Pods-Kujon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kujon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kujon/Pods-Kujon.release.xcconfig"; sourceTree = "<group>"; };
-		4C0D800C832CA7D7CEF0D4AB /* ErrorClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorClass.swift; sourceTree = "<group>"; };
+		4C0D800C832CA7D7CEF0D4AB /* ErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		4C0D800DE50A86489C4C7E74 /* Usos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usos.swift; sourceTree = "<group>"; };
 		4C0D806D09BD6C9327949956 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		4C0D80883A4507BB621D8A2F /* Unauthorized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unauthorized.swift; sourceTree = "<group>"; };
@@ -638,11 +638,11 @@
 		66A016BC1E3BB5550011BFD9 /* CourseDetailsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailsProvider.swift; sourceTree = "<group>"; };
 		66A016BD1E3BB5550011BFD9 /* CourseProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseProvider.swift; sourceTree = "<group>"; };
 		66A016BE1E3BB5550011BFD9 /* DeleteAccountProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAccountProvider.swift; sourceTree = "<group>"; };
-		66A016BF1E3BB5550011BFD9 /* ErrorResponseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorResponseProtocol.swift; sourceTree = "<group>"; };
+		66A016BF1E3BB5550011BFD9 /* ErrorHandlingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandlingDelegate.swift; sourceTree = "<group>"; };
 		66A016C01E3BB5550011BFD9 /* FacultieProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacultieProvider.swift; sourceTree = "<group>"; };
 		66A016C11E3BB5550011BFD9 /* FacultiesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacultiesProvider.swift; sourceTree = "<group>"; };
 		66A016C21E3BB5550011BFD9 /* GradesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradesProvider.swift; sourceTree = "<group>"; };
-		66A016C31E3BB5550011BFD9 /* JsonProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonProviderProtocol.swift; sourceTree = "<group>"; };
+		66A016C31E3BB5550011BFD9 /* JsonParsing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonParsing.swift; sourceTree = "<group>"; };
 		66A016C41E3BB5550011BFD9 /* LectureProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureProvider.swift; sourceTree = "<group>"; };
 		66A016C51E3BB5550011BFD9 /* LecturerProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturerProvider.swift; sourceTree = "<group>"; };
 		66A016C61E3BB5550011BFD9 /* LoginProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginProvider.swift; sourceTree = "<group>"; };
@@ -985,7 +985,7 @@
 				4C0D88412A231BD822156857 /* Authenticate */,
 				4C0D85C3C43334F528850DDD /* ConfigResponse.swift */,
 				4C0D88235B779A6ADA001B55 /* Course */,
-				4C0D800C832CA7D7CEF0D4AB /* ErrorClass.swift */,
+				4C0D800C832CA7D7CEF0D4AB /* ErrorResponse.swift */,
 				4C0D82E8AD8C335169DAFCD8 /* Faculties */,
 				4C0D8BB36BF78DE5A4F62127 /* Grade */,
 				52B3F9AB1DBF40AC00B0CC55 /* Message */,
@@ -1335,11 +1335,11 @@
 				66A016BC1E3BB5550011BFD9 /* CourseDetailsProvider.swift */,
 				66A016BD1E3BB5550011BFD9 /* CourseProvider.swift */,
 				66A016BE1E3BB5550011BFD9 /* DeleteAccountProvider.swift */,
-				66A016BF1E3BB5550011BFD9 /* ErrorResponseProtocol.swift */,
+				66A016BF1E3BB5550011BFD9 /* ErrorHandlingDelegate.swift */,
 				66A016C01E3BB5550011BFD9 /* FacultieProvider.swift */,
 				66A016C11E3BB5550011BFD9 /* FacultiesProvider.swift */,
 				66A016C21E3BB5550011BFD9 /* GradesProvider.swift */,
-				66A016C31E3BB5550011BFD9 /* JsonProviderProtocol.swift */,
+				66A016C31E3BB5550011BFD9 /* JsonParsing.swift */,
 				66A016C41E3BB5550011BFD9 /* LectureProvider.swift */,
 				66A016C51E3BB5550011BFD9 /* LecturerProvider.swift */,
 				66A016C61E3BB5550011BFD9 /* LoginProvider.swift */,
@@ -2661,7 +2661,7 @@
 				66FD66481E3BAD9E007066E6 /* ItemCell.swift in Sources */,
 				66A8BE641E48CC90008B35B7 /* SeparatorCell.swift in Sources */,
 				66989CCD1E38DB9D00B659F6 /* SortedDictionary.swift in Sources */,
-				66A016E01E3BB5550011BFD9 /* ErrorResponseProtocol.swift in Sources */,
+				66A016E01E3BB5550011BFD9 /* ErrorHandlingDelegate.swift in Sources */,
 				66A016EF1E3BB5550011BFD9 /* CoursesSearchProvider.swift in Sources */,
 				4C0D832C3F2F8CAC86CCA86B /* UserDetailsResponse.swift in Sources */,
 				660915261DDDD31800D3FEC9 /* Constants.swift in Sources */,
@@ -2772,7 +2772,7 @@
 				66FD664B1E3BAD9E007066E6 /* KierunekHeaderCell.swift in Sources */,
 				66A016DF1E3BB5550011BFD9 /* DeleteAccountProvider.swift in Sources */,
 				4C0D85B76A95117FB20F3FEA /* EmploymentPosition.swift in Sources */,
-				66A016E41E3BB5550011BFD9 /* JsonProviderProtocol.swift in Sources */,
+				66A016E41E3BB5550011BFD9 /* JsonParsing.swift in Sources */,
 				4C0D8D638B4D5A845F1F0A32 /* RestImageProvider.swift in Sources */,
 				66FD66211E3BAD9E007066E6 /* SectionHelperProtocol.swift in Sources */,
 				66FD66341E3BAD9E007066E6 /* FacultieTableViewController.swift in Sources */,
@@ -2891,7 +2891,7 @@
 				66A016F01E3BB5550011BFD9 /* FacultySearchProvider.swift in Sources */,
 				66A8BE301E48C11E008B35B7 /* API2DriveTransfer.swift in Sources */,
 				66A016F41E3BB5550011BFD9 /* ThesisSearchProvider.swift in Sources */,
-				4C0D8F3F7FF39000760EEB08 /* ErrorClass.swift in Sources */,
+				4C0D8F3F7FF39000760EEB08 /* ErrorResponse.swift in Sources */,
 				66A8BE131E48C11E008B35B7 /* APIFileOwner.swift in Sources */,
 				66A8BE1B1E48C11E008B35B7 /* DriveQueryFields.swift in Sources */,
 				4C0D86610EB3A7F8698DCC56 /* CALayerExtensions.swift in Sources */,

@@ -8,7 +8,7 @@ import Foundation
 
 
 
-protocol CourseDetailsProviderProtocol: JsonProviderProtocol {
+protocol CourseDetailsProviderProtocol: JsonParsing {
     associatedtype T = CourseDetailsResponse
 
     func loadCourseDetails(_ course: Course)
@@ -16,7 +16,7 @@ protocol CourseDetailsProviderProtocol: JsonProviderProtocol {
     func loadCourseDetails(_ courseId : String)
 }
 
-protocol CourseDetailsProviderDelegate: ErrorResponseProtocol {
+protocol CourseDetailsProviderDelegate: ErrorHandlingDelegate {
     func onCourseDetailsLoaded(_ courseDetails: CourseDetails)
 }
 
@@ -54,7 +54,7 @@ class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
             self?.isFetching = false
 
             guard let json = json else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
                 return
             }
 
@@ -63,7 +63,7 @@ class CourseDetailsProvider:RestApiManager , CourseDetailsProviderProtocol {
             }
 
             do {
-                if let courseResponse = try strongSelf.changeJsonToResposne(json,errorR: strongSelf.delegate){
+                if let courseResponse = try strongSelf.parseResposne(json, errorHandler: strongSelf.delegate) {
                     strongSelf.delegate?.onCourseDetailsLoaded(courseResponse.details)
                 }
             } catch {

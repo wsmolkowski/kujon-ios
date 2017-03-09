@@ -6,7 +6,7 @@
 import Foundation
 
 
-protocol LectureProviderProtocol: JsonProviderProtocol {
+protocol LectureProviderProtocol: JsonParsing {
     associatedtype T = LectureResponse
 
     func loadLectures(_ date: String)
@@ -14,7 +14,7 @@ protocol LectureProviderProtocol: JsonProviderProtocol {
 
 }
 
-protocol LectureProviderDelegate: ErrorResponseProtocol {
+protocol LectureProviderDelegate: ErrorHandlingDelegate {
     func onLectureLoaded(_ lectures: Array<Lecture>,date:Date)
 
 }
@@ -32,12 +32,12 @@ weak var delegate: LectureProviderDelegate!
             [weak self] json in
 
             guard let json = json else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
                 return
             }
 
             if  let strongSelf = self,
-                let lectureResponse = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate){
+                let lectureResponse = try! strongSelf.parseResposne(json, errorHandler: strongSelf.delegate) {
                 strongSelf.delegate?.onLectureLoaded(lectureResponse.data,date: Date())
             }
 
@@ -52,12 +52,12 @@ weak var delegate: LectureProviderDelegate!
             [weak self] json in
 
             guard let json = json else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
                 return
             }
 
             if  let strongSelf = self,
-                let lectureResponse = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate){
+                let lectureResponse = try! strongSelf.parseResposne(json, errorHandler: strongSelf.delegate) {
                 strongSelf.delegate?.onLectureLoaded(lectureResponse.data, date: date)
             }
 

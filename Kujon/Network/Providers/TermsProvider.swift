@@ -5,13 +5,13 @@
 
 import Foundation
 
-protocol TermsProviderProtocol: JsonProviderProtocol {
+protocol TermsProviderProtocol: JsonParsing {
     associatedtype T = TermsResponse
 
     func loadTerms()
 }
 
-protocol TermsProviderDelegate: ErrorResponseProtocol {
+protocol TermsProviderDelegate: ErrorHandlingDelegate {
     func onTermsLoaded(_ terms: Array<Term>)
 
 }
@@ -23,7 +23,7 @@ class TermsProvider: RestApiManager, TermsProviderProtocol {
             [weak self] json in
 
             guard let json = json else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
                 return
             }
 
@@ -31,7 +31,7 @@ class TermsProvider: RestApiManager, TermsProviderProtocol {
                 return
             }
 
-            if let termsResponse = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate) {
+            if let termsResponse = try! strongSelf.parseResposne(json, errorHandler: strongSelf.delegate) {
                 strongSelf.delegate?.onTermsLoaded(termsResponse.terms)
             }
 

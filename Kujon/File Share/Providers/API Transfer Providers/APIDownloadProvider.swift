@@ -141,13 +141,13 @@ class APIDownloadProvider: NSObject, URLSessionDownloadDelegate {
         return downloadTicket
     }
 
-    private func isErrorResponse(at url: URL) -> ErrorClass? {
+    private func isErrorResponse(at url: URL) -> ErrorResponse? {
 
         guard
 
             let errorResponseData = try? Data.init(contentsOf: url),
             let errorResponseJSON = try? JSONSerialization.jsonObject(with: errorResponseData, options: .allowFragments),
-            let errorResponse = try? ErrorClass.decode(errorResponseJSON)
+            let errorResponse = try? ErrorResponse.decode(errorResponseJSON)
 
             else { return nil }
 

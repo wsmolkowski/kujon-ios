@@ -22,7 +22,7 @@ extension SearchProviderProtocol{
 
 
 
-protocol SearchProviderDelegate: ErrorResponseProtocol {
+protocol SearchProviderDelegate: ErrorHandlingDelegate {
     func searchedItems(_ array: Array<SearchElementProtocol>)
     func isThereNextPage(_ isThere:Bool)
 

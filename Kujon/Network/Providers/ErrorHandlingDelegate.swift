@@ -5,15 +5,17 @@
 
 import Foundation
 
-protocol ErrorResponseProtocol: Unauthorized {
+protocol ErrorHandlingDelegate: Unauthorized {
+
     func onErrorOccurs(_ text:String, retry: Bool)
+    func onErrorOccurs()
     func onUsosDown()
 }
 
 
-extension ErrorResponseProtocol{
-    func onErrorOccurs(_ text: String = "", retry: Bool = false) {
-    }
+extension ErrorHandlingDelegate {
+
+    func onErrorOccurs() { }
     func onUsosDown() { }
 
 }

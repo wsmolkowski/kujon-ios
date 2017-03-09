@@ -46,7 +46,7 @@ class APIDeletionProvider {
                 if let responseData = responseData,
                     let responseJSON = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments) {
 
-                    if let errorResponse = try? ErrorClass.decode(responseJSON) {
+                    if let errorResponse = try? ErrorResponse.decode(responseJSON) {
                         errorMessage = errorResponse.message
                     }
                 }
@@ -63,7 +63,7 @@ class APIDeletionProvider {
                     return
                 }
 
-                if let errorResponse = try? ErrorClass.decode(deleteFileResponseJSON) {
+                if let errorResponse = try? ErrorResponse.decode(deleteFileResponseJSON) {
                     failureHandler(errorResponse.message)
                     return
                 }

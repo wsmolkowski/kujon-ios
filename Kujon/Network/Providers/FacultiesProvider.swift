@@ -5,13 +5,13 @@
 
 import Foundation
 
-protocol FacultiesProviderProtocol: JsonProviderProtocol {
+protocol FacultiesProviderProtocol: JsonParsing {
     associatedtype T = FacultiesResposne
 
     func loadFaculties()
 }
 
-protocol FacultiesProviderDelegate: ErrorResponseProtocol {
+protocol FacultiesProviderDelegate: ErrorHandlingDelegate {
     func onFacultiesLoaded(_ list: Array<Facultie>)
 }
 
@@ -29,7 +29,7 @@ weak var delegate: FacultiesProviderDelegate! = nil
             [weak self] json in
 
             guard let json = json else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
                 return
             }
 
@@ -37,7 +37,7 @@ weak var delegate: FacultiesProviderDelegate! = nil
                 return
             }
 
-            if let faculties = try! strongSelf.changeJsonToResposne(json,errorR: strongSelf.delegate){
+            if let faculties = try! strongSelf.parseResposne(json, errorHandler: strongSelf.delegate) {
                 strongSelf.delegate?.onFacultiesLoaded(faculties.list)
             }
 

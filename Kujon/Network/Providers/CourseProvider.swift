@@ -5,7 +5,7 @@
 
 import Foundation
 
-protocol CourseProviderDelegate: ErrorResponseProtocol {
+protocol CourseProviderDelegate: ErrorHandlingDelegate {
 
     func coursesProvided(_ courses: Array<CoursesWrapper>)
 
@@ -26,7 +26,7 @@ class CourseProvider: RestApiManager {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: [])
 
-                    let error = try? ErrorClass.decode(json)
+                    let error = try? ErrorResponse.decode(json)
                     if let error = error, let code = error.code {
                         switch code {
                         case 401:
@@ -36,14 +36,14 @@ class CourseProvider: RestApiManager {
                                 GIDSignIn.sharedInstance().signInSilently()
                                 strongSelf.delegate.onErrorOccurs(error.message, retry: true)
                             } else {
-                                strongSelf.delegate.onErrorOccurs(error.message)
+                                strongSelf.delegate.onErrorOccurs(error.message, retry: false)
                             }
                         case 504:
                             strongSelf.delegate.onUsosDown()
                         case 524:
-                            strongSelf.delegate.onErrorOccurs(StringHolder.timeoutMessage)
+                            strongSelf.delegate.onErrorOccurs(StringHolder.timeoutMessage, retry: false)
                         default:
-                            strongSelf.delegate.onErrorOccurs(error.message)
+                            strongSelf.delegate.onErrorOccurs(error.message, retry: false)
                         }
                         return
                     }

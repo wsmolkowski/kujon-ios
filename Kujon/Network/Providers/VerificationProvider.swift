@@ -8,14 +8,14 @@
 
 import Foundation
 
-protocol VerificationProviderProtocol: JsonProviderProtocol {
+protocol VerificationProviderProtocol: JsonParsing {
     associatedtype T = UsosPaired
     func verify(URLString: String)
     func getRequestUrl()->String
 }
 
 
-protocol VerificationProviderDelegate: ErrorResponseProtocol {
+protocol VerificationProviderDelegate: ErrorHandlingDelegate {
     func onVerificationSuccess()
 }
 
@@ -36,7 +36,7 @@ class VerificationProvider: RestApiManager, VerificationProviderProtocol {
         makeHTTPAuthenticatedGetRequest({ [weak self] data in
 
             guard let data = data else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
                 return
             }
 
@@ -44,12 +44,12 @@ class VerificationProvider: RestApiManager, VerificationProviderProtocol {
                 return
             }
 
-            if let _ = try! strongSelf.changeJsonToResposne(data, errorR: strongSelf.delegate){
+            if let _ = try! strongSelf.parseResposne(data, errorHandler: strongSelf.delegate) {
                 strongSelf.delegate?.onVerificationSuccess()
             }
 
         }, onError: {[weak self] text in
-            self?.delegate?.onErrorOccurs(text)
+            self?.delegate?.onErrorOccurs(text, retry: false)
         })
     }
 

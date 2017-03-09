@@ -9,12 +9,12 @@
 import Foundation
 
 
-protocol APIFileListProviderDelegate: ErrorResponseProtocol {
+protocol APIFileListProviderDelegate: ErrorHandlingDelegate {
     func apliFileListProvider( _ provider: APIFileListProvider?, didLoadFileList files: [APIFile])
 
 }
 
-protocol APIFileListProviderProtocol: JsonProviderProtocol {
+protocol APIFileListProviderProtocol: JsonParsing {
     associatedtype T = APIFileListResponse
 }
 
@@ -51,18 +51,18 @@ class APIFileListProvider: RestApiManager, APIFileListProviderProtocol {
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
 
             guard let data = data else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
                 return
             }
 
             if let delegate = self?.delegate,
-                let fileListResponse = try! self?.changeJsonToResposne(data, errorR: delegate) {
+                let fileListResponse = try! self?.parseResposne(data, errorHandler: delegate) {
                 let files = fileListResponse.files
                 self?.delegate?.apliFileListProvider(self, didLoadFileList: files)
             }
 
             }, onError: {[weak self] text in
-                self?.delegate?.onErrorOccurs(text)
+                self?.delegate?.onErrorOccurs(text, retry: false)
         })
 
     }

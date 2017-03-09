@@ -6,7 +6,7 @@
 import Foundation
 
 
-protocol SuperUserProviderProtocol: JsonProviderProtocol {
+protocol SuperUserProviderProtocol: JsonParsing {
     associatedtype T = SuperUserResponse
 
     func loadUserDetail()
@@ -14,7 +14,7 @@ protocol SuperUserProviderProtocol: JsonProviderProtocol {
 
 }
 
-protocol SuperUserDetailsProviderDelegate: ErrorResponseProtocol {
+protocol SuperUserDetailsProviderDelegate: ErrorHandlingDelegate {
     func onUserDetailLoaded(_ userDetails: SuperUserDetails)
 
 }
@@ -29,7 +29,7 @@ class SuperUserProvider:RestApiManager,SuperUserProviderProtocol {
             [weak self] json in
 
             guard let json = json else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
                 return
             }
 
@@ -37,12 +37,12 @@ class SuperUserProvider:RestApiManager,SuperUserProviderProtocol {
                 return
             }
 
-            if let user = try! strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate) {
+            if let user = try! strongSelf.parseResposne(json, errorHandler: strongSelf.delegate) {
                 strongSelf.delegate?.onUserDetailLoaded(user.data)
             }
         }, onError: {[weak self]
             text in
-            self?.delegate?.onErrorOccurs(text)
+            self?.delegate?.onErrorOccurs(text, retry: false)
         })
     }
 

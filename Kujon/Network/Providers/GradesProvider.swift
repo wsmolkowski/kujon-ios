@@ -5,13 +5,13 @@
 
 import Foundation
 
-protocol GradesProviderProtocol: JsonProviderProtocol {
+protocol GradesProviderProtocol: JsonParsing {
     associatedtype T = GradeResponse
 
     func loadGrades()
 }
 
-protocol GradesProviderDelegate: ErrorResponseProtocol {
+protocol GradesProviderDelegate: ErrorHandlingDelegate {
     func onGradesLoaded(preparedTermGrades: Array<PreparedTermGrades>)
 
 }
@@ -26,7 +26,7 @@ weak var delegate: GradesProviderDelegate!
             [weak self] json in
 
             guard let json = json else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
                 return
             }
 
@@ -35,7 +35,7 @@ weak var delegate: GradesProviderDelegate!
             }
 
             do {
-                if let grades = try strongSelf.changeJsonToResposne(json, errorR: strongSelf.delegate){
+                if let grades = try strongSelf.parseResposne(json, errorHandler: strongSelf.delegate) {
 
                     var preparedTermGrades = Array<PreparedTermGrades>()
                     if grades.data.count > 0 {

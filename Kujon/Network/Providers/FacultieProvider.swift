@@ -5,12 +5,12 @@
 
 import Foundation
 
-protocol FacultieProviderProtocol: JsonProviderProtocol {
+protocol FacultieProviderProtocol: JsonParsing {
     associatedtype T = FacultieResponse
 
     func loadFacultie(_ id: String)
 }
- protocol FacultieProviderDelegate: ErrorResponseProtocol {
+ protocol FacultieProviderDelegate: ErrorHandlingDelegate {
     func onFacultieLoaded(_ fac: Facultie)
 }
 
@@ -29,7 +29,7 @@ class FacultieProvider: RestApiManager, FacultieProviderProtocol {
             [weak self] json in
 
             guard let json = json else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
                 return
             }
 
@@ -37,7 +37,7 @@ class FacultieProvider: RestApiManager, FacultieProviderProtocol {
                 return
             }
 
-            if let facult = try! strongSelf.changeJsonToResposne(json,errorR: strongSelf.delegate){
+            if let facult = try! strongSelf.parseResposne(json, errorHandler: strongSelf.delegate){
                 strongSelf.delegate?.onFacultieLoaded(facult.list)
             }
 

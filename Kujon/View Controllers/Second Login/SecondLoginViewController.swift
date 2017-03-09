@@ -132,10 +132,10 @@ class SecondLoginViewController: UIViewController, UIWebViewDelegate, NSURLConne
     }
 
 
-    private func parseError(data: Data) -> ErrorClass? {
+    private func parseError(data: Data) -> ErrorResponse? {
 
         if let json = try? JSONSerialization.jsonObject(with: data, options: []),
-            let errorResponse = try? ErrorClass.decode(json) {
+            let errorResponse = try? ErrorResponse.decode(json) {
             return errorResponse
         }
 

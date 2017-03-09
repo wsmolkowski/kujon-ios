@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SettingsProviderProtocol: JsonProviderProtocol {
+protocol SettingsProviderProtocol: JsonParsing {
 
     associatedtype T = SettingsResponse
     func loadSettings()
@@ -17,7 +17,7 @@ protocol SettingsProviderProtocol: JsonProviderProtocol {
 }
 
 
-protocol SettingsProviderDelegate: ErrorResponseProtocol {
+protocol SettingsProviderDelegate: ErrorHandlingDelegate {
 
     func settingsDidLoad(_ settings: Settings)
     func calendarSyncronizationSettingDidSucceed()
@@ -47,7 +47,7 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
         endpointURL = SettingsEndpoint.getSettings.rawValue
         makeHTTPAuthenticatedGetRequest({ [weak self] data in
             if let data = data,
-                let response = try! self?.changeJsonToResposne(data, errorR: self?.delegate),
+                let response = try! self?.parseResposne(data, errorHandler: self?.delegate),
                 let settings: Settings = response.data {
                 self?.userData.isCalendarSyncEnabled = settings.calendarSyncEnabled ?? false
                 self?.userData.oneSignalGradeNotificationsEnabled = settings.oneSignalGradeNotificationsEnabled ?? false
@@ -55,10 +55,10 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
                 self?.userData.areSettingsLoaded = true
                 self?.delegate?.settingsDidLoad(settings)
             } else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
             }
             }, onError: { [weak self] text in
-            self?.delegate?.onErrorOccurs(text)
+            self?.delegate?.onErrorOccurs(text, retry: false)
         })
     }
 
@@ -72,10 +72,10 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
                     UserDataHolder.sharedInstance.isCalendarSyncEnabled = enabled
                     self?.delegate?.calendarSyncronizationSettingDidSucceed()
             } else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
             }
         }, onError: { [weak self] text in
-            self?.delegate?.onErrorOccurs(text)
+            self?.delegate?.onErrorOccurs(text, retry: false)
         })
     }
 
@@ -90,10 +90,10 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
                 UserDataHolder.sharedInstance.oneSignalGradeNotificationsEnabled = enabled
                 self?.delegate?.oneSignalNotificationsSettingDidSucceed()
             } else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
             }
         }, onError: { [weak self] text in
-            self?.delegate?.onErrorOccurs(text)
+            self?.delegate?.onErrorOccurs(text, retry: false)
         })
     }
 
@@ -108,10 +108,10 @@ class SettingsProvider: RestApiManager, SettingsProviderProtocol {
                 UserDataHolder.sharedInstance.oneSignalFileNotificationsEnabled = enabled
                 self?.delegate?.oneSignalNotificationsSettingDidSucceed()
             } else {
-                self?.delegate?.onErrorOccurs(StringHolder.errorOccures)
+                self?.delegate?.onErrorOccurs(StringHolder.errorOccures, retry: false)
             }
             }, onError: { [weak self] text in
-                self?.delegate?.onErrorOccurs(text)
+                self?.delegate?.onErrorOccurs(text, retry: false)
         })
     }
 
