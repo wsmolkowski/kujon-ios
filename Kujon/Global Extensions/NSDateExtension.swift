@@ -24,7 +24,7 @@ extension Date {
         return getDateFormatter().date(from: dateString)
     }
 
-    static func stringToDateWithClock(_ dateString: String) -> Date! {
+    static func stringToDateWithClock(_ dateString: String) -> Date? {
         return getDateFormatter(Date.dateFormatWithClock).date(from: dateString)
     }
 

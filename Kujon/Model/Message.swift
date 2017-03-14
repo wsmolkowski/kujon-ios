@@ -21,8 +21,7 @@ struct Message {
 extension Message: Decodable {
 
     static func decode(_ j: Any) throws -> Message {
-        let date: Date = Date.stringToDateWithClock(try j => "created_time")
-        return try Message(createdTime: date,
+        return try Message(createdTime: Date.stringToDateWithClock(try j => "created_time") ?? Date(),
                            from: j => "from",
                            message: j => "message",
                            type: j => "typ")

@@ -51,6 +51,7 @@ class CalendarViewController: MGCDayPlannerViewController,
         self.dayPlannerView.timeSeparatorsColor = UIColor.calendarSeparatorColor()
         self.dayPlannerView.dateFormat = calendarDateFormant
         self.dayPlannerView.showsAllDayEvents = false
+        dayPlannerView.delegate = self
         dayPlannerView.hourSlotHeight = 50.0
         (self.dayPlannerView as MGCDayPlannerView).hourRange = NSRange(location: 6, length: 16)
         lectureProvider.setLecturer(lecturerId: lecturerId)
@@ -222,13 +223,14 @@ class CalendarViewController: MGCDayPlannerViewController,
     override func dayPlannerView(_ view: MGCDayPlannerView!, dateRangeForEventOf type: MGCEventType, at index: UInt, date: Date!) -> MGCDateRange! {
         if let date = date, let list = getListOfLecturesWrappers(date) {
             let lecture = list[Int(index)];
-            return MGCDateRange(start: lecture.startNSDate as Date!, end: lecture.endNSDate as Date!)
+            return MGCDateRange(start: lecture.startNSDate as Date?, end: lecture.endNSDate as Date?)
         }
         return nil
     }
 
+
     override func dayPlannerView(_ view: MGCDayPlannerView!, viewForEventOf type: MGCEventType, at index: UInt, date: Date!) -> MGCEventView! {
-        if let date = date, let list = getListOfLecturesWrappers(date) {
+        if let date = date, let list = getListOfLecturesWrappers(date), !list.isEmpty, Int(index) < list.count,  Int(index) >= 0 {
             let eventView = MyEventView()
             let lecture = list[Int(index)];
             eventView.myBackgrounColor = UIColor.kujonCalendarBlue()
@@ -251,7 +253,7 @@ class CalendarViewController: MGCDayPlannerViewController,
         }
     }
 
-    private func getListOfLecturesWrappers(_ date: Date) -> Array<LectureWrapper>! {
+    private func getListOfLecturesWrappers(_ date: Date) -> Array<LectureWrapper>? {
         return onlyLectureDictionary[date.dateToStringSchedule()]
     }
 
