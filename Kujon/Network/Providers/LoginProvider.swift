@@ -39,7 +39,7 @@ class LoginProvider:RestApiManager,LoginProviderProtocol {
 
         }, onError: {
             [weak self] text in
-            self?.delegate!.onErrorOccurs(text, retry: false)
+            self?.delegate?.onErrorOccurs(text, retry: false)
         }, json: data)
 
     }
