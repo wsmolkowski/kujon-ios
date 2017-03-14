@@ -47,7 +47,7 @@ class RestApiManager {
                     }
                 } else {
                     DispatchQueue.main.async {
-                        onCompletion(data!)
+                        onCompletion(data)
                     }
                 }
             }
@@ -78,7 +78,7 @@ class RestApiManager {
                     }
                 } else {
                     DispatchQueue.main.async {
-                        onCompletion(data!)
+                        onCompletion(data)
                     }
                 }
             }
@@ -109,7 +109,7 @@ class RestApiManager {
                     }
                 } else {
                     DispatchQueue.main.async {
-                        onCompletion(data!)
+                        onCompletion(data)
                     }
                 }
             }
@@ -141,7 +141,7 @@ class RestApiManager {
                         }
                     } else {
                         DispatchQueue.main.async {
-                            onCompletion(data!)
+                            onCompletion(data)
                         }
                     }
                 }
@@ -184,7 +184,7 @@ class RestApiManager {
                 }
             } else {
                 DispatchQueue.main.async {
-                    onCompletion(data!)
+                    onCompletion(data)
                 }
             }
         }
