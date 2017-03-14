@@ -11,6 +11,7 @@ class HeaderManager {
 
     private let EMAIL_HEADER = "X-Kujonmobiemail"
     private let TOKEN_HEADER = "X-Kujonmobitoken"
+    private let LOGIN_TYPE = "X-Kujonlogintype"
     private let REFRESH_TOKEN = "X-Kujonrefresh"
     private let COOKIE_HEADER = "Cookie"
 
@@ -21,6 +22,7 @@ class HeaderManager {
     func addHeadersToRequest(_ request: inout URLRequest, refresh:Bool = false, addStoredCookies:Bool = false) {
         request.addValue(userDataHolder.userEmail ?? "", forHTTPHeaderField: EMAIL_HEADER)
         request.addValue(userDataHolder.userToken ?? "", forHTTPHeaderField: TOKEN_HEADER)
+        request.addValue(UserLoginEnum.getLoginType().rawValue, forHTTPHeaderField: LOGIN_TYPE)
 
         if(refresh){
             request.addValue("true", forHTTPHeaderField: REFRESH_TOKEN)

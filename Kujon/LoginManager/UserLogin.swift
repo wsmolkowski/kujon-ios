@@ -9,10 +9,10 @@ protocol UserLoginDelegate: class {
     func onCredentialsSaved(_ isLogged:Bool)
 }
 
-enum UserLoginEnum {
-    case facebook
-    case google
-    case email
+enum UserLoginEnum: String {
+    case facebook = "FACEBOOK"
+    case google = "GOOGLE"
+    case email = "EMAIL"
 }
 
 extension UserLoginEnum {
