@@ -33,7 +33,10 @@ class RestApiManager {
             self.handelTestCase(onCompletion)
         } else {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            var request = URLRequest(url: URL(string: getMyUrl())!)
+            guard let url = URL(string: getMyUrl()) else {
+                return
+            }
+            var request = URLRequest(url: url)
             let session = URLSession.shared
             self.headerManager.addRefreshToken(&request, refresh: refresh)
             let task = session.dataTask(with: request) {
@@ -62,7 +65,10 @@ class RestApiManager {
             self.handelTestCase(onCompletion)
         } else {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            var request = URLRequest(url: URL(string: getMyUrl())!)
+            guard let url = URL(string: getMyUrl()) else {
+                return
+            }
+            var request = URLRequest(url: url)
             let session = SessionManager.provideSession()
             request.httpMethod = "POST"
             request.httpBody = json
@@ -94,7 +100,10 @@ class RestApiManager {
             self.handelTestCase(onCompletion)
         } else {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            var request = URLRequest(url: URL(string: getMyUrl())!)
+            guard let url = URL(string: getMyUrl()) else {
+                return
+            }
+            var request = URLRequest(url: url)
             let session = SessionManager.provideSession()
             request.httpMethod = "POST"
             self.headerManager.addHeadersToRequest(&request, refresh:refresh, addStoredCookies: addStoredCookies)
@@ -126,7 +135,10 @@ class RestApiManager {
         } else {
             if (headerManager.isAuthenticated()) {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = true
-                var request = URLRequest(url: URL(string: getMyUrl())!)
+                guard let url = URL(string: getMyUrl()) else {
+                    return
+                }
+                var request = URLRequest(url: url)
                 let session = SessionManager.provideSession()
                 self.headerManager.addHeadersToRequest(&request, refresh:refresh, addStoredCookies: addStoredCookies)
 
@@ -155,7 +167,10 @@ class RestApiManager {
     }
 
     func reload(){
-        var request = URLRequest(url: URL(string: getMyUrl())!)
+        guard let url = URL(string: getMyUrl()) else {
+            return
+        }
+        var request = URLRequest(url: url)
         self.headerManager.addHeadersToRequest(&request)
         SessionManager.clearCacheForRequest(request as URLRequest)
         refresh = true
